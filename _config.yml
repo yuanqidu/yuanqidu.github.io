@@ -81,7 +81,7 @@ analytics:
 # Site Author
 author:
   name             : "Yuanqi Du"
-  avatar           : "/files/avatar.jpg"
+  avatar           : "avatar.jpg"
   bio              : "Research Assistant, George Mason University"
   location         : "Fairfax, VA"
   employer         :
