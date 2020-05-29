@@ -1,5 +1,5 @@
 ---
-title: "Expressive ASL Recognition using Millimeter- wave Wireless Signals"
+title: "Expressive ASL Recognition using Millimeter-wave Wireless Signals"
 collection: publications
 permalink: /publication/Expressive ASL Recognition using Millimeter- wave Wireless Signals
 excerpt: ''
