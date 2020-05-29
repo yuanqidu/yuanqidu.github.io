@@ -1,7 +1,7 @@
 ---
 title: "American Sign Language Recognition Using an FMCW Wireless Sensor"
 collection: publications
-permalink: /publication/2009-10-01-paper-title-number-1
+permalink: /publication/American_Sign_Language_Recognition_Using_an_FMCW_Wireless_Sensor
 excerpt: ''
 date: 2020
 venue: 'AAAI 2020 (Student Abstract)'
