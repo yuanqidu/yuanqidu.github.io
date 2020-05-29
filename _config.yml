@@ -82,7 +82,7 @@ analytics:
 author:
   name             : "Yuanqi Du"
   avatar           : "avatar.jpg"
-  bio              : "Your biography for the left-hand sidebar"
+  bio              : "Research Assistant, George Mason University"
   location         : "Fairfax, VA"
   employer         :
   pubmed           : #"https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
@@ -96,7 +96,7 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : "https://github.com/yuanqidu"
+  github           : "yuanqidu"
   google_plus      :
   keybase          :
   instagram        :
@@ -192,16 +192,16 @@ collections:
 # Defaults
 defaults:
   # _posts
-  #- scope:
-    #  path: ""
-     # type: posts
-    #values:
-     # layout: single
-      #author_profile: true
-      #read_time: true
-      #comments: true
-      #share: true
-      #related: true
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: true
+      share: true
+      related: true
   # _pages
   - scope:
       path: ""
@@ -210,14 +210,14 @@ defaults:
       layout: single
       author_profile: true
   # _teaching
-  #- scope:
-    #  path: ""
-     # type: teaching
-    #values:
-     # layout: single
-     # author_profile: true
-     # share: true
-     # comments: true
+  - scope:
+      path: ""
+      type: teaching
+    values:
+      layout: single
+      author_profile: true
+      share: true
+      comments: true
   # _publications
   - scope:
       path: ""
@@ -237,13 +237,13 @@ defaults:
       share: true
       comment: true
   # _talks
-  #- scope:
-    #  path: ""
-     # type: talks
-    #values:
-     # layout: talk
-      #author_profile: true
-      #share: true
+  - scope:
+      path: ""
+      type: talks
+    values:
+      layout: talk
+      author_profile: true
+      share: true
 
 # Sass/SCSS
 sass:
