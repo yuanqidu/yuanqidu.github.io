@@ -7,7 +7,7 @@ redirect_from:
   - /resume
 ---
 
-check out my [CV](https://https://yuanqidu.github.io/files/Yuanqi_Du_CV.pdf) 
+check out my [CV](https://yuanqidu.github.io/files/Yuanqi_Du_CV.pdf) 
 
 Education
 ======
