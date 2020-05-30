@@ -7,7 +7,7 @@ redirect_from:
   - /resume
 ---
 
-check out my [CV](https://https://yuanqidu.github.io/Yuanqi_Du_CV.pdf) 
+check out my [CV](https://https://yuanqidu.github.io/files/Yuanqi_Du_CV.pdf) 
 
 Education
 ======
@@ -16,27 +16,27 @@ Education
 
 Work experience
 ======
-* Research Assistant                            Feb 2020 - Present
+* Research Assistant, Feb 2020 - Present
   * George Mason University
   * Application of Graph Neural Network on Molecule Generation
   * Advisor: Amarda Shehu, Liang Zhao
 
-* Research Assistant                             Apr 2019 - Present
+* Research Assistant, Apr 2019 - Present
   * George Mason University
   * Application of Milli-meter Wave Signals
   * Advisor: Parth Pathak
 
-* Research Assistant                             Jan 2020 - May 2020
+* Research Assistant, Jan 2020 - May 2020
   * George Mason University
   * Protein Structure Classification
   * Advisor: Amarda Shehu, Liang Zhao
 
-* Undergraduate Researcher                  Jun 2019 - Aug 2019
+* Undergraduate Researcher, Jun 2019 - Aug 2019
   * George Mason University
   * American Sign Language Recognition
   * Advisor: Parth Pathak, Jana Kosecka, Huzefa Rangwala
   
-* Research Assistant                               Oct 2018 - Mar 2019
+* Research Assistant, Oct 2018 - Mar 2019
   * George Mason University
   * Ensemble Anomaly Detection Algorithm
   * Advisor: Carlotta Domeniconi
