@@ -7,7 +7,7 @@ redirect_from:
   - /resume
 ---
 
-{% include base_path %}
+check out my [CV](https://https://yuanqidu.github.io/Yuanqi_Du_CV.pdf) 
 
 Education
 ======
@@ -16,24 +16,38 @@ Education
 
 Work experience
 ======
-* Summer 2015: Research Assistant
-  * Github University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
+* Research Assistant                            Feb 2020 - Present
+  * George Mason University
+  * Application of Graph Neural Network on Molecule Generation
+  * Advisor: Amarda Shehu, Liang Zhao
 
-* Fall 2015: Research Assistant
-  * Github University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+* Research Assistant                             Apr 2019 - Present
+  * George Mason University
+  * Application of Milli-meter Wave Signals
+  * Advisor: Parth Pathak
+
+* Research Assistant                             Jan 2020 - May 2020
+  * George Mason University
+  * Protein Structure Classification
+  * Advisor: Amarda Shehu, Liang Zhao
+
+* Undergraduate Researcher                  Jun 2019 - Aug 2019
+  * George Mason University
+  * American Sign Language Recognition
+  * Advisor: Parth Pathak, Jana Kosecka, Huzefa Rangwala
+  
+* Research Assistant                               Oct 2018 - Mar 2019
+  * George Mason University
+  * Ensemble Anomaly Detection Algorithm
+  * Advisor: Carlotta Domeniconi
   
 Skills
 ======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+* Programming (Python, Java, C, MySQL, R, C++, Assembly Language, Lisp, Haskell, LaTeX)
+* Machine Learning
+* Data Mining
+* Languages: English, Chinese
+
 
 Publications
 ======
@@ -41,11 +55,6 @@ Publications
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
   
-Talks
-======
-  <ul>{% for post in site.talks %}
-    {% include archive-single-talk-cv.html %}
-  {% endfor %}</ul>
   
 Teaching
 ======
@@ -55,4 +64,6 @@ Teaching
   
 Service and leadership
 ======
-* Currently signed in to 43 different slack teams
+* Co-organize Deep Learning Workshops at GMU
+* Co-organize Applications in AI Workshops at GMU
+* Co-organize DeepSpatial, co-located with KDD 20 (Web Master)
