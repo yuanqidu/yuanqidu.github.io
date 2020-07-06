@@ -14,32 +14,32 @@ Education
 * B.S. in Computer Science, George Mason University, Expected 2021
 
 
-Work experience
+Research experience
 ======
 * Research Assistant, Feb 2020 - Present
   * George Mason University
   * Application of Graph Neural Network on Molecule Generation
-  * Advisor: Amarda Shehu, Liang Zhao
+  * Advisor: [Amarda Shehu](https://cs.gmu.edu/~ashehu/), [Liang Zhao](https://mason.gmu.edu/~lzhao9/)
 
 * Research Assistant, Apr 2019 - Present
   * George Mason University
   * Application of Milli-meter Wave Signals
-  * Advisor: Parth Pathak
+  * Advisor: [Parth Pathak](http://www.phpathak.com/)
 
 * Research Assistant, Jan 2020 - May 2020
   * George Mason University
   * Protein Structure Classification
-  * Advisor: Amarda Shehu, Liang Zhao
+  * Advisor: [Amarda Shehu](https://cs.gmu.edu/~ashehu/), [Liang Zhao](https://mason.gmu.edu/~lzhao9/)
 
 * Undergraduate Researcher, Jun 2019 - Aug 2019
   * George Mason University
   * American Sign Language Recognition
-  * Advisor: Parth Pathak, Jana Kosecka, Huzefa Rangwala
+  * Advisor: [Parth Pathak](http://www.phpathak.com/), [Jana Kosecka](https://cs.gmu.edu/~kosecka/), [Huzefa Rangwala](https://cs.gmu.edu/~hrangwal/)
   
 * Research Assistant, Oct 2018 - Mar 2019
   * George Mason University
   * Ensemble Anomaly Detection Algorithm
-  * Advisor: Carlotta Domeniconi
+  * Advisor: [Carlotta Domeniconi](https://cs.gmu.edu/~carlotta/)
   
 Skills
 ======
@@ -66,5 +66,5 @@ Service and leadership
 ======
 * Co-organize [DeepSpatial 2020](http://mason.gmu.edu/~lzhao9/venues/DeepSpatial2020/), co-located with KDD 20 (Web Master)
 * Co-organize [Applications in AI Workshops](https://yuanqidu.github.io/files/Application in AI Workshop.pdf) at GMU
-* Co-organize Deep Learning Workshops at GMU
+* Co-organize [Deep Learning, Reinforcement Learning Workshops](https://netbrainml.github.io/workshop/) at GMU
 
