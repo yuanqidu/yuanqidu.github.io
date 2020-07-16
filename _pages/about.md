@@ -13,8 +13,10 @@ Yuanqi Du is a senior undergraduate student studying Computer Science at George 
 Check out my [CV](https://yuanqidu.github.io/files/Yuanqi_Du_CV.pdf)
 
 
-* Research Interest:
+**Research Interests**
   * American Sign Language Recognition
   * Graph Neural Networks
   * Molecular Structure Generation
   * Protein Structure Prediction
+  
+
