@@ -16,6 +16,11 @@ Education
 
 Research experience
 ======
+* Research Intern, Aug 2020 - Present
+  * Institute of Computing Technology, Chinese Academy of Sciences
+  * Medical Image Translation
+  * Advisor: [Hu Han](https://sites.google.com/site/huhanhomepage/), [Kevin Zhou](http://people.ucas.edu.cn/~skevinzhou?language=en)
+  
 * Research Assistant, Feb 2020 - Present
   * George Mason University
   * Application of Graph Neural Network on Molecule Generation
