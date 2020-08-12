@@ -46,6 +46,15 @@ Research experience
   * Ensemble Anomaly Detection Algorithm
   * Advisor: [Carlotta Domeniconi](https://cs.gmu.edu/~carlotta/)
   
+  Awards
+  ======
+  * Distinguished Undergraduate Teaching Award (2019-2020, GMU)
+  * Distinguished Undergraduate Research Award (2019-2020, GMU)
+  * NSF REU Fellowship (Spring 2019-Spring 2020)
+  * GMU OSCAR Fellowship (Summer 2019)
+  * Outstanding Undergraduate Teaching Award (2018-2019, GMU)
+
+  
 Skills
 ======
 * Programming (Python, Java, C, MySQL, R, C++, Assembly Language, Lisp, Haskell, LaTeX)
