@@ -25,5 +25,6 @@ Check out my [CV](https://yuanqidu.github.io/files/Yuanqi_Du_CV.pdf)
 
 **Preprints & Working Papers**
 * Controlling the Generation of  Molecules via Interpretable Variational Autoencoders, Yuanqi Du, Xiaojie Guo, Amarda Shehu, Liang Zhao
+* Deep Learning for Tertiary Structure Reconstruction at Varying Representational Detail, Yuanqi Du, Anowarul Kabir, Liang Zhao, Amarda Shehu
   
 
