@@ -22,5 +22,8 @@ Check out my [CV](https://yuanqidu.github.io/files/Yuanqi_Du_CV.pdf)
 **News!**
 * Paper titled "Interpretable Molecule Generation via Disentanglement Learning" accepted at ACM Conference of Bioinformatics and Computational Biology (BCB) Workshops: Computational Structural Biology Workshop (CSBW) 2020
 * Paper titled "From Interatomic Distances to Protein Tertiary Structures with a Deep Convolutional Neural Network" accepted at ACM Conference of Bioinformatics and Computational Biology (BCB) Workshops: Computational Structural Biology Workshop (CSBW) 2020
+
+**Preprints & Working Papers**
+* Controlling the Generation of  Molecules via Interpretable Variational Autoencoders, Yuanqi Du, Xiaojie Guo, Amarda Shehu, Liang Zhao
   
 
