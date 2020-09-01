@@ -24,7 +24,8 @@ Check out my [CV](https://yuanqidu.github.io/files/Yuanqi_Du_CV.pdf)
 * Paper titled "From Interatomic Distances to Protein Tertiary Structures with a Deep Convolutional Neural Network" accepted at ACM Conference of Bioinformatics and Computational Biology (BCB) Workshops: Computational Structural Biology Workshop (CSBW) 2020
 
 **Preprints & Working Papers**
-* Controlling the Generation of  Molecules via Interpretable Variational Autoencoders, Yuanqi Du, Xiaojie Guo, Amarda Shehu, Liang Zhao
-* Deep Learning for Tertiary Structure Reconstruction at Varying Representational Detail, Yuanqi Du, Anowarul Kabir, Liang Zhao, Amarda Shehu
+* Controlling the Generation of  Molecules via Interpretable Variational Autoencoders, **Yuanqi Du**, Xiaojie Guo, Amarda Shehu, Liang Zhao
+* Deep Learning for Tertiary Structure Reconstruction at Varying Representational Detail, **Yuanqi Du**, Anowarul Kabir, Liang Zhao, Amarda Shehu
+* Generative Adversarial Learning of Protein Tertiary Structures, Taseef Rahman, **Yuanqi Du**, Amarda Shehu
   
 
