@@ -17,7 +17,6 @@ Education
 Research experience
 ======
 * Research Intern, Aug 2020 - Present
-  * Institute of Computing Technology, Chinese Academy of Sciences
   * Medical Image Translation
   * Advisor: [Hu Han](https://sites.google.com/site/huhanhomepage/), [Kevin Zhou](http://people.ucas.edu.cn/~skevinzhou?language=en)
   
@@ -46,8 +45,8 @@ Research experience
   * Ensemble Anomaly Detection Algorithm
   * Advisor: [Carlotta Domeniconi](https://cs.gmu.edu/~carlotta/)
   
-  Awards
-  ======
+Awards
+======
   * Distinguished Undergraduate Teaching Award (2019-2020, GMU)
   * Distinguished Undergraduate Research Award (2019-2020, GMU)
   * NSF REU Fellowship (Spring 2019-Spring 2020)
