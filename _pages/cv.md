@@ -11,7 +11,7 @@ check out my [CV](https://yuanqidu.github.io/files/Yuanqi_Du_CV.pdf)
 
 Education
 ======
-* B.S. in Computer Science, George Mason University, Expected 2021
+* B.S. in Computer Science, George Mason University, GPA 4.0/4.0, Expected 2021
 
 
 Research experience
