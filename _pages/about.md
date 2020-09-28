@@ -24,7 +24,7 @@ Check out my [CV](https://yuanqidu.github.io/files/Yuanqi_Du_CV.pdf)
   * Medical Image Translation
   
 **News!**
-* Our [DeepASL Dataset](https://sites.google.com/d/17BKvgGH-WFi-FQfa4Vcw_GCsGrbCqZrB/p/1s2pTuPbklInBqNVs91x8-pKC8qAQ8Fww/edit) is publicly available, the dataset constains ASL single-word signs, sentences and non-manual markers from 5 Professional ASL users using an FMCW Signal Sensor.
+* Our [DeepASL Dataset](https://sites.google.com/view/deepasldataset/home) is publicly available, the dataset constains ASL single-word signs, sentences and non-manual markers from 5 Professional ASL users using an FMCW Signal Sensor.
 * Paper titled "Interpretable Molecule Generation via Disentanglement Learning" accepted at ACM Conference of Bioinformatics and Computational Biology (BCB) Workshops: Computational Structural Biology Workshop (CSBW) 2020
 * Paper titled "From Interatomic Distances to Protein Tertiary Structures with a Deep Convolutional Neural Network" accepted at ACM Conference of Bioinformatics and Computational Biology (BCB) Workshops: Computational Structural Biology Workshop (CSBW) 2020
 
