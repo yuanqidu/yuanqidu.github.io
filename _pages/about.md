@@ -12,7 +12,7 @@ Yuanqi Du is a senior undergraduate student studying Computer Science at George 
 
 **Drop me an email if you'd like to talk about/collaborate on any of the following research topics or other research areas with me. I currently live in Beijing, China, feel free to grab a coffee with me, too!**
 
-Check out my [CV](https://yuanqidu.github.io/files/Yuanqi_Du_CV.pdf)
+Check out my [CV](https://yuanqidu.github.io/cv/) and [a pdf version](https://yuanqidu.github.io/files/Yuanqi_Du_CV.pdf)
 
 
 **Research Interests**

@@ -82,4 +82,5 @@ Service and leadership
 * Co-organize [Applications in AI Workshops](https://yuanqidu.github.io/files/Application in AI Workshop.pdf) at GMU
 * Co-organize [Deep Learning, Reinforcement Learning Workshops](https://netbrainml.github.io/workshop/) at GMU
 * Contribute to the open-source community (e.g. publishing codes and datasets)
+* Student Member of ACM, IEEE, AAAI, SIAM, ASA Community
 
