@@ -16,12 +16,11 @@ Check out my [CV](https://yuanqidu.github.io/cv/) and [a pdf version](https://yu
 
 
 **Research Interests**
-  * American Sign Language Recognition
-  * Interpretable Molecular Structure Generation
-  * Controllable Molecular Structure Generation
-  * Protein Structure Prediction
-  * Protein Structure Generation
-  * Medical Image Translation
+  * Gesture Recognition
+  * Structured Data Generation (e.g. Molecules)
+  * Controllable Data Generation
+  * Medical Image Analysis
+  * Educational Data Science
   
 **News!**
 * Our [DeepASL Dataset](https://sites.google.com/view/deepasldataset/home) is publicly available, the dataset constains ASL single-word signs, sentences and non-manual markers collected from 5 Professional ASL users using an FMCW Signal Sensor
@@ -30,9 +29,9 @@ Check out my [CV](https://yuanqidu.github.io/cv/) and [a pdf version](https://yu
 
 **Preprints & Working Papers**
 * Controlling the Generation of  Molecules via Interpretable Variational Autoencoders, submitted to a major AI conferece, **Yuanqi Du**, Xiaojie Guo, Amarda Shehu, Liang Zhao
-* Controllable Variational Autoencoders, submitted to a major ML conference, Xiaojie Guo, **Yuanqi Du**, Liang Zhao
+* Property Controllable Variational Autoencoder via Invertible Mutual Dependence submitted to a major ML conference, Xiaojie Guo, **Yuanqi Du**, Liang Zhao
 * Deep Learning for Tertiary Structure Reconstruction at Varying Representational Detail, gointg to submit to a bioinformatics journal, **Yuanqi Du**, Anowarul Kabir, Liang Zhao, Amarda Shehu
 * Generative Adversarial Learning of Protein Tertiary Structures, Taseef Rahman, going to submit to a bioinformatics journal, **Yuanqi Du**, Amarda Shehu
-* Improving Student Academic Performance Prediction via an Upsampling Technique, Kaiyi Guan, Dom Huh, Huzefa Rangwala, Yuanqi Du*
+* Improving Student Academic Performance Prediction via Ensemble Learning, Kaiyi Guan, Huzefa Rangwala, Yuanqi Du*
   
 
