@@ -16,9 +16,11 @@ Check out my [CV](https://yuanqidu.github.io/cv/) and [a pdf version](https://yu
 
 
 **Research Interests**
-  * Gesture Recognition
-  * Structured Data Generation (e.g. Molecules)
-  * Controllable Data Generation
+  * Machine Learning for Drug Discovery
+  * Protein Structure Prediction
+  * Application of Millimeter-wave Radar 
+  * Structured Data Mining
+  * Deep Generative Models
   * Medical Image Analysis
   * Educational Data Science
   
@@ -29,7 +31,8 @@ Check out my [CV](https://yuanqidu.github.io/cv/) and [a pdf version](https://yu
 * 07/20 Paper titled "From Interatomic Distances to Protein Tertiary Structures with a Deep Convolutional Neural Network" accepted at ACM Conference of Bioinformatics and Computational Biology (BCB) Workshops: Computational Structural Biology Workshop (CSBW) 2020, 8 pages, to appear in the proceedings of ACM BCB 20 soon
 
 **Preprints & Working Papers**
-* Controlling the Generation of  Molecules via Interpretable Variational Autoencoders, submitted to a major AI conferece, **Yuanqi Du**, Xiaojie Guo, Amarda Shehu, Liang Zhao
+* Controlling the Generation of  Molecules via Interpretable Variational Autoencoders, submitted to a bioinformatics journal, **Yuanqi Du**, Xiaojie Guo, Amarda Shehu, Liang Zhao
+* Controllable Molecule Generation via Monotonic Constraints, submitted to RECOMB conference, **Yuanqi Du**, Xiaojie Guo, Amarda Shehu, Liang Zhao
 * Property Controllable Variational Autoencoder via Invertible Mutual Dependence, submitted to a major ML conference, Xiaojie Guo, **Yuanqi Du**, Liang Zhao
 * Deep Learning for Tertiary Structure Reconstruction at Varying Representational Detail, gointg to submit to a bioinformatics journal, **Yuanqi Du**, Anowarul Kabir, Liang Zhao, Amarda Shehu
 * Generative Adversarial Learning of Protein Tertiary Structures, going to submit to a bioinformatics journal, Taseef Rahman, **Yuanqi Du**, Amarda Shehu
