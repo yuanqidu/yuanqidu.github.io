@@ -34,7 +34,8 @@ Check out my [CV](https://yuanqidu.github.io/cv/) and [a pdf version](https://yu
 * Controlling the Generation of  Molecules via Interpretable Variational Autoencoders, submitted to a bioinformatics journal, **Yuanqi Du**, Xiaojie Guo, Amarda Shehu, Liang Zhao\*
 * Controllable Molecule Generation via Monotonic Constraints, submitted to RECOMB conference, **Yuanqi Du**, Xiaojie Guo, Amarda Shehu, Liang Zhao\*
 * Property Controllable Variational Autoencoder via Invertible Mutual Dependence, submitted to a major ML conference, Xiaojie Guo, **Yuanqi Du**, Liang Zhao\*
-* Learning to Segment Pelvic Bones from a Large-Scale CT Dataset, submitted to a major Computer-Assisted Interventions conference, Pengbo Liu, Hu Han, **Yuanqi Du**, Heqin Zhu, Yinhao Li, Feng Gu, Honghu Xiao, Jun Li, Chunpeng Zhao, Xinbao Wu, S. Kevin Zhou\*, dataset will be available soon.
+* Deep Learning to Segment Pelvic Bones: Large-scale CT Datasets and Baseline Models, submitted to a major Computer-Assisted Interventions conference, Pengbo Liu, Hu Han, **Yuanqi Du**, Heqin Zhu, Yinhao Li, Feng Gu, Honghu Xiao, Jun Li, Chunpeng Zhao, Xinbao Wu, S. Kevin Zhou\*, dataset will be available soon.
+* CT Film Recovery via Disentangling Geometric Deformation and Photometric Degradation: Simulated Datasets and Deep Models, submitted to a major Computer Vision conference, Quan Quan, Qiyuan Wang, Liu Li, **Yuanqi Du**, S. Kevin Zhou\*.
 
 **Working Papers**
 * Deep Learning for Tertiary Structure Reconstruction at Varying Representational Detail, gointg to submit to a bioinformatics journal, **Yuanqi Du**, Anowarul Kabir, Liang Zhao, Amarda Shehu\*
