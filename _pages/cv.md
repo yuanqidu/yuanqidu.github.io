@@ -12,28 +12,28 @@ check out my [CV](https://yuanqidu.github.io/files/Yuanqi_Du_CV.pdf)
 Education
 ======
 * B.S. in Computer Science, George Mason University, GPA 4.0/4.0, 2017-Expected 2021
-* B.S. in Computer Science, Huaqiao University, GPA 4.67/5.00, 2016-2017
+* B.S. in Computer Science, Huaqiao University, GPA 4.68/5.00, 2016-2017
 
 
 Research experience
 ======
 * Research Intern, Aug 2020 - Present
-  * Medical Image Translation
+  * Medical Image Analysis
   * Advisor: [Hu Han](https://sites.google.com/site/huhanhomepage/), [Kevin Zhou](http://people.ucas.edu.cn/~skevinzhou?language=en)
   
 * Research Assistant, Feb 2020 - Present
   * George Mason University
-  * Application of Graph Neural Network on Molecule Generation
+  * Structured Data Mining (i.e. Graphs)
   * Advisor: [Amarda Shehu](https://cs.gmu.edu/~ashehu/), [Liang Zhao](https://mason.gmu.edu/~lzhao9/)
 
 * Research Assistant, Apr 2019 - Present
   * George Mason University
-  * Application of Milli-meter Wave Signals
+  * Application of Millimeter-wave Signals
   * Advisor: [Parth Pathak](http://www.phpathak.com/)
 
 * Research Assistant, Jan 2020 - May 2020
   * George Mason University
-  * Protein Structure Classification
+  * Protein Structure Prediction
   * Advisor: [Amarda Shehu](https://cs.gmu.edu/~ashehu/), [Liang Zhao](https://mason.gmu.edu/~lzhao9/)
 
 * Undergraduate Researcher, Jun 2019 - Aug 2019
@@ -53,6 +53,7 @@ Awards
   * NSF REU Fellowship (Spring 2019-Spring 2020)
   * GMU OSCAR Fellowship (Summer 2019)
   * Outstanding Undergraduate Teaching Award (2018-2019, GMU)
+  * Travel Award: NeurIPS 2020, AIJ AIIDE 2020
 
   
 Skills
@@ -79,7 +80,8 @@ Teaching
 Service and leadership
 ======
 * Co-organize [DeepSpatial 2020](http://mason.gmu.edu/~lzhao9/venues/DeepSpatial2020/), co-located with KDD 20 (Web Master)
-* Co-organize [Applications in AI Workshops](https://yuanqidu.github.io/files/Application in AI Workshop.pdf) at GMU
+* Organize [Applications in AI Workshops](https://yuanqidu.github.io/files/Application in AI Workshop.pdf) at GMU
+* AAAI 2021 Student Technical Volunteer Program
 * Contribute to the open-source community (e.g. publishing codes and datasets)
 * Student Member of ACM, IEEE, AAAI, SIAM, ASA Community
 

@@ -25,6 +25,8 @@ Check out my [CV](https://yuanqidu.github.io/cv/) and [a pdf version](https://yu
   * Educational Data Science
   
 **News!**
+* 11/20 Accepted to AAAI 2021 Student Technical Volunteer Program!
+* 11/20 I am glad to receive a NeurIPS 2020 Travel Award. Excited to attend NeurIPS 2020!
 * 10/20 I am glad to receive the AIJ AIIDE 2020 Attendance Fellowship! Thanks, AIJ! Can't wait to see the battle between AI agents and human players in strategy games like StarCraft!
 * 09/20 Our [DeepASL Dataset](https://sites.google.com/view/deepasldataset/home) is publicly available, the dataset constains ASL single-word signs, sentences and non-manual markers collected from 5 Professional ASL users using an FMCW Signal Sensor
 * 07/20 Paper titled "Interpretable Molecule Generation via Disentanglement Learning" accepted at ACM Conference of Bioinformatics and Computational Biology (BCB) Workshops: Computational Structural Biology Workshop (CSBW) 2020, 8 pages, to appear in the proceedings of ACM BCB 20 soon
