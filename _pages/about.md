@@ -43,7 +43,6 @@ Check out my [CV](https://yuanqidu.github.io/cv/) and [a pdf version](https://yu
 **Working Papers**
 * Deep Learning for Tertiary Structure Reconstruction at Varying Representational Detail, gointg to submit to a bioinformatics journal, **Yuanqi Du**, Anowarul Kabir, Liang Zhao, Amarda Shehu\*
 * Generative Adversarial Learning of Protein Tertiary Structures, going to submit to a bioinformatics journal, Taseef Rahman, **Yuanqi Du**, Amarda Shehu\*
-* Improving Student Academic Performance Prediction via Ensemble Learning, Kaiyi Guan, Huzefa Rangwala\*, **Yuanqi Du\***
 
   
 
