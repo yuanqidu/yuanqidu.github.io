@@ -7,5 +7,3 @@ venue: "George Mason University, Volgenau School of Engineering"
 date: 2019-02-01
 location: "Fairfax, VA, US"
 ---
-
-Award: Distinguished UTA Award (2019-2020) 
