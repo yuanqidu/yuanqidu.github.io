@@ -12,7 +12,7 @@ check out my [CV](https://yuanqidu.github.io/files/Yuanqi_Du_CV.pdf)
 Education
 ======
 * B.S. in Computer Science, George Mason University, GPA 4.0/4.0, 2017-Expected 2021
-* B.S. in Computer Science, Huaqiao University, GPA 4.68/5.00, 2016-2017
+* B.S. in Computer Science, Huaqiao University, GPA 3.81/4.00, 2016-2017
 
 
 Research experience
@@ -80,7 +80,7 @@ Teaching
 Service and leadership
 ======
 * Co-organize [DeepSpatial 2020](http://mason.gmu.edu/~lzhao9/venues/DeepSpatial2020/), co-located with KDD 20 (Web Master)
-* Organize [Applications in AI Workshops](https://yuanqidu.github.io/files/Application in AI Workshop.pdf) at GMU
+* Organize [AI Applications Workshops](https://yuanqidu.github.io/files/Application in AI Workshop.pdf) at GMU
 * AAAI 2021 Student Technical Volunteer Program
 * Contribute to the open-source community (e.g. publishing codes and datasets)
 * Student Member of ACM, IEEE, AAAI, SIAM, ASA Community
