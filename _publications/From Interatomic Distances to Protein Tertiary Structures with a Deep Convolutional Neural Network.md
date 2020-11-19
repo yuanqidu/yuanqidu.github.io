@@ -5,10 +5,10 @@ permalink: /publication/From Interatomic Distances to Protein Tertiary Structure
 excerpt: ''
 date: 2020-07-26
 venue: 'ACM BCB'
-paperurl: 'http://yuanqidu.github.io/files/From Interatomic Distances to Protein Tertiary Structures with a Deep Convolutional Neural Network.pdf'
+paperurl: 'http://yuanqidu.github.io/files/From_Interatomic_Distances_to_Protein_Tertiary_Structures_with_a_Deep_Convolutional_Neural_Network.pdf'
 citation: 'Yuanqi Du, Anowarul Kabir, Liang Zhao, Amarda Shehu. (2020). &quot;From Interatomic Distances to Protein Tertiary Structures with a Deep Convolutional Neural Network.&quot; <i>ACM BCB Workshops: Computational Structural Biology Workshop (CSBW) 2020</i>'
 ---
 
-[Download paper here](http://yuanqidu.github.io/files/From Interatomic Distances to Protein Tertiary Structures with a Deep Convolutional Neural Network.pdf)
+[Download paper here](http://yuanqidu.github.io/files/From_Interatomic_Distances_to_Protein_Tertiary_Structures_with_a_Deep_Convolutional_Neural_Network.pdf)
 
 Recommended citation: Yuanqi Du, Anowarul Kabir, Liang Zhao, Amarda Shehu. (2020). &quot;From Interatomic Distances to Protein Tertiary Structures with a Deep Convolutional Neural Network.&quot; <i>ACM BCB Workshops: Computational Structural Biology Workshop (CSBW) 2020</i> 
