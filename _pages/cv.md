@@ -11,8 +11,8 @@ check out my [CV](https://yuanqidu.github.io/files/Yuanqi_Du_CV.pdf)
 
 Education
 ======
-* B.S. in Computer Science, George Mason University, GPA 4.0/4.0, 2017-Expected 2021
-* B.S. in Computer Science, Huaqiao University, GPA 3.81/4.00, 2016-2017
+* B.S. in Computer Science, George Mason University, GPA 4.00/4.00, 2017-Expected 2021
+* B.S. in Computer Science, Huaqiao University, GPA 4.67/5.00, 2016-2017
 
 
 Research experience
