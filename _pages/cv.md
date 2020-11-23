@@ -18,7 +18,7 @@ Education
 Research experience
 ======
 * Research Intern, Nov 2020 - Present
-* Protein Structure Prediction
+  * Protein Structure Prediction
 
 * Research Intern, Aug 2020 - Present
   * Medical Image Analysis
