@@ -16,13 +16,10 @@ Check out my [CV](https://yuanqidu.github.io/cv/) and [a pdf version](https://yu
 
 
 **Research Interests**
-  * Machine Learning for Drug Discovery
-  * Protein Structure Prediction
-  * Application of Millimeter-wave Radar 
-  * Structured Data Mining
-  * Deep Generative Models
+  * Graph Mining
   * Medical Image Analysis
-  * Educational Data Science
+  * Machine Learning for Drug Discovery
+  * Application of Millimeter-wave Signals
   
 **News!**
 * 11/20 Accepted to AAAI 2021 Student Technical Volunteer Program!
