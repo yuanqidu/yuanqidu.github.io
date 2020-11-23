@@ -17,6 +17,9 @@ Education
 
 Research experience
 ======
+* Research Intern, Nov 2020 - Present
+* Protein Structure Prediction
+
 * Research Intern, Aug 2020 - Present
   * Medical Image Analysis
   * Advisor: [Hu Han](https://sites.google.com/site/huhanhomepage/), [Kevin Zhou](http://people.ucas.edu.cn/~skevinzhou?language=en)
