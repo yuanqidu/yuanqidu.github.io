@@ -22,6 +22,7 @@ Check out my [CV](https://yuanqidu.github.io/cv/) and [a pdf version](https://yu
   * Application of Millimeter-wave Signals
   
 **News!**
+* 11/20 Accepted to be a Microsoft Learn Student Ambassador!
 * 11/20 Accepted to AAAI 2021 Student Technical Volunteer Program!
 * 11/20 I am glad to receive a NeurIPS 2020 Travel Award. Excited to attend NeurIPS 2020!
 * 10/20 I am glad to receive the AIJ AIIDE 2020 Attendance Fellowship! Thanks, AIJ! Can't wait to see the battle between AI agents and human players in strategy games like StarCraft!

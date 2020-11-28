@@ -87,8 +87,9 @@ Service and leadership
 ======
 * Co-organize [DeepSpatial 2020](http://mason.gmu.edu/~lzhao9/venues/DeepSpatial2020/), co-located with KDD 20 (Web Master)
 * Organize [AI Applications Workshops](https://yuanqidu.github.io/files/Application in AI Workshop.pdf) at GMU
-* [Vision Organization](https://vision-npo.github.io/) Founder
+* [Vision Organization](https://vision-npo.github.io/), Founder
 * AAAI 2021 Student Technical Volunteer Program
+* Microsoft Learn Student Ambassador
 * Contribute to the open-source community (e.g. publishing codes and datasets)
 * Student Member of ACM, IEEE, AAAI, SIAM, ASA Community
 
