@@ -33,13 +33,13 @@ Check out my [CV](https://yuanqidu.github.io/cv/) and [a pdf version](https://yu
 **Preprints (under review)**
 * Controlling the Generation of  Molecules via Interpretable Variational Autoencoders, submitted to a bioinformatics journal, **Yuanqi Du**, Xiaojie Guo, Amarda Shehu, Liang Zhao\*
 * Controllable Molecule Generation via Monotonic Constraints, submitted to RECOMB conference, **Yuanqi Du**, Xiaojie Guo, Amarda Shehu, Liang Zhao\*
+* Where is the disease? Semi-supervised pseudo-normality synthesis from an abnormal image, submitted to a major Computer-Assisted Interventions conference, **Yuanqi Du**, Han Hu, Quan Quan, S. Kevin Zhou\*
+* Deep Learning for Tertiary Structure Reconstruction at Varying Representational Detail, submitted to a bioinformatics journal, **Yuanqi Du**, Anowarul Kabir, Liang Zhao, Amarda Shehu\*
 * Property Controllable Variational Autoencoder via Invertible Mutual Dependence, submitted to a major ML conference, Xiaojie Guo, **Yuanqi Du**, Liang Zhao\*
 * Deep Learning to Segment Pelvic Bones: Large-scale CT Datasets and Baseline Models, submitted to a major Computer-Assisted Interventions conference, Pengbo Liu, Hu Han, **Yuanqi Du**, Heqin Zhu, Yinhao Li, Feng Gu, Honghu Xiao, Jun Li, Chunpeng Zhao, Xinbao Wu, S. Kevin Zhou\*, dataset will be available soon
 * CT Film Recovery via Disentangling Geometric Deformation and Photometric Degradation: Simulated Datasets and Deep Models, submitted to a major Computer Vision conference, Quan Quan, Qiyuan Wang, Liu Li, **Yuanqi Du**, S. Kevin Zhou\*
 
 **Working Papers**
-* Where is the disease? Semi-supervised pseudo-normality synthesis from an abnormal image, going to submit to a major Computer-Assisted Interventions conference, **Yuanqi Du**, Han Hu, Quan Quan, S. Kevin Zhou\*
-* Deep Learning for Tertiary Structure Reconstruction at Varying Representational Detail, gointg to submit to a bioinformatics journal, **Yuanqi Du**, Anowarul Kabir, Liang Zhao, Amarda Shehu\*
 * Generative Adversarial Learning of Protein Tertiary Structures, going to submit to a bioinformatics journal, Taseef Rahman, **Yuanqi Du**, Amarda Shehu\*
   
 
