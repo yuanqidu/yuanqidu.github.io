@@ -17,11 +17,12 @@ Check out my [CV](https://yuanqidu.github.io/cv/) and [a pdf version](https://yu
 
 **Research Interests**
   * Graph Mining
-  * Medical Image Analysis
+  * Protein Structure Prediction
   * Machine Learning for Drug Discovery
   * Application of Millimeter-wave Signals
   
 **News!**
+* 12/20 Paper titled "Deep Learning to Segment Pelvic Bones: Large-scale CT Datasets and Baseline Models" conditionally accepted at IPCAI 2021 
 * 11/20 Accepted to be a Microsoft Learn Student Ambassador!
 * 11/20 Accepted to AAAI 2021 Student Technical Volunteer Program!
 * 11/20 I am glad to receive a NeurIPS 2020 Travel Award. Excited to attend NeurIPS 2020!
@@ -32,14 +33,10 @@ Check out my [CV](https://yuanqidu.github.io/cv/) and [a pdf version](https://yu
 
 **Preprints (under review)**
 * Controlling the Generation of  Molecules via Interpretable Variational Autoencoders, submitted to a bioinformatics journal, **Yuanqi Du**, Xiaojie Guo, Amarda Shehu, Liang Zhao\*
-* Controllable Molecule Generation via Monotonic Constraints, submitted to RECOMB conference, **Yuanqi Du**, Xiaojie Guo, Amarda Shehu, Liang Zhao\*
-* Where is the disease? Semi-supervised pseudo-normality synthesis from an abnormal image, submitted to a major Computer-Assisted Interventions conference, **Yuanqi Du**, Han Hu, Quan Quan, S. Kevin Zhou\*
-* Deep Learning for Tertiary Structure Reconstruction at Varying Representational Detail, submitted to a bioinformatics journal, **Yuanqi Du**, Anowarul Kabir, Liang Zhao, Amarda Shehu\*
+* Where is the disease? Semi-supervised pseudo-normality synthesis from an abnormal image, submitted to a major Computer-Assisted Interventions conference, **Yuanqi Du**, Quan Quan, Han Hu, S. Kevin Zhou\*
+* Generative Adversarial Learning of Protein Tertiary Structures, submitted to a bioinformatics journal, Taseef Rahman, **Yuanqi Du**, Amarda Shehu\*
 * Property Controllable Variational Autoencoder via Invertible Mutual Dependence, submitted to a major ML conference, Xiaojie Guo, **Yuanqi Du**, Liang Zhao\*
 * Deep Learning to Segment Pelvic Bones: Large-scale CT Datasets and Baseline Models, submitted to a major Computer-Assisted Interventions conference, Pengbo Liu, Hu Han, **Yuanqi Du**, Heqin Zhu, Yinhao Li, Feng Gu, Honghu Xiao, Jun Li, Chunpeng Zhao, Xinbao Wu, S. Kevin Zhou\*, dataset will be available soon
 * CT Film Recovery via Disentangling Geometric Deformation and Photometric Degradation: Simulated Datasets and Deep Models, submitted to a major Computer Vision conference, Quan Quan, Qiyuan Wang, Liu Li, **Yuanqi Du**, S. Kevin Zhou\*
-
-**Working Papers**
-* Generative Adversarial Learning of Protein Tertiary Structures, going to submit to a bioinformatics journal, Taseef Rahman, **Yuanqi Du**, Amarda Shehu\*
   
 
