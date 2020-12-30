@@ -22,6 +22,7 @@ Check out my [CV](https://yuanqidu.github.io/cv/) and [a pdf version](https://yu
   * Application of Millimeter-wave Signals
   
 **News!**
+* 12/20 Will help with the development of the virtual conference of KDD 2021! 
 * 12/20 Paper titled "Deep Learning to Segment Pelvic Bones: Large-scale CT Datasets and Baseline Models" conditionally accepted at IPCAI 2021 
 * 11/20 Accepted to be a Microsoft Learn Student Ambassador!
 * 11/20 Accepted to AAAI 2021 Student Technical Volunteer Program!
