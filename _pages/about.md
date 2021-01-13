@@ -23,9 +23,9 @@ Check out my [CV](https://yuanqidu.github.io/cv/) and [a pdf version](https://yu
   * Application of Millimeter-wave Signals
   
 **News!**
-* 1/21 Paper titled "Property Controllable Variational Autoencoder via Invertible Mutual Dependence", Xiaojie Guo, **Yuanqi Du**, Liang Zhao\*, accepted at ICLR 2021.
+* 1/21 Paper titled "Property Controllable Variational Autoencoder via Invertible Mutual Dependence", Xiaojie Guo, **Yuanqi Du**, Liang Zhao\*, accepted in ICLR 2021.
 * 12/20 Serve as a Web Team member for [KDD 2021](https://www.kdd.org/kdd2021/)!
-* 12/20 Paper titled "Deep Learning to Segment Pelvic Bones: Large-scale CT Datasets and Baseline Models" conditionally accepted at IPCAI 2021 
+* 12/20 Paper titled "Deep Learning to Segment Pelvic Bones: Large-scale CT Datasets and Baseline Models" conditionally accepted in IPCAI 2021 
 * 11/20 Accepted to be a Microsoft Learn Student Ambassador!
 * 11/20 Accepted to AAAI 2021 Student Technical Volunteer Program!
 * 11/20 I am glad to receive a NeurIPS 2020 Travel Award. Excited to attend NeurIPS 2020!
