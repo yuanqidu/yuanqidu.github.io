@@ -18,6 +18,7 @@ Check out my [CV](https://yuanqidu.github.io/cv/) and [a pdf version](https://yu
 
 **Research Interests**
   * Graph Mining
+  * Deep Generative Models
   * Protein Structure Prediction
   * Machine Learning for Drug Discovery
   * Application of Millimeter-wave Signals
