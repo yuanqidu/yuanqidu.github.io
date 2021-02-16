@@ -24,6 +24,7 @@ Check out my [CV](https://yuanqidu.github.io/cv/) and [a pdf version](https://yu
   * Application of Millimeter-wave Signals
   
 **News!**
+* 2/21 Paper titled "Generative Adversarial Learning of Protein Tertiary Structures" accepted in Molecules [IF: 3.267], Taseef Rahman, **Yuanqi Du**, Liang Zhao, Amarda Shehu\*.
 * 1/21 Paper titled "Interpretable Property Controlling Molecule Generation" accepted in Scientific Discovery with AI Workshop as an **oral presentation**, co-located with AAAI 2021.
 * 1/21 Paper titled "Property Controllable Variational Autoencoder via Invertible Mutual Dependence", Xiaojie Guo, **Yuanqi Du**, Liang Zhao\*, accepted in ICLR 2021.
 * 12/20 Serve as a Web Team member for [KDD 2021](https://www.kdd.org/kdd2021/)!
@@ -39,7 +40,6 @@ Check out my [CV](https://yuanqidu.github.io/cv/) and [a pdf version](https://yu
 **Preprints (under review)**
 * Controlling the Generation of  Molecules via Interpretable Variational Autoencoders, submitted to a bioinformatics journal, **Yuanqi Du**, Xiaojie Guo, Amarda Shehu, Liang Zhao\*
 * Where is the disease? Semi-supervised pseudo-normality synthesis from an abnormal image, submitted to a major Computer-Assisted Interventions conference, **Yuanqi Du**, Quan Quan, Han Hu, S. Kevin Zhou\*
-* Generative Adversarial Learning of Protein Tertiary Structures, submitted to a bioinformatics journal, Taseef Rahman, **Yuanqi Du**, Amarda Shehu\*
 * CT Film Recovery via Disentangling Geometric Deformation and Photometric Degradation: Simulated Datasets and Deep Models, submitted to a major Computer Vision conference, Quan Quan, Qiyuan Wang, Liu Li, **Yuanqi Du**, S. Kevin Zhou\*
   
 
