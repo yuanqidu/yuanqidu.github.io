@@ -91,6 +91,6 @@ Service and leadership
 * AAAI 2021 Student Technical Volunteer Program
 * Microsoft Learn Student Ambassador
 * Contribute to the open-source community (e.g. DeepChem) 
-* Student Member of ACM, IEEE, AAAI, SIAM, ASA Community
+* Student Member of ACM, IEEE, IEEE Computer Society, AAAI, SIAM, ASA Community
 * GMU Engineering Week Panelist, 2021 Spring
 
