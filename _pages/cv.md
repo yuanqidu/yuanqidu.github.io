@@ -93,4 +93,5 @@ Service and leadership
 * Contribute to the open-source community (e.g. DeepChem) 
 * Student Member of ACM, IEEE, IEEE Computer Society, AAAI, SIAM, ASA Community
 * GMU Engineering Week Panelist, 2021 Spring
+* GMU SCAN Mentor, 2021 Spring
 
