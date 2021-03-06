@@ -33,8 +33,8 @@ Journals
 Workshops
 ======
 * Interpretable Property Controlling Molecule Generation. Yuanqi Du, Xiaojie Guo, Amarda Shehu, Liang Zhao. AAAI 2021 Scientific Discovery with AI (SDA) Workshop, **Oral Presentation**.
-* [Interpretable Molecule Generation via Disentanglement Learning](http://yuanqidu.github.io/files/Interpretable_Molecule_Generation_via_Disentanglement_Learning.pdf). Yuanqi Du, Xiaojie Guo, Amarda Shehu, Liang Zhao. ACM BCB Conference Computational Structural Biology Workshop (CSBW) 2020.
-* [From Interatomic Distances to Protein Tertiary Structures with a Deep Convolutional Neural Network](http://yuanqidu.github.io/files/From_Interatomic_Distances_to_Protein_Tertiary_Structures_with_a_Deep_Convolutional_Neural_Network.pdf). Yuanqi Du, Anowarul Kabir, Liang Zhao, Amarda Shehu. ACM BCB Conference Computational Structural Biology Workshop (CSBW) 2020.
+* Interpretable Molecule Generation via Disentanglement Learning. Yuanqi Du, Xiaojie Guo, Amarda Shehu, Liang Zhao. ACM BCB Conference Computational Structural Biology Workshop (CSBW) 2020.
+* From Interatomic Distances to Protein Tertiary Structures with a Deep Convolutional Neural Network. Yuanqi Du, Anowarul Kabir, Liang Zhao, Amarda Shehu. ACM BCB Conference Computational Structural Biology Workshop (CSBW) 2020.
 
 Abstracts
 ======
