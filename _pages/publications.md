@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: "Publications"
+title: "Conferences"
 permalink: /publications/
 author_profile: true
 googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
@@ -12,7 +12,6 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
 
 {% include base_path %}
 
-Conferences
 ======
 * Property Controllable Variational Autoencoder via Invertible Mutual Dependence. Xiaojie Guo, Yuanqi Du, Liang Zhao, International Conference on Learning Representations (ICLR) 2021.
 * Deep Learning to Segment Pelvic Bones: Large-scale CT Datasets and Baseline Models. Pengbo Liu, Hu Han, Yuanqi Du, Heqin Zhu, Yinhao Li, Feng Gu, Honghu Xiao, Jun Li, Chunpeng Zhao, Xinbao Wu, S. Kevin Zhou. International Conference on Information Processing in Computer-Assisted Interventions (IPCAI) 2021.
