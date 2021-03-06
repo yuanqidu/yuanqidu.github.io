@@ -17,11 +17,11 @@ Conferences
 ======
 * [Property Controllable Variational Autoencoder via Invertible Mutual Dependence](https://openreview.net/forum?id=tYxG_OMs9WE). Xiaojie Guo, Yuanqi Du, Liang Zhao, International Conference on Learning Representations (ICLR) 2021.
 * Deep Learning to Segment Pelvic Bones: Large-scale CT Datasets and Baseline Models. Pengbo Liu, Hu Han, Yuanqi Du, Heqin Zhu, Yinhao Li, Feng Gu, Honghu Xiao, Jun Li, Chunpeng Zhao, Xinbao Wu, S. Kevin Zhou. International Conference on Information Processing in Computer-Assisted Interventions (IPCAI) 2021.
-* Expressive ASL Recognition using Millimeter-wave Wireless Signals. Panneer Selvam Santhalingam, Yuanqi Du, Riley Wilkerson, Al Amin Hosain, Ding Zhang, Parth Pathak, Huzefa Rangwala and Raja Kushalnagar. International Conference on Sensing, Communication and Networking (SECON) 2020.
+* [Expressive ASL Recognition using Millimeter-wave Wireless Signals](http://yuanqidu.github.io/files/Expressive ASL Recognition using Millimeter-wave Wireless Signals.pdf). Panneer Selvam Santhalingam, Yuanqi Du, Riley Wilkerson, Al Amin Hosain, Ding Zhang, Parth Pathak, Huzefa Rangwala and Raja Kushalnagar. International Conference on Sensing, Communication and Networking (SECON) 2020.
 
 Journals
 ======
-* Generative Adversarial Learning of Protein Tertiary Structures, Taseef Rahman, Yuanqi Du, Liang Zhao, Amarda Shehu. Molecules 2021, 26(5), 1209 [IF: 3.267].
+* [Generative Adversarial Learning of Protein Tertiary Structures](https://www.mdpi.com/1420-3049/26/5/1209), Taseef Rahman, Yuanqi Du, Liang Zhao, Amarda Shehu. Molecules 2021, 26(5), 1209 [IF: 3.267].
 
 <!--Preprints-->
 <!--======-->
@@ -33,8 +33,8 @@ Journals
 Workshops
 ======
 * Interpretable Property Controlling Molecule Generation. Yuanqi Du, Xiaojie Guo, Amarda Shehu, Liang Zhao. AAAI 2021 Scientific Discovery with AI (SDA) Workshop, **Oral Presentation**.
-* Interpretable Molecule Generation via Disentanglement Learning. Yuanqi Du, Xiaojie Guo, Amarda Shehu, Liang Zhao. ACM BCB Conference Computational Structural Biology Workshop (CSBW) 2020.
-* From Interatomic Distances to Protein Tertiary Structures with a Deep Convolutional Neural Network. Yuanqi Du, Anowarul Kabir, Liang Zhao, Amarda Shehu. ACM BCB Conference Computational Structural Biology Workshop (CSBW) 2020.
+* [Interpretable Molecule Generation via Disentanglement Learning](http://yuanqidu.github.io/files/Interpretable_Molecule_Generation_via_Disentanglement_Learning.pdf). Yuanqi Du, Xiaojie Guo, Amarda Shehu, Liang Zhao. ACM BCB Conference Computational Structural Biology Workshop (CSBW) 2020.
+* [From Interatomic Distances to Protein Tertiary Structures with a Deep Convolutional Neural Network](http://yuanqidu.github.io/files/From_Interatomic_Distances_to_Protein_Tertiary_Structures_with_a_Deep_Convolutional_Neural_Network.pdf). Yuanqi Du, Anowarul Kabir, Liang Zhao, Amarda Shehu. ACM BCB Conference Computational Structural Biology Workshop (CSBW) 2020.
 
 Abstracts
 ======
