@@ -12,19 +12,6 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
 
 {% include base_path %}
 
-Conferences
-======
-
-
-Journals
-======
-
-
-Workshops
-======
-
-
-
 {% for post in site.publications reversed %}
   {% include archive-single.html %}
 {% endfor %}
