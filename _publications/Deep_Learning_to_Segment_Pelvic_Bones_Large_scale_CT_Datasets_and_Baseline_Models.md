@@ -6,7 +6,7 @@ excerpt: ''
 date: 2021-06-22
 venue: 'IPCAI'
 paperurl: ''
-citation: 'Pengbo Liu, Hu Han, Yuanqi Du, Heqin Zhu, Yinhao Li, Feng Gu, Honghu Xiao, Jun Li, Chunpeng Zhao, Xinbao Wu, S. Kevin
+citation: 'Pengbo Liu, Yuanqi Du, Heqin Zhu, Yinhao Li, Feng Gu, Honghu Xiao, Jun Li, Chunpeng Zhao, Xinbao Wu, Hu Han, S. Kevin
 Zhou. (2021). &quot;Deep Learning to Segment Pelvic Bones: Large-scale CT Datasets and Baseline Models.&quot; <i>IPCAI 2021</i>'
 ---
 
