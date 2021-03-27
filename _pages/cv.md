@@ -22,25 +22,25 @@ Research experience
   * Protein Structure Prediction
   * Mentor: Jianwei Zhu
 
-* Research Intern, Aug 2020 - Present
+* Research Intern, Aug 2020 - Dec 2020
   * Chinese Academy of Sciences, Institute of Computing Technology
   * Medical Image Analysis
   * Advisor: [Hu Han](https://sites.google.com/site/huhanhomepage/), [Kevin Zhou](http://people.ucas.edu.cn/~skevinzhou?language=en)
   
+* Research Assistant, Jan 2020 - Present
+  * George Mason University
+  * Learning Protein Structures and Dynamics
+  * Advisor: [Amarda Shehu](https://cs.gmu.edu/~ashehu/), [Liang Zhao](https://mason.gmu.edu/~lzhao9/)
+  
 * Research Assistant, Feb 2020 - Present
   * George Mason University
-  * Structured Data Mining (i.e. Graphs)
-  * Advisor: [Amarda Shehu](https://cs.gmu.edu/~ashehu/), [Liang Zhao](https://mason.gmu.edu/~lzhao9/)
+  * Deep Graph Learning 
+  * Advisor: [Liang Zhao](https://mason.gmu.edu/~lzhao9/)
 
-* Research Assistant, Apr 2019 - Present
+* Research Assistant, Apr 2019 - May 2020
   * George Mason University
   * Application of Millimeter-wave Signals
   * Advisor: [Parth Pathak](http://www.phpathak.com/)
-
-* Research Assistant, Jan 2020 - May 2020
-  * George Mason University
-  * Protein Structure Prediction
-  * Advisor: [Amarda Shehu](https://cs.gmu.edu/~ashehu/), [Liang Zhao](https://mason.gmu.edu/~lzhao9/)
 
 * Undergraduate Researcher, Jun 2019 - Aug 2019
   * George Mason University
@@ -70,11 +70,11 @@ Skills
 * Languages: English, Chinese
 
 
-Publications
-======
-  <ul>{% for post in site.publications reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
+<!--Publications-->
+<!--======-->
+<!--  <ul>{% for post in site.publications reversed %}-->
+<!--    {% include archive-single-cv.html %}-->
+<!--  {% endfor %}</ul>-->
   
   
 Teaching
@@ -89,9 +89,11 @@ Service and leadership
 * Organize [AI Applications Workshops](https://yuanqidu.github.io/files/Application in AI Workshop.pdf) at GMU
 * [Vision Organization](https://vision-npo.github.io/), Founder
 * AAAI 2021 Student Technical Volunteer Program
-* Microsoft Learn Student Ambassador
+* Microsoft Learn Student Ambassador (e.g. Organize Intro to AI and ML Workshop)
 * Contribute to the open-source community (e.g. DeepChem) 
 * Student Member of ACM, IEEE, IEEE Computer Society, AAAI, SIAM, ASA Community
 * GMU Engineering Week Panelist, 2021 Spring
 * GMU SCAN Mentor, 2021 Spring
+* Co-organize KDD 2021 (Web Team)
+* Co-organize BioKDD 2021 (PC Member)
 

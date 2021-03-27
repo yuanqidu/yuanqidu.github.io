@@ -8,7 +8,7 @@ redirect_from:
   - /about.html
 ---
 
-Yuanqi Du is a senior undergraduate student studying Computer Science at George Mason University. He has broad interests in machine learning and data mining. He worked on Outlier Detection, American Sign Language Recognition (Mili-meter Wave Signals & Kinect), Protein Structure Prediction, Molecule Generation via Graph Neural Network, Deep Graph Learning and Medical Image Analysis. He worked with [Prof. Liang Zhao](https://mason.gmu.edu/~lzhao9/), [Prof. Amarda Shehu](https://cs.gmu.edu/~ashehu/), [Prof. Parth Pathak](http://www.phpathak.com/), [Prof. Carlotta Domeniconi](https://scholar.google.com.hk/citations?user=aKkIMogAAAAJ&hl=en) while he was at GMU. He worked in the MIRACLE Lab in Chinese Academy of Sciences, Institute of Computing Technology, with [Prof. Hu Han](https://sites.google.com/site/huhanhomepage/) and [Prof. S. Kevin Zhou](http://people.ucas.edu.cn/~skevinzhou?language=en) for a research intern from Aug to Dec 2020 on medical image analysis. He joined Microsoft Research Asia Machine Learning and Computational Biology group as a research intern in Nov 2020, working on Protein Structure Prediction. He is actively collaborateing with researchers in chemistry, biology, machine learning and data mining.
+Yuanqi Du is a senior undergraduate student studying Computer Science at George Mason University. He will be a graduate student in University of Michigan, Ann Arbor strating 2021 fall. He has broad interests in machine learning and data mining. He worked on Outlier Detection, American Sign Language Recognition (Mili-meter Wave Signals & Kinect), Protein Structure Prediction, Molecule Generation via Graph Neural Network, Deep Graph Learning and Medical Image Analysis. He worked with [Prof. Liang Zhao](https://mason.gmu.edu/~lzhao9/), [Prof. Amarda Shehu](https://cs.gmu.edu/~ashehu/), [Prof. Parth Pathak](http://www.phpathak.com/), [Prof. Carlotta Domeniconi](https://scholar.google.com.hk/citations?user=aKkIMogAAAAJ&hl=en) while he was at GMU. He worked in the MIRACLE Lab in Chinese Academy of Sciences, Institute of Computing Technology, with [Prof. Hu Han](https://sites.google.com/site/huhanhomepage/) and [Prof. S. Kevin Zhou](http://people.ucas.edu.cn/~skevinzhou?language=en) for a research intern from Aug to Dec 2020 on medical image analysis. He joined Microsoft Research Asia Machine Learning and Computational Biology group as a research intern in Nov 2020, working on Protein Structure Prediction. He is actively collaborateing with researchers in chemistry, biology, machine learning and data mining.
 
 
 **Drop me an email if you'd like to talk about/collaborate on any of the following research topics or other research areas with me. I currently live in Beijing, China, feel free to grab a coffee with me, too!**
@@ -20,8 +20,8 @@ Check out my [CV](https://yuanqidu.github.io/cv/) and [a pdf version](https://yu
   * Deep Graph Learning
   * Deep Generative Models
   * Protein Structure Prediction
-  * Machine Learning for Drug Discovery
   * Computational Biology/Chemistry
+  * Machine Learning for Sciences
   * Application of Millimeter-wave Signals
   
 **News!**
