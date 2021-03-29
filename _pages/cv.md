@@ -86,7 +86,6 @@ Teaching
 Professional Service
 ======
 * Co-organize [DeepSpatial 2020](http://mason.gmu.edu/~lzhao9/venues/DeepSpatial2020/), co-located with KDD 2020 (Web Master)
-* KDD 2021 (External Reviewer)
 * Co-organize AAAI 2021 (Student Technical Volunteer)
 * Co-organize KDD 2021 (Web Team)
 * Co-organize BioKDD 2021 (PC Member)
