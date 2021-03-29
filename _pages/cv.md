@@ -83,10 +83,17 @@ Teaching
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
   
-Service and leadership
+Professional Service
 ======
-* Co-organize [DeepSpatial 2020](http://mason.gmu.edu/~lzhao9/venues/DeepSpatial2020/), co-located with KDD 20 (Web Master)
-* Organize [AI Applications Workshops](https://yuanqidu.github.io/files/Application in AI Workshop.pdf) at GMU
+* Co-organize [DeepSpatial 2020](http://mason.gmu.edu/~lzhao9/venues/DeepSpatial2020/), co-located with KDD 2020 (Web Master)
+* KDD 2021 (External Reviewer)
+* Co-organize AAAI 2021 (Student Technical Volunteer)
+* Co-organize KDD 2021 (Web Team)
+* Co-organize BioKDD 2021 (PC Member)
+* Co-organize Deep Learning on Graphs 2021, co-located with KDD 2021 (PC Member)
+  
+Volunteer & Leadership
+======
 * [Vision Organization](https://vision-npo.github.io/), Founder
 * AAAI 2021 Student Technical Volunteer Program
 * Microsoft Learn Student Ambassador (e.g. Organize Intro to AI and ML Workshop)
@@ -94,6 +101,10 @@ Service and leadership
 * Student Member of ACM, IEEE, IEEE Computer Society, AAAI, SIAM, ASA Community
 * GMU Engineering Week Panelist, 2021 Spring
 * GMU SCAN Mentor, 2021 Spring
-* Co-organize KDD 2021 (Web Team)
-* Co-organize BioKDD 2021 (PC Member)
+
+Review Service
+======
+* KDD 2021 (External Reviewer)
+
+
 
