@@ -16,7 +16,7 @@ You can also find my recent publications on my [Google Scholar profile](https://
 Conferences
 ======
 * [Property Controllable Variational Autoencoder via Invertible Mutual Dependence](https://openreview.net/forum?id=tYxG_OMs9WE). Xiaojie Guo, **Yuanqi Du**, Liang Zhao, International Conference on Learning Representations (ICLR) 2021.
-* Deep Learning to Segment Pelvic Bones: Large-scale CT Datasets and Baseline Models. Pengbo Liu, **Yuanqi Du**, Heqin Zhu, Yinhao Li, Feng Gu, Honghu Xiao, Jun Li, Chunpeng Zhao, Xinbao Wu, Hu Han, S. Kevin Zhou. International Conference on Information Processing in Computer-Assisted Interventions (IPCAI) 2021.
+* Deep Learning to Segment Pelvic Bones: Large-scale CT Datasets and Baseline Models. Pengbo Liu, Hu Han, **Yuanqi Du**, Heqin Zhu, Yinhao Li, Feng Gu, Honghu Xiao, Jun Li, Chunpeng Zhao, Xinbao Wu, S. Kevin Zhou. International Conference on Information Processing in Computer-Assisted Interventions (IPCAI) 2021.
 * [Expressive ASL Recognition using Millimeter-wave Wireless Signals](http://yuanqidu.github.io/files/Expressive ASL Recognition using Millimeter-wave Wireless Signals.pdf). Panneer Selvam Santhalingam, **Yuanqi Du**, Riley Wilkerson, Al Amin Hosain, Ding Zhang, Parth Pathak, Huzefa Rangwala and Raja Kushalnagar. International Conference on Sensing, Communication and Networking (SECON) 2020.
 
 Journals
