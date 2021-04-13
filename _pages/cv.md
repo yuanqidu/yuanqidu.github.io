@@ -89,7 +89,7 @@ Professional Service
 * Co-organize AAAI 2021 (Student Technical Volunteer)
 * Co-organize KDD 2021 (Web Team)
 * Co-organize BioKDD 2021 (PC Member)
-* Co-organize DLG 2021, co-located with KDD 2021 (Web Co-chair)
+* Co-organize DLG 2021, co-located with KDD 2021 (Web Co-chair, PC)
 * Co-organize DeepSpatial 2021, co-located with KDD 2021 (Publicity Chair)
   
 Volunteer & Leadership
