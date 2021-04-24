@@ -40,7 +40,7 @@ Under Review
 
 Workshops
 ======
-* Ensemble Machine Learning System for Student Academic Performance Prediction. Yinkai Wang\*, Kaiyi Guan\*, Aowei Ding\*, **Yuanqi Du**. Research Papers. Workshop for Undergraduates in Educational Data Mining and Learning Engineering (W4U) @EDM 2021.
+* Ensemble Machine Learning System for Student Academic Performance Prediction. Yinkai Wang\*, Kaiyi Guan\*, Aowei Ding\*, **Yuanqi Du**. Research Paper in Workshop for Undergraduates in Educational Data Mining and Learning Engineering (W4U) @EDM 2021.
 * Interpretable Property Controlling Molecule Generation. **Yuanqi Du**, Xiaojie Guo, Amarda Shehu, Liang Zhao. **Oral Presentation**. AAAI 2021 Scientific Discovery with AI (SDA) Workshop.
 * Interpretable Molecule Generation via Disentanglement Learning. **Yuanqi Du**, Xiaojie Guo, Amarda Shehu, Liang Zhao. ACM BCB Conference Computational Structural Biology Workshop (CSBW) 2020.
 * From Interatomic Distances to Protein Tertiary Structures with a Deep Convolutional Neural Network. **Yuanqi Du**, Anowarul Kabir, Liang Zhao, Amarda Shehu. ACM BCB Conference Computational Structural Biology Workshop (CSBW) 2020.
