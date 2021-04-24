@@ -22,12 +22,14 @@ Check out my [CV](https://yuanqidu.github.io/cv/) and [a pdf version](https://yu
 **Research Interests**
   * Deep Graph Learning
   * Deep Generative Models
+  * Interpretable Machine Learning
   * Protein Structure Prediction
   * Computational Biology/Chemistry
   * Machine Learning for Sciences
   * Application of Millimeter-wave Signals
   
 **News!**
+* 4/21 Congrats to my mentored undergraduates on the acceptance of paper titled "Ensemble Machine Learning System for Student Academic Performance Prediction" in W4U workshop @EDM 2021.
 * 2/21 Paper titled "Generative Adversarial Learning of Protein Tertiary Structures" accepted in Molecules [IF: 3.267], Taseef Rahman, **Yuanqi Du**, Liang Zhao, Amarda Shehu\*.
 * 1/21 Paper titled "Interpretable Property Controlling Molecule Generation" accepted in Scientific Discovery with AI Workshop as an **oral presentation**, co-located with AAAI 2021.
 * 1/21 Paper titled "Property Controllable Variational Autoencoder via Invertible Mutual Dependence", Xiaojie Guo, **Yuanqi Du**, Liang Zhao\*, accepted in ICLR 2021.
