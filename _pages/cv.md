@@ -22,8 +22,8 @@ Research experience
   * Protein Structure Prediction
   * Mentor: Jianwei Zhu
   
-* Research Assistant, Feb 2020 - Present
-  * George Mason University
+* Research Assistant, Sep 2020 - Present
+  * Emory University
   * Deep Graph Learning 
   * Advisor: [Liang Zhao](https://mason.gmu.edu/~lzhao9/)
   
@@ -88,9 +88,9 @@ Professional Service
 * Co-organize [DeepSpatial 2020](http://mason.gmu.edu/~lzhao9/venues/DeepSpatial2020/), co-located with KDD 2020 (Web Master)
 * Co-organize AAAI 2021 (Student Technical Volunteer)
 * Co-organize KDD 2021 (Web Team)
-* Co-organize BioKDD 2021 (PC Member)
 * Co-organize DLG 2021, co-located with KDD 2021 (Web Co-chair, PC)
 * Co-organize DeepSpatial 2021, co-located with KDD 2021 (Publicity Chair)
+* BioKDD 2021 (PC Member)
   
 Volunteer & Leadership
 ======
