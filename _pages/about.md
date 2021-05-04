@@ -29,6 +29,9 @@ Check out my [CV](https://yuanqidu.github.io/cv/) and [a pdf version](https://yu
   * Application of Millimeter-wave Signals
   
 **News!**
+<!--* 5/21 I am hornored that I will be visiting AMLAB at University of Amsterdam, working with [Dr. Max Welling](https://staff.fnwi.uva.nl/m.welling/) starting June 2021!!!-->
+<!--* 5/21 I am thrilled that I will join CUHK MMLab as a research intern, working with [Dr. Bolei Zhou](http://bzhou.ie.cuhk.edu.hk/) starting June 2021!!!-->
+* 5/21 Serve as PCs for BioKDD 2021, DLG-KDD 2021, DeepSpatial-KDD 2021 and IRS-KDD 2021.
 * 4/21 Congrats to my mentored undergraduates on the acceptance of paper titled "Ensemble Machine Learning System for Student Academic Performance Prediction" in W4U workshop @EDM 2021.
 * 2/21 Paper titled "Generative Adversarial Learning of Protein Tertiary Structures" accepted in Molecules [IF: 3.267], Taseef Rahman, **Yuanqi Du**, Liang Zhao, Amarda Shehu\*.
 * 1/21 Paper titled "Interpretable Property Controlling Molecule Generation" accepted in Scientific Discovery with AI Workshop as an **oral presentation**, co-located with AAAI 2021.

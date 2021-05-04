@@ -90,7 +90,7 @@ Professional Service
 * Co-organize KDD 2021 (Web Team)
 * Co-organize DLG 2021, co-located with KDD 2021 (Web Co-chair, PC)
 * Co-organize DeepSpatial 2021, co-located with KDD 2021 (Publicity Chair)
-* BioKDD 2021 (PC Member)
+* BioKDD 2021 (PC Member), IRS KDD 2021 (PC Member)
   
 Volunteer & Leadership
 ======
