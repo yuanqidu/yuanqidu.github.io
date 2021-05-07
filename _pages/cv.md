@@ -32,10 +32,10 @@ Research experience
   * Learning Protein Structures and Dynamics
   * Advisor: [Amarda Shehu](https://cs.gmu.edu/~ashehu/), [Liang Zhao](https://mason.gmu.edu/~lzhao9/)
   
-* Research Intern, Aug 2020 - Dec 2020
-  * Chinese Academy of Sciences, Institute of Computing Technology
-  * Medical Image Analysis
-  * Advisor: [Hu Han](https://sites.google.com/site/huhanhomepage/), [Kevin Zhou](http://people.ucas.edu.cn/~skevinzhou?language=en)
+<!--* Research Intern, Aug 2020 - Dec 2020-->
+<!--  * Chinese Academy of Sciences, Institute of Computing Technology-->
+<!--  * Medical Image Analysis-->
+<!--  * Advisor: [Hu Han](https://sites.google.com/site/huhanhomepage/), [Kevin Zhou](http://people.ucas.edu.cn/~skevinzhou?language=en)-->
 
 * Research Assistant, Apr 2019 - May 2020
   * George Mason University
