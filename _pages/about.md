@@ -29,6 +29,7 @@ Check out my [CV](https://yuanqidu.github.io/cv/) and [a pdf version](https://yu
   * Application of Millimeter-wave Signals
   
 **News!**
+* 5/21 Paper titled "Disentangled Deep Generative Model for Spatial Networks", Xiaojie Guo\*, **Yuanqi Du**\*, Liang Zhao, is accpeted in KDD 2021, welcome to follow our work!!!
 <!--* 5/21 I am hornored that I will be visiting AMLAB at University of Amsterdam, working with [Dr. Max Welling](https://staff.fnwi.uva.nl/m.welling/) starting June 2021!!!-->
 <!--* 5/21 I am thrilled that I will join CUHK MMLab as a research intern, working with [Dr. Bolei Zhou](http://bzhou.ie.cuhk.edu.hk/) starting June 2021!!!-->
 * 5/21 Serve as PCs for BioKDD 2021, DLG-KDD 2021, DeepSpatial-KDD 2021 and IRS-KDD 2021.
