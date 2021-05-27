@@ -54,6 +54,7 @@ Research experience
   
 Awards
 ======
+  * Star of Tomorrow Award (2021, Microsoft Research Asia)
   * Distinguished Undergraduate Teaching Award (2019-2020, GMU)
   * Distinguished Undergraduate Research Award (2019-2020, GMU)
   * NSF REU Fellowship (Spring 2019-Spring 2020)
@@ -104,8 +105,9 @@ Volunteer & Leadership
 
 Review Service
 ======
-* KDD 2021 
-* TKDD 2021
+* KDD (2021-) 
+* TKDD (2021-)
+* BioKDD (2021-)
 
 
 
