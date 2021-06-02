@@ -95,6 +95,7 @@ Professional Service
   
 Volunteer & Leadership
 ======
+* NSF REU Summer 2021 Student Mentor (GMU)
 * [Vision Organization](https://vision-npo.github.io/), Founder
 * AAAI 2021 Student Technical Volunteer Program
 * Microsoft Learn Student Ambassador (e.g. Organize Intro to AI and ML Workshop)

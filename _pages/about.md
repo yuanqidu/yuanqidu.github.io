@@ -32,7 +32,7 @@ Check out my [CV](https://yuanqidu.github.io/cv/) and [a pdf version](https://yu
   
 **News!**
 * 5/21 I will be visiting AMLAB & AI4Science Lab at University of Amsterdam, working with [Dr. Max Welling](https://staff.fnwi.uva.nl/m.welling/) starting June 2021!!!
-* 5/21 I will join CUHK MMLab as a research intern, working with [Dr. Bolei Zhou](http://bzhou.ie.cuhk.edu.hk/) starting June 2021!!!
+* 5/21 I will join CUHK as a research intern, working with [Dr. Bolei Zhou](http://bzhou.ie.cuhk.edu.hk/) starting June 2021!!!
 * 5/21 After spending six wonderful months at MSRA, I receive a Star of Tomorrow Award!
 * 5/21 Paper titled "Disentangled Deep Generative Model for Spatial Networks", Xiaojie Guo\*, **Yuanqi Du**\*, Liang Zhao, is accpeted in KDD 2021, welcome to follow our work!!!
 * 5/21 Serve as PCs for BioKDD 2021, DLG-KDD 2021, DeepSpatial-KDD 2021 and IRS-KDD 2021.
