@@ -7,7 +7,7 @@ redirect_from:
   - /resume
 ---
 
-check out my [CV](https://yuanqidu.github.io/files/Yuanqi_Du_CV.pdf) 
+Check out my [CV](https://yuanqidu.github.io/files/Yuanqi_Du_CV.pdf) 
 
 Education
 ======
@@ -54,6 +54,7 @@ Research experience
   
 Awards
 ======
+  * Distinguished Academic Achievement (2021, GMU)
   * Star of Tomorrow Award (2021, Microsoft Research Asia)
   * Distinguished Undergraduate Teaching Award (2019-2020, GMU)
   * Distinguished Undergraduate Research Award (2019-2020, GMU)
@@ -95,6 +96,7 @@ Professional Service
   
 Volunteer & Leadership
 ======
+* ICLR, ICML 2021 Student Volunteer
 * NSF REU Summer 2021 Student Mentor (GMU)
 * [Vision Organization](https://vision-npo.github.io/), Founder
 * AAAI 2021 Student Technical Volunteer Program
@@ -109,6 +111,8 @@ Review Service
 * KDD (2021-) 
 * TKDD (2021-)
 * BioKDD (2021-)
+* KDD-DLG (2021-)
+* KDD-IRS (2021-)
 
 
 
