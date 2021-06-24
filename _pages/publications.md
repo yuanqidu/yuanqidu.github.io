@@ -24,6 +24,11 @@ Journals
 ======
 * [Generative Adversarial Learning of Protein Tertiary Structures](https://www.mdpi.com/1420-3049/26/5/1209), Taseef Rahman, **Yuanqi Du**, Liang Zhao, Amarda Shehu. Molecules 2021, 26(5), 1209 [IF: 3.267].
 
+Preprints
+======
+* [Generating Tertiary Protein Structures via an Interpretative Variational Autoencoder](https://arxiv.org/abs/2004.07119), Xiaojie Guo, **Yuanqi Du**, Sivani Tadepalli, Liang Zhao, Amarda Shehu. arxiv:2004.07119.
+* [CT Film Recovery via Disentangling Geometric Deformation and Illumination Variation: Simulated Datasets and Deep Models](https://arxiv.org/abs/2012.09491), Quan Quan, Qiyuan Wang, Liu Li, **Yuanqi Du**, S Kevin Zhou. arXiv:2012.09491.
+
 <!--Preprints-->
 <!--======-->
 <!--* Interpretable Property Controlling Molecule Generation. Yuanqi Du, Xiaojie Guo, Amarda Shehu, Liang Zhao. AAAI 2021 Scientific Discovery with AI (SDA) Workshop, **Oral Presentation**.-->
