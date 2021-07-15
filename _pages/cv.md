@@ -56,12 +56,14 @@ Awards
 ======
   * Distinguished Academic Achievement (2021, GMU)
   * Star of Tomorrow Award (2021, Microsoft Research Asia)
+  * Travel Award: NeurIPS 2020, AIJ AIIDE 2020
   * Distinguished Undergraduate Teaching Award (2019-2020, GMU)
   * Distinguished Undergraduate Research Award (2019-2020, GMU)
   * NSF REU Fellowship (Spring 2019-Spring 2020)
   * GMU OSCAR Fellowship (Summer 2019)
   * Outstanding Undergraduate Teaching Award (2018-2019, GMU)
-  * Travel Award: NeurIPS 2020, AIJ AIIDE 2020
+  * League of Legends Challenger (world top 0.013) 2016
+  * StarCraft II GrandMaster (world top 0.19%) 2015
 
   
 Skills
@@ -110,6 +112,8 @@ Review Service
 ======
 * KDD (2021-) 
 * TKDD (2021-)
+* ICDM (2021-)
+* CIKM (2021-)
 * BioKDD (2021-)
 * KDD-DLG (2021-)
 * KDD-IRS (2021-)

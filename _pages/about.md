@@ -32,6 +32,7 @@ Check out my [CV](https://yuanqidu.github.io/cv/).
   * Application of Millimeter-wave Signals
   
 **News!**
+<!--* 6/21 We release the first large-scale graph generative dataset collection **GraphGen** version 1.0, the version 2.0 will be coming up soon.-->
 * 5/21 I will be visiting University of Amsterdam, working with [Dr. Max Welling](https://staff.fnwi.uva.nl/m.welling/) starting June 2021!!!
 * 5/21 I will join CUHK as a research intern, working with [Dr. Bolei Zhou](http://bzhou.ie.cuhk.edu.hk/) starting June 2021!!!
 * 5/21 After spending six wonderful months at MSRA, I receive a Star of Tomorrow Award!
