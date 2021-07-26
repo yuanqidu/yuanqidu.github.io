@@ -20,12 +20,12 @@ Research experience
 * Visiting Student, June 2021 - Present
   * University of Amsterdam (AMLAB & AI4 Science)
   * Chemical Reaction Modeling
-  * Mentor: Max Welling
+  * Advisor: [Max Welling](https://staff.fnwi.uva.nl/m.welling/)
 
 * Visiting Student, June 2021 - Present
   * The Chinese University of Hong Kong (MM Lab)
   * Deep Generative Models in Scientific Discovery
-  * Mentor: Bolei Zhou
+  * Advisor: [Bolei Zhou](http://bzhou.ie.cuhk.edu.hk/)
 
 * Research Intern, Nov 2020 - May 2021
   * Microsoft Research Asia
