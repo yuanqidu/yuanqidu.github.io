@@ -124,6 +124,7 @@ Review Service
 * TKDD (2021-)
 * ICDM (2021-)
 * CIKM (2021-)
+* BMVC (2021-)
 * BioKDD (2021-)
 * KDD-DLG (2021-)
 * KDD-IRS (2021-)
