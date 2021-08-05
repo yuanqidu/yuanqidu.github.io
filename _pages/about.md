@@ -8,7 +8,7 @@ redirect_from:
   - /about.html
 ---
 
-Yuanqi Du is a senior undergraduate student studying Computer Science at George Mason University. He has broad interests in machine learning and data mining. He works on Outlier Detection, American Sign Language Recognition (Milimeter Wave Signals & Kinect), Medical Image Analysis, Protein Structure Prediction, Molecule Generation, Deep Generative Model and Deep Graph Learning. He worked with [Dr. Liang Zhao](http://cs.emory.edu/~lzhao41/), [Dr. Amarda Shehu](https://cs.gmu.edu/~ashehu/), [Dr. Parth Pathak](http://www.phpathak.com/), [Dr. Carlotta Domeniconi](https://scholar.google.com.hk/citations?user=aKkIMogAAAAJ&hl=en) while he was at GMU. He worked with [Dr. Hu Han](https://sites.google.com/site/huhanhomepage/) and [Dr. S. Kevin Zhou](https://scholar.google.com/citations?user=8eNm2GMAAAAJ&hl=zh-CN) on Medical Image Analysis in the MIRACLE Lab. He worked with Dr. Jianwei Zhu on Protein Structure Prediction in Microsoft Research Asia Machine Learning and Computational Biology group. He is working closely with [Dr. Bolei Zhou](http://bzhou.ie.cuhk.edu.hk/) and [Dr. Max Welling](https://staff.fnwi.uva.nl/m.welling/) now. Besides Machine Learning, he is very fasinated by Sciences and very intrerested in developing ML tools for scentific problems. He is actively collaborateing with researchers in chemistry, biology, physics, machine learning and data mining.
+Yuanqi Du is a senior undergraduate student studying Computer Science at George Mason University. He has broad interests in machine learning and data mining. He works on Outlier Detection, American Sign Language Recognition (Milimeter Wave Signals & Kinect), Medical Image Analysis, Protein Structure Prediction, Molecule Generation, Deep Generative Model and Deep Graph Learning. He worked with [Dr. Liang Zhao](http://cs.emory.edu/~lzhao41/), [Dr. Amarda Shehu](https://cs.gmu.edu/~ashehu/), [Dr. Parth Pathak](http://www.phpathak.com/), [Dr. Carlotta Domeniconi](https://scholar.google.com.hk/citations?user=aKkIMogAAAAJ&hl=en) while he was at GMU. He worked with [Dr. Hu Han](https://sites.google.com/site/huhanhomepage/) and [Dr. S. Kevin Zhou](https://scholar.google.com/citations?user=8eNm2GMAAAAJ&hl=zh-CN) on Medical Image Analysis in the MIRACLE Lab. He worked with Dr. Jianwei Zhu on Protein Structure Prediction in Microsoft Research Asia Machine Learning and Computational Biology group. He is working closely with [Dr. Bolei Zhou](http://bzhou.ie.cuhk.edu.hk/) and [Dr. Max Welling](https://staff.fnwi.uva.nl/m.welling/) now. Besides Machine Learning, he is very fasinated by Sciences and very intrerested in developing ML tools for scentific problems, especially discover new knowledge. He is actively collaborateing with researchers in chemistry, biology, physics, machine learning and data mining.
 
 **Drop me an email if you'd like to talk about/collaborate on any of the following research topics with me. I currently live in Beijing, China, feel free to grab a coffee with me, too!**
 
@@ -21,12 +21,10 @@ Check out my [CV](https://yuanqidu.github.io/cv/).
 
 **Research Interests**
   * Deep Graph Learning
-  * Deep Generative Models
-  * Interpretable Machine Learning
-  * Protein Structure Prediction
-  * Computational Biology/Chemistry
-  * Machine Learning for Sciences
-  * Application of Millimeter-wave Signals
+  * Deep Generative Model
+  * AI for Science (Biology/Chemistry/Physics/etc)
+  * Human-centric Machine Learning
+  * Machine Learning for Discovery 
   
 **News!**
 * 7/21 I am proud to announce that the first [AI for Science workshop](https://ai4sciencecommunity.github.io/) will be held with NeurIPS 2021. We focus on the gaps that stifle advacenment of AI for Science this year. We invite a list of poineers in AI for Science for great talks and panels. We also introduce very exciting Attention Track, Mentorship, and Award programs. Welcome to submit your work and join us in December! Follow us on [Twitter](https://twitter.com/AI_for_Science).
