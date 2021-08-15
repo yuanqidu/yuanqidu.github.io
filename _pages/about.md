@@ -15,8 +15,8 @@ Yuanqi Du is a senior undergraduate student studying Computer Science at George 
 **I am open to opportunities in paper review, tutorial, workshop organization in data mining, machine learning, bioinformatics, computational chemistry related topics (especially deep generative models, graph neural networks and AI for sciences).**
 
 
-Check out my [CV](https://yuanqidu.github.io/cv/).
-and [a pdf version](https://yuanqidu.github.io/files/Yuanqi_Du_CV.pdf)
+Check out my [CV](https://yuanqidu.github.io/cv/)
+and [a pdf version](https://yuanqidu.github.io/files/Yuanqi_Du_CV.pdf).
 
 
 **Research Interests**
