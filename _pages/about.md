@@ -16,7 +16,7 @@ Yuanqi Du is a senior undergraduate student studying Computer Science at George 
 
 
 Check out my [CV](https://yuanqidu.github.io/cv/).
-<!--and [a pdf version](https://yuanqidu.github.io/files/Yuanqi_Du_CV.pdf)-->
+and [a pdf version](https://yuanqidu.github.io/files/Yuanqi_Du_CV.pdf)
 
 
 **Research Interests**
