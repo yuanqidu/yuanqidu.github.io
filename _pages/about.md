@@ -27,8 +27,8 @@ and [a pdf version](https://yuanqidu.github.io/files/Yuanqi_Du_CV.pdf).
   * Machine Learning for Discovery 
   
 **News!**
+* 8/21 We release the first Machine Learning Datasets for Graph Generation and Transformation [**GraphGT**](https://graphgt.github.io/) with an easy-to-use [Python API](https://github.com/yuanqidu/GraphGT) and a graph generation [literature and resource](https://github.com/yuanqidu/awesome-graph-generation).
 * 7/21 I am proud to announce that the first [AI for Science workshop](https://ai4sciencecommunity.github.io/) will be held with NeurIPS 2021. We focus on the gaps that stifle advacenment of AI for Science this year. We invite a list of poineers in AI for Science for great talks and panels. We also introduce very exciting Attention Track, Mentorship, and Award programs. Welcome to submit your work and join us in December! Follow us on [Twitter](https://twitter.com/AI_for_Science).
-<!--* 6/21 We release the first large-scale graph generative dataset collection **GraphGen** version 1.0, the version 2.0 will be coming up soon.-->
 * 5/21 I will be visiting University of Amsterdam, working with [Dr. Max Welling](https://staff.fnwi.uva.nl/m.welling/) starting June 2021!!!
 * 5/21 I will join CUHK as a research intern, working with [Dr. Bolei Zhou](http://bzhou.ie.cuhk.edu.hk/) starting June 2021!!!
 * 5/21 After spending six wonderful months at MSRA, I receive a Star of Tomorrow Award!
