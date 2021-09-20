@@ -120,6 +120,7 @@ Volunteer & Leadership
 
 Review Service
 ======
+* TPAMI (2021-)
 * TNNLS (2021-)
 * KDD (2021-) 
 * TKDD (2021-)
