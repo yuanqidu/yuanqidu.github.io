@@ -45,6 +45,9 @@ Journals
 
 Preprints
 ======
+* [Physics-Augmented Learning: A New Paradigm Beyond Physics-Informed Learning](https://arxiv.org/abs/2109.13901).\
+Ziming Liu, Yunyue Chen, **Yuanqi Du**, Max Tegmark.\  
+In Arxiv: 2109.13901.
 * [Generating Tertiary Protein Structures via an Interpretative Variational Autoencoder](https://arxiv.org/abs/2004.07119). 
 
   Xiaojie Guo, **Yuanqi Du**, Sivani Tadepalli, Liang Zhao, Amarda Shehu.
