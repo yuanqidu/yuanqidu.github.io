@@ -30,12 +30,18 @@ In International Conference on Sensing, Communication and Networking (SECON) 202
 
 Journals
 ======
-* [Generative Adversarial Learning of Protein Tertiary Structures](https://www.mdpi.com/1420-3049/26/5/1209), Taseef Rahman, **Yuanqi Du**, Liang Zhao, Amarda Shehu. Molecules 2021, 26(5), 1209 [IF: 3.267].
+* [Generative Adversarial Learning of Protein Tertiary Structures](https://www.mdpi.com/1420-3049/26/5/1209).
+Taseef Rahman, **Yuanqi Du**, Liang Zhao, Amarda Shehu. 
+Molecules 2021, 26(5), 1209.
 
 Preprints
 ======
-* [Generating Tertiary Protein Structures via an Interpretative Variational Autoencoder](https://arxiv.org/abs/2004.07119), Xiaojie Guo, **Yuanqi Du**, Sivani Tadepalli, Liang Zhao, Amarda Shehu. arxiv:2004.07119.
-* [CT Film Recovery via Disentangling Geometric Deformation and Illumination Variation: Simulated Datasets and Deep Models](https://arxiv.org/abs/2012.09491), Quan Quan, Qiyuan Wang, Liu Li, **Yuanqi Du**, S Kevin Zhou. arXiv:2012.09491.
+* [Generating Tertiary Protein Structures via an Interpretative Variational Autoencoder](https://arxiv.org/abs/2004.07119). 
+Xiaojie Guo, **Yuanqi Du**, Sivani Tadepalli, Liang Zhao, Amarda Shehu.
+In Arxiv:2004.07119.
+* [CT Film Recovery via Disentangling Geometric Deformation and Illumination Variation: Simulated Datasets and Deep Models](https://arxiv.org/abs/2012.09491).
+Quan Quan, Qiyuan Wang, Liu Li, **Yuanqi Du**, S Kevin Zhou. 
+In ArXiv:2012.09491.
 
 <!--Preprints-->
 <!--======-->
@@ -54,10 +60,18 @@ Preprints
 
 Workshops
 ======
-* Ensemble Machine Learning System for Student Academic Performance Prediction. Yinkai Wang\*, Kaiyi Guan\*, Aowei Ding\*, **Yuanqi Du**. Research Paper in Workshop for Undergraduates in Educational Data Mining and Learning Engineering (W4U) @EDM 2021.
-* Interpretable Property Controlling Molecule Generation. **Yuanqi Du**, Xiaojie Guo, Amarda Shehu, Liang Zhao. **Oral Presentation**. AAAI 2021 Scientific Discovery with AI (SDA) Workshop.
-* Interpretable Molecule Generation via Disentanglement Learning. **Yuanqi Du**, Xiaojie Guo, Amarda Shehu, Liang Zhao. ACM BCB Conference Computational Structural Biology Workshop (CSBW) 2020.
-* From Interatomic Distances to Protein Tertiary Structures with a Deep Convolutional Neural Network. **Yuanqi Du**, Anowarul Kabir, Liang Zhao, Amarda Shehu. ACM BCB Conference Computational Structural Biology Workshop (CSBW) 2020.
+* Ensemble Machine Learning System for Student Academic Performance Prediction. 
+Yinkai Wang\*, Kaiyi Guan\*, Aowei Ding\*, **Yuanqi Du**. 
+In Workshop for Undergraduates in Educational Data Mining and Learning Engineering (W4U) @EDM 2021.
+* Interpretable Property Controlling Molecule Generation. 
+**Yuanqi Du**, Xiaojie Guo, Amarda Shehu, Liang Zhao. 
+In AAAI 2021 Scientific Discovery with AI (SDA) Workshop. **Oral Presentation**.
+* Interpretable Molecule Generation via Disentanglement Learning. 
+**Yuanqi Du**, Xiaojie Guo, Amarda Shehu, Liang Zhao. 
+In ACM BCB Conference Computational Structural Biology Workshop (CSBW) 2020.
+* From Interatomic Distances to Protein Tertiary Structures with a Deep Convolutional Neural Network. 
+**Yuanqi Du**, Anowarul Kabir, Liang Zhao, Amarda Shehu. 
+In ACM BCB Conference Computational Structural Biology Workshop (CSBW) 2020.
 
 Abstracts
 ======
