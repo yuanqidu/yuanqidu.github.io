@@ -15,11 +15,7 @@ You can also find my recent publications on my [Google Scholar profile](https://
 
 Conferences
 ======
-* [GraphGT: Machine Learning Datasets for Graph Generation and Transformation](https://openreview.net/forum?id=NYgt9vcdyjm).
-
-  **Yuanqi Du**\*, Shiyu Wang*, Xiaojie Guo, Hengning Cao, Shujie Hu, Junji Jiang, Aishwarya Varala, Abhinav Angirekula, Liang Zhao.
-
-  In *NeurIPS* Dataset and Benchmark Track 2021.
+* [GraphGT: Machine Learning Datasets for Graph Generation and Transformation](https://openreview.net/forum?id=NYgt9vcdyjm).  **Yuanqi Du**\*, Shiyu Wang*, Xiaojie Guo, Hengning Cao, Shujie Hu, Junji Jiang, Aishwarya Varala, Abhinav Angirekula, Liang Zhao.  In *NeurIPS* Dataset and Benchmark Track 2021.
 * [Deep Generative Model for Spatial Networks](http://cs.emory.edu/~lzhao41/materials/papers/KDD21__Spatial_Graphs_Disentanglement_preprinted.pdf).
 
   Xiaojie Guo\*, **Yuanqi Du**\*, Liang Zhao. 
@@ -86,7 +82,9 @@ Workshops
 
 Abstracts
 ======
-* [American Sign Language Recognition Using an FMCW Wireless Sensor](http://yuanqidu.github.io/files/American_Sign_Language_Recognition_Using_an_FMCW_Wireless_Sensor.pdf).  **Yuanqi Du**, Nguyen Dang, Riley Wilkerson, Parth Pathak, Huzefa Rangwala, Jana Kosecka.  In AAAI Conference on Artificial Intelligence (*AAAI*) 2020 (Student Abstract).
+* [American Sign Language Recognition Using an FMCW Wireless Sensor](http://yuanqidu.github.io/files/American_Sign_Language_Recognition_Using_an_FMCW_Wireless_Sensor.pdf).  
+**Yuanqi Du**, Nguyen Dang, Riley Wilkerson, Parth Pathak, Huzefa Rangwala, Jana Kosecka.  
+In AAAI Conference on Artificial Intelligence (*AAAI*) 2020 (Student Abstract).
 
 <!---->
 <!--{% for post in site.publications reversed %}-->
