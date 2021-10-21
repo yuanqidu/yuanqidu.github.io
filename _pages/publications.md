@@ -86,11 +86,7 @@ Workshops
 
 Abstracts
 ======
-* [American Sign Language Recognition Using an FMCW Wireless Sensor](http://yuanqidu.github.io/files/American_Sign_Language_Recognition_Using_an_FMCW_Wireless_Sensor.pdf).
-
-  **Yuanqi Du**, Nguyen Dang, Riley Wilkerson, Parth Pathak, Huzefa Rangwala, Jana Kosecka. 
-
-  In AAAI Conference on Artificial Intelligence (*AAAI*) 2020 (Student Abstract).
+* [American Sign Language Recognition Using an FMCW Wireless Sensor](http://yuanqidu.github.io/files/American_Sign_Language_Recognition_Using_an_FMCW_Wireless_Sensor.pdf).  **Yuanqi Du**, Nguyen Dang, Riley Wilkerson, Parth Pathak, Huzefa Rangwala, Jana Kosecka.  In AAAI Conference on Artificial Intelligence (*AAAI*) 2020 (Student Abstract).
 
 <!---->
 <!--{% for post in site.publications reversed %}-->
