@@ -60,7 +60,7 @@ In *NeurIPS* AI for Science workshop 2021.
 <!--In Workshop for Undergraduates in Educational Data Mining and Learning Engineering (*W4U*) @EDM 2021.-->
 * Interpretable Property Controlling Molecule Generation.  
 **Yuanqi Du**, Xiaojie Guo, Amarda Shehu, Liang Zhao.  
-In AAAI 2021 Scientific Discovery with AI (*SDA*) Workshop. **Oral Presentation**.
+In *AAAI* 2021 Scientific Discovery with AI (SDA) Workshop. **Oral Presentation**.
 <!--* Interpretable Molecule Generation via Disentanglement Learning.  -->
 <!--**Yuanqi Du**, Xiaojie Guo, Amarda Shehu, Liang Zhao.  -->
 <!--In ACM BCB Conference Computational Structural Biology Workshop (*CSBW*) 2020.-->
@@ -72,7 +72,7 @@ Abstracts
 ======
 * [American Sign Language Recognition Using an FMCW Wireless Sensor](http://yuanqidu.github.io/files/American_Sign_Language_Recognition_Using_an_FMCW_Wireless_Sensor.pdf).  
 **Yuanqi Du**, Nguyen Dang, Riley Wilkerson, Parth Pathak, Huzefa Rangwala, Jana Kosecka.  
-In AAAI Conference on Artificial Intelligence (*AAAI*) 2020 (Student Abstract).
+In *AAAI* Conference on Artificial Intelligence (AAAI) 2020 (Student Abstract).
 
 <!---->
 <!--{% for post in site.publications reversed %}-->
