@@ -23,7 +23,7 @@ Xiaojie Guo\*, **Yuanqi Du**\*, Liang Zhao.
 In ACM SIGKDD Conference on Knowledge Discovery and Data Mining (*KDD*) 2021.
 * [Property Controllable Variational Autoencoder via Invertible Mutual Dependence](https://openreview.net/forum?id=tYxG_OMs9WE).  
 Xiaojie Guo, **Yuanqi Du**, Liang Zhao.  
-In International Conference on Learning Representations (ICLR) 2021.
+In International Conference on Learning Representations (*ICLR*) 2021.
 * Deep Learning to Segment Pelvic Bones: Large-scale CT Datasets and Baseline Models.  
 Pengbo Liu, Hu Han, **Yuanqi Du**, Heqin Zhu, Yinhao Li, Feng Gu, Honghu Xiao, Jun Li, Chunpeng Zhao, Xinbao Wu, S. Kevin Zhou.  
 In International Conference on Information Processing in Computer-Assisted Interventions (*IPCAI*) 2021, published in International Journal of Computer Assisted Radiology and Surgery (*IJCARS*).
@@ -35,7 +35,7 @@ Journals
 ======
 * [Generative Adversarial Learning of Protein Tertiary Structures](https://www.mdpi.com/1420-3049/26/5/1209).  
 Taseef Rahman, **Yuanqi Du**, Liang Zhao, Amarda Shehu.  
-Molecules 2021, 26(5), 1209.
+In *Molecules* 2021, 26(5), 1209.
 
 Preprints
 ======
