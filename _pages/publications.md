@@ -39,9 +39,6 @@ Molecules 2021, 26(5), 1209.
 
 Preprints
 ======
-* [Physics-Augmented Learning: A New Paradigm Beyond Physics-Informed Learning](https://arxiv.org/abs/2109.13901).  
-Ziming Liu, Yunyue Chen, **Yuanqi Du**, Max Tegmark.  
-In Arxiv: 2109.13901.
 * [Generating Tertiary Protein Structures via an Interpretative Variational Autoencoder](https://arxiv.org/abs/2004.07119).  
 Xiaojie Guo, **Yuanqi Du**, Sivani Tadepalli, Liang Zhao, Amarda Shehu.  
 In Arxiv:2004.07119.
@@ -52,18 +49,24 @@ In ArXiv:2012.09491.
 
 Workshops
 ======
-* Ensemble Machine Learning System for Student Academic Performance Prediction.  
-Yinkai Wang\*, Kaiyi Guan\*, Aowei Ding\*, **Yuanqi Du**.  
-In Workshop for Undergraduates in Educational Data Mining and Learning Engineering (*W4U*) @EDM 2021.
+* Learning Disentangled Representation for Spatiotemporal Graph Generation.  
+**Yuanqi Du**, Xiaojie Guo, Hengning Cao, Yanfang Ye, Liang Zhao.  
+In *NeurIPS* Deep Generative Models and Applications workshop 2021.
+* [Physics-Augmented Learning: A New Paradigm Beyond Physics-Informed Learning](https://arxiv.org/abs/2109.13901).  
+Ziming Liu, Yunyue Chen, **Yuanqi Du**, Max Tegmark.  
+In *NeurIPS* AI for Science workshop 2021.
+<!--* Ensemble Machine Learning System for Student Academic Performance Prediction.  -->
+<!--Yinkai Wang\*, Kaiyi Guan\*, Aowei Ding\*, **Yuanqi Du**.  -->
+<!--In Workshop for Undergraduates in Educational Data Mining and Learning Engineering (*W4U*) @EDM 2021.-->
 * Interpretable Property Controlling Molecule Generation.  
 **Yuanqi Du**, Xiaojie Guo, Amarda Shehu, Liang Zhao.  
 In AAAI 2021 Scientific Discovery with AI (*SDA*) Workshop. **Oral Presentation**.
-* Interpretable Molecule Generation via Disentanglement Learning.  
-**Yuanqi Du**, Xiaojie Guo, Amarda Shehu, Liang Zhao.  
-In ACM BCB Conference Computational Structural Biology Workshop (*CSBW*) 2020.
-* From Interatomic Distances to Protein Tertiary Structures with a Deep Convolutional Neural Network.  
-**Yuanqi Du**, Anowarul Kabir, Liang Zhao, Amarda Shehu.  
-In ACM BCB Conference Computational Structural Biology Workshop (*CSBW*) 2020.
+<!--* Interpretable Molecule Generation via Disentanglement Learning.  -->
+<!--**Yuanqi Du**, Xiaojie Guo, Amarda Shehu, Liang Zhao.  -->
+<!--In ACM BCB Conference Computational Structural Biology Workshop (*CSBW*) 2020.-->
+<!--* From Interatomic Distances to Protein Tertiary Structures with a Deep Convolutional Neural Network.  -->
+<!--**Yuanqi Du**, Anowarul Kabir, Liang Zhao, Amarda Shehu.  -->
+<!--In ACM BCB Conference Computational Structural Biology Workshop (*CSBW*) 2020.-->
 
 Abstracts
 ======
