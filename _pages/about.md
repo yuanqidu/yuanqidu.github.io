@@ -27,7 +27,7 @@ and [a pdf version](https://yuanqidu.github.io/files/Yuanqi_Du_CV.pdf).
   * Machine Learning for Discovery 
   
 **News!**
-* 10/21 Paper titled "Deep Latent-Variable Models for Controllable Molecule Generation" has been accepted in BIBM.
+* 10/21 Paper titled "Deep Latent-Variable Models for Controllable Molecule Generation" has been accepted in BIBM 2021.
 * 10/21[**GraphGT**](https://graphgt.github.io/), the first Machine Learning Datasets for Graph Generation and Transformation, has been accepted in NeurIPS Dataset and Benchmark Track. GraphGT has an easy-to-use [Python API](https://github.com/yuanqidu/GraphGT) and a graph generation [literature and resource](https://github.com/yuanqidu/awesome-graph-generation) collection. Please Star if you find helpful!
 * 9/21 We are organizing the seventh [Deep Learning on Graphs](https://deep-learning-graphs.bitbucket.io/dlg-aaai22/index.html) workshop with AAAI 2022, welcome to submit your work!
 <!--* 8/21 We release the first Machine Learning Datasets for Graph Generation and Transformation [**GraphGT**](https://graphgt.github.io/) with an easy-to-use [Python API](https://github.com/yuanqidu/GraphGT) and a graph generation [literature and resource](https://github.com/yuanqidu/awesome-graph-generation) collection. Please Star if you find helpful!-->
