@@ -21,6 +21,9 @@ In *NeurIPS* Dataset and Benchmark Track 2021.
 * [Deep Generative Model for Spatial Networks](http://cs.emory.edu/~lzhao41/materials/papers/KDD21__Spatial_Graphs_Disentanglement_preprinted.pdf).  
 Xiaojie Guo\*, **Yuanqi Du**\*, Liang Zhao.  
 In ACM SIGKDD Conference on Knowledge Discovery and Data Mining (*KDD*) 2021.
+* Deep Latent-Variable Models for Controllable Molecule Generation.  
+**Yuanqi Du**, Yinkai Wang, Fardina Alam, Yuanjie Lu, Xiaojie Guo, Liang Zhao, and Amarda Shehu.  
+In IEEE International Conference on Bioinformatics and Biomedicine (*BIBM*) 2021.
 * [Property Controllable Variational Autoencoder via Invertible Mutual Dependence](https://openreview.net/forum?id=tYxG_OMs9WE).  
 Xiaojie Guo, **Yuanqi Du**, Liang Zhao.  
 In International Conference on Learning Representations (*ICLR*) 2021.
