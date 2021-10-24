@@ -40,14 +40,14 @@ Journals
 Taseef Rahman, **Yuanqi Du**, Liang Zhao, Amarda Shehu.  
 In *Molecules* 2021, 26(5), 1209.
 
-Preprints
-======
-* [Generating Tertiary Protein Structures via an Interpretative Variational Autoencoder](https://arxiv.org/abs/2004.07119).  
-Xiaojie Guo, **Yuanqi Du**, Sivani Tadepalli, Liang Zhao, Amarda Shehu.  
-In Arxiv:2004.07119.
-* [CT Film Recovery via Disentangling Geometric Deformation and Illumination Variation: Simulated Datasets and Deep Models](https://arxiv.org/abs/2012.09491).  
-Quan Quan, Qiyuan Wang, Liu Li, **Yuanqi Du**, S Kevin Zhou.  
-In ArXiv:2012.09491.
+<!--Preprints-->
+<!--======-->
+<!--* [Generating Tertiary Protein Structures via an Interpretative Variational Autoencoder](https://arxiv.org/abs/2004.07119).  -->
+<!--Xiaojie Guo, **Yuanqi Du**, Sivani Tadepalli, Liang Zhao, Amarda Shehu.  -->
+<!--In Arxiv:2004.07119.-->
+<!--* [CT Film Recovery via Disentangling Geometric Deformation and Illumination Variation: Simulated Datasets and Deep Models](https://arxiv.org/abs/2012.09491).  -->
+<!--Quan Quan, Qiyuan Wang, Liu Li, **Yuanqi Du**, S Kevin Zhou.  -->
+<!--In ArXiv:2012.09491.-->
 
 
 Workshops
