@@ -17,6 +17,11 @@ Education
 
 Research experience
 ======
+* Visiting Student, Oct 2021 - Present
+  * Princeton University 
+  * Deep Generative Models
+  * Advisor: [Adji Bousso Dieng](https://www.linkedin.com/in/diengadji45/?locale=en_US)
+
 * Visiting Student, June 2021 - Present
   * University of Amsterdam (AMLAB & AI4 Science)
   * Chemical Reaction Modeling
