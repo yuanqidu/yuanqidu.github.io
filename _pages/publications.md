@@ -91,9 +91,6 @@ Weitao Du\*, He Zhang\*, **Yuanqi Du**, Wei Chen, Bin Shao, Tie-Yan Liu.
 * Interpretable Deep Graph Generation via Information Bottleneck.  
 Xiaojie Guo\*, **Yuanqi Du**\*, Liang Zhao. 
 
-* Interpretable Deep Graph Generation via Information Bottleneck.  
-Xiaojie Guo\*, **Yuanqi Du**\*, Liang Zhao.
-
 * Efficient Deep Generative Models for Spatial Networks via Spanning Tree Sampler.  
 Xiaojie Guo\*, **Yuanqi Du**\*, Zheng Zhang, Liang Zhao.
 
