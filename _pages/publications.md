@@ -77,6 +77,44 @@ Abstracts
 **Yuanqi Du**, Nguyen Dang, Riley Wilkerson, Parth Pathak, Huzefa Rangwala, Jana Kosecka.  
 In *AAAI* Conference on Artificial Intelligence (AAAI) 2020 (Student Abstract).
 
+In Submission
+======
+* Spatiotemporal Graph Generative Representation Learning.  
+**Yuanqi Du**, Xiaojie Guo, Hengning Cao, Yanfang Ye, Liang Zhao.
+
+* Interpretable Molecular Graph Generation via Monotonic Constraints.  
+**Yuanqi Du**, Xiaojie Guo, Amarda Shehu, Liang Zhao.
+
+* Equivariant Vector Field Network for Dynamics Modeling.  
+Weitao Du\*, He Zhang\*, **Yuanqi Du**, Wei Chen, Bin Shao, Tie-Yan Liu.
+
+* Interpretable Deep Graph Generation via Information Bottleneck.  
+Xiaojie Guo\*, **Yuanqi Du**\*, Liang Zhao. 
+
+* Interpretable Deep Graph Generation via Information Bottleneck.  
+Xiaojie Guo\*, **Yuanqi Du**\*, Liang Zhao.
+
+* Efficient Deep Generative Models for Spatial Networks via Spanning Tree Sampler.  
+Xiaojie Guo\*, **Yuanqi Du**\*, Zheng Zhang, Liang Zhao.
+
+* Generating Tertiary Protein Structures via Interpretable Graph Variational Autoencoders.  
+Xiaojie Guo\*, **Yuanqi Du**, Sivani Tadepalli, Liang Zhao, Amarda Shehu.
+
+* Disentangled Representation Learning for Interpretbale Molecule Generation.  
+**Yuanqi Du**, Xiaojie Guo, Amarda Shehu, Liang Zhao.
+
+* ROMNet: Renovate the Old Memories.  
+Runsheng Xu\*, Zhengzhong Tu\*, **Yuanqi Du**\*, Xiaoyu Dong, Jinlong Li, Zibo Meng, Jiaqi Ma, Hongkai Yu.  
+
+* Graph Representation Learning for Protein Conformation Sampling.  
+Taseef Rahman, **Yuanqi Du**, Amarda Shehu.
+
+* Semi-supervised Pseudo-healthy Image Synthesis via Confidence Augmentation.  
+**Yuanqi Du**, Quan Quan, Hu Han, S. Kevin Zhou.
+
+* CT Film Recovery via Disentangling Geometric Deformation and Photometric Degradation: Simulated Datasets and Deep Models.  
+Quan Quan, Qiyuan Wang, Liu Li, **Yuanqi Du**,  S. Kevin Zhou.
+
 <!---->
 <!--{% for post in site.publications reversed %}-->
 <!--  {% include archive-single.html %}-->
