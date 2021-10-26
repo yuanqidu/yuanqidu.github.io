@@ -1,12 +1,14 @@
 ---
 layout: archive
-title: "CV"
+title: "Service"
 permalink: /cv/
 author_profile: true
 redirect_from:
   - /resume
 ---
-  
+
+List of Services:
+
 Professional Service
 ======
 * Lead Organizer for [*AI for Science: Mind the Gaps*](https://ai4sciencecommunity.github.io/) workshop with *NeurIPS 2021*.
