@@ -21,6 +21,11 @@ Research experience
   * Princeton University 
   * Deep Generative Models
   * Advisor: [Adji Bousso Dieng](https://www.linkedin.com/in/diengadji45/?locale=en_US)
+  
+* Visiting Student, Oct 2021 - Present
+  * [DP Technology](https://www.dp.tech/)
+  * AI for Drug Discovery
+  * Advisor: [Linfeng Zhang](https://scholar.google.com/citations?user=jk7qwmcAAAAJ&hl=zh-CN)
 
 * Visiting Student, June 2021 - Present
   * University of Amsterdam (AMLAB & AI4 Science)
@@ -32,9 +37,9 @@ Research experience
   * Deep Generative Models in Scientific Discovery
   * Advisor: [Bolei Zhou](http://bzhou.ie.cuhk.edu.hk/)
   
-* Research Assistant, Jan 2020 - Aug 2021
+* Research Assistant, Jan 2020 - Oct 2021
   * George Mason University
-  * Deep Graph Learning \& Learning Protein Structures and Dynamics
+  * Deep Graph Learning & Learning Protein Structures and Dynamics
   * Advisor: [Liang Zhao](https://mason.gmu.edu/~lzhao9/), [Amarda Shehu](https://cs.gmu.edu/~ashehu/)
 
 * Research Intern, Nov 2020 - May 2021
