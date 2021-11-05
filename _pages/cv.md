@@ -11,8 +11,8 @@ Check out my [CV](https://yuanqidu.github.io/files/Yuanqi_Du_CV.pdf)
 
 Education
 ======
-* B.S. in Computer Science, George Mason University, GPA 4.00/4.00, 2017-Expected 2021
-* B.S. in Computer Science, Huaqiao University, GPA 4.67/5.00, 2016-2017
+* B.S. in Computer Science, George Mason University, GPA 4.0/4.0, 2017-Expected 2021
+* B.S. in Computer Science, Huaqiao University, GPA 4.6/5.0, 2016-2017
 
 
 Research experience
@@ -72,8 +72,8 @@ Awards
   * NSF REU Fellowship (Spring 2019-Spring 2020)
   * GMU OSCAR Fellowship (Summer 2019)
   * Outstanding Undergraduate Teaching Award (2018-2019, GMU)
-  * League of Legends Challenger (world top 0.013) 2016
-  * StarCraft II GrandMaster (world top 0.19%) 2015
+  * League of Legends Challenger (world top 0.01%) 2016
+  * StarCraft II GrandMaster (world top 0.2%) 2015
 
   
 Skills
