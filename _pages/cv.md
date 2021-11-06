@@ -47,7 +47,7 @@ Research experience
   * Protein Structure Prediction
   * Mentor: Jianwei Zhu
   
-* Research Intern, Aug 2020 - Dec 2020
+* Visiting Student, Aug 2020 - Dec 2020
   * Chinese Academy of Sciences, Institute of Computing Technology
   * Medical Image Analysis
   * Advisor: [Hu Han](https://sites.google.com/site/huhanhomepage/), [Kevin Zhou](http://people.ucas.edu.cn/~skevinzhou?language=en)
