@@ -22,7 +22,7 @@ Research experience
   * Deep Generative Models
   * Advisor: [Adji Bousso Dieng](https://www.linkedin.com/in/diengadji45/?locale=en_US)
   
-* Visiting Student, Oct 2021 - Present, (Part-time)
+* Research Intern, Oct 2021 - Present, (Part-time)
   * [DP Technology](https://www.dp.tech/)
   * AI for Drug Discovery
   * Advisor: [Linfeng Zhang](https://scholar.google.com/citations?user=jk7qwmcAAAAJ&hl=zh-CN)
