@@ -36,6 +36,10 @@ In International Conference on Sensing, Communication and Networking (*SECON*) 2
 
 Journals
 ======
+* Generating Tertiary Protein Structures via Interpretable Graph Variational Autoencoders.  
+Xiaojie Guo, **Yuanqi Du**, Sivani Tadepalli, Liang Zhao, Amarda Shehu.  
+In *Bioinformatics Advances* 2021.
+
 * [Generative Adversarial Learning of Protein Tertiary Structures](https://www.mdpi.com/1420-3049/26/5/1209).  
 Taseef Rahman, **Yuanqi Du**, Liang Zhao, Amarda Shehu.  
 In *Molecules* 2021, 26(5), 1209.
@@ -93,9 +97,6 @@ Xiaojie Guo\*, **Yuanqi Du**\*, Liang Zhao.
 
 * Efficient Deep Generative Models for Spatial Networks via Spanning Tree Sampler.  
 Xiaojie Guo\*, **Yuanqi Du**\*, Zheng Zhang, Liang Zhao.
-
-* Generating Tertiary Protein Structures via Interpretable Graph Variational Autoencoders.  
-Xiaojie Guo\*, **Yuanqi Du**, Sivani Tadepalli, Liang Zhao, Amarda Shehu.
 
 * Disentangled Representation Learning for Interpretbale Molecule Generation.  
 **Yuanqi Du**, Xiaojie Guo, Amarda Shehu, Liang Zhao.
