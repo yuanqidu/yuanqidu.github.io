@@ -37,7 +37,7 @@ In International Conference on Sensing, Communication and Networking (*SECON*) 2
 Journals
 ======
 * Generating Tertiary Protein Structures via Interpretable Graph Variational Autoencoders.  
-Xiaojie Guo, **Yuanqi Du**, Sivani Tadepalli, Liang Zhao, Amarda Shehu.  
+Xiaojie Guo\*, **Yuanqi Du**\*, Sivani Tadepalli, Liang Zhao, Amarda Shehu.  
 In *Bioinformatics Advances* 2021.
 
 * [Generative Adversarial Learning of Protein Tertiary Structures](https://www.mdpi.com/1420-3049/26/5/1209).  
