@@ -83,6 +83,9 @@ In *AAAI* Conference on Artificial Intelligence (AAAI) 2020 (Student Abstract).
 
 In Submission
 ======
+* Facilitating Fundamental Science with AI.  
+AI4Science Community: Yoshua Bengio, Payal Chandak, **Yuanqi Du**, Tianfan Fu, Wenhao Gao, Shirley Ho, Kexin Huang, Joan Lasenby, Shengchao Liu, Tie-Yan Liu, Ziming Liu, Debora Marks, Irina Rish, Hanchen Wang, Adrian Weller, Max Welling, Petar Veličković, Marinka Zitnik (in alphabetical order)
+
 * Spatiotemporal Graph Generative Representation Learning.  
 **Yuanqi Du**, Xiaojie Guo, Hengning Cao, Yanfang Ye, Liang Zhao.
 
