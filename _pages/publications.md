@@ -56,24 +56,19 @@ In *Molecules* 2021, 26(5), 1209.
 
 Workshops
 ======
+* Interpreting Molecular Space with Deep Generative Models.  
+**Yuanqi Du**, Xian Liu, Shengchao Liu, Jieyu Zhang, Bolei Zhou.  
+In ML4Molecules workshop 2021. (**oral**)
+* Interpretable Molecular Graph Generation via Monotonic Constraints.  
+**Yuanqi Du**, Xiaojie Guo, Amarda Shehu, Liang Zhao.  
+In ML4Molecules workshop 2021.
 * Learning Disentangled Representation for Spatiotemporal Graph Generation.  
 **Yuanqi Du**, Xiaojie Guo, Hengning Cao, Yanfang Ye, Liang Zhao.  
 In *NeurIPS* Deep Generative Models and Applications workshop 2021.
 * [Physics-Augmented Learning: A New Paradigm Beyond Physics-Informed Learning](https://arxiv.org/abs/2109.13901).  
 Ziming Liu, Yunyue Chen, **Yuanqi Du**, Max Tegmark.  
 In *NeurIPS* AI for Science workshop 2021.
-<!--* Ensemble Machine Learning System for Student Academic Performance Prediction.  -->
-<!--Yinkai Wang\*, Kaiyi Guan\*, Aowei Ding\*, **Yuanqi Du**.  -->
-<!--In Workshop for Undergraduates in Educational Data Mining and Learning Engineering (*W4U*) @EDM 2021.-->
-* Interpretable Property Controlling Molecule Generation.  
-**Yuanqi Du**, Xiaojie Guo, Amarda Shehu, Liang Zhao.  
-In *AAAI* 2021 Scientific Discovery with AI (SDA) Workshop. **Oral Presentation**.
-<!--* Interpretable Molecule Generation via Disentanglement Learning.  -->
-<!--**Yuanqi Du**, Xiaojie Guo, Amarda Shehu, Liang Zhao.  -->
-<!--In ACM BCB Conference Computational Structural Biology Workshop (*CSBW*) 2020.-->
-<!--* From Interatomic Distances to Protein Tertiary Structures with a Deep Convolutional Neural Network.  -->
-<!--**Yuanqi Du**, Anowarul Kabir, Liang Zhao, Amarda Shehu.  -->
-<!--In ACM BCB Conference Computational Structural Biology Workshop (*CSBW*) 2020.-->
+
 
 Abstracts
 ======

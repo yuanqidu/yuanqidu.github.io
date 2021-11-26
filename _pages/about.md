@@ -27,6 +27,7 @@ and [a pdf version](https://yuanqidu.github.io/files/Yuanqi_Du_CV.pdf).
   * Machine Learning for Discovery 
   
 **News!**
+* 11/21 Two papers titled "Interpreting Molecular Space with Deep Generative Models" (**oral**) and "Interpretable Molecular Graph Generation via Monotonic Constraints" have been accepted in ML4Molecules Workshop 2021.
 * 11/21 Paper titled "Generating Tertiary Protein Structures via Interpretable Graph Variational Autoencoders" has been accepted in Bioinformatics Advances.
 * 10/21 Paper titled "Deep Latent-Variable Models for Controllable Molecule Generation" has been accepted in BIBM 2021.
 * 10/21[**GraphGT**](https://graphgt.github.io/), the first Machine Learning Datasets for Graph Generation and Transformation, has been accepted in NeurIPS Dataset and Benchmark Track. GraphGT has an easy-to-use [Python API](https://github.com/yuanqidu/GraphGT) and a graph generation [literature and resource](https://github.com/yuanqidu/awesome-graph-generation) collection. Please Star if you find helpful!
