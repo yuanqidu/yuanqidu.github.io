@@ -84,9 +84,6 @@ AI4Science Community: Yoshua Bengio, Payal Chandak, **Yuanqi Du**, Tianfan Fu, W
 * Spatiotemporal Graph Generative Representation Learning.  
 **Yuanqi Du**, Xiaojie Guo, Hengning Cao, Yanfang Ye, Liang Zhao.
 
-* Interpretable Molecular Graph Generation via Monotonic Constraints.  
-**Yuanqi Du**, Xiaojie Guo, Amarda Shehu, Liang Zhao.
-
 * Equivariant Vector Field Network for Dynamics Modeling.  
 Weitao Du\*, He Zhang\*, **Yuanqi Du**, Wei Chen, Bin Shao, Tie-Yan Liu.
 
