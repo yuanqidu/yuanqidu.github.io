@@ -44,15 +44,6 @@ In *Bioinformatics Advances* 2021.
 Taseef Rahman, **Yuanqi Du**, Liang Zhao, Amarda Shehu.  
 In *Molecules* 2021, 26(5), 1209.
 
-<!--Preprints-->
-<!--======-->
-<!--* [Generating Tertiary Protein Structures via an Interpretative Variational Autoencoder](https://arxiv.org/abs/2004.07119).  -->
-<!--Xiaojie Guo, **Yuanqi Du**, Sivani Tadepalli, Liang Zhao, Amarda Shehu.  -->
-<!--In Arxiv:2004.07119.-->
-<!--* [CT Film Recovery via Disentangling Geometric Deformation and Illumination Variation: Simulated Datasets and Deep Models](https://arxiv.org/abs/2012.09491).  -->
-<!--Quan Quan, Qiyuan Wang, Liu Li, **Yuanqi Du**, S Kevin Zhou.  -->
-<!--In ArXiv:2012.09491.-->
-
 
 Workshops
 ======
@@ -76,11 +67,8 @@ Abstracts
 **Yuanqi Du**, Nguyen Dang, Riley Wilkerson, Parth Pathak, Huzefa Rangwala, Jana Kosecka.  
 In *AAAI* Conference on Artificial Intelligence (AAAI) 2020 (Student Abstract).
 
-In Submission
+Under review
 ======
-* Facilitating Fundamental Science with AI.  
-AI4Science Community: Yoshua Bengio, Payal Chandak, **Yuanqi Du**, Tianfan Fu, Wenhao Gao, Shirley Ho, Kexin Huang, Joan Lasenby, Shengchao Liu, Tie-Yan Liu, Ziming Liu, Debora Marks, Irina Rish, Hanchen Wang, Adrian Weller, Max Welling, Petar Veličković, Marinka Zitnik (in alphabetical order)
-
 * Spatiotemporal Graph Generative Representation Learning.  
 **Yuanqi Du**, Xiaojie Guo, Hengning Cao, Yanfang Ye, Liang Zhao.
 
@@ -107,6 +95,12 @@ Taseef Rahman, **Yuanqi Du**, Amarda Shehu.
 
 * CT Film Recovery via Disentangling Geometric Deformation and Photometric Degradation: Simulated Datasets and Deep Models.  
 Quan Quan, Qiyuan Wang, Liu Li, **Yuanqi Du**,  S. Kevin Zhou.
+
+Work-in-progress
+======
+* Facilitating Fundamental Science with AI.  
+AI4Science Community: Yoshua Bengio, Payal Chandak, **Yuanqi Du**, Tianfan Fu, Wenhao Gao, Shirley Ho, Kexin Huang, Joan Lasenby, Shengchao Liu, Tie-Yan Liu, Ziming Liu, Debora Marks, Irina Rish, Hanchen Wang, Adrian Weller, Max Welling, Petar Veličković, Marinka Zitnik (in alphabetical order)
+
 
 <!---->
 <!--{% for post in site.publications reversed %}-->
