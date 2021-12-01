@@ -15,9 +15,14 @@ You can also find my recent publications on my [Google Scholar profile](https://
 
 Conferences
 ======
+* Disentangled Spatiotemporal Graph Generative Model.  
+**Yuanqi Du**, Xiaojie Guo, Hengning Cao,Yanfang Ye, Liang Zhao.  
+In Thirty-Sixth AAAI Conference on Artificial Intelligence (*AAAI*) 2022.  
+Presented in *NeurIPS* 2021 DGMs workshop.
+
 * [GraphGT: Machine Learning Datasets for Graph Generation and Transformation](https://openreview.net/forum?id=NYgt9vcdyjm).  
 **Yuanqi Du**\*, Shiyu Wang\*, Xiaojie Guo, Hengning Cao, Shujie Hu, Junji Jiang, Aishwarya Varala, Abhinav Angirekula, Liang Zhao.  
-In *NeurIPS* Dataset and Benchmark Track 2021.
+In Neural Information Processing Systems (*NeurIPS*) 2021.
 * [Deep Generative Model for Spatial Networks](http://cs.emory.edu/~lzhao41/materials/papers/KDD21__Spatial_Graphs_Disentanglement_preprinted.pdf).  
 Xiaojie Guo\*, **Yuanqi Du**\*, Liang Zhao.  
 In ACM SIGKDD Conference on Knowledge Discovery and Data Mining (*KDD*) 2021.
@@ -54,8 +59,8 @@ In ML4Molecules workshop 2021. (**oral**)
 **Yuanqi Du**, Xiaojie Guo, Amarda Shehu, Liang Zhao.  
 In ML4Molecules workshop 2021.
 * Learning Disentangled Representation for Spatiotemporal Graph Generation.  
-**Yuanqi Du**, Xiaojie Guo, Hengning Cao, Yanfang Ye, Liang Zhao.  
-In *NeurIPS* Deep Generative Models and Applications workshop 2021.
+<!--**Yuanqi Du**, Xiaojie Guo, Hengning Cao, Yanfang Ye, Liang Zhao.  -->
+<!--In *NeurIPS* Deep Generative Models and Applications workshop 2021.-->
 * [Physics-Augmented Learning: A New Paradigm Beyond Physics-Informed Learning](https://arxiv.org/abs/2109.13901).  
 Ziming Liu, Yunyue Chen, **Yuanqi Du**, Max Tegmark.  
 In *NeurIPS* AI for Science workshop 2021.
