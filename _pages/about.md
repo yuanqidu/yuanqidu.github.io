@@ -12,12 +12,9 @@ Yuanqi Du received Bachelor's degree in Computer Science from George Mason Unive
 
 **Drop me an email if you'd like to talk about/collaborate on any of the following research topics with me.**
 
-**I am open to opportunities in paper review, tutorial, workshop organization in data mining, machine learning, bioinformatics, computational chemistry related topics (especially deep generative models, graph neural networks and AI for sciences).**
+**I am open to opportunities in paper review, tutorial, workshop organization in deep generative models, graph neural networks and AI for sciences.**
 
-
-Check out my [CV](https://yuanqidu.github.io/cv/)
-and [a pdf version](https://yuanqidu.github.io/files/Yuanqi_Du_CV.pdf).
-
+Check out my [CV](https://yuanqidu.github.io/files/Yuanqi_Du_CV.pdf).
 
 **Research Interests**
   * Deep Graph Learning

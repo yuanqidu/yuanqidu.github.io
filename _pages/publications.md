@@ -63,8 +63,10 @@ In ML4Molecules workshop 2021.
 <!--In *NeurIPS* Deep Generative Models and Applications workshop 2021.-->
 * [Physics-Augmented Learning: A New Paradigm Beyond Physics-Informed Learning](https://arxiv.org/abs/2109.13901).  
 Ziming Liu, Yunyue Chen, **Yuanqi Du**, Max Tegmark.  
-In *NeurIPS* AI for Science workshop 2021.
-
+In *NeurIPS* AI for Science workshop 2021.  
+* Graph-based Ensemble Machine Learning for Student Performance Prediction.  
+Yinkai Wang, Aowei Ding, Kaiyi Guan, Shixi Wu, **Yuanqi Du**.  
+In *AAAI* AI for Education workshop 2022.
 
 Abstracts
 ======
