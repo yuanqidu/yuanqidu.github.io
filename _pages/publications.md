@@ -76,8 +76,6 @@ In *AAAI* Conference on Artificial Intelligence (AAAI) 2020 (Student Abstract).
 
 Under review
 ======
-* Spatiotemporal Graph Generative Representation Learning.  
-**Yuanqi Du**, Xiaojie Guo, Hengning Cao, Yanfang Ye, Liang Zhao.
 
 * Equivariant Vector Field Network for Dynamics Modeling.  
 Weitao Du\*, He Zhang\*, **Yuanqi Du**, Wei Chen, Bin Shao, Tie-Yan Liu.
