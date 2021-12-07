@@ -22,7 +22,7 @@ Presented in *NeurIPS* 2021 DGMs workshop.
 
 * [GraphGT: Machine Learning Datasets for Graph Generation and Transformation](https://openreview.net/forum?id=NYgt9vcdyjm).  
 **Yuanqi Du**\*, Shiyu Wang\*, Xiaojie Guo, Hengning Cao, Shujie Hu, Junji Jiang, Aishwarya Varala, Abhinav Angirekula, Liang Zhao.  
-In Neural Information Processing Systems (*NeurIPS*) 2021.
+In Neural Information Processing Systems (*NeurIPS*) 2021 Datasets and Benchmarks track.
 * [Deep Generative Model for Spatial Networks](http://cs.emory.edu/~lzhao41/materials/papers/KDD21__Spatial_Graphs_Disentanglement_preprinted.pdf).  
 Xiaojie Guo\*, **Yuanqi Du**\*, Liang Zhao.  
 In ACM SIGKDD Conference on Knowledge Discovery and Data Mining (*KDD*) 2021.
