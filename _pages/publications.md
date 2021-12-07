@@ -19,7 +19,6 @@ Conferences
 **Yuanqi Du**, Xiaojie Guo, Hengning Cao,Yanfang Ye, Liang Zhao.  
 In Thirty-Sixth AAAI Conference on Artificial Intelligence (*AAAI*) 2022.  
 Presented in *NeurIPS* 2021 DGMs workshop.
-
 * [GraphGT: Machine Learning Datasets for Graph Generation and Transformation](https://openreview.net/forum?id=NYgt9vcdyjm).  
 **Yuanqi Du**\*, Shiyu Wang\*, Xiaojie Guo, Hengning Cao, Shujie Hu, Junji Jiang, Aishwarya Varala, Abhinav Angirekula, Liang Zhao.  
 In Neural Information Processing Systems (*NeurIPS*) 2021 Datasets and Benchmarks track.
