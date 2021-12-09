@@ -63,6 +63,7 @@ In *NeurIPS* AI for Science workshop 2021.
 * Graph-based Ensemble Machine Learning for Student Performance Prediction.  
 Yinkai Wang\*, Aowei Ding\*, Kaiyi Guan\*, Shixi Wu, **Yuanqi Du**.  
 In *AAAI* AI for Education workshop 2022.
+In *AAAI* Deep Learning on Graphs workshop 2022.
 
 Abstracts
 ======
