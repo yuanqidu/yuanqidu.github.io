@@ -24,6 +24,7 @@ Check out my [CV](https://yuanqidu.github.io/files/Yuanqi_Du_CV.pdf).
   * Machine Learning for Discovery 
   
 **News!**
+* 12/21 Paper titled "Interpretable Molecular Graph Generation via Monotonic Constraints" has been accepted in *SDM* 2022.
 * 12/21 Excited to announce that we (Mr. Yuanqi Du, Prof. Adji Bousso Dieng, Prof. Yoon Kim, Dr. Rianne van den berg, Prof. Yoshua Bengio) are hosting the second [Deep Generative Models for Highly Structured Data workshop](https://deep-gen-struct.github.io/) with ICLR 2022, more information will come out soon!
 * 12/21 Paper titled "Disentangled Spatiotemporal Graph Generative Model" has been accepted in *AAAI* 2022.
 * 11/21 Two papers titled "Interpreting Molecular Space with Deep Generative Models" (**oral**) and "Interpretable Molecular Graph Generation via Monotonic Constraints" have been accepted in *ELLIS ML4Molecules Workshop 2021*.

@@ -19,6 +19,10 @@ Conferences
 **Yuanqi Du**\*, Xiaojie Guo\*, Hengning Cao, Yanfang Ye, Liang Zhao.  
 In Thirty-Sixth AAAI Conference on Artificial Intelligence (*AAAI*) 2022.  
 Presented in *NeurIPS* 2021 DGMs workshop.
+* Interpretable Molecular Graph Generation via Monotonic Constraints.  
+**Yuanqi Du**, Xiaojie Guo, Amarda Shehu, Liang Zhao. 
+In SIAM International Conference on Data Mining (*SDM*) 2022.
+In ML4Molecules workshop 2021.
 * [GraphGT: Machine Learning Datasets for Graph Generation and Transformation](https://openreview.net/forum?id=NYgt9vcdyjm).  
 **Yuanqi Du**\*, Shiyu Wang\*, Xiaojie Guo, Hengning Cao, Shujie Hu, Junji Jiang, Aishwarya Varala, Abhinav Angirekula, Liang Zhao.  
 In Neural Information Processing Systems (*NeurIPS*) 2021 Datasets and Benchmarks track.
@@ -54,9 +58,6 @@ Workshops
 * Interpreting Molecular Space with Deep Generative Models.  
 **Yuanqi Du**, Xian Liu, Shengchao Liu, Jieyu Zhang, Bolei Zhou.  
 In ML4Molecules workshop 2021. (**oral**)
-* Interpretable Molecular Graph Generation via Monotonic Constraints.  
-**Yuanqi Du**, Xiaojie Guo, Amarda Shehu, Liang Zhao.  
-In ML4Molecules workshop 2021.
 * [Physics-Augmented Learning: A New Paradigm Beyond Physics-Informed Learning](https://arxiv.org/abs/2109.13901).  
 Ziming Liu, Yunyue Chen, **Yuanqi Du**, Max Tegmark.  
 In *NeurIPS* AI for Science workshop 2021.  
