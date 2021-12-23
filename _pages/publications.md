@@ -50,7 +50,7 @@ In **Bioinformatics Advances** 2021.
 
 * [Generative Adversarial Learning of Protein Tertiary Structures](https://www.mdpi.com/1420-3049/26/5/1209).  
 Taseef Rahman, **Yuanqi Du**, Liang Zhao, Amarda Shehu.  
-In *Molecules** 2021, 26(5), 1209.
+In **Molecules** 2021, 26(5), 1209.
 
 
 Workshops
