@@ -23,6 +23,9 @@ Presented in *NeurIPS* 2021 DGMs workshop.
 **Yuanqi Du**\*, Xiaojie Guo\*, Amarda Shehu, Liang Zhao.  
 In SIAM International Conference on Data Mining (**SDM**) 2022.  
 Presented in ML4Molecules workshop 2021.
+* Semi-supervised Pseudo-healthy Image Synthesis via Confidence Augmentation.  
+**Yuanqi Du**, Quan Quan, Hu Han, S. Kevin Zhou.  
+In International Symposium on Biomedical Imaging (**ISBI**) 2022.
 * [GraphGT: Machine Learning Datasets for Graph Generation and Transformation](https://openreview.net/forum?id=NYgt9vcdyjm).  
 **Yuanqi Du**\*, Shiyu Wang\*, Xiaojie Guo, Hengning Cao, Shujie Hu, Junji Jiang, Aishwarya Varala, Abhinav Angirekula, Liang Zhao.  
 In Neural Information Processing Systems (**NeurIPS**) 2021 Datasets and Benchmarks track.
