@@ -23,9 +23,9 @@ Research experience
 <!--  * Advisor: [Adji Bousso Dieng](https://www.linkedin.com/in/diengadji45/?locale=en_US)-->
 
 * Visiting Student, June 2021 - Present
-* University of Amsterdam (AMLAB & AI4 Science)
-* Chemical Reaction Modeling
-* Advisor: [Max Welling](https://staff.fnwi.uva.nl/m.welling/)
+  * University of Amsterdam (AMLAB & AI4 Science)
+  * Chemical Reaction Modeling
+  * Advisor: [Max Welling](https://staff.fnwi.uva.nl/m.welling/)
   
 * Researcher, Oct 2021 - Present
   * [DP Technology](https://www.dp.tech/)
