@@ -87,13 +87,10 @@ Xiaojie Guo\*, **Yuanqi Du**\*, Zheng Zhang, Liang Zhao.
 * ROMNet: Renovate the Old Memories.  
 Runsheng Xu\*, Zhengzhong Tu\*, **Yuanqi Du**\*, Xiaoyu Dong, Jinlong Li, Zibo Meng, Jiaqi Ma, Hongkai Yu.  
 
-* Semi-supervised Pseudo-healthy Image Synthesis via Confidence Augmentation.  
-**Yuanqi Du**, Quan Quan, Hu Han, S. Kevin Zhou.
-
 Work-in-progress
 ======
 * Facilitating Fundamental Science with AI.  
-AI4Science Community: Yoshua Bengio, Payal Chandak, **Yuanqi Du**, Tianfan Fu, Wenhao Gao, Shirley Ho, Kexin Huang, Joan Lasenby, Shengchao Liu, Tie-Yan Liu, Ziming Liu, Debora Marks, Irina Rish, Hanchen Wang, Adrian Weller, Max Welling, Petar Veličković, Marinka Zitnik (in alphabetical order)
+AI4Science Community: Yoshua Bengio, Payal Chandak, **Yuanqi Du**, Tianfan Fu, Wenhao Gao, Shirley Ho, Kexin Huang, Joan Lasenby, Shengchao Liu, Tie-Yan Liu, Ziming Liu, Debora Marks, Irina Rish, Hanchen Wang, Adrian Weller, Max Welling, Petar Veličković, Marinka Zitnik (**in alphabetical order**)
 
 
 <!---->
