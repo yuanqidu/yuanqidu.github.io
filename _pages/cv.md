@@ -21,16 +21,16 @@ Research experience
 <!--  * Princeton University -->
 <!--  * Deep Generative Models-->
 <!--  * Advisor: [Adji Bousso Dieng](https://www.linkedin.com/in/diengadji45/?locale=en_US)-->
+
+* Visiting Student, June 2021 - Present
+* University of Amsterdam (AMLAB & AI4 Science)
+* Chemical Reaction Modeling
+* Advisor: [Max Welling](https://staff.fnwi.uva.nl/m.welling/)
   
 * Researcher, Oct 2021 - Present
   * [DP Technology](https://www.dp.tech/)
   * AI for Drug Discovery
   * Advisor: [Linfeng Zhang](https://scholar.google.com/citations?user=jk7qwmcAAAAJ&hl=zh-CN)
-
-* Visiting Student, June 2021 - Present
-  * University of Amsterdam (AMLAB & AI4 Science)
-  * Chemical Reaction Modeling
-  * Advisor: [Max Welling](https://staff.fnwi.uva.nl/m.welling/)
 
 * Visiting Student, June 2021 - Dec 2021
   * The Chinese University of Hong Kong (MM Lab)
