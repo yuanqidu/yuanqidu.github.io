@@ -24,11 +24,10 @@ Volunteer & Leadership
 ======
 * ICLR, ICML, KDD 2021 Student Volunteer
 * NSF REU Summer 2021 Student Mentor (GMU)
-* [Vision Organization](https://vision-npo.github.io/), Founder
+* [*Vision Organization*](https://vision-npo.github.io/), Founder
 * AAAI 2021 Student Technical Volunteer Program
 * Microsoft Learn Student Ambassador (e.g. Organize Intro to AI and ML Workshop)
-* Contribute to [DLG4NLP](https://dlg4nlp.github.io/) 
-* Contribute to [GNN-Book](https://graph-neural-networks.github.io/)
+* Contribute to [*DLG4NLP*](https://dlg4nlp.github.io/) and [*GNN-Book*](https://graph-neural-networks.github.io/)
 * Contribute to the open-source community (e.g. DeepChem) 
 * Student Member of ACM, IEEE, IEEE Computer Society, AAAI, SIAM, ASA Community
 * GMU Engineering Week Panelist, 2021 Spring
