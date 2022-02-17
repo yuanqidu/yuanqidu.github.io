@@ -60,7 +60,7 @@ Workshops
 ======
 * Interpreting Molecular Space with Deep Generative Models.  
 **Yuanqi Du**, Xian Liu, Shengchao Liu, Jieyu Zhang, Bolei Zhou.  
-In ML4Molecules workshop 2021. (**oral**)
+In ELLIS ML4Molecules workshop 2021. (**oral**)
 * [Physics-Augmented Learning: A New Paradigm Beyond Physics-Informed Learning](https://arxiv.org/abs/2109.13901).  
 Ziming Liu, Yunyue Chen, **Yuanqi Du**, Max Tegmark.  
 In *NeurIPS* AI for Science workshop 2021.  
