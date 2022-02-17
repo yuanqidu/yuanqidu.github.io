@@ -31,7 +31,7 @@ Yuanqi Du received Bachelor's degree in Computer Science from George Mason Unive
 In Thirty-Sixth AAAI Conference on Artificial Intelligence (**AAAI**) 2022.  
 * Interpreting Molecular Space with Deep Generative Models.  
 **Yuanqi Du**, Xian Liu, Shengchao Liu, Jieyu Zhang, Bolei Zhou.  
-In ELLIS ML4Molecules workshop 2021. (**oral**)
+In ELLIS ML4Molecules workshop 2021. (**Oral**)
 * GraphGT: Machine Learning Datasets for Graph Generation and Transformation.  
 **Yuanqi Du**\*, Shiyu Wang\*, Xiaojie Guo, Hengning Cao, Shujie Hu, Junji Jiang, Aishwarya Varala, Abhinav Angirekula, Liang Zhao.  
 In Neural Information Processing Systems (**NeurIPS**) 2021 Datasets and Benchmarks track.
