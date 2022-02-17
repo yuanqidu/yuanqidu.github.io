@@ -20,23 +20,19 @@ Yuanqi Du received Bachelor's degree in Computer Science from George Mason Unive
   * Machine Learning for Discovery 
   
 **News!**
-* 12/21 Excited to announce that we (Mr. Yuanqi Du, Prof. Adji Bousso Dieng, Prof. Yoon Kim, Dr. Rianne van den berg, Prof. Yoshua Bengio) are hosting the second [Deep Generative Models for Highly Structured Data workshop](https://deep-gen-struct.github.io/) with ICLR 2022, welcome to join us (submission deadline has been extended to March 7)!
-* 10/21[**GraphGT**](https://graphgt.github.io/), the first Machine Learning Datasets for Graph Generation and Transformation, has been accepted in *NeurIPS 2021*. GraphGT has an easy-to-use [Python API](https://github.com/yuanqidu/GraphGT) and a graph generation [literature and resource](https://github.com/yuanqidu/awesome-graph-generation) collection. Please Star if you find helpful!
+* 12/21 Excited to announce that we (myself, Prof. Adji Bousso Dieng, Prof. Yoon Kim, Dr. Rianne van den berg, Prof. Yoshua Bengio) are hosting the second [*Deep Generative Models for Highly Structured Data workshop*](https://deep-gen-struct.github.io/) with ICLR 2022, welcome to join us (submission deadline has been extended to March 7)!
+* 10/21 [*GraphGT*](https://graphgt.github.io/), the first [*Machine Learning Datasets for Graph Generation and Transformation*](https://graphgt.github.io/), has been accepted in *NeurIPS 2021*. Welcome feedback and dataset contribution!
 * 7/21 I am proud to announce that the first [*AI for Science* workshop](https://ai4sciencecommunity.github.io/) will be held with NeurIPS 2021. We focus on the gaps that stifle advacenment of AI for Science this year. We invite a list of poineers in AI for Science for great talks and panels. We also introduce very exciting Attention Track, Mentorship, and Award programs. Welcome to submit your work and join us in December! Follow us on [Twitter](https://twitter.com/AI_for_Science).
 
 **Selected Publications**
 
-* Disentangled Spatiotemporal Graph Generative Model.  
-**Yuanqi Du**\*, Xiaojie Guo\*, Hengning Cao, Yanfang Ye, Liang Zhao.  
+* Disentangled Spatiotemporal Graph Generative Model. **Yuanqi Du**\*, Xiaojie Guo\*, Hengning Cao, Yanfang Ye, Liang Zhao.  
 In Thirty-Sixth AAAI Conference on Artificial Intelligence (**AAAI**) 2022.  
-* Interpreting Molecular Space with Deep Generative Models.  
-**Yuanqi Du**, Xian Liu, Shengchao Liu, Jieyu Zhang, Bolei Zhou.  
+* Interpreting Molecular Space with Deep Generative Models. **Yuanqi Du**, Xian Liu, Shengchao Liu, Jieyu Zhang, Bolei Zhou.  
 In ELLIS ML4Molecules workshop 2021. (**Oral**)
-* GraphGT: Machine Learning Datasets for Graph Generation and Transformation.  
-**Yuanqi Du**\*, Shiyu Wang\*, Xiaojie Guo, Hengning Cao, Shujie Hu, Junji Jiang, Aishwarya Varala, Abhinav Angirekula, Liang Zhao.  
+* GraphGT: Machine Learning Datasets for Graph Generation and Transformation. **Yuanqi Du**\*, Shiyu Wang\*, et al.  
 In Neural Information Processing Systems (**NeurIPS**) 2021 Datasets and Benchmarks track.
-* Deep Generative Model for Spatial Networks.  
-Xiaojie Guo\*, **Yuanqi Du**\*, Liang Zhao.  
+* Deep Generative Model for Spatial Networks. Xiaojie Guo\*, **Yuanqi Du**\*, Liang Zhao.  
 In ACM SIGKDD Conference on Knowledge Discovery and Data Mining (**KDD**) 2021.
   
 
