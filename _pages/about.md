@@ -38,35 +38,5 @@ In Neural Information Processing Systems (**NeurIPS**) 2021 Datasets and Benchma
 * Deep Generative Model for Spatial Networks.  
 Xiaojie Guo\*, **Yuanqi Du**\*, Liang Zhao.  
 In ACM SIGKDD Conference on Knowledge Discovery and Data Mining (**KDD**) 2021.
-<!-- * 12/21 Paper titled "Disentangled Spatiotemporal Graph Generative Model" has been accepted in *AAAI* 2022.
-* 11/21 Two papers titled "Interpreting Molecular Space with Deep Generative Models" (**oral**) and "Interpretable Molecular Graph Generation via Monotonic Constraints" have been accepted in *ELLIS ML4Molecules Workshop 2021*.
-* 11/21 Paper titled "Generating Tertiary Protein Structures via Interpretable Graph Variational Autoencoders" has been accepted in *Bioinformatics Advances*.
-* 10/21 Paper titled "Deep Latent-Variable Models for Controllable Molecule Generation" has been accepted in *BIBM 2021*.
-* 9/21 We are organizing the seventh [Deep Learning on Graphs](https://deep-learning-graphs.bitbucket.io/dlg-aaai22/index.html) workshop with *AAAI 2022*, welcome to submit your work! -->
-<!--* 8/21 We release the first Machine Learning Datasets for Graph Generation and Transformation [**GraphGT**](https://graphgt.github.io/) with an easy-to-use [Python API](https://github.com/yuanqidu/GraphGT) and a graph generation [literature and resource](https://github.com/yuanqidu/awesome-graph-generation) collection. Please Star if you find helpful!-->
-
-<!-- * 5/21 I will be visiting University of Amsterdam, working with [Dr. Max Welling](https://staff.fnwi.uva.nl/m.welling/) starting June 2021!!!
-* 5/21 I will join CUHK as a research intern, working with [Dr. Bolei Zhou](http://bzhou.ie.cuhk.edu.hk/) starting June 2021!!!
-* 5/21 After spending six wonderful months at MSRA, I receive a Star of Tomorrow Award!
-* 5/21 Paper titled "Deep Generative Model for Spatial Networks", Xiaojie Guo\*, **Yuanqi Du**\*, Liang Zhao, is accpeted in *KDD 2021*, welcome to follow our work!!! -->
-<!--* 5/21 Serve as PCs for BioKDD 2021, DLG-KDD 2021, DeepSpatial-KDD 2021 and IRS-KDD 2021.-->
-<!--* 4/21 Congrats to my mentored undergraduates on the acceptance of paper titled "Ensemble Machine Learning System for Student Academic Performance Prediction" in W4U workshop @EDM 2021.-->
-<!--* 2/21 Paper titled "Generative Adversarial Learning of Protein Tertiary Structures" accepted in Molecules [IF: 3.267], Taseef Rahman, **Yuanqi Du**, Liang Zhao, Amarda Shehu\*.-->
-<!--* 1/21 Paper titled "Interpretable Property Controlling Molecule Generation" accepted in Scientific Discovery with AI Workshop as an **oral presentation**, co-located with AAAI 2021.-->
-<!-- * 1/21 Paper titled "Property Controllable Variational Autoencoder via Invertible Mutual Dependence", Xiaojie Guo, **Yuanqi Du**, Liang Zhao\*, accepted in ICLR 2021.
-* 12/20 Paper titled "Deep Learning to Segment Pelvic Bones: Large-scale CT Datasets and Baseline Models" is accepted in IPCAI 2021 and will be published in IJCARS.   -->
-<!--* 11/20 Accepted to be a Microsoft Learn Student Ambassador!-->
-<!--* 11/20 Accepted to AAAI 2021 Student Technical Volunteer Program!-->
-<!--* 11/20 I am glad to receive a NeurIPS 2020 Travel Award. Excited to attend NeurIPS 2020!-->
-<!--* 10/20 I am glad to receive the AIJ AIIDE 2020 Attendance Fellowship! Thanks, AIJ! Can't wait to see the battle between AI agents and human players in strategy games like StarCraft!-->
-<!--* 09/20 Our [DeepASL Dataset](https://sites.google.com/view/deepasldataset/home) is publicly available, the dataset constains ASL single-word signs, sentences and non-manual markers collected from Professional ASL users using an FMCW Signal Sensor-->
-<!--* 07/20 Paper titled "Interpretable Molecule Generation via Disentanglement Learning" accepted at ACM Conference of Bioinformatics and Computational Biology (BCB) Workshops: Computational Structural Biology Workshop (CSBW) 2020, 8 pages, in proceedings of ACM BCB 20-->
-<!--* 07/20 Paper titled "From Interatomic Distances to Protein Tertiary Structures with a Deep Convolutional Neural Network" accepted at ACM Conference of Bioinformatics and Computational Biology (BCB) Workshops: Computational Structural Biology Workshop (CSBW) 2020, 8 pages, in proceedings of ACM BCB 20-->
-
-<!--**Preprints (under review)**-->
-<!--* Disentangled Deep Generative Model for Spatial Networks, submitted to a major Data Mining conference, Xiaojie Guo\*, **Yuanqi Du**\*, Liang Zhao.-->
-<!--* Controllable Molecular Graph Generation via Monotonic Constraints, submitted to a major Data Mining conference, **Yuanqi Du**, Xiaojie Guo, Amarda Shehu, Liang Zhao.-->
-<!--* Where is the disease? Semi-supervised pseudo-normality synthesis from an abnormal image, submitted to a major Medical Image Analysis conference, **Yuanqi Du**, Quan Quan, Han Hu, S. Kevin Zhou.-->
-<!--* CT Film Recovery via Disentangling Geometric Deformation and Photometric Degradation: Simulated Datasets and Deep Models, submitted to a major Medical Image Analysis conference, Quan Quan, Qiyuan Wang, Liu Li, **Yuanqi Du**, S. Kevin Zhou.-->
   
 
