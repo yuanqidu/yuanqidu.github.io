@@ -24,7 +24,7 @@ Research experience
 
 * Visiting Student, June 2021 - Present
   * University of Amsterdam (AMLAB & AI4 Science)
-  * Chemical Reaction Modeling
+  * AI for Molecule Simulation
   * Advisor: [Max Welling](https://staff.fnwi.uva.nl/m.welling/)
   
 * Researcher, Oct 2021 - Present
@@ -45,12 +45,12 @@ Research experience
 * Research Intern, Nov 2020 - May 2021
   * Microsoft Research Asia
   * Protein Structure Prediction
-  * Mentor: Jianwei Zhu
+  * Mentor: [Jianwei Zhu](https://www.microsoft.com/en-us/research/people/jianwzhu/)
   
 * Visiting Student, Aug 2020 - Dec 2020
   * Chinese Academy of Sciences, Institute of Computing Technology
   * Medical Image Analysis
-  * Advisor: [Hu Han](https://sites.google.com/site/huhanhomepage/), [Kevin Zhou](http://people.ucas.edu.cn/~skevinzhou?language=en)
+  * Advisor: [Hu Han](https://sites.google.com/site/huhanhomepage/), [S. Kevin Zhou](http://people.ucas.edu.cn/~skevinzhou?language=en)
 
 * Research Assistant, Apr 2019 - May 2020
   * George Mason University
