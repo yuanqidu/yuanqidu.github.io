@@ -26,7 +26,7 @@ Yuanqi Du received Bachelor's degree in Computer Science from George Mason Unive
 
 **Selected Publications**
 
-* Disentangled Spatiotemporal Graph Generative Model. **Yuanqi Du**\*, Xiaojie Guo\*, Hengning Cao, Yanfang Ye, Liang Zhao. In Thirty-Sixth AAAI Conference on Artificial Intelligence (*AAAI*) 2022.  
+* Disentangled Spatiotemporal Graph Generative Model. **Yuanqi Du**\*, Xiaojie Guo\*, Hengning Cao, Yanfang Ye, Liang Zhao. In Thirty-Sixth AAAI Conference on Artificial Intelligence (*AAAI*) 2022. (**Oral**)
 * Interpreting Molecular Space with Deep Generative Models. **Yuanqi Du**, Xian Liu, Shengchao Liu, Jieyu Zhang, Bolei Zhou. In ELLIS *ML4Molecules* workshop 2021. (**Oral**)
 * GraphGT: Machine Learning Datasets for Graph Generation and Transformation. **Yuanqi Du**\*, Shiyu Wang\*, et al. In Neural Information Processing Systems (*NeurIPS*) 2021 Datasets and Benchmarks track.
 * Deep Generative Model for Spatial Networks. Xiaojie Guo\*, **Yuanqi Du**\*, Liang Zhao. In ACM SIGKDD Conference on Knowledge Discovery and Data Mining (*KDD*) 2021.

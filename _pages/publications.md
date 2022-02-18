@@ -17,7 +17,7 @@ Conferences
 ======
 * Disentangled Spatiotemporal Graph Generative Model.  
 **Yuanqi Du**\*, Xiaojie Guo\*, Hengning Cao, Yanfang Ye, Liang Zhao.  
-In Thirty-Sixth AAAI Conference on Artificial Intelligence (**AAAI**) 2022.  
+In Thirty-Sixth AAAI Conference on Artificial Intelligence (**AAAI**) 2022. (**Oral**) 
 Presented in *NeurIPS* 2021 DGMs workshop.
 * Interpretable Molecular Graph Generation via Monotonic Constraints.  
 **Yuanqi Du**\*, Xiaojie Guo\*, Amarda Shehu, Liang Zhao.  
