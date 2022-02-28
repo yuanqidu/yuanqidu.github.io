@@ -69,13 +69,13 @@ Yinkai Wang\*, Aowei Ding\*, Kaiyi Guan\*, Shixi Wu, **Yuanqi Du**.
 In *AAAI* AI for Education workshop 2022.
 In *AAAI* Deep Learning on Graphs workshop 2022.
 
-Abstracts
+<!-- Abstracts
 ======
 * [American Sign Language Recognition Using an FMCW Wireless Sensor](http://yuanqidu.github.io/files/American_Sign_Language_Recognition_Using_an_FMCW_Wireless_Sensor.pdf).  
 **Yuanqi Du**, Nguyen Dang, Riley Wilkerson, Parth Pathak, Huzefa Rangwala, Jana Kosecka.  
-In *AAAI* Conference on Artificial Intelligence (AAAI) 2020 (Student Abstract).
+In *AAAI* Conference on Artificial Intelligence (AAAI) 2020 (Student Abstract). -->
 
-Under review
+<!-- Under review
 ======
 
 * Equivariant Vector Field Network for Dynamics Modeling.  
@@ -90,7 +90,7 @@ Runsheng Xu\*, Zhengzhong Tu\*, **Yuanqi Du**\*, Xiaoyu Dong, Jinlong Li, Zibo M
 Work-in-progress
 ======
 * Facilitating Fundamental Science with AI.  
-AI4Science Community: Yoshua Bengio, Payal Chandak, **Yuanqi Du**, Tianfan Fu, Wenhao Gao, Shirley Ho, Kexin Huang, Joan Lasenby, Shengchao Liu, Tie-Yan Liu, Ziming Liu, Debora Marks, Irina Rish, Hanchen Wang, Adrian Weller, Max Welling, Petar Veličković, Marinka Zitnik (**in alphabetical order**)
+AI4Science Community: Yoshua Bengio, Payal Chandak, **Yuanqi Du**, Tianfan Fu, Wenhao Gao, Shirley Ho, Kexin Huang, Joan Lasenby, Shengchao Liu, Tie-Yan Liu, Ziming Liu, Debora Marks, Irina Rish, Hanchen Wang, Adrian Weller, Max Welling, Petar Veličković, Marinka Zitnik (**in alphabetical order**) -->
 
 
 <!---->
