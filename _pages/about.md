@@ -20,6 +20,7 @@ Yuanqi Du received Bachelor's degree in Computer Science from George Mason Unive
   * Machine Learning for Discovery 
   
 **News!**
+* 3/22 We have recenlty been working on a new initiative, [*Learning on Graphs conference*](https://logconference.github.io/) along with a stellar list of advisory board members where we aim to advance graph machine learning as a community and emphasize on the review quality! Any thoughts are welcome!
 * 12/21 Excited to announce that we (myself, Prof. Adji Bousso Dieng, Prof. Yoon Kim, Dr. Rianne van den berg, Prof. Yoshua Bengio) are hosting the second [*Deep Generative Models for Highly Structured Data workshop*](https://deep-gen-struct.github.io/) with ICLR 2022, welcome to join us (submission deadline has been extended to March 7)!
 * 10/21 [*GraphGT*](https://graphgt.github.io/), the first [*Machine Learning Datasets for Graph Generation and Transformation*](https://graphgt.github.io/), has been accepted in *NeurIPS 2021*. Welcome feedback and dataset contribution!
 * 7/21 I am proud to announce that the first [*AI for Science* workshop](https://ai4sciencecommunity.github.io/) will be held with NeurIPS 2021. We focus on the gaps that stifle advacenment of AI for Science this year. We invite a list of poineers in AI for Science for great talks and panels. We also introduce very exciting Attention Track, Mentorship, and Award programs. Welcome to submit your work and join us in December! Follow us on [Twitter](https://twitter.com/AI_for_Science).
