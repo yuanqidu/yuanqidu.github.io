@@ -32,9 +32,8 @@ In ACM SIGKDD Conference on Knowledge Discovery and Data Mining (**KDD**) 2021.
 Xiaojie Guo, **Yuanqi Du**, Liang Zhao.  
 In International Conference on Learning Representations (**ICLR**) 2021.
 
-Full List
+Conferences
 ======
-# Conferences
 * [Interpretable Molecular Graph Generation via Monotonic Constraints](https://arxiv.org/pdf/2203.00412.pdf).  
 **Yuanqi Du**\*, Xiaojie Guo\*, Amarda Shehu, Liang Zhao.  
 In SIAM International Conference on Data Mining (**SDM**) 2022.  
@@ -51,14 +50,18 @@ In International Conference on Information Processing in Computer-Assisted Inter
 * [Expressive ASL Recognition using Millimeter-wave Wireless Signals](https://ieeexplore.ieee.org/document/9158441).  
 Panneer Selvam Santhalingam, **Yuanqi Du**, Riley Wilkerson, Al Amin Hosain, Ding Zhang, Parth Pathak, Huzefa Rangwala and Raja Kushalnagar.  
 In International Conference on Sensing, Communication and Networking (**SECON**) 2020.
-# Journals  
+
+Journals 
+======
 * [Generating Tertiary Protein Structures via Interpretable Graph Variational Autoencoders](https://academic.oup.com/bioinformaticsadvances/article/1/1/vbab036/6446026).  
 Xiaojie Guo\*, **Yuanqi Du**\*, Sivani Tadepalli, Liang Zhao, Amarda Shehu.  
 In **Bioinformatics Advances** 2021.
 * [Generative Adversarial Learning of Protein Tertiary Structures](https://www.mdpi.com/1420-3049/26/5/1209).  
 Taseef Rahman, **Yuanqi Du**, Liang Zhao, Amarda Shehu.  
 In **Molecules** 2021, 26(5), 1209.  
-# Workshops
+
+Workshops 
+======
 * [Physics-Augmented Learning: A New Paradigm Beyond Physics-Informed Learning](https://arxiv.org/abs/2109.13901).  
 Ziming Liu, Yunyue Chen, **Yuanqi Du**, Max Tegmark.  
 In *NeurIPS* AI for Science workshop 2021.  
