@@ -11,6 +11,7 @@ List of Services:
 
 Professional Service
 ======
+* Lead Organizer for [*AI for Science*](http://www.ai4science.net/icml22/) workshop with *ICML 2022*.
 * Lead Organizer for [*AI for Science: Mind the Gaps*](https://ai4sciencecommunity.github.io/) workshop with *NeurIPS 2021*.
 * Lead Organizer for [*Deep Generative Models for Highly Structured Data*](https://deep-gen-struct.github.io/) workshop with *ICLR 2022*.
 * Co-oragnize [*DLG 2022*](https://deep-learning-graphs.bitbucket.io/dlg-aaai22/index.html) with *AAAI 2022*.
@@ -25,7 +26,7 @@ Volunteer & Leadership
 * ICLR, ICML, KDD 2021 Student Volunteer
 * NSF REU Summer 2021 Student Mentor (GMU)
 * [*Vision Organization*](https://vision-npo.github.io/), Founder
-* AAAI 2021 Student Technical Volunteer Program
+* AAAI 2021, KDD 2021 Student Technical Team
 * Microsoft Learn Student Ambassador (e.g. Organize Intro to AI and ML Workshop)
 * Contribute to [*DLG4NLP*](https://dlg4nlp.github.io/) and [*GNN-Book*](https://graph-neural-networks.github.io/)
 * Contribute to the open-source community (e.g. DeepChem) 
