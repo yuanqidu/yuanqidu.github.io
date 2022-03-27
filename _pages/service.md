@@ -11,7 +11,7 @@ List of Services:
 
 Professional Service
 ======
-* Lead Organizer for [*AI for Science*](http://www.ai4science.net/icml22/) workshop with *ICML 2022*.
+* Lead Organizer for [*AI for Science: Theories and Foundations*](http://www.ai4science.net/icml22/) workshop with *ICML 2022*.
 * Lead Organizer for [*AI for Science: Mind the Gaps*](https://ai4sciencecommunity.github.io/) workshop with *NeurIPS 2021*.
 * Lead Organizer for [*Deep Generative Models for Highly Structured Data*](https://deep-gen-struct.github.io/) workshop with *ICLR 2022*.
 * Co-oragnize [*DLG 2022*](https://deep-learning-graphs.bitbucket.io/dlg-aaai22/index.html) with *AAAI 2022*.
@@ -36,7 +36,7 @@ Volunteer & Leadership
 
 Review Service
 ======
-* ICML (2022), ICLR (2022), AISTATS (2022), TPAMI (2021), TNNLS (2021), KDD (2021), TKDD (2021), ICDM (2021), CIKM (2021), BMVC (2021), BioKDD (2021), KDD-DLG (2021), KDD-IRS (2021), NeurIPS-AI4Sci (2021), ICLR-GTRL (2022)
+* ICML (2022), KDD (2022), ICLR (2022), AISTATS (2022), ICLR-GTRL (2022), CVPR-AICC (2022), TPAMI (2021), TNNLS (2021), KDD (2021), TKDD (2021), ICDM (2021), CIKM (2021), BMVC (2021), BioKDD (2021), KDD-DLG (2021), KDD-IRS (2021), NeurIPS-AI4Sci (2021)
 
 
 
