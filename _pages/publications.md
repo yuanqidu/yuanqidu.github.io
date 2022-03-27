@@ -54,7 +54,7 @@ In International Conference on Sensing, Communication and Networking (**SECON**)
 Journals 
 ======
 * Small Molecule Generation via Disentangled Representation Learning.  
-Yuanqi Du, Xiaojie Guo, Yinkai Wang, Amarda Shehu, Liang Zhao.  
+**Yuanqi Du**, Xiaojie Guo, Yinkai Wang, Amarda Shehu, Liang Zhao.  
 In **Bioinformatics** 2022.
 * [Generating Tertiary Protein Structures via Interpretable Graph Variational Autoencoders](https://academic.oup.com/bioinformaticsadvances/article/1/1/vbab036/6446026).  
 Xiaojie Guo\*, **Yuanqi Du**\*, Sivani Tadepalli, Liang Zhao, Amarda Shehu.  
