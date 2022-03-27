@@ -71,7 +71,7 @@ In *NeurIPS* AI for Science workshop 2021.
 
 Preprints
 ======
-* A Survey on Deep Graph Generation: Methods and Applications.  
+* [A Survey on Deep Graph Generation: Methods and Applications](https://arxiv.org/pdf/2203.06714.pdf).  
 **Yuanqi Du\***, Yanqiao Zhu\*, Yinkai Wang\*, Jieyu Zhang, Qiang Liu, Shu Wu.  
 Preprint, 2022.
 * [A Survey of Pretraining on Graphs: Taxonomy, Methods, and Applications](https://arxiv.org/abs/2202.07893).  
