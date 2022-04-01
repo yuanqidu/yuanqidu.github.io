@@ -15,6 +15,12 @@ You can also find my recent publications on my [Google Scholar profile](https://
 
 Selected Publications
 ======
+* [MolGenSurvey: A Systematic Survey in Machine Learning Models for Molecule Design](https://arxiv.org/pdf/2203.14500.pdf).  
+**Yuanqi Du**\*, Tianfan Fu\*, Jimeng Sun, Shengchao Liu.  
+In arXiv preprint arXiv:2203.14500 2022.  
+* [A Survey on Deep Graph Generation: Methods and Applications](https://arxiv.org/pdf/2203.06714.pdf).  
+**Yuanqi Du\***, Yanqiao Zhu\*, Yinkai Wang\*, Jieyu Zhang, Qiang Liu, Shu Wu.  
+In arXiv preprint arXiv:2203.06714 (2022).  
 * [Disentangled Spatiotemporal Graph Generative Models](https://arxiv.org/abs/2203.00411).  
 **Yuanqi Du**\*, Xiaojie Guo\*, Hengning Cao, Yanfang Ye, Liang Zhao.  
 In Thirty-Sixth AAAI Conference on Artificial Intelligence (**AAAI**) 2022. (**Oral**)  
@@ -71,9 +77,6 @@ In *NeurIPS* AI for Science workshop 2021.
 
 Preprints
 ======
-* [A Survey on Deep Graph Generation: Methods and Applications](https://arxiv.org/pdf/2203.06714.pdf).  
-**Yuanqi Du\***, Yanqiao Zhu\*, Yinkai Wang\*, Jieyu Zhang, Qiang Liu, Shu Wu.  
-Preprint, 2022.
 * [A Survey of Pretraining on Graphs: Taxonomy, Methods, and Applications](https://arxiv.org/abs/2202.07893).  
 Jun Xia, Yanqiao Zhu, **Yuanqi Du**, Stan Li.  
 Preprint, 2022.
