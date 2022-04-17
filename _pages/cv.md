@@ -46,11 +46,6 @@ Research experience
   * Microsoft Research Asia
   * Protein Structure Prediction
   * Mentor: [Jianwei Zhu](https://www.microsoft.com/en-us/research/people/jianwzhu/)
-  
-* Visiting Student, Aug 2020 - Dec 2020
-  * Chinese Academy of Sciences, Institute of Computing Technology
-  * Medical Image Analysis
-  * Advisor: [Hu Han](https://sites.google.com/site/huhanhomepage/), [S. Kevin Zhou](http://people.ucas.edu.cn/~skevinzhou?language=en)
 
 * Research Assistant, Apr 2019 - May 2020
   * George Mason University
