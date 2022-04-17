@@ -24,12 +24,12 @@ Research experience
 
 * Visiting Student, June 2021 - Present
   * University of Amsterdam (AMLAB & AI4 Science)
-  * AI for Molecule Simulation
+  * Molecule Simulation
   * Advisor: [Max Welling](https://staff.fnwi.uva.nl/m.welling/)
   
 * Researcher, Oct 2021 - Present
   * [DP Technology](https://www.dp.tech/)
-  * AI for Drug Discovery
+  * Molecule Simulation
   * Advisor: [Linfeng Zhang](https://scholar.google.com/citations?user=jk7qwmcAAAAJ&hl=zh-CN)
 
 * Visiting Student, June 2021 - Dec 2021
