@@ -7,8 +7,6 @@ redirect_from:
   - /resume
 ---
 
-Check out my [CV](https://yuanqidu.github.io/files/Yuanqi_Du_CV.pdf) 
-
 Education
 ======
 * B.S. in Computer Science, George Mason University, GPA 4.0/4.0, 2017-Expected 2021
