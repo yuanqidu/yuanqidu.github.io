@@ -60,14 +60,6 @@ In IEEE International Conference on Bioinformatics and Biomedicine (**BIBM**) 20
 Xiaojie Guo, **Yuanqi Du**, Liang Zhao.  
 In International Conference on Learning Representations (**ICLR**) 2021.
 
-Protein Generation
-======
-* [Generating Tertiary Protein Structures via Interpretable Graph Variational Autoencoders](https://academic.oup.com/bioinformaticsadvances/article/1/1/vbab036/6446026).  
-Xiaojie Guo\*, **Yuanqi Du**\*, Sivani Tadepalli, Liang Zhao, Amarda Shehu.  
-In **Bioinformatics Advances** 2021.
-* [Generative Adversarial Learning of Protein Tertiary Structures](https://www.mdpi.com/1420-3049/26/5/1209).  
-Taseef Rahman, **Yuanqi Du**, Liang Zhao, Amarda Shehu.  
-In **Molecules** 2021, 26(5), 1209.  
 
 Graph Generation
 ======
@@ -85,6 +77,17 @@ In Neural Information Processing Systems (**NeurIPS**) 2021 Datasets and Benchma
 Xiaojie Guo\*, **Yuanqi Du**\*, Liang Zhao.  
 In ACM SIGKDD Conference on Knowledge Discovery and Data Mining (**KDD**) 2021.
 
+
+Protein Generation
+======
+* [Generating Tertiary Protein Structures via Interpretable Graph Variational Autoencoders](https://academic.oup.com/bioinformaticsadvances/article/1/1/vbab036/6446026).  
+Xiaojie Guo\*, **Yuanqi Du**\*, Sivani Tadepalli, Liang Zhao, Amarda Shehu.  
+In **Bioinformatics Advances** 2021.
+* [Generative Adversarial Learning of Protein Tertiary Structures](https://www.mdpi.com/1420-3049/26/5/1209).  
+Taseef Rahman, **Yuanqi Du**, Liang Zhao, Amarda Shehu.  
+In **Molecules** 2021, 26(5), 1209.  
+
+
 Graph Representation Learning
 ======
 * [A Survey of Pretraining on Graphs: Taxonomy, Methods, and Applications](https://arxiv.org/abs/2202.07893).  
@@ -94,11 +97,13 @@ Preprint, 2022.
 Yanqiao Zhu, Weizhi Xu, Jinghao Zhang, **Yuanqi Du**, Jieyu Zhang, Qiang Liu, Carl Yang, Shu Wu.  
 Preprint, 2021.
 
+
 Physics
 ======
 * [Physics-Augmented Learning: A New Paradigm Beyond Physics-Informed Learning](https://arxiv.org/abs/2109.13901).  
 Ziming Liu, Yunyue Chen, **Yuanqi Du**, Max Tegmark.  
 In *NeurIPS* AI for Science workshop 2021.  
+
 
 Medical Image Analysis
 ======
@@ -108,6 +113,7 @@ In International Symposium on Biomedical Imaging (**ISBI**) 2022.
 * [Deep Learning to Segment Pelvic Bones: Large-scale CT Datasets and Baseline Models](https://arxiv.org/pdf/2012.08721.pdf).  
 Pengbo Liu, Hu Han, **Yuanqi Du**, Heqin Zhu, Yinhao Li, Feng Gu, Honghu Xiao, Jun Li, Chunpeng Zhao, Xinbao Wu, S. Kevin Zhou.  
 In International Conference on Information Processing in Computer-Assisted Interventions (**IPCAI**) 2021, published in International Journal of Computer Assisted Radiology and Surgery (**IJCARS**).
+
 
 American Sign Language Recognition
 ======
