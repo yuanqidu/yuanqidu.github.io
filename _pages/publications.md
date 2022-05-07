@@ -13,7 +13,7 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
 {% include base_path %}
 You can also find my recent publications on my [Google Scholar profile](https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en).
 
-Selected Publications
+<!-- Selected Publications
 ======
 * [MolGenSurvey: A Systematic Survey in Machine Learning Models for Molecule Design](https://arxiv.org/pdf/2203.14500.pdf).  
 **Yuanqi Du**\*, Tianfan Fu\*, Jimeng Sun, Shengchao Liu.  
@@ -36,14 +36,14 @@ Xiaojie Guo\*, **Yuanqi Du**\*, Liang Zhao.
 In ACM SIGKDD Conference on Knowledge Discovery and Data Mining (**KDD**) 2021.
 * [Property Controllable Variational Autoencoder via Invertible Mutual Dependence](https://openreview.net/forum?id=tYxG_OMs9WE).  
 Xiaojie Guo, **Yuanqi Du**, Liang Zhao.  
-In International Conference on Learning Representations (**ICLR**) 2021.
+In International Conference on Learning Representations (**ICLR**) 2021. -->
 
 Molecule Generation
 ======
 * [MolGenSurvey: A Systematic Survey in Machine Learning Models for Molecule Design](https://arxiv.org/pdf/2203.14500.pdf).  
 **Yuanqi Du**\*, Tianfan Fu\*, Jimeng Sun, Shengchao Liu.  
 In arXiv preprint arXiv:2203.14500 2022.  
-* [Interpreting Molecular Space with Deep Generative Models](https://openreview.net/forum?id=6gLEKETxUWp.  
+* [Interpreting Molecular Space with Deep Generative Models](https://openreview.net/forum?id=6gLEKETxUWp).  
 **Yuanqi Du**, Xian Liu, Shengchao Liu, Jieyu Zhang, Bolei Zhou.  
 In ELLIS ML4Molecules workshop 2021. (**Oral**)
 * [Small Molecule Generation via Disentangled Representation Learning](https://academic.oup.com/bioinformatics/advance-article-abstract/doi/10.1093/bioinformatics/btac296/6576627).  
