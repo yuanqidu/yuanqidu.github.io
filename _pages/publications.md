@@ -38,30 +38,30 @@ In ACM SIGKDD Conference on Knowledge Discovery and Data Mining (**KDD**) 2021.
 Xiaojie Guo, **Yuanqi Du**, Liang Zhao.  
 In International Conference on Learning Representations (**ICLR**) 2021.
 
-Conferences
+Molecule Generation
 ======
+* [MolGenSurvey: A Systematic Survey in Machine Learning Models for Molecule Design](https://arxiv.org/pdf/2203.14500.pdf).  
+**Yuanqi Du**\*, Tianfan Fu\*, Jimeng Sun, Shengchao Liu.  
+In arXiv preprint arXiv:2203.14500 2022.  
+* [Interpreting Molecular Space with Deep Generative Models](https://openreview.net/forum?id=6gLEKETxUWp.  
+**Yuanqi Du**, Xian Liu, Shengchao Liu, Jieyu Zhang, Bolei Zhou.  
+In ELLIS ML4Molecules workshop 2021. (**Oral**)
+* [Small Molecule Generation via Disentangled Representation Learning](https://academic.oup.com/bioinformatics/advance-article-abstract/doi/10.1093/bioinformatics/btac296/6576627).  
+**Yuanqi Du**, Xiaojie Guo, Yinkai Wang, Amarda Shehu, Liang Zhao.  
+In **Bioinformatics** 2022.
 * [Interpretable Molecular Graph Generation via Monotonic Constraints](https://arxiv.org/pdf/2203.00412.pdf).  
 **Yuanqi Du**\*, Xiaojie Guo\*, Amarda Shehu, Liang Zhao.  
 In SIAM International Conference on Data Mining (**SDM**) 2022.  
 Presented in ML4Molecules workshop 2021.
-* [Semi-supervised Pseudo-healthy Image Synthesis via Confidence Augmentation](https://arxiv.org/abs/2106.15345).  
-**Yuanqi Du**, Quan Quan, Hu Han, S. Kevin Zhou.  
-In International Symposium on Biomedical Imaging (**ISBI**) 2022.
 * [Deep Latent-Variable Models for Controllable Molecule Generation](https://ieeexplore.ieee.org/document/9669692).  
 **Yuanqi Du**, Yinkai Wang, Fardina Alam, Yuanjie Lu, Xiaojie Guo, Liang Zhao, and Amarda Shehu.  
 In IEEE International Conference on Bioinformatics and Biomedicine (**BIBM**) 2021.
-* [Deep Learning to Segment Pelvic Bones: Large-scale CT Datasets and Baseline Models](https://arxiv.org/pdf/2012.08721.pdf).  
-Pengbo Liu, Hu Han, **Yuanqi Du**, Heqin Zhu, Yinhao Li, Feng Gu, Honghu Xiao, Jun Li, Chunpeng Zhao, Xinbao Wu, S. Kevin Zhou.  
-In International Conference on Information Processing in Computer-Assisted Interventions (**IPCAI**) 2021, published in International Journal of Computer Assisted Radiology and Surgery (**IJCARS**).
-* [Expressive ASL Recognition using Millimeter-wave Wireless Signals](https://ieeexplore.ieee.org/document/9158441).  
-Panneer Selvam Santhalingam, **Yuanqi Du**, Riley Wilkerson, Al Amin Hosain, Ding Zhang, Parth Pathak, Huzefa Rangwala and Raja Kushalnagar.  
-In International Conference on Sensing, Communication and Networking (**SECON**) 2020.
+* [Property Controllable Variational Autoencoder via Invertible Mutual Dependence](https://openreview.net/forum?id=tYxG_OMs9WE).  
+Xiaojie Guo, **Yuanqi Du**, Liang Zhao.  
+In International Conference on Learning Representations (**ICLR**) 2021.
 
-Journals 
+Protein Generation
 ======
-* Small Molecule Generation via Disentangled Representation Learning.  
-**Yuanqi Du**, Xiaojie Guo, Yinkai Wang, Amarda Shehu, Liang Zhao.  
-In **Bioinformatics** 2022.
 * [Generating Tertiary Protein Structures via Interpretable Graph Variational Autoencoders](https://academic.oup.com/bioinformaticsadvances/article/1/1/vbab036/6446026).  
 Xiaojie Guo\*, **Yuanqi Du**\*, Sivani Tadepalli, Liang Zhao, Amarda Shehu.  
 In **Bioinformatics Advances** 2021.
@@ -69,13 +69,23 @@ In **Bioinformatics Advances** 2021.
 Taseef Rahman, **Yuanqi Du**, Liang Zhao, Amarda Shehu.  
 In **Molecules** 2021, 26(5), 1209.  
 
-Workshops 
+Graph Generation
 ======
-* [Physics-Augmented Learning: A New Paradigm Beyond Physics-Informed Learning](https://arxiv.org/abs/2109.13901).  
-Ziming Liu, Yunyue Chen, **Yuanqi Du**, Max Tegmark.  
-In *NeurIPS* AI for Science workshop 2021.  
+* [A Survey on Deep Graph Generation: Methods and Applications](https://arxiv.org/pdf/2203.06714.pdf).  
+**Yuanqi Du\***, Yanqiao Zhu\*, Yinkai Wang\*, Jieyu Zhang, Qiang Liu, Shu Wu.  
+In arXiv preprint arXiv:2203.06714 (2022).  
+* [Disentangled Spatiotemporal Graph Generative Models](https://arxiv.org/abs/2203.00411).  
+**Yuanqi Du**\*, Xiaojie Guo\*, Hengning Cao, Yanfang Ye, Liang Zhao.  
+In Thirty-Sixth AAAI Conference on Artificial Intelligence (**AAAI**) 2022. (**Oral**)  
+Presented in *NeurIPS* 2021 DGMs workshop.
+* [GraphGT: Machine Learning Datasets for Graph Generation and Transformation](https://openreview.net/forum?id=NYgt9vcdyjm).  
+**Yuanqi Du**\*, Shiyu Wang\*, Xiaojie Guo, Hengning Cao, Shujie Hu, Junji Jiang, Aishwarya Varala, Abhinav Angirekula, Liang Zhao.  
+In Neural Information Processing Systems (**NeurIPS**) 2021 Datasets and Benchmarks track.
+* [Deep Generative Model for Spatial Networks](http://cs.emory.edu/~lzhao41/materials/papers/KDD21__Spatial_Graphs_Disentanglement_preprinted.pdf).  
+Xiaojie Guo\*, **Yuanqi Du**\*, Liang Zhao.  
+In ACM SIGKDD Conference on Knowledge Discovery and Data Mining (**KDD**) 2021.
 
-Preprints
+Graph Representation Learning
 ======
 * [A Survey of Pretraining on Graphs: Taxonomy, Methods, and Applications](https://arxiv.org/abs/2202.07893).  
 Jun Xia, Yanqiao Zhu, **Yuanqi Du**, Stan Li.  
@@ -83,6 +93,28 @@ Preprint, 2022.
 * [A Survey on Graph Structure Learning: Progress and Opportunities](https://arxiv.org/abs/2103.03036).  
 Yanqiao Zhu, Weizhi Xu, Jinghao Zhang, **Yuanqi Du**, Jieyu Zhang, Qiang Liu, Carl Yang, Shu Wu.  
 Preprint, 2021.
+
+Physics
+======
+* [Physics-Augmented Learning: A New Paradigm Beyond Physics-Informed Learning](https://arxiv.org/abs/2109.13901).  
+Ziming Liu, Yunyue Chen, **Yuanqi Du**, Max Tegmark.  
+In *NeurIPS* AI for Science workshop 2021.  
+
+Medical Image Analysis
+======
+* [Semi-supervised Pseudo-healthy Image Synthesis via Confidence Augmentation](https://arxiv.org/abs/2106.15345).  
+**Yuanqi Du**, Quan Quan, Hu Han, S. Kevin Zhou.  
+In International Symposium on Biomedical Imaging (**ISBI**) 2022.
+* [Deep Learning to Segment Pelvic Bones: Large-scale CT Datasets and Baseline Models](https://arxiv.org/pdf/2012.08721.pdf).  
+Pengbo Liu, Hu Han, **Yuanqi Du**, Heqin Zhu, Yinhao Li, Feng Gu, Honghu Xiao, Jun Li, Chunpeng Zhao, Xinbao Wu, S. Kevin Zhou.  
+In International Conference on Information Processing in Computer-Assisted Interventions (**IPCAI**) 2021, published in International Journal of Computer Assisted Radiology and Surgery (**IJCARS**).
+
+American Sign Language Recognition
+======
+* [Expressive ASL Recognition using Millimeter-wave Wireless Signals](https://ieeexplore.ieee.org/document/9158441).  
+Panneer Selvam Santhalingam, **Yuanqi Du**, Riley Wilkerson, Al Amin Hosain, Ding Zhang, Parth Pathak, Huzefa Rangwala and Raja Kushalnagar.  
+In International Conference on Sensing, Communication and Networking (**SECON**) 2020.
+
 
 
 <!-- Abstracts
