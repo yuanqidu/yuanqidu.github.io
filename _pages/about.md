@@ -8,7 +8,7 @@ redirect_from:
   - /about.html
 ---
 
-Yuanqi Du is an incoming PhD student at Cornell University. He is now a researcher at a start-up company, DP Technology, working on molecule simulation. He also holds a visiting position at University of Amsterdam with Prof. Max Welling. During the past, he received Bachelor's degree in Computer Science from George Mason University in 2021. He is fortunate to work closely Prof. Bolei Zhou at CUHK (now at UCLA), Prof. Liang Zhao at Emory University, Prof. Amarda Shehu at George Mason University. He has published several papers in top Machine Learning conferences including NeurIPS, ICLR, KDD, AAAI, etc. He is very fascinated by Sciences and very interested in developing ML tools for scientific problems, especially new knowledge discovery. He is actively collaborateing with researchers in chemistry, biology, physics, and machine learning.
+Yuanqi Du is an incoming PhD student at Cornell University. He is now a researcher at a start-up company, DP Technology, working on molecule simulation. He also holds a visiting position at University of Amsterdam with Prof. Max Welling. During the past, he received Bachelor's degree in Computer Science from George Mason University in 2021. He is fortunate to work closely Prof. Bolei Zhou at CUHK (now at UCLA), Prof. Liang Zhao at Emory University, Prof. Amarda Shehu at George Mason University. He has published several papers in top Machine Learning conferences including NeurIPS, ICML, ICLR, KDD, AAAI, etc. He is very fascinated by Sciences and very interested in developing ML tools for scientific problems, especially new knowledge discovery. He is actively collaborateing with researchers in chemistry, biology, physics, and machine learning.
 
 **I am always open to discussions about interesting ideas, drop me an email if you'd like to talk/collaborate about any of the following research topics with me.**
 
@@ -19,6 +19,7 @@ Yuanqi Du is an incoming PhD student at Cornell University. He is now a research
   * Machine Learning for Discovery 
   
 **News! Follow me [@Twitter](https://twitter.com/YuanqiD)**
+* 5/22 Our paper Equivariant Graph Neural Networks with Complete Local Frames has been accepted in ICML 2022! 
 * 3/22 We have released a comprehensive survey on molecule design, [*MolGenSurvey: A Systematic Survey in Machine Learning Models for Molecule Design*](https://arxiv.org/pdf/2203.14500.pdf), welcome any comments or feedback!
 * 3/22 The sceond [*AI for Science* workshop](http://www.ai4science.net/icml22/) will be hosted together with ICML 2022 (hybrid), stay tuned for more information!
 * 3/22 We have recenlty been working on a new initiative, [*Learning on Graphs conference*](https://logconference.github.io/) along with a stellar list of advisory board members where we aim to advance graph machine learning as a community and emphasize on the review quality! Any thoughts are welcome!
