@@ -11,7 +11,7 @@ List of Services:
 
 Professional Service
 ======
-* Co-founder and Organizer for [*Learning on Graphs*](https://logconference.github.io/) conference.
+* Co-founder and Lead Organizer for [*Learning on Graphs*](https://logconference.github.io/) conference 2022.
 * Founder and Lead Organizer for [*AI for Science: Theories and Foundations*](http://www.ai4science.net/icml22/) workshop with *ICML 2022*.
 * Founder and Lead Organizer for [*AI for Science: Mind the Gaps*](https://ai4sciencecommunity.github.io/) workshop with *NeurIPS 2021*.
 * Lead Organizer for [*Deep Generative Models for Highly Structured Data*](https://deep-gen-struct.github.io/) workshop with *ICLR 2022*.
