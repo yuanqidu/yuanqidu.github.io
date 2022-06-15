@@ -13,31 +13,6 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
 {% include base_path %}
 You can also find my recent publications on my [Google Scholar profile](https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en).
 
-<!-- Selected Publications
-======
-* [MolGenSurvey: A Systematic Survey in Machine Learning Models for Molecule Design](https://arxiv.org/pdf/2203.14500.pdf).  
-**Yuanqi Du**\*, Tianfan Fu\*, Jimeng Sun, Shengchao Liu.  
-In arXiv preprint arXiv:2203.14500 2022.  
-* [A Survey on Deep Graph Generation: Methods and Applications](https://arxiv.org/pdf/2203.06714.pdf).  
-**Yuanqi Du\***, Yanqiao Zhu\*, Yinkai Wang\*, Jieyu Zhang, Qiang Liu, Shu Wu.  
-In arXiv preprint arXiv:2203.06714 (2022).  
-* [Disentangled Spatiotemporal Graph Generative Models](https://arxiv.org/abs/2203.00411).  
-**Yuanqi Du**\*, Xiaojie Guo\*, Hengning Cao, Yanfang Ye, Liang Zhao.  
-In Thirty-Sixth AAAI Conference on Artificial Intelligence (**AAAI**) 2022. (**Oral**)  
-Presented in *NeurIPS* 2021 DGMs workshop.
-* [Interpreting Molecular Space with Deep Generative Models](https://openreview.net/forum?id=6gLEKETxUWp).  
-**Yuanqi Du**, Xian Liu, Shengchao Liu, Jieyu Zhang, Bolei Zhou.  
-In ELLIS ML4Molecules workshop 2021. (**Oral**)
-* [GraphGT: Machine Learning Datasets for Graph Generation and Transformation](https://openreview.net/forum?id=NYgt9vcdyjm).  
-**Yuanqi Du**\*, Shiyu Wang\*, Xiaojie Guo, Hengning Cao, Shujie Hu, Junji Jiang, Aishwarya Varala, Abhinav Angirekula, Liang Zhao.  
-In Neural Information Processing Systems (**NeurIPS**) 2021 Datasets and Benchmarks track.
-* [Deep Generative Model for Spatial Networks](http://cs.emory.edu/~lzhao41/materials/papers/KDD21__Spatial_Graphs_Disentanglement_preprinted.pdf).  
-Xiaojie Guo\*, **Yuanqi Du**\*, Liang Zhao.  
-In ACM SIGKDD Conference on Knowledge Discovery and Data Mining (**KDD**) 2021.
-* [Property Controllable Variational Autoencoder via Invertible Mutual Dependence](https://openreview.net/forum?id=tYxG_OMs9WE).  
-Xiaojie Guo, **Yuanqi Du**, Liang Zhao.  
-In International Conference on Learning Representations (**ICLR**) 2021. -->
-
 Selected Publications
 ======
 * [Equivariant Graph Neural Networks with Complete Local Frames](https://arxiv.org/pdf/2110.14811.pdf).  
