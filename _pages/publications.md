@@ -44,13 +44,20 @@ In International Conference on Learning Representations (**ICLR**) 2021.
 
 Preprints
 ======
+* [Path Integral Stochastic Optimal Control for Sampling Transition Paths](https://openreview.net/pdf?id=AUiOd6F53NE).  
+Lars Holdijk\*, **Yuanqi Du\***, Priyank Jaini, Ferry Hooft, Bernd Ensing, Max Welling.  
+* [Featurizations Matter: A Multiview Contrastive Learning Approach to Molecular Pretraining](https://openreview.net/pdf?id=Pm1Q1X3avx1).  
+Yanqiao Zhu\*, Dingshuo Chen\*, **Yuanqi Du\***, Yingze Wang, Qiang Liu, Shu Wu.  
 * [MolGenSurvey: A Systematic Survey in Machine Learning Models for Molecule Design](https://arxiv.org/pdf/2203.14500.pdf).  
 **Yuanqi Du**\*, Tianfan Fu\*, Jimeng Sun, Shengchao Liu.  
 In arXiv preprint arXiv:2203.14500 2022.  
 * [A Survey on Deep Graph Generation: Methods and Applications](https://arxiv.org/pdf/2203.06714.pdf).  
 **Yuanqi Du\***, Yanqiao Zhu\*, Yinkai Wang\*, Jieyu Zhang, Qiang Liu, Shu Wu.  
 In arXiv preprint arXiv:2203.06714 (2022).  
-
+* [Graphein - a Python Library for Geometric Deep Learning and Network Analysis on Biomolecular Structures and Interaction Networks](https://openreview.net/pdf?id=nNof5wC9kD).  
+Arian Rokkum Jamasb, Ramon Viñas Torné, Eric J Ma, **Yuanqi Du**, Charles Harris, Kexin Huang, Dominic Hall, Pietro Lio, Tom Leon Blundell.  
+* [GAUCHE: A Library for Gaussian Processes in Chemistry](https://openreview.net/pdf?id=i9MKI7zrWal).  
+Ryan-Rhys Griffiths, Leo Klarner, Henry Moss, Aditya Ravuri, Sang T. Truong, **Yuanqi Du**, Arian Rokkum Jamasb, Julius Schwartz, Austin Tripp, Bojana Rankovic, Philippe Schwaller, Gregory Kell, Anthony Bourached, Alex Chan, Jacob Moss, Chengzhi Guo, Alpha Lee, Jian Tang.  
 
 
 <!-- Protein Generation
