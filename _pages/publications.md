@@ -54,6 +54,9 @@ In arXiv preprint arXiv:2203.14500 2022.
 * [A Survey on Deep Graph Generation: Methods and Applications](https://arxiv.org/pdf/2203.06714.pdf).  
 **Yuanqi Du\***, Yanqiao Zhu\*, Yinkai Wang\*, Jieyu Zhang, Qiang Liu, Shu Wu.  
 In arXiv preprint arXiv:2203.06714 (2022).  
+* [A Flexible Diffusion Model](http://arxiv.org/abs/2206.10365).  
+Weitao Du, Tao Yang, He Zhang, **Yuanqi Du**.  
+In arXiv preprint arXiv:2206.10365 (2022).  
 * [Graphein - a Python Library for Geometric Deep Learning and Network Analysis on Biomolecular Structures and Interaction Networks](https://openreview.net/pdf?id=nNof5wC9kD).  
 Arian Rokkum Jamasb, Ramon Viñas Torné, Eric J Ma, **Yuanqi Du**, Charles Harris, Kexin Huang, Dominic Hall, Pietro Lio, Tom Leon Blundell.  
 * [GAUCHE: A Library for Gaussian Processes in Chemistry](https://openreview.net/pdf?id=i9MKI7zrWal).  
