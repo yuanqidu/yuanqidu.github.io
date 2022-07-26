@@ -54,16 +54,16 @@ In arXiv preprint arXiv:2203.14500 2022.
 * [A Survey on Deep Graph Generation: Methods and Applications](https://arxiv.org/pdf/2203.06714.pdf).  
 **Yuanqi Du\***, Yanqiao Zhu\*, Yinkai Wang\*, Jieyu Zhang, Qiang Liu, Shu Wu.  
 In arXiv preprint arXiv:2203.06714 (2022).  
-* [A Flexible Diffusion Model](http://arxiv.org/abs/2206.10365).  
+<!-- * [A Flexible Diffusion Model](http://arxiv.org/abs/2206.10365).  
 Weitao Du, Tao Yang, He Zhang, **Yuanqi Du**.  
 In arXiv preprint arXiv:2206.10365 (2022).  
 * [Graphein - a Python Library for Geometric Deep Learning and Network Analysis on Biomolecular Structures and Interaction Networks](https://openreview.net/pdf?id=nNof5wC9kD).  
 Arian Rokkum Jamasb, Ramon Viñas Torné, Eric J Ma, **Yuanqi Du**, Charles Harris, Kexin Huang, Dominic Hall, Pietro Lio, Tom Leon Blundell.  
 * [GAUCHE: A Library for Gaussian Processes in Chemistry](https://openreview.net/pdf?id=i9MKI7zrWal).  
-Ryan-Rhys Griffiths, Leo Klarner, Henry Moss, Aditya Ravuri, Sang T. Truong, **Yuanqi Du**, Arian Rokkum Jamasb, Julius Schwartz, Austin Tripp, Bojana Rankovic, Philippe Schwaller, Gregory Kell, Anthony Bourached, Alex Chan, Jacob Moss, Chengzhi Guo, Alpha Lee, Jian Tang.  
-* [Pre-training Graph Neural Networks for Molecular Representations: Retrospect and Prospect](https://arxiv.org/abs/2202.07893).  
+Ryan-Rhys Griffiths, Leo Klarner, Henry Moss, Aditya Ravuri, Sang T. Truong, **Yuanqi Du**, Arian Rokkum Jamasb, Julius Schwartz, Austin Tripp, Bojana Rankovic, Philippe Schwaller, Gregory Kell, Anthony Bourached, Alex Chan, Jacob Moss, Chengzhi Guo, Alpha Lee, Jian Tang.   -->
+<!-- * [Pre-training Graph Neural Networks for Molecular Representations: Retrospect and Prospect](https://arxiv.org/abs/2202.07893).  
 Jun Xia, Yanqiao Zhu, **Yuanqi Du**, Stan Z. Li.  
-In arXiv preprint arXiv:2202.07893 (2022).  
+In arXiv preprint arXiv:2202.07893 (2022).   -->
 
 
 <!-- Protein Generation

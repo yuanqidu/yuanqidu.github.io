@@ -19,6 +19,7 @@ Yuanqi Du is an incoming PhD student at Cornell University. He is now a research
   * Machine Learning for Discovery 
   
 **News! Follow me [@Twitter](https://twitter.com/YuanqiD)**
+* 7/22 [AI for Science: Progress and Promises](https://ai4sciencecommunity.github.io/) will be held again **in-person** with NeurIPS 2022! Looking forward to your excellent submissions! 
 * 6/22 We are launching a new initiative *AI for Science 101* that aims to encourage knowledge-sharing and collection in AI for Science, find out [what we are doing and why we are doing](https://t.co/VAL6kuSqyY) and [read more](https://ai4science101.deepmodeling.com/en/latest/index.html)!  
 * 5/22 Our paper Equivariant Graph Neural Networks with Complete Local Frames has been accepted in ICML 2022! 
 * 3/22 We have released a comprehensive survey on molecule design, [*MolGenSurvey: A Systematic Survey in Machine Learning Models for Molecule Design*](https://arxiv.org/pdf/2203.14500.pdf), welcome any comments or feedback!
