@@ -13,11 +13,11 @@ Yuanqi Du is a CS PhD student at Cornell University. During the past, he spent t
 **I am open to discussions about interesting ideas, drop me an email if you'd like to talk/collaborate about any of the following research topics with me. If you are an undergraduate or master student who would like to work with me, we also have projects that are actively looking for additional collaborators.**
 
 **Research Interests**
-  * Geometric Deep Learning
+  * Data-centric AI
   * Deep Generative Model
-  * AI for Science (Biology/Chemistry/Physics/etc)
+  * Geometric Deep Learning
   * Machine Learning for Discovery
-  * Data-centric AI 
+  * AI for Science (Biology/Chemistry/Physics/Material/Drug/etc)
   
 **News! Follow me [@Twitter](https://twitter.com/YuanqiD)**
 * 7/22 [AI for Science: Progress and Promises](https://ai4sciencecommunity.github.io/) will be held again **in-person** with NeurIPS 2022! Looking forward to your excellent submissions! 
