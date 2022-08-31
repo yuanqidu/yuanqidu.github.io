@@ -8,11 +8,12 @@ redirect_from:
   - /about.html
 ---
 
-Yuanqi Du is a CS PhD student at Cornell University. During the past, he spent time at DP Technology, a start-up company working on molecule simulation supervised by Dr. Linfeng Zhang, AMLab at University of Amsterdam with Prof. Max Welling, MMLab at CUHK with Prof. Bolei Zhou, Emory University with Prof. Liang Zhao and George Mason University with Prof. Amarda Shehu. He is a passionate community builder, which he founded the series of [*AI for Science workshops*](https://ai4sciencecommunity.github.io/), co-founded a new [*Learning on Graphs conference*](https://logconference.github.io/), led an initiative [*AI for Science 101*](https://ai4science101.deepmodeling.com/en/latest/index.html) for knowledge-sharing in AI for Science. He received Bachelor's degree in Computer Science from George Mason University in 2021. He is very fascinated by Sciences and interested in developing ML tools for scientific problems, especially for new knowledge discovery. He is actively collaborateing with researchers in chemistry, biology, physics, and machine learning.
+Yuanqi Du is a CS PhD student at Cornell University, working on Computational Sustainability with Prof. Carla Gomes. During the past, he spent time at DP Technology, a start-up company working on molecule simulation supervised by Dr. Linfeng Zhang, AMLab at University of Amsterdam with Prof. Max Welling, MMLab at CUHK with Prof. Bolei Zhou, Emory University with Prof. Liang Zhao and George Mason University with Prof. Amarda Shehu. He is a passionate community builder, which he founded the series of [*AI for Science workshops*](https://ai4sciencecommunity.github.io/), co-founded a new [*Learning on Graphs conference*](https://logconference.github.io/), led an initiative [*AI for Science 101*](https://ai4science101.deepmodeling.com/en/latest/index.html) for knowledge-sharing in AI for Science. He received Bachelor's degree in Computer Science from George Mason University in 2021. He is very fascinated by Sciences and interested in developing ML tools for scientific problems, especially for new knowledge discovery. He is actively collaborateing with researchers in chemistry, biology, physics, and machine learning.
 
 **I am open to discussions about interesting ideas, drop me an email if you'd like to talk/collaborate about any of the following research topics with me. If you are an undergraduate or master student who would like to work with me, we also have projects that are actively looking for additional collaborators.**
 
 **Research Interests**
+  * Computational Sustainability
   * Data-centric AI
   * Deep Generative Model
   * Geometric Deep Learning
