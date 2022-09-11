@@ -9,18 +9,17 @@ redirect_from:
 
 Education
 ======
-* B.S. in Computer Science, George Mason University, GPA 4.0/4.0, 2017-Expected 2021
-* B.S. in Computer Science, Huaqiao University, GPA 4.6/5.0, 2016-2017
-
+* Ph.D. in Computer Science, Cornell University, 2022-
+* B.S. in Computer Science, George Mason University, GPA 4.0/4.0, 2017-2021
 
 Research experience
 ======
-* Visiting Student, June 2021 - Present
+* Visiting Student, June 2021 - Aug 2022
   * University of Amsterdam (AMLAB & AI4 Science)
   * Molecule Simulation
   * Advisor: [Max Welling](https://staff.fnwi.uva.nl/m.welling/)
   
-* Researcher, Oct 2021 - Present
+* Researcher, Oct 2021 - Aug 2022
   * [DP Technology](https://www.dp.tech/)
   * Molecule Simulation
   * Advisor: [Linfeng Zhang](https://scholar.google.com/citations?user=jk7qwmcAAAAJ&hl=zh-CN)
