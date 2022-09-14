@@ -10,7 +10,7 @@ redirect_from:
 
 Yuanqi Du is a CS PhD student at Cornell University, working on Computational Sustainability with Prof. Carla Gomes. During the past, he spent time at AMLab at University of Amsterdam advised by Prof. Max Welling and DP Technology supervised by Dr. Linfeng Zhang. He is a passionate community builder, which he founded the series of [*AI for Science workshops*](https://ai4sciencecommunity.github.io/), co-founded a new [*Learning on Graphs conference*](https://logconference.github.io/), led an initiative [*AI for Science 101*](https://ai4science101.deepmodeling.com/en/latest/index.html) building knowledge systems for AI for Science. He received Bachelor's degree in Computer Science from George Mason University in 2021. He is very fascinated by Sciences and interested in developing ML tools for scientific problems, especially for new knowledge discovery. He is actively collaborating with researchers in chemistry, biology, physics, and machine learning.
 
-**If you are an undergraduate or master student who would like to work with me, we also have projects that are actively looking for additional collaborators.**
+<!-- **I am open to discussions about interesting ideas, sharing experiences, drop me an email if you'd like to talk to me. If you are an undergraduate or master student who would like to work with me, we also have projects that are actively looking for additional collaborators.** -->
 
 **Research Interests**
   * Computational Sustainability
