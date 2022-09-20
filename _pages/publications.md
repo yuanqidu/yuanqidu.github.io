@@ -15,9 +15,21 @@ You can also find my recent publications on my [Google Scholar profile](https://
 
 Selected Publications
 ======
+* Graphein - a Python Library for Geometric Deep Learning and Network Analysis on Biomolecular Structures and Interaction Networks.  
+Arian Rokkum Jamasb, Ramon Viñas Torné, Eric J Ma, **Yuanqi Du**, Charles Harris, Kexin Huang, Dominic Hall, Pietro Lio, Tom Leon Blundell.  
+In Thirty-sixth Conference on Neural Information Processing Systems (**NeurIPS**) 2022.  
+* Audio-Driven Co-Speech Gesture Image Generation.  
+Xian Liu, Qianyi Wu, Hang Zhou, **Yuanqi Du**, Wayne Wu, Dahua Lin, Ziwei Liu.  
+In Thirty-sixth Conference on Neural Information Processing Systems (**NeurIPS**) 2022.  
+* Multi-objective Deep Data Generation with Correlated Property Control.  
+Shiyu Wang, Xiaojie Guo, Xuanyang Lin, Bo Pan, **Yuanqi Du**, et al.  
+In Thirty-sixth Conference on Neural Information Processing Systems (**NeurIPS**) 2022.  
 * [Equivariant Graph Neural Networks with Complete Local Frames](https://arxiv.org/pdf/2110.14811.pdf).  
 Weitao Du\*, He Zhang\*, **Yuanqi Du**, Qi Meng, Wei Chen, Tie-Yan Liu, Nanning Zheng, Bin Shao.  
 In Thirty-ninth International Conference on Machine Learning (**ICML**) 2022.  
+* [GAUCHE: A Library for Gaussian Processes and Bayesian Optimisation in Chemistry](https://openreview.net/pdf?id=9SUK73pocUv).  
+Ryan-Rhys Griffiths\*, Leo Klarner\*, Henry Moss\*, Aditya Ravuri\*, Sang T. Truong\*, Bojana Ranković\*, **Yuanqi Du**\*, et al.  
+In ReALML workshop ICML 2022, AI for Science workshop ICML 2022.  
 * [ChemSpacE: Toward Steerable and Interpretable Chemical Space Exploration](https://openreview.net/forum?id=VELTk5U1Fku).  
 **Yuanqi Du**, Xian Liu, Shengchao Liu, Jieyu Zhang, Bolei Zhou.  
 In MLDD workshop ICLR 2022, ELLIS ML4Molecules workshop 2021. (**Oral**)
