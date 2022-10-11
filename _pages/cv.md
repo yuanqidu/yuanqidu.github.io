@@ -9,7 +9,7 @@ redirect_from:
 
 Education
 ======
-* Ph.D. in Computer Science, Cornell University, 2022-
+* Ph.D. in Computer Science, Cornell University, 2022-now
 * B.S. in Computer Science, George Mason University, GPA 4.0/4.0, 2017-2021
 
 Research experience
