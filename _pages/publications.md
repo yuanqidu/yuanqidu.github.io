@@ -50,7 +50,7 @@ Preprints
 ======
 * [Path Integral Stochastic Optimal Control for Sampling Transition Paths](https://openreview.net/pdf?id=AUiOd6F53NE).  
 Lars Holdijk\*, **Yuanqi Du\***, Priyank Jaini, Ferry Hooft, Bernd Ensing, Max Welling.  
-* [Featurizations Matter: A Multiview Contrastive Learning Approach to Molecular Pretraining](https://openreview.net/pdf?id=Pm1Q1X3avx1).  
+* [Improving Molecular Pretraining with Complementary Featurizations](https://arxiv.org/abs/2209.15101).  
 Yanqiao Zhu\*, Dingshuo Chen\*, **Yuanqi Du\***, Yingze Wang, Qiang Liu, Shu Wu.  
 * [MolGenSurvey: A Systematic Survey in Machine Learning Models for Molecule Design](https://arxiv.org/pdf/2203.14500.pdf).  
 **Yuanqi Du**\*, Tianfan Fu\*, Jimeng Sun, Shengchao Liu.  
