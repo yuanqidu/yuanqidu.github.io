@@ -11,9 +11,9 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
 {% endif %}
 
 {% include base_path %}
-You can also find my recent publications on my [Google Scholar profile](https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en). My publications center around several topics: from machine learning perspective, it includes **deep generative models**, **disentanglement learning**, **representation learning**, and **geometric deep learning**; from scientific perspective, it includes **molecule design**, **molecular modeling**, and **molecular simulation**.
+You can find my recent and full list of publications on my [Google Scholar profile](https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en). My publications center around several topics: from machine learning perspective, it includes **deep generative models**, **disentanglement learning**, **representation learning**, and **geometric deep learning**; from scientific perspective, it includes **molecule design**, **molecular modeling**, and **molecular simulation**.
 
-Publications
+Selected Publications
 ======
 * Graphein - a Python Library for Geometric Deep Learning and Network Analysis on Biomolecular Structures and Interaction Networks.  
 Arian Rokkum Jamasb, Ramon Viñas Torné, Eric J Ma, **Yuanqi Du**, Charles Harris, Kexin Huang, Dominic Hall, Pietro Lio, Tom Leon Blundell. In Thirty-sixth Conference on Neural Information Processing Systems (**NeurIPS**) 2022.  
