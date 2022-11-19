@@ -61,6 +61,9 @@ In arXiv preprint arXiv:2203.14500 2022.
 * [A Survey on Deep Graph Generation: Methods and Applications](https://arxiv.org/pdf/2203.06714.pdf).  
 **Yuanqi Du\***, Yanqiao Zhu\*, Yinkai Wang\*, Jieyu Zhang, Qiang Liu, Shu Wu.  
 In arXiv preprint arXiv:2203.06714 (2022).  
+* [A Systematic Survey of Molecular Pre-trained Models](https://arxiv.org/abs/2210.16484).  
+Jun Xia, Yanqiao Zhu, **Yuanqi Du**, Yue Liu, Stan Z.Li.  
+In arXiv preprint arXiv:2210.16484 (2022).
 <!-- * [A Flexible Diffusion Model](http://arxiv.org/abs/2206.10365).  
 Weitao Du, Tao Yang, He Zhang, **Yuanqi Du**.  
 In arXiv preprint arXiv:2206.10365 (2022).  -->
