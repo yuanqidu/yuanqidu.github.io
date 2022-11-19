@@ -15,13 +15,16 @@ You can find my recent and full list of publications on my [Google Scholar profi
 
 Selected Publications
 ======
-* Graphein - a Python Library for Geometric Deep Learning and Network Analysis on Biomolecular Structures and Interaction Networks.  
+* [Graphein - a Python Library for Geometric Deep Learning and Network Analysis on Biomolecular Structures and Interaction Networks](https://github.com/a-r-j/graphein).  
 Arian Rokkum Jamasb, Ramon Viñas Torné, Eric J Ma, **Yuanqi Du**, Charles Harris, Kexin Huang, Dominic Hall, Pietro Lio, Tom Leon Blundell. In Thirty-sixth Conference on Neural Information Processing Systems (**NeurIPS**) 2022.  
+* [Structural Causal Model for Molecular Dynamics Simulation](https://openreview.net/pdf?id=LtON28ko1bh).  
+Qi Liu, Yuanqi Du, Fan Feng, Qiwei Ye, Jie Fu.  
+In AI for Science workshop NeurIPS 2022. (**Oral**)
 * [Equivariant Graph Neural Networks with Complete Local Frames](https://arxiv.org/pdf/2110.14811.pdf).  
 Weitao Du\*, He Zhang\*, **Yuanqi Du**, Qi Meng, Wei Chen, Tie-Yan Liu, Nanning Zheng, Bin Shao.  
 In Thirty-ninth International Conference on Machine Learning (**ICML**) 2022.  
 * [GAUCHE: A Library for Gaussian Processes and Bayesian Optimisation in Chemistry](https://openreview.net/pdf?id=9SUK73pocUv).  
-Ryan-Rhys Griffiths\*, Leo Klarner\*, Henry Moss\*, Aditya Ravuri\*, Sang T. Truong\*, Bojana Ranković\*, **Yuanqi Du**\*, et al. In ReALML workshop ICML 2022, AI for Science workshop ICML 2022.  
+Ryan-Rhys Griffiths\*, Leo Klarner\*, Henry Moss\*, Aditya Ravuri\*, Sang T. Truong\*, Bojana Ranković\*, **Yuanqi Du**\*, et al. In ML4Molecules workshop 2022 (**Oral**).  
 * [ChemSpacE: Toward Steerable and Interpretable Chemical Space Exploration](https://openreview.net/forum?id=VELTk5U1Fku).  
 **Yuanqi Du**, Xian Liu, Shengchao Liu, Jieyu Zhang, Bolei Zhou.  
 In MLDD workshop ICLR 2022, ELLIS ML4Molecules workshop 2021. (**Oral**)
