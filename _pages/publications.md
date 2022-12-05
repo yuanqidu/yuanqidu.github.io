@@ -15,6 +15,9 @@ You can find my recent and full list of publications on my [Google Scholar profi
 
 Selected Publications
 ======
+* [A Survey on Deep Graph Generation: Methods and Applications](https://arxiv.org/pdf/2203.06714.pdf).  
+**Yuanqi Du\***, Yanqiao Zhu\*, Yinkai Wang\*, Jieyu Zhang, Qiang Liu, Shu Wu.  
+In First Learning on Graphs conference (**LoG**) (2022).  
 * [Graphein - a Python Library for Geometric Deep Learning and Network Analysis on Biomolecular Structures and Interaction Networks](https://github.com/a-r-j/graphein).  
 Arian Rokkum Jamasb, Ramon Viñas Torné, Eric J Ma, **Yuanqi Du**, Charles Harris, Kexin Huang, Dominic Hall, Pietro Lio, Tom Leon Blundell. In Thirty-sixth Conference on Neural Information Processing Systems (**NeurIPS**) 2022.  
 * [Structural Causal Model for Molecular Dynamics Simulation](https://openreview.net/pdf?id=LtON28ko1bh).  
@@ -60,9 +63,6 @@ Yanqiao Zhu\*, Dingshuo Chen\*, **Yuanqi Du\***, Yingze Wang, Qiang Liu, Shu Wu.
 * [MolGenSurvey: A Systematic Survey in Machine Learning Models for Molecule Design](https://arxiv.org/pdf/2203.14500.pdf).  
 **Yuanqi Du**\*, Tianfan Fu\*, Jimeng Sun, Shengchao Liu.  
 In arXiv preprint arXiv:2203.14500 2022.  
-* [A Survey on Deep Graph Generation: Methods and Applications](https://arxiv.org/pdf/2203.06714.pdf).  
-**Yuanqi Du\***, Yanqiao Zhu\*, Yinkai Wang\*, Jieyu Zhang, Qiang Liu, Shu Wu.  
-In arXiv preprint arXiv:2203.06714 (2022).  
 * [A Systematic Survey of Molecular Pre-trained Models](https://arxiv.org/abs/2210.16484).  
 Jun Xia, Yanqiao Zhu, **Yuanqi Du**, Yue Liu, Stan Z.Li.  
 In arXiv preprint arXiv:2210.16484 (2022).
