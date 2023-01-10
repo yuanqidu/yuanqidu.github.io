@@ -15,6 +15,12 @@ You can find my recent and full list of publications on my [Google Scholar profi
 
 Selected Publications
 ======
+* [Path Integral Stochastic Optimal Control for Sampling Transition Paths](https://arxiv.org/abs/2207.02149).  
+Lars Holdijk\*, **Yuanqi Du\***, Priyank Jaini, Ferry Hooft, Bernd Ensing, Max Welling.  
+In arXiv preprint arXiv:2207.02149 (2022). In Machine Learning for Physical Sciencs workshop NeurIPS 2022.    
+* [Structure-based Drug Design with Equivariant Diffusion Models](https://arxiv.org/abs/2210.13695).  
+Arne Schneuing\*, **Yuanqi Du\***, Charles Harris, Arian Jamasb, Ilia Igashov, Weitao Du, Tom Blundell, Pietro Lió, Carla Gomes, Max Welling, Michael Bronstein, Bruno Correia.  
+In arXiv preprint arXiv:2210.13695 (2022). In Machine Learning for Structural Biology workshop NeurIPS 2022.  
 * [A Survey on Deep Graph Generation: Methods and Applications](https://arxiv.org/pdf/2203.06714.pdf).  
 **Yuanqi Du\***, Yanqiao Zhu\*, Yinkai Wang\*, Jieyu Zhang, Qiang Liu, Shu Wu.  
 In First Learning on Graphs conference (**LoG**) (2022).  
@@ -54,21 +60,18 @@ In International Conference on Learning Representations (**ICLR**) 2021.
 
 Preprints
 ======
-* [Path Integral Stochastic Optimal Control for Sampling Transition Paths](https://openreview.net/pdf?id=AUiOd6F53NE).  
-Lars Holdijk\*, **Yuanqi Du\***, Priyank Jaini, Ferry Hooft, Bernd Ensing, Max Welling.  
-* [Structure-based Drug Design with Equivariant Diffusion Models](https://arxiv.org/abs/2210.13695).  
-Arne Schneuing\*, **Yuanqi Du\***, Charles Harris, Arian Jamasb, Ilia Igashov, Weitao Du, Tom Blundell, Pietro Lió, Carla Gomes, Max Welling, Michael Bronstein, Bruno Correia.  
-* [Improving Molecular Pretraining with Complementary Featurizations](https://arxiv.org/abs/2209.15101).  
-Yanqiao Zhu\*, Dingshuo Chen\*, **Yuanqi Du\***, Yingze Wang, Qiang Liu, Shu Wu.  
+* [A Flexible Diffusion Model](https://arxiv.org/abs/2206.10365).  
+Weitao Du, Tao Yang, He Zhang, **Yuanqi Du**.  
+In arXiv preprint arXiv:2206.10365 (2022).  
 * [MolGenSurvey: A Systematic Survey in Machine Learning Models for Molecule Design](https://arxiv.org/pdf/2203.14500.pdf).  
 **Yuanqi Du**\*, Tianfan Fu\*, Jimeng Sun, Shengchao Liu.  
-In arXiv preprint arXiv:2203.14500 2022.  
+In arXiv preprint arXiv:2203.14500 (2022).  
 * [A Systematic Survey of Molecular Pre-trained Models](https://arxiv.org/abs/2210.16484).  
 Jun Xia, Yanqiao Zhu, **Yuanqi Du**, Yue Liu, Stan Z.Li.  
 In arXiv preprint arXiv:2210.16484 (2022).
-<!-- * [A Flexible Diffusion Model](http://arxiv.org/abs/2206.10365).  
-Weitao Du, Tao Yang, He Zhang, **Yuanqi Du**.  
-In arXiv preprint arXiv:2206.10365 (2022).  -->
+
+<!-- * [Improving Molecular Pretraining with Complementary Featurizations](https://arxiv.org/abs/2209.15101).  
+Yanqiao Zhu\*, Dingshuo Chen\*, **Yuanqi Du\***, Yingze Wang, Qiang Liu, Shu Wu.   -->
 <!-- * [Graphein - a Python Library for Geometric Deep Learning and Network Analysis on Biomolecular Structures and Interaction Networks](https://openreview.net/pdf?id=nNof5wC9kD).  
 Arian Rokkum Jamasb, Ramon Viñas Torné, Eric J Ma, **Yuanqi Du**, Charles Harris, Kexin Huang, Dominic Hall, Pietro Lio, Tom Leon Blundell.   -->
 <!-- * [GAUCHE: A Library for Gaussian Processes in Chemistry](https://openreview.net/pdf?id=i9MKI7zrWal).   -->
