@@ -20,7 +20,18 @@ Professional Service
 * Co-organize [*DLG 2021*](https://deep-learning-graphs.bitbucket.io/dlg-kdd21/index.html) with *KDD 2021*.
 * Co-organize [*DeepSpatial 2021*](http://cs.emory.edu/~lzhao41/venues/DeepSpatial2021/) with *KDD 2021*
 * Co-organize [*DeepSpatial 2020*](http://mason.gmu.edu/~lzhao9/venues/DeepSpatial2020/) with *KDD 2020*.
-  
+
+Review Service
+======
+* NeurIPS, ICML, ICLR, AISTATS, AAAI, KDD, CVPR, ICDM, CIKM, WACV, BMVC, TPAMI, TKDD, TNNLS, TCBB, NeurIPS-ML4PS, NeurIPS-MLSB, NeurIPS-GeoMedIA, ICLR-GTRL, CVPR-AICC, BioKDD, DLG-KDD, IRS-KDD, NeurIPS-AI4Science. 
+
+Open-source Software
+======
+* [GraphGT](https://graphgt.github.io/) Machine Learning for Graph Generation and Transformation
+* [Graphein](https://github.com/a-r-j/graphein) Geometric Deep Learning and Network Analysis on Biomolecules
+* [TDC](https://tdcommons.ai/) Artificial Intelligence for Therapeutic Science
+* [Gauche](https://github.com/leojklarner/gauche) Gaussian Processes in Chemistry
+
 Volunteer & Leadership
 ======
 * ICLR, ICML, KDD 2021 Student Volunteer
@@ -33,10 +44,6 @@ Volunteer & Leadership
 * Student Member of ACM, IEEE, IEEE Computer Society, AAAI, SIAM, ASA Community
 * GMU Engineering Week Panelist, 2021 Spring
 * GMU SCAN Mentor, 2021 Spring
-
-Review Service
-======
-* NeurIPS, ICML, ICLR, AISTATS, AAAI, KDD, CVPR, ICDM, CIKM, WACV, BMVC, TPAMI, TKDD, TNNLS, TCBB, NeurIPS-ML4PS, NeurIPS-MLSB, NeurIPS-GeoMedIA, ICLR-GTRL, CVPR-AICC, BioKDD, DLG-KDD, IRS-KDD, NeurIPS-AI4Science.  
 <!-- * CVPR (2023), ICLR (2023), AAAI (2023), WACV (2022), NeurIPS (2022), ICML (2022), KDD (2022), ICLR (2022), AISTATS (2022), TCBB (2022), ICLR-GTRL (2022), CVPR-AICC (2022), BioKDD (2022), TPAMI (2021), TNNLS (2021), KDD (2021), TKDD (2021), ICDM (2021), CIKM (2021), BMVC (2021), BioKDD (2021), KDD-DLG (2021), KDD-IRS (2021), NeurIPS-AI4Sci (2021, 2022) -->
 
 

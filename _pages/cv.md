@@ -62,12 +62,12 @@ Awards
   * StarCraft II GrandMaster (world top 0.2%) 2015
 
   
-Skills
+<!-- Skills
 ======
 * Programming (Python, Java, C, MySQL, R, C++, Assembly Language, Lisp, Haskell, LaTeX)
 * Machine Learning, Data Mining, Deep Learning
 * Languages: English, Chinese
-  
+   -->
 
 
 
