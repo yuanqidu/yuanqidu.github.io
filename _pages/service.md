@@ -23,7 +23,7 @@ Professional Service
 
 Review Service
 ======
-* NeurIPS, ICML, ICLR, AISTATS, AAAI, KDD, CVPR, ICDM, CIKM, WACV, BMVC, TPAMI, TKDD, TNNLS, TCBB, NeurIPS-ML4PS, NeurIPS-MLSB, NeurIPS-GeoMedIA, ICLR-GTRL, CVPR-AICC, BioKDD, DLG-KDD, IRS-KDD, NeurIPS-AI4Science. 
+* NeurIPS, ICML, ICLR, AISTATS, AAAI, KDD, CVPR, ICCV, ICDM, CIKM, WACV, BMVC, TPAMI, TKDD, TNNLS, TCBB, J. of Cheminformatics, NeurIPS-ML4PS, NeurIPS-MLSB, NeurIPS-GeoMedIA, ICLR-GTRL, CVPR-AICC, BioKDD, DLG-KDD, IRS-KDD, NeurIPS-AI4Science. 
 
 Open-source Software
 ======
