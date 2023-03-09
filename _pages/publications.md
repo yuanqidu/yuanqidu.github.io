@@ -24,38 +24,18 @@ In arXiv preprint arXiv:2210.13695 (2022). In Machine Learning for Structural Bi
 * [A Survey on Deep Graph Generation: Methods and Applications](https://arxiv.org/pdf/2203.06714.pdf).  
 **Yuanqi Du\***, Yanqiao Zhu\*, Yinkai Wang\*, Jieyu Zhang, Qiang Liu, Shu Wu.  
 In First Learning on Graphs conference (**LoG**) (2022).  
-<!-- * [Graphein - a Python Library for Geometric Deep Learning and Network Analysis on Biomolecular Structures and Interaction Networks](https://github.com/a-r-j/graphein).  
-Arian Rokkum Jamasb, Ramon Viñas Torné, Eric J Ma, **Yuanqi Du**, Charles Harris, Kexin Huang, Dominic Hall, Pietro Lio, Tom Leon Blundell. In Thirty-sixth Conference on Neural Information Processing Systems (**NeurIPS**) 2022.  
-* [Structural Causal Model for Molecular Dynamics Simulation](https://openreview.net/pdf?id=LtON28ko1bh).  
-Qi Liu, Yuanqi Du, Fan Feng, Qiwei Ye, Jie Fu.  
-In AI for Science workshop NeurIPS 2022. (**Oral**) -->
 * [Equivariant Graph Neural Networks with Complete Local Frames](https://arxiv.org/pdf/2110.14811.pdf).  
 Weitao Du\*, He Zhang\*, **Yuanqi Du**, Qi Meng, Wei Chen, Tie-Yan Liu, Nanning Zheng, Bin Shao.  
 In Thirty-ninth International Conference on Machine Learning (**ICML**) 2022.  
-<!-- * [GAUCHE: A Library for Gaussian Processes and Bayesian Optimisation in Chemistry](https://openreview.net/pdf?id=9SUK73pocUv).  
-Ryan-Rhys Griffiths\*, Leo Klarner\*, Henry Moss\*, Aditya Ravuri\*, Sang T. Truong\*, Bojana Ranković\*, **Yuanqi Du**\*, et al. In ML4Molecules workshop 2022 (**Oral**).   -->
 * [ChemSpacE: Toward Steerable and Interpretable Chemical Space Exploration](https://openreview.net/forum?id=VELTk5U1Fku).  
 **Yuanqi Du**, Xian Liu, Shengchao Liu, Jieyu Zhang, Bolei Zhou.  
 In MLDD workshop ICLR 2022, ELLIS ML4Molecules workshop 2021. (**Oral**)
-<!-- * [Disentangled Spatiotemporal Graph Generative Models](https://arxiv.org/abs/2203.00411).  
-**Yuanqi Du**\*, Xiaojie Guo\*, Hengning Cao, Yanfang Ye, Liang Zhao.  
-In Thirty-Sixth AAAI Conference on Artificial Intelligence (**AAAI**) 2022. (**Oral**)  
-Presented in *NeurIPS* 2021 DGMs workshop.
-* [Small Molecule Generation via Disentangled Representation Learning](https://academic.oup.com/bioinformatics/advance-article-abstract/doi/10.1093/bioinformatics/btac296/6576627).  
-**Yuanqi Du**, Xiaojie Guo, Yinkai Wang, Amarda Shehu, Liang Zhao.  
-In **Bioinformatics** 2022. -->
 * [GraphGT: Machine Learning Datasets for Graph Generation and Transformation](https://openreview.net/forum?id=NYgt9vcdyjm).  
 **Yuanqi Du**\*, Shiyu Wang\*, Xiaojie Guo, Hengning Cao, Shujie Hu, Junji Jiang, Aishwarya Varala, Abhinav Angirekula, Liang Zhao.  
 In Neural Information Processing Systems (**NeurIPS**) 2021 Datasets and Benchmarks track.
 * [Deep Generative Model for Spatial Networks](http://cs.emory.edu/~lzhao41/materials/papers/KDD21__Spatial_Graphs_Disentanglement_preprinted.pdf).  
 Xiaojie Guo\*, **Yuanqi Du**\*, Liang Zhao.  
 In ACM SIGKDD Conference on Knowledge Discovery and Data Mining (**KDD**) 2021.
-<!-- * [Physics-Augmented Learning: A New Paradigm Beyond Physics-Informed Learning](https://arxiv.org/abs/2109.13901).  
-Ziming Liu, Yunyue Chen, **Yuanqi Du**, Max Tegmark.  
-In *NeurIPS* AI for Science workshop 2021.  
-* [Property Controllable Variational Autoencoder via Invertible Mutual Dependence](https://openreview.net/forum?id=tYxG_OMs9WE).  
-Xiaojie Guo, **Yuanqi Du**, Liang Zhao.  
-In International Conference on Learning Representations (**ICLR**) 2021. -->
 
 
 Preprints
