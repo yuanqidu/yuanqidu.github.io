@@ -15,6 +15,9 @@ You can find my recent and full list of publications on my [Google Scholar profi
 
 Selected Publications
 ======
+* [ChemSpacE: Interpretable and Interactive Chemical Space Exploration](https://openreview.net/forum?id=C1Xl8dYCBn).  
+**Yuanqi Du**, Xian Liu, Shengchao Liu, Jieyu Zhang, Bolei Zhou.  
+In Transactions on Machine Learning Research (**TMLR**) 2023. In ELLIS ML4Molecules workshop 2021. (**Oral**)
 * [Path Integral Stochastic Optimal Control for Sampling Transition Paths](https://arxiv.org/abs/2207.02149).  
 Lars Holdijk\*, **Yuanqi Du\***, Priyank Jaini, Ferry Hooft, Bernd Ensing, Max Welling.  
 In arXiv preprint arXiv:2207.02149 (2022). In Machine Learning for Physical Sciencs workshop NeurIPS 2022.    
@@ -23,13 +26,10 @@ Arne Schneuing\*, **Yuanqi Du\***, Charles Harris, Arian Jamasb, Ilia Igashov, W
 In arXiv preprint arXiv:2210.13695 (2022). In Machine Learning for Structural Biology workshop NeurIPS 2022.  
 * [A Survey on Deep Graph Generation: Methods and Applications](https://arxiv.org/pdf/2203.06714.pdf).  
 **Yuanqi Du\***, Yanqiao Zhu\*, Yinkai Wang\*, Jieyu Zhang, Qiang Liu, Shu Wu.  
-In First Learning on Graphs conference (**LoG**) (2022).  
+In First Learning on Graphs conference (**LoG**) 2022.  
 * [Equivariant Graph Neural Networks with Complete Local Frames](https://arxiv.org/pdf/2110.14811.pdf).  
 Weitao Du\*, He Zhang\*, **Yuanqi Du**, Qi Meng, Wei Chen, Tie-Yan Liu, Nanning Zheng, Bin Shao.  
 In Thirty-ninth International Conference on Machine Learning (**ICML**) 2022.  
-* [ChemSpacE: Toward Steerable and Interpretable Chemical Space Exploration](https://openreview.net/forum?id=VELTk5U1Fku).  
-**Yuanqi Du**, Xian Liu, Shengchao Liu, Jieyu Zhang, Bolei Zhou.  
-In MLDD workshop ICLR 2022, ELLIS ML4Molecules workshop 2021. (**Oral**)
 * [GraphGT: Machine Learning Datasets for Graph Generation and Transformation](https://openreview.net/forum?id=NYgt9vcdyjm).  
 **Yuanqi Du**\*, Shiyu Wang\*, Xiaojie Guo, Hengning Cao, Shujie Hu, Junji Jiang, Aishwarya Varala, Abhinav Angirekula, Liang Zhao.  
 In Neural Information Processing Systems (**NeurIPS**) 2021 Datasets and Benchmarks track.
