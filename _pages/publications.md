@@ -13,8 +13,28 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
 {% include base_path %}
 You can find my recent and full list of publications on my [Google Scholar profile](https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en). My publications center around several topics: from machine learning perspective, it includes **deep generative models**, **disentanglement learning**, **representation learning**, and **geometric deep learning**; from scientific perspective, it includes **molecular design**, **molecular modeling**, and **molecular simulation**.
 
+
+Preprints
+======
+* [A new perspective on building efficient and expressive 3D equivariant graph neural networks](https://arxiv.org/abs/2304.04757).  
+Weitao Du\*, **Yuanqi Du\***, Limei Wang\*, Dieqiao Feng, Guifeng Wang, Shuiwang Ji, Carla Gomes, Zhi-Ming Ma.  
+In arXiv preprint arXiv:2304.04757 (2023).
+* [Accurate transition state generation with an object-aware equivariant elementary reaction diffusion model](https://arxiv.org/abs/2304.06174).  
+Chenru Duan, **Yuanqi Du**, Haojun Jia, Heather J. Kulik.  
+In arXiv preprint arXiv:2304.06174 (2023).
+* [A Flexible Diffusion Model](https://arxiv.org/abs/2206.10365).  
+Weitao Du, Tao Yang, He Zhang, **Yuanqi Du**.  
+In arXiv preprint arXiv:2206.10365 (2022).  
+* [MolGenSurvey: A Systematic Survey in Machine Learning Models for Molecule Design](https://arxiv.org/pdf/2203.14500.pdf).  
+**Yuanqi Du**\*, Tianfan Fu\*, Jimeng Sun, Shengchao Liu.  
+In arXiv preprint arXiv:2203.14500 (2022).  
+
+
 Selected Publications
 ======
+* Enabling Scientific Discovery with Artificial Intelligence.  
+Hanchen Wang\*, Tianfan Fu\*, **Yuanqi Du\***, Wenhao Gao\+, Kexin Huang\+, Ziming Liu\+, ..., Max Welling, Linfeng Zhang, Connor Coley, Yoshua Bengio, Marinka Zitnik.  
+To appear in Nature (2023).
 * [ChemSpacE: Interpretable and Interactive Chemical Space Exploration](https://openreview.net/forum?id=C1Xl8dYCBn).  
 **Yuanqi Du**, Xian Liu, Shengchao Liu, Jieyu Zhang, Bolei Zhou.  
 In Transactions on Machine Learning Research (**TMLR**) 2023. In ELLIS ML4Molecules workshop 2021. (**Oral**)
@@ -38,14 +58,7 @@ Xiaojie Guo\*, **Yuanqi Du**\*, Liang Zhao.
 In ACM SIGKDD Conference on Knowledge Discovery and Data Mining (**KDD**) 2021.
 
 
-Preprints
-======
-* [A Flexible Diffusion Model](https://arxiv.org/abs/2206.10365).  
-Weitao Du, Tao Yang, He Zhang, **Yuanqi Du**.  
-In arXiv preprint arXiv:2206.10365 (2022).  
-* [MolGenSurvey: A Systematic Survey in Machine Learning Models for Molecule Design](https://arxiv.org/pdf/2203.14500.pdf).  
-**Yuanqi Du**\*, Tianfan Fu\*, Jimeng Sun, Shengchao Liu.  
-In arXiv preprint arXiv:2203.14500 (2022).  
+
 <!-- * [A Systematic Survey of Molecular Pre-trained Models](https://arxiv.org/abs/2210.16484).  
 Jun Xia, Yanqiao Zhu, **Yuanqi Du**, Yue Liu, Stan Z.Li.  
 In arXiv preprint arXiv:2210.16484 (2022). -->
