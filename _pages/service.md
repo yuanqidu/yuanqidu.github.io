@@ -13,6 +13,7 @@ Professional Service
 ======
 * Co-founder and Lead Organizer for [*Learning on Graphs*](https://logconference.github.io/) conference 2022.
 * Founder and Lead Organizer for [*AI for Science: Mind the Gaps*](http://www.ai4science.net/neurips21/) workshop with *NeurIPS 2021*, [*AI for Science: Theories and Foundations*](http://www.ai4science.net/icml22/) workshop with *ICML 2022*, [*AI for Science: Progress and Promises*](https://ai4sciencecommunity.github.io/) with *NeurIPS 2022*.
+* Lead co-organizer for [*Structured Probabilistic Inference & Generative Modeling*](https://spigmworkshop.github.io/) workshop with *ICML 2023*.
 * Lead Organizer for [*Deep Generative Models for Highly Structured Data*](https://deep-gen-struct.github.io/) workshop with *ICLR 2022*.
 * Co-oragnize [*DLG 2022*](https://deep-learning-graphs.bitbucket.io/dlg-aaai22/index.html) with *AAAI 2022*.
 * Co-organize [*AAAI 2021*](https://aaai.org/Conferences/AAAI-21/) (Virtual Team).
@@ -21,12 +22,13 @@ Professional Service
 * Co-organize [*DeepSpatial 2021*](http://cs.emory.edu/~lzhao41/venues/DeepSpatial2021/) with *KDD 2021*
 * Co-organize [*DeepSpatial 2020*](http://mason.gmu.edu/~lzhao9/venues/DeepSpatial2020/) with *KDD 2020*.
 
-Review Service
+Selected Review Service
 ======
-* Sci. Adv., NeurIPS, ICML, ICLR, AISTATS, AAAI, KDD, CVPR, ICCV, ICDM, CIKM, WACV, BMVC, TPAMI, TKDD, TNNLS, TCBB, J. of Cheminformatics, NeurIPS-ML4PS, NeurIPS-MLSB, NeurIPS-GeoMedIA, ICLR-GTRL, CVPR-AICC, BioKDD, DLG-KDD, IRS-KDD, NeurIPS-AI4Science, etc. 
+* Science Advdances, NeurIPS, ICML, ICLR, AISTATS, AAAI, KDD, CVPR, ICCV, TPAMI. 
 
 Open-source Software
 ======
+* [M²Hub](https://github.com/yuanqidu/M2Hub) Machine Learning for Materials Discovery
 * [GraphGT](https://graphgt.github.io/) Machine Learning for Graph Generation and Transformation
 * [Graphein](https://github.com/a-r-j/graphein) Geometric Deep Learning and Network Analysis on Biomolecules
 * [TDC](https://tdcommons.ai/) Artificial Intelligence for Therapeutic Science
