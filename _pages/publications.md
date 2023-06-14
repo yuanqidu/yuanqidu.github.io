@@ -16,15 +16,15 @@ You can find my recent and full list of publications on my [Google Scholar profi
 
 Preprints
 ======
+* M²Hub: Unlocking the Potential of Machine Learning for Materials Discovery.  
+**Yuanqi Du\***, Yingheng Wang\*, Yining Huang, Jianan Canal Li, Yanqiao Zhu, Tian Xie, Chenru Duan, John M. Gregoire, Carla P. Gomes.  
+In arXiv preprint (2023).
 * [A new perspective on building efficient and expressive 3D equivariant graph neural networks](https://arxiv.org/abs/2304.04757).  
 Weitao Du\*, **Yuanqi Du\***, Limei Wang\*, Dieqiao Feng, Guifeng Wang, Shuiwang Ji, Carla Gomes, Zhi-Ming Ma.  
 In arXiv preprint arXiv:2304.04757 (2023).
 * [Accurate transition state generation with an object-aware equivariant elementary reaction diffusion model](https://arxiv.org/abs/2304.06174).  
 Chenru Duan, **Yuanqi Du**, Haojun Jia, Heather J. Kulik.  
-In arXiv preprint arXiv:2304.06174 (2023).
-* [A Flexible Diffusion Model](https://arxiv.org/abs/2206.10365).  
-Weitao Du, Tao Yang, He Zhang, **Yuanqi Du**.  
-In arXiv preprint arXiv:2206.10365 (2022).  
+In arXiv preprint arXiv:2304.06174 (2023). 
 * [MolGenSurvey: A Systematic Survey in Machine Learning Models for Molecule Design](https://arxiv.org/pdf/2203.14500.pdf).  
 **Yuanqi Du**\*, Tianfan Fu\*, Jimeng Sun, Shengchao Liu.  
 In arXiv preprint arXiv:2203.14500 (2022).  
@@ -32,6 +32,9 @@ In arXiv preprint arXiv:2203.14500 (2022).
 
 Selected Publications
 ======
+* [A Flexible Diffusion Model](https://arxiv.org/abs/2206.10365).  
+Weitao Du, Tao Yang, He Zhang, **Yuanqi Du**.  
+In International Conference on Machine Learning (**ICML**) 2023.  
 * Enabling Scientific Discovery with Artificial Intelligence.  
 Hanchen Wang\*, Tianfan Fu\*, **Yuanqi Du\***, Wenhao Gao\+, Kexin Huang\+, Ziming Liu\+, ..., Max Welling, Linfeng Zhang, Connor Coley, Yoshua Bengio, Marinka Zitnik.  
 To appear in Nature (2023).
