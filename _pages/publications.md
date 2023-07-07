@@ -19,9 +19,6 @@ Preprints
 * M²Hub: Unlocking the Potential of Machine Learning for Materials Discovery.  
 **Yuanqi Du\***, Yingheng Wang\*, Yining Huang, Jianan Canal Li, Yanqiao Zhu, Tian Xie, Chenru Duan, John M. Gregoire, Carla P. Gomes.  
 In arXiv preprint (2023).
-* [A new perspective on building efficient and expressive 3D equivariant graph neural networks](https://arxiv.org/abs/2304.04757).  
-Weitao Du\*, **Yuanqi Du\***, Limei Wang\*, Dieqiao Feng, Guifeng Wang, Shuiwang Ji, Carla Gomes, Zhi-Ming Ma.  
-In arXiv preprint arXiv:2304.04757 (2023).
 * [Accurate transition state generation with an object-aware equivariant elementary reaction diffusion model](https://arxiv.org/abs/2304.06174).  
 Chenru Duan, **Yuanqi Du**, Haojun Jia, Heather J. Kulik.  
 In arXiv preprint arXiv:2304.06174 (2023). 
@@ -32,6 +29,9 @@ In arXiv preprint arXiv:2203.14500 (2022).
 
 Selected Publications
 ======
+* [A new perspective on building efficient and expressive 3D equivariant graph neural networks](https://arxiv.org/abs/2304.04757).  
+Weitao Du\*, **Yuanqi Du\***, Limei Wang\*, Dieqiao Feng, Guifeng Wang, Shuiwang Ji, Carla Gomes, Zhi-Ming Ma.  
+In arXiv preprint arXiv:2304.04757 (2023). In TAG in ML workshop ICML 2023. (**Oral**)
 * [A Flexible Diffusion Model](https://arxiv.org/abs/2206.10365).  
 Weitao Du, Tao Yang, He Zhang, **Yuanqi Du**.  
 In International Conference on Machine Learning (**ICML**) 2023.  
@@ -43,7 +43,7 @@ To appear in Nature (2023).
 In Transactions on Machine Learning Research (**TMLR**) 2023. In ELLIS ML4Molecules workshop 2021. (**Oral**)
 * [Path Integral Stochastic Optimal Control for Sampling Transition Paths](https://arxiv.org/abs/2207.02149).  
 Lars Holdijk\*, **Yuanqi Du\***, Priyank Jaini, Ferry Hooft, Bernd Ensing, Max Welling.  
-In arXiv preprint arXiv:2207.02149 (2022). In Machine Learning for Physical Sciencs workshop NeurIPS 2022.    
+In arXiv preprint arXiv:2207.02149 (2022). In Machine Learning for Physical Sciences workshop NeurIPS 2022.    
 * [Structure-based Drug Design with Equivariant Diffusion Models](https://arxiv.org/abs/2210.13695).  
 Arne Schneuing\*, **Yuanqi Du\***, Charles Harris, Arian Jamasb, Ilia Igashov, Weitao Du, Tom Blundell, Pietro Lió, Carla Gomes, Max Welling, Michael Bronstein, Bruno Correia.  
 In arXiv preprint arXiv:2210.13695 (2022). In Machine Learning for Structural Biology workshop NeurIPS 2022.  
