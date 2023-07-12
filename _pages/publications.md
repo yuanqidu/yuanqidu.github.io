@@ -16,9 +16,9 @@ You can find my recent and full list of publications on my [Google Scholar profi
 
 Preprints
 ======
-* M²Hub: Unlocking the Potential of Machine Learning for Materials Discovery.  
+* [M²Hub: Unlocking the Potential of Machine Learning for Materials Discovery](https://arxiv.org/abs/2307.05378).  
 **Yuanqi Du\***, Yingheng Wang\*, Yining Huang, Jianan Canal Li, Yanqiao Zhu, Tian Xie, Chenru Duan, John M. Gregoire, Carla P. Gomes.  
-In arXiv preprint (2023).
+In arXiv preprint arXiv:2307.05378 (2023).
 * [Accurate transition state generation with an object-aware equivariant elementary reaction diffusion model](https://arxiv.org/abs/2304.06174).  
 Chenru Duan, **Yuanqi Du**, Haojun Jia, Heather J. Kulik.  
 In arXiv preprint arXiv:2304.06174 (2023). 

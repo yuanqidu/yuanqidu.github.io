@@ -19,6 +19,7 @@ Yuanqi Du is a CS PhD student at Cornell University, working on Computational Su
   
 **News! Follow me [@Twitter](https://twitter.com/YuanqiD)**
 * 7/23 I will travel to ICML 2023, present Flexible Diffusion (main track) and LEFTNet (TAGML workshop), and host our SPIGM workshop, let me know if you like to chat!
+* 7/23 We are going to host the [AI for Science: From Thoery to Practice](https://ai4sciencecommunity.github.io/neurips23.html) workshop again and a new Computational Sustainability workshop at NeurIPS 2023, stay tuned for more details!
 * 4/23 Following the recent progress of probabilistic inference and generative modeling at Hawaii this summer [@SPIGM ICML 2023](https://spigmworkshop.github.io/)!
 * 7/22 [AI for Science: Progress and Promises](https://ai4sciencecommunity.github.io/) will be held again **in-person** with NeurIPS 2022! Looking forward to your excellent submissions! 
 * 6/22 We are launching a new initiative *AI for Science 101* that aims to encourage knowledge-sharing and collection in AI for Science, find out [what we are doing and why we are doing](https://t.co/VAL6kuSqyY) and [read more](https://ai4science101.deepmodeling.com/en/latest/index.html)!  
