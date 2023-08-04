@@ -35,7 +35,7 @@ In arXiv preprint arXiv:2304.04757 (2023). In TAG in ML workshop ICML 2023. (**O
 * [A Flexible Diffusion Model](https://arxiv.org/abs/2206.10365).  
 Weitao Du, Tao Yang, He Zhang, **Yuanqi Du**.  
 In International Conference on Machine Learning (**ICML**) 2023.  
-* Enabling Scientific Discovery with Artificial Intelligence.  
+* [Scientific Discovery in the Age of Artificial Intelligence](https://www.nature.com/articles/s41586-023-06221-2).  
 Hanchen Wang\*, Tianfan Fu\*, **Yuanqi Du\***, Wenhao Gao\+, Kexin Huang\+, Ziming Liu\+, ..., Max Welling, Linfeng Zhang, Connor Coley, Yoshua Bengio, Marinka Zitnik.  
 To appear in Nature (2023).
 * [ChemSpacE: Interpretable and Interactive Chemical Space Exploration](https://openreview.net/forum?id=C1Xl8dYCBn).  
