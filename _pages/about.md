@@ -13,9 +13,9 @@ Yuanqi Du is a CS PhD student at Cornell University, working on Computational Su
 **Research Interests**
   * Probabilistic Machine Learning
   * Geometric Deep Learning
-  * Machine Learning for Discovery
-  * Computational Sustainability
-  * AI for Science (Biology/Chemistry/Physics/Materials/Pharma/etc)
+  * Interpretability
+  * Search, Optimization and Sampling Problems
+  * AI for Science (Biology/Chemistry/Physics/Materials/Sustainability/etc)
   
 **News! Follow me [@Twitter](https://twitter.com/YuanqiD)**
 * 7/23 I will travel to ICML 2023, present Flexible Diffusion (main track) and LEFTNet (TAGML workshop), and host our SPIGM workshop, let me know if you like to chat!
