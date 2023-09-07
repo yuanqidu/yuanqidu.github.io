@@ -16,6 +16,7 @@ Recent Talks and Lectures:
 * Machine Learning for Molecular Discovery: From One Distribution to Two, @DP Technology, Feb 2023.
 * Structure-based Drug Design with Equivariant Diffusion Models, @Department of Computational Biology, Cornell, Nov 2022.
 * Accelerating Scientific Discovery with Artificial Intelligence, @Department of Computer Science, Grad Seminar, Cornell, Oct 2022.
+* Disentangled Spatiotemporal Graph Generative Models, @AAAI, Feb 2022.
 * Towards Steerable and Interpretable Chemical Space Exploration, @ML4Molecules, Dec 2021.
 
 
