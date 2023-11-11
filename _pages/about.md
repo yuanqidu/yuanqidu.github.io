@@ -18,7 +18,7 @@ Yuanqi Du is a CS PhD student at Cornell University, working on Artificial Intel
   * Search, Optimization and Sampling Problems
   * AI for Science (Biology/Chemistry/Physics/Materials/Sustainability/etc)
   
-**News! Follow me [@Twitter](https://twitter.com/YuanqiD)**
+**News and Travels! Follow me [@Twitter](https://twitter.com/YuanqiD)**
 * 11/23 I will travel to NeurIPS 2023, present LEFTNet, PIPS, M2Hub, and host [Comp Sustainability](https://www.compsust.net/compsust-2023/) (12/15), [AI for Science]((https://ai4sciencecommunity.github.io/neurips23.html)) workshop (12/16), let me know if you like to chat!
 * Second [*Learning on Graphs conference*](https://logconference.github.io/) will be held from Nov 27-30th, fully virtual and free to attend for all!
 * 7/23 I will travel to ICML 2023, present Flexible Diffusion, and host our [SPIGM](https://spigmworkshop.github.io/) workshop, let me know if you like to chat!
