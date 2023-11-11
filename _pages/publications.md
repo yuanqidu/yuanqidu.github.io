@@ -18,9 +18,6 @@ You can find my recent and full list of publications on my [Google Scholar profi
 
 Preprints
 ======
-* [Accurate transition state generation with an object-aware equivariant elementary reaction diffusion model](https://arxiv.org/abs/2304.06174).  
-Chenru Duan, **Yuanqi Du**, Haojun Jia, Heather J. Kulik.  
-In arXiv preprint arXiv:2304.06174 (2023). 
 * [MolGenSurvey: A Systematic Survey in Machine Learning Models for Molecule Design](https://arxiv.org/pdf/2203.14500.pdf).  
 **Yuanqi Du**\*, Tianfan Fu\*, Jimeng Sun, Shengchao Liu.  
 In arXiv preprint arXiv:2203.14500 (2022).  
@@ -28,6 +25,9 @@ In arXiv preprint arXiv:2203.14500 (2022).
 
 Selected Publications
 ======
+* [Accurate transition state generation with an object-aware equivariant elementary reaction diffusion model](https://arxiv.org/abs/2304.06174).  
+Chenru Duan, **Yuanqi Du**, Haojun Jia, Heather J. Kulik.  
+In Nature Computational Science 2023. 
 * [A new perspective on building efficient and expressive 3D equivariant graph neural networks](https://arxiv.org/abs/2304.04757).  
 Weitao Du\*, **Yuanqi Du\***, Limei Wang\*, Dieqiao Feng, Guifeng Wang, Shuiwang Ji, Carla Gomes, Zhi-Ming Ma.  
 In In Neural Information Processing Systems (**NeurIPS**) 2023. In TAG in ML workshop ICML 2023. (**Oral**)  
