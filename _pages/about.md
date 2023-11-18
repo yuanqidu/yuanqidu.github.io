@@ -15,6 +15,7 @@ Yuanqi Du is a CS PhD student at Cornell University, working on Artificial Intel
   * Geometric Deep Learning
   * Interpretability (Science of AI)
   * Science of Science
+  * Education (esp. AI for Science)
   * Search, Optimization and Sampling Problems
   * AI for Science (Biology/Chemistry/Physics/Materials/Sustainability/etc)
   
