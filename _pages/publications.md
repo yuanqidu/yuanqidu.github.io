@@ -55,86 +55,14 @@ In First Learning on Graphs conference (**LoG**) 2022.
 * [Equivariant Graph Neural Networks with Complete Local Frames](https://arxiv.org/pdf/2110.14811.pdf).  
 Weitao Du\*, He Zhang\*, **Yuanqi Du**, Qi Meng, Wei Chen, Tie-Yan Liu, Nanning Zheng, Bin Shao.  
 In Thirty-ninth International Conference on Machine Learning (**ICML**) 2022.  
+* [Deep Generative Model for Spatial Networks](http://cs.emory.edu/~lzhao41/materials/papers/KDD21__Spatial_Graphs_Disentanglement_preprinted.pdf).  
+**Yuanqi Du**\*, Xiaojie Guo\*, Hengning Cao, Yanfang Ye, Liang Zhao.  
+In AAAI Conference on Artificial Intelligence (**AAAI**) 2022. (**Oral**)  
 * [GraphGT: Machine Learning Datasets for Graph Generation and Transformation](https://openreview.net/forum?id=NYgt9vcdyjm).  
 **Yuanqi Du**\*, Shiyu Wang\*, Xiaojie Guo, Hengning Cao, Shujie Hu, Junji Jiang, Aishwarya Varala, Abhinav Angirekula, Liang Zhao.  
 In Neural Information Processing Systems (**NeurIPS**) 2021 Datasets and Benchmarks track.
-* [Deep Generative Model for Spatial Networks](http://cs.emory.edu/~lzhao41/materials/papers/KDD21__Spatial_Graphs_Disentanglement_preprinted.pdf).  
+* [Disentangled Spatiotemporal Graph Generative Models](https://ojs.aaai.org/index.php/AAAI/article/view/20607).  
 Xiaojie Guo\*, **Yuanqi Du**\*, Liang Zhao.  
 In ACM SIGKDD Conference on Knowledge Discovery and Data Mining (**KDD**) 2021.
 
 
-
-<!-- * [A Systematic Survey of Molecular Pre-trained Models](https://arxiv.org/abs/2210.16484).  
-Jun Xia, Yanqiao Zhu, **Yuanqi Du**, Yue Liu, Stan Z.Li.  
-In arXiv preprint arXiv:2210.16484 (2022). -->
-
-<!-- * [Improving Molecular Pretraining with Complementary Featurizations](https://arxiv.org/abs/2209.15101).  
-Yanqiao Zhu\*, Dingshuo Chen\*, **Yuanqi Du\***, Yingze Wang, Qiang Liu, Shu Wu.   -->
-<!-- * [Graphein - a Python Library for Geometric Deep Learning and Network Analysis on Biomolecular Structures and Interaction Networks](https://openreview.net/pdf?id=nNof5wC9kD).  
-Arian Rokkum Jamasb, Ramon Viñas Torné, Eric J Ma, **Yuanqi Du**, Charles Harris, Kexin Huang, Dominic Hall, Pietro Lio, Tom Leon Blundell.   -->
-<!-- * [GAUCHE: A Library for Gaussian Processes in Chemistry](https://openreview.net/pdf?id=i9MKI7zrWal).   -->
-<!-- Ryan-Rhys Griffiths, Leo Klarner, Henry Moss, Aditya Ravuri, Sang T. Truong, **Yuanqi Du**, Arian Rokkum Jamasb, Julius Schwartz, Austin Tripp, Bojana Rankovic, Philippe Schwaller, Gregory Kell, Anthony Bourached, Alex Chan, Jacob Moss, Chengzhi Guo, Alpha Lee, Jian Tang.    -->
-<!-- * [Pre-training Graph Neural Networks for Molecular Representations: Retrospect and Prospect](https://arxiv.org/abs/2202.07893).  
-Jun Xia, Yanqiao Zhu, **Yuanqi Du**, Stan Z. Li.  
-In arXiv preprint arXiv:2202.07893 (2022).   -->
-
-
-<!-- Protein Generation
-======
-* [Generating Tertiary Protein Structures via Interpretable Graph Variational Autoencoders](https://academic.oup.com/bioinformaticsadvances/article/1/1/vbab036/6446026).  
-Xiaojie Guo\*, **Yuanqi Du**\*, Sivani Tadepalli, Liang Zhao, Amarda Shehu.  
-In **Bioinformatics Advances** 2021.
-* [Generative Adversarial Learning of Protein Tertiary Structures](https://www.mdpi.com/1420-3049/26/5/1209).  
-Taseef Rahman, **Yuanqi Du**, Liang Zhao, Amarda Shehu.  
-In **Molecules** 2021, 26(5), 1209.   -->
-
-
-
-
-
-<!-- Medical Image Analysis
-======
-* [Semi-supervised Pseudo-healthy Image Synthesis via Confidence Augmentation](https://arxiv.org/abs/2106.15345).  
-**Yuanqi Du**, Quan Quan, Hu Han, S. Kevin Zhou.  
-In International Symposium on Biomedical Imaging (**ISBI**) 2022.
-* [Deep Learning to Segment Pelvic Bones: Large-scale CT Datasets and Baseline Models](https://arxiv.org/pdf/2012.08721.pdf).  
-Pengbo Liu, Hu Han, **Yuanqi Du**, Heqin Zhu, Yinhao Li, Feng Gu, Honghu Xiao, Jun Li, Chunpeng Zhao, Xinbao Wu, S. Kevin Zhou.  
-In International Conference on Information Processing in Computer-Assisted Interventions (**IPCAI**) 2021, published in International Journal of Computer Assisted Radiology and Surgery (**IJCARS**). -->
-
-
-<!-- American Sign Language Recognition
-======
-* [Expressive ASL Recognition using Millimeter-wave Wireless Signals](https://ieeexplore.ieee.org/document/9158441).  
-Panneer Selvam Santhalingam, **Yuanqi Du**, Riley Wilkerson, Al Amin Hosain, Ding Zhang, Parth Pathak, Huzefa Rangwala and Raja Kushalnagar.  
-In International Conference on Sensing, Communication and Networking (**SECON**) 2020. -->
-
-
-
-<!-- Abstracts
-======
-* [American Sign Language Recognition Using an FMCW Wireless Sensor](http://yuanqidu.github.io/files/American_Sign_Language_Recognition_Using_an_FMCW_Wireless_Sensor.pdf).  
-**Yuanqi Du**, Nguyen Dang, Riley Wilkerson, Parth Pathak, Huzefa Rangwala, Jana Kosecka.  
-In *AAAI* Conference on Artificial Intelligence (AAAI) 2020 (Student Abstract). -->
-
-<!-- Under review
-======
-
-* Equivariant Vector Field Network for Dynamics Modeling.  
-Weitao Du\*, He Zhang\*, **Yuanqi Du**, Wei Chen, Bin Shao, Tie-Yan Liu.
-
-* Efficient Deep Generative Models for Spatial Networks via Spanning Tree Sampler.  
-Xiaojie Guo\*, **Yuanqi Du**\*, Zheng Zhang, Liang Zhao.
-
-* ROMNet: Renovate the Old Memories.  
-Runsheng Xu\*, Zhengzhong Tu\*, **Yuanqi Du**\*, Xiaoyu Dong, Jinlong Li, Zibo Meng, Jiaqi Ma, Hongkai Yu.  
-
-Work-in-progress
-======
-* Facilitating Fundamental Science with AI.  
-AI4Science Community: Yoshua Bengio, Payal Chandak, **Yuanqi Du**, Tianfan Fu, Wenhao Gao, Shirley Ho, Kexin Huang, Joan Lasenby, Shengchao Liu, Tie-Yan Liu, Ziming Liu, Debora Marks, Irina Rish, Hanchen Wang, Adrian Weller, Max Welling, Petar Veličković, Marinka Zitnik (**in alphabetical order**) -->
-
-
-<!---->
-<!--{% for post in site.publications reversed %}-->
-<!--  {% include archive-single.html %}-->
-<!--{% endfor %}-->
