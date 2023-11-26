@@ -55,13 +55,13 @@ In First Learning on Graphs conference (**LoG**) 2022.
 * [Equivariant Graph Neural Networks with Complete Local Frames](https://arxiv.org/pdf/2110.14811.pdf).  
 Weitao Du\*, He Zhang\*, **Yuanqi Du**, Qi Meng, Wei Chen, Tie-Yan Liu, Nanning Zheng, Bin Shao.  
 In Thirty-ninth International Conference on Machine Learning (**ICML**) 2022.  
-* [Deep Generative Model for Spatial Networks](http://cs.emory.edu/~lzhao41/materials/papers/KDD21__Spatial_Graphs_Disentanglement_preprinted.pdf).  
+* [Disentangled Spatiotemporal Graph Generative Models](https://ojs.aaai.org/index.php/AAAI/article/view/20607).  
 **Yuanqi Du**\*, Xiaojie Guo\*, Hengning Cao, Yanfang Ye, Liang Zhao.  
 In AAAI Conference on Artificial Intelligence (**AAAI**) 2022. (**Oral**)  
 * [GraphGT: Machine Learning Datasets for Graph Generation and Transformation](https://openreview.net/forum?id=NYgt9vcdyjm).  
 **Yuanqi Du**\*, Shiyu Wang\*, Xiaojie Guo, Hengning Cao, Shujie Hu, Junji Jiang, Aishwarya Varala, Abhinav Angirekula, Liang Zhao.  
 In Neural Information Processing Systems (**NeurIPS**) 2021 Datasets and Benchmarks track.
-* [Disentangled Spatiotemporal Graph Generative Models](https://ojs.aaai.org/index.php/AAAI/article/view/20607).  
+* [Deep Generative Model for Spatial Networks](http://cs.emory.edu/~lzhao41/materials/papers/KDD21__Spatial_Graphs_Disentanglement_preprinted.pdf).  
 Xiaojie Guo\*, **Yuanqi Du**\*, Liang Zhao.  
 In ACM SIGKDD Conference on Knowledge Discovery and Data Mining (**KDD**) 2021.
 
