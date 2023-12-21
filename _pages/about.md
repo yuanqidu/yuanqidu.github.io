@@ -16,7 +16,7 @@ Yuanqi Du is a CS PhD student at Cornell University, working on Artificial Intel
   * Interpretability (Science of AI)
   * Science of Science
   * Education (esp. AI for Science)
-  * Search, Optimization and Sampling Problems
+  * Search, Optimization, and Sampling Problems
   * AI for Science (Biology/Chemistry/Physics/Materials/Sustainability/etc)
   
 **News and Travels! Follow me [@Twitter](https://twitter.com/YuanqiD)**

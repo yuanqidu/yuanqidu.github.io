@@ -25,9 +25,9 @@ In arXiv preprint arXiv:2203.14500 (2022).
 
 Selected Publications
 ======
-* [Accurate transition state generation with an object-aware equivariant elementary reaction diffusion model](https://arxiv.org/abs/2304.06174).  
+* [Accurate transition state generation with an object-aware equivariant elementary reaction diffusion model](https://www.nature.com/articles/s43588-023-00563-7).  
 Chenru Duan, **Yuanqi Du**, Haojun Jia, Heather J. Kulik.  
-In Nature Computational Science 2023. 
+In Nature Computational Science 2023. (**Cover Story**)
 * [A new perspective on building efficient and expressive 3D equivariant graph neural networks](https://arxiv.org/abs/2304.04757).  
 Weitao Du\*, **Yuanqi Du\***, Limei Wang\*, Dieqiao Feng, Guifeng Wang, Shuiwang Ji, Carla Gomes, Zhi-Ming Ma.  
 In In Neural Information Processing Systems (**NeurIPS**) 2023. In TAG in ML workshop ICML 2023. (**Oral**)  
