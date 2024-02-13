@@ -23,7 +23,8 @@ Professional Service
 
 Selected Review Service
 ======
-* Science Advdances, NeurIPS, ICML, ICLR, AISTATS, AAAI, KDD, CVPR, ICCV, ECCV, TPAMI. 
+* Submissions: Science Advdances, NeurIPS, ICML, ICLR, AISTATS, AAAI, KDD, CVPR, ICCV, ECCV, TPAMI. 
+* Proposal: ICML, NeurIPS workshops
 
 Open-source Software
 ======
