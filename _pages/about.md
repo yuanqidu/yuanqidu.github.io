@@ -1,3 +1,4 @@
+@ -1,27 +1,27 @@
 ---
 permalink: /
 title: "Yuanqi Du"
@@ -20,22 +21,9 @@ Yuanqi Du is a CS PhD student at Cornell University, working on Artificial Intel
   * AI for Science (Biology/Chemistry/Physics/Materials/Sustainability/etc)
   
 **News and Travels! Follow me [@Twitter](https://twitter.com/YuanqiD)**
-<<<<<<< HEAD
-
-* 2/24 We are organizing an [AI for Science Seminar](https://science.ai.cornell.edu/events/ai-for-science-seminar-series-spring-2024/) (livestreaming, free-to-attend for all and physically at Cornell)! [Zoom link](https://t.co/6sMdN7NuCm), [Recordings](https://www.youtube.com/\@cuaisci).
-* 1/24 We released a blog [AI for Science in 2023: A Community Primer](https://medium.com/@AI_for_Science/ai-for-science-in-2023-a-community-primer-d2c2db37e9a7) to highlight some progress and trends in the broad AI for Science community, check it out!
-=======
 <!-- * 2/24 We are organizing a one-day local meetup "Learning Meets Geometry, Graph and Network" in NYC, please sign up the [participation form](), [schedule]()! -->
 <!-- * 2/24 We are organizing an AI for Science Seminar (livestreaming, free-to-attend for all and physically at Cornell)! [Calendar](), [Zoom link](), [Recordings]() -->
-* 1/24 We release a blog [AI for Science in 2023: A Community Primer](https://medium.com/@AI_for_Science/ai-for-science-in-2023-a-community-primer-d2c2db37e9a7) to highlight some progress and trends in the broad AI for Science community, check it out!
->>>>>>> parent of d388962 (update)
+* 2/24 We are organizing an [AI for Science Seminar](https://science.ai.cornell.edu/events/ai-for-science-seminar-series-spring-2024/) (livestreaming, free-to-attend for all and physically at Cornell)! [Zoom link](), [Recordings]()
+* 1/24 We released a blog [AI for Science in 2023: A Community Primer](https://medium.com/@AI_for_Science/ai-for-science-in-2023-a-community-primer-d2c2db37e9a7) to highlight some progress and trends in the broad AI for Science community, check it out!
 * 11/23 I will travel to NeurIPS 2023, present LEFTNet, PIPS, M2Hub, and host [Comp Sustainability](https://www.compsust.net/compsust-2023/) (12/15), [AI for Science]((https://ai4sciencecommunity.github.io/neurips23.html)) workshop (12/16), let me know if you like to chat!
 * Second [*Learning on Graphs conference*](https://logconference.github.io/) will be held from Nov 27-30th, fully virtual and free to attend for all!
-* 7/23 I will travel to ICML 2023, present Flexible Diffusion, and host our [SPIGM](https://spigmworkshop.github.io/) workshop, let me know if you like to chat!
-<!-- * 7/23 We are going to host the [AI for Science: From Thoery to Practice](https://ai4sciencecommunity.github.io/neurips23.html) workshop again and a new [Computational Sustainability](https://www.compsust.net/compsust-2023/) workshop at NeurIPS 2023, stay tuned for more details! -->
-<!-- * 4/23 Following the recent progress of probabilistic inference and generative modeling at Hawaii this summer [@SPIGM ICML 2023](https://spigmworkshop.github.io/)! -->
-<!-- * 7/22 [AI for Science: Progress and Promises](https://ai4sciencecommunity.github.io/) will be held again **in-person** with NeurIPS 2022! Looking forward to your excellent submissions!  -->
-* 6/22 We are launching a new initiative *AI for Science 101* that aims to encourage knowledge-sharing and collection in AI for Science, find out [what we are doing and why we are doing](https://t.co/VAL6kuSqyY) and [read more](https://ai4science101.deepmodeling.com/en/latest/index.html)!  
-<!-- * 3/22 The sceond [*AI for Science* workshop](http://www.ai4science.net/icml22/) will be hosted together with ICML 2022 (hybrid), stay tuned for more information! -->
-<!-- * 3/22 We have recenlty been working on a new initiative, [*Learning on Graphs conference*](https://logconference.github.io/) along with a stellar list of advisory board members where we aim to advance graph machine learning as a community and emphasize on the review quality! Any thoughts are welcome! -->
-
