@@ -1,4 +1,3 @@
-@ -1,27 +1,27 @@
 ---
 permalink: /
 title: "Yuanqi Du"
