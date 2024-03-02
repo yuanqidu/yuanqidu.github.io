@@ -31,10 +31,10 @@ In arXiv preprint arXiv:2402.18012.
 * Traversing Chemical Space with Latent Potential Flows.  
 Guanghao Wei\*, Yining Huang\*, Chenru Duan, Yue Song†, **Yuanqi Du†**.  
 Coming soon.
-* [Accurate transition state generation with an object-aware equivariant elementary reaction diffusion model](https://www.nature.com/articles/s43588-023-00563-7).  
+* [Accurate Transition State Generation with an Object-aware Equivariant Elementary Reaction Diffusion Model](https://www.nature.com/articles/s43588-023-00563-7).  
 Chenru Duan, **Yuanqi Du**, Haojun Jia, Heather J. Kulik.  
 In Nature Computational Science 2023. (**Cover Story**)
-* [A new perspective on building efficient and expressive 3D equivariant graph neural networks](https://arxiv.org/abs/2304.04757).  
+* [A New Perspective on Building Efficient and Expressive 3D Equivariant Graph Neural Networks](https://arxiv.org/abs/2304.04757).  
 Weitao Du\*, **Yuanqi Du\***, Limei Wang\*, Dieqiao Feng, Guifeng Wang, Shuiwang Ji, Carla Gomes, Zhi-Ming Ma.  
 In In Neural Information Processing Systems (**NeurIPS**) 2023. In TAG in ML workshop ICML 2023. (**Oral**)  
 * [Path Integral Stochastic Optimal Control for Sampling Transition Paths](https://arxiv.org/abs/2207.02149).  
