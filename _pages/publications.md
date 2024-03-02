@@ -16,15 +16,21 @@ You can find my recent and full list of publications on my [Google Scholar profi
 <!-- My publications center around several topics: from machine learning perspective, it includes **deep generative models**, **disentanglement learning**, **representation learning**, and **geometric deep learning**; from scientific perspective, it includes **molecular design**, **molecular modeling**, and **molecular simulation**. -->
 
 
-Preprints
+<!-- Preprints
 ======
 * [MolGenSurvey: A Systematic Survey in Machine Learning Models for Molecule Design](https://arxiv.org/pdf/2203.14500.pdf).  
 **Yuanqi Du**\*, Tianfan Fu\*, Jimeng Sun, Shengchao Liu.  
-In arXiv preprint arXiv:2203.14500 (2022).  
+In arXiv preprint arXiv:2203.14500 (2022).   -->
 
 
 Selected Publications
 ======
+* [Diffusion Models as Constrained Samplers for Optimization with Unknown Constraints](https://arxiv.org/abs/2402.18012).  
+**Yuanqi Du\***, Lingkai Kong\*, Wenhao Mu\*, Kirill Neklyudov, Valentin De Bortol, Haorui Wang, Dongxia Wu, Aaron Ferber, Yi-An Ma, Carla P. Gomes, Chao Zhang.  
+In arXiv preprint arXiv:2402.18012.
+* Traversing Chemical Space with Latent Potential Flows.  
+Guanghao Wei\*, Yining Huang\*, Chenru Duan, Yue Song†, **Yuanqi Du†**.  
+Coming soon.
 * [Accurate transition state generation with an object-aware equivariant elementary reaction diffusion model](https://www.nature.com/articles/s43588-023-00563-7).  
 Chenru Duan, **Yuanqi Du**, Haojun Jia, Heather J. Kulik.  
 In Nature Computational Science 2023. (**Cover Story**)
