@@ -19,9 +19,8 @@ Yuanqi Du is a CS PhD student at Cornell University, working on Artificial Intel
   * Search, Optimization, and Sampling Problems
   * AI for Science (Biology/Chemistry/Physics/Materials/Sustainability/etc)
   
-**News and Travels! Follow me [@Twitter](https://twitter.com/YuanqiD)**
+**News, Travels and Highlights! Follow me [@Twitter](https://twitter.com/YuanqiD)**
 * 2/24 We are organizing a one-day local meetup "Learning Meets Geometry, Graph and Network" in NYC, please sign up the [participation form](https://forms.gle/6pnnpLd3RRCrkQr66), [schedule](https://logmeetupnyc.github.io/)!
 * 2/24 We are organizing an AI for Science Seminar (livestreaming, free-to-attend for all and physically at Cornell)! [Schedule](https://science.ai.cornell.edu/events/ai-for-science-seminar-series-spring-2024/), [Zoom link](https://t.co/6sMdN7NuCm), [Recordings](https://www.youtube.com/@cuaisci)
 * 1/24 We released a blog [AI for Science in 2023: A Community Primer](https://medium.com/@AI_for_Science/ai-for-science-in-2023-a-community-primer-d2c2db37e9a7) to highlight some progress and trends in the broad AI for Science community, check it out!
-* 11/23 I will travel to NeurIPS 2023, present LEFTNet, PIPS, M2Hub, and host [Comp Sustainability](https://www.compsust.net/compsust-2023/) (12/15), [AI for Science]((https://ai4sciencecommunity.github.io/neurips23.html)) workshop (12/16), let me know if you like to chat!
-* Second [*Learning on Graphs conference*](https://logconference.github.io/) will be held from Nov 27-30th, fully virtual and free to attend for all!
+* [AI for Science101](https://ai4science101.github.io/) is an educational initative with community contributed series of blogs and short tutorials for broad topics in the intersection of AI and Science.
