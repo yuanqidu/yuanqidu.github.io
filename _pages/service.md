@@ -14,8 +14,8 @@ Professional Service
 * Co-founder and Lead Organizer for [*Learning on Graphs*](https://logconference.github.io/) conference 2022, 2023.
 * Founder and Lead Organizer for [*AI for Science: Mind the Gaps*](http://www.ai4science.net/neurips21/) workshop with *NeurIPS 2021*, [*AI for Science: Theories and Foundations*](http://www.ai4science.net/icml22/) workshop with *ICML 2022*, [*AI for Science: Progress and Promises*](https://ai4sciencecommunity.github.io/neurips22/) with *NeurIPS 2022*, [*AI for Science: From Theory to Practice*](https://ai4sciencecommunity.github.io/neurips23/) with *NeurIPS 2023*.
 * Co-founder and Lead Organizer for [*Structured Probabilistic Inference & Generative Modeling*](https://spigmworkshop.github.io/) workshop with *ICML 2023*.
-* Co-founder and Lead Organizer for [Cornell AI for Science Seminar](https://science.ai.cornell.edu/events/ai-for-science-seminar-series-spring-2024/).
-* Co-founder and Lead Organizer for [Learning Meets Geometry, Graph and Network](https://logmeetupnyc.github.io/) meetup at NYC.
+* Co-founder and Lead Organizer for [Cornell AI for Science Seminar](https://science.ai.cornell.edu/events/ai-for-science-seminar-series-spring-2024/), Spring 2024.
+* Co-founder and Lead Organizer for [Learning Meets Geometry, Graph and Network](https://logmeetupnyc.github.io/) meetup at NYC, 2024.
 * Co-organize [*Computational Sustainability: Promises and Pitfalls from Theory to Deployment*](https://www.compsust.net/compsust-2023/) workshop with *NeurIPS 2023*.
 * Lead Organizer for [*Deep Generative Models for Highly Structured Data*](https://deep-gen-struct.github.io/) workshop with *ICLR 2022*.
 * Co-organize [*AAAI 2021*](https://aaai.org/Conferences/AAAI-21/) (Virtual Team).
