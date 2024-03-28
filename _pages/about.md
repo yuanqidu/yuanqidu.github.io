@@ -20,6 +20,7 @@ Yuanqi Du is a CS PhD student at Cornell University, working on Artificial Intel
   * AI for Science (Biology/Chemistry/Physics/Materials/Sustainability/etc)
   
 **News, Travels and Highlights! Follow me [@Twitter](https://twitter.com/YuanqiD)**
+* 3/24 We are organizing the new AI for Science edition ([Scaling in AI for Science](https://ai4sciencecommunity.github.io/icml24.html)) and [Structured Probabilsitic Inference and Generative Modeling](https://spigmworkshop2024.github.io/) workshops with ICML 2024!
 * 2/24 We are organizing an AI for Science Seminar (livestreaming, free-to-attend for all and physically at Cornell)! [Schedule](https://science.ai.cornell.edu/events/ai-for-science-seminar-series-spring-2024/), [Zoom link](https://t.co/6sMdN7NuCm), [Recordings](https://www.youtube.com/@cuaisci)
 * 1/24 We released a blog [AI for Science in 2023: A Community Primer](https://medium.com/@AI_for_Science/ai-for-science-in-2023-a-community-primer-d2c2db37e9a7) to highlight some progress and trends in the broad AI for Science community, check it out!
 * [AI for Science101](https://ai4science101.github.io/) is an educational initative with community contributed series of blogs and short tutorials for broad topics in the intersection of AI and Science.
