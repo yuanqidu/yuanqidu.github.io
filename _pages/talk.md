@@ -9,6 +9,7 @@ redirect_from:
 
 Recent Talks and Lectures:
 ======
+* [Accelerating Molecular Discovery with Machine Learning: A Geometric, Sampling and Optimization Perspective](https://math.gatech.edu/seminars-colloquia/series/applied-and-computational-mathematics-seminar/yuanqi-du-20240401), @Georgia Tech Applied and Computational Mathematics Seminar, April 2024.
 * Recent Advances of Machine Learning in Molecular Discovery: From Representation, Simulation to Inverse Design, @Cornell Deep Learning (SYSEN 6888), Nov 2023.
 * Scientific Discovery in the era of Artificial Intelligence, @School of Integrative Plant Science, Cornell, Sep 2023.
 * [A New Perspective on Building Efficient and Expressive 3D Equivariant Graph Neural Networks](https://m2d2.io/talks/logg/a-new-perspective-on-building-efficient-and-expressive-3d-equivariant-graph-neural-networks/), @LoGG Reading Group, May 2023, Oral Presentation @TAGML-ICML, July 2023.
