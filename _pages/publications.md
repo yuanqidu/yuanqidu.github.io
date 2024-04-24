@@ -16,15 +16,15 @@ You can find my recent and full list of publications on my [Google Scholar profi
 <!-- My publications center around several topics: from machine learning perspective, it includes **deep generative models**, **disentanglement learning**, **representation learning**, and **geometric deep learning**; from scientific perspective, it includes **molecular design**, **molecular modeling**, and **molecular simulation**. -->
 
 
-<!-- Preprints
-======
-* [MolGenSurvey: A Systematic Survey in Machine Learning Models for Molecule Design](https://arxiv.org/pdf/2203.14500.pdf).  
-**Yuanqi Du**\*, Tianfan Fu\*, Jimeng Sun, Shengchao Liu.  
-In arXiv preprint arXiv:2203.14500 (2022).   -->
-
 
 Selected Publications
 ======
+* [React-OT: Optimal Transport for Generating Transition State in Chemical Reactions](https://t.co/RwXUSEISmq).  
+Chenru Duan\*, Guan-Horng Liu\*, **Yuanqi Du\***, Tianrong Chen, Qiyuan Zhao, Haojun Jia, Carla P. Gomes, Evangelos A. Theodorou, Heather J. Kulik.  
+In arXiv preprint arXiv:2404.13430.
+* Machine Learning-Aided Generative Molecular Design.  
+**Yuanqi Du\***, Arian R. Jamasb\*, Jeff Guo\*, Tianfan Fu, Charles Harris, Yingheng Wang, Chenru Duan, Pietro Lio, Philippe Schwaller, Tom L. Blundell.  
+In Nature Machine Intelligence 2024 (accepted, coming out soon!!).
 * [Diffusion Models as Constrained Samplers for Optimization with Unknown Constraints](https://arxiv.org/abs/2402.18012).  
 **Yuanqi Du\***, Lingkai Kong\*, Wenhao Mu\*, Kirill Neklyudov, Valentin De Bortol, Haorui Wang, Dongxia Wu, Aaron Ferber, Yi-An Ma, Carla P. Gomes, Chao Zhang.  
 In arXiv preprint arXiv:2402.18012.
