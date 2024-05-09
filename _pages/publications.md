@@ -28,7 +28,7 @@ In Nature Machine Intelligence 2024 (accepted, coming out soon!!).
 * [Diffusion Models as Constrained Samplers for Optimization with Unknown Constraints](https://arxiv.org/abs/2402.18012).  
 **Yuanqi Du\***, Lingkai Kong\*, Wenhao Mu\*, Kirill Neklyudov, Valentin De Bortol, Haorui Wang, Dongxia Wu, Aaron Ferber, Yi-An Ma, Carla P. Gomes, Chao Zhang.  
 In arXiv preprint arXiv:2402.18012.
-* [Navigating Chemical Space with Latent Flows](https://arxiv.org/abs/2405.03987). [Check out our Demo!](https://colab.research.google.com/drive/1QAy_QoEnDRaiLF6kJ6RyhuGx1qCJXYKm?usp=sharing).  
+* [Navigating Chemical Space with Latent Flows](https://arxiv.org/abs/2405.03987). [Check out our Demo](https://colab.research.google.com/drive/1QAy_QoEnDRaiLF6kJ6RyhuGx1qCJXYKm?usp=sharing)!  
 Guanghao Wei\*, Yining Huang\*, Chenru Duan, Yue Song†, **Yuanqi Du†**.  
 In Arxiv preprint arXiv:2405.03987.
 * [Accurate Transition State Generation with an Object-aware Equivariant Elementary Reaction Diffusion Model](https://www.nature.com/articles/s43588-023-00563-7).  
