@@ -30,13 +30,13 @@ In Nature Machine Intelligence 2024.
 In arXiv preprint arXiv:2402.18012.
 * [Navigating Chemical Space with Latent Flows](https://arxiv.org/abs/2405.03987). [Check out our Demo](https://colab.research.google.com/drive/1QAy_QoEnDRaiLF6kJ6RyhuGx1qCJXYKm?usp=sharing)!  
 Guanghao Wei\*, Yining Huang\*, Chenru Duan, Yue Song†, **Yuanqi Du†**.  
-In Arxiv preprint arXiv:2405.03987.
+In arXiv preprint arXiv:2405.03987.
 * [Accurate Transition State Generation with an Object-aware Equivariant Elementary Reaction Diffusion Model](https://www.nature.com/articles/s43588-023-00563-7).  
 Chenru Duan, **Yuanqi Du**, Haojun Jia, Heather J. Kulik.  
 In Nature Computational Science 2023. (**Cover Story**)
 * [A New Perspective on Building Efficient and Expressive 3D Equivariant Graph Neural Networks](https://arxiv.org/abs/2304.04757).  
 Weitao Du\*, **Yuanqi Du\***, Limei Wang\*, Dieqiao Feng, Guifeng Wang, Shuiwang Ji, Carla Gomes, Zhi-Ming Ma.  
-In In Neural Information Processing Systems (**NeurIPS**) 2023. In TAG in ML workshop ICML 2023. (**Oral**)  
+In Neural Information Processing Systems (**NeurIPS**) 2023. In TAG in ML workshop ICML 2023. (**Oral**)  
 * [Path Integral Stochastic Optimal Control for Sampling Transition Paths](https://arxiv.org/abs/2207.02149).  
 Lars Holdijk\*, **Yuanqi Du\***, Priyank Jaini, Ferry Hooft, Bernd Ensing, Max Welling.  
 In Neural Information Processing Systems (**NeurIPS**) 2023. In Machine Learning for Physical Sciences workshop NeurIPS 2022.   
@@ -48,7 +48,7 @@ Weitao Du, Tao Yang, He Zhang, **Yuanqi Du**.
 In International Conference on Machine Learning (**ICML**) 2023.  
 * [Scientific Discovery in the Age of Artificial Intelligence](https://www.nature.com/articles/s41586-023-06221-2).  
 Hanchen Wang\*, Tianfan Fu\*, **Yuanqi Du\***, Wenhao Gao\+, Kexin Huang\+, Ziming Liu\+, ..., Max Welling, Linfeng Zhang, Connor Coley, Yoshua Bengio, Marinka Zitnik.  
-To appear in Nature (2023).
+In Nature 2023.
 * [ChemSpacE: Interpretable and Interactive Chemical Space Exploration](https://openreview.net/forum?id=C1Xl8dYCBn).  
 **Yuanqi Du**, Xian Liu, Shengchao Liu, Jieyu Zhang, Bolei Zhou.  
 In Transactions on Machine Learning Research (**TMLR**) 2023. In ELLIS ML4Molecules workshop 2021. (**Oral**)  
