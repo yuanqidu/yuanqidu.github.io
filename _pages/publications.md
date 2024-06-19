@@ -22,9 +22,9 @@ Selected Publications
 * [React-OT: Optimal Transport for Generating Transition State in Chemical Reactions](https://t.co/RwXUSEISmq).  
 Chenru Duan\*, Guan-Horng Liu\*, **Yuanqi Du\***, Tianrong Chen, Qiyuan Zhao, Haojun Jia, Carla P. Gomes, Evangelos A. Theodorou, Heather J. Kulik.  
 In arXiv preprint arXiv:2404.13430.
-* Machine Learning-Aided Generative Molecular Design.  
+* [Machine Learning-Aided Generative Molecular Design](https://www.nature.com/articles/s42256-024-00843-5).  
 **Yuanqi Du\***, Arian R. Jamasb\*, Jeff Guo\*, Tianfan Fu, Charles Harris, Yingheng Wang, Chenru Duan, Pietro Lio, Philippe Schwaller, Tom L. Blundell.  
-In Nature Machine Intelligence 2024 (accepted, coming out soon!!).
+In Nature Machine Intelligence 2024.
 * [Diffusion Models as Constrained Samplers for Optimization with Unknown Constraints](https://arxiv.org/abs/2402.18012).  
 **Yuanqi Du\***, Lingkai Kong\*, Wenhao Mu\*, Kirill Neklyudov, Valentin De Bortol, Haorui Wang, Dongxia Wu, Aaron Ferber, Yi-An Ma, Carla P. Gomes, Chao Zhang.  
 In arXiv preprint arXiv:2402.18012.
