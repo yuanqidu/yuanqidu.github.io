@@ -19,6 +19,12 @@ You can find my recent and full list of publications on my [Google Scholar profi
 
 Selected Publications
 ======
+* Efficient Evolutionary Search Over Chemical Space with Large Language Models.  
+Haorui Wang\*, Marta Skreta\*, ..., **Yuanqi Du†**, Alán Aspuru-Guzik†, Kirill Neklyudov†, Chao Zhang†.  
+Available soon.
+* Doob's Lagrangian: A Sample-Efficient Variational Approach to Transition Path Sampling.  
+**Yuanqi Du\***, Michael Plainer\*, Rob Brekelmans\*, Chenru Duan, Frank Noe, Carla P. Gomes, Alán Aspuru-Guzik, Kirill Neklyudov.  
+Available soon.
 * [React-OT: Optimal Transport for Generating Transition State in Chemical Reactions](https://t.co/RwXUSEISmq).  
 Chenru Duan\*, Guan-Horng Liu\*, **Yuanqi Du\***, Tianrong Chen, Qiyuan Zhao, Haojun Jia, Carla P. Gomes, Evangelos A. Theodorou, Heather J. Kulik.  
 In arXiv preprint arXiv:2404.13430.
@@ -35,7 +41,7 @@ In arXiv preprint arXiv:2405.03987.
 Chenru Duan, **Yuanqi Du**, Haojun Jia, Heather J. Kulik.  
 In Nature Computational Science 2023. (**Cover Story**)
 * [A New Perspective on Building Efficient and Expressive 3D Equivariant Graph Neural Networks](https://arxiv.org/abs/2304.04757).  
-Weitao Du\*, **Yuanqi Du\***, Limei Wang\*, Dieqiao Feng, Guifeng Wang, Shuiwang Ji, Carla Gomes, Zhi-Ming Ma.  
+Weitao Du\*, **Yuanqi Du\***, Limei Wang\*, Dieqiao Feng, Guifeng Wang, Shuiwang Ji, Carla P. Gomes, Zhi-Ming Ma.  
 In Neural Information Processing Systems (**NeurIPS**) 2023. In TAG in ML workshop ICML 2023. (**Oral**)  
 * [Path Integral Stochastic Optimal Control for Sampling Transition Paths](https://arxiv.org/abs/2207.02149).  
 Lars Holdijk\*, **Yuanqi Du\***, Priyank Jaini, Ferry Hooft, Bernd Ensing, Max Welling.  
@@ -53,7 +59,7 @@ In Nature 2023.
 **Yuanqi Du**, Xian Liu, Shengchao Liu, Jieyu Zhang, Bolei Zhou.  
 In Transactions on Machine Learning Research (**TMLR**) 2023. In ELLIS ML4Molecules workshop 2021. (**Oral**)  
 * [Structure-based Drug Design with Equivariant Diffusion Models](https://arxiv.org/abs/2210.13695).  
-Arne Schneuing\*, **Yuanqi Du\***, Charles Harris, Arian Jamasb, Ilia Igashov, Weitao Du, Tom Blundell, Pietro Lió, Carla Gomes, Max Welling, Michael Bronstein, Bruno Correia.  
+Arne Schneuing\*, **Yuanqi Du\***, Charles Harris, Arian Jamasb, Ilia Igashov, Weitao Du, Tom Blundell, Pietro Lió, Carla P. Gomes, Max Welling, Michael Bronstein, Bruno Correia.  
 In arXiv preprint arXiv:2210.13695 (2022). In Machine Learning for Structural Biology workshop NeurIPS 2022.  
 * [A Survey on Deep Graph Generation: Methods and Applications](https://arxiv.org/pdf/2203.06714.pdf).  
 **Yuanqi Du\***, Yanqiao Zhu\*, Yinkai Wang\*, Jieyu Zhang, Qiang Liu, Shu Wu.  
