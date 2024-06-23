@@ -8,7 +8,7 @@ redirect_from:
   - /about.html
 ---
 
-Yuanqi Du is a CS PhD student at Cornell University, working on Artificial Intelligence with Prof. Carla P. Gomes. During the past, he spent time at AMLab at University of Amsterdam advised by Prof. Max Welling and DP Technology supervised by Dr. Linfeng Zhang. He is a passionate community builder, which he founded the series of [*AI for Science workshops*](https://ai4sciencecommunity.github.io/), co-founded a new [*Learning on Graphs conference*](https://logconference.github.io/), led an initiative [*AI for Science 101*](https://ai4science101.github.io/) building knowledge systems for AI for Science. He received Bachelor's degree in Computer Science from George Mason University in 2021. He is very fascinated by Science and interested in developing ML tools for scientific problems, especially for new knowledge discovery. He is actively collaborating with researchers in applied mathematics, chemistry, biology, physics, and computer science. He maintains a slack channel for AI for Science, feel free to join and say Hi to people [here](https://join.slack.com/t/aiforscience/shared_invite/zt-1bdof1jmf-YtIjkUVA5DquXguEiOXGPQ)!
+Yuanqi Du is a CS PhD student at Cornell University, working on Artificial Intelligence with Prof. Carla P. Gomes. During the past, he spent time at AMLab at University of Amsterdam advised by Prof. Max Welling and DP Technology supervised by Dr. Linfeng Zhang. He also spent time at Microsoft Research Asia, Machine Learning group. He is a passionate community builder, which he founded the series of [*AI for Science workshops*](https://ai4sciencecommunity.github.io/), co-founded a new [*Learning on Graphs conference*](https://logconference.github.io/), led an initiative [*AI for Science 101*](https://ai4science101.github.io/) building knowledge systems for AI for Science. He received Bachelor's degree in Computer Science from George Mason University in 2021. He is very fascinated by Science and interested in developing ML tools for scientific problems, especially for new knowledge discovery. On the other side, as a computer sciencist, he is devoted to understanding the world through a computational perspective. He is actively collaborating with researchers in applied mathematics, chemistry, biology, physics, and computer science. He maintains a slack channel for AI for Science, feel free to join and say Hi to people [here](https://join.slack.com/t/aiforscience/shared_invite/zt-1bdof1jmf-YtIjkUVA5DquXguEiOXGPQ)!
 
 **Research Interests**
   * Probabilistic Machine Learning
@@ -18,6 +18,11 @@ Yuanqi Du is a CS PhD student at Cornell University, working on Artificial Intel
   * Education (esp. AI for Science)
   * Search, Optimization, and Sampling Problems
   * AI for Science (Biology/Chemistry/Physics/Materials/Sustainability/etc)
+
+**Research Opportunities**
+I appreciate mentorships I received from people in different seniority and I am happy to give back. If you have any questions you would like to discuss, please feel free to reach out! I may also have research opportunities available at different times. If you are interested, please include your area of interest, past experience, and why you would like to work with me. I value curiosity and commitment as essential qualities.
+
+
   
 **News, Travels and Highlights! Follow me [@Twitter](https://twitter.com/YuanqiD)**
 * 3/24 I wrote a short [blog post](https://medium.com/@yuanqidu/about-academic-event-organization-and-community-building-in-ai-and-ml-0735893d7e36) to share some personal lessons, experienecs and thoughts about organizing academic events and community building. 
