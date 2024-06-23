@@ -20,7 +20,7 @@ Yuanqi Du is a CS PhD student at Cornell University, working on Artificial Intel
   * AI for Science (Biology/Chemistry/Physics/Materials/Sustainability/etc)
 
 **Research Opportunities**
-I appreciate mentorships I received from people in different seniority and I am happy to give back. If you have any questions you would like to discuss, please feel free to reach out! I may also have research opportunities available at different times. If you are interested, please include your area of interest, past experience, and why you would like to work with me. I value curiosity and commitment as essential qualities. 
+I appreciate mentorships I received from people in different seniority and I am happy to give back. If you have any questions you would like to discuss, please feel free to reach out! I may also have research opportunities available at different times. If you are interested, please include your area of interest, past experience, and why you would like to work with me. I value curiosity, passion and commitment as essential qualities. 
   
 **News, Travels and Highlights! Follow me [@Twitter](https://twitter.com/YuanqiD)**
 * 3/24 I wrote a short [blog post](https://medium.com/@yuanqidu/about-academic-event-organization-and-community-building-in-ai-and-ml-0735893d7e36) to share some personal lessons, experienecs and thoughts about organizing academic events and community building. 
