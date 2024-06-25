@@ -17,7 +17,7 @@ You can find my recent and full list of publications on my [Google Scholar profi
 
 Preprints
 ======
-* Efficient Evolutionary Search Over Chemical Space with Large Language Models.  
+* Efficient Evolutionary Search over Chemical Space with Large Language Models.  
 Haorui Wang\*, Marta Skreta\*, ..., **Yuanqi Du†**, Alán Aspuru-Guzik†, Kirill Neklyudov†, Chao Zhang†.  
 Available soon.
 * Doob's Lagrangian: A Sample-Efficient Variational Approach to Transition Path Sampling.  
