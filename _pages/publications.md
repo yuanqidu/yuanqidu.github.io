@@ -15,9 +15,7 @@ You can find my recent and full list of publications on my [Google Scholar profi
 
 <!-- My publications center around several topics: from machine learning perspective, it includes **deep generative models**, **disentanglement learning**, **representation learning**, and **geometric deep learning**; from scientific perspective, it includes **molecular design**, **molecular modeling**, and **molecular simulation**. -->
 
-
-
-Selected Publications
+Preprints
 ======
 * Efficient Evolutionary Search Over Chemical Space with Large Language Models.  
 Haorui Wang\*, Marta Skreta\*, ..., **Yuanqi Du†**, Alán Aspuru-Guzik†, Kirill Neklyudov†, Chao Zhang†.  
@@ -25,18 +23,24 @@ Available soon.
 * Doob's Lagrangian: A Sample-Efficient Variational Approach to Transition Path Sampling.  
 **Yuanqi Du\***, Michael Plainer\*, Rob Brekelmans\*, Chenru Duan, Frank Noe, Carla P. Gomes, Alán Aspuru-Guzik, Kirill Neklyudov.  
 Available soon.
+* [Large Language Models are Catalyzing Chemistry Education](https://chemrxiv.org/engage/chemrxiv/article-details/66772be25101a2ffa8412ee0).  
+**Yuanqi Du\***, Chenru Duan\*, Andres Bran\*, Anna Sotnikova, Yi Qu, Heather Kulik, Antoine Bosselut, Jinjia Xu, Philippe Schwaller.  
+In ChemRxiv 10.26434/chemrxiv-2024-h722v.
 * [React-OT: Optimal Transport for Generating Transition State in Chemical Reactions](https://t.co/RwXUSEISmq).  
 Chenru Duan\*, Guan-Horng Liu\*, **Yuanqi Du\***, Tianrong Chen, Qiyuan Zhao, Haojun Jia, Carla P. Gomes, Evangelos A. Theodorou, Heather J. Kulik.  
 In arXiv preprint arXiv:2404.13430.
-* [Machine Learning-Aided Generative Molecular Design](https://www.nature.com/articles/s42256-024-00843-5).  
-**Yuanqi Du\***, Arian R. Jamasb\*, Jeff Guo\*, Tianfan Fu, Charles Harris, Yingheng Wang, Chenru Duan, Pietro Lio, Philippe Schwaller, Tom L. Blundell.  
-In Nature Machine Intelligence 2024.
 * [Diffusion Models as Constrained Samplers for Optimization with Unknown Constraints](https://arxiv.org/abs/2402.18012).  
 **Yuanqi Du\***, Lingkai Kong\*, Wenhao Mu\*, Kirill Neklyudov, Valentin De Bortol, Haorui Wang, Dongxia Wu, Aaron Ferber, Yi-An Ma, Carla P. Gomes, Chao Zhang.  
 In arXiv preprint arXiv:2402.18012.
 * [Navigating Chemical Space with Latent Flows](https://arxiv.org/abs/2405.03987). [Check out our Demo](https://colab.research.google.com/drive/1QAy_QoEnDRaiLF6kJ6RyhuGx1qCJXYKm?usp=sharing)!  
 Guanghao Wei\*, Yining Huang\*, Chenru Duan, Yue Song†, **Yuanqi Du†**.  
 In arXiv preprint arXiv:2405.03987.
+
+Selected Publications
+======
+* [Machine Learning-Aided Generative Molecular Design](https://www.nature.com/articles/s42256-024-00843-5).  
+**Yuanqi Du\***, Arian R. Jamasb\*, Jeff Guo\*, Tianfan Fu, Charles Harris, Yingheng Wang, Chenru Duan, Pietro Lio, Philippe Schwaller, Tom L. Blundell.  
+In Nature Machine Intelligence 2024.
 * [Accurate Transition State Generation with an Object-aware Equivariant Elementary Reaction Diffusion Model](https://www.nature.com/articles/s43588-023-00563-7).  
 Chenru Duan, **Yuanqi Du**, Haojun Jia, Heather J. Kulik.  
 In Nature Computational Science 2023. (**Cover Story**)
