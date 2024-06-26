@@ -17,9 +17,9 @@ You can find my recent and full list of publications on my [Google Scholar profi
 
 Preprints
 ======
-* Efficient Evolutionary Search over Chemical Space with Large Language Models.  
+* [Efficient Evolutionary Search over Chemical Space with Large Language Models](https://molleo.github.io/).  
 Haorui Wang\*, Marta Skreta\*, ..., **Yuanqi Du†**, Alán Aspuru-Guzik†, Kirill Neklyudov†, Chao Zhang†.  
-Available soon.
+In arXiv preprint arXiv:2406.16976.
 * Doob's Lagrangian: A Sample-Efficient Variational Approach to Transition Path Sampling.  
 **Yuanqi Du\***, Michael Plainer\*, Rob Brekelmans\*, Chenru Duan, Frank Noe, Carla P. Gomes, Alán Aspuru-Guzik, Kirill Neklyudov.  
 Available soon.
