@@ -14,7 +14,7 @@ Yuanqi Du is a CS PhD student at Cornell University, working on Artificial Intel
   * ***Computational Process***: take a computational standpoint to understand matters and processes, examine computational trade-offs, and project abstract computational processes to real-world phenomena.
   * ***Natural and Social Process***: draw inspiration from natural and social processes to uncover their computational nature, and disclose the underlying computational principles that govern complex systems.
   * ***Structure and Geometry***: study the structure, emergent behavior, patterns and geometry of the world.
-  * ***Sample, Optimization and Search***: explore the interconnected problems of sampling, optimization, and search, which are essentially about exploring vast search spaces efficiently but with different tools and perspectives.
+  * ***Sampling, Optimization and Search***: explore the interconnected problems of sampling, optimization, and search, which are essentially about exploring vast search spaces efficiently but with different tools and perspectives.
   * ***Interpretability, Control, Reasoning, Planning and Inference***: understand the extent to which we can interact with and interpret phenomena, and how we can exert control, reason, plan, and inference about them.
   * ***AI for Science***: accelerate the molecular discovery workflow including molecular design, synthesis, simulation and chemical reaction.
   * ***Society Impact***: assess the society impact of AI and long-term effect of AI to scientific discovery and human knwoledge system.
