@@ -26,10 +26,9 @@ Recent Talks and Lectures:
 * Structure-based Drug Design with Equivariant Diffusion Models
   * @Cornell Yu Lab (Computational Biology), in person, Nov 2022
 
-* [A New Perspective on Building Efficient and Expressive 3D Equivariant Graph Neural Networks](https://m2d2.io/talks/logg/a-new-perspective-on-building-efficient-and-expressive-3d-equivariant-graph-neural-networks/), @LoGG Reading Group, virtual, May 2023; Oral Presentation @TAGML-ICML, in person, July 2023.
-* Structure-based Drug Design with Equivariant Diffusion Models, @Department of Computational Biology (Yu Lab), Cornell, in person, Nov 2022.
+<!-- * [A New Perspective on Building Efficient and Expressive 3D Equivariant Graph Neural Networks](https://m2d2.io/talks/logg/a-new-perspective-on-building-efficient-and-expressive-3d-equivariant-graph-neural-networks/), @LoGG Reading Group, virtual, May 2023; Oral Presentation @TAGML-ICML, in person, July 2023.
 * Disentangled Spatiotemporal Graph Generative Models, Oral Presentation @AAAI, virtual, Feb 2022.
-* Towards Steerable and Interpretable Chemical Space Exploration, Oral Presentation @ML4Molecules, virtual, Dec 2021.
+* Towards Steerable and Interpretable Chemical Space Exploration, Oral Presentation @ML4Molecules, virtual, Dec 2021. -->
 
 
 
