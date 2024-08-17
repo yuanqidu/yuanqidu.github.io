@@ -15,9 +15,9 @@ Recent Talks and Lectures:
   * @Stanford Theoretical Chemistry Group, virtual/in person, June 2024
   * @Gatech Applied and Comp. Mathematics Seminar, in person, April 2024
 * Accelerating Transition Dynamics Simulation with Machine Learning 
-  * IAIFI Summer Workshop, in person, August 2024
+  * @IAIFI Summer Workshop, in person, August 2024
 * [Recent Advances of Machine Learning in Molecular Discovery: From Representation, Simulation to Inverse Design](https://classes.cornell.edu/browse/roster/FA23/class/SYSEN/6888)
-  * @Cornell Deep Learning (SYSEN 6888), in person/virtual, Nov 2023
+  * @Cornell Deep Learning (SYSEN 6888) guest lecture, in person/virtual, Nov 2023
 * Scientific Discovery in the era of Artificial Intelligence
   * @Cornell Luo Lab (Integrative Plant Science), in person, Sep 2023
   * @Cornell CS Grad Seminar, in person, Oct 2022
