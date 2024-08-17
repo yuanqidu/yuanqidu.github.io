@@ -3,14 +3,15 @@ layout: archive
 title: "Talks"
 permalink: /talks/
 author_profile: true
-redirect_from:
-  - /resume
+# redirect_from:
+#   - /resume
 ---
 
 Recent Talks and Lectures:
 ======
-* (Incoming) Accelerating Molecular Discovery with Machine Learning: A Geometric, Sampling and Optimization Perspective, @Microsoft Research, virtual, June 2024.
-* (Incoming) Accelerating Molecular Discovery with Machine Learning: A Geometric, Sampling and Optimization Perspective, @Stanford Theoretical Chemistry Group, in person, May 2024.
+* Accelerating Molecular Discovery with Machine Learning: A Geometric, Sampling and Optimization Perspective
+  * @Microsoft Research, virtual, June 2024
+* Accelerating Molecular Discovery with Machine Learning: A Geometric, Sampling and Optimization Perspective, @Stanford Theoretical Chemistry Group, in person, May 2024.
 * [Accelerating Molecular Discovery with Machine Learning: A Geometric, Sampling and Optimization Perspective](https://math.gatech.edu/seminars-colloquia/series/applied-and-computational-mathematics-seminar/yuanqi-du-20240401), @Georgia Tech Applied and Computational Mathematics Seminar, in person, April 2024.
 * [Recent Advances of Machine Learning in Molecular Discovery: From Representation, Simulation to Inverse Design](https://classes.cornell.edu/browse/roster/FA23/class/SYSEN/6888), @Cornell Deep Learning (SYSEN 6888), in person/virtual, Nov 2023.
 * Scientific Discovery in the era of Artificial Intelligence, @Department of Computer Science, Grad Seminar, Cornell, in person, Oct 2022; @School of Integrative Plant Science (Luo Lab), Cornell, in person, Sep 2023.
