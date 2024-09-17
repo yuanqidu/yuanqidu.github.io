@@ -40,7 +40,10 @@ Selected Publications
 ======
 * [Machine Learning-Aided Generative Molecular Design](https://www.nature.com/articles/s42256-024-00843-5).  
 **Yuanqi Du\***, Arian R. Jamasb\*, Jeff Guo\*, Tianfan Fu, Charles Harris, Yingheng Wang, Chenru Duan, Pietro Lio, Philippe Schwaller, Tom L. Blundell.  
-In Nature Machine Intelligence 2024.
+In Nature Machine Intelligence 2024.  
+* [Structure-based Drug Design with Equivariant Diffusion Models](https://arxiv.org/abs/2210.13695).  
+Arne Schneuing\*, Charles Harris\*, **Yuanqi Du\***, Arian Jamasb, Ilia Igashov, Weitao Du, Carla P. Gomes, Tom Blundell, Pietro Lió, Max Welling, Michael Bronstein, Bruno Correia.  
+In Nature Computational Science 2024. In Machine Learning for Structural Biology workshop NeurIPS 2022. 
 * [Accurate Transition State Generation with an Object-aware Equivariant Elementary Reaction Diffusion Model](https://www.nature.com/articles/s43588-023-00563-7).  
 Chenru Duan, **Yuanqi Du**, Haojun Jia, Heather J. Kulik.  
 In Nature Computational Science 2023. (**Cover Story**)
@@ -61,10 +64,7 @@ Hanchen Wang\*, Tianfan Fu\*, **Yuanqi Du\***, Wenhao Gao\+, Kexin Huang\+, Zimi
 In Nature 2023.
 * [ChemSpacE: Interpretable and Interactive Chemical Space Exploration](https://openreview.net/forum?id=C1Xl8dYCBn).  
 **Yuanqi Du**, Xian Liu, Shengchao Liu, Jieyu Zhang, Bolei Zhou.  
-In Transactions on Machine Learning Research (**TMLR**) 2023. In ELLIS ML4Molecules workshop 2021. (**Oral**)  
-* [Structure-based Drug Design with Equivariant Diffusion Models](https://arxiv.org/abs/2210.13695).  
-Arne Schneuing\*, **Yuanqi Du\***, Charles Harris, Arian Jamasb, Ilia Igashov, Weitao Du, Tom Blundell, Pietro Lió, Carla P. Gomes, Max Welling, Michael Bronstein, Bruno Correia.  
-In arXiv preprint arXiv:2210.13695 (2022). In Machine Learning for Structural Biology workshop NeurIPS 2022.  
+In Transactions on Machine Learning Research (**TMLR**) 2023. In ELLIS ML4Molecules workshop 2021. (**Oral**)   
 * [A Survey on Deep Graph Generation: Methods and Applications](https://arxiv.org/pdf/2203.06714.pdf).  
 **Yuanqi Du\***, Yanqiao Zhu\*, Yinkai Wang\*, Jieyu Zhang, Qiang Liu, Shu Wu.  
 In First Learning on Graphs conference (**LoG**) 2022.  
