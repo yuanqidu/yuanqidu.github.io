@@ -10,6 +10,7 @@ author_profile: true
 Recent Talks and Lectures:
 ======
 * Accelerating Molecular Discovery with Machine Learning: A Geometric, Sampling and Optimization Perspective
+  * @UT Austin Henkelman Group (Chemistry), virtual, Oct 2024
   * @MIT Kulik's Group (Chemical Engineering), in person, August 2024
   * @Microsoft Research, virtual, June 2024
   * @Stanford Theoretical Chemistry Group, virtual/in person, June 2024
