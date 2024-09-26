@@ -25,7 +25,7 @@ Yuanqi Du is a CS PhD student at Cornell University, working on Artificial Intel
 I appreciate mentorships I received from people in different seniority and I am happy to give back. If you have any questions you would like to discuss, please feel free to reach out! I may also have research opportunities available at different times. If you are interested, please include your area of interest, past experience, and why you would like to work with me. I value curiosity, passion and commitment as essential qualities. 
   
 **News, Travels and Highlights! Follow me [@Twitter](https://twitter.com/YuanqiD)**
-* Upcoming! We are organizing a LoG meetup at NYC in November and Seattle in December!
+* Upcoming! We are organizing LoG meetups at New York in November and Seattle in December!
 * 3/24 I wrote a short [blog post](https://medium.com/@yuanqidu/about-academic-event-organization-and-community-building-in-ai-and-ml-0735893d7e36) to share some personal lessons, experienecs and thoughts about organizing academic events and community building. 
 * 3/24 We are organizing the new AI for Science edition ([Scaling in AI for Scientific Discovery](https://ai4sciencecommunity.github.io/icml24.html)) and [Structured Probabilsitic Inference and Generative Modeling](https://spigmworkshop2024.github.io/) workshops with ICML 2024!
 * 2/24 We are organizing an AI for Science Seminar (livestreaming, free-to-attend for all and physically at Cornell)! [Schedule](https://science.ai.cornell.edu/events/ai-for-science-seminar-series-spring-2024/), [Zoom link](https://t.co/6sMdN7NuCm), [Recordings](https://www.youtube.com/@cuaisci)
