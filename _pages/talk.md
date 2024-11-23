@@ -16,11 +16,12 @@ Recent Talks and Lectures:
   * @Microsoft Research, virtual, June 2024
   * @Stanford Theoretical Chemistry Group, June 2024
   * @Gatech Applied and Comp. Mathematics Seminar, April 2024
-* Accelerating Transition Dynamics Simulation with Machine Learning 
+* Accelerating Transition Dynamics Simulation with Probabilistic Machine Learning 
+  * @NYU Courant Generative Model/Sampling Reading Group, Nov 2024
   * @UCB BIDMaP Young Scholar Seminar, Nov 2024 
   * @SIAM New York-New Jersey-Pennsylvania Section Annual Conference, Nov 2024
   * @IAIFI Summer Workshop, August 2024
-* [Recent Advances of Machine Learning in Molecular Discovery: From Representation, Simulation to Inverse Design](https://classes.cornell.edu/browse/roster/FA23/class/SYSEN/6888)
+* Recent Advances of Machine Learning in Molecular Discovery: From Representation, Simulation to Inverse Design
   * @Cornell Deep Learning (SYSEN 6888) guest lecture, Nov 2023
 * Scientific Discovery in the era of Artificial Intelligence
   * @Cornell Luo Lab (Integrative Plant Science), Sep 2023
