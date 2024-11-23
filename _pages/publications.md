@@ -32,7 +32,7 @@ In arXiv preprint arXiv:2402.18012.
 
 Selected Publications
 ======
-* Doob's Lagrangian: A Sample-Efficient Variational Approach to Transition Path Sampling.  
+* [Doob's Lagrangian: A Sample-Efficient Variational Approach to Transition Path Sampling](https://openreview.net/forum?id=ShJWT0n7kX).  
 **Yuanqi Du\***, Michael Plainer\*, Rob Brekelmans\*, Chenru Duan, Frank Noe, Carla P. Gomes, Alán Aspuru-Guzik, Kirill Neklyudov.  
 In Neural Information Processing Systems (**NeurIPS**) 2024. (**Spotlight**)
 * [Navigating Chemical Space with Latent Flows](https://arxiv.org/abs/2405.03987). [Check out our Demo](https://colab.research.google.com/drive/1QAy_QoEnDRaiLF6kJ6RyhuGx1qCJXYKm?usp=sharing)!  

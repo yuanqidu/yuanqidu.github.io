@@ -11,7 +11,7 @@ List of Services:
 
 Professional Service
 ======
-* Co-founder and Lead Organizer for [*Learning on Graphs*](https://logconference.github.io/) conference 2022, 2023 and [Learning Meets Geometry, Graph and Network](https://logmeetupnyc.github.io/) meetup at NYC, 2024.
+* Co-founder and Lead Organizer for [*Learning on Graphs*](https://logconference.github.io/) conference 2022, 2023, Logistics Chair (2024), and 1st, 2nd [Learning Meets Geometry, Graph and Network](https://logmeetupnyc.github.io/) meetup at NYC, 2024.
 * Founder and Lead Organizer for [*AI for Science: Mind the Gaps*](http://www.ai4science.net/neurips21/) workshop with *NeurIPS 2021*, [*AI for Science: Theories and Foundations*](http://www.ai4science.net/icml22/) workshop with *ICML 2022*, [*AI for Science: Progress and Promises*](https://ai4sciencecommunity.github.io/neurips22/) with *NeurIPS 2022*, [*AI for Science: From Theory to Practice*](https://ai4sciencecommunity.github.io/neurips23/) with *NeurIPS 2023*, [*AI for Science: Scaling in AI for Scientific Discovery*](https://ai4sciencecommunity.github.io/icml24.html) with *ICML 2024*.
 * Co-founder and Lead Organizer for *Structured Probabilistic Inference & Generative Modeling* workshop with [*ICML 2023*]((https://spigmworkshop.github.io/)), [*ICML 2024*](https://spigmworkshop2024.github.io/). Lead Organizer for [*Deep Generative Models for Highly Structured Data*](https://deep-gen-struct.github.io/) workshop with *ICLR 2022*.
 * Co-founder and Lead Organizer for [Cornell AI for Science Seminar](https://science.ai.cornell.edu/events/ai-for-science-seminar-series-spring-2024/), Spring 2024.
@@ -22,7 +22,7 @@ Selected Review Service
 * Submission: Science Advances, NeurIPS, ICML, ICLR, AISTATS, AAAI, KDD, CVPR, ICCV, ECCV, TPAMI.
 * Proposal: NeurIPS, ICML workshop
 
-Open-source Software
+Open-source Software (Benchmarks and Libraries)
 ======
 * [M²Hub](https://github.com/yuanqidu/M2Hub) Machine Learning for Materials Discovery
 * [GraphGT](https://graphgt.github.io/) Machine Learning for Graph Generation and Transformation
