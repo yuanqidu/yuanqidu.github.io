@@ -18,13 +18,6 @@ Yuanqi Du is a CS PhD student at Cornell University, working on the intersection
   * ***AI for Science***: Molecular Design, Molecular Simulation, Chemical Reaction and Synthesis
 
 Additional topics I am interested in include: (Mechanistic) Interpretability, Science of Science, and Societal Impact of AI.
-  <!-- * ***Computational Process***: take a computational standpoint to understand matters and processes, examine computational trade-offs, and project abstract computational processes to real-world phenomena.
-  * ***Natural and Social Process***: draw inspiration from natural and social processes to uncover their computational nature, and disclose the underlying computational principles that govern complex systems.
-  * ***Structure and Geometry***: study the structure, emergent behavior, pattern and geometry of the world.
-  * ***Sampling, Optimization and Search***: explore the interconnected problems of sampling, optimization, and search, which are essentially about exploring vast search spaces efficiently but with different tools and perspectives.
-  * ***Interpretability, Control, Reasoning, Planning and Inference***: understand the extent to which we can interact with and interpret phenomena, and how we can exert control, reason, plan, and inference about them.
-  * ***AI for Science***: accelerate the molecular discovery workflow including molecular design, synthesis, simulation and chemical reaction.
-  * ***Society Impact***: assess the society impact of AI and long-term effect of AI to scientific discovery and human knwoledge system. -->
 
 **Research Opportunities**
 I appreciate mentorships I received from people in different seniority and I am happy to give back. If you have any questions you would like to discuss, please feel free to reach out! I may also have research opportunities available at different times. If you are interested, please include your area of interest, past experience, and why you would like to work with me. I value curiosity, passion and commitment as essential qualities. 
