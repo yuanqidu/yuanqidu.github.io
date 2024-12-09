@@ -41,7 +41,7 @@ In Neural Information Processing Systems (**NeurIPS**) 2024.
 * [Machine Learning-Aided Generative Molecular Design](https://www.nature.com/articles/s42256-024-00843-5).  
 **Yuanqi Du\***, Arian R. Jamasb\*, Jeff Guo\*, Tianfan Fu, Charles Harris, Yingheng Wang, Chenru Duan, Pietro Lio, Philippe Schwaller, Tom L. Blundell.  
 In Nature Machine Intelligence 2024.  
-* [Structure-based Drug Design with Equivariant Diffusion Models](https://arxiv.org/abs/2210.13695).  
+* [Structure-based Drug Design with Equivariant Diffusion Models](https://www.nature.com/articles/s43588-024-00737-x).  
 Arne Schneuing\*, Charles Harris\*, **Yuanqi Du\***, Arian Jamasb, Ilia Igashov, Weitao Du, Carla P. Gomes, Tom Blundell, Pietro Lió, Max Welling, Michael Bronstein, Bruno Correia.  
 In Nature Computational Science 2024. In Machine Learning for Structural Biology workshop NeurIPS 2022. 
 * [Accurate Transition State Generation with an Object-aware Equivariant Elementary Reaction Diffusion Model](https://www.nature.com/articles/s43588-023-00563-7).  
