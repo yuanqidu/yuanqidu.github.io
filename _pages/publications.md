@@ -19,13 +19,13 @@ Preprints
 ======
 * [Efficient Evolutionary Search over Chemical Space with Large Language Models](https://molleo.github.io/).  
 Haorui Wang\*, Marta Skreta\*, ..., **Yuanqi Du†**, Alán Aspuru-Guzik†, Kirill Neklyudov†, Chao Zhang†.  
-In arXiv preprint arXiv:2406.16976.
+In arXiv preprint arXiv:2406.16976. In Ai for Science workshop ICML 2024.
 * [Large Language Models are Catalyzing Chemistry Education](https://chemrxiv.org/engage/chemrxiv/article-details/66772be25101a2ffa8412ee0).  
 **Yuanqi Du\***, Chenru Duan\*, Andres Bran\*, Anna Sotnikova, Yi Qu, Heather Kulik, Antoine Bosselut, Jinjia Xu, Philippe Schwaller.  
 In ChemRxiv 10.26434/chemrxiv-2024-h722v.
 * [Diffusion Models as Constrained Samplers for Optimization with Unknown Constraints](https://arxiv.org/abs/2402.18012).  
 **Yuanqi Du\***, Lingkai Kong\*, Wenhao Mu\*, Kirill Neklyudov, Valentin De Bortol, Haorui Wang, Dongxia Wu, Aaron Ferber, Yi-An Ma, Carla P. Gomes, Chao Zhang.  
-In arXiv preprint arXiv:2402.18012.
+In arXiv preprint arXiv:2402.18012. In Generative Models for Decision Making workshop ICLR 2024.
 
 Selected Publications
 ======
