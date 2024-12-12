@@ -23,9 +23,6 @@ In arXiv preprint arXiv:2406.16976.
 * [Large Language Models are Catalyzing Chemistry Education](https://chemrxiv.org/engage/chemrxiv/article-details/66772be25101a2ffa8412ee0).  
 **Yuanqi Du\***, Chenru Duan\*, Andres Bran\*, Anna Sotnikova, Yi Qu, Heather Kulik, Antoine Bosselut, Jinjia Xu, Philippe Schwaller.  
 In ChemRxiv 10.26434/chemrxiv-2024-h722v.
-* [React-OT: Optimal Transport for Generating Transition State in Chemical Reactions](https://t.co/RwXUSEISmq).  
-Chenru Duan\*, Guan-Horng Liu\*, **Yuanqi Du\***, Tianrong Chen, Qiyuan Zhao, Haojun Jia, Carla P. Gomes, Evangelos A. Theodorou, Heather J. Kulik.  
-In arXiv preprint arXiv:2404.13430.
 * [Diffusion Models as Constrained Samplers for Optimization with Unknown Constraints](https://arxiv.org/abs/2402.18012).  
 **Yuanqi Du\***, Lingkai Kong\*, Wenhao Mu\*, Kirill Neklyudov, Valentin De Bortol, Haorui Wang, Dongxia Wu, Aaron Ferber, Yi-An Ma, Carla P. Gomes, Chao Zhang.  
 In arXiv preprint arXiv:2402.18012.
@@ -35,6 +32,9 @@ Selected Publications
 * [Doob's Lagrangian: A Sample-Efficient Variational Approach to Transition Path Sampling](https://openreview.net/forum?id=ShJWT0n7kX).  
 **Yuanqi Du\***, Michael Plainer\*, Rob Brekelmans\*, Chenru Duan, Frank Noe, Carla P. Gomes, Alán Aspuru-Guzik, Kirill Neklyudov.  
 In Neural Information Processing Systems (**NeurIPS**) 2024. (**Spotlight**)
+* [React-OT: Optimal Transport for Generating Transition State in Chemical Reactions](https://t.co/RwXUSEISmq).  
+Chenru Duan\*, Guan-Horng Liu\*, **Yuanqi Du\***, Tianrong Chen, Qiyuan Zhao, Haojun Jia, Carla P. Gomes, Evangelos A. Theodorou, Heather J. Kulik.  
+In Nature Machine Intelligence 2024.
 * [Navigating Chemical Space with Latent Flows](https://arxiv.org/abs/2405.03987). [Check out our Demo](https://colab.research.google.com/drive/1QAy_QoEnDRaiLF6kJ6RyhuGx1qCJXYKm?usp=sharing)!  
 Guanghao Wei\*, Yining Huang\*, Chenru Duan, Yue Song†, **Yuanqi Du†**.  
 In Neural Information Processing Systems (**NeurIPS**) 2024.
