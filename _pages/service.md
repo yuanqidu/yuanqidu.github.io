@@ -19,7 +19,8 @@ Professional Service
 
 Selected Review Service
 ======
-* Submission: Science Advances, NeurIPS, ICML, ICLR, AISTATS, AAAI, KDD, CVPR, ICCV, ECCV, TPAMI.
+* Conference Submission: NeurIPS, ICML, ICLR, AISTATS, AAAI, KDD, CVPR, ICCV, ECCV
+* Journal Submission: Science Advances, TPAMI, TMLR, npj Digital Medicine
 * Proposal: NeurIPS, ICML workshop
 
 Open-source Software (Benchmarks and Libraries)
