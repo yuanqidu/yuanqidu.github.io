@@ -17,6 +17,9 @@ You can find my recent and full list of publications on my [Google Scholar profi
 
 Preprints
 ======
+* [AlphaNet: Scaling Up Local Frame-based Atomistic Foundation Model](https://arxiv.org/abs/2501.07155).  
+Bangchen Yin, Jiaao Wang†, ..., **Yuanqi Du†**, Carla P. Gomes, Chenru Duan†, Hai Xiao†, Graeme Henkelman†.  
+In arXiv preprint arXiv: 2501.07155.  
 * [Efficient Evolutionary Search over Chemical Space with Large Language Models](https://molleo.github.io/).  
 Haorui Wang\*, Marta Skreta\*, ..., **Yuanqi Du†**, Alán Aspuru-Guzik†, Kirill Neklyudov†, Chao Zhang†.  
 In arXiv preprint arXiv:2406.16976. In Ai for Science workshop ICML 2024.
