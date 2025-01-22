@@ -20,18 +20,19 @@ Preprints
 * [AlphaNet: Scaling Up Local Frame-based Atomistic Foundation Model](https://arxiv.org/abs/2501.07155).  
 Bangchen Yin, Jiaao Wang†, ..., **Yuanqi Du†**, Carla P. Gomes, Chenru Duan†, Hai Xiao†, Graeme Henkelman†.  
 In arXiv preprint arXiv: 2501.07155.  
-* [Efficient Evolutionary Search over Chemical Space with Large Language Models](https://molleo.github.io/).  
-Haorui Wang\*, Marta Skreta\*, ..., **Yuanqi Du†**, Alán Aspuru-Guzik†, Kirill Neklyudov†, Chao Zhang†.  
-In arXiv preprint arXiv:2406.16976. In Ai for Science workshop ICML 2024.
 * [Large Language Models are Catalyzing Chemistry Education](https://chemrxiv.org/engage/chemrxiv/article-details/66772be25101a2ffa8412ee0).  
 **Yuanqi Du\***, Chenru Duan\*, Andres Bran\*, Anna Sotnikova, Yi Qu, Heather Kulik, Antoine Bosselut, Jinjia Xu, Philippe Schwaller.  
 In ChemRxiv 10.26434/chemrxiv-2024-h722v.
-* [Diffusion Models as Constrained Samplers for Optimization with Unknown Constraints](https://arxiv.org/abs/2402.18012).  
-**Yuanqi Du\***, Lingkai Kong\*, Wenhao Mu\*, Kirill Neklyudov, Valentin De Bortol, Haorui Wang, Dongxia Wu, Aaron Ferber, Yi-An Ma, Carla P. Gomes, Chao Zhang.  
-In arXiv preprint arXiv:2402.18012. In Generative Models for Decision Making workshop ICLR 2024.
+
 
 Selected Publications
 ======
+* [Efficient Evolutionary Search over Chemical Space with Large Language Models](https://molleo.github.io/).  
+Haorui Wang\*, Marta Skreta\*, ..., **Yuanqi Du†**, Alán Aspuru-Guzik†, Kirill Neklyudov†, Chao Zhang†.  
+In International Conference on Learning Representations (**ICLR**) 2025. In Ai for Science workshop ICML 2024.
+* [Diffusion Models as Constrained Samplers for Optimization with Unknown Constraints](https://arxiv.org/abs/2402.18012).  
+**Yuanqi Du\***, Lingkai Kong\*, Wenhao Mu\*, Kirill Neklyudov, Valentin De Bortol, Haorui Wang, Dongxia Wu, Aaron Ferber, Yi-An Ma, Carla P. Gomes, Chao Zhang.  
+In Artificial Intelligence and Statistics (**AISTATS**) 2025. In Generative Models for Decision Making workshop ICLR 2024.
 * [Doob's Lagrangian: A Sample-Efficient Variational Approach to Transition Path Sampling](https://openreview.net/forum?id=ShJWT0n7kX).  
 **Yuanqi Du\***, Michael Plainer\*, Rob Brekelmans\*, Chenru Duan, Frank Noe, Carla P. Gomes, Alán Aspuru-Guzik, Kirill Neklyudov.  
 In Neural Information Processing Systems (**NeurIPS**) 2024. (**Spotlight**)
