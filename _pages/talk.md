@@ -9,7 +9,9 @@ author_profile: true
 
 Recent Talks and Lectures:
 ======
-* Accelerating Molecular Discovery with Machine Learning: A Geometric, Sampling and Optimization Perspective
+* Accelerating Molecular Discovery from a Data-driven Computational Perspective
+  * @ACS Generative Modeling for Chem, Bio & Material Symposium, March 2025
+  * @Princeton AI^2 Research Talk Series, Jan 2025
   * @UCLA Modern computation: AI + Quantum (Guest Lecture), Oct 2024 
   * @UT Austin Henkelman Group (Chemistry), Oct 2024
   * @MIT Kulik's Group (Chemical Engineering), August 2024
@@ -17,10 +19,13 @@ Recent Talks and Lectures:
   * @Stanford Theoretical Chemistry Group, June 2024
   * @Gatech Applied and Comp. Mathematics Seminar, April 2024
 * Accelerating Transition Dynamics Simulation with Probabilistic Machine Learning 
+  * @ACS Inferring Kinetics, Thermodynamics, and Mechanisms from Sampling Symposium, March 2025
   * @NYU Courant Generative Model/Sampling Reading Group, Nov 2024
   * @UCB BIDMaP Young Scholar Seminar, Nov 2024 
   * @SIAM New York-New Jersey-Pennsylvania Section Annual Conference, Nov 2024
   * @IAIFI Summer Workshop, August 2024
+* Language Model-based Design Programs for Chemical Synthesis and Design
+  * @ACS Machine Learning in Chemistry Symposium, March 2025
 * Recent Advances of Machine Learning in Molecular Discovery: From Representation, Simulation to Inverse Design
   * @Cornell Deep Learning (SYSEN 6888) guest lecture, Nov 2023
 * Scientific Discovery in the era of Artificial Intelligence
