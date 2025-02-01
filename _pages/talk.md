@@ -20,7 +20,7 @@ Recent Talks and Lectures:
   * @Gatech Applied and Comp. Mathematics Seminar, April 2024
 * Accelerating Transition Dynamics Simulation with Probabilistic Machine Learning 
   * @ACS Inferring Kinetics, Thermodynamics, and Mechanisms from Sampling Symposium, March 2025
-  * @NYU Courant Generative Model/Sampling Reading Group, Nov 2024
+  * @NYU Courant Generative Model/Sampling Seminar, Nov 2024
   * @UCB BIDMaP Young Scholar Seminar, Nov 2024 
   * @SIAM New York-New Jersey-Pennsylvania Section Annual Conference, Nov 2024
   * @IAIFI Summer Workshop, August 2024
