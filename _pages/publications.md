@@ -17,6 +17,12 @@ You can find my recent and full list of publications on my [Google Scholar profi
 
 Preprints
 ======
+* [No Trick, No Treat: Pursuits and Challenges Towards Simulation-free Training of Neural Samplers](https://arxiv.org/abs/2502.06685).  
+Jiajun He*, **Yuanqi Du\***, Francisco Vargas, Dinghuai Zhang, Shreyas Padhy, RuiKang OuYang, Carla P. Gomes, José Miguel Hernández-Lobato.  
+In arXiv preprint arXiv: 2502.06685.
+* [Large Language Models Are Innate Crystal Structure Generators]().  
+Jingru Gan, Peichen Zhong*, **Yuanqi Du\***, Yanqiao Zhu, Chenru Duan, Haorui Wang, Carla P. Gomes, Kristin A. Persson, Daniel Schwalbe-Koda, Wei Wang.  
+In arXiv preprint (coming out soon).
 * [AlphaNet: Scaling Up Local Frame-based Atomistic Foundation Model](https://arxiv.org/abs/2501.07155).  
 Bangchen Yin, Jiaao Wang†, ..., **Yuanqi Du†**, Carla P. Gomes, Chenru Duan†, Hai Xiao†, Graeme Henkelman†.  
 In arXiv preprint arXiv: 2501.07155.  
