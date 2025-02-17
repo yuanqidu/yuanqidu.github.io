@@ -27,6 +27,12 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
         <br />
     </p>
     <div id="pub-card-container" class="activated hide">
+      <div class="pub-card" data-topic="control-sampling" data-year="2025" data-selected="true">
+          <strong>No Trick, No Treat: Pursuits and Challenges Towards Simulation-free Training of Neural Samplers</strong><br>
+          <em>Jiajun He*, <b>Yuanqi Du*</b>, Francisco Vargas, ..., Carla P. Gomes, José Miguel Hernández-Lobato</em><br>
+          arXiv preprint arXiv:2502.06685 | <a href="https://arxiv.org/abs/2502.06685">paper</a>
+      </div>
+      <br>
       <div class="pub-card" data-topic="large-language-model" data-year="2025" data-selected="true"> 
         <strong>Efficient Evolutionary Search over Chemical Space with Large Language Models</strong><br> 
         <em>Haorui Wang*, Marta Skreta*, …, <b>Yuanqi Du†</b>, Alán Aspuru-Guzik†, Kirill Neklyudov†, Chao Zhang†</em><br>
@@ -45,6 +51,18 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
         Nature Machine Intelligence 2025 | <a href="https://t.co/RwXUSEISmq">paper</a> 
       </div> 
       <br> 
+      <div class="pub-card" data-topic="large-language-model" data-year="2025" data-selected="true">
+          <strong>Large Language Models Are Innate Crystal Structure Generators</strong><br>
+          <em>Jingru Gan, Peichen Zhong*, <b>Yuanqi Du*</b>, ..., Carla P. Gomes, Kristin A. Persson, Daniel Schwalbe-Koda, Wei Wang</em><br>
+          arXiv preprint (coming out soon) | <a href="#">paper</a>
+      </div>
+      <br>
+      <div class="pub-card" data-topic="equivariant-neural-network" data-year="2025" data-selected="true">
+          <strong>AlphaNet: Scaling Up Local Frame-based Atomistic Foundation Model</strong><br>
+          <em>Bangchen Yin, Jiaao Wang†, …, <b>Yuanqi Du†</b>, Carla P. Gomes, Chenru Duan†, Hai Xiao†, Graeme Henkelman†</em><br>
+          arXiv preprint arXiv:2501.07155 | <a href="https://arxiv.org/abs/2501.07155">paper</a>
+      </div>
+      <br>
       <div class="pub-card" data-topic="control-sampling" data-year="2024" data-selected="true">
         <strong>Doob's Lagrangian: A Sample-Efficient Variational Approach to Transition Path Sampling</strong><br>
         <em><b>Yuanqi Du*</b>, Michael Plainer*, Rob Brekelmans*, ..., Carla P. Gomes, Alán Aspuru-Guzik, Kirill Neklyudov</em><br>
@@ -67,6 +85,12 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
           <strong>Structure-based Drug Design with Equivariant Diffusion Models</strong><br>
           <em>Arne Schneuing*, Charles Harris*, <b>Yuanqi Du*</b>, ..., Carla P. Gomes, Tom Blundell, Pietro Lió, Max Welling, Michael Bronstein, Bruno Correia</em><br>
           Nature Computational Science 2024 | <a href="https://www.nature.com/articles/s43588-024-00737-x">paper</a>
+      </div>
+      <br>
+      <div class="pub-card" data-topic="large-language-model" data-year="2024" data-selected="false">
+          <strong>Large Language Models are Catalyzing Chemistry Education</strong><br>
+          <em><b>Yuanqi Du*</b>, Chenru Duan*, Andres Bran*, ..., Heather Kulik, Antoine Bosselut, Jinjia Xu, Philippe Schwaller</em><br>
+          ChemRxiv 10.26434/chemrxiv-2024-h722v | <a href="https://chemrxiv.org/engage/chemrxiv/article-details/66772be25101a2ffa8412ee0">paper</a>
       </div>
       <br>
       <div class="pub-card" data-topic="generative-model" data-year="2023" data-selected="true">
@@ -139,30 +163,6 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
           <strong>Deep Generative Model for Spatial Networks</strong><br>
           <em>Xiaojie Guo*, <b>Yuanqi Du*</b>, Liang Zhao.</em><br>
           KDD 2021 | <a href="https://arxiv.org/abs/2203.00411">paper</a>
-      </div>
-      <br>
-      <div class="pub-card" data-topic="control-sampling" data-year="2025" data-selected="true">
-          <strong>No Trick, No Treat: Pursuits and Challenges Towards Simulation-free Training of Neural Samplers</strong><br>
-          <em>Jiajun He*, <b>Yuanqi Du*</b>, Francisco Vargas, ..., Carla P. Gomes, José Miguel Hernández-Lobato</em><br>
-          arXiv preprint arXiv:2502.06685 | <a href="https://arxiv.org/abs/2502.06685">paper</a>
-      </div>
-      <br>
-      <div class="pub-card" data-topic="large-language-model" data-year="2025" data-selected="true">
-          <strong>Large Language Models Are Innate Crystal Structure Generators</strong><br>
-          <em>Jingru Gan, Peichen Zhong*, <b>Yuanqi Du*</b>, ..., Carla P. Gomes, Kristin A. Persson, Daniel Schwalbe-Koda, Wei Wang</em><br>
-          arXiv preprint (coming out soon) | <a href="#">paper</a>
-      </div>
-      <br>
-      <div class="pub-card" data-topic="equivariant-neural-network" data-year="2025" data-selected="true">
-          <strong>AlphaNet: Scaling Up Local Frame-based Atomistic Foundation Model</strong><br>
-          <em>Bangchen Yin, Jiaao Wang†, …, <b>Yuanqi Du†</b>, Carla P. Gomes, Chenru Duan†, Hai Xiao†, Graeme Henkelman†</em><br>
-          arXiv preprint arXiv:2501.07155 | <a href="https://arxiv.org/abs/2501.07155">paper</a>
-      </div>
-      <br>
-      <div class="pub-card" data-topic="large-language-model" data-year="2024" data-selected="false">
-          <strong>Large Language Models are Catalyzing Chemistry Education</strong><br>
-          <em><b>Yuanqi Du*</b>, Chenru Duan*, Andres Bran*, ..., Heather Kulik, Antoine Bosselut, Jinjia Xu, Philippe Schwaller</em><br>
-          ChemRxiv 10.26434/chemrxiv-2024-h722v | <a href="https://chemrxiv.org/engage/chemrxiv/article-details/66772be25101a2ffa8412ee0">paper</a>
       </div>
     </div>
   </div>
