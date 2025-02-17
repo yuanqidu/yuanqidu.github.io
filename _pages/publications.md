@@ -184,7 +184,6 @@ $.fn.isInViewport = function() {
     return elementBottom > viewportTop && elementTop < viewportBottom;
 };
 var allPublications = null;
-var allTopics = null;
 function publicationBySelected() {
     var a = $("#publication-by-selected")
     if (a.hasClass("activated")) {
