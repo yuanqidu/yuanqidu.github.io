@@ -357,7 +357,6 @@ $(function() {
     allTopics = [];
     for (var topicId = 0; topicId < allTopicsLink.length; topicId++) {
         console.log(topicId);
-        console.log("Publication data-selected:", pub.data("selected"));
         allTopics.push({name: $(allTopicsLink[topicId]).data("topic"), title: $(allTopicsLink[topicId]).html()});
     }
     console.log(allTopics);
