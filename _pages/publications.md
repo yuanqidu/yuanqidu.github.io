@@ -95,32 +95,35 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
 <script>
   // Filter by "selected," "date," or "all"
   function filterPublications(mode) {
+    console.log(`Filtering by mode: ${mode}`); // Debugging
     const pubs = document.querySelectorAll('.paper-entry');
 
-    if (mode === 'selected') {
-      // Show only data-selected="true"
-      pubs.forEach(pub => {
+    pubs.forEach(pub => {
+      if (mode === 'selected') {
+        // Show only data-selected="true"
         pub.style.display = (pub.dataset.selected === 'true') ? 'block' : 'none';
-      });
-    } else if (mode === 'date') {
-      // Show all
-      pubs.forEach(pub => pub.style.display = 'block');
-      // If you want, you can add sorting logic by date here
-    } else {
-      // 'all' => show all (by topic basically means "don't filter, but let user click a topic")
-      pubs.forEach(pub => pub.style.display = 'block');
-    }
+      } else if (mode === 'date') {
+        // Show all
+        pub.style.display = 'block';
+        // If you want, you can add sorting logic by date here
+      } else if (mode === 'all') {
+        // Show all (no filtering)
+        pub.style.display = 'block';
+      }
+    });
   }
 
   // Filter by a specific topic
   function filterByTopic(topic) {
+    console.log(`Filtering by topic: ${topic}`); // Debugging
     const pubs = document.querySelectorAll('.paper-entry');
     pubs.forEach(pub => {
       const topicsString = pub.dataset.topics || '';
       // Show if the topics string includes the clicked topic
       pub.style.display = topicsString.includes(topic) ? 'block' : 'none';
     });
-    // Optionally scroll to the first matched paper
+
+    // Scroll to the first matched paper
     const firstMatch = document.querySelector(`.paper-entry[data-topics*="${topic}"]`);
     if (firstMatch) {
       firstMatch.scrollIntoView({ behavior: 'smooth' });
