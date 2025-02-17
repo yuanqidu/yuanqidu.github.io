@@ -167,7 +167,7 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
 
 <div class="pub-card" data-topic="large-language-model" data-year="2025" data-selected="false">
     <strong>Large Language Models Are Innate Crystal Structure Generators</strong><br>
-    <em>Jingru Gan, Peichen Zhong*, <b>Yuanqi Du*</b>, Yanqiao Zhu, ..., Carla P. Gomes, Kristin A. Persson, Daniel Schwalbe-Koda, Wei Wang</em><br>
+    <em>Jingru Gan, Peichen Zhong*, <b>Yuanqi Du*</b>, ..., Carla P. Gomes, Kristin A. Persson, Daniel Schwalbe-Koda, Wei Wang</em><br>
     arXiv preprint (coming out soon) | <a href="#">paper</a>
 </div>
 <br>
@@ -210,11 +210,9 @@ function publicationBySelected() {
     if (a.hasClass("activated")) {
         return ;
     }
-
     $("#pub-container .subtitle a").removeClass("activated");
     $("#pub-container .subtitle-aux a").removeClass("activated");
     a.addClass("activated");
-
     $("#pub-card-container").html("");
     for (var pubId = 0; pubId < allPublications.length; pubId++) {
         var pub = $(allPublications[pubId]);
@@ -228,11 +226,9 @@ function publicationByDate() {
     if (a.hasClass("activated")) {
         return ;
     }
-
     $("#pub-container .subtitle a").removeClass("activated");
     $("#pub-container .subtitle-aux a").removeClass("activated");
     a.addClass("activated");
-
     $("#pub-card-container").html("");
     for (var pubId = 0; pubId < allPublications.length; pubId++) {
         if (pubId == 0 || $(allPublications[pubId-1]).data("year") != $(allPublications[pubId]).data("year")) {
@@ -242,7 +238,6 @@ function publicationByDate() {
         $("#pub-card-container").append(allPublications[pubId]);
     }
 }
-
 function publicationByTopicInner() {
     var a = $("#publication-by-topic")
     if (a.hasClass("activated")) {
@@ -250,7 +245,6 @@ function publicationByTopicInner() {
     }
     $("#pub-container .subtitle a").removeClass("activated");
     a.addClass("activated");
-
     $("#pub-card-container").html("");
     for (var topicId in allTopics) {
         var topic = allTopics[topicId].name;
@@ -265,41 +259,33 @@ function publicationByTopicInner() {
         }
     }
 }
-
 function publicationByTopicSpecificInner(a) {
     if ($(a).hasClass("activated")) {
         return false;
     }
-
     $("#pub-container .subtitle-aux a").removeClass("activated");
     $(a).addClass("activated");
 }
-
 function publicationByTopic() {
     publicationByTopicInner();
     publicationByTopicSpecificInner($("#pub-container .subtitle-aux a:first"));
     return true;
 }
-
 function publicationByTopicSpecific(a) {
     publicationByTopicInner();
     publicationByTopicSpecificInner(a);
-
     var hash = a.hash;
     $(hash).prop('id', hash.substr(1) + '-noscroll');
     window.location.hash = hash;
     $(hash + '-noscroll').prop('id', hash.substr(1));
-
     if (!$(hash).isInViewport()) {
         $('html, body').animate({
             scrollTop: $(hash).offset().top
         }, 1000, function(){
         });
     }
-
     return false;
 }
-
 $(function() {
     getRealSize = function(bgImg) {
         var img = new Image();
@@ -311,7 +297,6 @@ $(function() {
             height: height
         }
     };
-
     getRealWindowSize = function() {
         var winWidth = null,
             winHeight = null;
@@ -328,27 +313,22 @@ $(function() {
             height: winHeight
         }
     };
-
     fullBg = function() {
         var bgImg = $("#background");
         var mainContainer = $("#main");
         var firstFire = null;
-
         if (bgImg.length == 0) {
             return ;
         }
-
         function resizeImg() {
             var realSize = getRealSize(bgImg);
             var imgWidth = realSize.width;
             var imgHeight = realSize.height;
-
             if (imgWidth == 0 || imgHeight == 0) {
                 setTimeout(function() {
                     resizeImg();
                 }, 200);
             }
-
             console.log(realSize);
             var realWinSize = getRealWindowSize();
             var winWidth = realWinSize.width;
@@ -368,7 +348,6 @@ $(function() {
             //     height: winHeight
             // });
         }
-
         resizeImg();
         window.onresize = function() {
             if (firstFire === null) {
@@ -379,7 +358,6 @@ $(function() {
             }
         }
     };
-
     targetColor = $("#main-content-container .name").css("color");
     animatedLink = function(speed) {
         $("#main-content-container .col-link li").hover(function() {
@@ -400,17 +378,14 @@ $(function() {
             })
         })
     };
-
     // fullBg();
     // animatedLink(400);
-
     allPublications = $("#pub-card-container .pub-card");
     allTopicsLink = $("#pub-container .subtitle-aux a");
     allTopics = [];
     for (var topicId = 0; topicId < allTopicsLink.length; topicId++) {
         allTopics.push({name: $(allTopicsLink[topicId]).data("topic"), title: $(allTopicsLink[topicId]).html()});
     }
-
     $("#publication-by-selected").click();
     // $("#publication-by-date").click();
     $("#pub-card-container").removeClass("hide");
