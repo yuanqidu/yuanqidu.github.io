@@ -200,7 +200,7 @@ function publicationByDate() {
     for (var pubId = 0; pubId < allPublications.length; pubId++) {
         if (pubId == 0 || $(allPublications[pubId-1]).data("year") != $(allPublications[pubId]).data("year")) {
             var year = $(allPublications[pubId]).data("year");
-            $("#pub-card-container").append($("<h5 id='year-" + year.toString() + "'>" + year.toString() + "</h5>"));
+            $("#pub-card-container").append($("<h2 id='year-" + year.toString() + "'>" + year.toString() + "</h2>"));
         }
         $("#pub-card-container").append(allPublications[pubId]);
     }
