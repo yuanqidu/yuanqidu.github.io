@@ -175,8 +175,6 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
         integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
         integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-<script type="text/javascript">
-var allPublications = null;
 <script>
   (function($) {
     $.fn.isInViewport = function() {
@@ -192,6 +190,8 @@ var allPublications = null;
 <script>
   console.log("Testing isInViewport on document body:", $("body").isInViewport());
 </script>
+<script type="text/javascript">
+var allPublications = null;
 (function($) {
   $.fn.isInViewport = function() {
     const elementTop = this.offset().top;
