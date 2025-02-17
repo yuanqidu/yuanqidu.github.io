@@ -6,15 +6,25 @@ author_profile: true
 googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
 ---
 
-
-<h1>Publications</h1>
-
-<!-- Top-level filter choices -->
-<div>
-  <span class="filter-link" onclick="filterPublications('selected')">Show selected</span>
-  <span class="filter-link" onclick="filterPublications('date')">Show all by date</span>
-  <span class="filter-link" onclick="filterPublications('topic')">Show all by topic</span>
-</div>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Publications</title>
+  <style>
+    /* Simple styling for clickable text */
+    .filter-link {
+      cursor: pointer;
+      font-weight: bold;
+      color: #007ACC;
+      margin-right: 15px;
+      text-decoration: underline;
+    }
+    #topicFilters {
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
 
 <!-- Once the user clicks "show all by topic," reveal these topic links -->
 <div id="topicFilters" style="display: none;">
@@ -100,8 +110,10 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
     filterPublications('selected');
   };
 </script>
+</body>
+</html>
 
-Preprints
+<!-- Preprints
 ======
 * [No Trick, No Treat: Pursuits and Challenges Towards Simulation-free Training of Neural Samplers](https://arxiv.org/abs/2502.06685).  
 Jiajun He*, **Yuanqi Du\***, Francisco Vargas, Dinghuai Zhang, Shreyas Padhy, RuiKang OuYang, Carla P. Gomes, José Miguel Hernández-Lobato.  
@@ -175,6 +187,6 @@ In AAAI Conference on Artificial Intelligence (**AAAI**) 2022. (**Oral**)
 In Neural Information Processing Systems (**NeurIPS**) 2021 Datasets and Benchmarks track.
 * [Deep Generative Model for Spatial Networks](http://cs.emory.edu/~lzhao41/materials/papers/KDD21__Spatial_Graphs_Disentanglement_preprinted.pdf).  
 Xiaojie Guo\*, **Yuanqi Du**\*, Liang Zhao.  
-In ACM SIGKDD Conference on Knowledge Discovery and Data Mining (**KDD**) 2021.
+In ACM SIGKDD Conference on Knowledge Discovery and Data Mining (**KDD**) 2021. -->
 
 
