@@ -221,28 +221,18 @@ function publicationByTopicInner() {
     a.addClass("activated");
     $("#pub-card-container").html("");
     for (var topicId in allTopics) {
+        console.log(topicId);
         var topic = allTopics[topicId].name;
         var topicTitle = allTopics[topicId].title;
         $("#pub-card-container").append($("<h2 id='topic-" + topic + "'>" + topicTitle + "</h2>"));
         for (var pubId = 0; pubId < allPublications.length; pubId++) {
             var pub = $(allPublications[pubId]);
+            console.log(pub);
             if (pub.data("topic").indexOf(topic) != -1) {
                 $("#pub-card-container").append(pub).append("<br>");
             }
         }
     }
-}
-function publicationByTopicSpecificInner(a) {
-    if ($(a).hasClass("activated")) {
-        return false;
-    }
-    $("#pub-container .subtitle-aux a").removeClass("activated");
-    $(a).addClass("activated");
-}
-function publicationByTopic() {
-    publicationByTopicInner();
-    publicationByTopicSpecificInner($("#pub-container .subtitle-aux a:first"));
-    return true;
 }
 function publicationByTopicSpecificInner(a) {
     if ($(a).hasClass("activated")) {
@@ -366,6 +356,7 @@ $(function() {
         console.log("Publication data-selected:", pub.data("selected"));
         allTopics.push({name: $(allTopicsLink[topicId]).data("topic"), title: $(allTopicsLink[topicId]).html()});
     }
+    console.log(allTopics);
     $("#publication-by-selected").click();
     $("#pub-card-container").removeClass("hide");
 });
