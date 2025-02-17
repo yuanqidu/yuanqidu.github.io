@@ -13,18 +13,24 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
     <a id="publication-by-topic" href="javascript:;", onClick="publicationByTopic();">show all by topic</a>
 )
 </h3>
-<p class="subtitle-aux"><span class="bold">Topics:</span>
+<p class="subtitle-aux"><b>Topics:</b>
     <a href="#generative-model" onClick="return publicationByTopicSpecific(this)" data-topic="generative-model">Generative Models</a> /
     <a href="#equivariant-neural-network" onClick="return publicationByTopicSpecific(this)" data-topic="equivariant-neural-network">Equivariant Neural Networks</a> /
     <a href="#control-sampling" onClick="return publicationByTopicSpecific(this)" data-topic="control-sampling">Stochatic Control & Sampling</a>
     <br />
 </p>
 <div id="pub-card-container" class="activated hide">
-      <div class="pub-card" data-topic="control-sampling" data-year="2025" data-selected="true">
-        <strong>Doob's Lagrangian: A Sample-Efficient Variational Approach to Transition Path Sampling</strong><br>
-        <em><b>Yuanqi Du*</b>, Michael Plainer*, Rob Brekelmans*, Chenru Duan, Frank Noe, Carla P. Gomes, Alán Aspuru-Guzik, Kirill Neklyudov.</em><br>
-        NeurIPS 2024 (<b>Spotlight</b>) | <a href="https://openreview.net/forum?id=ShJWT0n7kX">paper</a> 
-      </div>
+  <div class="pub-card" data-topic="control-sampling" data-year="2025" data-selected="true">
+    <strong>Doob's Lagrangian: A Sample-Efficient Variational Approach to Transition Path Sampling</strong><br>
+    <em><b>Yuanqi Du*</b>, Michael Plainer*, Rob Brekelmans*, Chenru Duan, Frank Noe, Carla P. Gomes, Alán Aspuru-Guzik, Kirill Neklyudov.</em><br>
+    NeurIPS 2024 (<b>Spotlight</b>) | <a href="https://openreview.net/forum?id=ShJWT0n7kX">paper</a> 
+  </div>
+
+  <div class="pub-card" data-topic="control-sampling" data-year="2025" data-selected="true">
+    <strong>Structure-based Drug Design with Equivariant Diffusion Models</strong><br>
+    <em>Arne Schneuing*, Charles Harris*, <b>Yuanqi Du*</b>, Arian Jamasb, Ilia Igashov, Weitao Du, Carla P. Gomes, Tom Blundell, Pietro Lió, Max Welling, Michael Bronstein, Bruno Correia.</em><br>
+    Nature Computational Science 2024 | <a href="https://www.nature.com/articles/s43588-024-00737-x">paper</a> 
+  </div>
 
 </div>
 
