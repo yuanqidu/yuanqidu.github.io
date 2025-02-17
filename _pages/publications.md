@@ -88,6 +88,18 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
           Nature Computational Science 2024 | <a href="https://www.nature.com/articles/s43588-024-00737-x">paper</a>
       </div>
       <br>
+      <div class="pub-card" data-topic="molecular-discovery" data-year="2024" data-selected="false">
+          <strong>Molecular Contrastive Pretraining with Collaborative Featurizations</strong><br>
+          <em>Yanqiao Zhu*, Dingshuo Chen*, <b>Yuanqi Du*</b>, Yingze Wang, Qiang Liu, Shu Wu</em><br>
+          NeurIPS 2024 | <a href="https://arxiv.org/abs/2406.05954">paper</a>
+      </div>
+      <br>
+      <div class="pub-card" data-topic="large-language-model" data-year="2024" data-selected="false">
+          <strong>Aligning Large Language Models with Representation Editing: A Control Perspective</strong><br>
+          <em>Lingkai Kong, Haorui Wang, Wenhao Mu, <b>Yuanqi Du</b>, ..., Chao Zhang</em><br>
+          NeurIPS 2024 | <a href="https://arxiv.org/abs/2406.05954">paper</a>
+      </div>
+      <br>
       <div class="pub-card" data-topic="large-language-model" data-year="2024" data-selected="false">
           <strong>Large Language Models are Catalyzing Chemistry Education</strong><br>
           <em><b>Yuanqi Du*</b>, Chenru Duan*, Andres Bran*, ..., Heather Kulik, Antoine Bosselut, Jinjia Xu, Philippe Schwaller</em><br>
@@ -118,6 +130,12 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
           NeurIPS 2023 | <a href="https://arxiv.org/abs/2307.05378">paper</a>
       </div>
       <br>
+      <div class="pub-card" data-topic="molecular-discovery" data-year="2023" data-selected="false">
+          <strong>Uncovering Neural Scaling Law in Molecular Representation Learning</strong><br>
+          <em>Dingshuo Chen, Yanqiao Zhu, Jieyu Zhang, <b>Yuanqi Du</b>, Zhixun Li, Qiang Liu, Shu Wu, Liang Wang</em><br>
+          NeurIPS 2023 | <a href="https://arxiv.org/abs/2309.15123">paper</a>
+      </div>
+      <br>
       <div class="pub-card" data-topic="generative-model" data-year="2023" data-selected="false">
           <strong>A Flexible Diffusion Model</strong><br>
           <em>Weitao Du, Tao Yang, He Zhang, <b>Yuanqi Du</b></em><br>
@@ -134,6 +152,18 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
           <strong>ChemSpacE: Interpretable and Interactive Chemical Space Exploration</strong><br>
           <em><b>Yuanqi Du</b>, Xian Liu, Shengchao Liu, Jieyu Zhang, Bolei Zhou</em><br>
           TMLR 2023 | <a href="https://openreview.net/forum?id=C1Xl8dYCBn">paper</a>
+      </div>
+      <br>
+      <div class="pub-card" data-topic="molecular-discovery" data-year="2023" data-selected="false">
+          <strong>A Systematic Survey of Chemical Pre-trained Models</strong><br>
+          <em>Jun Xia*, Yanqiao Zhu*, <b>Yuanqi Du*</b>, Stan Z.Li</em><br>
+          IJCAI 2023 | <a href="https://arxiv.org/abs/2210.16484">paper</a>
+      </div>
+      <br>
+      <div class="pub-card" data-topic="ai-for-science" data-year="2023" data-selected="false">
+          <strong>Artificial intelligence for science in quantum, atomistic, and continuum systems</strong><br>
+          <em>Xuan Zhang, Limei Wang, ..., <b>Yuanqi Du</b>, ..., Shuiwang Ji</em><br>
+          arXiv preprint arXiv:2307.08423 | <a href="https://arxiv.org/abs/2307.08423">paper</a>
       </div>
       <br>
       <div class="pub-card" data-topic="generative-model" data-year="2022" data-selected="false">
