@@ -368,6 +368,8 @@ $(function() {
         allTopics.push({name: $(allTopicsLink[topicId]).data("topic"), title: $(allTopicsLink[topicId]).html()});
     }
     console.log(allTopics);
+    console.log($.fn.jquery);
+    console.log($.fn.isInViewport);
     $("#publication-by-selected").click();
     $("#pub-card-container").removeClass("hide");
 });
