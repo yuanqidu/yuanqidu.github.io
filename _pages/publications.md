@@ -10,7 +10,6 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Publications</title>
   <style>
     .filter-link {
       cursor: pointer;
@@ -40,14 +39,14 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
 <body>
 
 <!-- Top line: Publications ( show selected / show all by date / show all by topic ) -->
-<p>
+<h1>
   <strong>Publications</strong>
   ( 
     <span class="filter-link" onclick="filterPublications('selected')">show selected</span> / 
     <span class="filter-link" onclick="filterPublications('date')">show all by date</span> / 
     <span class="filter-link" onclick="filterPublications('topic')">show all by topic</span>
   )
-</p>
+</h1>
 
 <!-- Topics line (hidden by default until "show all by topic") -->
 <div id="topicFilters" style="display: none;">
