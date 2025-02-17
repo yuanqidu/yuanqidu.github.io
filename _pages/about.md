@@ -19,12 +19,17 @@ Additional topics I am interested in include: (Mechanistic) Interpretability, Sc
 
 ## Selected Publications
 
+<ul id="selected-publications">
+  <li data-selected="true" data-date="2025" data-topics="sampling ">
+    <strong>Doob's Lagrangian: A Sample-Efficient Variational Approach to Transition Path Sampling</strong><br>
+    <em><b>Yuanqi Du*</b>, Michael Plainer*, Rob Brekelmans*, Chenru Duan, Frank Noe, Carla P. Gomes, Alán Aspuru-Guzik, Kirill Neklyudov.</em><br>
+    NeurIPS 2024 (<b>Spotlight</b>) | <a href="https://openreview.net/forum?id=ShJWT0n7kX">paper</a> 
+  </li>
 
-  
-<!-- **News, Travels and Highlights! Follow me [@Twitter](https://twitter.com/YuanqiD)**
-* What's next?
-* 3/24 I wrote a short [blog post](https://medium.com/@yuanqidu/about-academic-event-organization-and-community-building-in-ai-and-ml-0735893d7e36) to share some personal lessons, experienecs and thoughts about organizing academic events and community building. 
-* 3/24 We are organizing the new AI for Science edition ([Scaling in AI for Scientific Discovery](https://ai4sciencecommunity.github.io/icml24.html)) and [Structured Probabilsitic Inference and Generative Modeling](https://spigmworkshop2024.github.io/) workshops with ICML 2024!
-* 2/24 We are organizing an AI for Science Seminar (livestreaming, free-to-attend for all and physically at Cornell)! [Schedule](https://science.ai.cornell.edu/events/ai-for-science-seminar-series-spring-2024/), [Zoom link](https://t.co/6sMdN7NuCm), [Recordings](https://www.youtube.com/@cuaisci)
-* 1/24 We released a blog [AI for Science in 2023: A Community Primer](https://medium.com/@AI_for_Science/ai-for-science-in-2023-a-community-primer-d2c2db37e9a7) to highlight some progress and trends in the broad AI for Science community, check it out!
-* [AI for Science101](https://ai4science101.github.io/) is an educational initative with community contributed series of blogs and short tutorials for broad topics in the intersection of AI and Science. -->
+  <li data-selected="true" data-date="2025" data-topics="sampling ">
+    <strong>Structure-based Drug Design with Equivariant Diffusion Models</strong><br>
+    <em>Arne Schneuing*, Charles Harris*, <b>Yuanqi Du*</b>, Arian Jamasb, Ilia Igashov, Weitao Du, Carla P. Gomes, Tom Blundell, Pietro Lió, Max Welling, Michael Bronstein, Bruno Correia.</em><br>
+    Nature Computational Science 2024 | <a href="https://www.nature.com/articles/s43588-024-00737-x">paper</a> 
+  </li>
+
+</ul>
