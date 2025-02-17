@@ -203,7 +203,6 @@ $(function() {
             height: height
         }
     };
-
     getRealWindowSize = function() {
         var winWidth = null,
             winHeight = null;
@@ -220,27 +219,22 @@ $(function() {
             height: winHeight
         }
     };
-
     fullBg = function() {
         var bgImg = $("#background");
         var mainContainer = $("#main");
         var firstFire = null;
-
         if (bgImg.length == 0) {
             return ;
         }
-
         function resizeImg() {
             var realSize = getRealSize(bgImg);
             var imgWidth = realSize.width;
             var imgHeight = realSize.height;
-
             if (imgWidth == 0 || imgHeight == 0) {
                 setTimeout(function() {
                     resizeImg();
                 }, 200);
             }
-
             console.log(realSize);
             var realWinSize = getRealWindowSize();
             var winWidth = realWinSize.width;
@@ -260,7 +254,6 @@ $(function() {
             //     height: winHeight
             // });
         }
-
         resizeImg();
         window.onresize = function() {
             if (firstFire === null) {
@@ -271,7 +264,6 @@ $(function() {
             }
         }
     };
-
     targetColor = $("#main-content-container .name").css("color");
     animatedLink = function(speed) {
         $("#main-content-container .col-link li").hover(function() {
@@ -292,17 +284,14 @@ $(function() {
             })
         })
     };
-
     // fullBg();
     // animatedLink(400);
-
     allPublications = $("#pub-card-container .pub-card");
     allTopicsLink = $("#pub-container .subtitle-aux a");
     allTopics = [];
     for (var topicId = 0; topicId < allTopicsLink.length; topicId++) {
         allTopics.push({name: $(allTopicsLink[topicId]).data("topic"), title: $(allTopicsLink[topicId]).html()});
     }
-
     $("#publication-by-selected").click();
     // $("#publication-by-date").click();
     $("#pub-card-container").removeClass("hide");
