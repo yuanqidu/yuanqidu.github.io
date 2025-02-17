@@ -6,35 +6,6 @@ author_profile: true
 googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
 ---
 
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Publications Demo</title>
-  <style>
-    /* Simple styling for clickable text/links */
-    .filter-link {
-      cursor: pointer;
-      color: #007ACC;
-      text-decoration: underline;
-      margin: 0 6px;
-    }
-    /* Each paper is a .paper-entry */
-    .paper-entry {
-      margin-bottom: 1.5em;
-    }
-    /* Styling for paper links */
-    .paper-link {
-      color: #007ACC;
-      text-decoration: none;
-      font-size: 0.9em;
-    }
-    .paper-link:hover {
-      text-decoration: underline;
-    }
-  </style>
-</head>
-<body>
-
 <!-- Filter bar at the top -->
 <h2>
   <strong>Publications</strong>
@@ -135,6 +106,3 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
     filterPublications('selected');
   };
 </script>
-
-</body>
-</html>
