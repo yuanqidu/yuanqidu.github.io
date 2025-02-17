@@ -22,7 +22,7 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
     .paper-entry {
       margin-bottom: 1.5em;
     }
-    /* A small "Paper" button to open the link in a new tab */
+    /* A small "Paper" link styling */
     .paper-button {
       cursor: pointer;
       background-color: #f0f0f0;
@@ -30,6 +30,8 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
       padding: 3px 8px;
       border-radius: 4px;
       font-size: 0.9em;
+      text-decoration: none;
+      color: black;
     }
     .paper-button:hover {
       background-color: #e6e6e6;
@@ -66,7 +68,7 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
     <strong>No Trick, No Treat: Pursuits and Challenges Towards Simulation-free Training of Neural Samplers</strong> (2025)<br>
     Jiajun He*, <strong>Yuanqi Du*</strong>, Francisco Vargas, ...<br>
     <em>arXiv preprint arXiv:2502.06685</em><br>
-    <button class="paper-button" onclick="window.open('https://arxiv.org/abs/2502.06685','_blank')">Paper</button>
+    <a class="paper-button" href="https://arxiv.org/abs/2502.06685" target="_blank">Paper</a>
   </div>
 
   <!-- Sample preprint, not selected -->
@@ -77,7 +79,8 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
     <strong>Large Language Models Are Innate Crystal Structure Generators</strong> (2025)<br>
     Jingru Gan, Peichen Zhong*, <strong>Yuanqi Du*</strong>, ...<br>
     <em>arXiv preprint (coming soon)</em><br>
-    <button class="paper-button">Paper</button>
+    <!-- Using a dummy link (href="#") for the coming soon paper -->
+    <a class="paper-button" href="#" onclick="return false;">Paper</a>
   </div>
 
   <!-- Sample selected publication -->
@@ -88,7 +91,7 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
     <strong>Efficient Evolutionary Search over Chemical Space with Large Language Models</strong> (2025)<br>
     Haorui Wang*, Marta Skreta*, ..., <strong>Yuanqi Du†</strong>, ...<br>
     <em>ICLR 2025</em><br>
-    <button class="paper-button" onclick="window.open('https://molleo.github.io/','_blank')">Paper</button>
+    <a class="paper-button" href="https://molleo.github.io/" target="_blank">Paper</a>
   </div>
 
   <!-- Add the rest of your publications here, with appropriate data-selected, data-date, data-topics -->
