@@ -13,15 +13,20 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
 {% include base_path %}
 You can find my recent and full list of publications on my [Google Scholar profile](https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en). 
 
-<!-- Category Buttons -->
-<div id="filter-buttons">
-  <button onclick="filterPublications('selected')">Selected</button>
-  <button onclick="filterPublications('generative models')">Generative Models</button>
-  <button onclick="filterPublications('stochastic control/sampling/optimal transport')">Stochastic Control/Sampling/Optimal Transport</button>
-  <button onclick="filterPublications('equivariant neural networks')">Equivariant Neural Networks</button>
-  <button onclick="filterPublications('large language models')">LLMs</button>
-  <button onclick="filterPublications('all')">All</button>
-</div>
+<h2>
+  Publications 
+  ( 
+    <a href="#" onclick="filterPublications('selected')">show selected</a> / 
+    <a href="#" onclick="filterPublications('all-date')">show all by date</a> / 
+    <a href="#" onclick="filterPublications('all-topic')">show all by topic</a>
+  )
+</h2>
+
+<!-- Topics listed as text (optional) -->
+<p>
+  <strong>Topics:</strong> Generative Models | Stochastic Control & Sampling | Equivariant Neural Networks | Large Language Models<br>
+  (* indicates equal contribution)
+</p>
 
 <!-- Publications List -->
 <ul id="publications">
@@ -31,19 +36,66 @@ You can find my recent and full list of publications on my [Google Scholar profi
   <li data-category="arts">Publication 4 - Arts</li>
 </ul>
 
-<!-- JavaScript to Filter Items -->
+<!-- Minimal JavaScript for filtering and sorting -->
 <script>
-  function filterPublications(category) {
-    const items = document.querySelectorAll('#publications li');
+function filterPublications(mode) {
+  const items = document.querySelectorAll('#publications li');
+
+  if (mode === 'selected') {
+    // Show only items marked as "selected"
     items.forEach(item => {
-      if (category === 'all' || item.getAttribute('data-category') === category) {
-        item.style.display = 'list-item';
-      } else {
-        item.style.display = 'none';
-      }
+      item.style.display = item.dataset.selected === 'true' ? 'list-item' : 'none';
     });
+
+  } else if (mode === 'all-date') {
+    // Show all, then sort descending by data-date
+    items.forEach(item => item.style.display = 'list-item');
+    sortByDate(items);
+
+  } else if (mode === 'all-topic') {
+    // Show all, then sort by first topic (just an example)
+    items.forEach(item => item.style.display = 'list-item');
+    sortByTopic(items);
   }
+}
+
+// Example: sort descending by data-date
+function sortByDate(items) {
+  const list = document.getElementById('publications');
+  // Convert NodeList to Array
+  const arr = Array.from(items);
+  // Sort: newer years first
+  arr.sort((a, b) => parseInt(b.dataset.date) - parseInt(a.dataset.date));
+  // Re-append in new order
+  arr.forEach(li => list.appendChild(li));
+}
+
+// Example: sort by the first word in data-topics
+function sortByTopic(items) {
+  const list = document.getElementById('publications');
+  const arr = Array.from(items);
+  arr.sort((a, b) => {
+    const aTopic = a.dataset.topics.split(' ')[0];
+    const bTopic = b.dataset.topics.split(' ')[0];
+    return aTopic.localeCompare(bTopic);
+  });
+  arr.forEach(li => list.appendChild(li));
+}
 </script>
+
+<!-- Optional: basic styling -->
+<style>
+  #publications {
+    list-style: none;
+    padding-left: 0;
+  }
+  #publications li {
+    margin-bottom: 1em;
+  }
+  #publications li strong {
+    font-size: 1.05em;
+  }
+</style>
 
 Preprints
 ======
