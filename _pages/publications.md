@@ -249,10 +249,6 @@ $(function() {
                 bgImg.width(imgWidth * heightRatio + 'px').height(imgHeight * heightRatio + 'px').css({'left':
                     -(imgWidth * heightRatio - winWidth) / 10 * 3 + 'px', 'top': '0'})
             }
-            // mainContainer.css({
-            //     width: winWidth,
-            //     height: winHeight
-            // });
         }
         resizeImg();
         window.onresize = function() {
@@ -284,8 +280,6 @@ $(function() {
             })
         })
     };
-    // fullBg();
-    // animatedLink(400);
     allPublications = $("#pub-card-container .pub-card");
     allTopicsLink = $("#pub-container .subtitle-aux a");
     allTopics = [];
@@ -293,7 +287,6 @@ $(function() {
         allTopics.push({name: $(allTopicsLink[topicId]).data("topic"), title: $(allTopicsLink[topicId]).html()});
     }
     $("#publication-by-selected").click();
-    // $("#publication-by-date").click();
     $("#pub-card-container").removeClass("hide");
 });
 </script>
