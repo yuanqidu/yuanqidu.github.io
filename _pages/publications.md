@@ -6,12 +6,12 @@ author_profile: true
 googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
 ---
 
-{% if author.googlescholar %}
+<!-- {% if author.googlescholar %}
   You can also find my recent publications on <u><a href=https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en>my Google Scholar profile</a>.</u>
 {% endif %}
 
 {% include base_path %}
-You can find my recent and full list of publications on my [Google Scholar profile](https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en). 
+You can find my recent and full list of publications on my [Google Scholar profile](https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en).  -->
 
 <h2>
   Publications 
