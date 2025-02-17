@@ -23,8 +23,9 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
   <div class="pub-card" data-topic="control-sampling" data-year="2025" data-selected="true">
     <strong>Doob's Lagrangian: A Sample-Efficient Variational Approach to Transition Path Sampling</strong><br>
     <em><b>Yuanqi Du*</b>, Michael Plainer*, Rob Brekelmans*, Chenru Duan, Frank Noe, Carla P. Gomes, Alán Aspuru-Guzik, Kirill Neklyudov.</em><br>
-    NeurIPS 2024 (<b>Spotlight</b>) | <a href="https://openreview.net/forum?id=ShJWT0n7kX">paper</a> 
+    NeurIPS 2024 (<b>Spotlight</b>) | <a href="https://openreview.net/forum?id=ShJWT0n7kX">paper</a>
   </div>
+  <br>
 
   <div class="pub-card" data-topic="control-sampling" data-year="2025" data-selected="true">
     <strong>Structure-based Drug Design with Equivariant Diffusion Models</strong><br>
