@@ -41,11 +41,7 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
 <!-- Top line: Publications ( show selected / show all by date / show all by topic ) -->
 <h1>
   <strong>Publications</strong>
-  ( 
-    <span class="filter-link" onclick="filterPublications('selected')">show selected</span> / 
-    <span class="filter-link" onclick="filterPublications('date')">show all by date</span> / 
-    <span class="filter-link" onclick="filterPublications('topic')">show all by topic</span>
-  )
+  (<span class="filter-link" onclick="filterPublications('selected')">show selected</span>/<span class="filter-link" onclick="filterPublications('date')">show all by date</span>/<span class="filter-link" onclick="filterPublications('topic')">show all by topic</span>)
 </h1>
 
 <!-- Topics line (hidden by default until "show all by topic") -->
