@@ -180,7 +180,6 @@ $.fn.isInViewport = function() {
   var viewportBottom = viewportTop + $(window).height();
   return elementBottom > viewportTop && elementTop < viewportBottom;
 };
-console.log("Inline isInViewport defined", $.fn.isInViewport);
 function publicationBySelected() {
     console.log("publicationBySelected called");
     var a = $("#publication-by-selected");
@@ -356,15 +355,10 @@ $(function() {
     };
     allPublications = $("#pub-card-container .pub-card");
     allTopicsLink = $("#pub-container .subtitle-aux a");
-    console.log(allTopicsLink);
     allTopics = [];
     for (var topicId = 0; topicId < allTopicsLink.length; topicId++) {
-        console.log(topicId);
         allTopics.push({name: $(allTopicsLink[topicId]).data("topic"), title: $(allTopicsLink[topicId]).html()});
     }
-    console.log(allTopics);
-    console.log($.fn.jquery);
-    console.log($.fn.isInViewport);
     $("#publication-by-selected").click();
     $("#pub-card-container").removeClass("hide");
 });
