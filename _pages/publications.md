@@ -171,15 +171,14 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
 <script type="text/javascript">
-var allPublications = null;
 $.fn.isInViewport = function() {
-  console.log("top", this.offset().top);
-  var elementTop = this.offset().top;
-  var elementBottom = elementTop + this.outerHeight();
-  var viewportTop = $(window).scrollTop();
-  var viewportBottom = viewportTop + $(window).height();
-  return elementBottom > viewportTop && elementTop < viewportBottom;
+    var elementTop = $(this).offset().top;
+    var elementBottom = elementTop + $(this).outerHeight();
+    var viewportTop = $(window).scrollTop();
+    var viewportBottom = viewportTop + $(window).height();
+    return elementBottom > viewportTop && elementTop < viewportBottom;
 };
+var allPublications = null;
 function publicationBySelected() {
     console.log("publicationBySelected called");
     var a = $("#publication-by-selected");
