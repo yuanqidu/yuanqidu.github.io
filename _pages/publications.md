@@ -9,17 +9,17 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
 <html>
 <body>
 
-<h3 class="subtitle">Publications
+<h1 class="subtitle">Publications
 (
     <a id="publication-by-selected" href="javascript:;", onClick="publicationBySelected();">show selected</a> /
     <a id="publication-by-date" href="javascript:;", onClick="publicationByDate();">show all by date</a> /
     <a id="publication-by-topic" href="javascript:;", onClick="publicationByTopic();">show all by topic</a>
 )
-</h3>
+</h1>
 <p class="subtitle-aux"><b>Topics:</b>
     <a href="#generative-model" onClick="return publicationByTopicSpecific(this)" data-topic="generative-model">Generative Models & Optimal Transport</a> /
-    <a href="#equivariant-neural-network" onClick="return publicationByTopicSpecific(this)" data-topic="equivariant-neural-network">Equivariant Neural Networks</a> /
     <a href="#control-sampling" onClick="return publicationByTopicSpecific(this)" data-topic="control-sampling">Stochatic Control & Sampling</a> /
+    <a href="#equivariant-neural-network" onClick="return publicationByTopicSpecific(this)" data-topic="equivariant-neural-network">Equivariant Neural Networks</a> /
     <a href="#large-language-model" onClick="return publicationByTopicSpecific(this)" data-topic="large-language-model">Large Language Models</a> /
     <a href="#molecular-discovery" onClick="return publicationByTopicSpecific(this)" data-topic="molecular-discovery">Molecular Discovery</a> (* denotes equal contribution, † denotes advising role)
     <br />
