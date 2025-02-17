@@ -1,13 +1,11 @@
 ---
 layout: archive
-title: "Service"
+title: ""
 permalink: /service/
 author_profile: true
 redirect_from:
   - /resume
 ---
-
-List of Services:
 
 Professional Service
 ======
