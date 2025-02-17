@@ -132,7 +132,7 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
       <br>
       <div class="pub-card" data-topic="molecular-discovery" data-year="2023" data-selected="false">
           <strong>M²Hub: Unlocking the Potential of Machine Learning for Materials Discovery</strong><br>
-          <em><b>Yuanqi Du*</b>, Yingheng Wang*, Yining Huang, Jianan Canal Li, ..., Tian Xie, Chenru Duan, John M. Gregoire, Carla P. Gomes</em><br>
+          <em><b>Yuanqi Du*</b>, Yingheng Wang*, Yining Huang, ..., Tian Xie, Chenru Duan, John M. Gregoire, Carla P. Gomes</em><br>
           NeurIPS 2023 | <a href="https://arxiv.org/abs/2307.05378">paper</a>
       </div>
       <br>
