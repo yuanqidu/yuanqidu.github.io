@@ -23,7 +23,8 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
         <a href="#control-sampling" onClick="return publicationByTopicSpecific(this)" data-topic="control-sampling">Stochatic Control & Sampling</a> /
         <a href="#equivariant-neural-network" onClick="return publicationByTopicSpecific(this)" data-topic="equivariant-neural-network">Equivariant Neural Networks</a> /
         <a href="#large-language-model" onClick="return publicationByTopicSpecific(this)" data-topic="large-language-model">Large Language Models</a> /
-        <a href="#molecular-discovery" onClick="return publicationByTopicSpecific(this)" data-topic="molecular-discovery">Molecular Discovery</a> (* denotes equal contribution, † denotes advising role)
+        <a href="#molecular-discovery" onClick="return publicationByTopicSpecific(this)" data-topic="molecular-discovery">Molecular Discovery</a> /
+        <a href="#ai-for-science" onClick="return publicationByTopicSpecific(this)" data-topic="ai-for-science">AI for Science</a> (* denotes equal contribution, † denotes advising role)
         <br />
     </p>
     <div id="pub-card-container" class="activated hide">
@@ -123,7 +124,7 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
           ICML 2023 | <a href="https://arxiv.org/abs/2206.10365">paper</a>
       </div>
       <br>
-      <div class="pub-card" data-topic="molecular-discovery" data-year="2023" data-selected="true">
+      <div class="pub-card" data-topic="ai-for-science" data-year="2023" data-selected="true">
           <strong>Scientific Discovery in the Age of Artificial Intelligence</strong><br>
           <em>Hanchen Wang*, Tianfan Fu*, <b>Yuanqi Du*</b>, ..., Max Welling, Linfeng Zhang, Connor Coley, Yoshua Bengio, Marinka Zitnik</em><br>
           Nature 2023 | <a href="https://www.nature.com/articles/s41586-023-06221-2">paper</a>
