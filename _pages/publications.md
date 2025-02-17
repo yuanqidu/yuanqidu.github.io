@@ -112,6 +112,12 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
           Nature Computational Science 2023 (<b>Cover Story</b>) | <a href="https://www.nature.com/articles/s43588-023-00563-7">paper</a>
       </div>
       <br>
+      <div class="pub-card" data-topic="ai-for-science" data-year="2023" data-selected="true">
+          <strong>Scientific Discovery in the Age of Artificial Intelligence</strong><br>
+          <em>Hanchen Wang*, Tianfan Fu*, <b>Yuanqi Du*</b>, ..., Max Welling, Linfeng Zhang, Connor Coley, Yoshua Bengio, Marinka Zitnik</em><br>
+          Nature 2023 | <a href="https://www.nature.com/articles/s41586-023-06221-2">paper</a>
+      </div>
+      <br>
       <div class="pub-card" data-topic="equivariant-neural-network" data-year="2023" data-selected="true">
           <strong>A New Perspective on Building Efficient and Expressive 3D Equivariant Graph Neural Networks</strong><br>
           <em>Weitao Du*, <b>Yuanqi Du*</b>, Limei Wang*, Dieqiao Feng, Guifeng Wang, Shuiwang Ji, Carla P. Gomes, Zhi-Ming Ma</em><br>
@@ -140,12 +146,6 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
           <strong>A Flexible Diffusion Model</strong><br>
           <em>Weitao Du, Tao Yang, He Zhang, <b>Yuanqi Du</b></em><br>
           ICML 2023 | <a href="https://arxiv.org/abs/2206.10365">paper</a>
-      </div>
-      <br>
-      <div class="pub-card" data-topic="ai-for-science" data-year="2023" data-selected="true">
-          <strong>Scientific Discovery in the Age of Artificial Intelligence</strong><br>
-          <em>Hanchen Wang*, Tianfan Fu*, <b>Yuanqi Du*</b>, ..., Max Welling, Linfeng Zhang, Connor Coley, Yoshua Bengio, Marinka Zitnik</em><br>
-          Nature 2023 | <a href="https://www.nature.com/articles/s41586-023-06221-2">paper</a>
       </div>
       <br>
       <div class="pub-card" data-topic="molecular-discovery" data-year="2023" data-selected="false">
