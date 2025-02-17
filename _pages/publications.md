@@ -171,23 +171,6 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
 var allPublications = null;
-function publicationBySelected() {
-    console.log("publicationBySelected called");
-    var a = $("#publication-by-selected");
-    if (a.hasClass("activated")) {
-        return ;
-    }
-    $("#pub-container .subtitle a").removeClass("activated");
-    $("#pub-container .subtitle-aux a").removeClass("activated");
-    a.addClass("activated");
-    $("#pub-card-container").html("");
-    for (var pubId = 0; pubId < allPublications.length; pubId++) {
-        var pub = $(allPublications[pubId]);
-        if (pub.data("selected") == true) {
-            $("#pub-card-container").append(pub).append("<br>");
-        }
-    }
-}
 function publicationByDate() {
     var a = $("#publication-by-date")
     if (a.hasClass("activated")) {
