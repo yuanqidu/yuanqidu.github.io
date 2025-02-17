@@ -17,7 +17,7 @@ Yuanqi Du is a CS PhD student at Cornell University, working on the intersection
 
 Additional topics I am interested in include: (Mechanistic) Interpretability, Science of Science, and Societal Impact of AI.
 
-## Representative Work
+<!-- ## Representative Work
 
 <ul id="representative-work">
   <li data-selected="true" data-date="2025" data-topics="sampling ">
@@ -32,4 +32,4 @@ Additional topics I am interested in include: (Mechanistic) Interpretability, Sc
     Nature Computational Science 2024 | <a href="https://www.nature.com/articles/s43588-024-00737-x">paper</a> 
   </li>
 
-</ul>
+</ul> -->
