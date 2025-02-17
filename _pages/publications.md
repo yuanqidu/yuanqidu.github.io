@@ -174,7 +174,24 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
         integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 <script type="text/javascript">
-
+var allPublications = null;
+function publicationBySelected() {
+    console.log("publicationBySelected called");
+    var a = $("#publication-by-selected")
+    if (a.hasClass("activated")) {
+        return ;
+    }
+    $("#pub-container .subtitle a").removeClass("activated");
+    $("#pub-container .subtitle-aux a").removeClass("activated");
+    a.addClass("activated");
+    $("#pub-card-container").html("");
+    for (var pubId = 0; pubId < allPublications.length; pubId++) {
+        var pub = $(allPublications[pubId]);
+        if (pub.data("selected") == true) {
+            $("#pub-card-container").append(pub);
+        }
+    }
+}
 </script>
 </body>
 </html>
