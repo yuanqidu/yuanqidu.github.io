@@ -220,6 +220,7 @@ function publicationByTopicInner() {
     $("#pub-container .subtitle a").removeClass("activated");
     a.addClass("activated");
     $("#pub-card-container").html("");
+    console.log(allTopics);
     for (var topicId in allTopics) {
         console.log(topicId);
         var topic = allTopics[topicId].name;
@@ -242,6 +243,7 @@ function publicationByTopicSpecificInner(a) {
     $(a).addClass("activated");
 }
 function publicationByTopic() {
+    console.log("publicationByTopic called");
     publicationByTopicInner();
     publicationByTopicSpecificInner($("#pub-container .subtitle-aux a:first"));
     return true;
