@@ -1,10 +1,7 @@
 ---
 layout: archive
-title: "none"
 permalink: /cv/
 author_profile: true
-redirect_from:
-  - /resume
 ---
 
 Education
