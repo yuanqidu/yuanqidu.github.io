@@ -15,9 +15,12 @@ You can find my recent and full list of publications on my [Google Scholar profi
 
 <!-- Category Buttons -->
 <div id="filter-buttons">
+  <button onclick="filterPublications('selected')">Selected</button>
+  <button onclick="filterPublications('generative models')">Generative Models</button>
+  <button onclick="filterPublications('stochastic control/sampling/optimal transport')">Stochastic Control/Sampling/Optimal Transport</button>
+  <button onclick="filterPublications('equivariant neural networks')">Equivariant Neural Networks</button>
+  <button onclick="filterPublications('large language models')">LLMs</button>
   <button onclick="filterPublications('all')">All</button>
-  <button onclick="filterPublications('science')">Science</button>
-  <button onclick="filterPublications('arts')">Arts</button>
 </div>
 
 <!-- Publications List -->
