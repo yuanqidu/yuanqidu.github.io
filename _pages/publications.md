@@ -6,29 +6,26 @@ author_profile: true
 googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
 ---
 
-<!-- {% if author.googlescholar %}
-  You can also find my recent publications on <u><a href=https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en>my Google Scholar profile</a>.</u>
-{% endif %}
 
-{% include base_path %}
-You can find my recent and full list of publications on my [Google Scholar profile](https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en).  -->
+<h1>Publications</h1>
 
-<h2>
-  Publications 
-  ( 
-    <button onclick="filterByTopic('selected')">show selected</button> /
-    <button onclick="filterByTopic('date')">show all by date</button> /
-    <button onclick="filterByTopic('topic')">show all by topic</button>
-  )
-</h2>
+<!-- Top-level filter choices -->
+<div>
+  <span class="filter-link" onclick="filterPublications('selected')">Show selected</span>
+  <span class="filter-link" onclick="filterPublications('date')">Show all by date</span>
+  <span class="filter-link" onclick="filterPublications('topic')">Show all by topic</span>
+</div>
 
-<!-- Topics listed as text (optional) -->
-<p>
-  <strong>Topics:</strong> Generative Models | Stochastic Control & Sampling | Equivariant Neural Networks | Large Language Models<br>
-  (* indicates equal contribution, † indicates advising role)
-</p>
+<!-- Once the user clicks "show all by topic," reveal these topic links -->
+<div id="topicFilters" style="display: none;">
+  <!-- Add as many topics as you need -->
+  <span class="filter-link" onclick="filterPublications('Generative Models')">Generative Models</span>
+  <span class="filter-link" onclick="filterPublications('Stochastic Control')">Stochastic Control</span>
+  <span class="filter-link" onclick="filterPublications('Equivariant Neural Networks')">Equivariant Neural Networks</span>
+  <span class="filter-link" onclick="filterPublications('Large Language Models')">Large Language Models</span>
+</div>
 
-<!-- List of publications -->
+<!-- List of publications. We store custom data in data-* attributes -->
 <ul id="publications">
   <li data-selected="true" data-date="2025" data-topics="sampling">
     <strong>No Trick, No Treat: Pursuits and Challenges Towards Simulation-free Training of Neural Samplers</strong><br>
@@ -53,61 +50,56 @@ You can find my recent and full list of publications on my [Google Scholar profi
     <em>Haorui Wang*, Marta Skreta*, ..., <b>Yuanqi Du†</b>, Alán Aspuru-Guzik†, Kirill Neklyudov†, Chao Zhang†.</em><br>
     ICLR 2025 | <a href="https://arxiv.org/abs/2406.16976">paper</a> 
   </li>
-
 </ul>
 
-<!-- Filtering Script -->
 <script>
-  function filterByTopic(topic) {
-    const items = document.querySelectorAll('#publications li');
-    items.forEach(item => {
-      // Split the data-topics attribute on spaces
-      const topics = item.getAttribute('data-topics').split(' ');
+  function filterPublications(filter) {
+    const publications = document.querySelectorAll('#publications li');
+    const topicFilters = document.getElementById('topicFilters');
 
-      // If 'all' is selected, or if this publication's topics include the chosen topic, show it
-      if (topic === 'all' || topics.includes(topic)) {
-        item.style.display = 'list-item';
-      } else {
-        item.style.display = 'none';
+    // 1) Hide the topic links unless user wants "all by topic" or a specific topic
+    if (filter === 'topic') {
+      topicFilters.style.display = 'block';
+      // Show all items so user can see the entire list grouped by topics
+      publications.forEach(pub => pub.style.display = 'list-item');
+      return;
+    } else if (filter === 'selected') {
+      topicFilters.style.display = 'none';
+      publications.forEach(pub => {
+        // Show only those with data-selected="true"
+        pub.style.display = (pub.dataset.selected === 'true') ? 'list-item' : 'none';
+      });
+      return;
+    } else if (filter === 'date') {
+      topicFilters.style.display = 'none';
+      // Show all items
+      publications.forEach(pub => pub.style.display = 'list-item');
+      // If you want to sort by date, you can do that here
+      return;
+    } else {
+      // We assume 'filter' is actually a topic string
+      topicFilters.style.display = 'block';
+      // Show only publications containing that topic
+      publications.forEach(pub => {
+        if (pub.dataset.topics.includes(filter)) {
+          pub.style.display = 'list-item';
+        } else {
+          pub.style.display = 'none';
+        }
+      });
+      // Optionally scroll to the first match
+      const firstMatch = document.querySelector(`#publications li[data-topics*="${filter}"]`);
+      if (firstMatch) {
+        firstMatch.scrollIntoView({ behavior: 'smooth' });
       }
-    });
+    }
   }
 
-function sortByDate(items) {
-  const list = document.getElementById('publications');
-  // Convert NodeList to Array
-  const arr = Array.from(items);
-  // Sort: newer years first
-  arr.sort((a, b) => parseInt(b.dataset.date) - parseInt(a.dataset.date));
-  // Re-append in new order
-  arr.forEach(li => list.appendChild(li));
-}
-
-function sortByTopic(items) {
-  const list = document.getElementById('publications');
-  const arr = Array.from(items);
-  arr.sort((a, b) => {
-    const aTopic = a.dataset.topics.split(' ')[0];
-    const bTopic = b.dataset.topics.split(' ')[0];
-    return aTopic.localeCompare(bTopic);
-  });
-  arr.forEach(li => list.appendChild(li));
-}
+  // Default to 'selected' on page load
+  window.onload = function() {
+    filterPublications('selected');
+  };
 </script>
-
-<!-- Optional: basic styling -->
-<style>
-  #publications {
-    list-style: none;
-    padding-left: 0;
-  }
-  #publications li {
-    margin-bottom: 1em;
-  }
-  #publications li strong {
-    font-size: 1.05em;
-  }
-</style>
 
 Preprints
 ======
