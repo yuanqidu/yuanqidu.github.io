@@ -16,9 +16,9 @@ You can find my recent and full list of publications on my [Google Scholar profi
 <h2>
   Publications 
   ( 
-    <a href="#" onclick="filterPublications('selected')">show selected</a> / 
-    <a href="#" onclick="filterPublications('all-date')">show all by date</a> / 
-    <a href="#" onclick="filterPublications('all-topic')">show all by topic</a>
+    <button onclick="filterByTopic('selected')">show selected</button> /
+    <button onclick="filterByTopic('date')">show all by date</button> /
+    <button onclick="filterByTopic('topic')">show all by topic</button>
   )
 </h2>
 
@@ -30,7 +30,13 @@ You can find my recent and full list of publications on my [Google Scholar profi
 
 <!-- List of publications -->
 <ul id="publications">
-  <li data-selected="true" data-date="2025" data-topics="sampling ">
+  <li data-selected="true" data-date="2025" data-topics="sampling">
+    <strong>No Trick, No Treat: Pursuits and Challenges Towards Simulation-free Training of Neural Samplers</strong><br>
+    <em>Jiajun He*, <b>Yuanqi Du*</b>, Francisco Vargas, Dinghuai Zhang, Shreyas Padhy, RuiKang OuYang, Carla P. Gomes, José Miguel Hernández-Lobato.</em><br>
+    arXiv 2025 | <a href="https://arxiv.org/abs/2502.06685">paper</a> 
+  </li>
+
+  <li data-selected="true" data-date="2025" data-topics="sampling">
     <strong>No Trick, No Treat: Pursuits and Challenges Towards Simulation-free Training of Neural Samplers</strong><br>
     <em>Jiajun He*, <b>Yuanqi Du*</b>, Francisco Vargas, Dinghuai Zhang, Shreyas Padhy, RuiKang OuYang, Carla P. Gomes, José Miguel Hernández-Lobato.</em><br>
     arXiv 2025 | <a href="https://arxiv.org/abs/2502.06685">paper</a> 
@@ -39,30 +45,23 @@ You can find my recent and full list of publications on my [Google Scholar profi
   <!-- Add more <li> items as needed, each with data-selected, data-date, data-topics, etc. -->
 </ul>
 
-<!-- Minimal JavaScript for filtering and sorting -->
+<!-- Filtering Script -->
 <script>
-function filterPublications(mode) {
-  const items = document.querySelectorAll('#publications li');
-
-  if (mode === 'selected') {
-    // Show only items marked as "selected"
+  function filterByTopic(topic) {
+    const items = document.querySelectorAll('#publications li');
     items.forEach(item => {
-      item.style.display = item.dataset.selected === 'true' ? 'list-item' : 'none';
+      // Split the data-topics attribute on spaces
+      const topics = item.getAttribute('data-topics').split(' ');
+
+      // If 'all' is selected, or if this publication's topics include the chosen topic, show it
+      if (topic === 'all' || topics.includes(topic)) {
+        item.style.display = 'list-item';
+      } else {
+        item.style.display = 'none';
+      }
     });
-
-  } else if (mode === 'all-date') {
-    // Show all, then sort descending by data-date
-    items.forEach(item => item.style.display = 'list-item');
-    sortByDate(items);
-
-  } else if (mode === 'all-topic') {
-    // Show all, then sort by first topic (just an example)
-    items.forEach(item => item.style.display = 'list-item');
-    sortByTopic(items);
   }
-}
 
-// Example: sort descending by data-date
 function sortByDate(items) {
   const list = document.getElementById('publications');
   // Convert NodeList to Array
@@ -73,7 +72,6 @@ function sortByDate(items) {
   arr.forEach(li => list.appendChild(li));
 }
 
-// Example: sort by the first word in data-topics
 function sortByTopic(items) {
   const list = document.getElementById('publications');
   const arr = Array.from(items);
