@@ -45,13 +45,13 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
 </h1>
 
 <!-- Topics line (hidden by default until "show all by topic") -->
-<div id="topicFilters" style="display: none;">
-  Topics: 
-  <span class="filter-link" onclick="filterPublications('Generative Models')">Generative Models</span> / 
-  <span class="filter-link" onclick="filterPublications('Stochastic Control & Sampling')">Stochastic Control &amp; Sampling</span> / 
-  <span class="filter-link" onclick="filterPublications('Equivariant Neural Networks')">Equivariant Neural Networks</span> / 
-  <span class="filter-link" onclick="filterPublications('Large Language Models')">Large Language Models</span>
-</div>
+<h2>
+  <strong>Topics:</strong>
+  <span class="filter-link" onclick="filterByTopic('Generative Models')">Generative Models</span> |
+  <span class="filter-link" onclick="filterByTopic('Stochastic Control & Sampling')">Stochastic Control &amp; Sampling</span> |
+  <span class="filter-link" onclick="filterByTopic('Equivariant Neural Networks')">Equivariant Neural Networks</span> |
+  <span class="filter-link" onclick="filterByTopic('Large Language Models')">Large Language Models</span>
+</h2>
 
 <!-- The publication list -->
 <div id="publications">
