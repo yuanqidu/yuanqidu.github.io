@@ -264,6 +264,7 @@ function publicationByTopicSpecific(a) {
 }
 $(function() {
     $.fn.isInViewport = function() {
+      console.log("top", this.offset().top);
       var elementTop = this.offset().top;
       var elementBottom = elementTop + this.outerHeight();
       var viewportTop = $(window).scrollTop();
