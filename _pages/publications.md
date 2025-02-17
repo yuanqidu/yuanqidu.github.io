@@ -202,6 +202,10 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
 <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
 <script type="text/javascript">
 function isInViewport(element) {
+    if (!element || element.length === 0) {
+          console.error("Element not found:", element);
+          return false;
+      }
     var elementTop = $(element).offset().top;
     var elementBottom = elementTop + $(element).outerHeight();
     var viewportTop = $(window).scrollTop();
