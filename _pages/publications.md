@@ -353,7 +353,7 @@ $(function() {
     };
     allPublications = $("#pub-card-container .pub-card");
     allTopicsLink = $("#pub-container .subtitle-aux a");
-    console.log(allTopicsLink)
+    console.log(allTopicsLink);
     allTopics = [];
     for (var topicId = 0; topicId < allTopicsLink.length; topicId++) {
         console.log("Publication data-selected:", pub.data("selected"));
