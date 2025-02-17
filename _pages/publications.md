@@ -13,9 +13,9 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
   <div id="pub-container">
     <h1 class="subtitle">Publications
     (
-        <!-- <a id="publication-by-selected" href="javascript:;", onClick="publicationBySelected();">show selected</a> /
-        <a id="publication-by-date" href="javascript:;", onClick="publicationByDate();">show all by date</a> /
-        <a id="publication-by-topic" href="javascript:;", onClick="publicationByTopic();">show all by topic</a> -->
+        <a id="publication-by-selected" href="javascript:;" onClick="publicationBySelected();">show selected</a> /
+        <a id="publication-by-date" href="javascript:;" onClick="publicationByDate();">show all by date</a> /
+        <a id="publication-by-topic" href="javascript:;" onClick="publicationByTopic();">show all by topic</a>
     )
     </h1>
     <p class="subtitle-aux"><b>Topics:</b>
