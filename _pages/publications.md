@@ -17,7 +17,7 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
 )
 </h3>
 <p class="subtitle-aux"><b>Topics:</b>
-    <a href="#generative-model" onClick="return publicationByTopicSpecific(this)" data-topic="generative-model">Generative Models</a> /
+    <a href="#generative-model" onClick="return publicationByTopicSpecific(this)" data-topic="generative-model">Generative Models & Optimal Transport</a> /
     <a href="#equivariant-neural-network" onClick="return publicationByTopicSpecific(this)" data-topic="equivariant-neural-network">Equivariant Neural Networks</a> /
     <a href="#control-sampling" onClick="return publicationByTopicSpecific(this)" data-topic="control-sampling">Stochatic Control & Sampling</a> /
     <a href="#large-language-model" onClick="return publicationByTopicSpecific(this)" data-topic="large-language-model">Large Language Models</a> /
@@ -81,7 +81,7 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
 </div>
 <br>
 
-<div class="pub-card" data-topic="control-sampling" data-year="2023" data-selected="true">
+<div class="pub-card" data-topic="generative-model" data-year="2023" data-selected="true">
     <strong>Accurate Transition State Generation with an Object-aware Equivariant Elementary Reaction Diffusion Model</strong><br>
     <em>Chenru Duan, <b>Yuanqi Du</b>, Haojun Jia, Heather J. Kulik.</em><br>
     Nature Computational Science 2023 (<b>Cover Story</b>). | <a href="https://www.nature.com/articles/s43588-023-00563-7">paper</a>
@@ -102,14 +102,14 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
 </div>
 <br>
 
-<div class="pub-card" data-topic="molecular-discovery" data-year="2023" data-selected="true">
+<div class="pub-card" data-topic="molecular-discovery" data-year="2023" data-selected="false">
     <strong>M²Hub: Unlocking the Potential of Machine Learning for Materials Discovery</strong><br>
     <em><b>Yuanqi Du*</b>, Yingheng Wang*, Yining Huang, Jianan Canal Li, Yanqiao Zhu, Tian Xie, Chenru Duan, John M. Gregoire, Carla P. Gomes.</em><br>
     NeurIPS 2023. | <a href="https://arxiv.org/abs/2307.05378">paper</a>
 </div>
 <br>
 
-<div class="pub-card" data-topic="generative-model" data-year="2023" data-selected="true">
+<div class="pub-card" data-topic="generative-model" data-year="2023" data-selected="false">
     <strong>A Flexible Diffusion Model</strong><br>
     <em>Weitao Du, Tao Yang, He Zhang, <b>Yuanqi Du</b>.</em><br>
     ICML 2023. | <a href="https://arxiv.org/abs/2206.10365">paper</a>
@@ -123,14 +123,14 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
 </div>
 <br>
 
-<div class="pub-card" data-topic="molecular-discovery" data-year="2023" data-selected="true">
+<div class="pub-card" data-topic="molecular-discovery" data-year="2023" data-selected="false">
     <strong>ChemSpacE: Interpretable and Interactive Chemical Space Exploration</strong><br>
     <em><b>Yuanqi Du</b>, Xian Liu, Shengchao Liu, Jieyu Zhang, Bolei Zhou.</em><br>
     TMLR 2023. | <a href="https://openreview.net/forum?id=C1Xl8dYCBn">paper</a>
 </div>
 <br>
 
-<div class="pub-card" data-topic="generative-model" data-year="2022" data-selected="true">
+<div class="pub-card" data-topic="generative-model" data-year="2022" data-selected="false">
     <strong>A Survey on Deep Graph Generation: Methods and Applications</strong><br>
     <em><b>Yuanqi Du*</b>, Yanqiao Zhu*, Yinkai Wang*, Jieyu Zhang, Qiang Liu, Shu Wu.</em><br>
     LoG 2022. | <a href="https://arxiv.org/pdf/2203.06714.pdf">paper</a>
@@ -144,35 +144,35 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
 </div>
 <br>
 
-<div class="pub-card" data-topic="generative-model" data-year="2022" data-selected="true">
+<div class="pub-card" data-topic="generative-model" data-year="2022" data-selected="false">
     <strong>Disentangled Spatiotemporal Graph Generative Models</strong><br>
     <em><b>Yuanqi Du*</b>, Xiaojie Guo*, Hengning Cao, Yanfang Ye, Liang Zhao.</em><br>
     AAAI 2022 (<b>Oral</b>). | <a href="https://ojs.aaai.org/index.php/AAAI/article/view/20607">paper</a>
 </div>
 <br>
 
-<div class="pub-card" data-topic="generative-model" data-year="2021" data-selected="true">
+<div class="pub-card" data-topic="generative-model" data-year="2021" data-selected="false">
     <strong>GraphGT: Machine Learning Datasets for Graph Generation and Transformation</strong><br>
     <em><b>Yuanqi Du*</b>, Shiyu Wang*, Xiaojie Guo, Hengning Cao, Shujie Hu, Junji Jiang, Aishwarya Varala, Abhinav Angirekula, Liang Zhao.</em><br>
     NeurIPS 2021. | <a href="https://openreview.net/forum?id=NYgt9vcdyjm">paper</a>
 </div>
 <br>
 
-<div class="pub-card" data-topic="generative-model" data-year="2021" data-selected="true">
+<div class="pub-card" data-topic="generative-model" data-year="2021" data-selected="false">
     <strong>Deep Generative Model for Spatial Networks</strong><br>
     <em>Xiaojie Guo*, <b>Yuanqi Du*</b>, Liang Zhao.</em><br>
     KDD 2021. | <a href="https://arxiv.org/abs/2203.00411">paper</a>
 </div>
 <br>
 
-<div class="pub-card" data-topic="generative-model" data-year="2025" data-selected="false">
+<div class="pub-card" data-topic="control-sampling" data-year="2025" data-selected="true">
     <strong>No Trick, No Treat: Pursuits and Challenges Towards Simulation-free Training of Neural Samplers</strong><br>
     <em>Jiajun He*, <b>Yuanqi Du*</b>, Francisco Vargas, Dinghuai Zhang, Shreyas Padhy, RuiKang OuYang, Carla P. Gomes, José Miguel Hernández-Lobato.</em><br>
     arXiv preprint arXiv:2502.06685. | <a href="https://arxiv.org/abs/2502.06685">paper</a>
 </div>
 <br>
 
-<div class="pub-card" data-topic="molecular-discovery" data-year="2025" data-selected="false">
+<div class="pub-card" data-topic="large-language-model" data-year="2025" data-selected="false">
     <strong>Large Language Models Are Innate Crystal Structure Generators</strong><br>
     <em>Jingru Gan, Peichen Zhong*, <b>Yuanqi Du*</b>, Yanqiao Zhu, Chenru Duan, Haorui Wang, Carla P. Gomes, Kristin A. Persson, Daniel Schwalbe-Koda, Wei Wang.</em><br>
     arXiv preprint (coming out soon). | <a href="#">paper</a>
@@ -186,7 +186,7 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
 </div>
 <br>
 
-<div class="pub-card" data-topic="molecular-discovery" data-year="2024" data-selected="false">
+<div class="pub-card" data-topic="large-language-model" data-year="2024" data-selected="false">
     <strong>Large Language Models are Catalyzing Chemistry Education</strong><br>
     <em><b>Yuanqi Du*</b>, Chenru Duan*, Andres Bran*, Anna Sotnikova, Yi Qu, Heather Kulik, Antoine Bosselut, Jinjia Xu, Philippe Schwaller.</em><br>
     ChemRxiv 10.26434/chemrxiv-2024-h722v. | <a href="https://chemrxiv.org/engage/chemrxiv/article-details/66772be25101a2ffa8412ee0">paper</a>
