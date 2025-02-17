@@ -13,6 +13,35 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
 {% include base_path %}
 You can find my recent and full list of publications on my [Google Scholar profile](https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en). 
 
+<!-- Category Buttons -->
+<div id="filter-buttons">
+  <button onclick="filterPublications('all')">All</button>
+  <button onclick="filterPublications('science')">Science</button>
+  <button onclick="filterPublications('arts')">Arts</button>
+</div>
+
+<!-- Publications List -->
+<ul id="publications">
+  <li data-category="science">Publication 1 - Science</li>
+  <li data-category="arts">Publication 2 - Arts</li>
+  <li data-category="science">Publication 3 - Science</li>
+  <li data-category="arts">Publication 4 - Arts</li>
+</ul>
+
+<!-- JavaScript to Filter Items -->
+<script>
+  function filterPublications(category) {
+    const items = document.querySelectorAll('#publications li');
+    items.forEach(item => {
+      if (category === 'all' || item.getAttribute('data-category') === category) {
+        item.style.display = 'list-item';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  }
+</script>
+
 Preprints
 ======
 * [No Trick, No Treat: Pursuits and Challenges Towards Simulation-free Training of Neural Samplers](https://arxiv.org/abs/2502.06685).  
