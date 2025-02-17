@@ -286,6 +286,8 @@ function publicationByTopic() {
 function publicationByTopicSpecific(a) {
     publicationByTopicInner();
     publicationByTopicSpecificInner(a);
+    console.log(a);
+    console.log(a.hash);
     var hash = a.hash;
     $(hash).prop('id', hash.substr(1) + '-noscroll');
     window.location.hash = hash;
