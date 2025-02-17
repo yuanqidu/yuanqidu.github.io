@@ -203,6 +203,8 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
 <script type="text/javascript">
 function isInViewport(element) {
     console.log(element);
+    console.log($(element).length);
+    console.log($(element).css("display"));
     console.log($(element).offset());
     var elementTop = $(element).offset().top;
     var elementBottom = elementTop + $(element).outerHeight();
