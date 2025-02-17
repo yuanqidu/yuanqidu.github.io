@@ -202,7 +202,7 @@ function publicationByDate() {
             var year = $(allPublications[pubId]).data("year");
             $("#pub-card-container").append($("<h2 id='year-" + year.toString() + "'>" + year.toString() + "</h2>"));
         }
-        $("#pub-card-container").append(allPublications[pubId]);
+        $("#pub-card-container").append(allPublications[pubId]).append("<br>");
     }
 }
 function publicationByTopicInner() {
@@ -217,11 +217,11 @@ function publicationByTopicInner() {
         var topic = allTopics[topicId].name;
         var topicTitle = allTopics[topicId].title;
         // var topicTitle = topic.split("-").map(function (a) { return a[0].toUpperCase() + a.substr(1).toLowerCase(); }).join(" ");
-        $("#pub-card-container").append($("<h5 id='topic-" + topic + "'>" + topicTitle + "</h5>"));
+        $("#pub-card-container").append($("<h2 id='topic-" + topic + "'>" + topicTitle + "</h2>"));
         for (var pubId = 0; pubId < allPublications.length; pubId++) {
             var pub = $(allPublications[pubId]);
             if (pub.data("topic").indexOf(topic) != -1) {
-                $("#pub-card-container").append(pub);
+                $("#pub-card-container").append(pub).append("<br>");
             }
         }
     }
@@ -238,22 +238,6 @@ function publicationByTopic() {
     publicationByTopicSpecificInner($("#pub-container .subtitle-aux a:first"));
     return true;
 }
-function publicationByTopicSpecific(a) {
-    publicationByTopicInner();
-    publicationByTopicSpecificInner(a);
-    var hash = a.hash;
-    $(hash).prop('id', hash.substr(1) + '-noscroll');
-    window.location.hash = hash;
-    $(hash + '-noscroll').prop('id', hash.substr(1));
-    if (!$(hash).isInViewport()) {
-        $('html, body').animate({
-            scrollTop: $(hash).offset().top
-        }, 1000, function(){
-        });
-    }
-    return false;
-}
-
 $(function() {
     getRealSize = function(bgImg) {
         var img = new Image();
