@@ -17,9 +17,9 @@ Yuanqi Du is a CS PhD student at Cornell University, working on the intersection
 
 Additional topics I am interested in include: (Mechanistic) Interpretability, Science of Science, and Societal Impact of AI.
 
-## Selected Publications
+## Representative Publications
 
-<ul id="selected-publications">
+<ul id="representative-publications">
   <li data-selected="true" data-date="2025" data-topics="sampling ">
     <strong>Doob's Lagrangian: A Sample-Efficient Variational Approach to Transition Path Sampling</strong><br>
     <em><b>Yuanqi Du*</b>, Michael Plainer*, Rob Brekelmans*, Chenru Duan, Frank Noe, Carla P. Gomes, Alán Aspuru-Guzik, Kirill Neklyudov.</em><br>
