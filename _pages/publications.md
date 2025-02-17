@@ -33,7 +33,7 @@ You can find my recent and full list of publications on my [Google Scholar profi
   <li data-selected="true" data-date="2025" data-topics="sampling ">
     <strong>No Trick, No Treat: Pursuits and Challenges Towards Simulation-free Training of Neural Samplers</strong><br>
     <em>Jiajun He*, <b>Yuanqi Du*</b>, Francisco Vargas, Dinghuai Zhang, Shreyas Padhy, RuiKang OuYang, Carla P. Gomes, José Miguel Hernández-Lobato.</em><br>
-    arXiv 2025 Paper | <a href="https://arxiv.org/abs/2502.06685">paper</a> 
+    arXiv 2025 | <a href="https://arxiv.org/abs/2502.06685">paper</a> 
   </li>
 
   <!-- Add more <li> items as needed, each with data-selected, data-date, data-topics, etc. -->
