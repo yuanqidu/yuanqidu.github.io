@@ -7,58 +7,6 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
 ---
 
 <html>
-<head>
-#pub-container{margin:auto;padding: 0 0em;max-width:1080px;text-align:left;padding-top:30px;max-width:1080px}
-#pub-container .subtitle{color:var(--main-color);}
-#pub-container .subtitle a {font-size:18px; color: var(--secondary-link-color); font-weight:400}
-#pub-container .subtitle a.activated {color:#333333; font-weight:600}
-#pub-container .subtitle a.activated:focus,
-#pub-container .subtitle a.activated:hover {text-decoration:none;cursor:initial}
-
-#pub-container .subtitle-aux {font-size:1rem}
-#pub-container .subtitle-aux a.activated {color:#333333}
-#pub-container .subtitle-aux a.activated:focus,
-#pub-container .subtitle-aux a.activated:hover {text-decoration:none;cursor:initial}
-#pub-container .subtitle-aux .note{margin-left:1em;color:#999999;text-decoration:none;font-size:14px}
-
-#pub-card-container{}
-#pub-card-container>h5{margin-bottom: 5px 0}
-#pub-card-container .pub-card{width: 100%;padding-bottom:15px;font-size:1rem}
-#pub-card-container .pub-card .col-l{text-align:center;padding-top:10px}
-#pub-card-container .pub-card .col-r{padding-top:10px}
-@media (min-width: 768px) {
-  #pub-card-container .pub-card .col-l{flex:0 0 30%;max-width:30%}
-  #pub-card-container .pub-card .col-r{flex:0 0 70%;max-width:70%}
-}
-#pub-card-container .pub-card img{width:100%;margin:0 auto}
-#pub-card-container .pub-card-body{width:100%;background:transparent;padding-left:0px}
-#pub-card-container .pub-card .title{font-weight:600;font-size:1rem;margin-bottom:4px;line-height:1.4}
-#pub-card-container .pub-card .authors{font-weight:400;color:#666666;margin-bottom:4px;line-height:1.4}
-#pub-card-container .pub-card .authors a{color:#666666}
-#pub-card-container .pub-card .authors u{color:#333333;font-weight:600;text-decoration:none}
-#pub-card-container .pub-card .conference{color:#333333;font-weight:600}
-#pub-card-container .pub-card .note{display:block;color:#999999;text-decoration:none;font-size:14px}
-#pub-card-container .pub-card .info{margin-bottom:0;}
-#pub-card-container .row{margin:0}
-#pub-card-container .col-l,
-#pub-card-container .col-r{vertical-align:top;display:inline-block;margin:0;padding-left:0px}
-
-/* #footer{padding:0 0 1.5em;margin-top:2rem;min-width:240px;background:#fff;font-size:14px;line-height:12px;text-align:left;background:#fef8f3} */
-#footer{padding:0 0 0.5em;margin-top:2rem;min-width:240px;background:#fff;font-size:14px;line-height:12px;text-align:left;}
-#footer{background:url(static/img/loong/loong-bottom-summer-repeat.png); background-size: 15px 15px; background-repeat: repeat;}
-#footer .container{max-width:540px;padding:0 45px;position:relative}
-#footer .row{align-items:center}
-#footer .comic{padding-right:15px;padding-top:15px;}
-#footer .copyright{flex-grow:1;margin:25px auto 5px;text-align:center;display:block;font-size:1rem;line-height:1.4;color:var(--main-color)}
-#footer .stat{width:60px;height:60px;overflow:hidden;margin:0 auto 5px;padding 0;}
-@media (min-width: 420px){ #footer .stat{display:block;width:60px;height:60px;overflow:hidden;margin:5px auto -25px;padding-right:15px;} }
-#footer a{color:#666666}
-#footer a:hover{color:#333333}
-
-.bold{font-weight:600}
-.hide{display:none}
-</style>
-</head>
 <body>
 
 <div class="content-container">
@@ -219,7 +167,6 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
     </div>
   </div>
 </div>
-
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
