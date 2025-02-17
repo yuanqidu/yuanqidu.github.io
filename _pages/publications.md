@@ -177,16 +177,6 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
         integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 <script type="text/javascript">
 var allPublications = null;
-(function($) {
-    $.fn.isInViewport = function() {
-      var elementTop = this.offset().top;
-      var elementBottom = elementTop + this.outerHeight();
-      var viewportTop = $(window).scrollTop();
-      var viewportBottom = viewportTop + $(window).height();
-      return elementBottom > viewportTop && elementTop < viewportBottom;
-    };
-    console.log("Inline isInViewport defined", $.fn.isInViewport);
-})(jQuery);
 function publicationBySelected() {
     console.log("publicationBySelected called");
     var a = $("#publication-by-selected");
@@ -273,6 +263,14 @@ function publicationByTopicSpecific(a) {
     return false;
 }
 $(function() {
+    $.fn.isInViewport = function() {
+      var elementTop = this.offset().top;
+      var elementBottom = elementTop + this.outerHeight();
+      var viewportTop = $(window).scrollTop();
+      var viewportBottom = viewportTop + $(window).height();
+      return elementBottom > viewportTop && elementTop < viewportBottom;
+    };
+    console.log("Inline isInViewport defined", $.fn.isInViewport);
     getRealSize = function(bgImg) {
         var img = new Image();
         img.src = bgImg.attr("src");
