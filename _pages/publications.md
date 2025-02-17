@@ -6,103 +6,128 @@ author_profile: true
 googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
 ---
 
-<!-- Filter bar at the top -->
-<h2>
-  <strong>Publications</strong>
-  (
-    <span class="filter-link" onclick="filterPublications('selected')">show selected</span> /
-    <span class="filter-link" onclick="filterPublications('date')">show all by date</span> /
-    <span class="filter-link" onclick="filterPublications('all')">show all by topic</span>
-  )
-</h2>
-<h3>
-  <strong>Topics:</strong>
-  <span class="filter-link" onclick="filterByTopic('Generative Models')">Generative Models</span> |
-  <span class="filter-link" onclick="filterByTopic('Stochastic Control & Sampling')">Stochastic Control &amp; Sampling</span> |
-  <span class="filter-link" onclick="filterByTopic('Equivariant Neural Networks')">Equivariant Neural Networks</span> |
-  <span class="filter-link" onclick="filterByTopic('Large Language Models')">Large Language Models</span>
+<h3 class="subtitle">Publications
+(
+    <a id="publication-by-selected" href="javascript:;", onClick="publicationBySelected();">show selected</a> /
+    <a id="publication-by-date" href="javascript:;", onClick="publicationByDate();">show all by date</a> /
+    <a id="publication-by-topic" href="javascript:;", onClick="publicationByTopic();">show all by topic</a>
+)
 </h3>
+<p class="subtitle-aux"><span class="bold">Topics:</span>
+    <a href="#generative-model" onClick="return publicationByTopicSpecific(this)" data-topic="generative-model">Generative Models</a> /
+    <a href="#equivariant-neural-network" onClick="return publicationByTopicSpecific(this)" data-topic="equivariant-neural-network">Equivariant Neural Networks</a> /
+    <a href="#control-sampling" onClick="return publicationByTopicSpecific(this)" data-topic="control-sampling">Stochatic Control & Sampling</a>
+    <br />
+</p>
+<div id="pub-card-container" class="activated hide">
+                <div class="pub-card" data-topic="control-sampling" data-year="2025" data-selected="true">
+                    <div class="row">
+                        <div class="col-r col-xs-12 col-lg-9">
+                            <div class="pub-card-body">
+                                <h5 class="title">Doob's Lagrangian: A Sample-Efficient Variational Approach to Transition Path Sampling</h5>
+                                <h6 class="authors">
+                                    <b>Yuanqi Du*</b>, Michael Plainer*, Rob Brekelmans*, Chenru Duan, Frank Noe, Carla P. Gomes, Alán Aspuru-Guzik, Kirill Neklyudov.
+                                </h6>
+                                NeurIPS 2024 (<b>Spotlight</b>) | <a href="https://openreview.net/forum?id=ShJWT0n7kX">paper</a> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-<!-- The list of publications -->
-<div id="publications">
-
-  <!-- Sample preprint, not selected -->
-  <div class="paper-entry"
-       data-selected="false"
-       data-date="2025"
-       data-topics="Stochastic Control & Sampling">
-    <strong>No Trick, No Treat: Pursuits and Challenges Towards Simulation-free Training of Neural Samplers</strong> (2025)<br>
-    Jiajun He*, <strong>Yuanqi Du*</strong>, Francisco Vargas, ...<br>
-    <em>arXiv preprint arXiv:2502.06685</em><br>
-    <a class="paper-link" href="https://arxiv.org/abs/2502.06685" target="_blank">Paper</a>
-  </div>
-
-  <!-- Sample preprint, not selected -->
-  <div class="paper-entry"
-       data-selected="false"
-       data-date="2025"
-       data-topics="Large Language Models">
-    <strong>Large Language Models Are Innate Crystal Structure Generators</strong> (2025)<br>
-    Jingru Gan, Peichen Zhong*, <strong>Yuanqi Du*</strong>, ...<br>
-    <em>arXiv preprint (coming soon)</em><br>
-    <a class="paper-link" href="#" target="_blank">Paper</a>
-  </div>
-
-  <!-- Sample selected publication -->
-  <div class="paper-entry"
-       data-selected="true"
-       data-date="2025"
-       data-topics="Large Language Models">
-    <strong>Efficient Evolutionary Search over Chemical Space with Large Language Models</strong> (2025)<br>
-    Haorui Wang*, Marta Skreta*, ..., <strong>Yuanqi Du†</strong>, ...<br>
-    <em>ICLR 2025</em><br>
-    <a class="paper-link" href="https://molleo.github.io/" target="_blank">Paper</a>
-  </div>
-
-  <!-- Add the rest of your publications here, with appropriate data-selected, data-date, data-topics -->
-
-</div>
-
-<script>
-  // Filter by "selected," "date," or "all"
-  function filterPublications(mode) {
-    console.log(`Filtering by mode: ${mode}`); // Debugging
-    const pubs = document.querySelectorAll('.paper-entry');
-
-    pubs.forEach(pub => {
-      if (mode === 'selected') {
-        // Show only data-selected="true"
-        pub.style.display = (pub.dataset.selected === 'true') ? 'block' : 'none';
-      } else if (mode === 'date') {
-        // Show all
-        pub.style.display = 'block';
-        // If you want, you can add sorting logic by date here
-      } else if (mode === 'all') {
-        // Show all (no filtering)
-        pub.style.display = 'block';
-      }
-    });
-  }
-
-  // Filter by a specific topic
-  function filterByTopic(topic) {
-    console.log(`Filtering by topic: ${topic}`); // Debugging
-    const pubs = document.querySelectorAll('.paper-entry');
-    pubs.forEach(pub => {
-      const topicsString = pub.dataset.topics || '';
-      // Show if the topics string includes the clicked topic
-      pub.style.display = topicsString.includes(topic) ? 'block' : 'none';
-    });
-
-    // Scroll to the first matched paper
-    const firstMatch = document.querySelector(`.paper-entry[data-topics*="${topic}"]`);
-    if (firstMatch) {
-      firstMatch.scrollIntoView({ behavior: 'smooth' });
+<script type="text/javascript">
+function publicationBySelected() {
+    var a = $("#publication-by-selected")
+    if (a.hasClass("activated")) {
+        return ;
     }
-  }
 
-  // By default, show "selected" on page load
-  window.onload = function() {
-    filterPublications('selected');
-  };
+    $("#pub-container .subtitle a").removeClass("activated");
+    $("#pub-container .subtitle-aux a").removeClass("activated");
+    a.addClass("activated");
+
+    $("#pub-card-container").html("");
+    for (var pubId = 0; pubId < allPublications.length; pubId++) {
+        var pub = $(allPublications[pubId]);
+        if (pub.data("selected") == true) {
+            $("#pub-card-container").append(pub);
+        }
+    }
+}
+
+function publicationByDate() {
+    var a = $("#publication-by-date")
+    if (a.hasClass("activated")) {
+        return ;
+    }
+
+    $("#pub-container .subtitle a").removeClass("activated");
+    $("#pub-container .subtitle-aux a").removeClass("activated");
+    a.addClass("activated");
+
+    $("#pub-card-container").html("");
+    for (var pubId = 0; pubId < allPublications.length; pubId++) {
+        if (pubId == 0 || $(allPublications[pubId-1]).data("year") != $(allPublications[pubId]).data("year")) {
+            var year = $(allPublications[pubId]).data("year");
+            $("#pub-card-container").append($("<h5 id='year-" + year.toString() + "'>" + year.toString() + "</h5>"));
+        }
+        $("#pub-card-container").append(allPublications[pubId]);
+    }
+}
+
+function publicationByTopicInner() {
+    var a = $("#publication-by-topic")
+    if (a.hasClass("activated")) {
+        return ;
+    }
+    $("#pub-container .subtitle a").removeClass("activated");
+    a.addClass("activated");
+
+    $("#pub-card-container").html("");
+    for (var topicId in allTopics) {
+        var topic = allTopics[topicId].name;
+        var topicTitle = allTopics[topicId].title;
+        // var topicTitle = topic.split("-").map(function (a) { return a[0].toUpperCase() + a.substr(1).toLowerCase(); }).join(" ");
+        $("#pub-card-container").append($("<h5 id='topic-" + topic + "'>" + topicTitle + "</h5>"));
+        for (var pubId = 0; pubId < allPublications.length; pubId++) {
+            var pub = $(allPublications[pubId]);
+            if (pub.data("topic").indexOf(topic) != -1) {
+                $("#pub-card-container").append(pub);
+            }
+        }
+    }
+}
+
+function publicationByTopicSpecificInner(a) {
+    if ($(a).hasClass("activated")) {
+        return false;
+    }
+
+    $("#pub-container .subtitle-aux a").removeClass("activated");
+    $(a).addClass("activated");
+}
+
+function publicationByTopic() {
+    publicationByTopicInner();
+    publicationByTopicSpecificInner($("#pub-container .subtitle-aux a:first"));
+    return true;
+}
+
+function publicationByTopicSpecific(a) {
+    publicationByTopicInner();
+    publicationByTopicSpecificInner(a);
+
+    var hash = a.hash;
+    $(hash).prop('id', hash.substr(1) + '-noscroll');
+    window.location.hash = hash;
+    $(hash + '-noscroll').prop('id', hash.substr(1));
+
+    if (!$(hash).isInViewport()) {
+        $('html, body').animate({
+            scrollTop: $(hash).offset().top
+        }, 1000, function(){
+        });
+    }
+
+    return false;
+}
 </script>
