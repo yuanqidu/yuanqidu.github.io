@@ -39,23 +39,21 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
 <body>
 
 <!-- Filter bar at the top -->
-<p>
+<h2>
   <strong>Publications</strong>
   (
     <span class="filter-link" onclick="filterPublications('selected')">show selected</span> /
     <span class="filter-link" onclick="filterPublications('date')">show all by date</span> /
     <span class="filter-link" onclick="filterPublications('all')">show all by topic</span>
   )
-</p>
-
-<!-- Always-visible topic line -->
-<p>
+</h2>
+<h3>
   <strong>Topics:</strong>
   <span class="filter-link" onclick="filterByTopic('Generative Models')">Generative Models</span> |
   <span class="filter-link" onclick="filterByTopic('Stochastic Control & Sampling')">Stochastic Control &amp; Sampling</span> |
   <span class="filter-link" onclick="filterByTopic('Equivariant Neural Networks')">Equivariant Neural Networks</span> |
   <span class="filter-link" onclick="filterByTopic('Large Language Models')">Large Language Models</span>
-</p>
+</h3>
 
 <!-- The list of publications -->
 <div id="publications">
