@@ -168,16 +168,11 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
   </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
-        integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
-        integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 <script type="text/javascript">
 var allPublications = null;
 function publicationBySelected() {
     console.log("publicationBySelected called");
-    var a = $("#publication-by-selected")
+    var a = $("#publication-by-selected");
     if (a.hasClass("activated")) {
         return ;
     }
@@ -284,6 +279,7 @@ $(function() {
     allTopicsLink = $("#pub-container .subtitle-aux a");
     allTopics = [];
     for (var topicId = 0; topicId < allTopicsLink.length; topicId++) {
+        console.log("Publication data-selected:", pub.data("selected"));
         allTopics.push({name: $(allTopicsLink[topicId]).data("topic"), title: $(allTopicsLink[topicId]).html()});
     }
     $("#publication-by-selected").click();
