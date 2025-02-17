@@ -27,7 +27,7 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
         <br />
     </p>
     <div id="pub-card-container" class="activated hide">
-      <div class="pub-card" data-topic="control-sampling" data-year="2025" data-selected="true">
+      <div class="pub-card" data-topic="control-sampling" data-year="2024" data-selected="true">
         <strong>Doob's Lagrangian: A Sample-Efficient Variational Approach to Transition Path Sampling</strong><br>
         <em><b>Yuanqi Du*</b>, Michael Plainer*, Rob Brekelmans*, ..., Carla P. Gomes, Alán Aspuru-Guzik, Kirill Neklyudov</em><br>
         NeurIPS 2024 (<b>Spotlight</b>) | <a href="https://openreview.net/forum?id=ShJWT0n7kX">paper</a>
@@ -205,6 +205,55 @@ function publicationByDate() {
         $("#pub-card-container").append(allPublications[pubId]);
     }
 }
+function publicationByTopicInner() {
+    var a = $("#publication-by-topic");
+    if (a.hasClass("activated")) {
+        return ;
+    }
+    $("#pub-container .subtitle a").removeClass("activated");
+    a.addClass("activated");
+    $("#pub-card-container").html("");
+    for (var topicId in allTopics) {
+        var topic = allTopics[topicId].name;
+        var topicTitle = allTopics[topicId].title;
+        // var topicTitle = topic.split("-").map(function (a) { return a[0].toUpperCase() + a.substr(1).toLowerCase(); }).join(" ");
+        $("#pub-card-container").append($("<h5 id='topic-" + topic + "'>" + topicTitle + "</h5>"));
+        for (var pubId = 0; pubId < allPublications.length; pubId++) {
+            var pub = $(allPublications[pubId]);
+            if (pub.data("topic").indexOf(topic) != -1) {
+                $("#pub-card-container").append(pub);
+            }
+        }
+    }
+}
+function publicationByTopicSpecificInner(a) {
+    if ($(a).hasClass("activated")) {
+        return false;
+    }
+    $("#pub-container .subtitle-aux a").removeClass("activated");
+    $(a).addClass("activated");
+}
+function publicationByTopic() {
+    publicationByTopicInner();
+    publicationByTopicSpecificInner($("#pub-container .subtitle-aux a:first"));
+    return true;
+}
+function publicationByTopicSpecific(a) {
+    publicationByTopicInner();
+    publicationByTopicSpecificInner(a);
+    var hash = a.hash;
+    $(hash).prop('id', hash.substr(1) + '-noscroll');
+    window.location.hash = hash;
+    $(hash + '-noscroll').prop('id', hash.substr(1));
+    if (!$(hash).isInViewport()) {
+        $('html, body').animate({
+            scrollTop: $(hash).offset().top
+        }, 1000, function(){
+        });
+    }
+    return false;
+}
+
 $(function() {
     getRealSize = function(bgImg) {
         var img = new Image();
