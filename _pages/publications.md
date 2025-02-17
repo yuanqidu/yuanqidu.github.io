@@ -192,15 +192,6 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
 </script>
 <script type="text/javascript">
 var allPublications = null;
-(function($) {
-  $.fn.isInViewport = function() {
-    const elementTop = this.offset().top;
-    const elementBottom = elementTop + this.outerHeight();
-    const viewportTop = $(window).scrollTop();
-    const viewportBottom = viewportTop + $(window).height();
-    return elementBottom > viewportTop && elementTop < viewportBottom;
-  };
-})(jQuery);
 function publicationBySelected() {
     console.log("publicationBySelected called");
     var a = $("#publication-by-selected");
