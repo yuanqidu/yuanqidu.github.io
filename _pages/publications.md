@@ -352,7 +352,7 @@ $(function() {
         })
     };
     allPublications = $("#pub-card-container .pub-card");
-    allTopicsLink = $("#pub-container .subtitle-aux a");
+    allTopicsLink = $("#pub-container .subtitle-aux .a");
     allTopics = [];
     for (var topicId = 0; topicId < allTopicsLink.length; topicId++) {
         console.log("Publication data-selected:", pub.data("selected"));
