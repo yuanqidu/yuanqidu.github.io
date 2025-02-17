@@ -226,16 +226,8 @@ function publicationByTopicInner() {
         }
     }
 }
-function publicationByTopicSpecificInner(a) {
-    if ($(a).hasClass("activated")) {
-        return false;
-    }
-    $("#pub-container .subtitle-aux a").removeClass("activated");
-    $(a).addClass("activated");
-}
 function publicationByTopic() {
     publicationByTopicInner();
-    publicationByTopicSpecificInner($("#pub-container .subtitle-aux a:first"));
     return true;
 }
 $(function() {
