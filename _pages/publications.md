@@ -36,13 +36,24 @@ You can find my recent and full list of publications on my [Google Scholar profi
     arXiv 2025 | <a href="https://arxiv.org/abs/2502.06685">paper</a> 
   </li>
 
-  <li data-selected="true" data-date="2025" data-topics="sampling">
-    <strong>No Trick, No Treat: Pursuits and Challenges Towards Simulation-free Training of Neural Samplers</strong><br>
-    <em>Jiajun He*, <b>Yuanqi Du*</b>, Francisco Vargas, Dinghuai Zhang, Shreyas Padhy, RuiKang OuYang, Carla P. Gomes, José Miguel Hernández-Lobato.</em><br>
-    arXiv 2025 | <a href="https://arxiv.org/abs/2502.06685">paper</a> 
+  <li data-selected="true" data-date="2025" data-topics="llm">
+    <strong>Efficient Evolutionary Search over Chemical Space with Large Language Models</strong><br>
+    <em>Haorui Wang*, Marta Skreta*, ..., <b>Yuanqi Du†</b>, Alán Aspuru-Guzik†, Kirill Neklyudov†, Chao Zhang†.</em><br>
+    ICLR 2025 | <a href="https://arxiv.org/abs/2406.16976">paper</a> 
   </li>
 
-  <!-- Add more <li> items as needed, each with data-selected, data-date, data-topics, etc. -->
+  <li data-selected="true" data-date="2025" data-topics="llm">
+    <strong>Efficient Evolutionary Search over Chemical Space with Large Language Models</strong><br>
+    <em>Haorui Wang*, Marta Skreta*, ..., <b>Yuanqi Du†</b>, Alán Aspuru-Guzik†, Kirill Neklyudov†, Chao Zhang†.</em><br>
+    ICLR 2025 | <a href="https://arxiv.org/abs/2406.16976">paper</a> 
+  </li>
+
+  <li data-selected="true" data-date="2025" data-topics="llm">
+    <strong>Efficient Evolutionary Search over Chemical Space with Large Language Models</strong><br>
+    <em>Haorui Wang*, Marta Skreta*, ..., <b>Yuanqi Du†</b>, Alán Aspuru-Guzik†, Kirill Neklyudov†, Chao Zhang†.</em><br>
+    ICLR 2025 | <a href="https://arxiv.org/abs/2406.16976">paper</a> 
+  </li>
+
 </ul>
 
 <!-- Filtering Script -->
