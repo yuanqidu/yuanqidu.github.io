@@ -177,6 +177,21 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
         integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 <script type="text/javascript">
 var allPublications = null;
+<script>
+  (function($) {
+    $.fn.isInViewport = function() {
+      var elementTop = this.offset().top;
+      var elementBottom = elementTop + this.outerHeight();
+      var viewportTop = $(window).scrollTop();
+      var viewportBottom = viewportTop + $(window).height();
+      return elementBottom > viewportTop && elementTop < viewportBottom;
+    };
+    console.log("Inline isInViewport defined", $.fn.isInViewport);
+  })(jQuery);
+</script>
+<script>
+  console.log("Testing isInViewport on document body:", $("body").isInViewport());
+</script>
 (function($) {
   $.fn.isInViewport = function() {
     const elementTop = this.offset().top;
