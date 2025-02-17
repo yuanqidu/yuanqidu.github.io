@@ -7,7 +7,7 @@ redirect_from:
   - /resume
 ---
 
-Professional Service
+Professional Services
 ======
 * Co-founder and Lead Organizer for [*Learning on Graphs*](https://logconference.github.io/) conference 2022, 2023, Logistics Chair (2024), 1st, 2nd [Learning Meets Geometry, Graph and Network](https://logmeetupnyc.github.io/) meetup at NYC, 2024, and 1st [LoG Seattle](https://xiaoxinhe.github.io/log24-meetup-seattle/) meetup, 2024.
 * Founder and Lead Organizer for [*AI for Science: Mind the Gaps*](http://www.ai4science.net/neurips21/) workshop with *NeurIPS 2021*, [*AI for Science: Theories and Foundations*](http://www.ai4science.net/icml22/) workshop with *ICML 2022*, [*AI for Science: Progress and Promises*](https://ai4sciencecommunity.github.io/neurips22/) with *NeurIPS 2022*, [*AI for Science: From Theory to Practice*](https://ai4sciencecommunity.github.io/neurips23/) with *NeurIPS 2023*, [*AI for Science: Scaling in AI for Scientific Discovery*](https://ai4sciencecommunity.github.io/icml24.html) with *ICML 2024*.
@@ -15,13 +15,13 @@ Professional Service
 * Co-founder and Lead Organizer for [Cornell AI for Science Seminar](https://science.ai.cornell.edu/events/ai-for-science-seminar-series-spring-2024/), Spring 2024.
 * Other events organized: [*Computational Sustainability: Promises and Pitfalls from Theory to Deployment NeurIPS 2023*](https://www.compsust.net/compsust-2023/), [*AAAI 2021*](https://aaai.org/Conferences/AAAI-21/) (Virtual Team), [*KDD 2021*](https://kdd.org/kdd2021/) (Web Team), [*DLG KDD 2021*](https://deep-learning-graphs.bitbucket.io/dlg-kdd21/index.html) and [*DLG AAAI 2022*](https://deep-learning-graphs.bitbucket.io/dlg-aaai22/index.html), [*DeepSpatial KDD 2020*](http://mason.gmu.edu/~lzhao9/venues/DeepSpatial2020/) and [*DeepSpatial KDD 2021*](http://cs.emory.edu/~lzhao41/venues/DeepSpatial2021/).
 
-Selected Review Service
+Selected Review Services
 ======
 * Conference Submission: NeurIPS, ICML, ICLR, AISTATS, AAAI, KDD, CVPR, ICCV, ECCV
 * Journal Submission: Science Advances, Nature Comms, TPAMI, JCTC, TMLR, npj Digital Medicine
 * Proposal: NeurIPS, ICML workshop
 
-Open-source Software (Benchmarks and Libraries)
+Open-source Softwares (Benchmarks and Libraries)
 ======
 * [M²Hub](https://github.com/yuanqidu/M2Hub) Machine Learning for Materials Discovery
 * [GraphGT](https://graphgt.github.io/) Machine Learning for Graph Generation and Transformation
@@ -29,7 +29,7 @@ Open-source Software (Benchmarks and Libraries)
 * [TDC](https://tdcommons.ai/) Artificial Intelligence for Therapeutic Science
 * [Gauche](https://github.com/leojklarner/gauche) Gaussian Processes in Chemistry
 
-Volunteer & Leadership
+Volunteers & Leaderships
 ======
 * ICLR, ICML, KDD 2021 Student Volunteer
 * NSF REU Summer 2021 Student Mentor (GMU)
