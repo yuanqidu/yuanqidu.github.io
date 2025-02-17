@@ -201,13 +201,13 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
 
 <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
 <script type="text/javascript">
-$.fn.isInViewport = function() {
-    var elementTop = $(this).offset().top;
-    var elementBottom = elementTop + $(this).outerHeight();
+function isInViewport(element) {
+    var elementTop = $(element).offset().top;
+    var elementBottom = elementTop + $(element).outerHeight();
     var viewportTop = $(window).scrollTop();
     var viewportBottom = viewportTop + $(window).height();
     return elementBottom > viewportTop && elementTop < viewportBottom;
-};
+}
 var allPublications = null;
 function publicationBySelected() {
     console.log("publicationBySelected called");
@@ -286,7 +286,7 @@ function publicationByTopicSpecific(a) {
     $(hash).prop('id', hash.substr(1) + '-noscroll');
     window.location.hash = hash;
     $(hash + '-noscroll').prop('id', hash.substr(1));
-    if (!$(hash).isInViewport()) {
+    if (!isInViewport(hash)) {
         $('html, body').animate({
             scrollTop: $(hash).offset().top
         }, 1000, function(){
