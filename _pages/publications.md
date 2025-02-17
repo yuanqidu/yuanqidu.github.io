@@ -178,7 +178,6 @@ $.fn.isInViewport = function() {
     var viewportBottom = viewportTop + $(window).height();
     return elementBottom > viewportTop && elementTop < viewportBottom;
 };
-
 function publicationBySelected() {
     console.log("publicationBySelected called");
     var a = $("#publication-by-selected");
