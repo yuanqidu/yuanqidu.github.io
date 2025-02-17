@@ -359,6 +359,14 @@ $(function() {
             })
         })
     };
+    $.fn.isInViewport = function() {
+      console.log("top", this.offset().top);
+      var elementTop = this.offset().top;
+      var elementBottom = elementTop + this.outerHeight();
+      var viewportTop = $(window).scrollTop();
+      var viewportBottom = viewportTop + $(window).height();
+      return elementBottom > viewportTop && elementTop < viewportBottom;
+    };
     allPublications = $("#pub-card-container .pub-card");
     allTopicsLink = $("#pub-container .subtitle-aux a");
     console.log(allTopicsLink);
