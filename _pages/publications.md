@@ -183,6 +183,7 @@ $.fn.isInViewport = function() {
 };
 var allPublications = null;
 function publicationBySelected() {
+    console.log("publicationBySelected called");
     var a = $("#publication-by-selected")
     if (a.hasClass("activated")) {
         return ;
