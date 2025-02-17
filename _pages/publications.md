@@ -237,6 +237,33 @@ function publicationByTopic() {
     publicationByTopicSpecificInner($("#pub-container .subtitle-aux a:first"));
     return true;
 }
+function publicationByTopicSpecificInner(a) {
+    if ($(a).hasClass("activated")) {
+        return false;
+    }
+    $("#pub-container .subtitle-aux a").removeClass("activated");
+    $(a).addClass("activated");
+}
+function publicationByTopic() {
+    publicationByTopicInner();
+    publicationByTopicSpecificInner($("#pub-container .subtitle-aux a:first"));
+    return true;
+}
+function publicationByTopicSpecific(a) {
+    publicationByTopicInner();
+    publicationByTopicSpecificInner(a);
+    var hash = a.hash;
+    $(hash).prop('id', hash.substr(1) + '-noscroll');
+    window.location.hash = hash;
+    $(hash + '-noscroll').prop('id', hash.substr(1));
+    if (!$(hash).isInViewport()) {
+        $('html, body').animate({
+            scrollTop: $(hash).offset().top
+        }, 1000, function(){
+        });
+    }
+    return false;
+}
 $(function() {
     getRealSize = function(bgImg) {
         var img = new Image();
