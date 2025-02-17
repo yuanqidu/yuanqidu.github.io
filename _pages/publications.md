@@ -20,19 +20,21 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
     <br />
 </p>
 <div id="pub-card-container" class="activated hide">
-                <div class="pub-card" data-topic="control-sampling" data-year="2025" data-selected="true">
-                    <div class="row">
-                        <div class="col-r col-xs-12 col-lg-9">
-                            <div class="pub-card-body">
-                                <h5 class="title">Doob's Lagrangian: A Sample-Efficient Variational Approach to Transition Path Sampling</h5>
-                                <h6 class="authors">
-                                    <b>Yuanqi Du*</b>, Michael Plainer*, Rob Brekelmans*, Chenru Duan, Frank Noe, Carla P. Gomes, Alán Aspuru-Guzik, Kirill Neklyudov.
-                                </h6>
-                                NeurIPS 2024 (<b>Spotlight</b>) | <a href="https://openreview.net/forum?id=ShJWT0n7kX">paper</a> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      <div class="pub-card" data-topic="control-sampling" data-year="2025" data-selected="true">
+          <div class="row">
+              <div class="col-r col-xs-12 col-lg-9">
+                  <div class="pub-card-body">
+                      <h5 class="title">Doob's Lagrangian: A Sample-Efficient Variational Approach to Transition Path Sampling</h5>
+                      <h6 class="authors">
+                          <b>Yuanqi Du*</b>, Michael Plainer*, Rob Brekelmans*, Chenru Duan, Frank Noe, Carla P. Gomes, Alán Aspuru-Guzik, Kirill Neklyudov.
+                      </h6>
+                      NeurIPS 2024 (<b>Spotlight</b>) | <a href="https://openreview.net/forum?id=ShJWT0n7kX">paper</a> 
+                  </div>
+              </div>
+          </div>
+      </div>
+
+</div>
 
 <script type="text/javascript">
 function publicationBySelected() {
