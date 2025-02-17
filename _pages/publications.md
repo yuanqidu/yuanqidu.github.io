@@ -27,12 +27,6 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
         <br />
     </p>
     <div id="pub-card-container" class="activated hide">
-      <div class="pub-card" data-topic="control-sampling" data-year="2024" data-selected="true">
-        <strong>Doob's Lagrangian: A Sample-Efficient Variational Approach to Transition Path Sampling</strong><br>
-        <em><b>Yuanqi Du*</b>, Michael Plainer*, Rob Brekelmans*, ..., Carla P. Gomes, Alán Aspuru-Guzik, Kirill Neklyudov</em><br>
-        NeurIPS 2024 (<b>Spotlight</b>) | <a href="https://openreview.net/forum?id=ShJWT0n7kX">paper</a>
-      </div>
-      <br>
       <div class="pub-card" data-topic="large-language-model" data-year="2025" data-selected="true"> 
         <strong>Efficient Evolutionary Search over Chemical Space with Large Language Models</strong><br> 
         <em>Haorui Wang*, Marta Skreta*, …, <b>Yuanqi Du†</b>, Alán Aspuru-Guzik†, Kirill Neklyudov†, Chao Zhang†</em><br>
@@ -51,7 +45,13 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
         Nature Machine Intelligence 2025 | <a href="https://t.co/RwXUSEISmq">paper</a> 
       </div> 
       <br> 
-      <div class="pub-card" data-topic="molecular-discovery" data-year="2024" data-selected="true"> 
+      <div class="pub-card" data-topic="control-sampling" data-year="2024" data-selected="true">
+        <strong>Doob's Lagrangian: A Sample-Efficient Variational Approach to Transition Path Sampling</strong><br>
+        <em><b>Yuanqi Du*</b>, Michael Plainer*, Rob Brekelmans*, ..., Carla P. Gomes, Alán Aspuru-Guzik, Kirill Neklyudov</em><br>
+        NeurIPS 2024 (<b>Spotlight</b>) | <a href="https://openreview.net/forum?id=ShJWT0n7kX">paper</a>
+      </div>
+      <br>
+      <div class="pub-card" data-topic="molecular-discovery" data-year="2024" data-selected="false"> 
         <strong>Navigating Chemical Space with Latent Flows</strong><br> 
         <em>Guanghao Wei*, Yining Huang*, Chenru Duan, Yue Song†, <b>Yuanqi Du†</b></em><br> 
         NeurIPS 2024 | <a href="https://arxiv.org/abs/2405.03987">paper</a> 
@@ -225,8 +225,16 @@ function publicationByTopicInner() {
         }
     }
 }
+function publicationByTopicSpecificInner(a) {
+    if ($(a).hasClass("activated")) {
+        return false;
+    }
+    $("#pub-container .subtitle-aux a").removeClass("activated");
+    $(a).addClass("activated");
+}
 function publicationByTopic() {
     publicationByTopicInner();
+    publicationByTopicSpecificInner($("#pub-container .subtitle-aux a:first"));
     return true;
 }
 $(function() {
