@@ -9,19 +9,20 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
 <html>
 <head>
   <meta charset="utf-8">
+  <title>Publications Demo</title>
   <style>
+    /* Simple styling for clickable text/links */
     .filter-link {
       cursor: pointer;
       color: #007ACC;
       text-decoration: underline;
-      margin: 0 10px;
+      margin: 0 6px;
     }
-    #topicFilters {
-      margin-bottom: 20px;
-    }
+    /* Each paper is a .paper-entry */
     .paper-entry {
       margin-bottom: 1.5em;
     }
+    /* A small "Paper" button to open the link in a new tab */
     .paper-button {
       cursor: pointer;
       background-color: #f0f0f0;
@@ -37,100 +38,101 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
 </head>
 <body>
 
-<!-- Top line: Publications ( show selected / show all by date / show all by topic ) -->
-<h1>
+<!-- Filter bar at the top -->
+<p>
   <strong>Publications</strong>
-  (<span class="filter-link" onclick="filterPublications('selected')">show selected</span>/<span class="filter-link" onclick="filterPublications('date')">show all by date</span>/<span class="filter-link" onclick="filterPublications('topic')">show all by topic</span>)
-</h1>
+  (
+    <span class="filter-link" onclick="filterPublications('selected')">show selected</span> /
+    <span class="filter-link" onclick="filterPublications('date')">show all by date</span> /
+    <span class="filter-link" onclick="filterPublications('all')">show all by topic</span>
+  )
+</p>
 
-<!-- Topics line (hidden by default until "show all by topic") -->
-<h2>
+<!-- Always-visible topic line -->
+<p>
   <strong>Topics:</strong>
   <span class="filter-link" onclick="filterByTopic('Generative Models')">Generative Models</span> |
   <span class="filter-link" onclick="filterByTopic('Stochastic Control & Sampling')">Stochastic Control &amp; Sampling</span> |
   <span class="filter-link" onclick="filterByTopic('Equivariant Neural Networks')">Equivariant Neural Networks</span> |
   <span class="filter-link" onclick="filterByTopic('Large Language Models')">Large Language Models</span>
-</h2>
+</p>
 
-<!-- The publication list -->
+<!-- The list of publications -->
 <div id="publications">
 
-  <!-- Example: Preprint / Not Selected -->
-  <div class="paper-entry" data-selected="false" data-date="2025" data-topics="Stochastic Control & Sampling">
+  <!-- Sample preprint, not selected -->
+  <div class="paper-entry"
+       data-selected="false"
+       data-date="2025"
+       data-topics="Stochastic Control & Sampling">
     <strong>No Trick, No Treat: Pursuits and Challenges Towards Simulation-free Training of Neural Samplers</strong> (2025)<br>
-    Jiajun He*, <strong>Yuanqi Du*</strong>, Francisco Vargas, Dinghuai Zhang, Shreyas Padhy, RuiKang OuYang, Carla P. Gomes, José Miguel Hernández-Lobato<br>
-    <em>arXiv preprint arXiv: 2502.06685</em><br>
+    Jiajun He*, <strong>Yuanqi Du*</strong>, Francisco Vargas, ...<br>
+    <em>arXiv preprint arXiv:2502.06685</em><br>
     <button class="paper-button" onclick="window.open('https://arxiv.org/abs/2502.06685','_blank')">Paper</button>
   </div>
 
-  <div class="paper-entry" data-selected="false" data-date="2025" data-topics="Large Language Models">
+  <!-- Sample preprint, not selected -->
+  <div class="paper-entry"
+       data-selected="false"
+       data-date="2025"
+       data-topics="Large Language Models">
     <strong>Large Language Models Are Innate Crystal Structure Generators</strong> (2025)<br>
-    Jingru Gan, Peichen Zhong*, <strong>Yuanqi Du*</strong>, Yanqiao Zhu, Chenru Duan, Haorui Wang, Carla P. Gomes, Kristin A. Persson, Daniel Schwalbe-Koda, Wei Wang<br>
+    Jingru Gan, Peichen Zhong*, <strong>Yuanqi Du*</strong>, ...<br>
     <em>arXiv preprint (coming soon)</em><br>
-    <button class="paper-button">Paper</button> <!-- link not provided yet -->
+    <button class="paper-button">Paper</button>
   </div>
 
-  <div class="paper-entry" data-selected="false" data-date="2025" data-topics="Equivariant Neural Networks">
-    <strong>AlphaNet: Scaling Up Local Frame-based Atomistic Foundation Model</strong> (2025)<br>
-    Bangchen Yin, Jiaao Wang†, ..., <strong>Yuanqi Du†</strong>, Carla P. Gomes, Chenru Duan†, Hai Xiao†, Graeme Henkelman†<br>
-    <em>arXiv preprint arXiv: 2501.07155</em><br>
-    <button class="paper-button" onclick="window.open('https://arxiv.org/abs/2501.07155','_blank')">Paper</button>
-  </div>
-
-  <!-- Selected publication -->
-  <div class="paper-entry" data-selected="true" data-date="2025" data-topics="Large Language Models">
+  <!-- Sample selected publication -->
+  <div class="paper-entry"
+       data-selected="true"
+       data-date="2025"
+       data-topics="Large Language Models">
     <strong>Efficient Evolutionary Search over Chemical Space with Large Language Models</strong> (2025)<br>
-    Haorui Wang*, Marta Skreta*, ..., <strong>Yuanqi Du†</strong>, Alán Aspuru-Guzik†, Kirill Neklyudov†, Chao Zhang†<br>
-    <em>ICLR 2025 (AI for Science workshop ICML 2024)</em><br>
+    Haorui Wang*, Marta Skreta*, ..., <strong>Yuanqi Du†</strong>, ...<br>
+    <em>ICLR 2025</em><br>
     <button class="paper-button" onclick="window.open('https://molleo.github.io/','_blank')">Paper</button>
   </div>
 
-  <!-- Add the rest of your publications similarly... -->
-  <!-- Just remove the square brackets around the title, remove the link text, and use a button. -->
-  <!-- Also keep data-selected, data-date, data-topics for filtering. -->
+  <!-- Add the rest of your publications here, with appropriate data-selected, data-date, data-topics -->
 
 </div>
 
 <script>
-  function filterPublications(filter) {
-    const pubs = document.querySelectorAll('#publications .paper-entry');
-    const topicFilters = document.getElementById('topicFilters');
+  // Filter by "selected," "date," or "all"
+  function filterPublications(mode) {
+    const pubs = document.querySelectorAll('.paper-entry');
 
-    if (filter === 'topic') {
-      // Reveal topic line, show all
-      topicFilters.style.display = 'block';
-      pubs.forEach(pub => pub.style.display = 'block');
-      return;
-    } else if (filter === 'selected') {
-      topicFilters.style.display = 'none';
+    if (mode === 'selected') {
+      // Show only data-selected="true"
       pubs.forEach(pub => {
         pub.style.display = (pub.dataset.selected === 'true') ? 'block' : 'none';
       });
-      return;
-    } else if (filter === 'date') {
-      topicFilters.style.display = 'none';
-      // Show all; optionally sort by date if you want
+    } else if (mode === 'date') {
+      // Show all
       pubs.forEach(pub => pub.style.display = 'block');
-      return;
+      // If you want, you can add sorting logic by date here
     } else {
-      // Filter by topic
-      topicFilters.style.display = 'block';
-      pubs.forEach(pub => {
-        if (pub.dataset.topics && pub.dataset.topics.includes(filter)) {
-          pub.style.display = 'block';
-        } else {
-          pub.style.display = 'none';
-        }
-      });
-      // Optionally scroll to the first match
-      const firstMatch = document.querySelector(`#publications .paper-entry[data-topics*="${filter}"]`);
-      if (firstMatch) {
-        firstMatch.scrollIntoView({ behavior: 'smooth' });
-      }
+      // 'all' => show all (by topic basically means "don't filter, but let user click a topic")
+      pubs.forEach(pub => pub.style.display = 'block');
     }
   }
 
-  // Default to selected on load
+  // Filter by a specific topic
+  function filterByTopic(topic) {
+    const pubs = document.querySelectorAll('.paper-entry');
+    pubs.forEach(pub => {
+      const topicsString = pub.dataset.topics || '';
+      // Show if the topics string includes the clicked topic
+      pub.style.display = topicsString.includes(topic) ? 'block' : 'none';
+    });
+    // Optionally scroll to the first matched paper
+    const firstMatch = document.querySelector(`.paper-entry[data-topics*="${topic}"]`);
+    if (firstMatch) {
+      firstMatch.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  // By default, show "selected" on page load
   window.onload = function() {
     filterPublications('selected');
   };
