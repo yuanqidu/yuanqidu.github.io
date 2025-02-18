@@ -15,7 +15,7 @@ Recent Talks and Lectures:
   * @UCLA Modern computation: AI + Quantum (Guest Lecture), Oct 2024 
   * @UT Austin Henkelman Group (Chemistry), Oct 2024
   * @MIT Kulik's Group (Chemical Engineering), August 2024
-  * @Microsoft Research, June 2024
+  * @Microsoft Research AI4Science Colloquium, June 2024
   * @Stanford Theoretical Chemistry Group, June 2024
   * @Gatech Applied and Comp. Mathematics Seminar, April 2024
 * Accelerating Transition Dynamics Simulation with Probabilistic Machine Learning 
