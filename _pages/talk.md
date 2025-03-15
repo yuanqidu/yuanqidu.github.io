@@ -10,6 +10,7 @@ author_profile: true
 Recent Talks and Lectures:
 ======
 * Accelerating Molecular Discovery from a Data-driven Computational Perspective
+  * @UCSD Rose Yu Group (CS), April 2025
   * @ACS Generative Modeling for Chem, Bio & Material Symposium, March 2025
   * @Princeton AI^2 Research Talk Series, Jan 2025
   * @UCLA Modern computation: AI + Quantum (Guest Lecture), Oct 2024 
@@ -19,6 +20,7 @@ Recent Talks and Lectures:
   * @Stanford Theoretical Chemistry Group, June 2024
   * @Gatech Applied and Comp. Mathematics Seminar, April 2024
 * Accelerating Transition Dynamics Simulation with Probabilistic Machine Learning 
+  * @Cornell SCAM Seminar (Center of Applied Mathematics), March 2025
   * @ACS Inferring Kinetics, Thermodynamics, and Mechanisms from Sampling Symposium, March 2025
   * @NYU Courant Generative Model/Sampling Seminar, Nov 2024
   * @UCB BIDMaP Young Scholar Seminar, Nov 2024 
@@ -26,11 +28,15 @@ Recent Talks and Lectures:
   * @IAIFI Summer Workshop, August 2024
 * Language Model-based Design Programs for Chemical Synthesis and Design
   * @ACS Machine Learning in Chemistry Symposium, March 2025
+* Pursuits and Challenges Towards Simulation-free Training of Neural Samplers
+  * @MILA Sampling Seminar, Feb 2025
 * Recent Advances of Machine Learning in Molecular Discovery: From Representation, Simulation to Inverse Design
   * @Cornell Deep Learning (SYSEN 6888) guest lecture, Nov 2023
 * Scientific Discovery in the era of Artificial Intelligence
   * @Cornell Luo Lab (Integrative Plant Science), Sep 2023
   * @Cornell CS Grad Seminar, Oct 2022
+* A New Perspective on Building Efficient and Expressive 3D Equivariant Graph Neural Networks
+  * @MIT-Valence Labs Learning on Graphs Reading Group
 * Machine Learning for Molecular Discovery: From One Distribution to Two
   * @DP Technology, Feb 2023
 * Structure-based Drug Design with Equivariant Diffusion Models

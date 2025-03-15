@@ -55,7 +55,7 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
       <div class="pub-card" data-topic="large-language-model" data-year="2025" data-selected="true">
           <strong>Large Language Models Are Innate Crystal Structure Generators</strong><br>
           <em>Jingru Gan, Peichen Zhong*, <b>Yuanqi Du*</b>, ..., Carla P. Gomes, Kristin A. Persson, Daniel Schwalbe-Koda, Wei Wang</em><br>
-          arXiv preprint (coming out soon) | <a href="#">paper</a>
+          arXiv preprint | <a href="https://arxiv.org/abs/2502.20933">paper</a>
       </div>
       <br>
       <div class="pub-card" data-topic="equivariant-neural-network" data-year="2025" data-selected="true">
