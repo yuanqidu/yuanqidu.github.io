@@ -18,7 +18,7 @@ Yuanqi Du is a CS PhD student at Cornell University, working on the intersection
 Additional topics I am interested in include: (Mechanistic) Interpretability, Science of Science, and Societal Impact of AI.
 
 ## Upcoming Events 
-  * April 21st-22nd @Flatiron 3rd LoG-NYC Workshop, registration [here](https://www.simonsfoundation.org/event/3rd-log-nyc-workshop-on-learning-meets-geometry-graphs-and-networks/).
+  * 3rd LoG-NYC Workshop, April 21st-22nd @Flatiron Institute CCM, NY, registration [here](https://www.simonsfoundation.org/event/3rd-log-nyc-workshop-on-learning-meets-geometry-graphs-and-networks/).
 
 <!-- ## Representative Work
 
