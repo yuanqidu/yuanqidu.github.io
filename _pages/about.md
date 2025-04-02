@@ -11,9 +11,9 @@ redirect_from:
 Yuanqi Du is a CS PhD student at Cornell University, working on the intersection of AI and Science, advised by Prof. Carla P. Gomes. In the past, he spent time at AMLab at University of Amsterdam advised by Prof. Max Welling and DP Technology supervised by Dr. Linfeng Zhang. He also spent time at Microsoft Research Asia, Machine Learning group. He is a passionate community builder, which he founded the series of [*AI for Science workshops*](https://ai4sciencecommunity.github.io/), co-founded the [*Learning on Graphs conference*](https://logconference.github.io/), and led an initiative [*AI for Science 101*](https://ai4science101.github.io/) building knowledge systems for AI for Science. He maintains a slack channel for AI for Science (1300+), feel free to join and say Hi to people [here](https://join.slack.com/t/aiforscience/shared_invite/zt-1bdof1jmf-YtIjkUVA5DquXguEiOXGPQ)!
 
 ## Research Interests
-  * ***Probabilistic Machine Learning***: Generative Models (includ. Large Language Models), Optimal Transport, Stochastic Control, Sampling 
+  * ***Probabilistic Machine Learning***: Generative Models (includ. Large Language Models), Optimal Transport, Stochastic Control, Sampling, Bayesian Inference 
   * ***Structure and Geometry***: Neural Architectures (e.g. Graphs and Sets), Equivariance, Symmetry, Tensor Networks
-  * ***AI for Science***: Molecular Design, Molecular Simulation, Chemical Reaction and Synthesis
+  * ***AI for Science***: Molecular Design, Molecular Simulation (e.g., Transition Path Sampling, Free Energy Estimation), Chemical Reaction and Synthesis
 
 Additional topics I am interested in include: (Mechanistic) Interpretability, Science of Science, and Societal Impact of AI.
 
