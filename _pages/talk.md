@@ -10,7 +10,7 @@ author_profile: true
 Recent Talks and Lectures:
 ======
 * Accelerating Molecular Discovery from a Data-driven Computational Perspective
-  * @UCSD Rose Yu Group (CS), March 2025
+  * @UCSD Rose Yu Group (Computer Science), March 2025
   * @ACS Generative Modeling for Chem, Bio & Material Symposium, March 2025
   * @Princeton AI^2 Research Talk Series, Jan 2025
   * @UCLA Modern computation: AI + Quantum (Guest Lecture), Oct 2024 
