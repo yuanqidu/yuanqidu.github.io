@@ -8,7 +8,7 @@ redirect_from:
   - /about.html
 ---
 
-Yuanqi Du is a CS PhD student at Cornell University, working on the intersection of AI and Science, advised by Prof. Carla P. Gomes. In the past, he spent time at AMLab at University of Amsterdam advised by Prof. Max Welling and DP Technology supervised by Dr. Linfeng Zhang. He also spent time at Microsoft Research Asia, Machine Learning group. He is a passionate community builder, which he founded the series of [*AI for Science workshops*](https://ai4sciencecommunity.github.io/), co-founded the [*Learning on Graphs conference*](https://logconference.github.io/), and led an initiative [*AI for Science 101*](https://ai4science101.github.io/) building knowledge systems for AI for Science. He maintains a slack channel for AI for Science, feel free to join and say Hi to people [here](https://join.slack.com/t/aiforscience/shared_invite/zt-1bdof1jmf-YtIjkUVA5DquXguEiOXGPQ)!
+Yuanqi Du is a CS PhD student at Cornell University, working on the intersection of AI and Science, advised by Prof. Carla P. Gomes. In the past, he spent time at AMLab at University of Amsterdam advised by Prof. Max Welling and DP Technology supervised by Dr. Linfeng Zhang. He also spent time at Microsoft Research Asia, Machine Learning group. He is a passionate community builder, which he founded the series of [*AI for Science workshops*](https://ai4sciencecommunity.github.io/), co-founded the [*Learning on Graphs conference*](https://logconference.github.io/), and led an initiative [*AI for Science 101*](https://ai4science101.github.io/) building knowledge systems for AI for Science. He maintains a slack channel for AI for Science (1300+), feel free to join and say Hi to people [here](https://join.slack.com/t/aiforscience/shared_invite/zt-1bdof1jmf-YtIjkUVA5DquXguEiOXGPQ)!
 
 ## Research Interests
   * ***Probabilistic Machine Learning***: Generative Models (includ. Large Language Models), Optimal Transport, Stochastic Control, Sampling 
@@ -17,6 +17,8 @@ Yuanqi Du is a CS PhD student at Cornell University, working on the intersection
 
 Additional topics I am interested in include: (Mechanistic) Interpretability, Science of Science, and Societal Impact of AI.
 
+## Upcoming Events 
+  * April 21st-22nd @Flatiron 3rd LoG-NYC Workshop, registration [here](https://www.simonsfoundation.org/event/3rd-log-nyc-workshop-on-learning-meets-geometry-graphs-and-networks/).
 <!-- ## Representative Work
 
 <ul id="representative-work">
