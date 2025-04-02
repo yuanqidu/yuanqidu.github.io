@@ -19,6 +19,7 @@ Additional topics I am interested in include: (Mechanistic) Interpretability, Sc
 
 ## Upcoming Events 
   * April 21st-22nd @Flatiron 3rd LoG-NYC Workshop, registration [here](https://www.simonsfoundation.org/event/3rd-log-nyc-workshop-on-learning-meets-geometry-graphs-and-networks/).
+
 <!-- ## Representative Work
 
 <ul id="representative-work">
