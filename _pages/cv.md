@@ -16,36 +16,11 @@ Research experience
   * University of Amsterdam (AMLAB & AI4Science)
   * Machine Learning and Molecular Simulation
   * Advisor: [Max Welling](https://staff.fnwi.uva.nl/m.welling/)
-  
-* Researcher, Oct 2021 - Aug 2022
-  * [DP Technology](https://www.dp.tech/)
-  * Machine Learning and Molecular Simulation
-  * Advisor: [Linfeng Zhang](https://scholar.google.com/citations?user=jk7qwmcAAAAJ&hl=zh-CN)
-
-* Visiting Student, June 2021 - Dec 2021
-  * The Chinese University of Hong Kong (MM Lab)
-  * Deep Generative Models in Scientific Discovery
-  * Advisor: [Bolei Zhou](http://bzhou.ie.cuhk.edu.hk/)
-  
-* Research Assistant, Jan 2020 - Oct 2021
-  * George Mason University
-  * Deep Graph Learning & Learning Protein Structures and Dynamics
-  * Advisor: [Liang Zhao](https://mason.gmu.edu/~lzhao9/), [Amarda Shehu](https://cs.gmu.edu/~ashehu/)
 
 * Research Intern, Nov 2020 - May 2021
-  * Microsoft Research Asia
+  * Microsoft Research Asia Machine Learning Group
   * Protein Structure Prediction
   * Mentor: [Jianwei Zhu](https://www.microsoft.com/en-us/research/people/jianwzhu/)
-
-* Research Assistant, Apr 2019 - May 2020
-  * George Mason University
-  * Application of Millimeter-wave Signals
-  * Advisor: [Parth Pathak](http://www.phpathak.com/), [Jana Kosecka](https://cs.gmu.edu/~kosecka/), [Huzefa Rangwala](https://cs.gmu.edu/~hrangwal/)
-  
-* Research Assistant, Oct 2018 - Mar 2019
-  * George Mason University
-  * Ensemble Anomaly Detection Algorithm
-  * Advisor: [Carlotta Domeniconi](https://cs.gmu.edu/~carlotta/)
   
 Awards
 ======
