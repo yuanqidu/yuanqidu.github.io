@@ -24,6 +24,7 @@ Research experience
   
 Awards
 ======
+  * NeurIPS Top Reviewer Award (both main track and dataset track, top 8%) (2024)
   * Distinguished Academic Achievement (2021, GMU)
   * Star of Tomorrow Award (2021, Microsoft Research Asia)
   * Distinguished Undergraduate Teaching Award (2019-2020, GMU)
