@@ -14,12 +14,10 @@ Research experience
 ======
 * Visiting Student, June 2021 - Aug 2022
   * University of Amsterdam (AMLAB & AI4Science)
-  * Machine Learning and Molecular Simulation
   * Advisor: [Max Welling](https://staff.fnwi.uva.nl/m.welling/)
 
 * Research Intern, Nov 2020 - May 2021
   * Microsoft Research Asia Machine Learning Group
-  * Protein Structure Prediction
   * Mentor: [Jianwei Zhu](https://www.microsoft.com/en-us/research/people/jianwzhu/)
   
 Awards
