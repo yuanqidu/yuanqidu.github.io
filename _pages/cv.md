@@ -33,13 +33,4 @@ Awards
   * League of Legends Challenger (world top 0.01%) 2016
   * StarCraft II GrandMaster (world top 0.2%) 2015
 
-  
-<!-- Skills
-======
-* Programming (Python, Java, C, MySQL, R, C++, Assembly Language, Lisp, Haskell, LaTeX)
-* Machine Learning, Data Mining, Deep Learning
-* Languages: English, Chinese
-   -->
-
-
 
