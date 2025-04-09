@@ -17,9 +17,10 @@ Professional Services
 
 Selected Review Services
 ======
-* Conference Submission: NeurIPS, ICML, ICLR, AISTATS, AAAI, KDD, CVPR, ICCV, ECCV
-* Journal Submission: Science Advances, Nature Comms, TPAMI, JCTC, TMLR, npj Digital Medicine
-* Proposal: NeurIPS, ICML workshop
+<!-- * Conference Meta-reviewer: NeurIPS (2025-),  -->
+* Conference Reviewer: NeurIPS, ICML, ICLR, AISTATS, AAAI, KDD, CVPR, ICCV, ECCV
+* Journal Reviewer: Science Advances, Nature Comms, TPAMI, JCTC, TMLR, npj Digital Medicine
+* Proposal: NeurIPS, ICML workshops
 
 Open-source Softwares (Benchmarks and Libraries)
 ======
@@ -29,11 +30,10 @@ Open-source Softwares (Benchmarks and Libraries)
 * [TDC](https://tdcommons.ai/) Artificial Intelligence for Therapeutic Science
 * [Gauche](https://github.com/leojklarner/gauche) Gaussian Processes in Chemistry
 
-Volunteers & Leaderships
+Volunteers & Other Services
 ======
 * ICLR, ICML, KDD 2021 Student Volunteer
 * NSF REU Summer 2021 Student Mentor (GMU)
-* [*Vision Organization*](https://vision-npo.github.io/), Founder
 * AAAI 2021, KDD 2021 Student Technical Team
 * Microsoft Learn Student Ambassador (e.g. Organize Intro to AI and ML Workshop)
 * Contribute to [*DLG4NLP*](https://dlg4nlp.github.io/) and [*GNN-Book*](https://graph-neural-networks.github.io/)

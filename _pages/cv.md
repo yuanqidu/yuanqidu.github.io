@@ -8,7 +8,7 @@ author_profile: true
 Education
 ======
 * Ph.D. in Computer Science, Cornell University, 2022-now
-* B.S. in Computer Science, George Mason University, GPA 4.0/4.0, 2017-2021
+* B.S. in Computer Science, George Mason University, 2017-2021
 
 Research experience
 ======
