@@ -42,7 +42,5 @@ Volunteers & Other Services
 * Student Member of ACM, IEEE, IEEE Computer Society, AAAI, SIAM, ASA Community
 * GMU Engineering Week Panelist, 2021 Spring
 * GMU SCAN Mentor, 2021 Spring
-<!-- * CVPR (2023), ICLR (2023), AAAI (2023), WACV (2022), NeurIPS (2022), ICML (2022), KDD (2022), ICLR (2022), AISTATS (2022), TCBB (2022), ICLR-GTRL (2022), CVPR-AICC (2022), BioKDD (2022), TPAMI (2021), TNNLS (2021), KDD (2021), TKDD (2021), ICDM (2021), CIKM (2021), BMVC (2021), BioKDD (2021), KDD-DLG (2021), KDD-IRS (2021), NeurIPS-AI4Sci (2021, 2022) -->
-
 
 
