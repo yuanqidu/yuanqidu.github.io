@@ -18,7 +18,8 @@ Professional Services
 Selected Review Services
 ======
 <!-- * Conference Meta-reviewer: NeurIPS (2025-),  -->
-* Conference Reviewer: NeurIPS, ICML, ICLR, AISTATS, AAAI, KDD, CVPR, ICCV, ECCV
+* Conference Area Chair: NeurIPS (2025-)
+* Conference Reviewer: NeurIPS (2022-2024), ICML (2022-), ICLR (2022-), AAAI (2023-2024), ECCV (2024), CVPR (2023), KDD (2023), ICCV (2023), AISTATS (2022)
 * Journal Reviewer: Science Advances, Nature Comms, TPAMI, JCTC, TMLR, npj Digital Medicine
 * Proposal: NeurIPS, ICML workshops
 
