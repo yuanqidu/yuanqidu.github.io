@@ -29,6 +29,12 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
     </p>
     <div id="pub-card-container" class="activated hide">
       <div class="pub-card" data-topic="control-sampling" data-year="2025" data-selected="true">
+          <strong>FEAT: Free energy Estimators with Adaptive Transport</strong><br>
+          <em><b>Yuanqi Du*</b>, Jiajun He*, Francisco Vargas, ..., Eric Vanden-Eijnden</em><br>
+          arXiv preprint arXiv:2504.11516 | <a href="https://arxiv.org/abs/2504.11516">paper</a>
+      </div>
+      <br>
+      <div class="pub-card" data-topic="control-sampling" data-year="2025" data-selected="true">
           <strong>No Trick, No Treat: Pursuits and Challenges Towards Simulation-free Training of Neural Samplers</strong><br>
           <em>Jiajun He*, <b>Yuanqi Du*</b>, Francisco Vargas, ..., Carla P. Gomes, José Miguel Hernández-Lobato</em><br>
           arXiv preprint arXiv:2502.06685 | <a href="https://arxiv.org/abs/2502.06685">paper</a>
@@ -49,7 +55,7 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
       <div class="pub-card" data-topic="generative-model" data-year="2025" data-selected="true"> 
         <strong>React-OT: Optimal Transport for Generating Transition State in Chemical Reactions</strong><br> 
         <em>Chenru Duan*, Guan-Horng Liu*, <b>Yuanqi Du*</b>, ..., Carla P. Gomes, Evangelos A. Theodorou, Heather J. Kulik</em><br> 
-        Nature Machine Intelligence 2025 | <a href="https://t.co/RwXUSEISmq">paper</a> 
+        Nature Machine Intelligence 2025 (<b>Cover Article</b>) | <a href="https://t.co/RwXUSEISmq">paper</a> 
       </div> 
       <br> 
       <div class="pub-card" data-topic="large-language-model" data-year="2025" data-selected="true">
@@ -109,7 +115,7 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
       <div class="pub-card" data-topic="generative-model" data-year="2023" data-selected="true">
           <strong>Accurate Transition State Generation with an Object-aware Equivariant Elementary Reaction Diffusion Model</strong><br>
           <em>Chenru Duan, <b>Yuanqi Du</b>, Haojun Jia, Heather J. Kulik</em><br>
-          Nature Computational Science 2023 (<b>Cover Story</b>) | <a href="https://www.nature.com/articles/s43588-023-00563-7">paper</a>
+          Nature Computational Science 2023 (<b>Cover Article</b>) | <a href="https://www.nature.com/articles/s43588-023-00563-7">paper</a>
       </div>
       <br>
       <div class="pub-card" data-topic="ai-for-science" data-year="2023" data-selected="true">
