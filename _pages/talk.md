@@ -29,7 +29,7 @@ Recent Talks and Lectures:
 * Language Model-based Design Programs for Chemical Synthesis and Design
   * @ACS Machine Learning in Chemistry Symposium, March 2025
 * Pursuits and Challenges Towards Simulation-free Training of Neural Samplers
-  * @MILA Sampling Seminar, Feb 2025
+  * @MILA Sampling Reading Group, Feb 2025
 * Recent Advances of Machine Learning in Molecular Discovery: From Representation, Simulation to Inverse Design
   * @Cornell Deep Learning (SYSEN 6888) guest lecture, Nov 2023
 * Scientific Discovery in the era of Artificial Intelligence
