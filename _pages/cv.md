@@ -12,6 +12,10 @@ Education
 
 Research experience
 ======
+* Research Intern, May 2025 - Aug 2025
+  * Microsoft Research New England
+  * Mentor: [Carles Domingo-Enrich](https://cdenrich.github.io/)
+
 * Visiting Student, June 2021 - Aug 2022
   * University of Amsterdam (AMLAB & AI4Science)
   * Advisor: [Max Welling](https://staff.fnwi.uva.nl/m.welling/)
