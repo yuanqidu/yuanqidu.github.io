@@ -17,8 +17,9 @@ Yuanqi Du is a CS PhD student at Cornell University, working on the intersection
 
 Additional topics I am interested in include: (Mechanistic) Interpretability, Science of Science, and Societal Impact of AI.
 
-## Upcoming Events 
+## News & Upcoming Events 
   * Summer at Boston, reach out to chat if you are around!
+  * Check out my new blog [Scientific Knowledge Emerges in LLMs and YOU CAN Access It](https://medium.com/@yuanqidu/scientific-knowledge-emerges-in-llms-and-you-can-access-it-75aa002c21c8)!
 
 <!-- ## Representative Work
 

@@ -40,6 +40,13 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
           arXiv preprint arXiv:2502.06685 | <a href="https://arxiv.org/abs/2502.06685">paper</a>
       </div>
       <br>
+      <br>
+      <div class="pub-card" data-topic="large-language-model" data-year="2025" data-selected="true">
+          <strong>LLM-Augmented Chemical Synthesis and Design Decision Programs</strong><br>
+          <em>Haorui Wang, Jeff Guo, Lingkai Kong, Rampi Ramprasad, Philippe Schwaller, <b>Yuanqi Du†</b>, Chao Zhang†</em><br>
+          ICML 2025 | <a href="https://molleo.github.io/">paper</a>
+      </div>
+      <br>
       <div class="pub-card" data-topic="large-language-model" data-year="2025" data-selected="true"> 
         <strong>Efficient Evolutionary Search over Chemical Space with Large Language Models</strong><br> 
         <em>Haorui Wang*, Marta Skreta*, …, <b>Yuanqi Du†</b>, Alán Aspuru-Guzik†, Kirill Neklyudov†, Chao Zhang†</em><br>
