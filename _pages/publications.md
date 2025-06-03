@@ -20,7 +20,7 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
     </h1>
     <p class="subtitle-aux"><b>Topics:</b>
         <a href="#topic-generative-model" onClick="return publicationByTopicSpecific(this)" data-topic="generative-model">Generative Models & Optimal Transport</a> /
-        <a href="#topic-control-sampling" onClick="return publicationByTopicSpecific(this)" data-topic="control-sampling">Stochatic Control & Sampling</a> /
+        <a href="#topic-control-sampling" onClick="return publicationByTopicSpecific(this)" data-topic="control-sampling">Stochastic Control & Sampling</a> /
         <a href="#topic-equivariant-neural-network" onClick="return publicationByTopicSpecific(this)" data-topic="equivariant-neural-network">Equivariant Neural Networks</a> /
         <a href="#topic-large-language-model" onClick="return publicationByTopicSpecific(this)" data-topic="large-language-model">Large Language Models</a> /
         <a href="#topic-molecular-discovery" onClick="return publicationByTopicSpecific(this)" data-topic="molecular-discovery">Molecular Discovery</a> /
