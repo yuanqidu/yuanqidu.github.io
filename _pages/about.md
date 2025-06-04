@@ -18,6 +18,7 @@ Yuanqi Du is a CS PhD student at Cornell University, working on the intersection
 Additional topics I am interested in include: (Mechanistic) Interpretability, Science of Science, and Societal Impact of AI.
 
 ## News & Upcoming Events 
+  * Join our [Generative Modeling & Sampling Seminar](https://sites.google.com/view/msrne-genai-sampling-seminar/home) at MSR NE (in-person attendance is available)! 
   * Summer at Boston, reach out to chat if you are around!
   * Check out my new blog [Scientific Knowledge Emerges in LLMs and YOU CAN Access It](https://medium.com/@yuanqidu/scientific-knowledge-emerges-in-llms-and-you-can-access-it-75aa002c21c8)!
 
