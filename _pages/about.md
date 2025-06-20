@@ -13,7 +13,7 @@ Yuanqi Du is a CS PhD student at Cornell University, working on the intersection
 ## Research Interests
   * ***Probabilistic Machine Learning***: Generative Models (includ. Large Language Models), Measure Transport, Stochastic Control, Sampling, Bayesian Inference 
   * ***Structure and Geometry***: Neural Architectures (e.g. Graphs and Sets), Equivariance, Symmetry, Tensor Networks
-  * ***AI for Science***: Molecular Design, Molecular Simulation (e.g. Transition Path Sampling, Free Energy Estimation), Chemical Reaction and Synthesis
+  * ***AI for Science***: Molecular Design, Molecular Simulation (esp. Understanding Out-of-equilibrium Processes), Chemical Reaction and Synthesis
 
 Additional topics I am interested in include: (Mechanistic) Interpretability, Science of Science, and Societal Impact of AI.
 
