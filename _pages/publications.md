@@ -33,6 +33,17 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
           <em><b>Yuanqi Du*</b>, Jiajun He*, Francisco Vargas, ..., Eric Vanden-Eijnden</em><br>
           arXiv preprint arXiv:2504.11516 | <a href="https://arxiv.org/abs/2504.11516">paper</a>
       </div>
+      <div class="pub-card" data-topic="control-sampling" data-year="2025" data-selected="true">
+          <strong>RNE: A Plug-and-play Framework for Diffusion Density Estimation and Inference-time Control</strong><br>
+          <em>Jiajun He, José Miguel Hernández-Lobato, <b>Yuanqi Du†</b>, Francisco Vargas†</em><br>
+          arXiv preprint arXiv:2506.05668 | <a href="https://arxiv.org/abs/2506.05668">paper</a>
+      </div>
+      <br>
+      <div class="pub-card" data-topic="control-sampling" data-year="2025" data-selected="true">
+          <strong>Accelerated Parallel Tempering via Neural Transports</strong><br>
+          <em>Leo Zhang, Peter Potaptchik, Jiajun He, <b>Yuanqi Du</b>, et al, Saifuddin Syed</em><br>
+          arXiv preprint arXiv:2502.10328 | <a href="https://arxiv.org/abs/2502.10328">paper</a>
+      </div>
       <br>
       <div class="pub-card" data-topic="control-sampling" data-year="2025" data-selected="true">
           <strong>No Trick, No Treat: Pursuits and Challenges Towards Simulation-free Training of Neural Samplers</strong><br>
