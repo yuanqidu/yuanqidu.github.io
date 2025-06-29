@@ -29,12 +29,13 @@ Recent Talks and Lectures:
   * @UCB BIDMaP Young Scholar Seminar, Nov 2024 
   * @SIAM New York-New Jersey-Pennsylvania Section Annual Conference, Nov 2024
   * @IAIFI Summer Workshop, August 2024
+* Language Model-augmented Chemistry Optimization and Decision Programs
+  * @EPFL AI for Chemistry and Beyond Seminar, May 2025
+  * @ACS Machine Learning in Chemistry Symposium, March 2025
 * FEAT: Free energy Estimators with Adaptive Transport
   * @MIT-Valence Labs Learning on Graphs Reading Group, May 2025
   * @MILA Sampling Reading Group, April 2025
   * @ByteDance AI Lab, April 2025
-* Language Model-based Design Programs for Chemical Synthesis and Design
-  * @ACS Machine Learning in Chemistry Symposium, March 2025
 * Pursuits and Challenges Towards Simulation-free Training of Neural Samplers
   * @MILA Sampling Reading Group, Feb 2025
 * Recent Advances of Machine Learning in Molecular Discovery: From Representation, Simulation to Inverse Design
