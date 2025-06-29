@@ -9,12 +9,14 @@ author_profile: true
 
 Recent Talks and Lectures:
 ======
+* Bridging Non-equilibrium Simulation and Probabilistic Machine Learning
+  * @UCB Aditi Krishnapriyan and Kranthi Mandadapu's group (EECS and Chemical and Biomolecular Engineering), June 2025 
 * Accelerating Molecular Discovery from a Data-driven Computational Perspective
-  * @UCSD Rose Yu Group (Computer Science), March 2025
+  * @UCSD Rose Yu's Group (Computer Science), March 2025
   * @ACS Generative Modeling for Chem, Bio & Material Symposium, March 2025
   * @Princeton AI^2 Research Talk Series, Jan 2025
   * @UCLA Modern computation: AI + Quantum (Guest Lecture), Oct 2024 
-  * @UT Austin Henkelman Group (Chemistry), Oct 2024
+  * @UT Austin Henkelman's Group (Chemistry), Oct 2024
   * @MIT Kulik's Group (Chemical Engineering), August 2024
   * @Microsoft Research AI4Science Colloquium, June 2024
   * @Stanford Theoretical Chemistry Group, June 2024
@@ -22,10 +24,15 @@ Recent Talks and Lectures:
 * Accelerating Transition Dynamics Simulation with Probabilistic Machine Learning 
   * @Cornell SCAM Seminar (Center of Applied Mathematics), March 2025
   * @ACS Inferring Kinetics, Thermodynamics, and Mechanisms from Sampling Symposium, March 2025
+  * @ByteDance AI Lab, March 2025
   * @NYU Courant Generative Model/Sampling Seminar, Nov 2024
   * @UCB BIDMaP Young Scholar Seminar, Nov 2024 
   * @SIAM New York-New Jersey-Pennsylvania Section Annual Conference, Nov 2024
   * @IAIFI Summer Workshop, August 2024
+* FEAT: Free energy Estimators with Adaptive Transport
+  * @MIT-Valence Labs Learning on Graphs Reading Group, May 2025
+  * @MILA Sampling Reading Group, April 2025
+  * @ByteDance AI Lab, April 2025
 * Language Model-based Design Programs for Chemical Synthesis and Design
   * @ACS Machine Learning in Chemistry Symposium, March 2025
 * Pursuits and Challenges Towards Simulation-free Training of Neural Samplers
