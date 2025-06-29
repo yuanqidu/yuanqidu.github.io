@@ -10,7 +10,7 @@ author_profile: true
 Recent Talks and Lectures:
 ======
 * Bridging Non-equilibrium Simulation and Probabilistic Machine Learning
-  * @UCB Aditi Krishnapriyan and Kranthi Mandadapu's group (EECS and Chemical and Biomolecular Engineering), June 2025 
+  * @UCB Aditi Krishnapriyan and Kranthi Mandadapu's group (EECS and CBE), June 2025 
 * Accelerating Molecular Discovery from a Data-driven Computational Perspective
   * @UCSD Rose Yu's Group (Computer Science), March 2025
   * @ACS Generative Modeling for Chem, Bio & Material Symposium, March 2025
