@@ -17,12 +17,12 @@ As a passionate community builder, Yuanqi has organized over 20 community events
 ## Research Interests
   * ***Probabilistic Machine Learning***: Generative Models (includ. Large Language Models), Measure Transport, Stochastic Control, Sampling, Bayesian Inference 
   * ***Structure and Geometry***: Neural Architectures (e.g. Graphs and Sets), Equivariance, Symmetry, Tensor Networks
-  * ***AI for Science***: Molecular Design, Molecular Simulation (esp. Understanding Out-of-equilibrium Processes), Chemical Reaction and Synthesis
+  * ***AI for Science***: Molecular Design, Molecular Simulation, Rare Event Sampling, Chemical Reaction and Synthesis
 
 Additional topics I am interested in include: (Mechanistic) Interpretability, Science of Science, and Societal Impact of AI.
 
 ## News & Upcoming Events 
-  * AI for Science and SPIGM workshops are both back in NeurIPS 2025!
+  * [AI for Science](https://ai4sciencecommunity.github.io/neurips25.html) and [SPIGM](https://spigmworkshopv3.github.io/) workshops are both back in NeurIPS 2025!
   * Join our [Generative Modeling & Sampling Seminar](https://sites.google.com/view/msrne-genai-sampling-seminar/home) at MSR NE (in-person attendance is available)! 
   * Check out my new blog [Scientific Knowledge Emerges in LLMs and YOU CAN Access It](https://medium.com/@yuanqidu/scientific-knowledge-emerges-in-llms-and-you-can-access-it-75aa002c21c8)!
 
