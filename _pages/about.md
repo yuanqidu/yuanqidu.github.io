@@ -17,7 +17,7 @@ As a passionate community builder, Yuanqi has organized over 20 community events
 ## Research Interests
   * ***Probabilistic Machine Learning***: Generative Models (includ. Large Language Models), Measure Transport, Stochastic Control, Sampling, Bayesian Inference 
   * ***Structure and Geometry***: Neural Architectures (e.g. Graphs and Sets), Equivariance, Symmetry, Tensor Networks
-  * ***AI for Science***: Molecular Design, Molecular Simulation, Rare Event Sampling, Chemical Reaction and Synthesis
+  * ***AI for Science***: Molecular Simulation, Rare Event Sampling, Molecular Design/Synthesis
 
 Additional topics I am interested in include: (Mechanistic) Interpretability, Science of Science, and Societal Impact of AI.
 
