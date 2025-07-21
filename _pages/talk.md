@@ -39,6 +39,7 @@ Recent Talks and Lectures:
   * @MIT-Valence Labs Learning on Graphs Reading Group, May 2025
   * @MILA Sampling Reading Group, April 2025
   * @ByteDance AI Lab, April 2025
+
 <!-- * Pursuits and Challenges Towards Simulation-free Training of Neural Samplers
   * @MILA Sampling Reading Group, Feb 2025
 * Recent Advances of Machine Learning in Molecular Discovery: From Representation, Simulation to Inverse Design
