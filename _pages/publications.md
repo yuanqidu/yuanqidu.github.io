@@ -55,7 +55,7 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
       <div class="pub-card" data-topic="large-language-model" data-year="2025" data-selected="true">
           <strong>LLM-Augmented Chemical Synthesis and Design Decision Programs</strong><br>
           <em>Haorui Wang, Jeff Guo, Lingkai Kong, Rampi Ramprasad, Philippe Schwaller, <b>Yuanqi Du†</b>, Chao Zhang†</em><br>
-          ICML 2025 | <a href="https://molleo.github.io/">paper</a>
+          ICML 2025 | <a href="https://openreview.net/forum?id=NhkNX8jYld">paper</a>
       </div>
       <br>
       <div class="pub-card" data-topic="large-language-model" data-year="2025" data-selected="true"> 
