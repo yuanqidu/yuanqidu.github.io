@@ -70,7 +70,7 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
       </div>
       <br>
       <div class="pub-card" data-topic="generative-model" data-year="2025" data-selected="falst"> 
-        <strong>https://pubs.acs.org/doi/10.1021/jacs.5c02097</strong><br> 
+        <strong>Generative Design of Functional Metal Complexes Utilizing the Internal Knowledge and Reasoning Capability of Large Language Models</strong><br> 
         <em>Jieyu Lu, Zhangde Song, Qiyuan Zhao, <b>Yuanqi Du</b>, Yirui Cao, Haojun Jia, Chenru Duan</em><br> 
         JACS 2025 (<b>Cover Article</b>) | <a href="https://pubs.acs.org/doi/abs/10.1021/jacs.5c02097">paper</a> 
       </div> 
