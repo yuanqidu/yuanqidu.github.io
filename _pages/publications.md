@@ -69,6 +69,12 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
         ICLR 2025 | <a href="https://molleo.github.io/">paper</a> 
       </div>
       <br>
+      <div class="pub-card" data-topic="generative-model" data-year="2025" data-selected="falst"> 
+        <strong>https://pubs.acs.org/doi/10.1021/jacs.5c02097</strong><br> 
+        <em>Jieyu Lu, Zhangde Song, Qiyuan Zhao, <b>Yuanqi Du</b>, Yirui Cao, Haojun Jia, Chenru Duan</em><br> 
+        JACS 2025 (<b>Cover Article</b>) | <a href="https://pubs.acs.org/doi/abs/10.1021/jacs.5c02097">paper</a> 
+      </div> 
+      <br> 
       <div class="pub-card" data-topic="generative-model" data-year="2025" data-selected="true"> 
         <strong>Diffusion Models as Constrained Samplers for Optimization with Unknown Constraints</strong><br> 
         <em><b>Yuanqi Du*</b>, Lingkai Kong*, Wenhao Mu*, Kirill Neklyudov, Valentin De Bortol, ..., Yi-An Ma, Carla P. Gomes, Chao Zhang</em><br> 
