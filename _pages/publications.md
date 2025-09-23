@@ -38,6 +38,11 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
           <em>Jiajun He, José Miguel Hernández-Lobato, <b>Yuanqi Du†</b>, Francisco Vargas†</em><br>
           arXiv preprint arXiv:2506.05668 | <a href="https://arxiv.org/abs/2506.05668">paper</a>
       </div>
+      <div class="pub-card" data-topic="control-sampling" data-year="2025" data-selected="true">
+          <strong>Trust Region Constrained Measure Transport in Path Space for Stochastic Optimal Control and Inference</strong><br>
+          <em>Denis Blessing, Julius Berner, Lorenz Richter, Carles Domingo-Enrich, <b>Yuanqi Du</b>, Arash Vahdat, Gerhard Neumann</em><br>
+          arXiv preprint arXiv:2508.12511 | <a href="https://arxiv.org/abs/2508.12511">paper</a>
+      </div>
       <br>
       <div class="pub-card" data-topic="control-sampling" data-year="2025" data-selected="true">
           <strong>Accelerated Parallel Tempering via Neural Transports</strong><br>
