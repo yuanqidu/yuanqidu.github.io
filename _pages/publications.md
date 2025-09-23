@@ -31,7 +31,7 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
       <div class="pub-card" data-topic="control-sampling" data-year="2025" data-selected="true">
           <strong>FEAT: Free energy Estimators with Adaptive Transport</strong><br>
           <em><b>Yuanqi Du*</b>, Jiajun He*, Francisco Vargas, ..., Eric Vanden-Eijnden</em><br>
-          arXiv preprint arXiv:2504.11516 | <a href="https://arxiv.org/abs/2504.11516">paper</a>
+          NeurIPS 2025 | <a href="https://arxiv.org/abs/2504.11516">paper</a>
       </div>
       <div class="pub-card" data-topic="control-sampling" data-year="2025" data-selected="true">
           <strong>RNE: A Plug-and-play Framework for Diffusion Density Estimation and Inference-time Control</strong><br>
