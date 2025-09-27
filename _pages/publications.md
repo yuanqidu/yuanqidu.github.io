@@ -96,7 +96,7 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
       <div class="pub-card" data-topic="equivariant-neural-network" data-year="2025" data-selected="true">
           <strong>AlphaNet: Scaling Up Local Frame-based Atomistic Foundation Model</strong><br>
           <em>Bangchen Yin, Jiaao Wang†, …, <b>Yuanqi Du†</b>, Carla P. Gomes, Chenru Duan†, Hai Xiao†, Graeme Henkelman†</em><br>
-          arXiv preprint arXiv:2501.07155 | <a href="https://arxiv.org/abs/2501.07155">paper</a>
+          npj Computational Materials 2025 | <a href="https://arxiv.org/abs/2501.07155">paper</a>
       </div>
       <br>
       <div class="pub-card" data-topic="control-sampling" data-year="2024" data-selected="true">
