@@ -45,7 +45,7 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
       </div>
       <div class="pub-card" data-topic="control-sampling" data-year="2025" data-selected="true">
           <strong>CREPE: Controlling Diffusion with Replica Exchange</strong><br>
-          <em>Jiajun He, Paul Jeha, Peter Potaptchik, Leo Zhang, José Miguel Hernández-Lobato, Yuanqi Du, Saifuddin Syed, Francisco Vargas</em><br>
+          <em>Jiajun He, ..., Yuanqi Du, Saifuddin Syed, Francisco Vargas</em><br>
           arXiv preprint arXiv:2509.23265 | <a href="https://arxiv.org/abs/2509.23265">paper</a>
       </div>
       <br>
