@@ -17,6 +17,14 @@ Selected Talks and Lectures:
   * @UCLA IPAM Sampling, Inference, and Data-Driven Physical Modeling in Scientific Machine Learning Workshop, July 2025
   * @MIT Zhang's Group (Chemistry), July 2025
   * @UCB Aditi Krishnapriyan and Kranthi Mandadapu's group (EECS and CBE), June 2025 
+* Scientific Knowledge Exists in Large Language Models and You Can Extract It
+  * @UW Data Science Seminar, Nov 2025
+  * @UMass Amherst Machine Learning and Friends Lunch, Nov 2025
+  * @UCB Teresa Head-Gordon Lab (Chemistry), Oct 2025
+  * @AI Alliance AI for Materials & Chemistry Webinar, Aug 2025
+  * @USC Melady Lab, July 2025
+  * @EPFL AI for Chemistry and Beyond Seminar, May 2025
+  * @ACS Machine Learning in Chemistry Symposium, March 2025
 * Accelerating Molecular Discovery from a Data-driven Computational Perspective
   * @UCSD Rose Yu's Group (Computer Science), March 2025
   * @ACS Generative Modeling for Chem, Bio & Material Symposium, March 2025
@@ -36,12 +44,8 @@ Selected Talks and Lectures:
   * @UCB BIDMaP Young Scholar Seminar, Nov 2024 
   * @SIAM New York-New Jersey-Pennsylvania Section Annual Conference, Nov 2024
   * @IAIFI Summer Workshop, August 2024
-* Scientific Knowledge Exists in Large Language Models and You Can Extract It
-  * @UMass Amherst Machine Learning and Friends Lunch, Nov 2025
-  * @AI Alliance AI for Materials & Chemistry Webinar, Aug 2025
-  * @USC Melady Lab, July 2025
-  * @EPFL AI for Chemistry and Beyond Seminar, May 2025
-  * @ACS Machine Learning in Chemistry Symposium, March 2025
+
+
 <!-- * FEAT: Free energy Estimators with Adaptive Transport
   * @MIT-Valence Labs Learning on Graphs Reading Group, May 2025
   * @MILA Sampling Reading Group, April 2025
