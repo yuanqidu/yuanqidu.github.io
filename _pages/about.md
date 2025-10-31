@@ -12,12 +12,12 @@ Yuanqi Du is a PhD candidate in Computer Science at Cornell University, where he
 He serves as an area chair for NeurIPS and regularly reviews for flagship journals in the Nature, Science, and ACS families. Yuanqi has also spent time at AMLab, University of Amsterdam (with Prof. Max Welling), and Microsoft Research.
 As a passionate community builder, Yuanqi has organized over 20 community events, including conferences, workshops, and seminars. He founded the series of [*AI for Science workshops*](https://ai4sciencecommunity.github.io/), co-founded the [*Learning on Graphs conference*](https://logconference.github.io/) and [*probabilistic inference workshops*](https://spigmworkshop.github.io/), and led an initiative [*AI for Science 101*](https://ai4science101.github.io/) building knowledge systems for AI for Science. He maintains a slack channel for communication and outreach about AI for Science (with near 1500 active researchers), feel free to join and say Hi to people [here](https://join.slack.com/t/aiforscience/shared_invite/zt-1bdof1jmf-YtIjkUVA5DquXguEiOXGPQ)!
 
-**I am on the academic job market for positions that start from Fall 2026!**
+**I am on the academic job market for positions that start from Fall 2026! You can [find my CV here](https://github.com/yuanqidu/yuanqidu.github.io/blob/master/CV/CV.pdf)**
 
 ## Research Interests
-  * ***Probabilistic Machine Learning***: Generative Models (includ. Large Language Models), Measure Transport, Stochastic Control, Sampling, Bayesian Inference 
+  * ***Probabilistic Machine Learning***: Generative Models, Large Language Models, Measure Transport, Stochastic Control, Sampling, Bayesian Inference 
   * ***Structure and Geometry***: Neural Architectures (e.g. Graphs and Sets), Equivariance, Symmetry, Tensor Networks
-  * ***AI for Science***: Molecular Simulation, Rare Event Sampling, Molecular Design/Synthesis
+  * ***AI for Science***: Physical Chemistry, Drug Discovery, Materials Science
 
 Additional topics I am interested in include: (Mechanistic) Interpretability, Science of Science, and Societal Impact of AI.
 
