@@ -14,7 +14,7 @@ Research experience
 ======
 * Research Intern, Aug 2025 - Dec 2025
   * NVIDIA Research
-  * Mentor: [Tomas Geffner](https://tomasgeffner.github.io/) and [Arash Vahdat](http://latentspace.cc/)
+  * Mentor: [Tomas Geffner](https://tomasgeffner.github.io/), [Julius Berner](https://jberner.info/) and [Arash Vahdat](http://latentspace.cc/)
 
 * Research Intern, May 2025 - Aug 2025
   * Microsoft Research New England
