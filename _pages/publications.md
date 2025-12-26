@@ -79,7 +79,7 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
         ICLR 2025 | <a href="https://molleo.github.io/">paper</a> 
       </div>
       <br>
-      <div class="pub-card" data-topic="generative-model" data-year="2025" data-selected="false"> 
+      <div class="pub-card" data-topic="large-language-model" data-year="2025" data-selected="false"> 
         <strong>Generative Design of Functional Metal Complexes Utilizing the Internal Knowledge and Reasoning Capability of Large Language Models</strong><br> 
         <em>Jieyu Lu, Zhangde Song, Qiyuan Zhao, <b>Yuanqi Du</b>, Yirui Cao, Haojun Jia, Chenru Duan</em><br> 
         JACS 2025 (<b>Cover Article</b>) | <a href="https://pubs.acs.org/doi/abs/10.1021/jacs.5c02097">paper</a> 
