@@ -43,6 +43,11 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
           <em>Jiajun He, José Miguel Hernández-Lobato, <b>Yuanqi Du†</b>, Francisco Vargas†</em><br>
           arXiv preprint arXiv:2506.05668 | <a href="https://arxiv.org/abs/2506.05668">paper</a>
       </div>
+      <div class="pub-card" data-topic="control-sampling" data-year="2025" data-selected="false">
+          <strong>Trust Region Constrained Measure Transport in Path Space for Stochastic Optimal Control and Inference</strong><br>
+          <em>Denis Blessing, Julius Berner, Lorenz Richter, Carles Domingo-Enrich, <b>Yuanqi Du</b>, Arash Vahdat, Gerhard Neumann</em><br>
+          NeurIPS 2025 (<b>Spotlight</b>) | <a href="https://arxiv.org/abs/2508.12511">paper</a>
+      </div>
       <div class="pub-card" data-topic="control-sampling" data-year="2025" data-selected="true">
           <strong>CREPE: Controlling Diffusion with Replica Exchange</strong><br>
           <em>Jiajun He, ..., <b>Yuanqi Du</b>, Saifuddin Syed, Francisco Vargas</em><br>
@@ -74,7 +79,7 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
         ICLR 2025 | <a href="https://molleo.github.io/">paper</a> 
       </div>
       <br>
-      <div class="pub-card" data-topic="generative-model" data-year="2025" data-selected="falst"> 
+      <div class="pub-card" data-topic="generative-model" data-year="2025" data-selected="false"> 
         <strong>Generative Design of Functional Metal Complexes Utilizing the Internal Knowledge and Reasoning Capability of Large Language Models</strong><br> 
         <em>Jieyu Lu, Zhangde Song, Qiyuan Zhao, <b>Yuanqi Du</b>, Yirui Cao, Haojun Jia, Chenru Duan</em><br> 
         JACS 2025 (<b>Cover Article</b>) | <a href="https://pubs.acs.org/doi/abs/10.1021/jacs.5c02097">paper</a> 
