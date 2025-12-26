@@ -208,7 +208,7 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
       <div class="pub-card" data-topic="ai-for-science" data-year="2023" data-selected="false">
           <strong>Artificial intelligence for science in quantum, atomistic, and continuum systems</strong><br>
           <em>Xuan Zhang, Limei Wang, ..., <b>Yuanqi Du</b>, ..., Shuiwang Ji</em><br>
-          arXiv preprint arXiv:2307.08423 | <a href="https://arxiv.org/abs/2307.08423">paper</a>
+          Foundations and Trends® in Machine Learning 2025 | <a href="https://arxiv.org/abs/2307.08423">paper</a>
       </div>
       <br>
       <div class="pub-card" data-topic="generative-model" data-year="2022" data-selected="false">
