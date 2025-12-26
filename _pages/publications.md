@@ -38,7 +38,7 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
           <em><b>Yuanqi Du*</b>, Jiajun He*, Francisco Vargas, ..., Eric Vanden-Eijnden</em><br>
           NeurIPS 2025 | <a href="https://arxiv.org/abs/2504.11516">paper</a>
       </div>
-      <div class="pub-card" data-topic="control-sampling" data-year="2025" data-selected="true">
+      <div class="pub-card" data-topic="generative-model" data-year="2025" data-selected="true">
           <strong>RNE: A Plug-and-play Framework for Diffusion Density Estimation and Inference-time Control</strong><br>
           <em>Jiajun He, José Miguel Hernández-Lobato, <b>Yuanqi Du†</b>, Francisco Vargas†</em><br>
           arXiv preprint arXiv:2506.05668 | <a href="https://arxiv.org/abs/2506.05668">paper</a>
@@ -48,7 +48,7 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
           <em>Denis Blessing, Julius Berner, Lorenz Richter, Carles Domingo-Enrich, <b>Yuanqi Du</b>, Arash Vahdat, Gerhard Neumann</em><br>
           NeurIPS 2025 (<b>Spotlight</b>) | <a href="https://arxiv.org/abs/2508.12511">paper</a>
       </div>
-      <div class="pub-card" data-topic="control-sampling" data-year="2025" data-selected="true">
+      <div class="pub-card" data-topic="generative-model" data-year="2025" data-selected="true">
           <strong>CREPE: Controlling Diffusion with Replica Exchange</strong><br>
           <em>Jiajun He, ..., <b>Yuanqi Du</b>, Saifuddin Syed, Francisco Vargas</em><br>
           arXiv preprint arXiv:2509.23265 | <a href="https://arxiv.org/abs/2509.23265">paper</a>
