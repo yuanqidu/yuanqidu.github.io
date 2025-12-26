@@ -28,6 +28,11 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
         <br />
     </p>
     <div id="pub-card-container" class="activated hide">
+      <div class="pub-card" data-topic="large-language-model" data-year="2025" data-selected="true">
+          <strong>Evaluating Large Language Models in Scientific Discovery</strong><br>
+          <em>Zhangde Song*, Jieyu Lu*, <b>Yuanqi Du*</b>, et al</em><br>
+          arXiv preprint arXiv:2512.15567 | <a href="https://arxiv.org/abs/2512.15567">paper</a>
+      </div>
       <div class="pub-card" data-topic="control-sampling" data-year="2025" data-selected="true">
           <strong>FEAT: Free energy Estimators with Adaptive Transport</strong><br>
           <em><b>Yuanqi Du*</b>, Jiajun He*, Francisco Vargas, ..., Eric Vanden-Eijnden</em><br>
@@ -39,13 +44,8 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
           arXiv preprint arXiv:2506.05668 | <a href="https://arxiv.org/abs/2506.05668">paper</a>
       </div>
       <div class="pub-card" data-topic="control-sampling" data-year="2025" data-selected="true">
-          <strong>Trust Region Constrained Measure Transport in Path Space for Stochastic Optimal Control and Inference</strong><br>
-          <em>Denis Blessing, Julius Berner, Lorenz Richter, Carles Domingo-Enrich, <b>Yuanqi Du</b>, Arash Vahdat, Gerhard Neumann</em><br>
-          NeurIPS 2025 (<b>Spotlight</b>) | <a href="https://arxiv.org/abs/2508.12511">paper</a>
-      </div>
-      <div class="pub-card" data-topic="control-sampling" data-year="2025" data-selected="true">
           <strong>CREPE: Controlling Diffusion with Replica Exchange</strong><br>
-          <em>Jiajun He, ..., Yuanqi Du, Saifuddin Syed, Francisco Vargas</em><br>
+          <em>Jiajun He, ..., <b>Yuanqi Du</b>, Saifuddin Syed, Francisco Vargas</em><br>
           arXiv preprint arXiv:2509.23265 | <a href="https://arxiv.org/abs/2509.23265">paper</a>
       </div>
       <br>
