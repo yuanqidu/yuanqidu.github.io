@@ -51,7 +51,7 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
       <br>
       <div class="pub-card" data-topic="control-sampling" data-year="2025" data-selected="true">
           <strong>Accelerated Parallel Tempering via Neural Transports</strong><br>
-          <em>Leo Zhang, Peter Potaptchik, Jiajun He, <b>Yuanqi Du</b>, et al, Saifuddin Syed</em><br>
+          <em>Leo Zhang, Peter Potaptchik, Jiajun He, <b>Yuanqi Du</b>, ..., Saifuddin Syed</em><br>
           arXiv preprint arXiv:2502.10328 | <a href="https://arxiv.org/abs/2502.10328">paper</a>
       </div>
       <br>
