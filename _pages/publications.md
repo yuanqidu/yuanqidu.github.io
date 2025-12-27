@@ -73,6 +73,13 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
           ICML 2025 | <a href="https://openreview.net/forum?id=NhkNX8jYld">paper</a>
       </div>
       <br>
+      <br>
+      <div class="pub-card" data-topic="generative-model" data-year="2025" data-selected="false">
+          <strong>Graph Generative Pre-trained Transformer</strong><br>
+          <em>Xiaohui Chen, Yinkai Wang, Jiaxing He, <b>Yuanqi Du</b>, Soha Hassoun, Xiaolin Xu, Li-Ping Liu</em><br>
+          ICML 2025 | <a href="https://arxiv.org/abs/2501.01073">paper</a>
+      </div>
+      <br>
       <div class="pub-card" data-topic="large-language-model" data-year="2025" data-selected="true"> 
         <strong>Efficient Evolutionary Search over Chemical Space with Large Language Models</strong><br> 
         <em>Haorui Wang*, Marta Skreta*, …, <b>Yuanqi Du†</b>, Alán Aspuru-Guzik†, Kirill Neklyudov†, Chao Zhang†</em><br>
