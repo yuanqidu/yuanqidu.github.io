@@ -12,7 +12,7 @@ Selected Talks and Lectures:
 * Bridging Non-equilibrium Simulation and Probabilistic Machine Learning
   * @UCB Pitzer Center for Theoretical Chemistry Seminar, Oct 2025
   * @University of Maryland Statistical Physics Seminar, Oct 2025
-  * @SIAM PNW Scientific ML Minisymposium, Oct 2025
+  * @SIAM PNW Biennial Meeting Scientific ML Symposium, Oct 2025
   * @Caltech CMS, July 2025
   * @UCLA IPAM Sampling, Inference, and Data-Driven Physical Modeling in Scientific Machine Learning Workshop, July 2025
   * @MIT Zhang's Group (Chemistry), July 2025
