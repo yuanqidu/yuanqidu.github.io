@@ -12,7 +12,7 @@ Yuanqi Du is a PhD candidate in Computer Science at Cornell University. His rese
 
 **I am on the academic job market for positions that start from Fall 2026! You can [find my CV here](https://github.com/yuanqidu/yuanqidu.github.io/blob/master/CV/CV.pdf)!**
 
-**Feel free to send me en email if you are interested in working on exciting research projects with me!**
+**Feel free to send me en email if you are interested in collaborating or working on exciting research projects with me!**
 
 ## Research Interests
   * ***Probabilistic Machine Learning***: Generative Models, Large Language Models, Measure Transport, Stochastic Control, Sampling, Bayesian Inference 
@@ -25,20 +25,3 @@ Additional topics I am interested in include: (Mechanistic) Interpretability, Sc
   * [AI for Science](https://ai4sciencecommunity.github.io/neurips25.html) and [SPIGM](https://spigmworkshopv3.github.io/) workshops are both back in NeurIPS 2025!
   * Join our [Generative Modeling & Sampling Seminar](https://sites.google.com/view/msrne-genai-sampling-seminar/home) at MSR NE (in-person attendance is available)! 
   * Check out my new blog [Scientific Knowledge Emerges in LLMs and YOU CAN Access It](https://medium.com/@yuanqidu/scientific-knowledge-emerges-in-llms-and-you-can-access-it-75aa002c21c8)!
-
-<!-- ## Representative Work
-
-<ul id="representative-work">
-  <li data-selected="true" data-date="2025" data-topics="sampling ">
-    <strong>Doob's Lagrangian: A Sample-Efficient Variational Approach to Transition Path Sampling</strong><br>
-    <em><b>Yuanqi Du*</b>, Michael Plainer*, Rob Brekelmans*, Chenru Duan, Frank Noe, Carla P. Gomes, Alán Aspuru-Guzik, Kirill Neklyudov.</em><br>
-    NeurIPS 2024 (<b>Spotlight</b>) | <a href="https://openreview.net/forum?id=ShJWT0n7kX">paper</a> 
-  </li>
-
-  <li data-selected="true" data-date="2025" data-topics="sampling ">
-    <strong>Structure-based Drug Design with Equivariant Diffusion Models</strong><br>
-    <em>Arne Schneuing*, Charles Harris*, <b>Yuanqi Du*</b>, Arian Jamasb, Ilia Igashov, Weitao Du, Carla P. Gomes, Tom Blundell, Pietro Lió, Max Welling, Michael Bronstein, Bruno Correia.</em><br>
-    Nature Computational Science 2024 | <a href="https://www.nature.com/articles/s43588-024-00737-x">paper</a> 
-  </li>
-
-</ul> -->
