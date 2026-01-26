@@ -54,12 +54,6 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
           <em>Leo Zhang, Peter Potaptchik, Jiajun He, <b>Yuanqi Du</b>, ..., Saifuddin Syed</em><br>
           ICLR 2026 | <a href="https://arxiv.org/abs/2502.10328">paper</a>
       </div>
-      <br>
-      <div class="pub-card" data-topic="control-sampling" data-year="2025" data-selected="true">
-          <strong>No Trick, No Treat: Pursuits and Challenges Towards Simulation-free Training of Neural Samplers</strong><br>
-          <em>Jiajun He*, <b>Yuanqi Du*</b>, Francisco Vargas, ..., Carla P. Gomes, José Miguel Hernández-Lobato</em><br>
-          arXiv preprint arXiv:2502.06685 | <a href="https://arxiv.org/abs/2502.06685">paper</a>
-      </div>
       <div class="pub-card" data-topic="control-sampling" data-year="2025" data-selected="true">
           <strong>FEAT: Free energy Estimators with Adaptive Transport</strong><br>
           <em><b>Yuanqi Du*</b>, Jiajun He*, Francisco Vargas, ..., Eric Vanden-Eijnden</em><br>
@@ -69,6 +63,11 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
           <strong>Trust Region Constrained Measure Transport in Path Space for Stochastic Optimal Control and Inference</strong><br>
           <em>Denis Blessing, Julius Berner, Lorenz Richter, Carles Domingo-Enrich, <b>Yuanqi Du</b>, Arash Vahdat, Gerhard Neumann</em><br>
           NeurIPS 2025 (<b>Spotlight</b>) | <a href="https://arxiv.org/abs/2508.12511">paper</a>
+      </div>
+      <div class="pub-card" data-topic="control-sampling" data-year="2025" data-selected="true">
+          <strong>No Trick, No Treat: Pursuits and Challenges Towards Simulation-free Training of Neural Samplers</strong><br>
+          <em>Jiajun He*, <b>Yuanqi Du*</b>, Francisco Vargas, ..., Carla P. Gomes, José Miguel Hernández-Lobato</em><br>
+          ICLR 2025 FPI Workshop | <a href="https://arxiv.org/abs/2502.06685">paper</a>
       </div>
       <br>
       <br>
