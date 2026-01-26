@@ -38,37 +38,37 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
           <em>Zhangde Song*, Jieyu Lu*, <b>Yuanqi Du*</b>, et al</em><br>
           arXiv preprint arXiv:2512.15567 | <a href="https://arxiv.org/abs/2512.15567">paper</a>
       </div>
-      <div class="pub-card" data-topic="control-sampling" data-year="2025" data-selected="true">
-          <strong>FEAT: Free energy Estimators with Adaptive Transport</strong><br>
-          <em><b>Yuanqi Du*</b>, Jiajun He*, Francisco Vargas, ..., Eric Vanden-Eijnden</em><br>
-          NeurIPS 2025 | <a href="https://arxiv.org/abs/2504.11516">paper</a>
-      </div>
-      <div class="pub-card" data-topic="generative-model" data-year="2025" data-selected="true">
+      <div class="pub-card" data-topic="generative-model" data-year="2026" data-selected="true">
           <strong>RNE: A Plug-and-play Framework for Diffusion Density Estimation and Inference-time Control</strong><br>
           <em>Jiajun He, José Miguel Hernández-Lobato, <b>Yuanqi Du†</b>, Francisco Vargas†</em><br>
-          arXiv preprint arXiv:2506.05668 | <a href="https://arxiv.org/abs/2506.05668">paper</a>
+          ICLR 2026 | <a href="https://arxiv.org/abs/2506.05668">paper</a>
       </div>
-      <div class="pub-card" data-topic="control-sampling" data-year="2025" data-selected="false">
-          <strong>Trust Region Constrained Measure Transport in Path Space for Stochastic Optimal Control and Inference</strong><br>
-          <em>Denis Blessing, Julius Berner, Lorenz Richter, Carles Domingo-Enrich, <b>Yuanqi Du</b>, Arash Vahdat, Gerhard Neumann</em><br>
-          NeurIPS 2025 (<b>Spotlight</b>) | <a href="https://arxiv.org/abs/2508.12511">paper</a>
-      </div>
-      <div class="pub-card" data-topic="generative-model" data-year="2025" data-selected="true">
+      <div class="pub-card" data-topic="generative-model" data-year="2026" data-selected="true">
           <strong>CREPE: Controlling Diffusion with Replica Exchange</strong><br>
           <em>Jiajun He, ..., <b>Yuanqi Du</b>, Saifuddin Syed, Francisco Vargas</em><br>
-          arXiv preprint arXiv:2509.23265 | <a href="https://arxiv.org/abs/2509.23265">paper</a>
+          ICLR 2026 | <a href="https://arxiv.org/abs/2509.23265">paper</a>
       </div>
       <br>
-      <div class="pub-card" data-topic="control-sampling" data-year="2025" data-selected="true">
+      <div class="pub-card" data-topic="control-sampling" data-year="2026" data-selected="true">
           <strong>Accelerated Parallel Tempering via Neural Transports</strong><br>
           <em>Leo Zhang, Peter Potaptchik, Jiajun He, <b>Yuanqi Du</b>, ..., Saifuddin Syed</em><br>
-          arXiv preprint arXiv:2502.10328 | <a href="https://arxiv.org/abs/2502.10328">paper</a>
+          ICLR 2026 | <a href="https://arxiv.org/abs/2502.10328">paper</a>
       </div>
       <br>
       <div class="pub-card" data-topic="control-sampling" data-year="2025" data-selected="true">
           <strong>No Trick, No Treat: Pursuits and Challenges Towards Simulation-free Training of Neural Samplers</strong><br>
           <em>Jiajun He*, <b>Yuanqi Du*</b>, Francisco Vargas, ..., Carla P. Gomes, José Miguel Hernández-Lobato</em><br>
           arXiv preprint arXiv:2502.06685 | <a href="https://arxiv.org/abs/2502.06685">paper</a>
+      </div>
+      <div class="pub-card" data-topic="control-sampling" data-year="2025" data-selected="true">
+          <strong>FEAT: Free energy Estimators with Adaptive Transport</strong><br>
+          <em><b>Yuanqi Du*</b>, Jiajun He*, Francisco Vargas, ..., Eric Vanden-Eijnden</em><br>
+          NeurIPS 2025 | <a href="https://arxiv.org/abs/2504.11516">paper</a>
+      </div>
+      <div class="pub-card" data-topic="control-sampling" data-year="2025" data-selected="false">
+          <strong>Trust Region Constrained Measure Transport in Path Space for Stochastic Optimal Control and Inference</strong><br>
+          <em>Denis Blessing, Julius Berner, Lorenz Richter, Carles Domingo-Enrich, <b>Yuanqi Du</b>, Arash Vahdat, Gerhard Neumann</em><br>
+          NeurIPS 2025 (<b>Spotlight</b>) | <a href="https://arxiv.org/abs/2508.12511">paper</a>
       </div>
       <br>
       <br>
