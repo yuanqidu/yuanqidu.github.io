@@ -22,6 +22,5 @@ Yuanqi Du is a PhD candidate in Computer Science at Cornell University. His rese
 Additional topics I am interested in include: (Mechanistic) Interpretability, Science of Science, and Societal Impact of AI.
 
 ## News & Upcoming Events 
-  * [AI for Science](https://ai4sciencecommunity.github.io/neurips25.html) and [SPIGM](https://spigmworkshopv3.github.io/) workshops are both back in NeurIPS 2025!
   * Join our [Generative Modeling & Sampling Seminar](https://sites.google.com/view/msrne-genai-sampling-seminar/home) at MSR NE (in-person attendance is available)! 
   * Check out my new blog [Scientific Knowledge Emerges in LLMs and YOU CAN Access It](https://medium.com/@yuanqidu/scientific-knowledge-emerges-in-llms-and-you-can-access-it-75aa002c21c8)!
