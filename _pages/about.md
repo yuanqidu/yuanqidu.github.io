@@ -15,7 +15,7 @@ Yuanqi Du is a PhD candidate in Computer Science at Cornell University. His rese
 **Feel free to send me en email if you are interested in collaborating or working on exciting research projects with me!**
 
 ## Research Interests
-  * ***Probabilistic Machine Learning***: Generative Models, Large Language Models, Measure Transport, Stochastic Control, Sampling, Bayesian Inference 
+  * ***Probabilistic Machine Learning***: Generative Models, Large Language Models, Measure Transport, Stochastic Control, Sampling, Bayesian Inference, Reinforcement Learning
   * ***Structure and Geometry***: Neural Architectures (e.g. Graphs and Sets), Equivariance, Symmetry, Tensor Networks
   * ***AI for Science***: Physical Chemistry, Drug Discovery, Materials Science
 
