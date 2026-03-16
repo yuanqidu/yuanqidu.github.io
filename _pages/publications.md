@@ -27,7 +27,7 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
         <a href="#topic-ai-for-science" onClick="return publicationByTopicSpecific(this)" data-topic="ai-for-science">AI for Science</a> (* denotes equal contribution, † denotes advising role)
         <br />
     </p>
-    For the up-to-date full publication list, please check my <a href="">Google Scholar</a>.
+    <p class="subtitle-aux"><b>For the up-to-date full publication list, please check my <a href="">Google Scholar</a>.</b>
     <div id="pub-card-container" class="activated hide">
       <div class="pub-card" data-topic="large-language-model" data-year="2025" data-selected="true">
           <strong>SAGA: Accelerating Scientific Discovery with Autonomous Goal-evolving Agents</strong><br>
