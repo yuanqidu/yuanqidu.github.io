@@ -7,7 +7,8 @@ author_profile: true
 
 Education
 ======
-* Ph.D. in Computer Science, Cornell University, 2022-now
+* Ph.D. in Computer Science, Minor in Applied Mathematics, Cornell University, 2022-2026 
+* M.S. in Computer Science, Cornell University, 2022-2024
 * B.S. in Computer Science, George Mason University, 2017-2021
 
 Research experience
