@@ -15,8 +15,6 @@ As a passionate community builder, he has organized over 20 events including con
 
 **Join our vibrant AI for Science slack community with more than 1700 researchers [here](https://join.slack.com/t/aiforscience/shared_invite/zt-3eferk1xy-vIDrgaBCdpXfCKmQs9WH0g)!**
 
-<!-- **I am on the academic job market for positions that start from Fall 2026! You can [find my CV here](https://github.com/yuanqidu/yuanqidu.github.io/blob/master/CV/CV.pdf)!** -->
-
 **Feel free to send me en email if you are interested in collaborating or working on exciting research projects with me!**
 
 ## Research Interests
