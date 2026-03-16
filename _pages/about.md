@@ -20,7 +20,7 @@ As a passionate community builder, he has organized over 20 events including con
 ## Research Interests
   * ***Probabilistic Machine Learning***: Generative Models, Large Language Models, Measure Transport, Stochastic Control, Sampling, Bayesian Inference, Reinforcement Learning
   * ***Structure and Geometry***: Neural Architectures (e.g. Graphs and Sets), Equivariance, Symmetry, Tensor Networks
-  * ***AI for Science***: Physical Chemistry, Drug Discovery, Materials Science
+  * ***AI for Science***: Physical Chemistry, Condensed Matter Physics, Drug Discovery, Materials Science
 
 Additional topics I am interested in include: (Mechanistic) Interpretability, Science of Science, and Societal Impact of AI.
 
