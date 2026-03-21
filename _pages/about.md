@@ -24,5 +24,6 @@ As a passionate community builder, he has organized over 20 events including con
   * ***Science of everything***: (Mechanistic) Interpretability, Science of Science, Societal Impact
 
 ## News & Upcoming Events 
+  * Check out SPIGM and AI for Science workshops with ICML 2026 at Seoul! 
   * Join our [Generative Modeling & Sampling Seminar](https://sites.google.com/view/msrne-genai-sampling-seminar/home) at MSR NE (in-person attendance is available)! 
   * Check out my new blog [Scientific Knowledge Emerges in LLMs and YOU CAN Access It](https://medium.com/@yuanqidu/scientific-knowledge-emerges-in-llms-and-you-can-access-it-75aa002c21c8)!
