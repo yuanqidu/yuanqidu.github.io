@@ -9,7 +9,23 @@ author_profile: true
 
 Selected Talks and Lectures:
 ======
+* AI-Driven Scientific Discovery
+  * JHU CS Seminar, March 2026
+  * UC Berkeley BIDMaP Institute, Jan 2026
+  * Flatiron Institute Center for Computational Mathematics, Jan 2026
+  * Microsoft Research New England, Nov 2025
+  * Harvard Kempner Institute, Nov 2025
+* Towards Generalist Agents for Accelerating Scientific Discovery
+  * alphaXiv Seminar, March 2026
+  * ACS Generative and Agentic Systems in Chemistry Symposium, March 2026
+  * Allen Institute for AI, Feb 2026
+* Rare Event Analysis via Stochastic Optimal Control
+  * ACS Integrating Deep Learning and Dynamics Symposium, March 2026
+* Scaling Probabilistic Models at Inference time for Scientific Discovery
+  * OpenEye CUP XXV Meeting on Generative Design, March 2026
+  * ACS Machine Learning in Chemistry Symposium, March 2026
 * Bridging Non-equilibrium Simulation and Probabilistic Machine Learning
+  * @Google DeepMind, Nov 2025
   * @UCB Pitzer Center for Theoretical Chemistry Seminar, Oct 2025
   * @University of Maryland Statistical Physics Seminar, Oct 2025
   * @SIAM PNW Biennial Meeting Scientific ML Symposium, Oct 2025
