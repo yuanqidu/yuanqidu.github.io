@@ -25,41 +25,41 @@ Selected Talks and Lectures:
   * OpenEye CUP XXV Meeting on Generative Design, March 2026
   * ACS Machine Learning in Chemistry Symposium, March 2026
 * Bridging Non-equilibrium Simulation and Probabilistic Machine Learning
-  * @Google DeepMind, Nov 2025
-  * @UCB Pitzer Center for Theoretical Chemistry Seminar, Oct 2025
-  * @University of Maryland Statistical Physics Seminar, Oct 2025
-  * @SIAM PNW Biennial Meeting Scientific ML Symposium, Oct 2025
-  * @Caltech CMS, July 2025
-  * @UCLA IPAM Sampling, Inference, and Data-Driven Physical Modeling in Scientific Machine Learning Workshop, July 2025
-  * @MIT Zhang's Group (Chemistry), July 2025
-  * @UCB Aditi Krishnapriyan and Kranthi Mandadapu's group (EECS and CBE), June 2025 
+  * Google DeepMind, Nov 2025
+  * UCB Pitzer Center for Theoretical Chemistry Seminar, Oct 2025
+  * University of Maryland Statistical Physics Seminar, Oct 2025
+  * SIAM PNW Biennial Meeting Scientific ML Symposium, Oct 2025
+  * Caltech CMS, July 2025
+  * UCLA IPAM Sampling, Inference, and Data-Driven Physical Modeling in Scientific Machine Learning Workshop, July 2025
+  * MIT Zhang's Group (Chemistry), July 2025
+  * UCB Aditi Krishnapriyan and Kranthi Mandadapu's group (EECS and CBE), June 2025 
 * Scientific Knowledge Exists in Large Language Models and You Can Extract It
-  * @UW Data Science Seminar, Nov 2025
-  * @UMass Amherst Machine Learning and Friends Lunch, Nov 2025
-  * @UCB Teresa Head-Gordon Lab (Chemistry), Oct 2025
-  * @AI Alliance AI for Materials & Chemistry Webinar, Aug 2025
-  * @USC Melady Lab, July 2025
-  * @EPFL AI for Chemistry and Beyond Seminar, May 2025
-  * @ACS Machine Learning in Chemistry Symposium, March 2025
+  * UW Data Science Seminar, Nov 2025
+  * UMass Amherst Machine Learning and Friends Lunch, Nov 2025
+  * UCB Teresa Head-Gordon Lab (Chemistry), Oct 2025
+  * AI Alliance AI for Materials & Chemistry Webinar, Aug 2025
+  * USC Melady Lab (Computer Science), July 2025
+  * EPFL AI for Chemistry and Beyond Seminar, May 2025
+  * ACS Machine Learning in Chemistry Symposium, March 2025
 * Accelerating Molecular Discovery from a Data-driven Computational Perspective
-  * @UCSD Rose Yu's Group (Computer Science), March 2025
-  * @ACS Generative Modeling for Chem, Bio & Material Symposium, March 2025
-  * @Princeton AI^2 Research Talk Series, Jan 2025
-  * @UCLA Modern computation: AI + Quantum (Guest Lecture), Oct 2024 
-  * @UT Austin Henkelman's Group (Chemistry), Oct 2024
-  * @MIT Kulik's Group (Chemical Engineering), August 2024
-  * @Microsoft Research AI4Science Colloquium, June 2024
-  * @Stanford Theoretical Chemistry Group, June 2024
-  * @Gatech Applied and Comp. Mathematics Seminar, April 2024
-  * @Cornell Deep Learning (SYSEN 6888 Guest Lecture), Nov 2023
+  * UCSD Rose Yu's Group (Computer Science), March 2025
+  * ACS Generative Modeling for Chem, Bio & Material Symposium, March 2025
+  * Princeton AI^2 Research Talk Series, Jan 2025
+  * UCLA Modern computation: AI + Quantum (Guest Lecture), Oct 2024 
+  * UT Austin Henkelman's Group (Chemistry), Oct 2024
+  * MIT Kulik's Group (Chemical Engineering), August 2024
+  * Microsoft Research AI4Science Colloquium, June 2024
+  * Stanford Theoretical Chemistry Group, June 2024
+  * Gatech Applied and Comp. Mathematics Seminar, April 2024
+  * Cornell Deep Learning (SYSEN 6888 Guest Lecture), Nov 2023
 * Accelerating Transition Dynamics Simulation with Probabilistic Machine Learning 
-  * @Cornell SCAM Seminar (Center of Applied Mathematics), March 2025
-  * @ACS Inferring Kinetics, Thermodynamics, and Mechanisms from Sampling Symposium, March 2025
-  * @ByteDance AI Lab, March 2025
-  * @NYU Courant Generative Model/Sampling Seminar, Nov 2024
-  * @UCB BIDMaP Young Scholar Seminar, Nov 2024 
-  * @SIAM New York-New Jersey-Pennsylvania Section Annual Conference, Nov 2024
-  * @IAIFI Summer Workshop, August 2024
+  * Cornell SCAM Seminar (Center of Applied Mathematics), March 2025
+  * ACS Inferring Kinetics, Thermodynamics, and Mechanisms from Sampling Symposium, March 2025
+  * ByteDance AI Lab, March 2025
+  * NYU Courant Generative Model/Sampling Seminar, Nov 2024
+  * UCB BIDMaP Young Scholar Seminar, Nov 2024 
+  * SIAM New York-New Jersey-Pennsylvania Section Annual Conference, Nov 2024
+  * IAIFI Summer Workshop, August 2024
 
 
 <!-- * FEAT: Free energy Estimators with Adaptive Transport
