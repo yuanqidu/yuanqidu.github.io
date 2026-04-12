@@ -25,5 +25,5 @@ As a passionate community builder, he has organized over 20 events including con
 
 ## News & Upcoming Events 
   * Check out [SPIGM](https://spigmworkshop2026.github.io/) and [AI for Science](https://ai4sciencecommunity.github.io/icml26.html) workshops with ICML 2026 at Seoul! 
-  * Join our [Generative Modeling & Sampling Seminar](https://sites.google.com/view/msrne-genai-sampling-seminar/home) at MSR NE (in-person attendance is available)! 
+  * Join our [Generative Modeling & Sampling Seminar](https://sites.google.com/view/msrne-genai-sampling-seminar/home) at MSR New England (in-person attendance is available)! 
   * Check out my new blog [Scientific Knowledge Emerges in LLMs and YOU CAN Access It](https://medium.com/@yuanqidu/scientific-knowledge-emerges-in-llms-and-you-can-access-it-75aa002c21c8)!
