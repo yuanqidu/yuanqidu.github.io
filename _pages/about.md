@@ -13,7 +13,7 @@ Yuanqi Du received his Ph.D. in Computer Science from Cornell University. His re
 As a passionate community builder, he has organized over 20 events including conferences, workshops, and seminar series on topics ranging from [AI for Science](https://ai4sciencecommunity.github.io/), [probabilistic machine learning](https://spigmworkshop.github.io/), and [learning on graphs](https://logconference.github.io/). He also leads an educational initiative [*AI for Science 101*](https://ai4science101.github.io/). 
 
 
-**Join our vibrant AI for Science slack community with more than 1700 researchers [here](https://join.slack.com/t/aiforscience/shared_invite/zt-3eferk1xy-vIDrgaBCdpXfCKmQs9WH0g)!**
+**Join our vibrant AI for Science slack community with more than 1800 researchers [here](https://join.slack.com/t/aiforscience/shared_invite/zt-3eferk1xy-vIDrgaBCdpXfCKmQs9WH0g)!**
 
 **Feel free to send me en email if you are interested in collaborating or working on exciting research projects with me!**
 
