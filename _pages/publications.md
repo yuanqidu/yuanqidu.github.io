@@ -29,6 +29,11 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
     </p>
     <p class="subtitle-aux"><b>For the up-to-date full publication list, please check my <a href="https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en">Google Scholar</a>.</b>
     <div id="pub-card-container" class="activated hide">
+      <div class="pub-card" data-topic="control-sampling" data-year="2026" data-selected="true">
+          <strong>Rare Event Analysis via Stochastic Optimal Control</strong><br>
+          <em><b>Yuanqi Du</b>, Jiajun He, Dinghuai Zhang, Eric Vanden-Eijnden, Carles Domingo-Enrich</em><br>
+          arXiv preprint arXiv:2604.13213 | <a href="https://arxiv.org/abs/2604.13213">paper</a>
+      </div>
       <div class="pub-card" data-topic="large-language-model" data-year="2025" data-selected="true">
           <strong>SAGA: Accelerating Scientific Discovery with Autonomous Goal-evolving Agents</strong><br>
           <em><b>Yuanqi Du*</b>, Botao Yu*, Tianyu Liu*, et al</em><br>
