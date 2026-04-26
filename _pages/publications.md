@@ -27,7 +27,7 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
         <a href="#topic-ai-for-science" onClick="return publicationByTopicSpecific(this)" data-topic="ai-for-science">AI for Science</a> (* denotes equal contribution, † denotes advising role)
         <br />
     </p>
-    <p class="subtitle-aux"><b>For the up-to-date full publication list, please check my <a href="https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en">Google Scholar</a>.</b>
+    <p class="subtitle-aux"><b>This page is updated periodically (mainly for selected work only). For the up-to-date full publication list, please check my <a href="https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en">Google Scholar</a>.</b>
     <div id="pub-card-container" class="activated hide">
       <div class="pub-card" data-topic="control-sampling" data-year="2026" data-selected="true">
           <strong>Rare Event Analysis via Stochastic Optimal Control</strong><br>
@@ -49,13 +49,13 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
           <em>Jiajun He, José Miguel Hernández-Lobato, <b>Yuanqi Du†</b>, Francisco Vargas†</em><br>
           ICLR 2026 | <a href="https://arxiv.org/abs/2506.05668">paper</a>
       </div>
-      <div class="pub-card" data-topic="generative-model" data-year="2026" data-selected="true">
+      <div class="pub-card" data-topic="generative-model" data-year="2026" data-selected="false">
           <strong>CREPE: Controlling Diffusion with Replica Exchange</strong><br>
           <em>Jiajun He, ..., <b>Yuanqi Du</b>, Saifuddin Syed, Francisco Vargas</em><br>
           ICLR 2026 | <a href="https://arxiv.org/abs/2509.23265">paper</a>
       </div>
       <br>
-      <div class="pub-card" data-topic="control-sampling" data-year="2026" data-selected="true">
+      <div class="pub-card" data-topic="control-sampling" data-year="2026" data-selected="false">
           <strong>Accelerated Parallel Tempering via Neural Transports</strong><br>
           <em>Leo Zhang, Peter Potaptchik, Jiajun He, <b>Yuanqi Du</b>, ..., Saifuddin Syed</em><br>
           ICLR 2026 | <a href="https://arxiv.org/abs/2502.10328">paper</a>
