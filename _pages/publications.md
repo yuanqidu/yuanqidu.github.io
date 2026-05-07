@@ -34,16 +34,6 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
           <em><b>Yuanqi Du</b>, Jiajun He, Dinghuai Zhang, Eric Vanden-Eijnden, Carles Domingo-Enrich</em><br>
           arXiv preprint arXiv:2604.13213 | <a href="https://arxiv.org/abs/2604.13213">paper</a>
       </div>
-      <div class="pub-card" data-topic="large-language-model" data-year="2025" data-selected="true">
-          <strong>SAGA: Accelerating Scientific Discovery with Autonomous Goal-evolving Agents</strong><br>
-          <em><b>Yuanqi Du*</b>, Botao Yu*, Tianyu Liu*, et al</em><br>
-          arXiv preprint arXiv:2512.21782 | <a href="https://arxiv.org/abs/2512.21782">paper</a>
-      </div>
-      <div class="pub-card" data-topic="large-language-model" data-year="2025" data-selected="true">
-          <strong>Evaluating Large Language Models in Scientific Discovery</strong><br>
-          <em>Zhangde Song*, Jieyu Lu*, <b>Yuanqi Du*</b>, et al</em><br>
-          arXiv preprint arXiv:2512.15567 | <a href="https://arxiv.org/abs/2512.15567">paper</a>
-      </div>
       <div class="pub-card" data-topic="generative-model" data-year="2026" data-selected="true">
           <strong>RNE: A Plug-and-play Framework for Diffusion Density Estimation and Inference-time Control</strong><br>
           <em>Jiajun He, José Miguel Hernández-Lobato, <b>Yuanqi Du†</b>, Francisco Vargas†</em><br>
@@ -54,11 +44,20 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
           <em>Jiajun He, ..., <b>Yuanqi Du</b>, Saifuddin Syed, Francisco Vargas</em><br>
           ICLR 2026 | <a href="https://arxiv.org/abs/2509.23265">paper</a>
       </div>
-      <br>
       <div class="pub-card" data-topic="control-sampling" data-year="2026" data-selected="false">
           <strong>Accelerated Parallel Tempering via Neural Transports</strong><br>
           <em>Leo Zhang, Peter Potaptchik, Jiajun He, <b>Yuanqi Du</b>, ..., Saifuddin Syed</em><br>
           ICLR 2026 | <a href="https://arxiv.org/abs/2502.10328">paper</a>
+      </div>
+      <div class="pub-card" data-topic="large-language-model" data-year="2025" data-selected="true">
+          <strong>SAGA: Accelerating Scientific Discovery with Autonomous Goal-evolving Agents</strong><br>
+          <em><b>Yuanqi Du*</b>, Botao Yu*, Tianyu Liu*, et al</em><br>
+          arXiv preprint arXiv:2512.21782 | <a href="https://arxiv.org/abs/2512.21782">paper</a>
+      </div>
+      <div class="pub-card" data-topic="large-language-model" data-year="2025" data-selected="true">
+          <strong>Evaluating Large Language Models in Scientific Discovery</strong><br>
+          <em>Zhangde Song*, Jieyu Lu*, <b>Yuanqi Du*</b>, et al</em><br>
+          arXiv preprint arXiv:2512.15567 | <a href="https://arxiv.org/abs/2512.15567">paper</a>
       </div>
       <div class="pub-card" data-topic="control-sampling" data-year="2025" data-selected="true">
           <strong>FEAT: Free energy Estimators with Adaptive Transport</strong><br>
