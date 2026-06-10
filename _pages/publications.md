@@ -34,6 +34,16 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
           <em><b>Yuanqi Du</b>, Jiajun He, Dinghuai Zhang, Eric Vanden-Eijnden, Carles Domingo-Enrich</em><br>
           arXiv preprint arXiv:2604.13213 | <a href="https://arxiv.org/abs/2604.13213">paper</a>
       </div>
+      <div class="pub-card" data-topic="control-sampling" data-year="2026" data-selected="true">
+          <strong>Free energy Estimation on Any State Space</strong><br>
+          <em>Jiajun He, Zijing Ou, Francisco Vargas, ..., <b>Yuanqi Du</b></em><br>
+          arXiv preprint arXiv:2605.31063 | <a href="https://arxiv.org/abs/2605.31063">paper</a>
+      </div>
+      <div class="pub-card" data-topic="large-language-model" data-year="2026" data-selected="true">
+          <strong>Towards Diverse Scientific Hypothesis Search with Large Language Models</strong><br>
+          <em>Haorui Wang, Parshin Shojaee, Kazem Meidani, ... Jiajun He, Chandan K. Reddy, Chao Zhang, <b>Yuanqi Du</b></em><br>
+          ICML 2026 | <a href="https://arxiv.org/abs/2606.10587">paper</a>
+      </div>
       <div class="pub-card" data-topic="generative-model" data-year="2026" data-selected="true">
           <strong>RNE: A Plug-and-play Framework for Diffusion Density Estimation and Inference-time Control</strong><br>
           <em>Jiajun He, José Miguel Hernández-Lobato, <b>Yuanqi Du†</b>, Francisco Vargas†</em><br>
