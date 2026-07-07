@@ -15,7 +15,7 @@ As a passionate community builder, he has organized over 30 events including con
 
 **Join our vibrant AI for Science slack community with near 2,000 researchers [here](https://join.slack.com/t/aiforscience/shared_invite/zt-3eferk1xy-vIDrgaBCdpXfCKmQs9WH0g)!**
 
-**Feel free to send me en email if you are interested in doing internships with me!**
+**Feel free to send me en email if you are interested in collaborations or internships!**
 
 ## Research Interests
   * ***Probabilistic Machine Learning***: Generative Models, Large Language Models, Measure Transport, Stochastic Control, Sampling, Bayesian Inference, Reinforcement Learning
