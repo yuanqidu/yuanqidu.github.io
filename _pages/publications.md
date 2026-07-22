@@ -15,7 +15,7 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
 **This page is updated periodically (for selected work only). For the up-to-date full publication list, please check my [Google Scholar](https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en).**
 
 **ATLAS: A Foundation Neural Sampler for Amorphous Materials**
-*Mouyang Cheng, Denis Blessing, Botao Yu, Gerhard Neumann, Mingda Li, Carles Domingo-Enrich, **Yuanqi Du***
+*Mouyang Cheng, Denis Blessing, Botao Yu, Gerhard Neumann, Mingda Li, Carles Domingo-Enrich, **Yuanqi Du†***
 arXiv preprint arXiv:2607.19198 | [paper](https://arxiv.org/abs/2607.19198)
 
 **Rare Event Analysis via Stochastic Optimal Control**  
@@ -23,11 +23,11 @@ arXiv preprint arXiv:2607.19198 | [paper](https://arxiv.org/abs/2607.19198)
 arXiv preprint arXiv:2604.13213 | [paper](https://arxiv.org/abs/2604.13213)
 
 **Free energy Estimation on Any State Space**  
-*Jiajun He, Zijing Ou, Francisco Vargas, ..., **Yuanqi Du***  
+*Jiajun He, Zijing Ou, Francisco Vargas, ..., **Yuanqi Du†***  
 arXiv preprint arXiv:2605.31063 | [paper](https://arxiv.org/abs/2605.31063)
 
 **Towards Diverse Scientific Hypothesis Search with Large Language Models**  
-*Haorui Wang, Parshin Shojaee, Kazem Meidani, ... Jiajun He, Chandan K. Reddy, Chao Zhang, **Yuanqi Du***  
+*Haorui Wang, Parshin Shojaee, Kazem Meidani, ... Jiajun He†, Chandan K. Reddy†, Chao Zhang†, **Yuanqi Du†***  
 ICML 2026 | [paper](https://arxiv.org/abs/2606.10587)
 
 **RNE: A Plug-and-play Framework for Diffusion Density Estimation and Inference-time Control**  
