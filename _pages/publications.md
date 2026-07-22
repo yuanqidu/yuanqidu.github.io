@@ -14,8 +14,8 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
 
 **This page is updated periodically (for selected work only). For the up-to-date full publication list, please check my [Google Scholar](https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en).**
 
-**ATLAS: A Foundation Neural Sampler for Amorphous Materials**
-*Mouyang Cheng, Denis Blessing, Botao Yu, Gerhard Neumann, Mingda Li, Carles Domingo-Enrich, **Yuanqi Du†***
+**ATLAS: A Foundation Neural Sampler for Amorphous Materials**  
+*Mouyang Cheng, Denis Blessing, Botao Yu, Gerhard Neumann, Mingda Li, Carles Domingo-Enrich, **Yuanqi Du†***  
 arXiv preprint arXiv:2607.19198 | [paper](https://arxiv.org/abs/2607.19198)
 
 **Rare Event Analysis via Stochastic Optimal Control**  
