@@ -31,6 +31,11 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
     <p class="subtitle-aux"><b>This page is updated periodically (mainly for selected work only). For the up-to-date full publication list, please check my <a href="https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en">Google Scholar</a>.</b>
     <div id="pub-card-container" class="activated hide">
       <div class="pub-card" data-topic="control-sampling" data-year="2026" data-selected="true">
+          <strong>ATLAS: A Foundation Neural Sampler for Amorphous Materials</strong><br>
+          <em>Mouyang Cheng, Denis Blessing, Botao Yu, Gerhard Neumann, Mingda Li, Carles Domingo-Enrich, <b>Yuanqi Du</b></em><br>
+          arXiv preprint arXiv:2607.19198 | <a href="https://arxiv.org/abs/2607.19198">paper</a>
+      </div>
+      <div class="pub-card" data-topic="control-sampling" data-year="2026" data-selected="true">
           <strong>Rare Event Analysis via Stochastic Optimal Control</strong><br>
           <em><b>Yuanqi Du</b>, Jiajun He, Dinghuai Zhang, Eric Vanden-Eijnden, Carles Domingo-Enrich</em><br>
           arXiv preprint arXiv:2604.13213 | <a href="https://arxiv.org/abs/2604.13213">paper</a>
