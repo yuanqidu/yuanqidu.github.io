@@ -19,7 +19,6 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
     )
     </h1>
     <p class="subtitle-aux"><b>Topics:</b>
-    <p class="subtitle-aux"><b>Topics:</b>
         <a href="#topic-control-sampling" onClick="return publicationByTopicSpecific(this)" data-topic="control-sampling">Stochastic Control & Sampling</a> /
         <a href="#topic-large-language-model" onClick="return publicationByTopicSpecific(this)" data-topic="large-language-model">Large Language Models</a> /
         <a href="#topic-generative-model" onClick="return publicationByTopicSpecific(this)" data-topic="generative-model">Generative Models & Optimal Transport</a> /
