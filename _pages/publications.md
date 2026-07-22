@@ -31,7 +31,7 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
     <div id="pub-card-container" class="activated hide">
       <div class="pub-card" data-topic="control-sampling" data-year="2026" data-selected="true">
           <strong>ATLAS: A Foundation Neural Sampler for Amorphous Materials</strong><br>
-          <em>Mouyang Cheng, Denis Blessing, Botao Yu, Gerhard Neumann, Mingda Li, Carles Domingo-Enrich, <b>Yuanqi Du</b></em><br>
+          <em>Mouyang Cheng, Denis Blessing, Botao Yu, Gerhard Neumann, Mingda Li, Carles Domingo-Enrich†, <b>Yuanqi Du†</b></em><br>
           arXiv preprint arXiv:2607.19198 | <a href="https://arxiv.org/abs/2607.19198">paper</a>
       </div>
       <div class="pub-card" data-topic="control-sampling" data-year="2026" data-selected="true">
@@ -41,12 +41,12 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
       </div>
       <div class="pub-card" data-topic="control-sampling" data-year="2026" data-selected="true">
           <strong>Free energy Estimation on Any State Space</strong><br>
-          <em>Jiajun He, Zijing Ou, Francisco Vargas, ..., <b>Yuanqi Du</b></em><br>
+          <em>Jiajun He, Zijing Ou, Francisco Vargas, ..., <b>Yuanqi Du†</b></em><br>
           arXiv preprint arXiv:2605.31063 | <a href="https://arxiv.org/abs/2605.31063">paper</a>
       </div>
       <div class="pub-card" data-topic="large-language-model" data-year="2026" data-selected="true">
           <strong>Towards Diverse Scientific Hypothesis Search with Large Language Models</strong><br>
-          <em>Haorui Wang, Parshin Shojaee, Kazem Meidani, ... Jiajun He, Chandan K. Reddy, Chao Zhang, <b>Yuanqi Du</b></em><br>
+          <em>Haorui Wang, Parshin Shojaee, Kazem Meidani, ... Jiajun He†, Chandan K. Reddy†, Chao Zhang†, <b>Yuanqi Du†</b></em><br>
           ICML 2026 | <a href="https://arxiv.org/abs/2606.10587">paper</a>
       </div>
       <div class="pub-card" data-topic="generative-model" data-year="2026" data-selected="true">
