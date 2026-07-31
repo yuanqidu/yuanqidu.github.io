@@ -22,6 +22,7 @@ I am actively involved in building research communities at the intersection of m
 
 # Selected Review Services
 
+- Action Editor: TMLR (2026-)
 - Conference Area Chair: NeurIPS (2025-)
 - Conference Reviewer: NeurIPS (2022-2024), ICML (2022-), ICLR (2022-), AAAI (2023-2024), ECCV (2024), CVPR (2023), KDD (2023), ICCV (2023), AISTATS (2022)
 - Journal Reviewer: Nature, Science Advances, Nature Machine Intelligence, Nature Computational Science, Nature Comms, JACS, TPAMI, JCTC, TMLR
