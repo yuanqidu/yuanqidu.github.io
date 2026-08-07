@@ -24,10 +24,9 @@ As a passionate community builder, he has organized over 30 events including con
 - ***Science of everything***: (Mechanistic) Interpretability, Science of Science, Societal Impact
 
 ## News
-
 - I will serve as a workshop co-chair at ICLR 2027!
-- Check out our summer [AI Scientist one-day workshop](https://ai-scientist-workshop.github.io/) and [Generative Modeling & Sampling two-day workshop](https://www.microsoft.com/en-us/research/event/msrne-generative-modeling-sampling-workshop/) at Cambridge, MA!
-- Check out [SPIGM](https://spigmworkshop2026.github.io/) and [AI for Science](https://ai4sciencecommunity.github.io/icml26.html) workshops with ICML 2026 at Seoul! 
+- Check out the 8th [AI for Science workshop](https://ai4sciencecommunity.github.io/neurips26.html), with NeurIPS, Sydney! 
+<!-- - Check out our summer [AI Scientist one-day workshop](https://ai-scientist-workshop.github.io/) and [Generative Modeling & Sampling two-day workshop](https://www.microsoft.com/en-us/research/event/msrne-generative-modeling-sampling-workshop/) at Cambridge, MA! -->
 - Join our [Generative Modeling & Sampling Seminar](https://www.microsoft.com/en-us/research/event/microsoft-research-new-england-generative-modeling-sampling-seminar/) at Microsoft Research New England, Cambridge, MA (in-person attendance is available)! 
-- Check out my new blog [Scientific Knowledge Emerges in LLMs and YOU CAN Access It](https://medium.com/@yuanqidu/scientific-knowledge-emerges-in-llms-and-you-can-access-it-75aa002c21c8)!
+<!-- - Check out my new blog [Scientific Knowledge Emerges in LLMs and YOU CAN Access It](https://medium.com/@yuanqidu/scientific-knowledge-emerges-in-llms-and-you-can-access-it-75aa002c21c8)! -->
 
