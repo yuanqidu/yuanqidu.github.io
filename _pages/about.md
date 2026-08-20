@@ -24,7 +24,7 @@ As a passionate community builder, he has organized over 30 events including con
 - ***Science of everything***: (Mechanistic) Interpretability, Science of Science, Societal Impact
 
 ## News
-- Check out our recent effort in scaling up neural samplers to solve fundamental problems in disordered systems, [ATLAS](https://arxiv.org/abs/2607.19198) and [JANUS](https://arxiv.org/abs/2608.19116)!
+- Check out our recent effort in scaling up neural samplers to study fundamental problems in disordered systems, [ATLAS](https://arxiv.org/abs/2607.19198) and [JANUS](https://arxiv.org/abs/2608.19116)!
 - I will serve as a workshop co-chair at ICLR 2027!
 - Check out the 8th [AI for Science workshop](https://ai4sciencecommunity.github.io/neurips26.html), with NeurIPS, Sydney! 
 <!-- - Check out our summer [AI Scientist one-day workshop](https://ai-scientist-workshop.github.io/) and [Generative Modeling & Sampling two-day workshop](https://www.microsoft.com/en-us/research/event/msrne-generative-modeling-sampling-workshop/) at Cambridge, MA! -->

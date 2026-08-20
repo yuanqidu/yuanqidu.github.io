@@ -6,9 +6,6 @@ author_profile: true
 googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
 ---
 
-<html>
-<body>
-
 <div class="content-container">
   <div id="pub-container">
     <h1 class="subtitle">Publications
@@ -27,7 +24,7 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
         <a href="#topic-ai-for-science" onClick="return publicationByTopicSpecific(this)" data-topic="ai-for-science">AI for Science</a> (* denotes equal contribution, † denotes advising role)
         <br />
     </p>
-    <p class="subtitle-aux"><b>This page is updated periodically (mainly for selected work only). For the up-to-date full publication list, please check my <a href="https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en">Google Scholar</a>.</b>
+    <p class="subtitle-aux"><b>This page is updated periodically (mainly for selected work only). For the up-to-date full publication list, please check my <a href="https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en">Google Scholar</a>.</b></p>
     <div id="pub-card-container" class="activated hide">
       <div class="pub-card" data-topic="control-sampling" data-year="2026" data-selected="true">
           <strong>JANUS: A Multi-modal Foundation Neural Sampler for Disordered Materials</strong><br>
@@ -479,5 +476,3 @@ $(function() {
     $("#pub-card-container").removeClass("hide");
 });
 </script>
-</body>
-</html>
