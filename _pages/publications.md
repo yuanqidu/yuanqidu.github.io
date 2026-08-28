@@ -52,6 +52,11 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
           ICLR 2026 | <a href="https://arxiv.org/abs/2506.05668">paper</a>
       </div>
       <div class="pub-card" data-topic="large-language-model" data-year="2026" data-selected="false">
+          <strong>Recipes for Steering and Scaling LLMs via Sampling</strong><br>
+          <em>Jiajun He, Zongyu Guo, José Miguel Hernández-Lobato, <b>Yuanqi Du†</b></em><br>
+          arXiv preprint arXiv:2608.26120 | <a href="https://arxiv.org/abs/2608.26120">paper</a>
+      </div>
+      <div class="pub-card" data-topic="large-language-model" data-year="2026" data-selected="false">
           <strong>Measuring AI Scientists: From Exams to Discovery</strong><br>
           <em><b>Yuanqi Du</b>, Steven Dillmann, Jon Laurent, Peter Jansen, Haojun Jia, Ludwig Schmidt, Andrew White, Kristin Persson, Chenru Duan</em><br>
           ChemRxiv preprint | <a href="https://chemrxiv.org/doi/abs/10.26434/chemrxiv.15007582">paper</a>
