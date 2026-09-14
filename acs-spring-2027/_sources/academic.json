@@ -1,0 +1,255 @@
+[
+  {
+    "id": "aditi-krishnapriyan",
+    "source_name": "Aditi Krishnapriyan",
+    "display_name": "Aditi S. Krishnapriyan",
+    "source_affiliation": "UC Berkeley",
+    "verified_affiliation": "University of California, Berkeley",
+    "local_image": "acs-spring-2027/images/aditi-krishnapriyan.jpg",
+    "profile_url": "https://chemistry.berkeley.edu/people/aditi-krishnapriyan",
+    "name_verification_url": "https://a1k12.github.io/",
+    "image_url": "https://chemistry.berkeley.edu/sites/default/files/aditi-krishnapriyan-768x512.jpg",
+    "verified_on": "2026-09-14",
+    "image_status": "downloaded-and-validated",
+    "http_status": 200,
+    "image_format": "JPEG",
+    "width": 768,
+    "height": 512,
+    "bytes": 56210,
+    "sha256": "55fb136e2397ed66ed5f11f6c5d3fe4cec45b12a8198f373c0bdcc8b4a0b5188",
+    "processing": "Original image bytes; no resizing.",
+    "caveats": [
+      "Her personal homepage uses Aditi S. Krishnapriyan; the Berkeley directory and organizer omit the middle initial. The institutional affiliation agrees with the organizer.",
+      "No image-specific reuse license or permission was established."
+    ]
+  },
+  {
+    "id": "yuanqi-du",
+    "source_name": "Yuanqi Du",
+    "display_name": "Yuanqi Du",
+    "source_affiliation": "Microsoft Research New England",
+    "verified_affiliation": "Microsoft Research New England",
+    "local_image": "acs-spring-2027/images/yuanqi-du.jpg",
+    "profile_url": "https://yuanqidu.github.io/",
+    "image_url": "https://yuanqidu.github.io/images/avatar.jpg",
+    "local_profile_source": "_pages/about.md",
+    "local_image_source": "images/avatar.jpg",
+    "verified_on": "2026-09-14",
+    "image_status": "copied-from-repository-and-validated",
+    "image_format": "JPEG",
+    "width": 800,
+    "height": 800,
+    "bytes": 83380,
+    "sha256": "47d33968bbd491683cc412fc2c063b8951f14e49095d308c2432ec0b2b691cda",
+    "processing": "Byte-for-byte copy of the repository owner's existing public avatar, as authorized in the task.",
+    "caveats": [
+      "Affiliation verified from the owner's local public profile, which identifies him as a Senior Researcher at Microsoft Research New England. The image was copied locally, not fetched over HTTP.",
+      "No broader third-party reuse license is asserted."
+    ]
+  },
+  {
+    "id": "christopher-jarzynski",
+    "source_name": "Christopher Jarzynski",
+    "display_name": "Christopher Jarzynski",
+    "source_affiliation": "University of Maryland",
+    "verified_affiliation": "University of Maryland, College Park",
+    "local_image": "acs-spring-2027/images/christopher-jarzynski.jpg",
+    "profile_url": "https://chem.umd.edu/people/christopher-jarzynski",
+    "image_url": "https://chem.umd.edu/sites/default/files/team/Jarzynski%20Christopher-CHEM-web-jpg.jpg",
+    "verified_on": "2026-09-14",
+    "image_status": "downloaded-and-validated",
+    "http_status": 200,
+    "image_format": "JPEG",
+    "width": 800,
+    "height": 800,
+    "bytes": 95845,
+    "sha256": "bfdefd53a1199a86d7967bc5c478015877096bcb6701e8f1a4db402bc4b6a138",
+    "processing": "Resized from 1000 by 1000 to 800 by 800; JPEG quality 90. Original photographer and copyright EXIF fields retained.",
+    "credit": "Lisa Helfert; source image metadata states: copyright Lisa Helfert 2018.",
+    "caveats": [
+      "Affiliation agrees with the organizer. The portrait is supplied by the official UMD faculty directory.",
+      "Copyright is explicitly identified in the source image; no image-specific reuse license or permission was established."
+    ]
+  },
+  {
+    "id": "peter-bolhuis",
+    "source_name": "Peter Bolhuis",
+    "display_name": "Peter Bolhuis",
+    "source_affiliation": "University of Amsterdam",
+    "verified_affiliation": "University of Amsterdam",
+    "local_image": "acs-spring-2027/images/peter-bolhuis.jpg",
+    "profile_url": "https://www.compchem.nl/staff_members/prof-dr-p-g-peter-bolhuis/",
+    "institutional_profile_url": "https://hims.uva.nl/profile/b/o/p.g.bolhuis/p.g.bolhuis.html",
+    "image_url": "https://www.compchem.nl/wp-content/uploads/PeterBolhuis.jpg",
+    "verified_on": "2026-09-14",
+    "image_status": "downloaded-and-validated",
+    "http_status": 200,
+    "image_format": "JPEG",
+    "width": 217,
+    "height": 289,
+    "bytes": 28021,
+    "sha256": "347727bd524f2aab2198e71b337eef7ca4c022d2f4725179d795a2735fed1a13",
+    "processing": "Original image bytes; not upscaled.",
+    "caveats": [
+      "Official profiles identify him as Prof. dr. P.G. (Peter) Bolhuis, at the Van 't Hoff Institute for Molecular Sciences. Affiliation agrees with the organizer.",
+      "The available official lab portrait is 217 by 289 pixels; the university profile supplies the same resolution. Suitable for a small speaker thumbnail, not a large display.",
+      "No image-specific reuse license or permission was established."
+    ]
+  },
+  {
+    "id": "pratyush-tiwary",
+    "source_name": "Pratyush Tiwary",
+    "display_name": "Pratyush Tiwary",
+    "source_affiliation": "University of Maryland",
+    "verified_affiliation": "University of Maryland, College Park",
+    "local_image": "acs-spring-2027/images/pratyush-tiwary.jpg",
+    "profile_url": "https://chem.umd.edu/people/pratyush-tiwary",
+    "image_url": "https://chem.umd.edu/sites/default/files/team/Tiwary%20Pratyush-CHEM-web-jpg%20%281%29.jpg",
+    "verified_on": "2026-09-14",
+    "image_status": "downloaded-and-validated",
+    "http_status": 200,
+    "image_format": "JPEG",
+    "width": 800,
+    "height": 800,
+    "bytes": 121135,
+    "sha256": "61b348e1876b2b628b08fa0b2912536a79dc37db1dc1e96364fb7856f28e6998",
+    "processing": "Resized from 1000 by 1000 to 800 by 800; JPEG quality 90. Original photographer EXIF field retained.",
+    "credit": "Lisa Helfert; the source image Artist/byline field reads LisaHelfert.",
+    "caveats": [
+      "Affiliation agrees with the organizer. The portrait is supplied by the official UMD faculty directory.",
+      "No image-specific reuse license or permission was established."
+    ]
+  },
+  {
+    "id": "david-limmer",
+    "source_name": "David Limmer",
+    "display_name": "David Limmer",
+    "source_affiliation": "UC Berkeley",
+    "verified_affiliation": "University of California, Berkeley",
+    "local_image": "acs-spring-2027/images/david-limmer.jpg",
+    "profile_url": "https://chemistry.berkeley.edu/people/david-limmer",
+    "image_url": "https://chemistry.berkeley.edu/sites/default/files/david-limmer-1200x800.jpg",
+    "verified_on": "2026-09-14",
+    "image_status": "downloaded-and-validated",
+    "http_status": 200,
+    "image_format": "JPEG",
+    "width": 800,
+    "height": 533,
+    "bytes": 100929,
+    "sha256": "72107ae9d99176396eb34f76f1c626c13bbbdb4466274fcd51884a03e201f95d",
+    "processing": "Resized proportionally from 1200 by 800 to 800 by 533; JPEG quality 90.",
+    "caveats": [
+      "Berkeley affiliation agrees with the organizer. The faculty biography also lists faculty-chemist appointments at Lawrence Berkeley National Laboratory; these do not replace the organizer's affiliation.",
+      "No image-specific reuse license or permission was established."
+    ]
+  },
+  {
+    "id": "jutta-rogal",
+    "source_name": "Jutta Rogal",
+    "display_name": "Jutta Rogal",
+    "source_affiliation": "Flatiron Institute",
+    "verified_affiliation": "Flatiron Institute, Initiative for Computational Catalysis",
+    "local_image": null,
+    "profile_url": "https://www.simonsfoundation.org/people/jutta-rogal/",
+    "image_url": null,
+    "verified_on": "2026-09-14",
+    "image_status": "not-downloaded-reuse-restrictions",
+    "caveats": [
+      "The official profile states that she joined Flatiron in November 2024 as a Research Scientist in the Initiative for Computational Catalysis. This agrees with the organizer; Freie Universität Berlin and NYU are previous affiliations.",
+      "Real portraits were located at Flatiron and Freie Universität Berlin, but their published terms explicitly restrict republication or rehosting without authorization. No permission was established and no substitute face was created.",
+      "Additional targeted checks of the former ICAMS pages, its current public search/media API, and the Lorentz Center workshop page did not yield an alternative usable portrait. An authorized speaker-supplied photograph is still needed.",
+      "A bounded follow-up checked Wikimedia Commons first, then distinct personal/research-group and Fritz Haber Institute sources. No identifiable licensed Commons portrait or distinct usable institutional portrait was found. Restricted photographs were not obtained through caches or alternate mirrors."
+    ],
+    "follow_up_checks": [
+      {
+        "checked_on": "2026-09-14",
+        "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&list=search&srsearch=%22Jutta+Rogal%22&srnamespace=6&srlimit=10",
+        "http_status": 200,
+        "result": "The exact-name file search returned zero results, so no identifiable portrait or image license could be verified. A surname-only search also yielded no identifiable portrait among its first ten results."
+      },
+      {
+        "checked_on": "2026-09-14",
+        "source_url": "https://www.fhi.mpg.de/982756/theses",
+        "http_status": 200,
+        "result": "The official Fritz Haber Institute listing names Dr. Jutta Rogal's doctoral thesis, dated June 2006, but supplies no individual portrait or linked Rogal profile."
+      },
+      {
+        "checked_on": "2026-09-14",
+        "source_url": "https://www.fhi.mpg.de/1304902/alumni",
+        "http_status": 200,
+        "result": "The alumni page linked from the thesis listing contains no Rogal entry or portrait. A targeted personal/research-group search returned the previously unavailable ICAMS group URL, not a new verified portrait source. The bounded search stopped here."
+      }
+    ],
+    "rejected_image_sources": [
+      {
+        "profile_url": "https://www.simonsfoundation.org/people/jutta-rogal/",
+        "image_url": "https://simonsfoundation.imgix.net/wp-content/uploads/2024/11/20142119/rogal_web.png?auto=format&q=90",
+        "policy_url": "https://www.simonsfoundation.org/terms-and-conditions/",
+        "reason": "Terms explicitly restrict reproduction, public display, republication, downloading and storage except as permitted by law; no permission for this symposium page was established."
+      },
+      {
+        "profile_url": "https://www.physik.fu-berlin.de/forschung/ehemalige-und-ehrendoktoren/ehemalige/rogal/index.html",
+        "image_url": "https://www.physik.fu-berlin.de/forschung/ehemalige-und-ehrendoktoren/ehemalige/rogal/Jutta-Rogal.jpg",
+        "policy_url": "https://www.fu-berlin.de/redaktion/copyright/index.html",
+        "reason": "The copyright notice explicitly forbids storing the material on another server without prior written authorization."
+      }
+    ]
+  },
+  {
+    "id": "gavin-crooks",
+    "source_name": "Gavin Crooks",
+    "display_name": "Gavin E. Crooks",
+    "source_affiliation": "",
+    "verified_affiliation": "Normal Computing",
+    "affiliation_evidence_url": "https://threeplusone.com/pubs/GECrooks_CV.pdf",
+    "affiliation_evidence_document": "Gavin E. Crooks - Curriculum vitae - 2026",
+    "affiliation_evidence_page": 1,
+    "affiliation_evidence_quote": "2023– Staff Research Scientist\nNormal Computing",
+    "former_affiliation_context_quote": "2023–2023 Lecturer\nUniversity of California, Berkeley",
+    "affiliation_status": "Current/open-ended appointment as listed in his self-published 2026 CV, starting in 2023; no end date is stated.",
+    "local_image": "acs-spring-2027/images/gavin-crooks.jpg",
+    "profile_url": "https://threeplusone.com/",
+    "image_profile_url": "https://newscenter.lbl.gov/2010/11/08/2009-pecase/",
+    "image_url": "https://newscenter.lbl.gov/wp-content/uploads/2010/10/Gavin-CrooksWeb1.jpg",
+    "verified_on": "2026-09-14",
+    "image_status": "downloaded-and-validated",
+    "http_status": 200,
+    "image_format": "JPEG",
+    "width": 411,
+    "height": 411,
+    "bytes": 33511,
+    "sha256": "a4bb674e1109a1b02b58d08e070f7d75584a0ad4dc98c276f79523d7f902ac57",
+    "processing": "Right-aligned square crop [229, 0, 640, 411] from the 640 by 411 original; JPEG quality 92. Photographer attribution from the article retained in EXIF.",
+    "credit": "Roy Kaltschmidt, Berkeley Lab Public Affairs.",
+    "caveats": [
+      "The organizer supplied no affiliation; that blank is preserved in source_affiliation. The 2026 CV states '2023– Staff Research Scientist' followed by 'Normal Computing', an open-ended appointment rather than a former job. The adjacent UC Berkeley lecturer entry explicitly runs '2023–2023'.",
+      "His personal homepage sidebar instead says Berkeley Institute for Technology and Science, while its research page is titled Berkeley Institute for Theoretical Science. Do not interpret either as a current UC Berkeley or Lawrence Berkeley National Laboratory appointment.",
+      "This is an archival genuine photograph published in a 2010 Berkeley Lab award announcement, which explicitly identifies him and credits the photographer. The stylized 2022 avatar on his current homepage was rejected and is not included.",
+      "A more recent authorized photograph would be preferable. No image-specific reuse license or permission was established."
+    ]
+  },
+  {
+    "id": "alex-dickson",
+    "source_name": "Alex Dickson",
+    "display_name": "Alex Dickson",
+    "source_affiliation": "Michigan State",
+    "verified_affiliation": "Michigan State University",
+    "local_image": "acs-spring-2027/images/alex-dickson.jpg",
+    "profile_url": "https://directory.natsci.msu.edu/Directory/Profiles/Person/100331",
+    "name_verification_url": "https://www.egr.msu.edu/~alexrd/people.html",
+    "image_url": "https://directory.natsci.msu.edu/media/Directory/Profiles/alex20220803134430-1.jpg",
+    "verified_on": "2026-09-14",
+    "image_status": "downloaded-and-validated",
+    "http_status": 200,
+    "image_format": "JPEG",
+    "width": 450,
+    "height": 450,
+    "bytes": 75454,
+    "sha256": "9d0222287695a04e03323944db6048edb6ad88fad1396fae9267260ebcc25802",
+    "processing": "Original image bytes; no resizing.",
+    "caveats": [
+      "The official directory lists Alexander R Dickson; his own lab uses Alex Dickson, matching the organizer's preferred display name. The university affiliation agrees.",
+      "No image-specific reuse license or permission was established."
+    ]
+  }
+]

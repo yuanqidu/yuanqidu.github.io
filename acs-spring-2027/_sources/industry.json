@@ -1,0 +1,245 @@
+[
+  {
+    "id": "lucy-van-dijk",
+    "source_name": "Lucy Van Dijk",
+    "display_name": "Lucy van Dijk",
+    "source_affiliation": "Isomorphic lab",
+    "verified_affiliation": "Isomorphic Labs",
+    "local_image": "acs-spring-2027/images/lucy-van-dijk.jpg",
+    "profile_url": "https://scholar.google.com/citations?user=gt0XZw4AAAAJ&hl=en",
+    "portrait_profile_url": "https://scholar.google.com/citations?user=gt0XZw4AAAAJ&hl=en",
+    "image_url": "https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=gt0XZw4AAAAJ&citpid=2",
+    "verified_on": "2026-09-14",
+    "image_verification": {
+      "http_status": 200,
+      "response_content_type": "image/jpeg",
+      "format": "JPEG",
+      "width": 255,
+      "height": 256,
+      "bytes": 16616,
+      "visually_checked": true,
+      "processing": "Original image retained without enlargement."
+    },
+    "license": null,
+    "rights_note": "No explicit portrait reuse license located on the source page; reuse permission is not established.",
+    "caveats": [
+      "The personal Google Scholar profile uses lowercase 'van' and lists Isomorphic Labs with a verified isomorphiclabs.com email.",
+      "The organizer's affiliation is a spelling/abbreviation variant, not a conflicting employer.",
+      "The available portrait is thumbnail resolution."
+    ]
+  },
+  {
+    "id": "frank-pickard",
+    "source_name": "Frank Pickard",
+    "display_name": "Frank C. Pickard IV",
+    "source_affiliation": "Genesis",
+    "verified_affiliation": "Genesis Therapeutics",
+    "local_image": "acs-spring-2027/images/frank-pickard.jpg",
+    "profile_url": "https://scholar.google.com/citations?user=K4U5lIIAAAAJ&hl=en",
+    "portrait_profile_url": "https://scholar.google.com/citations?user=K4U5lIIAAAAJ&hl=en",
+    "image_url": "https://scholar.googleusercontent.com/citations?view_op=medium_photo&user=K4U5lIIAAAAJ&citpid=4",
+    "verified_on": "2026-09-14",
+    "image_verification": {
+      "http_status": 200,
+      "response_content_type": "image/jpeg",
+      "format": "JPEG",
+      "width": 256,
+      "height": 256,
+      "bytes": 11047,
+      "visually_checked": true,
+      "processing": "Original image retained without enlargement."
+    },
+    "license": null,
+    "rights_note": "No explicit portrait reuse license located on the source page; reuse permission is not established.",
+    "caveats": [
+      "The personal Google Scholar profile spells the name 'Frank C Pickard IV' and verifies a genesistherapeutics.ai email; the display name adds standard middle-initial punctuation.",
+      "The organizer's 'Genesis' is expanded to Genesis Therapeutics.",
+      "The available portrait is thumbnail resolution."
+    ]
+  },
+  {
+    "id": "aleksander-durumeric",
+    "source_name": "Aleksander Durumeric",
+    "display_name": "Aleksander Durumeric",
+    "source_affiliation": "Iambic Therapeutics",
+    "verified_affiliation": "Iambic Therapeutics",
+    "local_image": "acs-spring-2027/images/aleksander-durumeric.jpg",
+    "profile_url": "https://scholar.google.com/citations?user=tqFHh3gAAAAJ&hl=en",
+    "portrait_profile_url": "https://tristanbereau.com/group/aleksander_durumeric",
+    "image_url": "https://tristanbereau.com/static/aleksander.jpg",
+    "verified_on": "2026-09-14",
+    "image_verification": {
+      "http_status": 200,
+      "response_content_type": "image/jpeg",
+      "format": "JPEG",
+      "width": 390,
+      "height": 398,
+      "bytes": 17927,
+      "visually_checked": true,
+      "processing": "Original image retained."
+    },
+    "license": null,
+    "rights_note": "No explicit portrait reuse license located on the source page; reuse permission is not established.",
+    "caveats": [
+      "The personal Google Scholar profile lists Iambic Therapeutics, but its verified email is at fu-berlin.de rather than Iambic.",
+      "The photograph is from his named alumni page in Tristan Bereau's lab; that page identifies a former Heidelberg University postdoc, not his current employer."
+    ]
+  },
+  {
+    "id": "devleena-shivakumar",
+    "source_name": "Devleena Shivakumar",
+    "display_name": "Devleena Shivakumar",
+    "source_affiliation": "Revolution Medicines",
+    "verified_affiliation": "Revolution Medicines",
+    "verified_role": "Executive Director and Head of Computational Chemistry",
+    "local_image": "acs-spring-2027/images/devleena-shivakumar.jpg",
+    "profile_url": "https://scholar.google.com/citations?user=I5JEwfsAAAAJ&hl=en",
+    "portrait_profile_url": "https://community.womeninbio.org/events/view/sanfran92525",
+    "image_url": "https://community.womeninbio.org/files/large/917469205c1ec5e",
+    "verified_on": "2026-09-14",
+    "image_verification": {
+      "http_status": 200,
+      "response_content_type": "binary/octet-stream",
+      "format": "JPEG",
+      "width": 200,
+      "height": 200,
+      "bytes": 22380,
+      "visually_checked": true,
+      "processing": "Original image retained without enlargement; JPEG signature and decoded dimensions verified despite the generic server content type."
+    },
+    "license": null,
+    "rights_note": "No explicit portrait reuse license located on the source page; reuse permission is not established.",
+    "caveats": [
+      "The named headshot is directly adjacent to her biography on Women In Bio's September 25, 2025 San Francisco Bay Area event page.",
+      "The event biography states her role at Revolution Medicines; her personal Google Scholar profile separately lists Revolution Medicines and verifies a revmed.com email.",
+      "The available headshot is 200 by 200 pixels; a wider personal photo was not used."
+    ]
+  },
+  {
+    "id": "frederic-dreyer",
+    "source_name": "Frederic Dreyer",
+    "display_name": "Frédéric Dreyer",
+    "source_affiliation": "Prescient Design",
+    "verified_affiliation": "Prescient Design, Genentech",
+    "verified_role": "Principal Machine Learning Scientist, Prescient Design, Computational Sciences",
+    "local_image": "acs-spring-2027/images/frederic-dreyer.jpg",
+    "profile_url": "https://www.gene.com/scientists/our-scientists/frederic-dreyer",
+    "portrait_profile_url": "https://sites.google.com/site/fredericdreyer/",
+    "image_url": "https://lh3.googleusercontent.com/sitesv/AG8ngQVLwnHA-unOcuLoPI7BBEtwKK4-i3hCLEImAWrP1hOt0REOogtf6B4SCh7TVz6TXetDzLuYVK1i9dWDeYbJALnW79jo38b0WOyKsXK1ZxmerpqSSv_bv91Bw3xlNtlG5jDs0muUFRC-FFqDe4z6cciu1SvoOj5_iOCFYCW6PGFcExr1tpApQQBTt4Y59VjepSFFC2VumIT15O9mrT8qBHZbTWn42d24IlzNCS5Hxaw=w1280",
+    "verified_on": "2026-09-14",
+    "image_verification": {
+      "http_status": 200,
+      "response_content_type": "image/jpeg",
+      "format": "JPEG",
+      "width": 1280,
+      "height": 1104,
+      "bytes": 104788,
+      "visually_checked": true,
+      "processing": "Original downloaded image retained."
+    },
+    "license": null,
+    "rights_note": "No explicit portrait reuse license located on the personal photo source page; reuse permission is not established.",
+    "caveats": [
+      "The current official Genentech profile supplies the accented display name and confirms Prescient Design as his Genentech affiliation.",
+      "The photograph comes from his older personal Oxford webpage and does not imply current Oxford employment.",
+      "Genentech's corporate portrait was not downloaded because its terms restrict public republication: https://www.gene.com/terms-conditions.",
+      "The recorded Google Sites image URL is the actual downloaded URL and may change; the personal webpage is the rediscovery source."
+    ]
+  },
+  {
+    "id": "matt-welborn",
+    "source_name": "Matt Welborn",
+    "display_name": "Matt Welborn",
+    "source_affiliation": "Iambic Tx",
+    "verified_affiliation": "Iambic Therapeutics",
+    "verified_role": "Senior Vice President, Machine Learning",
+    "local_image": "acs-spring-2027/images/matt-welborn.jpg",
+    "profile_url": "https://www.iambic.ai/about",
+    "portrait_profile_url": "https://molssi.org/molssi-software-scientists/",
+    "image_url": "https://molssi.org/wp-content/uploads/2022/04/matthew-welborn.jpeg",
+    "additional_profile_url": "https://scholar.google.com/citations?user=dMq6UYMAAAAJ&hl=en",
+    "verified_on": "2026-09-14",
+    "image_verification": {
+      "http_status": 200,
+      "response_content_type": "image/jpeg",
+      "format": "JPEG",
+      "width": 476,
+      "height": 476,
+      "bytes": 96174,
+      "visually_checked": true,
+      "processing": "Original full-size image from the institutional page's srcset retained."
+    },
+    "license": null,
+    "rights_note": "No explicit portrait reuse license located on the institutional photo source page; reuse permission is not established.",
+    "caveats": [
+      "Iambic's current leadership page uses Matt Welborn; his academic and portrait-source pages use Matthew Welborn.",
+      "The organizer's 'Iambic Tx' is expanded to Iambic Therapeutics, also listed on his personal Google Scholar profile with a verified iambic.ai email.",
+      "The portrait is from MolSSI's former software scientists listing, where he is identified as an alumnus from 2019 to 2020; MolSSI is not used as his current affiliation.",
+      "No corporate media was copied from Iambic, whose terms prohibit republication: https://www.iambic.ai/terms."
+    ]
+  },
+  {
+    "id": "pat-walters",
+    "source_name": "Pat Walter",
+    "display_name": "Pat Walters",
+    "source_affiliation": "OpenADMET",
+    "verified_affiliation": "OpenADMET",
+    "verified_role": "Chief Scientist",
+    "local_image": "acs-spring-2027/images/pat-walters.jpg",
+    "profile_url": "https://openadmet.org/people/",
+    "portrait_profile_url": "https://openadmet.org/people/",
+    "image_url": "https://openadmet.org/images/people/pat_walters.jpg",
+    "additional_profile_url": "https://patwalters.github.io/Time-For-a-New-Adventure/",
+    "verified_on": "2026-09-14",
+    "image_verification": {
+      "http_status": 200,
+      "response_content_type": "image/jpeg",
+      "format": "JPEG",
+      "width": 800,
+      "height": 800,
+      "bytes": 145154,
+      "visually_checked": true,
+      "processing": "Downsampled the official 3000 by 3000 pixel, 5373098-byte JPEG to 800 by 800 pixels using macOS sips at JPEG quality 85; no face alteration."
+    },
+    "license": null,
+    "rights_note": "No explicit portrait reuse license located on the source page; reuse permission is not established.",
+    "caveats": [
+      "OpenADMET's own people page identifies Pat Walters, Ph.D., and labels this photograph Pat Walters, resolving the organizer's missing final 's' without guessing.",
+      "The people page lists him on the Governing Board with OpenADMET; its biography modal additionally names the Open Molecular Software Foundation.",
+      "His personal announcement separately confirms the Chief Scientist role at OpenADMET.",
+      "The image is OpenADMET's real photographic portrait, not the illustrated avatar from his personal blog."
+    ]
+  },
+  {
+    "id": "dean-brown",
+    "source_name": "Dean Brown",
+    "display_name": "Dean Brown",
+    "source_affiliation": "Head of Research @ Jnana",
+    "verified_affiliation": "Jnana Therapeutics",
+    "verified_role": "SVP, Head of Research",
+    "local_image": "acs-spring-2027/images/dean-brown.jpg",
+    "profile_url": "https://www.jnanatx.com/member/dean-brown-ph-d/",
+    "portrait_profile_url": "https://www.science.purdue.edu/punds/index.html",
+    "image_url": "https://www.science.purdue.edu/punds/assets/img/team/Dean-Brown.jfif",
+    "verified_on": "2026-09-14",
+    "image_verification": {
+      "http_status": 200,
+      "response_content_type": "image/jpeg",
+      "format": "JPEG",
+      "width": 225,
+      "height": 224,
+      "bytes": 6949,
+      "visually_checked": true,
+      "processing": "Original JFIF/JPEG bytes retained with a .jpg extension, without enlargement."
+    },
+    "license": null,
+    "rights_note": "No explicit portrait reuse license located on the institutional event page; reuse permission is not established.",
+    "caveats": [
+      "Jnana's current official biography confirms the organizer's Head of Research affiliation.",
+      "The portrait is explicitly associated with keynote speaker Dr. Dean Brown on Purdue's 2023 PUNDS symposium page.",
+      "The older event caption uses Senior VP and Head of Discovery Sciences; the current official company wording is SVP, Head of Research.",
+      "Jnana's corporate portrait was not downloaded because its terms prohibit republication: https://www.jnanatx.com/terms-of-use/.",
+      "The available institutional headshot is thumbnail resolution and already has a circular white surround."
+    ]
+  }
+]

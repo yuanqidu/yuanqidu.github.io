@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="440" viewBox="0 0 440 440" fill="none">
+  <title>Bridging learned patterns and physical principles</title>
+  <desc>A network of data points connects to molecular bonds and the contours of a physical energy landscape.</desc>
+  <defs>
+    <linearGradient id="bridge" x1="90" y1="100" x2="348" y2="340" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3f8570"/>
+      <stop offset="1" stop-color="#b2724c"/>
+    </linearGradient>
+    <radialGradient id="glow">
+      <stop stop-color="#f7f7f2"/>
+      <stop offset="1" stop-color="#f7f7f2" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="220" cy="222" r="190" stroke="#d1ddd1"/>
+  <circle cx="220" cy="222" r="141" stroke="#d1ddd1" stroke-dasharray="2 8"/>
+  <circle cx="220" cy="222" r="110" fill="url(#glow)"/>
+  <path d="M86 143C40 239 121 360 242 359c85 0 131-58 119-137" stroke="url(#bridge)" stroke-width="1.5" stroke-dasharray="5 6"/>
+  <path d="m80 152 6-10 6 11m265 89 4-10 7 8" stroke="url(#bridge)" stroke-width="1.5"/>
+  <g stroke="#619582" stroke-opacity=".55" stroke-width="1.2">
+    <path d="m86 112 35-28 44 21 19 47-53 9-45-49 16 58 29-9 34-56-79 7"/>
+    <path d="m121 84 10 77 53-9-63-68m-19 86 82-18"/>
+  </g>
+  <g fill="#3f8570">
+    <circle cx="86" cy="112" r="6"/>
+    <circle cx="121" cy="84" r="5"/>
+    <circle cx="165" cy="105" r="7"/>
+    <circle cx="184" cy="152" r="5"/>
+    <circle cx="131" cy="161" r="7"/>
+    <circle cx="102" cy="170" r="4"/>
+  </g>
+  <g fill="#89ac94">
+    <circle cx="75" cy="148" r="3"/>
+    <circle cx="111" cy="120" r="3"/>
+    <circle cx="146" cy="132" r="3"/>
+    <circle cx="160" cy="179" r="3"/>
+    <circle cx="193" cy="115" r="3"/>
+    <circle cx="142" cy="66" r="3"/>
+  </g>
+  <path d="m167 175 30 30m79 66 23 24" stroke="url(#bridge)" stroke-width="2" stroke-dasharray="4 5"/>
+  <g stroke="#173a3a" stroke-width="2.5">
+    <path d="m192 220 24-31 39 10 17 36-24 31-39-10-17-36Z"/>
+    <path d="m216 189 4-27m35 37 29-12m-12 48 27 17m-51 14 2 28m-41-38-28 15m11-51-27-14"/>
+    <path d="m199 221 20-24m36 14 10 23m-23 24-29-7" stroke-width="1.3"/>
+  </g>
+  <g fill="#eaf0e7" stroke="#173a3a" stroke-width="2.5">
+    <circle cx="192" cy="220" r="5"/>
+    <circle cx="216" cy="189" r="5"/>
+    <circle cx="255" cy="199" r="5"/>
+    <circle cx="272" cy="235" r="5"/>
+    <circle cx="248" cy="266" r="5"/>
+    <circle cx="209" cy="256" r="5"/>
+  </g>
+  <g fill="#b2724c">
+    <circle cx="220" cy="162" r="6"/>
+    <circle cx="299" cy="252" r="6"/>
+    <circle cx="181" cy="271" r="6"/>
+  </g>
+  <g fill="#3f8570">
+    <circle cx="284" cy="187" r="5"/>
+    <circle cx="250" cy="294" r="5"/>
+    <circle cx="165" cy="206" r="5"/>
+  </g>
+  <g stroke="#b2724c" stroke-width="1.2">
+    <path d="M262 318c5-28 41-43 69-30 26 12 45 8 57 31 14 29-1 59-36 66-37 9-60-4-73-20-12-15-23-28-17-47Z"/>
+    <path d="M276 320c5-22 31-31 53-21 21 10 36 8 46 27 9 21-2 42-28 47-28 6-46-4-55-16-9-12-20-22-16-37Z"/>
+    <path d="M290 322c3-15 22-22 37-14 16 8 27 7 34 21 6 14-3 29-21 32-19 4-32-4-38-12-6-8-16-17-12-27Z"/>
+    <path d="M305 325c3-10 13-13 22-8 9 6 19 5 21 14 4 9-3 17-13 18-12 2-18-4-22-9-5-5-11-9-8-15Z"/>
+    <path d="M318 329c2-5 7-5 10-2 4 3 9 2 8 7-1 4-6 4-9 2-4-2-12-2-9-7Z"/>
+  </g>
+  <circle cx="326" cy="332" r="3.5" fill="#a45131"/>
+  <g font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="10" letter-spacing="2" fill="#516565">
+    <text x="65" y="54">LEARNED PATTERNS</text>
+    <text x="255" y="409">PHYSICAL PRINCIPLES</text>
+  </g>
+  <path d="M66 63h49m201 337 32 56" stroke="#a7bbaa" stroke-width="1"/>
+</svg>

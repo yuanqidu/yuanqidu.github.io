@@ -192,6 +192,10 @@ collections:
 
 # Defaults
 defaults:
+  - scope:
+      path: "acs-spring-2027"
+    values:
+      sitemap: false
   # _posts
   - scope:
       path: ""
