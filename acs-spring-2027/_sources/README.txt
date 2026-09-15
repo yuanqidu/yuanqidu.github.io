@@ -18,14 +18,17 @@ The organizer's workbook is retained locally in _private/, which is ignored
 by this folder's .gitignore and excluded from Jekyll output by its leading
 underscore. Do not publish the workbook or private invitation notes.
 
-The displayed roster includes accepted, tentatively accepted, and informally
+The speaker and panel rosters include accepted, tentatively accepted, and informally
 accepted participants only. Invitation statuses remain in the private workbook
 and are not included in the public page or its markup.
 Pratyush Tiwary appears as both a speaker and a panelist: there are 17 unique
-participants and 18 cards. Pending invitations, suggestions, and declines
+speakers/panelists and 18 portrait cards. Pending invitations, suggestions, and declines
 must not be added to the public roster.
 
-There are 17 participant headshots. Jutta Rogal's profile and portrait use
+The four organizers are listed separately with their names and supplied
+affiliations only. Do not include email addresses or mailto links in that section.
+
+There are 17 speaker/panelist headshots. Jutta Rogal's profile and portrait use
 the Simons Foundation source explicitly selected by the organizer:
 https://www.simonsfoundation.org/people/jutta-rogal/
 

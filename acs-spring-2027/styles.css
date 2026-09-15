@@ -437,46 +437,32 @@ h3 {
 }
 
 .contact-card {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 3rem;
   padding: 2.7rem 3rem;
   border-radius: 12px;
   background: var(--ink);
   color: var(--white);
 }
 
-.contact-card .eyebrow {
-  color: #c2d9cb;
-}
-
 .contact-card h2 {
-  margin-top: 0.65rem;
   font-size: 2.1rem;
 }
 
-.contact-card p:not(.eyebrow) {
+.organizer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.75rem 2rem;
+  margin-top: 1.75rem;
+}
+
+.organizer h3 {
+  font-size: 1.05rem;
+  font-weight: 650;
+}
+
+.organizer p {
   margin-top: 0.45rem;
   color: #d3e0d9;
   font-size: 0.87rem;
-}
-
-.contact-links {
-  text-align: right;
-}
-
-.contact-links a {
-  color: var(--white);
-  overflow-wrap: anywhere;
-}
-
-.contact-links .button {
-  border-color: #a8c3b5;
-}
-
-.contact-card a:focus-visible {
-  outline-color: #e6b983;
 }
 
 .schedule-heading {
@@ -709,14 +695,12 @@ h3 {
   }
 
   .contact-card {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 1.5rem;
     padding: 2rem;
   }
 
-  .contact-links {
-    text-align: left;
+  .organizer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
   }
 
   .schedule-capacity {
@@ -813,6 +797,10 @@ h3 {
 
   .affiliation {
     font-size: 0.76rem;
+  }
+
+  .organizer-grid {
+    grid-template-columns: 1fr;
   }
 
   .footer-inner {
