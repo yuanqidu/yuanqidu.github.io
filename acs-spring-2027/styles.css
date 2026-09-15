@@ -396,12 +396,6 @@ h3 {
   line-height: 1.4;
 }
 
-.speaker-topic {
-  margin-top: 0.45rem;
-  color: var(--green);
-  font-size: 0.72rem;
-}
-
 .panel-section {
   background: var(--wash);
 }
@@ -819,10 +813,6 @@ h3 {
 
   .affiliation {
     font-size: 0.76rem;
-  }
-
-  .speaker-topic {
-    font-size: 0.65rem;
   }
 
   .footer-inner {
