@@ -17,17 +17,15 @@ by this folder's .gitignore and excluded from Jekyll output by its leading
 underscore. Do not publish the workbook or private invitation notes.
 
 The displayed roster includes accepted, tentatively accepted, and informally
-accepted participants only. Tentative and informal acceptances are labeled.
+accepted participants only. Invitation statuses remain in the private workbook
+and are not included in the public page or its markup.
 Pratyush Tiwary appears as both a speaker and a panelist: there are 17 unique
 participants and 18 cards. Pending invitations, suggestions, and declines
 must not be added to the public roster.
 
-There are 16 participant headshots. Jutta Rogal remains on the accepted
-roster with an explicitly labeled placeholder: available official portraits
-have republication restrictions, and no suitable alternative was found.
-Add an approved headshot to images/ and update her card's image source, then
-remove data-portrait="pending" and update the alt text, visible credit, and
-academic.json provenance record.
+There are 17 participant headshots. Jutta Rogal's profile and portrait use
+the Simons Foundation source explicitly selected by the organizer:
+https://www.simonsfoundation.org/people/jutta-rogal/
 
 Gavin Crooks's affiliation was blank in the proposal. His 2026 personal CV
 lists "2023- Staff Research Scientist, Normal Computing" as open-ended;
@@ -37,9 +35,8 @@ affiliation from the historical portrait source.
 academic.json and industry.json record portrait provenance and name/affiliation
 verification. They are maintenance records, not a roster of invitees.
 Keep visible portrait credits in index.html in sync with these records.
-Attribution does not establish a reuse license. Do not replace portraits with
-corporate images whose terms prohibit republication; retain any supplied
-permissions when participants provide updated headshots.
+Attribution does not establish a reuse license. Keep the source credits
+accurate and retain any supplied permissions with updated headshots.
 
 March 21-25, 2027, New Orleans, Louisiana are the ACS meeting dates/location:
 https://www.acs.org/events/acs-meetings/future-meetings.html

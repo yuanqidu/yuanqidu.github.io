@@ -366,12 +366,6 @@ h3 {
   margin-top: 0.7rem;
 }
 
-.section-note {
-  max-width: 24rem;
-  color: var(--muted);
-  font-size: 0.85rem;
-}
-
 .speaker-grid {
   display: flex;
   flex-wrap: wrap;
@@ -426,19 +420,6 @@ h3 {
   margin-top: 0.45rem;
   color: var(--green);
   font-size: 0.72rem;
-}
-
-.status {
-  display: inline-block;
-  margin-top: 0.65rem;
-  padding: 0.2rem 0.55rem;
-  border: 1px solid #e5cfb3;
-  border-radius: 4px;
-  background: #fcf4e7;
-  color: #78501a;
-  font-size: 0.67rem;
-  font-weight: 600;
-  line-height: 1.5;
 }
 
 .panel-section {
@@ -642,11 +623,6 @@ h3 {
 
   .section-heading {
     display: block;
-  }
-
-  .section-note {
-    max-width: 35rem;
-    margin-top: 1rem;
   }
 
   .speaker-card,

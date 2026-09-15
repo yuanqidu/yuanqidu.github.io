@@ -149,50 +149,24 @@
     "display_name": "Jutta Rogal",
     "source_affiliation": "Flatiron Institute",
     "verified_affiliation": "Flatiron Institute, Initiative for Computational Catalysis",
-    "local_image": null,
+    "local_image": "acs-spring-2027/images/jutta-rogal.png",
     "profile_url": "https://www.simonsfoundation.org/people/jutta-rogal/",
-    "image_url": null,
+    "image_url": "https://simonsfoundation.imgix.net/wp-content/uploads/2024/11/20142119/rogal_web.png?auto=format&q=90",
+    "policy_url": "https://www.simonsfoundation.org/terms-and-conditions/",
     "verified_on": "2026-09-14",
-    "image_status": "not-downloaded-reuse-restrictions",
+    "image_status": "downloaded-and-validated",
+    "http_status": 200,
+    "image_format": "PNG",
+    "width": 210,
+    "height": 240,
+    "bytes": 72782,
+    "sha256": "ac390ef76dbd512847aca07031f8fd2bd01aab0d16db33178ba8e12005c90efc",
+    "processing": "Original response bytes; no resizing or conversion.",
+    "photo_credit": "Source: Simons Foundation",
     "caveats": [
       "The official profile states that she joined Flatiron in November 2024 as a Research Scientist in the Initiative for Computational Catalysis. This agrees with the organizer; Freie Universität Berlin and NYU are previous affiliations.",
-      "Real portraits were located at Flatiron and Freie Universität Berlin, but their published terms explicitly restrict republication or rehosting without authorization. No permission was established and no substitute face was created.",
-      "Additional targeted checks of the former ICAMS pages, its current public search/media API, and the Lorentz Center workshop page did not yield an alternative usable portrait. An authorized speaker-supplied photograph is still needed.",
-      "A bounded follow-up checked Wikimedia Commons first, then distinct personal/research-group and Fritz Haber Institute sources. No identifiable licensed Commons portrait or distinct usable institutional portrait was found. Restricted photographs were not obtained through caches or alternate mirrors."
-    ],
-    "follow_up_checks": [
-      {
-        "checked_on": "2026-09-14",
-        "source_url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&list=search&srsearch=%22Jutta+Rogal%22&srnamespace=6&srlimit=10",
-        "http_status": 200,
-        "result": "The exact-name file search returned zero results, so no identifiable portrait or image license could be verified. A surname-only search also yielded no identifiable portrait among its first ten results."
-      },
-      {
-        "checked_on": "2026-09-14",
-        "source_url": "https://www.fhi.mpg.de/982756/theses",
-        "http_status": 200,
-        "result": "The official Fritz Haber Institute listing names Dr. Jutta Rogal's doctoral thesis, dated June 2006, but supplies no individual portrait or linked Rogal profile."
-      },
-      {
-        "checked_on": "2026-09-14",
-        "source_url": "https://www.fhi.mpg.de/1304902/alumni",
-        "http_status": 200,
-        "result": "The alumni page linked from the thesis listing contains no Rogal entry or portrait. A targeted personal/research-group search returned the previously unavailable ICAMS group URL, not a new verified portrait source. The bounded search stopped here."
-      }
-    ],
-    "rejected_image_sources": [
-      {
-        "profile_url": "https://www.simonsfoundation.org/people/jutta-rogal/",
-        "image_url": "https://simonsfoundation.imgix.net/wp-content/uploads/2024/11/20142119/rogal_web.png?auto=format&q=90",
-        "policy_url": "https://www.simonsfoundation.org/terms-and-conditions/",
-        "reason": "Terms explicitly restrict reproduction, public display, republication, downloading and storage except as permitted by law; no permission for this symposium page was established."
-      },
-      {
-        "profile_url": "https://www.physik.fu-berlin.de/forschung/ehemalige-und-ehrendoktoren/ehemalige/rogal/index.html",
-        "image_url": "https://www.physik.fu-berlin.de/forschung/ehemalige-und-ehrendoktoren/ehemalige/rogal/Jutta-Rogal.jpg",
-        "policy_url": "https://www.fu-berlin.de/redaktion/copyright/index.html",
-        "reason": "The copyright notice explicitly forbids storing the material on another server without prior written authorization."
-      }
+      "The symposium organizer explicitly selected this profile and portrait on 2026-09-14.",
+      "No image-specific reuse license or independent permission is asserted."
     ]
   },
   {
