@@ -5,6 +5,8 @@ Public URL: https://yuanqidu.github.io/acs-spring-2027/
 This folder is a standalone static microsite. Edit index.html and styles.css
 directly; its images are local, and it does not need JavaScript or a separate
 asset build.
+Update the stylesheet query version in index.html when styles.css changes
+so returning visitors receive the new styles rather than a cached copy.
 
 Keep index.html WITHOUT Jekyll front matter. This keeps it out of site.pages,
 the HTML sitemap, and the page archive. The acs-spring-2027 path default in
@@ -40,5 +42,13 @@ accurate and retain any supplied permissions with updated headshots.
 
 March 21-25, 2027, New Orleans, Louisiana are the ACS meeting dates/location:
 https://www.acs.org/events/acs-meetings/future-meetings.html
-They are NOT the symposium's assigned session date or room. The page leaves
-the detailed symposium schedule unannounced until it has been assigned.
+They are NOT the symposium's assigned session date or room.
+
+The tentative schedule is a nameless planning outline, not an assigned ACS
+program. Session 1 is Day 1, 09:00-12:00; Session 2 is Day 1, 14:00-17:00;
+Session 3 is Day 2, 09:00-12:00. Lunch is Day 1, 12:00-14:00.
+There are 14 invited-talk slots (5 + 5 + 4), each exactly 30 minutes including
+Q&A. The remaining session time is a 15-minute opening, 60 minutes of coffee
+breaks (15 + 30 + 15), and a 45-minute panel. This totals 9 session hours,
+plus the separate 2-hour lunch. Keep the displayed capacity, per-session
+counts, time elements, and data-kind/data-slot attributes in sync when editing.
