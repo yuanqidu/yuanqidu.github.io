@@ -48,10 +48,12 @@ https://www.acs.org/events/acs-meetings/future-meetings.html
 They are NOT the symposium's assigned session date or room.
 
 The tentative schedule is a nameless planning outline, not an assigned ACS
-program. Session 1 is Day 1, 09:00-12:00; Session 2 is Day 1, 14:00-17:00;
-Session 3 is Day 2, 09:00-12:00. Lunch is Day 1, 12:00-14:00.
-There are 14 invited-talk slots (5 + 5 + 4), each exactly 30 minutes including
-Q&A. The remaining session time is a 15-minute opening, 60 minutes of coffee
-breaks (15 + 30 + 15), and a 45-minute panel. This totals 9 session hours,
+program. Session 1 is Day 1, 08:30-12:00; Session 2 is Day 1, 14:00-17:00;
+Session 3 is Day 2, 08:30-12:00. Lunch is Day 1, 12:00-14:00.
+There are 16 invited-talk slots (6 + 4 + 6), each exactly 30 minutes including
+Q&A. The remaining session time is a 15-minute opening, 45 minutes of coffee
+breaks (15 on Day 1 and 30 on Day 2), and a one-hour panel on Day 1, 16:00-17:00.
+Day 1 afternoon runs from four talks directly into the panel, without a
+separate coffee break. This totals 10 session hours,
 plus the separate 2-hour lunch. Keep the displayed capacity, per-session
 counts, time elements, and data-kind/data-slot attributes in sync when editing.
