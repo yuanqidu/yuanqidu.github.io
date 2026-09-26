@@ -32,10 +32,10 @@ There are 17 speaker/panelist headshots. Jutta Rogal's profile and portrait use
 the Simons Foundation source explicitly selected by the organizer:
 https://www.simonsfoundation.org/people/jutta-rogal/
 
-Gavin Crooks's affiliation was blank in the proposal. His 2026 personal CV
-lists "2023- Staff Research Scientist, Normal Computing" as open-ended;
-the page uses that current self-reported affiliation, not his former LBNL
-affiliation from the historical portrait source.
+Gavin Crooks's affiliation is Achira, as supplied by the organizer on
+2026-09-26; his speaker link points to https://achira.ai/. This replaces the
+earlier CV-based affiliation. The historical LBNL portrait source is retained
+for photo attribution, not affiliation.
 
 academic.json and industry.json record portrait provenance and name/affiliation
 verification. They are maintenance records, not a roster of invitees.
