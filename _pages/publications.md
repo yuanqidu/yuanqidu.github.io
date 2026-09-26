@@ -44,7 +44,7 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
       <div class="pub-card" data-topic="control-sampling" data-year="2026" data-selected="true">
           <strong>Free energy Estimation on Any State Space</strong><br>
           <em>Jiajun He, Zijing Ou, Francisco Vargas, ..., <b>Yuanqi Du†</b></em><br>
-          arXiv preprint arXiv:2605.31063 | <a href="https://arxiv.org/abs/2605.31063">paper</a>
+          NeurIPS 2026 | <a href="https://arxiv.org/abs/2605.31063">paper</a>
       </div>
       <div class="pub-card" data-topic="generative-model" data-year="2026" data-selected="true">
           <strong>RNE: A Plug-and-play Framework for Diffusion Density Estimation and Inference-time Control</strong><br>
@@ -64,7 +64,7 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
       <div class="pub-card" data-topic="large-language-model" data-year="2026" data-selected="false">
           <strong>DrugSAGE: Self-evolving Agent Experience for Efficient State-of-the-Art Drug Discovery</strong><br>
           <em>Yikun Zhang, Xiwei Cheng, Tianyu Liu, <b>Yuanqi Du</b>, Wengong Jin</em><br>
-          arXiv preprint arXiv:2605.15461 | <a href="https://arxiv.org/abs/2605.15461">paper</a>
+          NeurIPS 2026 | <a href="https://arxiv.org/abs/2605.15461">paper</a>
       </div>
       <div class="pub-card" data-topic="generative-model" data-year="2026" data-selected="false">
           <strong>A Priori Sampling of Transition States with Guided Diffusion</strong><br>
@@ -96,10 +96,10 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
           <em>Leo Zhang, Peter Potaptchik, Jiajun He, <b>Yuanqi Du</b>, ..., Saifuddin Syed</em><br>
           ICLR 2026 | <a href="https://arxiv.org/abs/2502.10328">paper</a>
       </div>
-      <div class="pub-card" data-topic="large-language-model" data-year="2025" data-selected="true">
+      <div class="pub-card" data-topic="large-language-model" data-year="2026" data-selected="true">
           <strong>SAGA: Accelerating Scientific Discovery with Autonomous Goal-evolving Agents</strong><br>
           <em><b>Yuanqi Du*</b>, Botao Yu*, Tianyu Liu*, et al</em><br>
-          arXiv preprint arXiv:2512.21782 | <a href="https://arxiv.org/abs/2512.21782">paper</a>
+          Nature Machine Intelligence 2026 | <a href="https://arxiv.org/abs/2512.21782">paper</a>
       </div>
       <div class="pub-card" data-topic="control-sampling" data-year="2025" data-selected="true">
           <strong>FEAT: Free energy Estimators with Adaptive Transport</strong><br>
