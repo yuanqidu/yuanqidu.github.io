@@ -373,6 +373,14 @@ h3 {
   object-position: center 25%;
 }
 
+.speaker-portrait--initials {
+  display: grid;
+  place-items: center;
+  color: var(--green);
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  font-weight: 650;
+}
+
 .speaker-card h3 {
   margin-top: 1rem;
   font-size: 1.03rem;

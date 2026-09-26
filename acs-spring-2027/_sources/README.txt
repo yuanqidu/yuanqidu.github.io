@@ -21,15 +21,21 @@ underscore. Do not publish the workbook or private invitation notes.
 The speaker and panel rosters include accepted, tentatively accepted, and informally
 accepted participants only. Invitation statuses remain in the private workbook
 and are not included in the public page or its markup.
-Pratyush Tiwary appears as both a speaker and a panelist: there are 17 unique
-speakers/panelists and 18 portrait cards. Pending invitations, suggestions, and declines
+Pratyush Tiwary appears as both a speaker and a panelist: there are 18 unique
+speakers/panelists and 19 speaker/panelist cards. Pending invitations, suggestions, and declines
 must not be added to the public roster.
 
 The four organizers are listed separately with their names and supplied
 affiliations only. Do not include email addresses or mailto links in that section.
 
-There are 17 speaker/panelist headshots. Jutta Rogal's profile and portrait use
-the Simons Foundation source explicitly selected by the organizer:
+There are 17 speaker/panelist headshots. David Kamber uses a DK initials
+placeholder because no verified headshot was located. His name and Anthropic
+affiliation are confirmed by Anthropic's official research article, which is
+also his speaker link:
+https://www.anthropic.com/research/making-claude-a-chemist
+
+Jutta Rogal's profile and portrait use the Simons Foundation source explicitly
+selected by the organizer:
 https://www.simonsfoundation.org/people/jutta-rogal/
 
 Gavin Crooks's affiliation is Achira, as supplied by the organizer on
