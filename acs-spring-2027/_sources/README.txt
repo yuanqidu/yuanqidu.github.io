@@ -28,10 +28,12 @@ must not be added to the public roster.
 The four organizers are listed separately with their names and supplied
 affiliations only. Do not include email addresses or mailto links in that section.
 
-There are 17 speaker/panelist headshots. David Kamber uses a DK initials
-placeholder because no verified headshot was located. His name and Anthropic
-affiliation are confirmed by Anthropic's official research article, which is
-also his speaker link:
+There are 18 speaker/panelist headshots. David Kamber's speaker link and portrait
+use the LinkedIn profile explicitly selected by the organizer:
+https://www.linkedin.com/in/david-kamber-6a26625a/
+The 200 by 200 pixel headshot is retained locally because its signed image URL
+expires. The public profile can show a generic avatar instead of the headshot.
+His name and Anthropic affiliation are independently confirmed by:
 https://www.anthropic.com/research/making-claude-a-chemist
 
 Jutta Rogal's profile and portrait use the Simons Foundation source explicitly

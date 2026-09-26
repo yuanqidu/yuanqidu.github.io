@@ -248,17 +248,28 @@
     "display_name": "David Kamber",
     "source_affiliation": "Anthropic",
     "verified_affiliation": "Anthropic",
-    "local_image": null,
-    "profile_url": "https://www.anthropic.com/research/making-claude-a-chemist",
-    "portrait_profile_url": null,
-    "image_url": null,
+    "local_image": "acs-spring-2027/images/david-kamber.jpg",
+    "profile_url": "https://www.linkedin.com/in/david-kamber-6a26625a/",
+    "portrait_profile_url": "https://www.linkedin.com/in/david-kamber-6a26625a/",
+    "image_url": "https://media.licdn.com/dms/image/v2/D5603AQHq1nxvDfEIvA/profile-displayphoto-scale_200_200/B56Z8rCtxOHUAg-/0/1783133561578?e=1792022400&v=beta&t=zE6HJip16nJ6Tm8QLw4Lgl_L9A1R3HAa8STlJyNGTqk",
+    "additional_profile_url": "https://www.anthropic.com/research/making-claude-a-chemist",
     "verified_on": "2026-09-26",
-    "image_verification": null,
+    "image_verification": {
+      "http_status": 200,
+      "response_content_type": "image/jpeg",
+      "format": "JPEG",
+      "width": 200,
+      "height": 200,
+      "bytes": 13985,
+      "visually_checked": true,
+      "processing": "Original LinkedIn profile image retained without enlargement."
+    },
     "license": null,
-    "rights_note": "No portrait reproduced; the speaker card uses an initials placeholder.",
+    "rights_note": "The organizer explicitly selected this LinkedIn portrait. No explicit reuse license was supplied; attribution alone does not establish reuse permission.",
     "caveats": [
       "The organizer supplied the name and affiliation; Anthropic's official research article independently identifies him as Anthropic chemist David Kamber.",
-      "No verified headshot was located. Replace the initials only with an identified portrait and retain its source and any supplied reuse permission."
+      "The organizer selected the LinkedIn profile for both the speaker link and portrait. Its public view can show a generic avatar; the downloaded image is from the Profile photo element on that same profile, not its cover photo.",
+      "The downloaded rendition is 200 by 200 pixels. The signed image URL expires, so retain the local copy and use the LinkedIn profile as the rediscovery source."
     ]
   }
 ]
