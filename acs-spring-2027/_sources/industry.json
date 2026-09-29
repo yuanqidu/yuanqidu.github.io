@@ -271,5 +271,34 @@
       "The organizer selected the LinkedIn profile for both the speaker link and portrait. Its public view can show a generic avatar; the downloaded image is from the Profile photo element on that same profile, not its cover photo.",
       "The downloaded rendition is 200 by 200 pixels. The signed image URL expires, so retain the local copy and use the LinkedIn profile as the rediscovery source."
     ]
+  },
+  {
+    "id": "noah-getz",
+    "source_name": "Noah Getz",
+    "display_name": "Noah Getz",
+    "source_affiliation": "Boltz",
+    "verified_affiliation": null,
+    "local_image": "acs-spring-2027/images/noah-getz.jpg",
+    "profile_url": "https://www.linkedin.com/in/noahgetz/",
+    "portrait_profile_url": "https://www.linkedin.com/in/noahgetz/",
+    "image_url": "https://media.licdn.com/dms/image/v2/D5603AQHWIHclzuTGdw/profile-displayphoto-crop_800_800/B56ZfbXZ6HGQAM-/0/1751732035656?e=1792022400&v=beta&t=QOyJDjiD7kETbIAZMl11YXvwVvpRxyerCMjom7EIXN8",
+    "verified_on": "2026-09-29",
+    "image_verification": {
+      "http_status": 200,
+      "response_content_type": "image/jpeg",
+      "format": "JPEG",
+      "width": 800,
+      "height": 800,
+      "bytes": 87450,
+      "visually_checked": true,
+      "processing": "Original 800 by 800 pixel LinkedIn profile image retained without enlargement."
+    },
+    "license": null,
+    "rights_note": "The organizer explicitly selected this LinkedIn portrait. No explicit reuse license was supplied; attribution alone does not establish reuse permission.",
+    "caveats": [
+      "The organizer supplied the name, Boltz affiliation, and LinkedIn profile on 2026-09-29; the affiliation has not been independently verified.",
+      "The organizer selected the LinkedIn profile for both the speaker link and portrait. The downloaded image is the 800-pixel rendition from the profile photo's srcset in the browser, not its cover photo.",
+      "The signed image URL expires, so retain the local copy and use the LinkedIn profile as the rediscovery source."
+    ]
   }
 ]

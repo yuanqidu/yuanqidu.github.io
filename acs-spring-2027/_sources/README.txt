@@ -21,20 +21,27 @@ underscore. Do not publish the workbook or private invitation notes.
 The speaker and panel rosters include accepted, tentatively accepted, and informally
 accepted participants only. Invitation statuses remain in the private workbook
 and are not included in the public page or its markup.
-Pratyush Tiwary appears as both a speaker and a panelist: there are 18 unique
-speakers/panelists and 19 speaker/panelist cards. Pending invitations, suggestions, and declines
+Pratyush Tiwary appears as both a speaker and a panelist: there are 19 unique
+speakers/panelists and 20 speaker/panelist cards. Pending invitations, suggestions, and declines
 must not be added to the public roster.
 
 The four organizers are listed separately with their names and supplied
 affiliations only. Do not include email addresses or mailto links in that section.
 
-There are 18 speaker/panelist headshots. David Kamber's speaker link and portrait
+There are 19 speaker/panelist headshots. David Kamber's speaker link and portrait
 use the LinkedIn profile explicitly selected by the organizer:
 https://www.linkedin.com/in/david-kamber-6a26625a/
 The 200 by 200 pixel headshot is retained locally because its signed image URL
 expires. The public profile can show a generic avatar instead of the headshot.
 His name and Anthropic affiliation are independently confirmed by:
 https://www.anthropic.com/research/making-claude-a-chemist
+
+Noah Getz is listed as an invited speaker with Boltz, as supplied by the organizer
+on 2026-09-29. His speaker link and portrait use the supplied LinkedIn profile:
+https://www.linkedin.com/in/noahgetz/
+The original 800 by 800 pixel rendition of his profile photo is retained locally
+because its signed image URL expires. It was retrieved from the profile photo's
+srcset in the browser, not from the cover photo.
 
 Jutta Rogal's profile and portrait use the Simons Foundation source explicitly
 selected by the organizer:
