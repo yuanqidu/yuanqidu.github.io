@@ -720,12 +720,13 @@ $$\alpha_t \;=\; \min\!\left\{1,\;\frac{G_t(x_t,\,y_{t+1})}{G_t(y_t,\,x_{t+1})}\
 
 <table>
 <tr><th></th><th>Sequential Monte Carlo</th><th>Replica exchange</th></tr>
+<tr><td>The work is used to</td><td><b>resample</b> particles</td><td><b>swap</b> neighbouring replicas</td></tr>
 <tr><td>Uses $G_t$ as</td><td>multiplicative weight on a population</td><td>Metropolis ratio $G_t(\text{fwd})/G_t(\text{bwd})$ between neighbours</td></tr>
 <tr><td>Correction mechanism</td><td>resampling (importance)</td><td>accept / reject (MCMC)</td></tr>
 <tr><td>Parallelism</td><td>over particles</td><td>over levels</td></tr>
 <tr><td>Output</td><td>a weighted batch at the end</td><td>a stream, one sample per round</td></tr>
 <tr><td>Typical failure</td><td>genealogy collapse, low diversity</td><td>slow mixing if neighbouring levels disagree</td></tr>
-<tr><td>Bonus</td><td>unbiased estimate of $Z$</td><td>online refinement, early stopping</td></tr>
+<tr><td>Bonus</td><td>unbiased estimate of $Z$</td><td>unbiased estimate of $Z$, plus online refinement and early stopping</td></tr>
 </table>
 
 <h3>5.6 A compute knob for correctness</h3>
