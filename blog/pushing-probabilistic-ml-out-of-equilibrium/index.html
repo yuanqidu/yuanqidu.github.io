@@ -365,7 +365,7 @@ $$\mathbb{E}_{\pi}[f] = \mathbb{E}_{x\sim p_\theta}\!\left[\frac{\pi(x)}{p_\thet
   <div class="deriv" style="margin:6px 0 0"><button class="deriv-btn" aria-expanded="false">About this demo</button><div class="deriv-body" hidden style="padding:10px 16px;font-size:13.5px;font-family:var(--sans);color:var(--ink2)">The target is the tilted double well $U(x)=10\,(x^2-1)^2-0.5x$, which puts 73% of its mass in the right well behind a high barrier. All three demos use 300 chains and the same Metropolis-adjusted Langevin moves (step size 0.002), so they are directly comparable. Chains start from a broad Gaussian $\pi_0$ and follow $\tilde\pi_\beta\propto\tilde\pi_0^{1-\beta}\tilde\pi^{\beta}$ with one MCMC step per level as $\beta$ goes from 0 to 1. As the barrier grows, chains fall out of equilibrium and freeze in the wrong proportions. The dashed curve is the equilibrium right-well mass of each $\pi_\beta$; finished runs leave a marker at $\beta=1$.</div></div>
 </div>
 
-<p>Annealing helps, but only slowly. It is exact only in the <em>quasi-static</em> limit $N\to\infty$, where the system stays in equilibrium at every step. <b>In the equilibrium paradigm, the cost of exactness comes from time.</b></p>
+<p>Annealing helps, but only slowly. On this problem it needs about a million steps to get the populations right, because it is exact only in the <em>quasi-static</em> limit $N\to\infty$, where the system stays in equilibrium at every step. <b>In the equilibrium paradigm, the cost of exactness comes from time.</b></p>
 <p>Now keep the annealing just as fast, but change <em>how</em> the chains move. Instead of relaxing with local MCMC steps, carry each chain along with the changing distribution, using the exact transport from one $\pi_\beta$ to the next. This is the analytically optimal diffusion process, the one a perfectly trained diffusion model learns:</p>
 
 <div class="viz-root" id="neq">
@@ -1071,7 +1071,7 @@ function initOpt(){
   document.getElementById(id+"-reset").addEventListener("click",()=>{setup(); draw();});
   setup(); draw(); dwLoop(root,()=>{ if(N>=FR/3){ const per=Math.round(N/(FR/3)); for(let j=0;j<per;j++) step(); } else step2(); },draw,()=>k>=N);
 }
-function initAnneal(){ initAnn("ann",false,[50,500,5000,20000]); initOpt(); }
+function initAnneal(){ initAnn("ann",false,[500,5000,50000,1000000]); initOpt(); }
 
 /* ---------- fixed-point training loop ---------- */
 function initFP(){
