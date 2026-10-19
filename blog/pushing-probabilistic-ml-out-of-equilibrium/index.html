@@ -634,9 +634,10 @@ $$Z_N = \mathbb{E}_{\Pf}\!\left[\frac{\tilde\pi_N(X_N)\prod\Pb}{p_0(X_0)\prod\Pf
   <li><b>Run both directions and combine them</b> to reduce variance. Variational bounds from both sides sandwich the answer.</li>
 </ol>
 <p>The message is short: <b>when you can learn a good diffusion model, you get the free energy almost for free</b>. The learning reduces variance and the fluctuation theorem guarantees correctness. We validated this on very different systems: high-dimensional Gaussian mixtures, Lennard-Jones clusters against non-interacting references, coarse-grained monatomic ice against an LJ solid, biomolecular solvation (vacuum against implicit solvent), the transition free energy between metastable states of alanine dipeptide, and the cold and hot phases of $\varphi^4$ lattice field theory. In each case the estimates recovered reference values at roughly an order of magnitude less compute.</p>
-<p>The follow-up, <b>Free-Energy Estimation on Any State Space</b> [He, Ou, Vargas, Li, Hernández-Lobato, Domingo-Enrich, <b>Du</b>, NeurIPS 2026], has two parts. It formulates transport through a general Markov generator, so the estimator applies to discrete, multimodal and autoregressive spaces. It also shows that, at optimality, the commonly used estimators above are special cases. In practice this pushed learned free-energy estimation to biomolecules with more than 1,000 atoms.</p>
+<p>The follow-up, <b>Free-Energy Estimation on Any State Space</b> [He, Ou, Vargas, Li, Hernández-Lobato, Domingo-Enrich, <b>Du</b>, NeurIPS 2026], formulates transport through a general Markov generator, so the estimator applies to discrete, multimodal and autoregressive spaces.</p>
+<p>[TBD] We have upcoming work showing that this approach scales to biomolecules with more than 1,000 atoms.</p>
 
-<h3 id="steer">5.4 Steering: sample from what you did not train on</h3>
+<h3 id="steer">5.4 Steering: scaling sampling at inference time</h3>
 <p>Often we have a good model $p_N$ and want something nearby: $q_N(X_N) \propto h(X_N)\,p_N(X_N)$. A surprising range of tasks has exactly this form:</p>
 <table>
 <tr><th>Task</th><th>Tilted target $q_N$</th></tr>
