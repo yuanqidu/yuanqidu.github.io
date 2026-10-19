@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<!-- No Jekyll front matter: this standalone page is copied as-is. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pushing Probabilistic Machine Learning Out of Equilibrium</title>
+<meta name="author" content="Yuanqi Du">
+<meta name="description" content="How out-of-equilibrium diffusion processes give us the most powerful generative models, and the most powerful inference algorithms, in probabilistic machine learning today.">
+<meta property="og:title" content="Pushing Probabilistic Machine Learning Out of Equilibrium">
+<meta property="og:description" content="How out-of-equilibrium diffusion processes give us the most powerful generative models, and the most powerful inference algorithms, in probabilistic machine learning today.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://yuanqidu.github.io/blog/pushing-probabilistic-ml-out-of-equilibrium/">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+  :root{
+    --bg:#fcfcfb; --ink:#141413; --ink2:#52514e; --muted:#8a8984; --rule:#e4e2dc;
+    --accent:#2a78d6; --accent2:#eb6834; --accent3:#1baf7a;
+    --box:#f4f2ec; --boxblue:#eef4fc; --boxorange:#fdf1ea; --boxgreen:#ecf8f2;
+    --serif: "Iowan Old Style","Palatino Linotype","Book Antiqua",Palatino,Georgia,serif;
+    --sans: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--serif);font-size:19px;line-height:1.62;}
+  .wrap{display:grid;grid-template-columns:1fr minmax(0,760px) 1fr;gap:0 40px;}
+  main{grid-column:2;padding:0 20px 120px;}
+  nav.toc{grid-column:1;justify-self:end;position:sticky;top:24px;align-self:start;width:230px;font-family:var(--sans);font-size:13px;line-height:1.45;margin-top:300px;max-height:calc(100vh - 48px);overflow:auto;}
+  nav.toc a{display:block;color:var(--ink2);text-decoration:none;padding:3px 0 3px 10px;border-left:2px solid var(--rule);}
+  nav.toc a:hover{color:var(--accent);border-left-color:var(--accent);}
+  nav.toc .sub{padding-left:22px;font-size:12px;color:var(--muted);}
+  nav.toc .ttl{font-weight:600;color:var(--ink);margin-bottom:8px;letter-spacing:.04em;text-transform:uppercase;font-size:11px;}
+  @media (max-width:1180px){ .wrap{display:block} nav.toc{display:none} main{max-width:780px;margin:0 auto} }
+  header.hero{padding:72px 0 28px;border-bottom:1px solid var(--rule);margin-bottom:36px;}
+  .kicker{font-family:var(--sans);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;}
+  h1{font-size:42px;line-height:1.12;margin:14px 0 14px;font-weight:600;letter-spacing:-.01em;}
+  .subtitle{font-size:21px;color:var(--ink2);font-style:italic;margin:0 0 22px;}
+  .byline{font-family:var(--sans);font-size:14px;color:var(--ink2);}
+  .byline b{color:var(--ink)}
+  h2{font-size:30px;line-height:1.2;margin:64px 0 10px;font-weight:600;padding-top:8px;}
+  h2 .num{color:var(--accent);font-family:var(--sans);font-size:16px;font-weight:700;display:block;letter-spacing:.1em;margin-bottom:4px;}
+  h3{font-size:22px;margin:38px 0 8px;font-weight:600;}
+  h4{font-family:var(--sans);font-size:15px;margin:26px 0 4px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink2);}
+  p{margin:0 0 18px;}
+  a{color:var(--accent);}
+  .lead{font-size:21px;}
+  .box{background:var(--box);border-radius:10px;padding:18px 22px;margin:26px 0;}
+  .box.blue{background:var(--boxblue);border-left:4px solid var(--accent);}
+  .box.orange{background:var(--boxorange);border-left:4px solid var(--accent2);}
+  .box.green{background:var(--boxgreen);border-left:4px solid var(--accent3);}
+  .box .lbl{font-family:var(--sans);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--ink2);margin-bottom:6px;display:block;}
+  .box p:last-child{margin-bottom:0}
+  .tldr{font-size:18px;}
+  .tldr ol{margin:6px 0 0;padding-left:22px;} .tldr li{margin:6px 0;}
+  table{border-collapse:collapse;width:100%;margin:22px 0;font-size:15.5px;font-family:var(--sans);}
+  th,td{border-bottom:1px solid var(--rule);padding:8px 10px;text-align:left;vertical-align:top;}
+  th{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink2);border-bottom:2px solid var(--ink);}
+  figure{margin:30px 0;}
+  figure svg{width:100%;height:auto;display:block;}
+  figcaption{font-family:var(--sans);font-size:14px;color:var(--ink2);margin-top:10px;line-height:1.5;}
+  figcaption b{color:var(--ink)}
+  .katex-display>.katex{font-size:1.07em}
+  .katex-display{margin:18px 0;overflow-x:auto;overflow-y:hidden;padding:2px 0;}
+  ul,ol{padding-left:26px;} li{margin:6px 0;}
+  .pullquote{font-size:24px;line-height:1.4;font-style:italic;border-left:3px solid var(--accent2);padding:4px 0 4px 20px;margin:32px 0;}
+  .refs li{font-size:15px;font-family:var(--sans);margin:7px 0;color:var(--ink2);}
+  .mine{display:inline-block;font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.08em;background:var(--accent);color:#fff;border-radius:3px;padding:1px 5px;margin-right:6px;vertical-align:2px;}
+  .takeaways{counter-reset:tk;list-style:none;padding:0;}
+  .takeaways li{counter-increment:tk;position:relative;padding:14px 0 14px 54px;border-bottom:1px solid var(--rule);margin:0;}
+  .takeaways li::before{content:counter(tk);position:absolute;left:0;top:12px;width:36px;height:36px;border-radius:50%;background:var(--ink);color:#fff;font-family:var(--sans);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:16px;}
+  .takeaways b{display:block;font-size:20px;margin-bottom:2px;}
+  .deriv{margin:-4px 0 24px;}
+  .deriv-btn{font-family:var(--sans);font-size:13px;font-weight:600;border:1px solid #c9d7ec;background:#fff;color:var(--accent);border-radius:999px;padding:5px 14px;cursor:pointer;}
+  .deriv-btn:hover{background:var(--boxblue);}
+  .deriv-btn::before{content:"▸ ";} .deriv-btn[aria-expanded="true"]::before{content:"▾ ";}
+  .deriv-btn .n{font-weight:400;color:var(--ink2);}
+  .deriv-body{border:1px solid var(--rule);border-left:3px solid var(--accent);background:#fff;border-radius:8px;padding:4px 18px;margin-top:10px;}
+  .step{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;align-items:center;border-bottom:1px dashed var(--rule);padding:2px 0;}
+  .step:last-child{border-bottom:0;}
+  .step .why{font-family:var(--sans);font-size:12.5px;line-height:1.4;color:var(--ink2);}
+  .step .why b{display:inline-block;width:20px;height:20px;border-radius:50%;background:var(--boxblue);color:var(--accent);text-align:center;line-height:20px;font-size:11px;margin-right:6px;}
+  .step .katex-display{margin:8px 0;text-align:left;}
+  .step .katex-display>.katex{text-align:left;font-size:1.0em;}
+  @media (max-width:640px){.step{grid-template-columns:1fr;gap:0}}
+  .stack td:first-child{white-space:nowrap;font-weight:600;}
+  hr.sep{border:0;border-top:1px solid var(--rule);margin:48px 0;}
+  .small{font-size:14px;color:var(--ink2);}
+  /* interactive panels */
+  .viz-root{--surface-1:#ffffff;--text-primary:#0b0b0b;--text-secondary:#52514e;--text-muted:#8a8984;--grid:#ecebe6;
+    --series-1:#2a78d6;--series-2:#eb6834;--series-3:#1baf7a;
+    background:var(--surface-1);border:1px solid var(--rule);border-radius:12px;padding:18px 18px 12px;margin:30px 0;font-family:var(--sans);position:relative;}
+  .viz-root h5{margin:0 0 4px;font-size:16px;}
+  .viz-root .sub{font-size:13px;color:var(--text-secondary);margin-bottom:12px;line-height:1.5;}
+  .controls{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;font-size:13px;color:var(--text-secondary);margin-bottom:10px;}
+  .controls input[type=range]{width:180px;vertical-align:middle;}
+  .controls button{font:inherit;font-size:13px;border:1px solid #cfccc4;background:#fff;border-radius:6px;padding:5px 12px;cursor:pointer;min-width:70px;}
+  .controls button:hover{border-color:var(--series-1);color:var(--series-1);}
+  .panels{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  @media (max-width:700px){.panels{grid-template-columns:1fr}}
+  .panel-t{font-size:12px;font-weight:600;color:var(--text-primary);margin:0 0 2px;}
+  .legend{display:flex;gap:14px;font-size:11.5px;color:var(--text-secondary);margin:2px 0 4px;flex-wrap:wrap}
+  .legend i{display:inline-block;width:12px;height:3px;vertical-align:middle;margin-right:5px;border-radius:2px}
+  .legend i.dot{width:8px;height:8px;border-radius:50%}
+  .statline{font-size:12px;color:var(--text-secondary);font-variant-numeric:tabular-nums;margin:2px 0 0;}
+  .statline b{color:var(--text-primary)}
+  .anim-row{margin:8px 0 14px;}
+  .anim-row .hdr{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px;}
+  .anim-row .hdr .name{font-size:14px;font-weight:700;color:var(--text-primary);}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="toc" aria-label="Table of contents">
+  <div class="ttl">Contents</div>
+  <a href="#problem">1 · The problem we care about</a>
+  <a href="#hard">2 · Why it is computationally hard</a>
+  <a class="sub" href="#mcmc">Equilibrium: cost from time</a>
+  <a class="sub" href="#explicit">Explicit densities</a>
+  <a class="sub" href="#cnf">Continuous flows</a>
+  <a class="sub" href="#pivot">The pivot: unbiased estimates</a>
+  <a href="#diffusion">3 · Diffusion on path space</a>
+  <a class="sub" href="#kernels">Everything is a Markov kernel</a>
+  <a class="sub" href="#bayes">Time reversal = Bayes' rule</a>
+  <a class="sub" href="#identity">The central identity</a>
+  <a href="#thermo">4 · Non-equilibrium thermodynamics</a>
+  <a href="#inference">5 · One weight, four inferences</a>
+  <a class="sub" href="#ml">Marginal likelihood</a>
+  <a class="sub" href="#expect">Exact statistics</a>
+  <a class="sub" href="#fe">Free energy</a>
+  <a class="sub" href="#steer">Steering</a>
+  <a class="sub" href="#smcpt">SMC vs. replica exchange</a>
+  <a href="#training">6 · Training = learning time reversal</a>
+  <a class="sub" href="#fromdata">From data</a>
+  <a class="sub" href="#fromenergy">From energy</a>
+  <a class="sub" href="#ensembles">Generalized ensembles</a>
+  <a href="#extend">7 · Any space, any path</a>
+  <a class="sub" href="#ar">Autoregressive models</a>
+  <a class="sub" href="#pathtilt">Tilting whole paths</a>
+  <a href="#open">8 · What is still hard</a>
+  <a href="#takeaways">Takeaways</a>
+  <a href="#refs">References</a>
+</nav>
+
+<main>
+<header class="hero">
+  <div style="font-family:var(--sans);font-size:13px;margin-bottom:18px"><a href="/blogs/" style="text-decoration:none">← All blogs</a></div>
+  <div class="kicker">Long read · Probabilistic ML × Statistical Physics</div>
+  <h1>Pushing Probabilistic Machine Learning Out of Equilibrium</h1>
+  <p class="subtitle">How out-of-equilibrium diffusion processes give us the most powerful generative models, and the most powerful inference algorithms, in probabilistic machine learning today.</p>
+  <div class="byline"><b>Yuanqi Du</b> · Microsoft Research · October 2026<br>
+  Based on my talk <em>“Push Probabilistic Machine Learning Out of Equilibrium.”</em><br>
+  This blog was written with substantial help from AI agents. If you spot an error or have comments, I would be glad to hear from you at <a href="mailto:yuanqidu.me@gmail.com">yuanqidu.me@gmail.com</a>.</div>
+</header>
+
+<div class="box blue tldr">
+  <span class="lbl">TL;DR</span>
+  <ol>
+    <li><b>The problem.</b> We ask a probabilistic model for <b>samples</b> and <b>estimations</b> (likelihoods, expectations, free energies, conditionals). A learned model is imperfect, so both need <b>debiasing</b>, and the general way to debias is to <b>reweight</b> by the ratio of target to model density.</li>
+    <li><b>The bottleneck.</b> Reweighting needs the model's density. An exact density makes every problem a one-line formula, but expressive models can rarely afford one.</li>
+    <li><b>The solution.</b> A diffusion process lifts the model to <b>path space</b>. There, time reversal (Bayes' rule in time) gives a cheap <b>path weight</b> that is unbiased for any model, which is all reweighting needs.</li>
+    <li><b>The physics.</b> The path weight is the <b>work</b> of non-equilibrium thermodynamics: time reversal is Crooks' theorem, normalizing constants come from Jarzynski's equality, and the ELBO is the second law.</li>
+    <li><b>Inference.</b> Every estimation becomes reweighting of paths: likelihoods, expectations, free energies (FEAT) and steering (RNE, SMC, CREPE). This gives <b>inference-time scaling</b>: accuracy improves with the compute spent at inference time.</li>
+    <li><b>Training.</b> From data: <b>denoising score matching</b>, or the ELBO, which gives weighted denoising score matching. From an energy: <b>target score matching</b> in a <b>fixed-point</b> loop, with <b>path-weight regularization</b> to get the mode weights right (ATLAS, JANUS).</li>
+    <li><b>Generality.</b> Everything is written with Markov kernels, so it holds on any state space: discrete, multimodal, generalized ensembles, and <b>autoregressive language models, which are non-equilibrium processes too</b>.</li>
+  </ol>
+</div>
+
+<p class="lead">Since the 1990s, statistical physics has built a theory of <em>driven non-equilibrium processes</em>: systems pushed from one state to another in finite time, never given the chance to relax. About a decade ago, machine learning picked up this idea in the form of <em>diffusion models</em>, starting with the part that makes training work: destroy structure with noise, then learn to reverse it. The rest of the theory, which says how to do exact <em>inference</em> with a process that never reaches equilibrium, is where the idea is now leading. This blog is a summary of where it leads, based on a line of work with many wonderful collaborators.</p>
+
+
+<!-- ============================================================ -->
+<h2 id="problem"><span class="num">PART 1</span>The problem we actually care about</h2>
+
+<p>Most of the excitement around generative models is about samples: images, molecules, protein structures, materials. Often a sample is exactly the deliverable: a candidate drug to synthesize, a conformation to seed a simulation, a crystal structure to test. Just as often the deliverable is an <em>estimation</em> computed from the distribution: a population, a free energy, a phase boundary, the probability of a rare event. A probabilistic model should serve both kinds of question, and the two share one requirement that is easy to overlook: <b>a sample is only as good as the distribution it comes from</b>. Figure 1 shows four places where that requirement decides the answer.</p>
+
+<figure>
+<svg viewBox="0 0 760 486" role="img" aria-label="Four questions that need estimations, not just samples" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif">
+<rect x="20" y="10" width="350" height="226" rx="12" fill="#fff" stroke="#e4e2dc"/>
+<text x="195.0" y="30.0" font-size="14" text-anchor="middle" fill="#141413" font-weight="700" ><tspan fill="#2a78d6" font-weight="700">a</tspan>  Which molecule binds best?</text>
+<text x="195.0" y="222.0" font-size="12.5" text-anchor="middle" fill="#eb6834" font-weight="600" >→ binding free energy</text>
+<g transform="translate(195,135) scale(0.72) translate(-185,-125)">
+<path d="M60,95 C60,55 130,50 155,70 L165,115 C168,133 202,133 205,115 L215,70 C240,50 310,55 310,95 C320,165 260,205 185,203 C110,205 50,165 60,95 Z" fill="#dbe8f8" stroke="#2a78d6" stroke-width="1.6"/>
+<text x="185.0" y="175.0" font-size="12" text-anchor="middle" fill="#2a78d6" font-weight="600" >protein</text>
+<path d="M194.5,108.5 L185.0,114.0 L175.5,108.5 L175.5,97.5 L185.0,92.0 L194.5,97.5 Z" fill="#eb6834" fill-opacity="0.25" stroke="#eb6834" stroke-width="2"/>
+<path d="M185,92 L185,83 L193,78" fill="none" stroke="#eb6834" stroke-width="2"/>
+</g>
+<path d="M63.8,119.5 L56.0,124.0 L48.2,119.5 L48.2,110.5 L56.0,106.0 L63.8,110.5 Z" fill="#8a8984" fill-opacity="0.25" stroke="#8a8984" stroke-width="2"/>
+<path d="M56,106 L56,97 L64,92" fill="none" stroke="#8a8984" stroke-width="2"/>
+<path d="M341.8,119.5 L334.0,124.0 L326.2,119.5 L326.2,110.5 L334.0,106.0 L341.8,110.5 Z" fill="#8a8984" fill-opacity="0.25" stroke="#8a8984" stroke-width="2"/>
+<path d="M334,106 L334,97 L342,92" fill="none" stroke="#8a8984" stroke-width="2"/>
+<text x="56.0" y="150.0" font-size="16" text-anchor="middle" fill="#8a8984" font-weight="700" >?</text>
+<text x="334.0" y="150.0" font-size="16" text-anchor="middle" fill="#8a8984" font-weight="700" >?</text>
+<rect x="390" y="10" width="350" height="226" rx="12" fill="#fff" stroke="#e4e2dc"/>
+<text x="565.0" y="30.0" font-size="14" text-anchor="middle" fill="#141413" font-weight="700" ><tspan fill="#2a78d6" font-weight="700">b</tspan>  When does water freeze or boil?</text>
+<text x="565.0" y="222.0" font-size="12.5" text-anchor="middle" fill="#eb6834" font-weight="600" >→ free energy of each phase</text>
+<path d="M438.0,48.0 L514.1,48.0 L514.1,48.0 L515.0,53.3 L515.8,58.7 L516.7,64.0 L517.5,69.3 L518.4,74.6 L519.2,80.0 L520.1,85.3 L520.9,90.6 L521.8,96.0 L522.6,101.3 L523.4,106.6 L524.3,111.9 L525.1,117.3 L526.0,122.6 L526.8,127.9 L527.7,133.2 L528.5,138.6 L529.4,143.9 L530.2,149.2 L531.1,154.6 L531.1,154.6 L529.5,156.1 L527.9,157.6 L526.3,159.1 L524.6,160.6 L522.9,162.0 L521.2,163.4 L519.4,164.8 L517.6,166.1 L515.8,167.4 L514.0,168.7 L512.1,170.0 L510.2,171.2 L508.2,172.4 L506.2,173.6 L504.2,174.7 L502.2,175.9 L500.1,177.0 L498.0,178.0 L495.9,179.1 L493.7,180.1 L491.5,181.1 L489.3,182.0 L487.0,183.0 L484.7,183.9 L482.4,184.7 L480.0,185.6 L477.6,186.4 L475.2,187.2 L472.7,188.0 L470.3,188.7 L467.7,189.4 L465.2,190.1 L462.6,190.7 L460.0,191.4 L457.3,192.0 L454.7,192.5 L452.0,193.1 L449.2,193.6 L446.4,194.1 L443.6,194.5 L438.0,196.0 Z" fill="#d6ecfb"/>
+<path d="M514.1,48.0 L680.5,48.0 L680.5,71.7 L680.5,71.7 L677.1,75.1 L673.7,78.4 L670.3,81.6 L666.8,84.8 L663.4,87.9 L659.9,90.9 L656.4,93.9 L652.9,96.8 L649.4,99.6 L645.8,102.4 L642.2,105.1 L638.6,107.7 L635.0,110.3 L631.4,112.8 L627.8,115.2 L624.1,117.6 L620.4,119.9 L616.8,122.2 L613.0,124.3 L609.3,126.4 L605.6,128.5 L601.8,130.5 L598.0,132.4 L594.2,134.2 L590.4,136.0 L586.6,137.7 L582.7,139.3 L578.9,140.9 L575.0,142.4 L571.1,143.8 L567.1,145.2 L563.2,146.5 L559.3,147.7 L555.3,148.9 L551.3,150.0 L547.3,151.1 L543.2,152.0 L539.2,152.9 L535.1,153.8 L531.1,154.6 L531.1,154.6 L530.2,149.2 L529.4,143.9 L528.5,138.6 L527.7,133.2 L526.8,127.9 L526.0,122.6 L525.1,117.3 L524.3,111.9 L523.4,106.6 L522.6,101.3 L521.8,96.0 L520.9,90.6 L520.1,85.3 L519.2,80.0 L518.4,74.6 L517.5,69.3 L516.7,64.0 L515.8,58.7 L515.0,53.3 L514.1,48.0 Z" fill="#9cc7f2" fill-opacity="0.55"/>
+<path d="M443.6,194.5 L446.4,194.1 L449.2,193.6 L452.0,193.1 L454.7,192.5 L457.3,192.0 L460.0,191.4 L462.6,190.7 L465.2,190.1 L467.7,189.4 L470.3,188.7 L472.7,188.0 L475.2,187.2 L477.6,186.4 L480.0,185.6 L482.4,184.7 L484.7,183.9 L487.0,183.0 L489.3,182.0 L491.5,181.1 L493.7,180.1 L495.9,179.1 L498.0,178.0 L500.1,177.0 L502.2,175.9 L504.2,174.7 L506.2,173.6 L508.2,172.4 L510.2,171.2 L512.1,170.0 L514.0,168.7 L515.8,167.4 L517.6,166.1 L519.4,164.8 L521.2,163.4 L522.9,162.0 L524.6,160.6 L526.3,159.1 L527.9,157.6 L529.5,156.1 L531.1,154.6 L535.1,153.8 L539.2,152.9 L543.2,152.0 L547.3,151.1 L551.3,150.0 L555.3,148.9 L559.3,147.7 L563.2,146.5 L567.1,145.2 L571.1,143.8 L575.0,142.4 L578.9,140.9 L582.7,139.3 L586.6,137.7 L590.4,136.0 L594.2,134.2 L598.0,132.4 L601.8,130.5 L605.6,128.5 L609.3,126.4 L613.0,124.3 L616.8,122.2 L620.4,119.9 L624.1,117.6 L627.8,115.2 L631.4,112.8 L635.0,110.3 L638.6,107.7 L642.2,105.1 L645.8,102.4 L649.4,99.6 L652.9,96.8 L656.4,93.9 L659.9,90.9 L663.4,87.9 L666.8,84.8 L670.3,81.6 L673.7,78.4 L677.1,75.1 L680.5,71.7 L720.0,71.7 L720.0,196.0 L443.6,196.0 Z" fill="#f4f2ec"/>
+<rect x="680.5" y="48" width="39.5" height="23.7" fill="#cfe0f3"/>
+<path d="M443.6,194.5 L446.4,194.1 L449.2,193.6 L452.0,193.1 L454.7,192.5 L457.3,192.0 L460.0,191.4 L462.6,190.7 L465.2,190.1 L467.7,189.4 L470.3,188.7 L472.7,188.0 L475.2,187.2 L477.6,186.4 L480.0,185.6 L482.4,184.7 L484.7,183.9 L487.0,183.0 L489.3,182.0 L491.5,181.1 L493.7,180.1 L495.9,179.1 L498.0,178.0 L500.1,177.0 L502.2,175.9 L504.2,174.7 L506.2,173.6 L508.2,172.4 L510.2,171.2 L512.1,170.0 L514.0,168.7 L515.8,167.4 L517.6,166.1 L519.4,164.8 L521.2,163.4 L522.9,162.0 L524.6,160.6 L526.3,159.1 L527.9,157.6 L529.5,156.1 L531.1,154.6" fill="none" stroke="#141413" stroke-width="1.8"/>
+<path d="M531.1,154.6 L535.1,153.8 L539.2,152.9 L543.2,152.0 L547.3,151.1 L551.3,150.0 L555.3,148.9 L559.3,147.7 L563.2,146.5 L567.1,145.2 L571.1,143.8 L575.0,142.4 L578.9,140.9 L582.7,139.3 L586.6,137.7 L590.4,136.0 L594.2,134.2 L598.0,132.4 L601.8,130.5 L605.6,128.5 L609.3,126.4 L613.0,124.3 L616.8,122.2 L620.4,119.9 L624.1,117.6 L627.8,115.2 L631.4,112.8 L635.0,110.3 L638.6,107.7 L642.2,105.1 L645.8,102.4 L649.4,99.6 L652.9,96.8 L656.4,93.9 L659.9,90.9 L663.4,87.9 L666.8,84.8 L670.3,81.6 L673.7,78.4 L677.1,75.1 L680.5,71.7" fill="none" stroke="#141413" stroke-width="1.8"/>
+<path d="M531.1,154.6 L530.2,149.2 L529.4,143.9 L528.5,138.6 L527.7,133.2 L526.8,127.9 L526.0,122.6 L525.1,117.3 L524.3,111.9 L523.4,106.6 L522.6,101.3 L521.8,96.0 L520.9,90.6 L520.1,85.3 L519.2,80.0 L518.4,74.6 L517.5,69.3 L516.7,64.0 L515.8,58.7 L515.0,53.3 L514.1,48.0" fill="none" stroke="#141413" stroke-width="1.8"/>
+<rect x="438" y="48" width="282" height="148" fill="none" stroke="#c9c7c0"/>
+<circle cx="531.1" cy="154.6" r="4" fill="#eb6834" stroke="#fff" stroke-width="1.5"/>
+<circle cx="680.5" cy="71.7" r="4" fill="#eb6834" stroke="#fff" stroke-width="1.5"/>
+<text x="474.7" y="114.6" font-size="13" text-anchor="middle" fill="#141413" font-weight="700" >ice</text>
+<text x="584.6" y="92.4" font-size="13" text-anchor="middle" fill="#141413" font-weight="700" >liquid</text>
+<text x="641.0" y="173.8" font-size="13" text-anchor="middle" fill="#141413" font-weight="700" >vapor</text>
+<line x1="438" x2="720" y1="125.0" y2="125.0" stroke="#8a8984" stroke-dasharray="4 3"/>
+<circle cx="526.4" cy="125.0" r="3.2" fill="#141413"/>
+<text x="531.4" y="119.0" font-size="10.5" text-anchor="start" fill="#141413" font-weight="600" >0 °C</text>
+<circle cx="613.0" cy="125.0" r="3.2" fill="#141413"/>
+<text x="618.0" y="139.0" font-size="10.5" text-anchor="start" fill="#141413" font-weight="600" >100 °C</text>
+<text x="432.0" y="129.0" font-size="10" text-anchor="end" fill="#52514e" font-weight="400" >1 atm</text>
+<text x="579.0" y="209.0" font-size="10.5" text-anchor="middle" fill="#52514e" font-weight="400" >temperature →</text>
+<text x="428.0" y="88.0" font-size="10.5" text-anchor="middle" fill="#52514e" font-weight="400" transform="rotate(-90 428 88)">pressure →</text>
+<rect x="20" y="250" width="350" height="226" rx="12" fill="#fff" stroke="#e4e2dc"/>
+<text x="195.0" y="270.0" font-size="14" text-anchor="middle" fill="#141413" font-weight="700" ><tspan fill="#2a78d6" font-weight="700">c</tspan>  How often does it happen?</text>
+<text x="195.0" y="462.0" font-size="12.5" text-anchor="middle" fill="#eb6834" font-weight="600" >→ rare-event probability and rates</text>
+<path d="M50.0,375.0 L51.5,376.6 L52.9,378.2 L54.4,379.8 L55.8,381.3 L57.2,382.8 L58.7,384.2 L60.1,385.6 L61.6,387.0 L63.0,388.3 L64.5,389.6 L66.0,390.8 L67.4,392.1 L68.8,393.2 L70.3,394.4 L71.8,395.5 L73.2,396.5 L74.7,397.6 L76.1,398.6 L77.5,399.5 L79.0,400.4 L80.5,401.3 L81.9,402.1 L83.3,403.0 L84.8,403.7 L86.2,404.4 L87.7,405.1 L89.2,405.8 L90.6,406.4 L92.0,407.0 L93.5,407.5 L95.0,408.0 L96.4,408.5 L97.8,408.9 L99.3,409.3 L100.8,409.7 L102.2,410.0 L103.7,410.3 L105.1,410.5 L106.6,410.7 L108.0,410.9 L109.4,411.0 L110.9,411.1 L112.3,411.1 L113.8,411.1 L115.2,411.1 L116.7,411.0 L118.1,411.0 L119.6,410.9 L121.0,410.8 L122.5,410.8 L124.0,410.7 L125.4,410.5 L126.9,410.4 L128.3,410.2 L129.8,410.0 L131.2,409.8 L132.6,409.5 L134.1,409.2 L135.6,408.8 L137.0,408.4 L138.4,407.9 L139.9,407.3 L141.3,406.7 L142.8,405.9 L144.2,405.1 L145.7,404.2 L147.2,403.1 L148.6,402.0 L150.1,400.7 L151.5,399.3 L152.9,397.7 L154.4,396.1 L155.8,394.2 L157.3,392.3 L158.8,390.2 L160.2,387.9 L161.7,385.6 L163.1,383.1 L164.6,380.4 L166.0,377.7 L167.4,374.9 L168.9,372.0 L170.3,369.1 L171.8,366.1 L173.2,363.1 L174.7,360.2 L176.2,357.2 L177.6,354.4 L179.1,351.6 L180.5,349.0 L182.0,346.5 L183.4,344.2 L184.8,342.1 L186.3,340.2 L187.8,338.6 L189.2,337.2 L190.7,336.1 L192.1,335.3 L193.6,334.9 L195.0,334.7 L196.4,334.9 L197.9,335.4 L199.3,336.1 L200.8,337.2 L202.2,338.6 L203.7,340.3 L205.2,342.1 L206.6,344.3 L208.1,346.6 L209.5,349.1 L211.0,351.8 L212.4,354.6 L213.8,357.5 L215.3,360.4 L216.8,363.4 L218.2,366.4 L219.6,369.5 L221.1,372.4 L222.5,375.4 L224.0,378.3 L225.4,381.1 L226.9,383.7 L228.3,386.3 L229.8,388.8 L231.2,391.1 L232.7,393.3 L234.2,395.4 L235.6,397.4 L237.1,399.2 L238.5,400.9 L240.0,402.4 L241.4,403.9 L242.9,405.2 L244.3,406.4 L245.8,407.5 L247.2,408.5 L248.7,409.4 L250.1,410.2 L251.5,411.0 L253.0,411.7 L254.4,412.3 L255.9,412.8 L257.4,413.3 L258.8,413.8 L260.2,414.2 L261.7,414.5 L263.1,414.8 L264.6,415.1 L266.1,415.3 L267.5,415.6 L268.9,415.7 L270.4,415.9 L271.9,416.0 L273.3,416.1 L274.8,416.1 L276.2,416.2 L277.6,416.2 L279.1,416.1 L280.6,416.0 L282.0,415.8 L283.5,415.6 L284.9,415.3 L286.4,414.9 L287.8,414.6 L289.2,414.1 L290.7,413.6 L292.1,413.1 L293.6,412.5 L295.0,411.8 L296.5,411.2 L297.9,410.4 L299.4,409.7 L300.9,408.9 L302.3,408.0 L303.8,407.2 L305.2,406.3 L306.6,405.3 L308.1,404.4 L309.6,403.3 L311.0,402.3 L312.4,401.2 L313.9,400.1 L315.4,399.0 L316.8,397.8 L318.2,396.7 L319.7,395.4 L321.2,394.2 L322.6,392.9 L324.1,391.6 L325.5,390.3 L326.9,388.9 L328.4,387.5 L329.8,386.1 L331.3,384.6 L332.8,383.1 L334.2,381.6 L335.6,380.0 L337.1,378.5 L338.6,376.8 L340.0,375.2 L340,424 L50,424 Z" fill="#f4f2ec"/>
+<path d="M50.0,375.0 L51.5,376.6 L52.9,378.2 L54.4,379.8 L55.8,381.3 L57.2,382.8 L58.7,384.2 L60.1,385.6 L61.6,387.0 L63.0,388.3 L64.5,389.6 L66.0,390.8 L67.4,392.1 L68.8,393.2 L70.3,394.4 L71.8,395.5 L73.2,396.5 L74.7,397.6 L76.1,398.6 L77.5,399.5 L79.0,400.4 L80.5,401.3 L81.9,402.1 L83.3,403.0 L84.8,403.7 L86.2,404.4 L87.7,405.1 L89.2,405.8 L90.6,406.4 L92.0,407.0 L93.5,407.5 L95.0,408.0 L96.4,408.5 L97.8,408.9 L99.3,409.3 L100.8,409.7 L102.2,410.0 L103.7,410.3 L105.1,410.5 L106.6,410.7 L108.0,410.9 L109.4,411.0 L110.9,411.1 L112.3,411.1 L113.8,411.1 L115.2,411.1 L116.7,411.0 L118.1,411.0 L119.6,410.9 L121.0,410.8 L122.5,410.8 L124.0,410.7 L125.4,410.5 L126.9,410.4 L128.3,410.2 L129.8,410.0 L131.2,409.8 L132.6,409.5 L134.1,409.2 L135.6,408.8 L137.0,408.4 L138.4,407.9 L139.9,407.3 L141.3,406.7 L142.8,405.9 L144.2,405.1 L145.7,404.2 L147.2,403.1 L148.6,402.0 L150.1,400.7 L151.5,399.3 L152.9,397.7 L154.4,396.1 L155.8,394.2 L157.3,392.3 L158.8,390.2 L160.2,387.9 L161.7,385.6 L163.1,383.1 L164.6,380.4 L166.0,377.7 L167.4,374.9 L168.9,372.0 L170.3,369.1 L171.8,366.1 L173.2,363.1 L174.7,360.2 L176.2,357.2 L177.6,354.4 L179.1,351.6 L180.5,349.0 L182.0,346.5 L183.4,344.2 L184.8,342.1 L186.3,340.2 L187.8,338.6 L189.2,337.2 L190.7,336.1 L192.1,335.3 L193.6,334.9 L195.0,334.7 L196.4,334.9 L197.9,335.4 L199.3,336.1 L200.8,337.2 L202.2,338.6 L203.7,340.3 L205.2,342.1 L206.6,344.3 L208.1,346.6 L209.5,349.1 L211.0,351.8 L212.4,354.6 L213.8,357.5 L215.3,360.4 L216.8,363.4 L218.2,366.4 L219.6,369.5 L221.1,372.4 L222.5,375.4 L224.0,378.3 L225.4,381.1 L226.9,383.7 L228.3,386.3 L229.8,388.8 L231.2,391.1 L232.7,393.3 L234.2,395.4 L235.6,397.4 L237.1,399.2 L238.5,400.9 L240.0,402.4 L241.4,403.9 L242.9,405.2 L244.3,406.4 L245.8,407.5 L247.2,408.5 L248.7,409.4 L250.1,410.2 L251.5,411.0 L253.0,411.7 L254.4,412.3 L255.9,412.8 L257.4,413.3 L258.8,413.8 L260.2,414.2 L261.7,414.5 L263.1,414.8 L264.6,415.1 L266.1,415.3 L267.5,415.6 L268.9,415.7 L270.4,415.9 L271.9,416.0 L273.3,416.1 L274.8,416.1 L276.2,416.2 L277.6,416.2 L279.1,416.1 L280.6,416.0 L282.0,415.8 L283.5,415.6 L284.9,415.3 L286.4,414.9 L287.8,414.6 L289.2,414.1 L290.7,413.6 L292.1,413.1 L293.6,412.5 L295.0,411.8 L296.5,411.2 L297.9,410.4 L299.4,409.7 L300.9,408.9 L302.3,408.0 L303.8,407.2 L305.2,406.3 L306.6,405.3 L308.1,404.4 L309.6,403.3 L311.0,402.3 L312.4,401.2 L313.9,400.1 L315.4,399.0 L316.8,397.8 L318.2,396.7 L319.7,395.4 L321.2,394.2 L322.6,392.9 L324.1,391.6 L325.5,390.3 L326.9,388.9 L328.4,387.5 L329.8,386.1 L331.3,384.6 L332.8,383.1 L334.2,381.6 L335.6,380.0 L337.1,378.5 L338.6,376.8 L340.0,375.2" fill="none" stroke="#141413" stroke-width="2"/>
+<circle cx="113.8" cy="403.1" r="8" fill="#2a78d6" stroke="#fff" stroke-width="1.5"/>
+<circle cx="276.2" cy="408.2" r="8" fill="#2a78d6" fill-opacity="0.25" stroke="#2a78d6" stroke-dasharray="3 2"/>
+<defs><marker id="mfa" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#eb6834"/></marker></defs>
+<path d="M119.8,391.1 Q195.0,286.7 270.2,396.2" fill="none" stroke="#eb6834" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#mfa)"/>
+<text x="195.0" y="312.7" font-size="12" text-anchor="middle" fill="#eb6834" font-weight="700" >rare</text>
+<text x="113.8" y="436.0" font-size="11.5" text-anchor="middle" fill="#52514e" font-weight="600" >unfolded</text>
+<text x="276.2" y="436.0" font-size="11.5" text-anchor="middle" fill="#52514e" font-weight="600" >folded</text>
+<rect x="390" y="250" width="350" height="226" rx="12" fill="#fff" stroke="#e4e2dc"/>
+<text x="565.0" y="270.0" font-size="14" text-anchor="middle" fill="#141413" font-weight="700" ><tspan fill="#2a78d6" font-weight="700">d</tspan>  How much of each state?</text>
+<text x="565.0" y="462.0" font-size="12.5" text-anchor="middle" fill="#eb6834" font-weight="600" >→ debiased expectations</text>
+<rect x="449" y="365.0" width="32" height="55.0" rx="4" fill="#2a78d6"/>
+<rect x="489" y="337.5" width="32" height="82.5" rx="4" fill="#141413" fill-opacity="0.8"/>
+<text x="465.0" y="359.0" font-size="11" text-anchor="middle" fill="#2a78d6" font-weight="700" >50%</text>
+<text x="505.0" y="331.5" font-size="11" text-anchor="middle" fill="#141413" font-weight="700" >75%</text>
+<text x="485.0" y="436.0" font-size="11.5" text-anchor="middle" fill="#52514e" font-weight="600" >state A</text>
+<rect x="609" y="365.0" width="32" height="55.0" rx="4" fill="#2a78d6"/>
+<rect x="649" y="392.5" width="32" height="27.5" rx="4" fill="#141413" fill-opacity="0.8"/>
+<text x="625.0" y="359.0" font-size="11" text-anchor="middle" fill="#2a78d6" font-weight="700" >50%</text>
+<text x="665.0" y="386.5" font-size="11" text-anchor="middle" fill="#141413" font-weight="700" >25%</text>
+<text x="645.0" y="436.0" font-size="11.5" text-anchor="middle" fill="#52514e" font-weight="600" >state B</text>
+<line x1="430" x2="700" y1="420" y2="420" stroke="#8a8984"/>
+<rect x="615" y="290" width="10" height="10" rx="2" fill="#2a78d6"/>
+<text x="630.0" y="299.0" font-size="10.5" text-anchor="start" fill="#52514e" font-weight="400" >model samples</text>
+<rect x="615" y="306" width="10" height="10" rx="2" fill="#141413" fill-opacity="0.8"/>
+<text x="630.0" y="315.0" font-size="10.5" text-anchor="start" fill="#52514e" font-weight="400" >reality</text>
+</svg>
+<figcaption><b>Figure 1. Questions that need estimations, not just samples.</b> Each answer is a free energy, a probability or an average under the target distribution, and an imperfect sampler gets all of them wrong unless it is debiased.</figcaption>
+</figure>
+
+<p>Sampling and estimation are therefore not a goal and a means. They are two queries against the same object, and they fail in the same way.</p>
+
+<p>So let us state the problem in its full form. There is a target distribution</p>
+$$\pi(x) \;=\; \frac{\tilde\pi(x)}{Z}, \qquad Z = \int \tilde\pi(x)\,\dd x,$$
+<p>and we reach it in one of two ways:</p>
+
+<table>
+<tr><th>Setting</th><th>What we are given</th><th>Example</th></tr>
+<tr><td>Generative modeling</td><td>Samples: $\pi \approx \frac1M\sum_i \delta_{x_i}$</td><td>Images, structures, sequences</td></tr>
+<tr><td>Statistical mechanics</td><td>An energy: $\tilde\pi(x) = e^{-\beta U(x)}$</td><td>Molecules, materials, lattice field theory</td></tr>
+<tr><td>Bayesian inference</td><td>Prior × likelihood: $\tilde\pi(x) = p(x)\,p(y\mid x)$</td><td>Inverse problems, posteriors</td></tr>
+<tr><td>Reinforcement learning</td><td>Base × reward: $\tilde\pi(x) = p(x)\,e^{r(x)}$</td><td>Fine-tuning, alignment, design</td></tr>
+</table>
+
+<p>The first row is the familiar <em>learning from data</em> setting. The other three are <em>sampling from an unnormalized density</em>, and mathematically they are the same problem. The first row also becomes one of them the moment we want to condition or steer a model trained on data, because $p_\theta(x)\,h(x)$ is again an unnormalized density.</p>
+
+<p>Given $\pi$, there are five things we want to do:</p>
+<ol>
+  <li><b>Sample</b> $x\sim\pi$.</li>
+  <li><b>Evaluate</b> the density (likelihood) $\pi(x)$ or $p_\theta(x)$.</li>
+  <li><b>Estimate expectations</b> $\mathbb{E}_\pi[f]$ (observables, posterior means).</li>
+  <li><b>Estimate the normalizing constant</b> $Z$, which is the free energy $F=-\beta^{-1}\log Z$ or the model evidence.</li>
+  <li><b>Condition and steer</b>: sample and estimate under $q \propto h\cdot\pi$ for some new factor $h$.</li>
+</ol>
+
+<p>One constraint shapes everything that follows: <b>the model will be imperfect</b>. Whatever we learn, $p_\theta\neq\pi$. The useful question is therefore not <em>“can we learn $p_\theta = \pi$?”</em> but rather:</p>
+
+<div class="pullquote">Can we get <em>exact</em> answers from an <em>imperfect</em> model, at a cost we control?</div>
+
+<p>The only general way to do that is to correct the model. In its simplest form the correction is importance sampling:</p>
+$$\mathbb{E}_{\pi}[f] = \mathbb{E}_{x\sim p_\theta}\!\left[\frac{\pi(x)}{p_\theta(x)}\,f(x)\right].$$
+<div class="deriv">
+  <button class="deriv-btn" aria-expanded="false">Show derivation <span class="n">· 4 steps</span></button>
+  <div class="deriv-body" hidden>
+    <div class="step"><span class="why"><b>1</b>definition</span>$$\mathbb{E}_{\pi}[f] = \int \pi(x)\,f(x)\,\dd x$$</div>
+    <div class="step"><span class="why"><b>2</b>multiply and divide by $p_\theta$</span>$$= \int \pi(x)\,\frac{p_\theta(x)}{p_\theta(x)}\,f(x)\,\dd x$$</div>
+    <div class="step"><span class="why"><b>3</b>regroup</span>$$= \int p_\theta(x)\,\frac{\pi(x)}{p_\theta(x)}\,f(x)\,\dd x$$</div>
+    <div class="step"><span class="why"><b>4</b>read as an expectation under $p_\theta$</span>$$= \mathbb{E}_{x\sim p_\theta}\!\left[\frac{\pi(x)}{p_\theta(x)}\,f(x)\right]$$</div>
+  </div>
+</div>
+<p>Here $p_\theta$ is easy to sample and $\pi$ is hard to sample. The identity is exact <em>for any</em> $p_\theta$ whose support covers $\pi$. The quality of the model affects only the <em>variance</em>, never the correctness. That is the property we want. The same weights also correct <em>samples</em>: resampling the draws in proportion to $\pi/p_\theta$ (or accepting and rejecting them) turns samples from $p_\theta$ into samples from $\pi$. One mechanism serves both kinds of query. The catch is that it requires evaluating $p_\theta(x)$. This single requirement, <b>a usable density for the proposal</b>, drives the rest of the post.</p>
+
+<!-- ============================================================ -->
+<h2 id="hard"><span class="num">PART 2</span>Why parameterizing a probabilistic model is computationally hard</h2>
+
+<p>A probabilistic model has to deliver three things at once:</p>
+<ul>
+  <li><b>Expressivity:</b> it can represent complicated, multimodal, high-dimensional, symmetric distributions.</li>
+  <li><b>Cheap sampling:</b> drawing $x\sim p_\theta$ costs a modest, fixed amount of computation.</li>
+  <li><b>Tractable density:</b> $p_\theta(x)$, normalized, can be evaluated, or at least the density ratios that inference needs can be.</li>
+</ul>
+<p>Each classical model family gives up at least one of these, and in each case the cost comes from a different place.</p>
+
+<figure>
+<svg viewBox="0 0 800 420" role="img" aria-label="The trilemma of probabilistic modeling">
+  <defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#8a8984"/></marker></defs>
+  <polygon points="380,40 90,370 670,370" fill="#f4f2ec" stroke="#141413" stroke-width="1.5"/>
+  <g font-family="sans-serif">
+  <text x="380" y="28" text-anchor="middle" font-size="15" font-weight="700" fill="#141413">Expressivity</text>
+  <text x="80" y="398" text-anchor="middle" font-size="15" font-weight="700" fill="#141413">Cheap sampling</text>
+  <text x="680" y="398" text-anchor="middle" font-size="15" font-weight="700" fill="#141413">Tractable density</text>
+  <circle cx="440" cy="150" r="7" fill="#8a8984"/><line x1="447" y1="150" x2="492" y2="150" stroke="#8a8984"/><text x="497" y="155" font-size="14" font-weight="600" fill="#141413">Energy-based models + MCMC</text>
+  <circle cx="275" cy="200" r="7" fill="#8a8984"/><line x1="268" y1="200" x2="226" y2="200" stroke="#8a8984"/><text x="221" y="205" text-anchor="end" font-size="14" font-weight="600" fill="#141413">Continuous flows</text>
+  <circle cx="210" cy="305" r="7" fill="#8a8984"/><text x="197" y="310" text-anchor="end" font-size="14" font-weight="600" fill="#141413">VAEs</text>
+  <circle cx="380" cy="345" r="7" fill="#8a8984"/><text x="380" y="330" text-anchor="middle" font-size="14" font-weight="600" fill="#141413">Normalizing flows</text>
+  <circle cx="545" cy="300" r="7" fill="#8a8984"/><line x1="552" y1="300" x2="618" y2="300" stroke="#8a8984"/><text x="623" y="305" font-size="14" font-weight="600" fill="#141413">Autoregressive models</text>
+  <circle cx="395" cy="235" r="11" fill="#2a78d6" stroke="#fff" stroke-width="2"/><text x="395" y="268" text-anchor="middle" font-size="15" font-weight="700" fill="#2a78d6">Diffusion models</text>
+  <path d="M283,203 C320,212 350,224 380,231" fill="none" stroke="#8a8984" stroke-dasharray="4 4" marker-end="url(#ah)"/>
+  </g>
+</svg>
+<figcaption><b>Figure 2. The trilemma.</b> <b>Energy-based models + MCMC</b>: expressive, with a density known up to $Z$, but exact sampling needs $t\to\infty$. <b>Normalizing flows</b>: exact sampling and density, but invertibility plus a cheap determinant restricts the architecture. <b>Autoregressive models</b>: exact, but require an ordering. <b>VAEs</b>: cheap sampling, but the density is only a bound. <b>Continuous flows</b>: free-form, but the density needs $\int\nabla\!\cdot b_t\,\dd t$. <b>Diffusion models</b> do not escape the trilemma in $x$-space, since their marginal density is still intractable. They escape by <em>changing the space</em>. On paths, density costs as much as sampling (one network call per step), and the marginal becomes a conditional expectation of a path weight that can be estimated without bias.</figcaption>
+</figure>
+
+<div class="box green">
+  <span class="lbl">Why a density is worth having</span>
+  <p>If $p_\theta(x)$ can be evaluated exactly and cheaply, every question from Part 1 becomes a one-line formula. Draw $x\sim p_\theta$ and weight it by $w(x)=\tilde\pi(x)/p_\theta(x)$:</p>
+  <table style="margin:8px 0 12px">
+  <tr><th>Question</th><th>With an exact density</th></tr>
+  <tr><td>Likelihood</td><td>evaluate $p_\theta(x)$ directly</td></tr>
+  <tr><td>Expectations</td><td>$\mathbb{E}_\pi[f] = \mathbb{E}_{p_\theta}[w f]\,/\,\mathbb{E}_{p_\theta}[w]$</td></tr>
+  <tr><td>Normalizing constant</td><td>$Z = \mathbb{E}_{p_\theta}[w]$</td></tr>
+  <tr><td>Exact samples</td><td>resample the draws in proportion to $w$</td></tr>
+  <tr><td>Steering to $q\propto h\,p_\theta$</td><td>weight the draws by $h(x)$</td></tr>
+  </table>
+  <p>This is why exact-density models are so attractive. The rest of this part is about why <em>getting</em> that density is usually the expensive step.</p>
+</div>
+
+<h3 id="mcmc">The equilibrium approach: the cost comes from time</h3>
+<p>The oldest answer skips the learned model: simulate Langevin dynamics $\dd X_t = \nabla\log\tilde\pi(X_t)\,\dd t + \sqrt{2}\,\dd W_t$, which leaves $\pi$ invariant and never needs $Z$. But exactness holds only as $t\to\infty$, and the time to cross a barrier of height $\Delta$ grows like $e^{\beta\Delta}$. The three demos below run on the same hard double well, so they can be compared directly.</p>
+
+<div class="viz-root" id="lag">
+  <h5>1 · Equilibrium MCMC</h5>
+  <div class="sub">All 300 chains start in the left well and run exact MCMC on the target.</div>
+  <div class="controls"><button id="lag-play">Pause</button><button id="lag-reset">Run again</button><span class="statline">time <b id="lag-t">0</b></span></div>
+  <div class="panels">
+    <div><div class="panel-t">Particles vs. target</div><div class="legend"><span><i style="background:var(--series-1)"></i>MCMC particles</span><span><i style="background:var(--text-secondary);height:2px"></i>target</span></div><svg id="lag-hist" viewBox="0 0 360 220"></svg></div>
+    <div><div class="panel-t">Right-well mass over time</div><div class="legend"><span><i style="background:var(--series-1)"></i>MCMC</span><span><i style="background:var(--text-secondary);height:2px"></i>truth 0.73</span></div><svg id="lag-curve" viewBox="0 0 360 220"></svg></div>
+  </div>
+  <div class="deriv" style="margin:6px 0 0"><button class="deriv-btn" aria-expanded="false">About this demo</button><div class="deriv-body" hidden style="padding:10px 16px;font-size:13.5px;font-family:var(--sans);color:var(--ink2)">The target is the tilted double well $U(x)=10\,(x^2-1)^2-0.5x$, which puts 73% of its mass in the right well behind a high barrier. All three demos use 300 chains and the same Metropolis-adjusted Langevin moves (step size 0.002), so they are directly comparable. Here every chain starts in the left well and runs MCMC on the target itself. Each step leaves the target invariant, yet the right-well mass barely moves: the time to cross a barrier of height $\approx 10$ grows like $e^{10}$.</div></div>
+</div>
+
+<p>Annealing is the standard remedy: start from a broad, easy distribution and let the barrier grow gradually.</p>
+
+<div class="viz-root" id="ann">
+  <h5>2 · Annealing</h5>
+  <div class="sub">Chains start from a broad Gaussian, and the target is annealed to the same double well in $N$ steps.</div>
+  <div class="controls"><label>Steps $N$ = <b id="ann-nv"></b>&nbsp;<input id="ann-n" type="range" min="0" max="3" step="1" value="2"></label><button id="ann-play">Pause</button><button id="ann-reset">Run again</button><span class="statline">β <b id="ann-b">0.00</b></span></div>
+  <div class="panels">
+    <div><div class="panel-t">Particles vs. current target</div><div class="legend"><span><i style="background:var(--series-1)"></i>particles</span><span><i style="background:var(--text-secondary);height:2px"></i>current π<sub>β</sub></span></div><svg id="ann-hist" viewBox="0 0 360 220"></svg></div>
+    <div><div class="panel-t">Right-well mass along the path</div><div class="legend"><span><i style="background:var(--series-1)"></i>annealed MCMC</span><span><i style="background:var(--text-secondary);height:2px"></i>equilibrium</span><span><i class="dot" style="background:var(--series-2)"></i>finished runs</span></div><svg id="ann-curve" viewBox="0 0 360 220"></svg></div>
+  </div>
+  <div class="deriv" style="margin:6px 0 0"><button class="deriv-btn" aria-expanded="false">About this demo</button><div class="deriv-body" hidden style="padding:10px 16px;font-size:13.5px;font-family:var(--sans);color:var(--ink2)">The target is the tilted double well $U(x)=10\,(x^2-1)^2-0.5x$, which puts 73% of its mass in the right well behind a high barrier. All three demos use 300 chains and the same Metropolis-adjusted Langevin moves (step size 0.002), so they are directly comparable. Chains start from a broad Gaussian $\pi_0$ and follow $\tilde\pi_\beta\propto\tilde\pi_0^{1-\beta}\tilde\pi^{\beta}$ with one MCMC step per level as $\beta$ goes from 0 to 1. As the barrier grows, chains fall out of equilibrium and freeze in the wrong proportions. The dashed curve is the equilibrium right-well mass of each $\pi_\beta$; finished runs leave a marker at $\beta=1$.</div></div>
+</div>
+
+<p>Annealing helps, but only slowly. It is exact only in the <em>quasi-static</em> limit $N\to\infty$, where the system stays in equilibrium at every step. <b>In the equilibrium paradigm, the cost of exactness comes from time.</b></p>
+<p>Now keep the annealing just as fast, but change <em>how</em> the chains move. Instead of relaxing with local MCMC steps, carry each chain along with the changing distribution, using the exact transport from one $\pi_\beta$ to the next. This is the analytically optimal diffusion process, the one a perfectly trained diffusion model learns:</p>
+
+<div class="viz-root" id="neq">
+  <h5>3 · Out of equilibrium: the optimal diffusion process</h5>
+  <div class="sub">The same annealing path and the same small number of steps, but chains are moved by the analytically optimal transport.</div>
+  <div class="controls"><label>Steps $N$ = <b id="neq-nv"></b>&nbsp;<input id="neq-n" type="range" min="0" max="2" step="1" value="1"></label><button id="neq-play">Pause</button><button id="neq-reset">Run again</button><span class="statline">β <b id="neq-b">0.00</b></span></div>
+  <div class="panels">
+    <div><div class="panel-t">Particles vs. current target</div><div class="legend"><span><i style="background:var(--series-2)"></i>particles</span><span><i style="background:var(--text-secondary);height:2px"></i>current π<sub>β</sub></span></div><svg id="neq-hist" viewBox="0 0 360 220"></svg></div>
+    <div><div class="panel-t">Right-well mass along the path</div><div class="legend"><span><i style="background:var(--series-2)"></i>optimal process</span><span><i style="background:var(--text-secondary);height:2px"></i>equilibrium</span><span><i class="dot" style="background:var(--series-2)"></i>finished runs</span></div><svg id="neq-curve" viewBox="0 0 360 220"></svg></div>
+  </div>
+  <div class="deriv" style="margin:6px 0 0"><button class="deriv-btn" aria-expanded="false">About this demo</button><div class="deriv-body" hidden style="padding:10px 16px;font-size:13.5px;font-family:var(--sans);color:var(--ink2)">The target is the tilted double well $U(x)=10\,(x^2-1)^2-0.5x$, which puts 73% of its mass in the right well behind a high barrier. All three demos use 300 chains and the same annealing path $\tilde\pi_\beta\propto\tilde\pi_0^{1-\beta}\tilde\pi^{\beta}$, so they are directly comparable. Here, instead of relaxing with local MCMC moves, each chain is <em>transported</em>: at every step it is moved by the exact map that carries $\pi_{\beta_{k-1}}$ to $\pi_{\beta_k}$ (in 1D, $x\mapsto F_{\beta_k}^{-1}(F_{\beta_{k-1}}(x))$ with $F_\beta$ the cumulative distribution), followed by the same MCMC step as before. This is the analytically optimal non-equilibrium process, the one a perfectly trained diffusion model learns. Its work is the same on every path, so it needs no correction, and the particles stay in equilibrium with $\pi_\beta$ at every step for any $N$.</div></div>
+</div>
+
+<p>Same target, same path, a handful of steps, and the chains are in equilibrium at every $\beta$. A finite-time process can be exact if it <em>transports</em> mass instead of relaxing it. Learning that transport is what diffusion models do. Parts 3 and 4 show how to stay exact when the learned transport is imperfect, using a path weight that reweights each trajectory.</p>
+
+<h3 id="explicit">Explicit densities: the cost comes from architecture</h3>
+<p>The opposite answer is to design $p_\theta$ so that the density is exact. <b>Autoregressive models</b> do this with an ordering, which molecules and materials do not have. <b>Normalizing flows</b> push a Gaussian through an invertible map $x=T(z)$, giving $p_\theta(x) = p_0(z)\,|\det\nabla T(z)|^{-1}$. This is exactly what reweighting needs, and it powered Boltzmann generators [Noé et al. 2019]. The price is the architecture: invertibility with a cheap determinant limits expressivity and scaling.</p>
+
+<h3 id="cnf">Continuous flows: the cost comes from Jacobians</h3>
+<p>Continuous-time flows $\dot x_t = b_t(x_t)$ remove the architectural constraint and train easily with flow matching. Their density still exists:</p>
+$$\log p_1(x_1) = \log p_0(x_0) - \int_0^1 \nabla\cdot b_t(x_t)\,\dd t,$$
+<p>but the divergence costs $d$ backward passes per solver step, where $d$ is the dimension, for every sample. For a protein with thousands of atoms, evaluating the density becomes far more expensive than generating the sample. The exact density is valuable, but here it is usually too expensive to use.</p>
+
+<h3 id="pivot">The pivot: when the exact density is too expensive, an unbiased estimate is enough</h3>
+<p>When an exact density is cheap, use it; the box above is all you need. When it is not, look again at what inference actually uses. Importance sampling, self-normalized estimators, sequential Monte Carlo and $Z$-estimation all consume <em>weights</em>. A standard fact from computational statistics, the <em>pseudo-marginal</em> principle [Andrieu &amp; Roberts 2009], says that a weight can be replaced by any <b>non-negative unbiased estimate</b> of it without losing exactness. The reason is that we are then doing exact importance sampling on an <em>extended</em> space, the original variable plus the auxiliary randomness of the estimator, whose marginal is the one we care about.</p>
+
+<div class="box orange">
+  <span class="lbl">The reframing</span>
+  <p>Keep the goal of a usable density, but relax how we obtain it. When the exact density is too expensive, ask for <b>cheap, unbiased, low-variance density estimates</b> instead. They support exactly the same inference. Then choose auxiliary variables that make the extended space tractable. A diffusion process does exactly this, and its auxiliary variable is <b>the path</b>.</p>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="diffusion"><span class="num">PART 3</span>Diffusion: lifting the model to path space</h2>
+
+<div class="box">
+  <span class="lbl">Conventions used throughout</span>
+  <p>Time runs $t=0,1,\dots,N$, from the <b>prior</b> $p_0$ (e.g. a Gaussian) to the <b>target</b> at $t=N$. Following the physics convention of driving a system from a reference state to a target, the <b>forward</b> process $\Pf$ is <em>generation</em> (prior → target) and the <b>backward</b> process $\Pb$ is <em>noising</em> (target → prior). This is the reverse of DDPM naming. Forward kernels $\Pf(X_{t+1}\mid X_t)$ and backward kernels $\Pb(X_t\mid X_{t+1})$ are Markov. To keep formulas readable, path products are abbreviated as $\prod\Pf := \prod_{t=0}^{N-1}\Pf(X_{t+1}\mid X_t)$ and $\prod\Pb := \prod_{t=0}^{N-1}\Pb(X_t\mid X_{t+1})$, and likewise for other kernel pairs.</p>
+</div>
+
+<figure>
+<svg viewBox="0 0 760 290" role="img" aria-label="Forward and backward processes between prior and target">
+  <defs>
+    <marker id="af" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2a78d6"/></marker>
+    <marker id="ab" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#eb6834"/></marker>
+  </defs>
+  <path d="M40,230 C 80,230 90,90 120,90 C 150,90 160,230 200,230" fill="#eef4fc" stroke="#2a78d6" stroke-width="2"/>
+  <text x="120" y="260" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="700" fill="#141413">prior p₀</text>
+  <text x="120" y="278" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#52514e">t = 0</text>
+  <path d="M540,230 C 565,230 570,70 590,70 C 610,70 612,200 635,200 C 655,200 660,120 680,120 C 700,120 705,230 725,230" fill="#fdf1ea" stroke="#eb6834" stroke-width="2"/>
+  <text x="635" y="260" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="700" fill="#141413">target π</text>
+  <text x="635" y="278" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#52514e">t = N</text>
+  <path d="M130,150 C 200,120 230,175 290,140 S 380,110 420,130 S 520,95 585,92" fill="none" stroke="#2a78d6" stroke-width="1.6" opacity=".85"/>
+  <path d="M110,180 C 190,200 240,150 300,175 S 400,195 460,170 S 560,150 680,135" fill="none" stroke="#2a78d6" stroke-width="1.6" opacity=".55"/>
+  <path d="M125,120 C 190,140 250,100 310,120 S 410,150 470,130 S 545,110 595,105" fill="none" stroke="#2a78d6" stroke-width="1.6" opacity=".4"/>
+  <line x1="240" y1="40" x2="520" y2="40" stroke="#2a78d6" stroke-width="2.5" marker-end="url(#af)"/>
+  <text x="380" y="30" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="700" fill="#2a78d6">forward / generation  P→(Xₜ₊₁ | Xₜ)</text>
+  <line x1="520" y1="250" x2="240" y2="250" stroke="#eb6834" stroke-width="2.5" marker-end="url(#ab)"/>
+  <text x="380" y="275" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="700" fill="#eb6834">backward / noising  P←(Xₜ | Xₜ₊₁)</text>
+</svg>
+<figcaption><b>Figure 3.</b> A diffusion model is a <em>pair</em> of Markov processes between a tractable prior and the target. Each single step has a closed-form density, but the marginal at time $N$ is an integral over all paths.</figcaption>
+</figure>
+
+<h3 id="kernels">Everything is a Markov kernel</h3>
+<p>Before any equations, one point that the rest of the post depends on. <b>Every derivation below uses only two things: Markov transition kernels $\Pf,\Pb$ whose densities we can evaluate, and the marginals they connect.</b> We never use that the kernels are Gaussian, that the state is continuous, or that there is an SDE behind them. A Gaussian denoising step is one choice of kernel. Others include an MCMC move, unmasking a token, appending a token to a sentence, or swapping an atom's chemical species. Every identity, estimator and algorithm in Parts 3–6 therefore applies to all of them. We return to this in Part 7. For now, read $\Pf$ and $\Pb$ as <em>any</em> Markov kernels, with diffusion as the running example.</p>
+
+<h3>Two processes, one set of marginals</h3>
+<p>In continuous time, the running example is a generative SDE on $[0,1]$:</p>
+$$\dd X_t = \mu^+_t(X_t)\,\dd t + \sigma_t\,\dd W_t,\qquad X_0\sim p_0,$$
+<p>with marginals $p_t$ obeying the Fokker–Planck equation $\partial_t p_t + \nabla\!\cdot(\mu^+_t p_t) = \tfrac12\sigma_t^2\Delta p_t$. The same marginals can be traversed backward in time by a process with backward drift $\mu^-_t(x) = \lim_{h\downarrow0}\mathbb{E}[X_t-X_{t-h}\mid X_t=x]/h$. The two drifts are linked by a remarkably simple relation [Nelson 1967; Anderson 1982]:</p>
+$$\mu^+_t(x) - \mu^-_t(x) \;=\; \sigma_t^2\,\nabla\log p_t(x).$$
+<p>The difference between the two directions of time is the <em>score</em>. That is why diffusion models learn scores. Averaging the two drifts gives the probability-flow ODE $\dot x = \mu^+_t - \tfrac12\sigma_t^2\nabla\log p_t$, which has the same marginals. Flows and diffusions are therefore “the same model” up to how well the score is estimated. As we will see, they are very much <em>not</em> the same for inference.</p>
+<div class="deriv">
+  <button class="deriv-btn" aria-expanded="false">Flow matching and stochastic interpolants are diffusion models too</button>
+  <div class="deriv-body" hidden style="padding:14px 18px">
+<p>Consider the one-sided Gaussian interpolant $X_t = \alpha_t X_1 + \beta_t\varepsilon$, with $\varepsilon\sim\mathcal N(0,I)$, going from pure noise at $t=0$ to data $X_1$ at $t=1$. Flow matching learns the velocity $b_t(x)=\mathbb{E}[\dot\alpha_tX_1+\dot\beta_t\varepsilon\mid X_t=x]$. A diffusion model learns the score $\nabla\log p_t(x)=-\mathbb{E}[\varepsilon\mid X_t=x]/\beta_t$. Both are linear in the same conditional expectations, so each determines the other:</p>
+$$\nabla\log p_t(x) \;=\; \frac{b_t(x) - \frac{\dot\alpha_t}{\alpha_t}\,x}{\beta_t\big(\frac{\dot\alpha_t}{\alpha_t}\beta_t - \dot\beta_t\big)} .$$
+<p>For the linear interpolant $\alpha_t=t$, $\beta_t=1-t$, this is simply $\nabla\log p_t(x) = \big(t\,b_t(x)-x\big)/(1-t)$. A trained flow-matching model therefore already defines a whole family of diffusions with the same marginals, one for every noise level $\sigma_t$, with no retraining:</p>
+$$\dd X_t = \Big(b_t(X_t) + \tfrac12\sigma_t^2\,\nabla\log p_t(X_t)\Big)\dd t + \sigma_t\,\dd W_t .$$
+<p>For general interpolants between two arbitrary distributions, with no Gaussian end, the velocity alone does not determine the score. The score is then learned as well, for example through the latent noise term of stochastic interpolants, and flows and diffusions are again <b>equivalent up to score learning</b>. Everything in this post therefore applies to flow-matching models as much as to diffusion models.</p>
+  </div>
+</div>
+<p>Discretizing with step $\delta$ gives Gaussian kernels, each with a closed-form density:</p>
+$$\begin{aligned}\Pf(X_{t+1}\mid X_t) &= \mathcal N\big(X_t + \mu^+_t(X_t)\,\delta,\;\sigma_t^2\delta\big),\\ \Pb(X_t\mid X_{t+1}) &= \mathcal N\big(X_{t+1} - \mu^-_{t+1}(X_{t+1})\,\delta,\;\sigma_{t+1}^2\delta\big).\end{aligned}$$
+<p>The key computational fact is easy to miss: <b>evaluating the density of a whole path costs exactly as much as simulating it</b>. That is $N$ network calls and $N$ kernel log-densities, with no Jacobian, trace or determinant.</p>
+
+<h3 id="bayes">Time reversal is Bayes' rule in time</h3>
+<p>A perfectly trained diffusion model satisfies, for every $t$,</p>
+$$p_t(X_t)\,\Pf(X_{t+1}\mid X_t) \;=\; p_{t+1}(X_{t+1})\,\Pb(X_t\mid X_{t+1}).$$
+<p>This is Bayes' rule written across time: the joint of two consecutive states factorizes either way. Chaining it along the path gives the joint over all states:</p>
+$$p_0(X_0)\prod_{t=0}^{N-1}\Pf(X_{t+1}\mid X_t) \;=\; p_N(X_N)\prod_{t=0}^{N-1}\Pb(X_t\mid X_{t+1}).$$
+<div class="deriv">
+  <button class="deriv-btn" aria-expanded="false">Show derivation <span class="n">· 5 steps</span></button>
+  <div class="deriv-body" hidden>
+    <div class="step"><span class="why"><b>1</b>start: prior times forward kernels</span>$$p_0(X_0)\,\Pf(X_1\mid X_0)\,\Pf(X_2\mid X_1)\cdots\Pf(X_N\mid X_{N-1})$$</div>
+    <div class="step"><span class="why"><b>2</b>Bayes at $t=0$: $p_0\Pf = p_1\Pb$</span>$$= p_1(X_1)\,\Pb(X_0\mid X_1)\,\Pf(X_2\mid X_1)\cdots\Pf(X_N\mid X_{N-1})$$</div>
+    <div class="step"><span class="why"><b>3</b>Bayes at $t=1$: $p_1\Pf = p_2\Pb$</span>$$= p_2(X_2)\,\Pb(X_1\mid X_2)\,\Pb(X_0\mid X_1)\cdots\Pf(X_N\mid X_{N-1})$$</div>
+    <div class="step"><span class="why"><b>4</b>repeat up to $t=N-1$</span>$$= p_N(X_N)\,\Pb(X_{N-1}\mid X_N)\cdots\Pb(X_0\mid X_1)$$</div>
+    <div class="step"><span class="why"><b>5</b>collect the product</span>$$= p_N(X_N)\prod_{t=0}^{N-1}\Pb(X_t\mid X_{t+1})$$</div>
+  </div>
+</div>
+<p>This is the <b>joint</b> form of Bayes' rule over the whole path. In measure notation, which carries over unchanged to continuous time:</p>
+<div class="box blue">
+<span class="lbl">Time reversibility</span>
+$$\frac{p_0(X_0)\,\dd\Pf(\cdot\mid X_0)}{p_N(X_N)\,\dd\Pb(\cdot\mid X_N)}\,(X_{0:N}) \;=\; 1 \qquad\text{almost surely.}$$
+<p>The forward path law started from the prior and the backward path law started from the target are the same measure. Every diffusion training objective can be read as an attempt to enforce this single equation.</p>
+</div>
+
+<h3 id="identity">The central identity</h3>
+<p>Rearrange the joint form and divide both sides by $p_0(X_0)\prod_t\Pb(X_t\mid X_{t+1})$:</p>
+<div class="box blue">
+<span class="lbl">The Radon–Nikodym path weight [RNE; He, Hernández-Lobato, <b>Du</b>, Vargas, ICLR 2026]</span>
+$$\frac{p_N(X_N)}{p_0(X_0)} \;=\; \frac{\prod_{t=0}^{N-1}\Pf(X_{t+1}\mid X_t)}{\prod_{t=0}^{N-1}\Pb(X_t\mid X_{t+1})}\qquad\text{along any path } X_{0:N}.$$
+<p>A ratio of intractable <b>marginals</b> equals a ratio of tractable <b>kernels</b>. For a perfectly time-reversed pair it holds pathwise, with zero variance.</p>
+</div>
+
+<p>Real models are imperfect, so this pathwise equality becomes an estimator, the Radon–Nikodym Estimator (RNE). The deeper fact, which turns the identity into an <em>inference engine</em>, holds for <b>any</b> pair of kernels, perfect or not. It is the subject of Part 5. Here is the simplest instance, and the pattern to watch for. Let $p_N$ be the actual marginal of the forward chain, meaning the distribution of the samples you really generate. Then, for <em>any</em> backward kernels,</p>
+$$p_N(X_N) \;=\; \mathbb{E}_{\Pb}\!\left[\frac{p_0(X_0)\prod\Pf}{\prod\Pb}\;\middle|\; X_N\right].$$
+<div class="deriv">
+  <button class="deriv-btn" aria-expanded="false">Show derivation <span class="n">· 4 steps</span></button>
+  <div class="deriv-body" hidden>
+    <div class="step"><span class="why"><b>1</b>marginalize the path</span>$$p_N(X_N) = \int p_0(X_0)\textstyle\prod\Pf\;\dd X_{0:N-1}$$</div>
+    <div class="step"><span class="why"><b>2</b>multiply and divide by the backward kernels</span>$$= \int p_0(X_0)\textstyle\prod\Pf\;\dfrac{\prod\Pb}{\prod\Pb}\,\dd X_{0:N-1}$$</div>
+    <div class="step"><span class="why"><b>3</b>regroup: $\prod\Pb$ is the law of $X_{0:N-1}$ given $X_N$</span>$$= \int \Big(\textstyle\prod\Pb\Big)\,\dfrac{p_0(X_0)\prod\Pf}{\prod\Pb}\,\dd X_{0:N-1}$$</div>
+    <div class="step"><span class="why"><b>4</b>read as a conditional expectation</span>$$= \mathbb{E}_{\Pb}\!\left[\frac{p_0(X_0)\prod\Pf}{\prod\Pb}\;\middle|\; X_N\right]$$</div>
+  </div>
+</div>
+<p>The backward kernels serve as an importance proposal over the paths that end at $X_N$. Nothing requires them to be the exact reversal. If they are exact, the estimator has zero variance. If they are not, it is still unbiased.</p>
+
+
+
+<!-- ============================================================ -->
+<h2 id="thermo"><span class="num">PART 4</span>Reading the path weight: non-equilibrium thermodynamics</h2>
+
+<p>This is the right place to bring in physics. Not at the start as motivation, and not at the end as decoration, but here, at the moment we hold a path weight. That is because physics has studied <em>exactly this object</em> since the late 1990s, and its results are precisely the estimators we need.</p>
+
+<h3>Equilibrium vs. out of equilibrium</h3>
+<p>MCMC is an equilibrium method: it is correct once the system has relaxed, and the animation in Part 2 shows how long that can be. Generative models are the opposite. They <em>drive</em> a system from a prior to a target in finite time, $0\lt N\ll\infty$, and at intermediate times the system is <em>not</em> in equilibrium with any intermediate Hamiltonian, by design. Physicists call this a <b>driven non-equilibrium process</b>, and the question they asked about it is ours as well: <em>if a system is pushed out of equilibrium, can we still recover equilibrium quantities exactly?</em> The answer, a theme of 1990s statistical physics, is yes, through the <b>fluctuation theorems</b>.</p>
+
+<h3>Jarzynski's equality is our normalizing-constant estimator</h3>
+<p>Part 5 shows that the normalizing constant is the average path weight, $Z_N = \mathbb{E}_{\Pf}\big[\tilde\pi_N(X_N)\prod\Pb\,/\,p_0(X_0)\prod\Pf\big]$. Now make the choice physicists make. Let $U_t$ interpolate between $U_0$ (prior, $p_0 = e^{-U_0}/Z_0$) and $U_N$ (target, $\tilde\pi_N=e^{-U_N}$). Let $\Pf(\cdot\mid X_t)$ be any MCMC kernel that leaves $e^{-U_{t+1}}$ invariant, and let $\Pb$ be its reversal. The path weight then collapses to the work:</p>
+$$\frac{Z_N}{Z_0} = \mathbb{E}_{\Pf}\big[e^{-W}\big],\qquad W = \sum_{t=0}^{N-1}\Big(U_{t+1}(X_t) - U_t(X_t)\Big).$$
+<div class="deriv">
+  <button class="deriv-btn" aria-expanded="false">Show derivation <span class="n">· 7 steps</span></button>
+  <div class="deriv-body" hidden>
+    <div class="step"><span class="why"><b>1</b>kernel invariant for $e^{-U_{t+1}}$, and its reversal</span>$$e^{-U_{t+1}(X_t)}\,\Pf(X_{t+1}\mid X_t) = e^{-U_{t+1}(X_{t+1})}\,\Pb(X_t\mid X_{t+1})$$</div>
+    <div class="step"><span class="why"><b>2</b>so each step ratio is an energy difference</span>$$\frac{\Pb(X_t\mid X_{t+1})}{\Pf(X_{t+1}\mid X_t)} = e^{\,U_{t+1}(X_{t+1})-U_{t+1}(X_t)}$$</div>
+    <div class="step"><span class="why"><b>3</b>path weight with $p_0=e^{-U_0}/Z_0$, $\tilde\pi_N=e^{-U_N}$</span>$$w = \frac{e^{-U_N(X_N)}}{e^{-U_0(X_0)}/Z_0}\prod_{t=0}^{N-1}\frac{\Pb(X_t\mid X_{t+1})}{\Pf(X_{t+1}\mid X_t)}$$</div>
+    <div class="step"><span class="why"><b>4</b>insert the step ratios</span>$$= Z_0\exp\!\Big(U_0(X_0) - U_N(X_N) + \textstyle\sum_{t}U_{t+1}(X_{t+1}) - \sum_{t}U_{t+1}(X_t)\Big)$$</div>
+    <div class="step"><span class="why"><b>5</b>telescope: $U_0(X_0)+\sum_{t=1}^{N}U_t(X_t)-U_N(X_N)=\sum_{t=0}^{N-1}U_t(X_t)$</span>$$= Z_0\exp\!\Big(\sum_{t=0}^{N-1}U_t(X_t) - \sum_{t=0}^{N-1}U_{t+1}(X_t)\Big)$$</div>
+    <div class="step"><span class="why"><b>6</b>define the work $W$</span>$$= Z_0\,e^{-W},\qquad W=\sum_{t=0}^{N-1}\big(U_{t+1}(X_t)-U_t(X_t)\big)$$</div>
+    <div class="step"><span class="why"><b>7</b>average over forward paths, $Z_N=\mathbb{E}[w]$</span>$$\frac{Z_N}{Z_0} = \mathbb{E}_{\Pf}\big[e^{-W}\big]$$</div>
+  </div>
+</div>
+<p>$W$ is the <b>physical work</b>: the energy injected when the Hamiltonian is switched while the configuration is held fixed. This is <b>Jarzynski's equality</b>, $\mathbb{E}[e^{-\beta W}] = e^{-\beta\Delta F}$ [Jarzynski 1997]. It is also, symbol for symbol, Neal's annealed importance sampling [Neal 2001], which Neal derived with an explicit nod to Jarzynski. The SMC-sampler framework of Del Moral, Doucet &amp; Jasra (2006) generalized the “backward kernel” $\Pb$ into a free design choice, which is exactly the freedom a learned diffusion model fills.</p>
+
+<h3>Crooks' theorem is time reversal; the ELBO is the second law</h3>
+<p>For general (learned) kernels, normalize $p_0$ and <em>define</em> the work as the negative log path weight, $W := -\log w$. The backward path law built from the normalized target $\pi_N=\tilde\pi_N/Z_N$ is $\pi_N(X_N)\prod_t\Pb$, so</p>
+$$\frac{\pi_N(X_N)\,\dd\Pb(\cdot\mid X_N)}{p_0(X_0)\,\dd\Pf(\cdot\mid X_0)} = \frac{w}{Z_N} = e^{-(W-\Delta F)},\qquad \Delta F = -\log Z_N .$$
+<p>This is <b>Crooks' fluctuation theorem</b> [Crooks 1999]: the probability of a trajectory relative to its time reverse is the exponential of the <em>dissipated work</em> $W_{\rm diss}=W-\Delta F$. Compare it with the time-reversibility box above. A perfect model is exactly the case where this ratio equals $1$. Three consequences, each a familiar ML statement in disguise:</p>
+<ul>
+  <li><b>Second law ⇔ KL ≥ 0.</b> $\mathbb{E}_{\Pf}[W] - \Delta F = \mathrm{KL}(\Pf\,\|\,\Pb) \ge 0$. The mean dissipated work is a KL divergence between path measures.</li>
+  <li><b>ELBO ⇔ free-energy bound.</b> $\log Z_N \ge \mathbb{E}_{\Pf}[\log w]$ is the statement $\Delta F\le\langle W\rangle$. Evidence lower bounds are the second law.</li>
+  <li><b>Perfect model ⇔ reversible process.</b> Zero dissipation, $W\equiv\Delta F$ on every path, is the same thing as exact time reversal, which is the same thing as a constant path weight. A perfectly trained diffusion model is a <em>reversible, finite-time</em> protocol, something physics normally reaches only in the infinitely slow limit.</li>
+</ul>
+
+<h3>Crooks already tells us how to reach zero variance</h3>
+<p>Crooks' theorem also says what an <em>ideal</em> estimator looks like. The path weight is $e^{-W}$, and its variance is zero exactly when $W=\Delta F$ on every path, that is, when the forward and backward path laws coincide. In that case a single trajectory returns $Z$ exactly. So the recipe for a perfect estimator is already written in the theorem: build a process that is <b>reversible in finite time</b>.</p>
+<p>Plain switching with MCMC kernels cannot do this. MCMC kernels only re-equilibrate particles where they are; they do not move them along with the changing distribution, so a fast protocol always lags behind and dissipates. The fix is to add a transport that carries particles along as the distribution changes. Physicists discovered exactly this as <em>escorted</em> free-energy simulations [Vaikuntanathan &amp; Jarzynski 2008]: the closer the escort is to the true transport, the less work is dissipated, and a perfect escort gives zero variance. A learned diffusion or flow is such a transport. <b>Learning is dissipation reduction</b>, and a perfectly trained model is the zero-variance estimator that Crooks' theorem describes.</p>
+
+<table>
+<tr><th>Non-equilibrium physics</th><th>Probabilistic ML</th></tr>
+<tr><td>Driving protocol $U_t$, finite-time switching</td><td>Noise schedule / interpolant / annealing path</td></tr>
+<tr><td>Forward and reverse trajectories</td><td>Generative and noising processes $\Pf,\Pb$</td></tr>
+<tr><td>Work $W$</td><td>Negative log path weight</td></tr>
+<tr><td>Free energy $\Delta F = -\log Z_N/Z_0$</td><td>Log normalizing constant / log evidence</td></tr>
+<tr><td>Jarzynski equality</td><td>Unbiased $Z$ estimator (AIS)</td></tr>
+<tr><td>Crooks fluctuation theorem</td><td>Radon–Nikodym derivative between path measures</td></tr>
+<tr><td>Second law $\langle W\rangle\ge\Delta F$</td><td>ELBO / $\mathrm{KL}\ge 0$</td></tr>
+<tr><td>Dissipated work</td><td>$\mathrm{KL}(\Pf\|\Pb)$, i.e. the training loss</td></tr>
+</table>
+
+<p>There is a historical irony here. The paper that started diffusion models was titled <em>“Deep Unsupervised Learning using Nonequilibrium Thermodynamics”</em> [Sohl-Dickstein et al. 2015]. The community kept the thermodynamics needed to <em>train</em>: destroy information with a known process, learn to reverse it. It mostly set aside the half needed for <em>inference</em>: fluctuation theorems that turn a finite-time, imperfect, out-of-equilibrium process into exact equilibrium answers. My central claim is that the second half is at least as important as the first.</p>
+
+<div class="pullquote">Equilibrium methods are exact only in the limit of infinite time. Non-equilibrium methods are exact at any finite time, because every path carries its own correction, and a learned model keeps that correction small.</div>
+
+<!-- ============================================================ -->
+<h2 id="inference"><span class="num">PART 5</span>One weight, four inferences</h2>
+
+<p>All of inference now comes from one template, the same three moves used in Part 3: <em>write the quantity as an integral over paths, multiply and divide by the proposal path density, read it as an expectation</em>. The four inferences differ only in which endpoint density appears and which kernels play which role.</p>
+
+<figure>
+<svg viewBox="0 0 760 330" role="img" aria-label="The path weight as a hub for inference and training">
+  <rect x="270" y="125" width="220" height="80" rx="12" fill="#141413"/>
+  <text x="380" y="158" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="700" fill="#fff">path weight w</text>
+  <text x="380" y="183" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#fff">ratio of backward / forward kernels</text>
+  <g font-family="sans-serif">
+    <rect x="20" y="20" width="220" height="70" rx="10" fill="#eef4fc" stroke="#2a78d6"/>
+    <text x="130" y="60" text-anchor="middle" font-size="15" font-weight="700" fill="#141413">Marginal likelihood</text>
+    <rect x="520" y="20" width="220" height="70" rx="10" fill="#eef4fc" stroke="#2a78d6"/>
+    <text x="630" y="60" text-anchor="middle" font-size="15" font-weight="700" fill="#141413">Exact statistics</text>
+    <rect x="20" y="240" width="220" height="70" rx="10" fill="#eef4fc" stroke="#2a78d6"/>
+    <text x="130" y="280" text-anchor="middle" font-size="15" font-weight="700" fill="#141413">Normalizing constant</text>
+    <rect x="520" y="240" width="220" height="70" rx="10" fill="#eef4fc" stroke="#2a78d6"/>
+    <text x="630" y="280" text-anchor="middle" font-size="15" font-weight="700" fill="#141413">Steering / tilting</text>
+    <rect x="285" y="255" width="190" height="60" rx="10" fill="#fdf1ea" stroke="#eb6834"/>
+    <text x="380" y="290" text-anchor="middle" font-size="15" font-weight="700" fill="#141413">Training</text>
+  </g>
+  <g stroke="#52514e" stroke-width="1.5" fill="none">
+    <path d="M240,60 L285,125"/><path d="M520,60 L475,125"/><path d="M240,275 L285,205"/><path d="M520,275 L475,205"/><path d="M380,205 L380,255"/>
+  </g>
+</svg>
+<figcaption><b>Figure 4.</b> One object, five uses. The marginal likelihood is a conditional expectation of the weight (and the ELBO is its log-expectation). Exact statistics come from self-normalized importance sampling. The normalizing constant is the plain expectation (Jarzynski, Crooks). Steering uses SMC or replica exchange. The four blue boxes <em>use</em> the weight. Training (orange) reduces its variance by learning the time reversal. A model is good exactly when inference no longer needs to correct it.</figcaption>
+</figure>
+
+<h3 id="ml">5.1 Marginal likelihood, with the ELBO as a corollary</h3>
+<p>The derivation at the end of Part 3 is already the marginal-likelihood estimator for any trained diffusion model:</p>
+$$p^\theta_N(X_N) = \mathbb{E}_{\Pb}\!\left[\frac{p_0(X_0)\prod_t\Pf_\theta(X_{t+1}\mid X_t)}{\prod_t\Pb(X_t\mid X_{t+1})}\;\middle|\;X_N\right].$$
+<p>Applying the log and Jensen's inequality gives the diffusion ELBO:</p>
+$$\begin{aligned}\log p^\theta_N(X_N) \;\ge\; \mathbb{E}_{\Pb}\Big[\,&amp;\log p_0(X_0) + \sum_t\log\Pf_\theta(X_{t+1}\mid X_t)\\ &amp;- \sum_t\log\Pb(X_t\mid X_{t+1})\;\Big|\;X_N\Big].\end{aligned}$$
+<p>Averaging $K$ path weights inside the log gives a tighter, IWAE-style bound that becomes exact as $K\to\infty$. The estimator refers to the model <em>you actually sample from</em>, in discrete time, and needs only forward passes: no divergence, no adjoint.</p>
+
+<h3 id="expect">5.2 Imperfect model, exact statistics</h3>
+<p>Now suppose the target is an energy, $\tilde\pi_N = e^{-U}$, and we have a sampler $\Pf$ that reaches it only approximately. Expectations under the target are ratios of path-weighted averages:</p>
+$$\mathbb{E}_{\pi_N}[f] = \frac{\mathbb{E}_{\Pf}\big[f(X_N)\,w\big]}{\mathbb{E}_{\Pf}\big[w\big]},\qquad w(X_{0:N}) = \frac{\tilde\pi_N(X_N)\prod\Pb}{p_0(X_0)\prod\Pf}.$$
+<div class="deriv">
+  <button class="deriv-btn" aria-expanded="false">Show derivation <span class="n">· 6 steps</span></button>
+  <div class="deriv-body" hidden>
+    <div class="step"><span class="why"><b>1</b>definition</span>$$\mathbb{E}_{\pi_N}[f] = \frac{1}{Z_N}\int f(X_N)\,\tilde\pi_N(X_N)\,\dd X_N$$</div>
+    <div class="step"><span class="why"><b>2</b>insert backward kernels (they integrate to one)</span>$$= \frac{1}{Z_N}\int f(X_N)\,\tilde\pi_N(X_N)\textstyle\prod\Pb\;\dd X_{0:N}$$</div>
+    <div class="step"><span class="why"><b>3</b>multiply and divide by the forward path density</span>$$= \frac{1}{Z_N}\int f(X_N)\,\tilde\pi_N(X_N)\textstyle\prod\Pb\;\dfrac{p_0(X_0)\prod\Pf}{p_0(X_0)\prod\Pf}\,\dd X_{0:N}$$</div>
+    <div class="step"><span class="why"><b>4</b>regroup into $w$</span>$$= \frac{1}{Z_N}\int f(X_N)\,w(X_{0:N})\;p_0(X_0)\textstyle\prod\Pf\;\dd X_{0:N}$$</div>
+    <div class="step"><span class="why"><b>5</b>read as an expectation over forward paths</span>$$= \frac{1}{Z_N}\,\mathbb{E}_{\Pf}\big[f(X_N)\,w\big]$$</div>
+    <div class="step"><span class="why"><b>6</b>use $Z_N=\mathbb{E}_{\Pf}[w]$ (Section 5.3)</span>$$= \frac{\mathbb{E}_{\Pf}\big[f(X_N)\,w\big]}{\mathbb{E}_{\Pf}\big[w\big]}$$</div>
+  </div>
+</div>
+<p>The self-normalized estimator $\sum_i w_i f(X_N^{(i)})/\sum_i w_i$ is consistent whatever the quality of the model. This is the Boltzmann-generator recipe of Noé et al., with the flow replaced by a diffusion and the Jacobian replaced by a kernel ratio. The effective sample size $\mathrm{ESS}=(\sum w)^2/\sum w^2$ is an honest, built-in diagnostic: it measures how far from reversible the learned process still is.</p>
+
+<h3 id="fe">5.3 Normalizing constants and free energies</h3>
+<p>The denominator above is itself the normalizing constant:</p>
+$$Z_N = \mathbb{E}_{\Pf}\!\left[\frac{\tilde\pi_N(X_N)\prod\Pb}{p_0(X_0)\prod\Pf}\right] = \mathbb{E}_{\Pf}[w] = \mathbb{E}_{\Pf}\big[e^{-W}\big].$$
+<div class="deriv">
+  <button class="deriv-btn" aria-expanded="false">Show derivation <span class="n">· 5 steps</span></button>
+  <div class="deriv-body" hidden>
+    <div class="step"><span class="why"><b>1</b>definition</span>$$Z_N = \int \tilde\pi_N(X_N)\,\dd X_N$$</div>
+    <div class="step"><span class="why"><b>2</b>insert backward kernels (they integrate to one)</span>$$= \int \tilde\pi_N(X_N)\textstyle\prod\Pb\;\dd X_{0:N}$$</div>
+    <div class="step"><span class="why"><b>3</b>multiply and divide by the forward path density</span>$$= \int \tilde\pi_N(X_N)\textstyle\prod\Pb\;\dfrac{p_0(X_0)\prod\Pf}{p_0(X_0)\prod\Pf}\,\dd X_{0:N}$$</div>
+    <div class="step"><span class="why"><b>4</b>read as an expectation over forward paths</span>$$= \mathbb{E}_{\Pf}\!\left[\frac{\tilde\pi_N(X_N)\prod\Pb}{p_0(X_0)\prod\Pf}\right] = \mathbb{E}_{\Pf}[w]$$</div>
+    <div class="step"><span class="why"><b>5</b>physics notation, $W=-\log w$ (Jarzynski)</span>$$= \mathbb{E}_{\Pf}\big[e^{-W}\big]$$</div>
+  </div>
+</div>
+<p>Free energies are among the most consequential quantities in computational science: binding affinities, solvation, phase stability, conformational equilibria. Classical estimators differ only in the choice of kernels in this one formula:</p>
+<table>
+<tr><th>Classical estimator</th><th>Choice of path / kernels</th></tr>
+<tr><td>Free-energy perturbation (Zwanzig)</td><td>$N=1$, no transport: one-shot importance sampling</td></tr>
+<tr><td>Multi-stage FEP</td><td>Intermediate states, each sampled at equilibrium: $\frac{Z_N}{Z_0}=\prod_{t}\mathbb{E}_{\pi_t}\big[e^{-(U_{t+1}-U_t)}\big]$</td></tr>
+<tr><td>Targeted FEP (Jarzynski 2002)</td><td>Deterministic map: Dirac kernels, so the Jacobian enters</td></tr>
+<tr><td>Non-equilibrium switching / AIS</td><td>MCMC kernels and their reversals; work $W$</td></tr>
+<tr><td>Thermodynamic integration</td><td>Quasi-static limit $N\to\infty$, where $W\to\Delta F$</td></tr>
+<tr><td>Escorted Jarzynski / controlled Crooks</td><td>Learned kernels: <b>this is where learning enters</b></td></tr>
+</table>
+
+<p><b>FEAT</b> (Free-energy Estimators with Adaptive Transport) [<b>Du*</b>, He*, Vargas, Wang, Gomes, Hernández-Lobato, Vanden-Eijnden, NeurIPS 2025] turns this table into a recipe. Given samples from both end states and their energies:</p>
+<ol>
+  <li><b>Learn a transport</b> between the two states with stochastic interpolants. This is simulation-free and uses the same machinery as training a diffusion model.</li>
+  <li><b>Plug the learned kernels into the estimator</b>: escorted Jarzynski and controlled Crooks give consistent estimators for <em>any</em> learned transport.</li>
+  <li><b>Run both directions and combine them</b> to reduce variance. Variational bounds from both sides sandwich the answer.</li>
+</ol>
+<p>The message is short: <b>when you can learn a good diffusion model, you get the free energy almost for free</b>. The learning reduces variance and the fluctuation theorem guarantees correctness. We validated this on very different systems: high-dimensional Gaussian mixtures, Lennard-Jones clusters against non-interacting references, coarse-grained monatomic ice against an LJ solid, biomolecular solvation (vacuum against implicit solvent), the transition free energy between metastable states of alanine dipeptide, and the cold and hot phases of $\varphi^4$ lattice field theory. In each case the estimates recovered reference values at roughly an order of magnitude less compute.</p>
+<p>The follow-up, <b>Free-Energy Estimation on Any State Space</b> [He, Ou, Vargas, Li, Hernández-Lobato, Domingo-Enrich, <b>Du</b>, NeurIPS 2026], has two parts. It formulates transport through a general Markov generator, so the estimator applies to discrete, multimodal and autoregressive spaces. It also shows that, at optimality, the commonly used estimators above are special cases. In practice this pushed learned free-energy estimation to biomolecules with more than 1,000 atoms.</p>
+
+<h3 id="steer">5.4 Steering: sample from what you did not train on</h3>
+<p>Often we have a good model $p_N$ and want something nearby: $q_N(X_N) \propto h(X_N)\,p_N(X_N)$. A surprising range of tasks has exactly this form:</p>
+<table>
+<tr><th>Task</th><th>Tilted target $q_N$</th></tr>
+<tr><td>Temperature annealing</td><td>$p_N^{\beta}$</td></tr>
+<tr><td>Product composition (AND)</td><td>$p^{(1)}_N\,p^{(2)}_N$</td></tr>
+<tr><td>Ratio composition / guidance</td><td>$p^{(1)}_N / p^{(2)}_N$ (and CFG-type $p_c^{w}p^{1-w}$)</td></tr>
+<tr><td>Reward tilting</td><td>$p_N\,e^{r}$</td></tr>
+<tr><td>Inverse problem / posterior</td><td>$p_N\,p(y\mid X_N)$</td></tr>
+<tr><td>Inpainting / constraints</td><td>$p_N\,\mathbf 1\{X_N^{\rm obs}=y\}$</td></tr>
+<tr><td>Rare event</td><td>$p_N\,\mathbf 1\{X_N\in\mathcal A\}$</td></tr>
+</table>
+<p>Instead of sampling from $p_N$, we want to <em>actively</em> sample from $q_N$. So we introduce a <b>new pair of processes</b> $\Qf,\Qb$ that push mass toward high-$q_N$ regions, and apply the same three moves:</p>
+$$\mathbb{E}_{q_N}[f] = \mathbb{E}_{\Qf}\!\left[f(X_N)\,\frac{q_N(X_N)\prod\Qb}{q_0(X_0)\prod\Qf}\right].$$
+<div class="deriv">
+  <button class="deriv-btn" aria-expanded="false">Show derivation <span class="n">· 3 steps</span></button>
+  <div class="deriv-body" hidden>
+    <div class="step"><span class="why"><b>1</b>insert backward kernels $\Qb$</span>$$\mathbb{E}_{q_N}[f] = \int f(X_N)\,q_N(X_N)\textstyle\prod\Qb\;\dd X_{0:N}$$</div>
+    <div class="step"><span class="why"><b>2</b>multiply and divide by the forward path density of $\Qf$</span>$$= \int f(X_N)\,q_N(X_N)\textstyle\prod\Qb\;\dfrac{q_0(X_0)\prod\Qf}{q_0(X_0)\prod\Qf}\,\dd X_{0:N}$$</div>
+    <div class="step"><span class="why"><b>3</b>read as an expectation over $\Qf$ paths</span>$$= \mathbb{E}_{\Qf}\!\left[f(X_N)\,\frac{q_N(X_N)\prod\Qb}{q_0(X_0)\prod\Qf}\right]$$</div>
+  </div>
+</div>
+<p>With $q_0=p_0$ and $q_N\propto h\,p_N$, the weight contains $h(X_N)\,p_N(X_N)/p_0(X_0)$. This marginal ratio is the <em>only</em> intractable quantity, and it is exactly what the central identity supplies [RNE]:</p>
+$$\frac{q_N(X_N)\prod\Qb}{q_0(X_0)\prod\Qf} \;\approx\; \frac{1}{Z_h}\,h(X_N)\,\frac{\prod\Pf}{\prod\Pb}\,\frac{\prod\Qb}{\prod\Qf} .$$
+<div class="deriv">
+  <button class="deriv-btn" aria-expanded="false">Show where RNE enters <span class="n">· 2 steps</span></button>
+  <div class="deriv-body" hidden>
+    <div class="step"><span class="why"><b>1</b>substitute $q_0=p_0$, $q_N = h\,p_N/Z_h$</span>$$\frac{q_N(X_N)\prod\Qb}{q_0(X_0)\prod\Qf} = \frac{1}{Z_h}\,h(X_N)\,\frac{p_N(X_N)}{p_0(X_0)}\,\frac{\prod\Qb}{\prod\Qf}$$</div>
+    <div class="step"><span class="why"><b>2</b>central identity (RNE): $p_N/p_0\approx\prod\Pf/\prod\Pb$</span>$$\approx \frac{1}{Z_h}\,h(X_N)\,\frac{\prod\Pf}{\prod\Pb}\,\frac{\prod\Qb}{\prod\Qf}$$</div>
+  </div>
+</div>
+
+<div class="box">
+<span class="lbl">What is exact and what is approximate</span>
+<p>When the tilt is <em>linear</em> in $p_N$ (reward, likelihood, constraint), skip the approximation altogether. Use $h(X_N)\,p_0(X_0)\prod_t\Pf(X_{t+1}\mid X_t)$ itself as the target path measure. Its $X_N$-marginal is exactly $h\,p_N$, and the weight $h(X_N)\prod_t\Pf/\prod_t\Qf$ is fully tractable. When the tilt is <em>nonlinear</em> in $p_N$ (powers, products, ratios of models), the RNE estimate is used, and it is exact to the extent that the base model satisfies time reversal. For Boltzmann targets, where the final $e^{-U/k_BT}$ is known, the correction is exact again.</p>
+</div>
+
+<p>Applying one weight to the whole path lets its variance compound over $N$ steps. The second design freedom fixes this: a <b>curve of intermediate targets</b> $q_t$, with $q_N$ fixed by the task. The same derivation on any segment $[t',t'']$ gives</p>
+$$\mathbb{E}_{q_{t''}}[f] = \mathbb{E}_{\Qf_{[t',t'']}}\!\left[f(X_{t''})\,\frac{q_{t''}(X_{t''})\prod_{t=t'}^{t''-1}\Qb(X_t\mid X_{t+1})}{q_{t'}(X_{t'})\prod_{t=t'}^{t''-1}\Qf(X_{t+1}\mid X_t)}\right],$$
+<p>so variance can be controlled one segment at a time. The one-step version is the building block of the next section.</p>
+
+<p>Examples from our work: annealing an alanine-dipeptide model from 800 K to 300 K with roughly 10× compute savings; composing conditional generators to design molecules that bind two targets, with affinities better than known binders; reward tilting of discrete (masked) diffusion on ImageNet-256 for prompt alignment; and inpainting-style conditioning for structure-based drug design with equivariant diffusion.</p>
+
+<h3 id="smcpt">5.5 SMC and replica exchange: two ways to spend the same weights</h3>
+<p>Define the <b>incremental weight</b> of one step from level $t$ to level $t+1$:</p>
+$$G_t(x_t, x_{t+1}) \;=\; \frac{q_{t+1}(x_{t+1})\,\Qb(x_t\mid x_{t+1})}{q_t(x_t)\,\Qf(x_{t+1}\mid x_t)} .$$
+<p>The product telescopes back to the full path weight, $\prod_{t=0}^{N-1}G_t = \dfrac{q_N(X_N)\prod_t\Qb}{q_0(X_0)\prod_t\Qf}$, because every intermediate $q_t$ appears once in a numerator and once in a denominator. Two classical algorithms use this one quantity in two different ways.</p>
+
+<p><b>Sequential Monte Carlo</b> moves a <em>population</em> of particles forward together. At each level it multiplies every particle's weight by $G_t$, and it <em>resamples</em> (duplicating heavy particles and dropping light ones) whenever the ESS drops. The genealogy collapses where the proposal is wrong, and the population arrives at $t=N$ as a weighted batch.</p>
+
+<p><b>Replica exchange</b> (parallel tempering along diffusion time) keeps <em>one replica per level</em>. Neighbouring levels $(t,t+1)$ propose to exchange information through the kernels: push the lower state up, $y_{t+1}\sim\Qf(\cdot\mid x_t)$, and pull the upper state down, $y_t\sim\Qb(\cdot\mid x_{t+1})$. The swap is accepted with a Metropolis ratio that is a <em>forward</em> incremental weight divided by a <em>backward</em> one:</p>
+$$\alpha_t \;=\; \min\!\left\{1,\;\frac{G_t(x_t,\,y_{t+1})}{G_t(y_t,\,x_{t+1})}\right\}.$$
+<div class="deriv">
+  <button class="deriv-btn" aria-expanded="false">Show derivation: swap acceptance <span class="n">· 5 steps</span></button>
+  <div class="deriv-body" hidden>
+    <div class="step"><span class="why"><b>1</b>target on the ladder</span>$$\Pi(x_{0:N}) = \prod_{t=0}^{N} q_t(x_t)$$</div>
+    <div class="step"><span class="why"><b>2</b>paired proposal for levels $t,t+1$</span>$$(x_t,x_{t+1})\mapsto(y_t,y_{t+1}),\quad y_{t+1}\sim\Qf(\cdot\mid x_t),\;\; y_t\sim\Qb(\cdot\mid x_{t+1})$$</div>
+    <div class="step"><span class="why"><b>3</b>Metropolis–Hastings ratio</span>$$\alpha_t = \frac{q_t(y_t)\,q_{t+1}(y_{t+1})\;\Qf(x_{t+1}\mid y_t)\,\Qb(x_t\mid y_{t+1})}{q_t(x_t)\,q_{t+1}(x_{t+1})\;\Qf(y_{t+1}\mid x_t)\,\Qb(y_t\mid x_{t+1})}$$</div>
+    <div class="step"><span class="why"><b>4</b>regroup into two one-step weights</span>$$= \frac{q_{t+1}(y_{t+1})\,\Qb(x_t\mid y_{t+1})}{q_t(x_t)\,\Qf(y_{t+1}\mid x_t)}\cdot\frac{q_t(y_t)\,\Qf(x_{t+1}\mid y_t)}{q_{t+1}(x_{t+1})\,\Qb(y_t\mid x_{t+1})}$$</div>
+    <div class="step"><span class="why"><b>5</b>recognize $G_t$ forward and $1/G_t$ backward</span>$$= \frac{G_t(x_t,\,y_{t+1})}{G_t(y_t,\,x_{t+1})}$$</div>
+  </div>
+</div>
+<p>Fresh prior samples enter at $t=0$, travel up the ladder through accepted swaps, and stream out at $t=N$ one per round. <b>CREPE</b> [He, Jeha, Potaptchik, Zhang, Hernández-Lobato, <b>Du</b>, Syed, Vargas, ICLR 2026] develops this view for controlling diffusion models. Unlike SMC, it generates samples sequentially, keeps diversity high after burn-in, and allows online refinement or early stopping.</p>
+
+<div class="viz-root" id="smcpt-demo">
+  <h5>Animation: SMC vs. replica exchange on the same path of targets</h5>
+  <div class="sub">Both algorithms target the same curve $q_t$ (grey density ridges), going from a Gaussian at $t=0$ to a 25/75 bimodal target at $t=N=8$. Both use the same kernels $\Qf,\Qb$. The kernels alone would split mass 50/50, so both algorithms must correct with $G_t$. <b>Top:</b> SMC moves 40 particles forward together. Dot size is weight, faint lines are genealogies, and orange marks a resampling event. <b>Bottom:</b> replica exchange keeps one replica per level. Green links are accepted swaps, grey dashed links are rejected swaps, and one sample leaves $t=N$ per round. The histograms on the right accumulate each algorithm's output against the target (dashed).</div>
+  <div class="controls">
+    <button id="sp-play">Pause</button><button id="sp-reset">Reset</button>
+    <label>Speed <input id="sp-speed" type="range" min="1" max="6" step="1" value="3" aria-label="Animation speed"></label>
+  </div>
+  <div class="anim-row">
+    <div class="hdr"><span class="name">Sequential Monte Carlo: a population moves forward, reweights and resamples</span><span class="statline">batch <b id="smc-b">1</b> · ESS <b id="smc-ess">40</b>/40 · right-mode mass <b id="smc-r">–</b> (target 0.75)</span></div>
+    <svg id="smc-svg" viewBox="0 0 720 250" aria-label="SMC animation"></svg>
+  </div>
+  <div class="anim-row">
+    <div class="hdr"><span class="name">Replica exchange: one replica per level, neighbouring swaps, streaming output</span><span class="statline">round <b id="pt-r">0</b> · swap acceptance <b id="pt-acc">–</b> · right-mode mass <b id="pt-m">–</b> (target 0.75)</span></div>
+    <svg id="pt-svg" viewBox="0 0 720 250" aria-label="Replica exchange animation"></svg>
+  </div>
+  <div class="legend"><span><i class="dot" style="background:var(--series-1)"></i>particle / replica</span><span><i style="background:var(--series-2)"></i>resampling</span><span><i style="background:var(--series-3)"></i>accepted swap</span><span><i style="background:var(--text-muted)"></i>rejected swap</span><span><i style="background:var(--text-secondary);height:2px"></i>target q_N</span></div>
+</div>
+
+<table>
+<tr><th></th><th>Sequential Monte Carlo</th><th>Replica exchange</th></tr>
+<tr><td>Uses $G_t$ as</td><td>multiplicative weight on a population</td><td>Metropolis ratio $G_t(\text{fwd})/G_t(\text{bwd})$ between neighbours</td></tr>
+<tr><td>Correction mechanism</td><td>resampling (importance)</td><td>accept / reject (MCMC)</td></tr>
+<tr><td>Parallelism</td><td>over particles</td><td>over levels</td></tr>
+<tr><td>Output</td><td>a weighted batch at the end</td><td>a stream, one sample per round</td></tr>
+<tr><td>Typical failure</td><td>genealogy collapse, low diversity</td><td>slow mixing if neighbouring levels disagree</td></tr>
+<tr><td>Bonus</td><td>unbiased estimate of $Z$</td><td>online refinement, early stopping</td></tr>
+</table>
+
+<h3>5.6 A compute knob for correctness</h3>
+<p>This leads to <em>inference-time scaling</em> with a guarantee. More particles, more segments and more exchange rounds improve accuracy, and the estimators are <b>consistent</b>, so extra compute brings you closer to the true answer rather than to the model's bias. A model's quality is no longer a ceiling on accuracy. It is a <em>rate</em>: how much compute exactness costs.</p>
+
+<!-- ============================================================ -->
+<h2 id="training"><span class="num">PART 6</span>Where training enters: learning the time reversal</h2>
+
+<p>Why does training appear only now? Because we can now say precisely what training is <em>for</em>. Everything in Part 5 is correct for <em>any</em> pair of processes; training only controls the variance of the path weight. The ideal is the time-reversibility identity of Part 3: the forward and backward path laws coincide, the path weight equals $Z$ on every path, and every estimator has zero variance. Training is therefore <b>learning the time reversal</b>: fitting the generative process so that it reverses the backward one.</p>
+
+<div class="pullquote">Inference uses the path weight to correct the model. Training learns the time reversal, so that less correction is needed.</div>
+
+<p>Two settings differ in one thing only: whether we can sample the backward path measure.</p>
+
+<h3 id="fromdata">From data: the ELBO is the path KL</h3>
+<p>With data, the backward path measure $\pi_N(X_N)\prod_t\Pb(X_t\mid X_{t+1})$ is something we can sample exactly. Draw a data point, then noise it with a fixed process chosen so that its conditional marginals $\Pb(X_t\mid X_N)$ have closed form. Fit the generative path measure to it:</p>
+$$\mathrm{KL}\big(\pi_N\,\|\,p^\theta_N\big) \;\le\; \mathrm{KL}\big(\pi_N\Pb\,\big\|\,p_0\Pf_\theta\big) = -\,\mathbb{E}_{\pi_N}\big[\mathrm{ELBO}_\theta(X_N)\big] - \mathrm{H}(\pi_N),$$
+<div class="deriv">
+  <button class="deriv-btn" aria-expanded="false">Show derivation: ELBO = path KL <span class="n">· 4 steps</span></button>
+  <div class="deriv-body" hidden>
+    <div class="step"><span class="why"><b>1</b>marginalizing to $X_N$ cannot increase KL</span>$$\mathrm{KL}\big(\pi_N\,\|\,p^\theta_N\big) \le \mathrm{KL}\big(\pi_N\Pb\,\big\|\,p_0\Pf_\theta\big)$$</div>
+    <div class="step"><span class="why"><b>2</b>write out both path densities</span>$$= \mathbb{E}_{\pi_N\Pb}\!\left[\log\frac{\pi_N(X_N)\prod\Pb}{p_0(X_0)\prod\Pf_\theta}\right]$$</div>
+    <div class="step"><span class="why"><b>3</b>split off $\log\pi_N(X_N)$</span>$$= \mathbb{E}_{\pi_N}\big[\log\pi_N(X_N)\big] - \mathbb{E}_{\pi_N\Pb}\!\left[\log\frac{p_0(X_0)\prod\Pf_\theta}{\prod\Pb}\right]$$</div>
+    <div class="step"><span class="why"><b>4</b>entropy, and the ELBO of Section 5.1</span>$$= -\,\mathrm{H}(\pi_N) - \mathbb{E}_{\pi_N}\big[\mathrm{ELBO}_\theta(X_N)\big]$$</div>
+  </div>
+</div>
+<p>where $\mathrm{ELBO}_\theta$ is exactly the bound of Section 5.1. <b>Maximizing the ELBO is minimizing the KL between path measures, i.e. the dissipated work.</b></p>
+
+
+<h3 id="fromenergy">From energy: target score identity and fixed-point matching</h3>
+<p>With only $\tilde\pi_N = e^{-U}$, there is no data to noise. We can still write the marginal score of the noised target, and remarkably it needs only <b>forces</b>. Keep the same noising kernel $\Pb(x_t\mid x_N)=\mathcal N(x_t;\alpha_t x_N, s_t^2 I)$. Then the noised score satisfies the <b>target score identity</b>:</p>
+<div class="box blue">
+$$\begin{aligned}\nabla\log p_t(x_t) &amp;= \frac{1}{\alpha_t}\,\mathbb{E}_{\pi_N(x_N\mid x_t)}\big[\nabla\log\tilde\pi_N(x_N)\big]\\ &amp;= -\frac{1}{\alpha_t}\,\mathbb{E}\big[\nabla U(X_N)\,\big|\,X_t=x_t\big].\end{aligned}$$
+<p>The noised score is the posterior-averaged force. $Z$ never appears.</p>
+</div>
+<div class="deriv">
+  <button class="deriv-btn" aria-expanded="false">Show derivation <span class="n">· 7 steps</span></button>
+  <div class="deriv-body" hidden>
+    <div class="step"><span class="why"><b>1</b>noised marginal</span>$$p_t(x_t) = \int \pi_N(x_N)\,\Pb(x_t\mid x_N)\,\dd x_N$$</div>
+    <div class="step"><span class="why"><b>2</b>differentiate under the integral</span>$$\nabla p_t(x_t) = \int \pi_N(x_N)\,\nabla_{x_t}\Pb(x_t\mid x_N)\,\dd x_N$$</div>
+    <div class="step"><span class="why"><b>3</b>Gaussian: $\nabla_{x_t}\Pb = -\tfrac{1}{\alpha_t}\nabla_{x_N}\Pb$</span>$$= -\frac{1}{\alpha_t}\int \pi_N(x_N)\,\nabla_{x_N}\Pb(x_t\mid x_N)\,\dd x_N$$</div>
+    <div class="step"><span class="why"><b>4</b>integrate by parts</span>$$= \frac{1}{\alpha_t}\int \nabla\pi_N(x_N)\,\Pb(x_t\mid x_N)\,\dd x_N$$</div>
+    <div class="step"><span class="why"><b>5</b>$\nabla\pi_N = \pi_N\nabla\log\pi_N$</span>$$= \frac{1}{\alpha_t}\int \pi_N(x_N)\,\nabla\log\pi_N(x_N)\,\Pb(x_t\mid x_N)\,\dd x_N$$</div>
+    <div class="step"><span class="why"><b>6</b>divide by $p_t(x_t)$; Bayes gives the posterior $\pi_N(x_N\mid x_t)$</span>$$\nabla\log p_t(x_t) = \frac{1}{\alpha_t}\,\mathbb{E}_{\pi_N(x_N\mid x_t)}\big[\nabla\log\pi_N(x_N)\big]$$</div>
+    <div class="step"><span class="why"><b>7</b>$Z$ drops out of the gradient; $\tilde\pi_N=e^{-U}$</span>$$= -\frac{1}{\alpha_t}\,\mathbb{E}\big[\nabla U(X_N)\,\big|\,X_t=x_t\big]$$</div>
+  </div>
+</div>
+<p>This suggests regressing a score network onto forces, <b>target score matching</b>:</p>
+$$\mathcal L_{\rm TSM}(\theta) = \int_0^1\lambda_t\;\mathbb{E}_{X_N\sim\pi_N,\;X_t\sim\Pb(\cdot\mid X_N)}\Big\|\,s_\theta(X_t,t) - \tfrac{1}{\alpha_t}\nabla\log\tilde\pi_N(X_N)\Big\|^2\dd t,$$
+<p>whose minimizer is the conditional expectation above, i.e. the exact score. (One can also estimate the identity directly by self-normalized importance sampling over the posterior $\pi_N(x_N\mid x_t)\propto e^{-U(x_N)}\,\mathcal N(x_N; x_t/\alpha_t, s_t^2/\alpha_t^2)$.) The catch is visible: the loss asks for $X_N\sim\pi_N$, which is what we are trying to learn. The resolution is a <b>fixed point</b>. Let the current model supply the samples, and let its own path weights correct them toward $\pi_N$:</p>
+$$\begin{aligned}s^{(k+1)} = \arg\min_s \int_0^1\lambda_t\;\mathbb{E}_{X_{0:N}\sim\Pf_{s^{(k)}}}\Big[&amp;\bar w(X_{0:N})\\ &amp;\times\Big\|\,s(X_t',t) - \tfrac{1}{\alpha_t}\nabla\log\tilde\pi_N(X_N)\Big\|^2\Big]\dd t,\end{aligned}$$
+<p>where $X_t' = \alpha_tX_N + s_t\varepsilon$ and $\bar w$ is the self-normalized path weight from Part 5. The target $\pi_N$ is a fixed point of this map: if the sampler already produces $\pi_N$, the regression target is the exact score and the update returns the same model. The path weights keep each iteration consistent rather than self-reinforcing.</p>
+
+<div class="viz-root" id="fp-demo">
+  <h5>Animation: the fixed-point training loop from energy</h5>
+  <div class="sub">A 1D toy. The target is known only through its energy $U$ (dashed density). The model (blue) starts off-target. Each round runs the four stages of the loop: <b>simulate</b> samples from the current model, <b>evaluate</b> forces $-\nabla U$ at them (arrows), store them in the <b>replay buffer</b> with their path weights (dot size), and <b>regress</b> the model onto the weighted buffer. The target is the fixed point: once the model matches it, the weights are uniform (ESS → 100%) and the update leaves the model unchanged. To keep the animation light, the regression step fits a small mixture model by weighted maximum likelihood, with a learning-rate-style damping, instead of training a score network with target score matching. The loop structure is the same.</div>
+  <div class="controls">
+    <button id="fp-play">Pause</button><button id="fp-reset">Reset</button>
+    <span class="statline">round <b id="fp-it">0</b> · ESS <b id="fp-ess">–</b> · KL(target‖model) <b id="fp-kl">–</b></span>
+  </div>
+  <svg id="fp-svg" viewBox="0 0 720 300" aria-label="Animated fixed-point training loop"></svg>
+  <div class="legend"><span><i style="background:var(--text-secondary);height:2px"></i>target e^{−U}</span><span><i style="background:var(--series-1)"></i>current model</span><span><i class="dot" style="background:var(--series-2)"></i>buffer sample (size = weight)</span><span><i style="background:var(--series-3)"></i>force −∇U</span></div>
+</div>
+
+<p>The energy-trained foundation samplers we built, <b>ATLAS</b> and <b>JANUS</b>, run this loop at scale: target score matching with fixed-point iteration on a replay buffer, plus a <b>path-weight regularizer</b>. The regularizer is what gets the <em>mode weights</em> right: score regression shapes each mode well, while the path weights correct the relative populations between modes. At deployment the same weights reweight to the exact Boltzmann distribution and estimate free energies. ATLAS [Cheng, Blessing, Yu, Neumann, Li, Domingo-Enrich, <b>Du</b> 2026] reproduces molecular-dynamics and Monte-Carlo distributions of 2D amorphous systems with free-energy errors below 0.2% while using about 500× fewer energy evaluations. It recovers short-range order in Cu–Zr and Cr–Co–Ni metallic glasses, and it amortizes over system size, temperature and composition, so inverse design costs hundreds of times less.</p>
+
+<h3 id="ensembles">Beyond NVT: generalized ensembles</h3>
+<p>Real materials are not simulated only at fixed particle number, volume and temperature. The physically relevant ensembles let other variables fluctuate:</p>
+<table>
+<tr><th>Ensemble</th><th>Density</th><th>Extra variables</th></tr>
+<tr><td>Canonical (NVT)</td><td>$p(x)\propto e^{-\beta U(x)}$</td><td>positions</td></tr>
+<tr><td>Isothermal–isobaric (NPT)</td><td>$p(x,v)\propto e^{-\beta(U(x)+Pv)}$</td><td>+ volume (continuous)</td></tr>
+<tr><td>Semi-grand ($\Delta\mu$NPT)</td><td>$p(a,x,v)\propto e^{-\beta(U(a,x)+Pv-\sum_s\mu_sN_s(a))}$</td><td>+ species identities (discrete)</td></tr>
+<tr><td>Grand canonical ($\mu$VT)</td><td>$p(a,x)\propto e^{-\beta(U(a,x)-\sum_s\mu_sN_s(a))}$</td><td>+ composition / particle number</td></tr>
+</table>
+<p>Each step down the table adds a variable of a different <em>type</em>, and the state space becomes a product of continuous and discrete parts. <b>JANUS</b> [Blessing, Cheng, Schebek, Rogal, Li, Domingo-Enrich, <b>Du</b> 2026] couples continuous diffusion over positions with <em>masked discrete diffusion</em> over chemical identities, through one equivariant network trained directly from energy evaluations. It uses no pre-generated equilibrium data. It reproduces Monte Carlo observables and free energies with about three orders of magnitude fewer energy evaluations. It allows chemical control and inverse design for multicomponent alloys, and for semiconductors it explores vacancies and dopants across 15 elements, recovering known defects and proposing new candidates validated with DFT. The step from NVT to $\mu$VT <em>forces</em> the theory off $\mathbb{R}^d$. Because everything was written with Markov kernels, nothing has to be re-derived.</p>
+
+<!-- ============================================================ -->
+<h2 id="extend"><span class="num">PART 7</span>Extending the picture: any state space, any path</h2>
+
+<h3>What the identities actually need</h3>
+<p>Look back at Parts 3–6. Every derivation used the same three ingredients:</p>
+<ol>
+  <li>a <b>reference measure</b> on the state space, so kernels have densities;</li>
+  <li><b>Markov kernels</b> $\Pf,\Pb$ whose densities we can evaluate;</li>
+  <li>the <b>time-reversal relation</b> (Bayes' rule in time) linking them through the marginals.</li>
+</ol>
+<p>So the whole machinery (marginal likelihood, exact statistics, free energies, steering with SMC or replica exchange, training by learning the time reversal) instantiates on any process built from kernels:</p>
+<table>
+<tr><th>Process</th><th>State</th><th>Forward kernel $\Pf$</th><th>Backward kernel $\Pb$</th><th>Path weight becomes</th></tr>
+<tr><td>Diffusion model</td><td>$\mathbb{R}^d$</td><td>Gaussian denoising step</td><td>Gaussian noising step</td><td>ratio of Gaussians</td></tr>
+<tr><td>AIS / Jarzynski</td><td>$\mathbb{R}^d$</td><td>MCMC kernel invariant for $e^{-U_{t+1}}$</td><td>its reversal</td><td>$e^{-W}$ (work)</td></tr>
+<tr><td>Normalizing / continuous flow</td><td>$\mathbb{R}^d$</td><td>Dirac push-forward</td><td>Dirac pull-back</td><td>Jacobian determinant</td></tr>
+<tr><td>Masked discrete diffusion</td><td>$\mathcal V^L$</td><td>unmask a token</td><td>mask a token</td><td>unmasking prob. / masking prob.</td></tr>
+<tr><td>Autoregressive model</td><td>prefixes</td><td>append a token</td><td>delete last token (prob. 1)</td><td>exact likelihood</td></tr>
+<tr><td>Multimodal (JANUS)</td><td>positions × species × volume</td><td>product of kernels</td><td>product of kernels</td><td>sum of log ratios</td></tr>
+</table>
+<p>In continuous time, (2) and (3) are statements about a <b>Markov generator</b> $\mathcal L_t$ and its time reversal, and the path weight is the Radon–Nikodym derivative between the two path laws. For diffusions this is Girsanov's theorem. For continuous-time Markov chains with jump rates $\lambda^P_t(x\to y)$ and $\lambda^Q_t(x\to y)$, and total exit rates $\lambda_t(x)=\sum_{y\neq x}\lambda_t(x\to y)$, it is</p>
+$$\begin{aligned}\log\frac{\dd\mathbb P}{\dd\mathbb Q}(X_{[0,1]}) &amp;= \sum_{\text{jumps } x\to y \text{ at } \tau}\log\frac{\lambda^P_\tau(x\to y)}{\lambda^Q_\tau(x\to y)} \\ &amp;\quad-\int_0^1\big(\lambda^P_t(X_t)-\lambda^Q_t(X_t)\big)\,\dd t .\end{aligned}$$
+<p>On a product space the generator is a sum, and so is the log path weight. <em>Free Energy Estimation on Any State Space</em> [He et al., NeurIPS 2026] generalizes these results to any state space by writing them in terms of the generator of the Markov process.</p>
+
+<h3 id="ar">Autoregressive models are non-equilibrium processes too</h3>
+<p>This is the point I most want readers to keep from Part 7. Following [He, Guo, Hernández-Lobato, <b>Du</b> 2026], let $\mathcal V$ be the vocabulary and $\tilde{\mathcal V}:=\mathcal V\cup\{\varnothing\}$ add an empty padding token, so that sequences of different lengths live in one state space:</p>
+$$\mathcal X^N := \Big\{x_{0:N}\in\tilde{\mathcal V}^N : \exists\, l\in\{0,\dots,N\}\ \text{s.t.}\ x_{0:l}\in\mathcal V^l,\ x_{l+1:N}=\varnothing\Big\},$$
+<p>with padding absorbing: $p(x_i=\varnothing\mid x_{1:i-1})=1$ whenever $x_{i-1}=\varnothing$. The state at step $i$ is the prefix $x_{0:i}$. Generation appends one token:</p>
+$$\Pf_i(x_{0:i}\mid x_{0:i-1}) = p(x_i\mid x_{\lt i}).$$
+<p>The backward kernel follows from Bayes' rule in time, exactly as in Part 3. Since $p_i(x_{0:i})=p_{i-1}(x_{0:i-1})\,p(x_i\mid x_{\lt i})$,</p>
+$$\Pb_{i-1}(x_{0:i-1}\mid x_{0:i}) = \frac{p_{i-1}(x_{0:i-1})\,\Pf_i(x_{0:i}\mid x_{0:i-1})}{p_i(x_{0:i})} = 1 :$$
+<p>it deterministically deletes the last token. Plug this into the central identity:</p>
+$$p_N(x_{0:N}) = p_0(x_0)\,\frac{\prod_{i}\Pf_i(x_{0:i}\mid x_{0:i-1})}{\prod_{i}\Pb_{i-1}(x_{0:i-1}\mid x_{0:i})} = p_0(x_0)\prod_{i=1}^{N} p(x_i\mid x_{\lt i}).$$
+<p><b>An autoregressive model is a non-equilibrium process with a trivial backward kernel.</b> Only one path leads to each endpoint, so the path weight has zero variance and equals the exact likelihood. Every section of this post therefore applies to language models without modification:</p>
+<ul>
+  <li><b>Marginal likelihood (5.1):</b> exact, the familiar product of conditionals, as a special case rather than a separate fact.</li>
+  <li><b>Exact statistics and normalizing constants (5.2–5.3):</b> expectations under, and the partition function of, targets such as the powered $\pi(x_{0:N})\propto p(x_{0:N})^{\beta}$, the tilted $\pi(x_{0:N})\propto p(x_{0:N})\,e^{r(x_{0:N})}$, or the product $\pi(x_{0:N})\propto p(x_{0:N})\,p'(x_{0:N})$. These are free-energy problems on sequence space.</li>
+  <li><b>Steering (5.4):</b> the prefix marginals $p_i(x_{0:i})$ are <em>exact</em> for an autoregressive model, so intermediate targets such as $p_i(x_{0:i})^{\beta}$ need no RNE approximation.</li>
+  <li><b>SMC and replica exchange (5.5):</b> particles become prefixes, and levels become prefix lengths. With a proposal model $q$, the incremental weight for the powered target is simply
+  $$G(x_{0:i},x_{0:i-1}) = \frac{p(x_i\mid x_{\lt i})^{\beta}}{q(x_i\mid x_{\lt i})},$$
+  and the same weight drives both algorithms.</li>
+</ul>
+<p>This is the basis of <em>Recipes for Steering and Scaling LLMs via Sampling</em> [He, Guo, Hernández-Lobato, <b>Du</b> 2026]. SMC and replica exchange steer generation toward powered, product and tilted versions of the base distribution, and quality scales with inference compute <em>without</em> external supervision or a learned reward model, improving on best-of-$N$ and standard MCMC baselines. Masked diffusion sits between the two extremes: its backward kernel is a random masking order, so its path weight averages over orders.</p>
+
+<h3 id="pathtilt">Tilting whole paths: rare events and control</h3>
+<p>So far we have only tilted the <em>endpoint</em>. Many scientific questions concern the <em>path itself</em>: how a protein folds, how a reaction crosses its barrier, how often a rare transition happens. The generalization is a Feynman–Kac tilt of the entire path measure:</p>
+$$\frac{\dd\Pf^{\,*}}{\dd\Pf}(X_{[0,1]}) = \frac{1}{\mathcal Z}\exp\!\Big(\int_0^1 r_t(X_t)\,\dd t + g(X_1)\Big).$$
+<p>The tilted process is again Markov. It is a Doob $h$-transform whose extra drift $\sigma_t\sigma_t^\top\nabla\log h_t$ solves a <b>stochastic optimal control</b> problem with exactly this objective. For transition paths between metastable states $A$ and $B$, the relevant $h$ is the <b>committor</b>, the probability of reaching $B$ before $A$. The optimal control is proportional to its log-gradient, and it drives trajectories through the reactive channel that unbiased simulation almost never visits.</p>
+<p>This is the oldest part of my own stack, and it is the same picture. In order: stochastic optimal control for collective-variable-free transition path sampling [Holdijk*, <b>Du*</b>, et al., NeurIPS 2023]; <em>Doob's Lagrangian</em>, a sample-efficient variational approach to transition path sampling [<b>Du*</b>, Plainer*, Brekelmans*, et al., NeurIPS 2024]; and rare-event analysis via stochastic optimal control [<b>Du</b>, He, Zhang, Vanden-Eijnden, Domingo-Enrich 2026]. The last casts committor estimation as a hitting-time control problem with an off-policy value-matching loss, which yields reaction rates and equilibrium constants. The marginal path weight gives <em>thermodynamics</em>. The tilted path measure gives <em>kinetics</em>.</p>
+
+<h3>The whole picture in one sentence</h3>
+<div class="box blue">
+<p style="font-size:20px;margin:0">Choose a <b>state space</b>, a <b>pair of Markov kernels</b> on it, and a <b>tilt</b> of their endpoints or paths. Every inference question then becomes an expectation of a computable Radon–Nikodym derivative. Learning brings the two path laws together, and fluctuation theorems keep the answer exact when learning falls short.</p>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="open"><span class="num">PART 8</span>What is still hard</h2>
+<p>An honest account should say where the picture strains.</p>
+
+<h3>Variance is extensive</h3>
+<p>Importance sampling needs roughly $e^{\mathrm{KL}}$ samples [Chatterjee &amp; Diaconis 2018], and the dissipated work, like free energy, grows with system size. A model that is 0.01 nats per atom from reversible is many nats from reversible for $10^4$ atoms. Splitting the path (SMC, replica exchange), local or conditional structure, and amortization are necessary, not optional. Weight degeneracy in very large systems is the central open problem.</p>
+
+<h3>The interpolant matters</h3>
+<p>Every method in this post walks along a curve of intermediate distributions $q_t$, and the choice of curve decides how much dissipation is unavoidable before any learning happens. Today there are two families, and neither is what we ultimately want:</p>
+<ul>
+  <li><b>Annealing-based</b> curves are defined through energies, for example the geometric path $\tilde\pi_t\propto\tilde\pi_0^{1-\beta_t}\tilde\pi_N^{\beta_t}$ or temperature ladders. Their great advantage is that every intermediate unnormalized density is <em>known</em>, so MCMC kernels, Jarzynski weights and replica exchange are available at every level. Their weakness is the geometry of the path. Mass does not move along a geometric mixture; it vanishes in one mode and reappears in another. Separated modes are weighted wrongly at intermediate $\beta$, and physical systems can cross <em>first-order phase transitions</em> along the path, where any finite-time protocol dissipates heavily.</li>
+  <li><b>Transport-based</b> curves are defined through samples, as in stochastic interpolants $X_t=\alpha_tX_0+\beta_tX_1+\gamma_tZ$. They are smooth, mass moves continuously, and the velocity or score is learnable by simple regression. That is why FEAT and diffusion training are stable. Their weakness is that the intermediate densities are <em>not</em> known in closed form, only up to learning error. They also need samples at the endpoints, which in the energy setting must be bootstrapped (Section 6).</li>
+</ul>
+<p>We need better: curves that keep the tractable intermediate energies of annealing <em>and</em> the smooth mass transport of interpolants, that avoid phase transitions along the way, and that are chosen to minimize dissipation for the system at hand rather than fixed in advance. Near equilibrium, excess work is governed by a friction metric, and minimum-dissipation protocols are geodesics in thermodynamic length [Sivak &amp; Crooks 2012]. Learning the interpolant jointly with the transport, guided by such a metric, looks like the next frontier.</p>
+
+<h3>Exploration in energy-based training</h3>
+<p>Without data, the backward process has to be discovered, and a sampler that never visits a basin cannot learn it. The fixed-point loop of Section 6 converges to $\pi$ only if the buffer eventually covers $\pi$'s mass. Path weights reveal a missing mode (through a collapsing ESS) but do not supply it. Coupling learned samplers with tempering, replica exchange and enhanced-sampling biases, so that exploration and learning reinforce each other, is still underexplored.</p>
+
+<!-- ============================================================ -->
+<h2 id="takeaways"><span class="num">TAKEAWAYS</span>What I hope you remember</h2>
+<ol class="takeaways">
+  <li><b>Samples and estimations both need debiasing.</b>A learned model is always imperfect. Whether you want samples or estimations (likelihoods, expectations, free energies, conditionals), the general fix is the same: reweight by the ratio of target to model density.</li>
+  <li><b>Densities are valuable, but exact ones are expensive.</b>With an exact density, every inference problem is a one-line reweighting formula. Expressive models rarely afford one: for MCMC the cost comes from time, for normalizing flows from architecture, for continuous flows from Jacobians.</li>
+  <li><b>Transport, not relaxation, makes finite time exact.</b>On a hard double well, MCMC stays stuck and annealing freezes in the wrong proportions, while the analytically optimal diffusion process stays in equilibrium along the whole path with only a handful of steps.</li>
+  <li><b>Diffusion lifts the model to path space.</b>Time reversal is Bayes' rule in time, $p_0\,\dd\Pf/p_N\,\dd\Pb = 1$. It turns the intractable marginal density into the conditional expectation of a cheap path weight, unbiased for any model.</li>
+  <li><b>The path weight is the work.</b>Time reversal is Crooks' theorem, normalizing constants come from Jarzynski's equality, and the ELBO is the second law. Crooks also says what a zero-variance estimator is: a process that is reversible in finite time.</li>
+  <li><b>One weight, every estimation, with inference-time scaling.</b>Marginal likelihoods, debiased expectations, free energies (FEAT) and steering (RNE) are all reweighting of paths. SMC and replica exchange (CREPE) use the same incremental weight, and accuracy improves with the compute spent at inference time.</li>
+  <li><b>Training means learning the time reversal.</b>From data: denoising score matching, or the ELBO, which is the path KL. From an energy: target score matching in a fixed-point loop, with path-weight regularization to get the mode weights right (ATLAS, JANUS).</li>
+  <li><b>Everything is a Markov kernel, so it works on any state space.</b>Written through the generator of a Markov process, the same identities hold on discrete, multimodal and mixed spaces, including generalized ensembles such as $NPT$ and $\mu VT$.</li>
+  <li><b>Autoregressive models are non-equilibrium processes too.</b>Their backward kernel deletes the last token, so the path weight is the exact likelihood, and every tool here (free energies, SMC, replica exchange, steering) applies to language models unchanged.</li>
+  <li><b>Push probabilistic ML out of equilibrium.</b>Equilibrium methods are exact only in the infinite-time limit. Non-equilibrium methods are exact at any finite time, because each path carries its own correction, and learned processes keep that correction small.</li>
+</ol>
+
+<h3>Acknowledgements</h3>
+<p>This line of work is deeply collaborative. Special thanks to Jiajun He, Francisco Vargas, Carles Domingo-Enrich, Eric Vanden-Eijnden, José Miguel Hernández-Lobato, Denis Blessing, Mouyang Cheng, and many others who shaped these ideas.</p>
+
+<hr class="sep">
+<h2 id="refs" style="margin-top:0"><span class="num">REFERENCES</span>Selected references</h2>
+<h4>From this line of work</h4>
+<ol class="refs">
+<li>J. He, J. M. Hernández-Lobato, <b>Y. Du†</b>, F. Vargas†. <em>RNE: plug-and-play diffusion inference-time control and energy-based training.</em> ICLR 2026. <a href="https://arxiv.org/abs/2506.05668">arXiv:2506.05668</a></li>
+<li><b>Y. Du*</b>, J. He*, F. Vargas, Y. Wang, C. P. Gomes, J. M. Hernández-Lobato, E. Vanden-Eijnden. <em>FEAT: Free energy Estimators with Adaptive Transport.</em> NeurIPS 2025. <a href="https://arxiv.org/abs/2504.11516">arXiv:2504.11516</a></li>
+<li>J. He, Z. Ou, F. Vargas, Y. Li, J. M. Hernández-Lobato, C. Domingo-Enrich, <b>Y. Du</b>. <em>Free Energy Estimation on Any State Space.</em> NeurIPS 2026. <a href="https://arxiv.org/abs/2605.31063">arXiv:2605.31063</a></li>
+<li>J. He, P. Jeha, P. Potaptchik, L. Zhang, J. M. Hernández-Lobato, <b>Y. Du</b>, S. Syed, F. Vargas. <em>CREPE: Controlling Diffusion with Replica Exchange.</em> ICLR 2026. <a href="https://arxiv.org/abs/2509.23265">arXiv:2509.23265</a></li>
+<li>M. Cheng, D. Blessing, B. Yu, G. Neumann, M. Li, C. Domingo-Enrich, <b>Y. Du</b>. <em>ATLAS: A Foundation Neural Sampler for Amorphous Materials.</em> 2026. <a href="https://arxiv.org/abs/2607.19198">arXiv:2607.19198</a></li>
+<li>D. Blessing, M. Cheng, M. Schebek, J. Rogal, M. Li, C. Domingo-Enrich, <b>Y. Du</b>. <em>JANUS: A Multi-modal Foundation Neural Sampler for Disordered Materials.</em> 2026. <a href="https://arxiv.org/abs/2608.19116">arXiv:2608.19116</a></li>
+<li>J. He, Z. Guo, J. M. Hernández-Lobato, <b>Y. Du</b>. <em>Recipes for Steering and Scaling LLMs via Sampling.</em> 2026. <a href="https://arxiv.org/abs/2608.26120">arXiv:2608.26120</a></li>
+<li><b>Y. Du</b>, J. He, D. Zhang, E. Vanden-Eijnden, C. Domingo-Enrich. <em>Rare Event Analysis via Stochastic Optimal Control.</em> 2026. <a href="https://arxiv.org/abs/2604.13213">arXiv:2604.13213</a></li>
+<li><b>Y. Du*</b>, M. Plainer*, R. Brekelmans*, C. Duan, F. Noé, C. P. Gomes, A. Aspuru-Guzik, K. Neklyudov. <em>Doob's Lagrangian: A Sample-Efficient Variational Approach to Transition Path Sampling.</em> NeurIPS 2024. <a href="https://arxiv.org/abs/2410.07974">arXiv:2410.07974</a></li>
+<li>L. Holdijk*, <b>Y. Du*</b>, F. Hooft, P. Jaini, B. Ensing, M. Welling. <em>Stochastic Optimal Control for Collective Variable Free Sampling of Molecular Transition Paths.</em> NeurIPS 2023. <a href="https://arxiv.org/abs/2207.02149">arXiv:2207.02149</a></li>
+</ol>
+<h4>Selected related work</h4>
+<p class="small" style="font-family:var(--sans);margin:4px 0 0"><b>Inference-time steering of diffusion models</b></p>
+<ol class="refs">
+<li>L. Wu, B. L. Trippe, C. A. Naesseth, D. M. Blei, J. P. Cunningham. <em>Practical and Asymptotically Exact Conditional Sampling in Diffusion Models</em> (TDS). NeurIPS 2023. <a href="https://arxiv.org/abs/2306.17775">arXiv:2306.17775</a></li>
+<li>R. Singhal, Z. Horvitz, R. Teehan, M. Ren, Z. Yu, K. McKeown, R. Ranganath. <em>A General Framework for Inference-time Scaling and Steering of Diffusion Models</em> (FK steering). ICML 2025. <a href="https://arxiv.org/abs/2501.06848">arXiv:2501.06848</a></li>
+<li>M. Skreta et al. <em>Feynman-Kac Correctors in Diffusion: Annealing, Guidance, and Product of Experts</em> (FKC). ICML 2025. <a href="https://arxiv.org/abs/2503.02819">arXiv:2503.02819</a></li>
+</ol>
+<p class="small" style="font-family:var(--sans);margin:4px 0 0"><b>Neural samplers</b></p>
+<ol class="refs">
+<li>F. Vargas, S. Padhy, D. Blessing, N. Nüsken. <em>Transport meets Variational Inference: Controlled Monte Carlo Diffusions</em> (CMCD). ICLR 2024. <a href="https://arxiv.org/abs/2307.01050">arXiv:2307.01050</a></li>
+<li>M. S. Albergo, E. Vanden-Eijnden. <em>NETS: A Non-Equilibrium Transport Sampler.</em> 2024. <a href="https://arxiv.org/abs/2410.02711">arXiv:2410.02711</a></li>
+<li>D. Blessing, L. Richter, J. Berner, E. Malitskiy, G. Neumann. <em>Bridge Matching Sampler: Scalable Sampling via Generalized Fixed-Point Diffusion Matching</em> (BMS). 2026. <a href="https://arxiv.org/abs/2603.00530">arXiv:2603.00530</a></li>
+<li>A. Havens, B. Karrer, N. Shaul. <em>Flow Sampling: Learning to Sample from Unnormalized Densities via Denoising Conditional Processes.</em> ICML 2026. <a href="https://arxiv.org/abs/2605.03984">arXiv:2605.03984</a></li>
+</ol>
+<h4>Foundations</h4>
+<ol class="refs">
+<li>C. Jarzynski. Nonequilibrium equality for free energy differences. <em>Phys. Rev. Lett.</em> 1997.</li>
+<li>G. E. Crooks. Entropy production fluctuation theorem and the nonequilibrium work relation for free energy differences. <em>Phys. Rev. E</em> 1999.</li>
+<li>S. Vaikuntanathan, C. Jarzynski. Escorted free energy simulations: improving convergence by reducing dissipation. <em>Phys. Rev. Lett.</em> 2008.</li>
+<li>D. A. Sivak, G. E. Crooks. Thermodynamic metrics and optimal paths. <em>Phys. Rev. Lett.</em> 2012.</li>
+<li>E. Nelson. <em>Dynamical Theories of Brownian Motion.</em> 1967. B. D. O. Anderson. Reverse-time diffusion equation models. <em>Stoch. Proc. Appl.</em> 1982.</li>
+<li>R. M. Neal. Annealed importance sampling. <em>Statistics and Computing</em> 2001.</li>
+<li>P. Del Moral, A. Doucet, A. Jasra. Sequential Monte Carlo samplers. <em>JRSS-B</em> 2006.</li>
+<li>R. H. Swendsen, J.-S. Wang. Replica Monte Carlo simulation of spin-glasses. <em>Phys. Rev. Lett.</em> 1986.</li>
+<li>C. Andrieu, G. O. Roberts. The pseudo-marginal approach for efficient Monte Carlo computations. <em>Ann. Stat.</em> 2009.</li>
+<li>S. Chatterjee, P. Diaconis. The sample size required in importance sampling. <em>Ann. Appl. Probab.</em> 2018.</li>
+<li>J. Sohl-Dickstein, E. Weiss, N. Maheswaranathan, S. Ganguli. Deep unsupervised learning using nonequilibrium thermodynamics. ICML 2015.</li>
+<li>J. Ho, A. Jain, P. Abbeel. Denoising diffusion probabilistic models. NeurIPS 2020. Y. Song et al. Score-based generative modeling through SDEs. ICLR 2021.</li>
+<li>V. De Bortoli et al. Target score matching. 2024. T. Akhound-Sadegh et al. Iterated denoising energy matching. ICML 2024.</li>
+<li>F. Noé, S. Olsson, J. Köhler, H. Wu. Boltzmann generators. <em>Science</em> 2019.</li>
+<li>R. T. Q. Chen et al. Neural ODEs. NeurIPS 2018. W. Grathwohl et al. FFJORD. ICLR 2019.</li>
+<li>M. S. Albergo, N. M. Boffi, E. Vanden-Eijnden. Stochastic interpolants: a unifying framework for flows and diffusions. 2023. Y. Lipman et al. Flow matching. ICLR 2023.</li>
+</ol>
+</main>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  renderMathInElement(document.body, {
+    delimiters: [{left: "$$", right: "$$", display: true}, {left: "$", right: "$", display: false}],
+    macros: {
+      "\\Pf": "\\overrightarrow{P}", "\\Pb": "\\overleftarrow{P}",
+      "\\Qf": "\\overrightarrow{Q}", "\\Qb": "\\overleftarrow{Q}",
+      "\\dd": "\\mathrm{d}"
+    },
+    throwOnError: false
+  });
+  document.querySelectorAll(".deriv-btn").forEach(b=>b.addEventListener("click",()=>{
+    const body=b.nextElementSibling, open=body.hidden; body.hidden=!open; b.setAttribute("aria-expanded",String(open));
+  }));
+  initLag();
+  initAnneal();
+  initSMCPT();
+  initFP();
+});
+
+/* ---------- shared helpers ---------- */
+const NS = "http://www.w3.org/2000/svg";
+function el(tag, attrs, parent){ const e=document.createElementNS(NS,tag); for (const k in attrs) e.setAttribute(k,attrs[k]); if(parent) parent.appendChild(e); return e; }
+function randn(){ let u=0,v=0; while(u===0)u=Math.random(); v=Math.random(); return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v); }
+const lnN=(x,m,s)=>-0.5*((x-m)/s)*((x-m)/s)-Math.log(s)-0.9189385332;
+function cssv(root,v){ return getComputedStyle(root).getPropertyValue(v).trim(); }
+
+/* ---------- double-well demos: MCMC, annealing, non-equilibrium ---------- */
+const DW={h:10,c:0.5,s0:1.5,M:300,dt:0.002};
+DW.U1=x=>DW.h*(x*x-1)*(x*x-1)-DW.c*x; DW.dU1=x=>4*DW.h*x*(x*x-1)-DW.c;
+DW.U0=x=>x*x/(2*DW.s0*DW.s0); DW.dU0=x=>x/(DW.s0*DW.s0);
+DW.Ub=(x,b)=>(1-b)*DW.U0(x)+b*DW.U1(x); DW.dUb=(x,b)=>(1-b)*DW.dU0(x)+b*DW.dU1(x);
+DW.mala=(x,b)=>{const dt=DW.dt,sd=Math.sqrt(2*dt),mx=x-DW.dUb(x,b)*dt,y=mx+sd*randn(),my=y-DW.dUb(y,b)*dt;
+  return Math.log(Math.random())<-DW.Ub(y,b)+DW.Ub(x,b)+lnN(x,my,sd)-lnN(y,mx,sd)?y:x;};
+DW.eq=b=>{let Z=0,R=0;for(let x=-3;x<3;x+=0.002){const e=Math.exp(-DW.Ub(x,b));Z+=e;if(x>0)R+=e;}return R/Z;};
+DW.truth=DW.eq(1);
+DW.eqCurve=[];for(let b=0;b<=1.0001;b+=0.02)DW.eqCurve.push([b,DW.eq(b)]);
+DW.P={l:34,r:12,t:10,b:26,w:360,h:220};
+function dwHist(svg,root,b,sets){ // sets: [{xs,w,color,op,line}]
+  const C={t2:cssv(root,"--text-secondary"),grid:cssv(root,"--grid")}, P=DW.P; svg.innerHTML="";
+  const lo=-2,hi=2,B=40,bw=(hi-lo)/B, ymax=3.0;
+  const sx=v=>P.l+(v-lo)/(hi-lo)*(P.w-P.l-P.r), sy=v=>P.h-P.b-Math.min(v,ymax)/ymax*(P.h-P.t-P.b);
+  for(let q=0;q<=3;q++) el("line",{x1:P.l,x2:P.w-P.r,y1:sy(ymax*q/3),y2:sy(ymax*q/3),stroke:C.grid},svg);
+  sets.forEach(st=>{ const c=new Array(B).fill(0); let tot=0; st.xs.forEach((x,i)=>{const wt=st.w?st.w[i]:1; tot+=wt; const q=Math.floor((x-lo)/bw); if(q>=0&&q<B) c[q]+=wt;});
+    const d=c.map(v=>v/(tot*bw));
+    if(st.line){ let path=""; d.forEach((v,q)=>{const a=sx(lo+q*bw),bb=sx(lo+(q+1)*bw),y=sy(v); path+=(path?"L":"M")+a.toFixed(1)+","+y.toFixed(1)+"L"+bb.toFixed(1)+","+y.toFixed(1);}); el("path",{d:path,fill:"none",stroke:st.color,"stroke-width":2.2},svg); }
+    else d.forEach((v,q)=>{const x=sx(lo+q*bw)+1,w=sx(lo+(q+1)*bw)-sx(lo+q*bw)-2,y=sy(v); if(sy(0)-y>0) el("rect",{x,y,width:w,height:sy(0)-y,rx:1.5,fill:st.color,opacity:st.op||1},svg);}); });
+  let Z=0; for(let x=-3;x<3;x+=0.002) Z+=Math.exp(-DW.Ub(x,b))*0.002;
+  let path=""; for(let x=lo;x<=hi+1e-9;x+=0.02) path+=(path?"L":"M")+sx(x).toFixed(1)+","+sy(Math.exp(-DW.Ub(x,b))/Z).toFixed(1);
+  el("path",{d:path,fill:"none",stroke:C.t2,"stroke-width":1.8,"stroke-dasharray":"5 3"},svg);
+  for(const v of [-2,-1,0,1,2]){const tx=el("text",{x:sx(v),y:P.h-8,"text-anchor":"middle","font-size":10,fill:C.t2},svg); tx.textContent=v;}
+}
+function dwCurve(svg,root,o){ // o: {xmax, xlabel, ref (array or number), lines:[{pts,color}], markers:[[f,label]]}
+  const C={t2:cssv(root,"--text-secondary"),grid:cssv(root,"--grid"),s2:cssv(root,"--series-2")}, P=DW.P; svg.innerHTML="";
+  const sx=v=>P.l+v/o.xmax*(P.w-P.l-P.r), sy=v=>P.h-P.b-Math.max(0,Math.min(1,v))*(P.h-P.t-P.b);
+  for(const v of [0,0.25,0.5,0.75,1]){ el("line",{x1:P.l,x2:P.w-P.r,y1:sy(v),y2:sy(v),stroke:C.grid},svg); const tx=el("text",{x:P.l-5,y:sy(v)+3,"text-anchor":"end","font-size":10,fill:C.t2},svg); tx.textContent=v.toFixed(2); }
+  o.ticks.forEach(v=>{ const tx=el("text",{x:sx(v),y:P.h-8,"text-anchor":"middle","font-size":10,fill:C.t2},svg); tx.textContent=(v===0?o.xlabel+" = ":"")+v; });
+  if(Array.isArray(o.ref)) el("path",{d:o.ref.map((p,i)=>(i?"L":"M")+sx(p[0]).toFixed(1)+","+sy(p[1]).toFixed(1)).join(""),fill:"none",stroke:C.t2,"stroke-width":1.8,"stroke-dasharray":"5 3"},svg);
+  else el("line",{x1:P.l,x2:P.w-P.r,y1:sy(o.ref),y2:sy(o.ref),stroke:C.t2,"stroke-width":1.8,"stroke-dasharray":"5 3"},svg);
+  o.lines.forEach(L=>{ if(!L.pts.length) return; el("path",{d:L.pts.map((p,i)=>(i?"L":"M")+sx(p[0]).toFixed(1)+","+sy(p[1]).toFixed(1)).join(""),fill:"none",stroke:L.color,"stroke-width":2},svg);
+    const q=L.pts[L.pts.length-1]; el("circle",{cx:sx(q[0]),cy:sy(q[1]),r:4,fill:L.color,stroke:"#fff","stroke-width":2},svg); });
+  (o.markers||[]).forEach(([f,lab])=>{ const y=sy(f); el("circle",{cx:sx(o.xmax),cy:y,r:4.5,fill:C.s2,stroke:"#fff","stroke-width":1.5},svg); const tx=el("text",{x:sx(o.xmax)-8,y:y-8,"text-anchor":"end","font-size":9.5,"font-weight":600,fill:C.t2,stroke:"#fff","stroke-width":3,"paint-order":"stroke"},svg); tx.textContent=lab; });
+}
+function dwLoop(root,step,draw,isDone){
+  let running=true, visible=true;
+  if("IntersectionObserver" in window){ new IntersectionObserver(es=>{visible=es[0].isIntersecting;}).observe(root); }
+  const id=root.id, pb=document.getElementById(id+"-play"); pb.addEventListener("click",()=>{running=!running; pb.textContent=running?"Pause":"Play";});
+  (function frame(){ if(running&&visible&&!isDone()){ step(); draw(); } requestAnimationFrame(frame); })();
+}
+function initLag(){
+  const root=document.getElementById("lag"), C={s1:cssv(root,"--series-1")};
+  const M=DW.M, per=5, Tmax=60; let xs,t,hist;
+  function setup(){ xs=new Float64Array(M).fill(-1); t=0; hist=[[0,0]]; }
+  const frac=()=>{let r=0; for(const x of xs) if(x>0) r++; return r/M;};
+  function step(){ for(let k=0;k<per;k++){ for(let i=0;i<M;i++) xs[i]=DW.mala(xs[i],1); t+=DW.dt*5; } hist.push([t,frac()]); }
+  function draw(){ dwHist(document.getElementById("lag-hist"),root,1,[{xs,color:C.s1}]);
+    dwCurve(document.getElementById("lag-curve"),root,{xmax:Tmax,xlabel:"t",ticks:[0,20,40,60],ref:DW.truth,lines:[{pts:hist,color:C.s1}]});
+    document.getElementById("lag-t").textContent=t.toFixed(0); }
+  document.getElementById("lag-reset").addEventListener("click",()=>{setup(); draw();});
+  setup(); draw(); dwLoop(root,step,draw,()=>t>=Tmax);
+}
+function initAnn(id,weighted,NS){
+  const root=document.getElementById(id), C={s1:cssv(root,"--series-1"),s2:cssv(root,"--series-2")};
+  const M=DW.M, FR=420; let N,xs,W,k,raw,wtd,done=[];
+  const slider=document.getElementById(id+"-n");
+  function setup(){ N=NS[+slider.value]; document.getElementById(id+"-nv").textContent=N.toLocaleString();
+    xs=new Float64Array(M); for(let i=0;i<M;i++) xs[i]=DW.s0*randn(); W=new Float64Array(M); k=0; raw=[[0,fr(false)]]; wtd=[[0,fr(true)]]; }
+  function weights(){ let mx=-Infinity; for(const v of W) mx=Math.max(mx,-v); return Array.from(W,v=>Math.exp(-v-mx)); }
+  function fr(useW){ if(!useW){let r=0; for(const x of xs) if(x>0) r++; return r/M;} const w=weights(); let S=0,R=0; xs.forEach((x,i)=>{S+=w[i]; if(x>0)R+=w[i];}); return R/S; }
+  function step(){ const per=Math.max(1,Math.round(N/FR));
+    for(let j=0;j<per&&k<N;j++){ k++; const b0=(k-1)/N,b=k/N; for(let i=0;i<M;i++){ W[i]+=DW.Ub(xs[i],b)-DW.Ub(xs[i],b0); xs[i]=DW.mala(xs[i],b); } }
+    raw.push([k/N,fr(false)]); if(weighted) wtd.push([k/N,fr(true)]);
+    if(k>=N){ done.push([weighted?fr(true):fr(false),"N="+N.toLocaleString()]); if(done.length>5) done.shift(); } }
+  function draw(){ const b=k/N, sets=[{xs,color:C.s1,op:weighted?0.45:1}]; if(weighted) sets.push({xs,w:weights(),color:C.s2,line:true});
+    dwHist(document.getElementById(id+"-hist"),root,b,sets);
+    const lines=[{pts:raw,color:C.s1}]; if(weighted) lines.push({pts:wtd,color:C.s2});
+    dwCurve(document.getElementById(id+"-curve"),root,{xmax:1,xlabel:"β",ticks:[0,0.25,0.5,0.75,1],ref:DW.eqCurve,lines,markers:done});
+    document.getElementById(id+"-b").textContent=b.toFixed(2);
+    if(weighted){ const w=weights(); let S=0,S2=0; w.forEach(v=>{S+=v;S2+=v*v;}); document.getElementById(id+"-ess").textContent=Math.round(S*S/S2); } }
+  slider.addEventListener("input",()=>{setup(); draw();});
+  document.getElementById(id+"-reset").addEventListener("click",()=>{setup(); draw();});
+  setup(); draw(); dwLoop(root,step,draw,()=>k>=N);
+}
+function initOpt(){
+  const id="neq", root=document.getElementById(id), C={s2:cssv(root,"--series-2")};
+  const M=DW.M, NS=[5,20,100], FR=360, G=4001, xg=new Float64Array(G); for(let g=0;g<G;g++) xg[g]=-4+8*g/(G-1);
+  const slider=document.getElementById(id+"-n"); let N,xs,k,curve,done=[],Fprev;
+  function cdf(b){ const F=new Float64Array(G); let acc=0; for(let g=0;g<G;g++){ acc+=Math.exp(-DW.Ub(xg[g],b)); F[g]=acc; } for(let g=0;g<G;g++) F[g]/=acc; return F; }
+  function evalF(F,x){ if(x<=xg[0]) return 0; if(x>=xg[G-1]) return 1; const u=(x+4)/8*(G-1), g=Math.floor(u), a=u-g; return F[g]*(1-a)+F[g+1]*a; }
+  function invF(F,q){ let lo=0,hi=G-1; while(hi-lo>1){ const m=(lo+hi)>>1; if(F[m]<q) lo=m; else hi=m; } const a=(q-F[lo])/Math.max(F[hi]-F[lo],1e-300); return xg[lo]+(xg[hi]-xg[lo])*Math.min(1,Math.max(0,a)); }
+  const frac=()=>{let r=0; for(const x of xs) if(x>0) r++; return r/M;};
+  function setup(){ N=NS[+slider.value]; document.getElementById(id+"-nv").textContent=N; xs=new Float64Array(M); for(let i=0;i<M;i++) xs[i]=DW.s0*randn(); k=0; Fprev=cdf(0); curve=[[0,frac()]]; }
+  function step(){
+    if(k>=N) return; k++; const b=k/N, F=cdf(b);
+    for(let i=0;i<M;i++){ xs[i]=invF(F,Math.min(1-1e-12,Math.max(1e-12,evalF(Fprev,xs[i])))); xs[i]=DW.mala(xs[i],b); }
+    Fprev=F; curve.push([b,frac()]);
+    if(k>=N){ done.push([frac(),"N="+N]); if(done.length>5) done.shift(); } }
+  let tick=0;
+  function step2(){ tick++; const every=Math.max(1,Math.round(FR/N/3)); if(tick%every===0) step(); }
+  function draw(){ const b=k/N; dwHist(document.getElementById(id+"-hist"),root,b,[{xs,color:C.s2}]);
+    dwCurve(document.getElementById(id+"-curve"),root,{xmax:1,xlabel:"β",ticks:[0,0.25,0.5,0.75,1],ref:DW.eqCurve,lines:[{pts:curve,color:C.s2}],markers:done});
+    document.getElementById(id+"-b").textContent=b.toFixed(2); }
+  slider.addEventListener("input",()=>{setup(); draw();});
+  document.getElementById(id+"-reset").addEventListener("click",()=>{setup(); draw();});
+  setup(); draw(); dwLoop(root,()=>{ if(N>=FR/3){ const per=Math.round(N/(FR/3)); for(let j=0;j<per;j++) step(); } else step2(); },draw,()=>k>=N);
+}
+function initAnneal(){ initAnn("ann",false,[50,500,5000,20000]); initOpt(); }
+
+/* ---------- fixed-point training loop ---------- */
+function initFP(){
+  const root=document.getElementById("fp-demo"), svg=document.getElementById("fp-svg");
+  const C={s1:cssv(root,"--series-1"),s2:cssv(root,"--series-2"),s3:cssv(root,"--series-3"),t1:cssv(root,"--text-primary"),t2:cssv(root,"--text-secondary"),mu:cssv(root,"--text-muted"),grid:cssv(root,"--grid")};
+  const T=[{w:0.3,m:-2,s:0.5},{w:0.7,m:2,s:0.6}];
+  const mix=(c,x)=>c.reduce((a,k)=>a+k.w*Math.exp(lnN(x,k.m,k.s)),0);
+  const U=x=>-Math.log(mix(T,x)+1e-300), dU=x=>(U(x+1e-4)-U(x-1e-4))/2e-4;
+  const NS_=80, damp=0.45, STAGES=["Simulate","Evaluate","Replay buffer","Regress"];
+  const SUB=["sample the model","energy and force −∇U","samples + weights","target score match"];
+  let P, P0, P1, buf, cur, it, stage, prog, ess, running=true;
+  function reset(){ P=[{w:.5,m:-2.5,s:1.3},{w:.5,m:0,s:1.6}]; buf=[]; cur=[]; it=0; stage=0; prog=0; ess=null; startRound(); }
+  function sampleModel(){ const xs=[]; for(let i=0;i<NS_;i++){ const c=Math.random()<P[0].w?P[0]:P[1]; xs.push(c.m+c.s*randn()); } return xs; }
+  function startRound(){
+    const xs=sampleModel();
+    const lw=xs.map(x=>-U(x)-Math.log(mix(P,x)+1e-300)); const mx=Math.max(...lw);
+    let w=lw.map(l=>Math.exp(l-mx)); const S=w.reduce((a,b)=>a+b); w=w.map(v=>v/S);
+    ess=1/w.reduce((a,b)=>a+b*b,0)/NS_;
+    cur=xs.map((x,i)=>({x,w:w[i],y0:Math.random()}));
+  }
+  function regress(){
+    buf.push(cur); if(buf.length>3) buf.shift();
+    const B=buf.flat(); const tot=B.reduce((a,b)=>a+b.w,0); let Q=P.map(k=>({...k}));
+    for(let e=0;e<25;e++){
+      const R=B.map(b=>{const a=Q.map(k=>k.w*Math.exp(lnN(b.x,k.m,k.s))); const s=a[0]+a[1]+1e-300; return a.map(v=>v/s);});
+      Q=Q.map((k,j)=>{let W=0,M=0; B.forEach((b,i)=>{const r=R[i][j]*b.w; W+=r; M+=r*b.x;}); const m=M/W; let V=0; B.forEach((b,i)=>{V+=R[i][j]*b.w*(b.x-m)*(b.x-m);}); return {w:W/tot,m,s:Math.max(Math.sqrt(V/W),0.3)};});
+    }
+    P0=P.map(k=>({...k})); P1=P.map((k,j)=>({w:k.w+damp*(Q[j].w-k.w),m:k.m+damp*(Q[j].m-k.m),s:k.s+damp*(Q[j].s-k.s)}));
+  }
+  function KL(){ let k=0; for(let x=-6;x<6;x+=0.02){ const p=mix(T,x); if(p>1e-12) k+=p*Math.log(p/Math.max(mix(P,x),1e-300))*0.02; } return k; }
+  // geometry
+  const cx=152, cy=150, Rx=96, Ry=92, R=94, nodes=[0,1,2,3].map(i=>{const a=-Math.PI/2+i*Math.PI/2; return [cx+Rx*Math.cos(a), cy+Ry*Math.sin(a)];});
+  const X0=318, X1=710, PY0=30, PY1=215, BY=262, xs=x=>X0+(x+5)/10*(X1-X0);
+  let ymax=0; for(let x=-5;x<=5;x+=0.05) ymax=Math.max(ymax,mix(T,x)); ymax*=1.25;
+  const ys=v=>PY1-Math.min(v,ymax)/ymax*(PY1-PY0);
+  function curve(c){ let d=""; for(let x=-5;x<=5.001;x+=0.05) d+=(d?"L":"M")+xs(x).toFixed(1)+","+ys(mix(c,x)).toFixed(1); return d; }
+  function draw(){
+    svg.innerHTML="";
+    const defs=el("defs",{},svg); const mk=el("marker",{id:"fpa",viewBox:"0 0 10 10",refX:8,refY:5,markerWidth:7,markerHeight:7,orient:"auto"},defs); el("path",{d:"M0,0 L10,5 L0,10 z",fill:C.mu},mk);
+    const mk2=el("marker",{id:"fpg",viewBox:"0 0 10 10",refX:8,refY:5,markerWidth:6,markerHeight:6,orient:"auto"},defs); el("path",{d:"M0,0 L10,5 L0,10 z",fill:C.s3},mk2);
+    // loop diagram
+    for(let i=0;i<4;i++){ const a0=-Math.PI/2+i*Math.PI/2+0.42, a1=-Math.PI/2+(i+1)*Math.PI/2-0.42;
+      el("path",{d:`M${cx+Rx*Math.cos(a0)},${cy+Ry*Math.sin(a0)} A${Rx},${Ry} 0 0 1 ${cx+Rx*Math.cos(a1)},${cy+Ry*Math.sin(a1)}`,fill:"none",stroke:C.mu,"stroke-width":1.6,"marker-end":"url(#fpa)"},svg); }
+    nodes.forEach(([x,y],i)=>{ const on=i===stage;
+      el("rect",{x:x-52,y:y-22,width:104,height:44,rx:9,fill:on?(i===3?"#fdf1ea":"#eef4fc"):"#fff",stroke:on?(i===3?C.s2:C.s1):C.grid,"stroke-width":on?2:1.2},svg);
+      const t=el("text",{x,y:y-3,"text-anchor":"middle","font-size":12,"font-weight":700,fill:C.t1},svg); t.textContent=(i+1)+" · "+STAGES[i];
+      const u=el("text",{x,y:y+12,"text-anchor":"middle","font-size":9.5,fill:C.t2},svg); u.textContent=SUB[i]; });
+    const c1=el("text",{x:cx,y:cy-2,"text-anchor":"middle","font-size":10.5,"font-weight":700,fill:C.t1},svg); c1.textContent="fixed point:";
+    const c2=el("text",{x:cx,y:cy+12,"text-anchor":"middle","font-size":9.5,fill:C.t2},svg); c2.textContent="model = target";
+    // plot
+    for(let k=0;k<=3;k++) el("line",{x1:X0,x2:X1,y1:PY0+k*(PY1-PY0)/3,y2:PY0+k*(PY1-PY0)/3,stroke:C.grid},svg);
+    el("line",{x1:X0,x2:X1,y1:PY1,y2:PY1,stroke:C.mu},svg);
+    [-4,-2,0,2,4].forEach(v=>{const t=el("text",{x:xs(v),y:PY1+13,"text-anchor":"middle","font-size":10,fill:C.t2},svg); t.textContent=v;});
+    const shown = stage===3 ? P0.map((k,j)=>{const a=Math.min(prog*1.2,1); return {w:k.w+(P1[j].w-k.w)*a,m:k.m+(P1[j].m-k.m)*a,s:k.s+(P1[j].s-k.s)*a};}) : P;
+    el("path",{d:curve(shown)+`L${xs(5)},${PY1}L${xs(-5)},${PY1}Z`,fill:C.s1,opacity:0.12},svg);
+    el("path",{d:curve(shown),fill:"none",stroke:C.s1,"stroke-width":2.2},svg);
+    el("path",{d:curve(T),fill:"none",stroke:C.t2,"stroke-width":1.8,"stroke-dasharray":"5 3"},svg);
+    // buffer strip
+    el("line",{x1:X0,x2:X1,y1:BY-14,y2:BY-14,stroke:C.grid},svg);
+    const bl=el("text",{x:X0,y:BY+26,"font-size":10,fill:C.t2},svg); bl.textContent="replay buffer (last 3 rounds)";
+    buf.forEach((round,ri)=>round.forEach(b=>{ if(b.x<-5||b.x>5) return; el("circle",{cx:xs(b.x),cy:BY+(b.y0-0.5)*14,r:Math.min(1.5+3.5*Math.sqrt(b.w*NS_),7),fill:C.s2,opacity:0.25+0.2*ri},svg); }));
+    // current samples
+    cur.forEach(b=>{
+      if(b.x<-5||b.x>5) return;
+      let y, r=3, op=0.9;
+      if(stage===0){ const yt=ys(mix(P,b.x)); y=yt+(PY1-6-yt)*Math.min(prog*1.3,1); }
+      else if(stage===1){ y=PY1-6; }
+      else if(stage===2){ y=(PY1-6)+(BY+(b.y0-0.5)*14-(PY1-6))*Math.min(prog*1.3,1); r=3+(Math.min(1.5+3.5*Math.sqrt(b.w*NS_),7)-3)*Math.min(prog*1.5,1); }
+      else return;
+      if(stage===1){ const f=-dU(b.x), L=Math.max(-26,Math.min(26,f*5))*Math.min(prog*1.5,1); if(Math.abs(L)>1.5) el("line",{x1:xs(b.x),y1:y-8,x2:xs(b.x)+L,y2:y-8,stroke:C.s3,"stroke-width":1.4,"marker-end":"url(#fpg)"},svg); }
+      el("circle",{cx:xs(b.x),cy:y,r,fill:stage===2?C.s2:C.s1,stroke:"#fff","stroke-width":0.8,opacity:op},svg);
+    });
+    document.getElementById("fp-it").textContent=it;
+    document.getElementById("fp-ess").textContent=ess==null?"–":Math.round(ess*100)+"%";
+    document.getElementById("fp-kl").textContent=KL().toFixed(3);
+  }
+  function tick(){
+    prog+=0.011; if(prog<1) return; prog=0;
+    if(stage===2){ regress(); stage=3; return; }
+    if(stage===3){ P=P1; it++; if(it>=12){ reset(); return; } stage=0; startRound(); return; }
+    stage++;
+  }
+  const pb=document.getElementById("fp-play"); pb.addEventListener("click",()=>{running=!running; pb.textContent=running?"Pause":"Play";});
+  document.getElementById("fp-reset").addEventListener("click",()=>{reset(); draw();});
+  let visible=true; if("IntersectionObserver" in window){ new IntersectionObserver(es=>{visible=es[0].isIntersecting;}).observe(root); }
+  reset(); draw();
+  (function frame(){ if(running&&visible){ tick(); draw(); } requestAnimationFrame(frame); })();
+}
+
+/* ---------- SMC vs replica exchange ---------- */
+function initSMCPT(){
+  const root=document.getElementById("smcpt-demo");
+  const C={s1:cssv(root,"--series-1"),s2:cssv(root,"--series-2"),s3:cssv(root,"--series-3"),t2:cssv(root,"--text-secondary"),mu:cssv(root,"--text-muted"),grid:cssv(root,"--grid")};
+  // toy path of targets q_t and kernels Q->, Q<-
+  const N=8, Wt=[0.25,0.75], K=1.5, tau=0.3;
+  const m=t=>2.2*t/N, s=t=>Math.sqrt(1-(t/N)*(t/N)*(1-0.35*0.35));
+  const lq=(x,t)=>{const a=Math.log(Wt[0])+lnN(x,-m(t),s(t)),b=Math.log(Wt[1])+lnN(x,m(t),s(t));const M=Math.max(a,b);return M+Math.log(Math.exp(a-M)+Math.exp(b-M));};
+  const sp=t=>Math.sqrt(Math.max(s(t)*s(t)-tau*tau,0.01));
+  const f=(x,t)=>m(t+1)*Math.tanh(K*x)+(sp(t+1)/s(t))*(x-m(t)*Math.tanh(K*x));
+  const g=(y,t)=>m(t)*Math.tanh(K*y)+(sp(t)/s(t+1))*(y-m(t+1)*Math.tanh(K*y));
+  const lF=(y,x,t)=>lnN(y,f(x,t),tau), lB=(x,y,t)=>lnN(x,g(y,t),tau);
+  const lG=(xt,xt1,t)=>lq(xt1,t+1)+lB(xt,xt1,t)-lq(xt,t)-lF(xt1,xt,t);
+  // geometry
+  const X0=46, X1=500, HX0=560, HX1=705, Y=v=>125-v*34, LX=t=>X0+t*(X1-X0)/N;
+  const HB=32, HLO=-3.4, HHI=3.4, hbw=(HHI-HLO)/HB;
+  const hk=v=>Math.floor((v-HLO)/hbw);
+  let qmax=0; for(let v=-3.4;v<=3.4;v+=0.05) qmax=Math.max(qmax,Math.exp(lq(v,N)));
+  function drawBackground(svg){
+    svg.innerHTML="";
+    for(let t=0;t<=N;t++){
+      let d="";
+      for(let v=-3.4; v<=3.401; v+=0.08){ const px=LX(t)+24*Math.exp(lq(v,t))*s(t); d+=(d?"L":"M")+px.toFixed(1)+","+Y(v).toFixed(1); }
+      d+="L"+LX(t)+","+Y(3.4)+"L"+LX(t)+","+Y(-3.4)+"Z";
+      el("path",{d,fill:C.mu,opacity:0.13},svg);
+      el("line",{x1:LX(t),x2:LX(t),y1:Y(3.4),y2:Y(-3.4),stroke:C.grid},svg);
+      const tx=el("text",{x:LX(t),y:246,"text-anchor":"middle","font-size":10,fill:C.t2},svg); tx.textContent=t===0?"t=0":(t===N?"t=N":t);
+    }
+    const a=el("text",{x:LX(0),y:10,"text-anchor":"middle","font-size":10,fill:C.t2},svg); a.textContent="prior";
+    const b=el("text",{x:LX(N),y:10,"text-anchor":"middle","font-size":10,fill:C.t2},svg); b.textContent="target";
+    el("line",{x1:HX0,x2:HX0,y1:Y(3.4),y2:Y(-3.4),stroke:C.mu},svg);
+    const hl=el("text",{x:(HX0+HX1)/2,y:10,"text-anchor":"middle","font-size":10,fill:C.t2},svg); hl.textContent="output histogram";
+    return el("g",{},svg);
+  }
+  function drawHistogram(svg, counts){
+    const gg=el("g",{},svg); const tot=counts.reduce((a,b)=>a+b,0);
+    const scale=(HX1-HX0-6)/(qmax*1.15);
+    if(tot>0) counts.forEach((c,k)=>{ const w=c/(tot*hbw)*scale; if(w>0.3) el("rect",{x:HX0+1,y:Y(HLO+(k+1)*hbw)+1,width:Math.min(w,HX1-HX0),height:Math.max(Y(HLO+k*hbw)-Y(HLO+(k+1)*hbw)-2,1),rx:1.5,fill:C.s1,opacity:0.85},gg); });
+    let d=""; for(let v=-3.4;v<=3.401;v+=0.05){ d+=(d?"L":"M")+(HX0+Math.exp(lq(v,N))*scale).toFixed(1)+","+Y(v).toFixed(1); }
+    el("path",{d,fill:"none",stroke:C.t2,"stroke-width":1.6,"stroke-dasharray":"4 3"},gg);
+  }
+  let running=true, speed=3;
+  const pb=document.getElementById("sp-play");
+  pb.addEventListener("click",()=>{running=!running; pb.textContent=running?"Pause":"Play";});
+  document.getElementById("sp-speed").addEventListener("input",e=>speed=+e.target.value);
+
+  /* SMC */
+  const Mp=40, smcSvg=document.getElementById("smc-svg");
+  let S=null;
+  function smcInit(keep){
+    const x=Array.from({length:Mp},()=>randn()*s(0));
+    S={t:0, x, lw:new Array(Mp).fill(0), paths:x.map(v=>[[0,v]]), phase:"move", prog:0, from:null, to:null, links:null, ess:Mp,
+       hist: keep? S.hist : new Array(HB).fill(0), wR: keep? S.wR:0, wT: keep? S.wT:0, batch: keep? S.batch+1:1};
+  }
+  function smcW(){ const mx=Math.max(...S.lw); const w=S.lw.map(l=>Math.exp(l-mx)); const sw=w.reduce((a,b)=>a+b); return w.map(v=>v/sw); }
+  function smcAdvance(){
+    const t=S.t; S.from=S.x.slice(); const nx=S.x.map(v=>f(v,t)+tau*randn());
+    for(let i=0;i<Mp;i++) S.lw[i]+=lG(S.x[i],nx[i],t);
+    S.to=nx; S.phase="move"; S.prog=0;
+  }
+  function smcAfterMove(){
+    S.t+=1; S.x=S.to; S.x.forEach((v,i)=>S.paths[i].push([S.t,v]));
+    const w=smcW(); S.ess=1/w.reduce((a,b)=>a+b*b,0);
+    if(S.t===N){ S.phase="emit"; S.prog=0; w.forEach((wi,i)=>{const k=hk(S.x[i]); if(k>=0&&k<HB) S.hist[k]+=wi; S.wT+=wi; if(S.x[i]>0) S.wR+=wi;}); return; }
+    if(S.ess<Mp/2){
+      const idx=[]; const u0=Math.random()/Mp; let c=w[0],j=0;
+      for(let i=0;i<Mp;i++){ const u=u0+i/Mp; while(u>c && j<Mp-1){ j++; c+=w[j]; } idx.push(j); }
+      const ox=S.x.slice(), op=S.paths;
+      S.links=idx; S.x=idx.map(p=>ox[p]); S.paths=idx.map(p=>op[p].slice()); S.lw=new Array(Mp).fill(0);
+      S.phase="resample"; S.prog=0;
+    } else smcAdvance();
+  }
+  function smcDraw(){
+    const layer=drawBackground(smcSvg);
+    const w=smcW();
+    S.paths.forEach(p=>{ el("path",{d:p.map((q,i)=>(i?"L":"M")+LX(q[0]).toFixed(1)+","+Y(q[1]).toFixed(1)).join(""),fill:"none",stroke:C.s1,"stroke-width":0.8,opacity:0.18},layer); });
+    if(S.phase==="resample"){
+      for(let i=0;i<Mp;i++) el("circle",{cx:LX(S.t),cy:Y(S.x[i]),r:7+5*S.prog,fill:"none",stroke:C.s2,"stroke-width":1.5,opacity:1-S.prog},layer);
+      const tx=el("text",{x:LX(S.t),y:24,"text-anchor":"middle","font-size":11,"font-weight":700,fill:C.s2},layer); tx.textContent="resample";
+    }
+    for(let i=0;i<Mp;i++){
+      let xv=S.x[i], px=LX(S.t);
+      if(S.phase==="move" && S.to){ xv=S.from[i]+(S.to[i]-S.from[i])*S.prog; px=LX(S.t+S.prog); }
+      const r=Math.min(2+4.2*Math.sqrt(w[i]*Mp),9);
+      el("circle",{cx:px,cy:Y(xv),r:r,fill:C.s1,stroke:"#fff","stroke-width":1,opacity:0.9},layer);
+    }
+    drawHistogram(smcSvg,S.hist);
+    document.getElementById("smc-b").textContent=S.batch;
+    document.getElementById("smc-ess").textContent=Math.round(S.ess);
+    document.getElementById("smc-r").textContent=S.wT>0?(S.wR/S.wT).toFixed(2):"–";
+  }
+  function smcTick(dp){
+    S.prog+=dp; if(S.prog<1) return;
+    if(S.phase==="move") smcAfterMove();
+    else if(S.phase==="resample"){ S.links=null; smcAdvance(); }
+    else if(S.phase==="emit"){ smcInit(true); smcAdvance(); }
+  }
+
+  /* Replica exchange */
+  const ptSvg=document.getElementById("pt-svg");
+  let R=null;
+  function ptPropose(){
+    R.x[0]=randn()*s(0);
+    const par=R.round%2, moves=[];
+    for(let t=par;t<N;t+=2){
+      const yu=f(R.x[t],t)+tau*randn(), yd=g(R.x[t+1],t)+tau*randn();
+      const la=lG(R.x[t],yu,t)-lG(yd,R.x[t+1],t);
+      const ok=Math.log(Math.random())<la; R.tries++; if(ok) R.acc++;
+      moves.push({t,ok,xa:R.x[t],xb:R.x[t+1],yu,yd});
+    }
+    R.moves=moves; R.prog=0;
+  }
+  function ptInit(){
+    R={x:Array.from({length:N+1},(_,t)=>m(t)*(Math.random()<0.75?1:-1)+s(t)*randn()), round:0, acc:0, tries:0, hist:new Array(HB).fill(0), nR:0, nT:0, prog:0, moves:[]};
+    ptPropose();
+  }
+  function ptAfter(){
+    for(const mv of R.moves){ if(mv.ok){ R.x[mv.t+1]=mv.yu; R.x[mv.t]=mv.yd; } }
+    R.round++;
+    const v=R.x[N], k=hk(v); if(k>=0&&k<HB) R.hist[k]++; R.nT++; if(v>0) R.nR++;
+    ptPropose();
+  }
+  function ptDraw(){
+    const layer=drawBackground(ptSvg);
+    const moving=new Set();
+    const p=Math.min(R.prog*1.25,1);
+    for(const mv of R.moves){
+      moving.add(mv.t); moving.add(mv.t+1);
+      if(mv.ok){
+        el("line",{x1:LX(mv.t),y1:Y(mv.xa),x2:LX(mv.t+1),y2:Y(mv.yu),stroke:C.s3,"stroke-width":2,opacity:0.85},layer);
+        el("line",{x1:LX(mv.t+1),y1:Y(mv.xb),x2:LX(mv.t),y2:Y(mv.yd),stroke:C.s3,"stroke-width":2,opacity:0.85},layer);
+        el("circle",{cx:LX(mv.t)+(LX(mv.t+1)-LX(mv.t))*p,cy:Y(mv.xa+(mv.yu-mv.xa)*p),r:5.5,fill:C.s1,stroke:"#fff","stroke-width":1.2},layer);
+        el("circle",{cx:LX(mv.t+1)+(LX(mv.t)-LX(mv.t+1))*p,cy:Y(mv.xb+(mv.yd-mv.xb)*p),r:5.5,fill:C.s1,stroke:"#fff","stroke-width":1.2},layer);
+      } else {
+        el("line",{x1:LX(mv.t),y1:Y(mv.xa),x2:LX(mv.t+1),y2:Y(mv.xb),stroke:C.mu,"stroke-width":1.5,"stroke-dasharray":"3 3"},layer);
+        el("circle",{cx:LX(mv.t),cy:Y(mv.xa),r:5.5,fill:C.s1,stroke:"#fff","stroke-width":1.2},layer);
+        el("circle",{cx:LX(mv.t+1),cy:Y(mv.xb),r:5.5,fill:C.s1,stroke:"#fff","stroke-width":1.2},layer);
+      }
+    }
+    for(let t=0;t<=N;t++) if(!moving.has(t)) el("circle",{cx:LX(t),cy:Y(R.x[t]),r:5.5,fill:C.s1,stroke:"#fff","stroke-width":1.2},layer);
+    const fr=el("text",{x:LX(0),y:24,"text-anchor":"middle","font-size":10,fill:C.t2},layer); fr.textContent="fresh draw";
+    drawHistogram(ptSvg,R.hist);
+    document.getElementById("pt-r").textContent=R.round;
+    document.getElementById("pt-acc").textContent=R.tries?(R.acc/R.tries).toFixed(2):"–";
+    document.getElementById("pt-m").textContent=R.nT?(R.nR/R.nT).toFixed(2):"–";
+  }
+  function ptTick(dp){ R.prog+=dp; if(R.prog>=1) ptAfter(); }
+
+  function reset(){ S=null; smcInit(false); smcAdvance(); ptInit(); smcDraw(); ptDraw(); }
+  document.getElementById("sp-reset").addEventListener("click",reset);
+  reset();
+  let visible=true;
+  if("IntersectionObserver" in window){ new IntersectionObserver(es=>{visible=es[0].isIntersecting;}).observe(root); }
+  function frame(){
+    if(running && visible){ const dp=0.012*speed; smcTick(dp); ptTick(dp*0.9); smcDraw(); ptDraw(); }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+}
+</script>
+</body>
+</html>
