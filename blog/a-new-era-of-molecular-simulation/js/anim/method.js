@@ -295,7 +295,7 @@
     const shownAt = (i) => T0 + i * DT;
     function emph(g) { // dim the other groups while a card is being discussed
       if (step < 1 || step > 4) return 1;
-      if (g === 0) return step === 2 ? 1 : 0.32;   // the benchmark documented why PDDS and iDEM fail at scale
+      if (g === 0) return 1;   // our benchmark stays highlighted at every build
       return g === step ? 1 : 0.32;
     }
     function brace(x1, x2, y, col) {

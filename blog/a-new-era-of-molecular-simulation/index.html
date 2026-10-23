@@ -223,7 +223,7 @@
     <div class="card" style="padding:18px 24px;border-top:5px solid #C2870A" data-f="2">
       <div style="font-size:22px;color:#A87406;font-weight:700">2024 · PDDS → iDEM: the right idea</div>
       <div class="small" style="font-size:20px;margin-top:8px">Regress the score on the model's <b>own samples</b>; iDEM adds the replay buffer. Each step closer to the final loop.</div>
-      <div class="small" style="font-size:20px;margin-top:8px">But the debiasing sits <b>inside the label</b>: SMC weights (PDDS), an importance-sampled score $\nabla\log\frac1K\sum_k e^{-\beta U(x+s_t\varepsilon_k)}$ (iDEM). <b style="color:#B4492F">High variance → fails at scale</b>, as our benchmark <i>No trick, no treat</i> showed.</div>
+      <div class="small" style="font-size:20px;margin-top:8px">But the debiasing sits <b>inside the label</b>: SMC weights (PDDS), an importance-sampled score $\nabla\log\frac1K\sum_k e^{-\beta U(x+s_t\varepsilon_k)}$ (iDEM). <b style="color:#B4492F">High variance → fails at scale.</b></div>
     </div>
     <div class="card" style="padding:18px 24px;border-top:5px solid var(--teal)" data-f="3">
       <div style="font-size:22px;color:var(--teal-dark);font-weight:700">2025–26 · fixed-point matching</div>
