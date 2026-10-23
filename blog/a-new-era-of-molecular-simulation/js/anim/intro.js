@@ -154,7 +154,7 @@
         ctx.strokeStyle = grad; ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x0 + (x1 - x0) * ph.t, y0); ctx.stroke();
         U.circle(ctx, x0 + (x1 - x0) * ph.t, y0, 11, '#fff', ph.name === 'bwd' ? C.blue : C.teal, 4);
         ctx.restore();
-        text(ctx, 'uniform prior', x0, y0 + 40, { size: o.hero ? 22 : 24, color: C.inkSoft });
+        text(ctx, o.hero ? 'prior' : 'uniform prior', x0, y0 + 40, { size: o.hero ? 22 : 24, color: C.inkSoft });
         text(ctx, 'Boltzmann ensemble', x1, y0 + 40, { size: o.hero ? 22 : 24, color: C.inkSoft, align: 'right' });
         const lab = ph.name === 'bwd' ? 'backward P← (noising)' : ph.name === 'fwd' ? 'forward P→ (generation)' : ph.name === 'hold' ? (o.forces ? 'label: forces βF(X_N)' : 't = N') : 't = 0';
         const col = ph.name === 'bwd' ? C.blue : ph.name === 'hold' && o.forces ? C.coral : C.teal;

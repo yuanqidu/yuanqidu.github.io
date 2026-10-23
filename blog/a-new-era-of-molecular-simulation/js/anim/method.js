@@ -36,7 +36,7 @@
     function makeBridges() {
       bridges = [];
       for (let b = 0; b < 9; b++) {
-        const x1 = wrap01(pick[b] + 0.03 * rng.normal()), x0 = rng.u(), d = minImage(x1 - x0), seed = rng.u() * 100;
+        const x1 = pick[b] + 0.03 * rng.normal(), x0 = Math.min(0.95, Math.max(0.05, 0.5 + 0.17 * rng.normal())), d = x1 - x0, seed = rng.u() * 100;
         bridges.push({ x0, x1, d, seed, hl: b < 6 });
       }
     }
@@ -48,9 +48,9 @@
       S.clear();
       // axes / densities
       ctx.strokeStyle = rgba(C.inkSoft, 0.3); ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(X0, Y0); ctx.lineTo(X0, Y1); ctx.moveTo(X1, Y0); ctx.lineTo(X1, Y1); ctx.stroke();
-      ctx.fillStyle = rgba(C.muted, 0.25); ctx.fillRect(X0 - 46, Y0, 46, Y1 - Y0);
+      vDensity(ctx, grid, grid.map(v => Math.exp(-0.5 * ((v - 0.5) / 0.17) ** 2)), X0, Y0, Y1, 46, -1, rgba(C.muted, 0.3), rgba(C.inkSoft, 0.6));
       vDensity(ctx, grid, tv.map(v => v / tmax), X1, Y0, Y1, 120, 1, rgba(C.coral, 0.18), C.coral);
-      text(ctx, 'uniform prior', X0 - 23, Y1 + 34, { size: 20, color: C.inkSoft, align: 'center' });
+      text(ctx, 'Gaussian prior', X0 - 23, Y1 + 34, { size: 20, color: C.inkSoft, align: 'center' });
       text(ctx, 'target', X1 + 60, Y1 + 34, { size: 20, color: C.coral, align: 'center' });
       text(ctx, 't = 0', X0, Y0 - 18, { size: 20, color: C.muted, align: 'center' });
       text(ctx, 't = N', X1, Y0 - 18, { size: 20, color: C.muted, align: 'center' });
@@ -61,7 +61,7 @@
         const nT = Math.floor(80 * show);
         for (let k = 0; k <= nT; k++) { const t = k / 80, y = bpos(b, t), w = wrap01(y); const X = tx(t), Y = ty(w); if (prev !== null && Math.abs(w - prev) > 0.5) ctx.moveTo(X, Y); else if (k === 0) ctx.moveTo(X, Y); else ctx.lineTo(X, Y); prev = w; }
         ctx.strokeStyle = b.hl ? rgba(C.blue, 0.75) : rgba(C.muted, 0.5); ctx.lineWidth = b.hl ? 2.4 : 1.4; ctx.stroke();
-        U.circle(ctx, tx(0), ty(wrap01(b.x0)), 5, C.muted);
+        U.circle(ctx, tx(0), ty(b.x0), 5, C.muted);
         if (show >= 1) U.circle(ctx, tx(1), ty(b.x1), 6, b.hl ? C.blue : C.muted);
       });
       // forces at the endpoints
@@ -75,11 +75,11 @@
         ctx.save(); ctx.setLineDash([6, 6]); ctx.strokeStyle = rgba(C.navy, 0.5); ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(xs, Y0 - 4); ctx.lineTo(xs, Y1 + 4); ctx.stroke(); ctx.restore();
         text(ctx, 't', xs, Y1 + 30, { size: 22, color: C.navy, align: 'center', italic: true });
         const tt = 1 - (1 - tStar) * E.inOut(ca);
-        bridges.forEach(b => { if (!b.hl) return; const y = wrap01(bpos(b, tt)); const s = T.score(b.x1); const len = Math.sign(s) * Math.min(64, 7 * Math.sqrt(Math.abs(s))); U.circle(ctx, xs, ty(y), 6, C.blue); arrow(ctx, xs, ty(y), xs, ty(y) - len, rgba(C.coral, 0.85), 3, 10); });
+        bridges.forEach(b => { if (!b.hl) return; const y = bpos(b, tt); const s = T.score(b.x1); const len = Math.sign(s) * Math.min(64, 7 * Math.sqrt(Math.abs(s))); U.circle(ctx, xs, ty(y), 6, C.blue); arrow(ctx, xs, ty(y), xs, ty(y) - len, rgba(C.coral, 0.85), 3, 10); });
       }
       if (step >= 2) {
         const a = E.clamp((clock - 5.2) / 0.8);
-        richText(ctx, [['∇log ', 'n'], ['p', 'i'], ['t', 'sub'], ['(', 'n'], ['x', 'i'], [') = 𝔼[ ', 'n'], ['β', 'i'], ['F', 'i'], ['(', 'n'], ['X', 'i'], ['N', 'sub'], [') | ', 'n'], ['X', 'i'], ['t', 'sub'], [' = ', 'n'], ['x', 'i'], [' ]', 'n']], (X0 + X1) / 2, Y1 + 62, { size: 27, color: C.navy, align: 'center', alpha: a });
+        richText(ctx, [['∇log ', 'n'], ['p', 'i'], ['t', 'sub'], ['(', 'n'], ['x', 'i'], [') = (1/', 'n'], ['α', 'i'], ['t', 'sub'], [') 𝔼[ ', 'n'], ['β', 'i'], ['F', 'i'], ['(', 'n'], ['X', 'i'], ['N', 'sub'], [') | ', 'n'], ['X', 'i'], ['t', 'sub'], [' = ', 'n'], ['x', 'i'], [' ]', 'n']], (X0 + X1) / 2 + 20, Y1 + 72, { size: 25, color: C.navy, align: 'center', alpha: a });
       }
     }
     return {
@@ -139,18 +139,17 @@
         miniBox(bx + 140, by + 18, 100, mid, false);
         miniBox(bx + 280, by + 18, 100, samp.slice(0, 12), false);
         arrow(ctx, bx + 104, by + 68, bx + 136, by + 68, C.muted, 2, 9); arrow(ctx, bx + 276, by + 68, bx + 244, by + 68, C.muted, 2, 9);
-        richText(ctx, [['X', 'i'], ['0', 'sub']], bx + 50, by + 14, { size: 19, color: C.inkSoft, align: 'center' });
+        richText(ctx, [['ε', 'i']], bx + 50, by + 14, { size: 19, color: C.inkSoft, align: 'center' });
         richText(ctx, [['X', 'i'], ['t', 'sub']], bx + 190, by + 14, { size: 19, color: C.inkSoft, align: 'center' });
         richText(ctx, [['X', 'i'], ['N', 'sub']], bx + 330, by + 14, { size: 19, color: C.inkSoft, align: 'center' });
-        richText(ctx, [['fresh noise ', 'n'], ['X', 'i'], ['0', 'sub'], [', ', 'n'], ['t', 'i'], ['; buffered ', 'n'], ['X', 'i'], ['N', 'sub'], ['  (free: no oracle)', 'n']], bx, by + 170, { size: 19, color: C.inkSoft });
+        richText(ctx, [['fresh noise ', 'n'], ['ε', 'i'], [', ', 'n'], ['t', 'i'], ['; buffered ', 'n'], ['X', 'i'], ['N', 'sub'], ['  (free: no oracle)', 'n']], bx, by + 170, { size: 19, color: C.inkSoft });
       } else {
         const L = [[0, 3], [1, 4], [2, 3]]; const nodes = [];
         L.forEach(([li, n], j) => { for (let i = 0; i < n; i++) nodes.push({ x: bx + 40 + j * 95, y: by + 28 + (i + 0.5) * (110 / n), l: j }); });
         nodes.forEach(p => nodes.forEach(q => { if (q.l === p.l + 1) { ctx.strokeStyle = rgba(C.gold, active ? 0.35 + 0.35 * Math.abs(Math.sin(u * 9 + p.y)) : 0.35); ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke(); } }));
         nodes.forEach(p => U.circle(ctx, p.x, p.y, 8, C.gold, '#fff', 1.5));
-        roundRect(ctx, bx + 255, by + 30, 96, 40, 9, rgba(C.teal, 0.12), C.teal, 1.6); richText(ctx, [['b', 'i'], ['θ', 'sub']], bx + 303, by + 58, { size: 22, color: C.tealDark, align: 'center' });
-        roundRect(ctx, bx + 255, by + 82, 96, 40, 9, rgba(C.blue, 0.12), C.blue, 1.6); richText(ctx, [['s', 'i'], ['θ', 'sub']], bx + 303, by + 110, { size: 22, color: C.blue, align: 'center' });
-        richText(ctx, [['min ‖', 'n'], ['s', 'i'], ['θ', 'sub'], ['(', 'n'], ['X', 'i'], ['t', 'sub'], [', ', 'n'], ['t', 'i'], [') − ', 'n'], ['β', 'i'], ['F', 'i'], ['(', 'n'], ['X', 'i'], ['N', 'sub'], [')‖² + ‖', 'n'], ['b', 'i'], ['θ', 'sub'], [' − ', 'n'], ['b̂', 'i'], ['‖²', 'n']], bx, by + 170, { size: 19, color: C.inkSoft });
+        roundRect(ctx, bx + 255, by + 56, 96, 40, 9, rgba(C.blue, 0.12), C.blue, 1.6); richText(ctx, [['s', 'i'], ['θ', 'sub']], bx + 303, by + 84, { size: 22, color: C.blue, align: 'center' });
+        richText(ctx, [['min ‖', 'n'], ['s', 'i'], ['θ', 'sub'], ['(', 'n'], ['X', 'i'], ['t', 'sub'], [', ', 'n'], ['t', 'i'], [') − ', 'n'], ['β', 'i'], ['F', 'i'], ['(', 'n'], ['X', 'i'], ['N', 'sub'], [')/', 'n'], ['α', 'i'], ['t', 'sub'], ['‖²', 'n']], bx, by + 170, { size: 19, color: C.inkSoft });
       }
       ctx.restore();
     }
@@ -170,7 +169,7 @@
       // histogram of model samples for the current round
       roundRect(ctx, HX, 0, HW, S.h, 18, '#fff', rgba(C.inkSoft, 0.15), 1.5);
       text(ctx, 'Live: model samples after each round', HX + 28, 44, { size: 24, weight: 650, color: C.ink });
-      text(ctx, '1D torus toy, ATLAS training rule (forces only)', HX + 28, 74, { size: 18, color: C.muted });
+      text(ctx, '1D toy, fixed-point rule (forces only)', HX + 28, 74, { size: 18, color: C.muted });
       const gx = HX + 40, gw = HW - 80, gy1 = S.h - 120, gy0 = 150;
       const prevH = R[Math.max(0, rr - 1)].h, curH = R[rr].h, mix_ = phase === 0 && r > 0 && r < nR ? E.inOut(u) : 1;
       const H = curH.map((v, i) => prevH[i] + (v - prevH[i]) * mix_);
@@ -181,9 +180,9 @@
       text(ctx, 'target', gx + gw - 8, gy0 + 6, { size: 20, color: C.coral, align: 'right', weight: 600 });
       text(ctx, 'model', gx + gw - 8, gy0 + 32, { size: 20, color: C.tealDark, align: 'right', weight: 600 });
       text(ctx, `round ${rr}`, gx, gy0 - 22, { size: 30, color: C.navy, weight: 700 });
-      text(ctx, rr === 0 ? 'initial model = prior' : '', gx + 150, gy0 - 22, { size: 20, color: C.muted });
+      text(ctx, rr === 0 ? 'untrained model' : '', gx + 150, gy0 - 22, { size: 20, color: C.muted });
       text(ctx, `force evaluations: ${(rr * 10000).toLocaleString()}`, gx, gy1 + 44, { size: 20, color: C.inkSoft });
-      text(ctx, 'x on the circle', gx + gw, gy1 + 44, { size: 19, color: C.muted, align: 'right' });
+      text(ctx, 'x', gx + gw, gy1 + 44, { size: 19, color: C.muted, align: 'right' });
     }
     return { frame(dt) { clock += dt; draw(); }, draw, ff: 3 * ROUND + 1.4 * PH };
   };
