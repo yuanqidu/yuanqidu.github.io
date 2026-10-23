@@ -254,7 +254,7 @@
     <div class="card" style="padding:18px 24px;border-top:5px solid #C2870A" data-f="2">
       <div style="font-size:22px;color:#A87406;font-weight:700">2024 · PDDS → iDEM: the right idea</div>
       <div class="small" style="font-size:20px;margin-top:8px">Regress the score on the model's <b>own samples</b>; iDEM adds the replay buffer. Each step closer to the final loop.</div>
-      <div class="small" style="font-size:20px;margin-top:8px">But the debiasing sits <b>inside the label</b>: SMC weights (PDDS), an importance-sampled score $\nabla\log\frac1K\sum_k e^{-\beta U(x+s_t\varepsilon_k)}$ (iDEM). <b style="color:#B4492F">High variance → fails at scale.</b></div>
+      <div class="small" style="font-size:20px;margin-top:8px">But the debiasing sits <b>inside the label</b>: SMC weights (PDDS), an importance-sampled score $\nabla\log\frac1K\sum_k e^{-\beta U(x+s_t\varepsilon_k)}$ (iDEM). <b style="color:#B4492F">High variance → fails at scale</b>, as our benchmark <i>No trick, no treat</i> showed.</div>
     </div>
     <div class="card" style="padding:18px 24px;border-top:5px solid var(--teal)" data-f="3">
       <div style="font-size:22px;color:var(--teal-dark);font-weight:700">2025–26 · fixed-point matching</div>
@@ -263,7 +263,7 @@
     </div>
   </div>
   <div class="takeaway violet" data-f="4">ATLAS · JANUS = fixed-point matching <b>+</b> the 2022–24 path-weight loss, back as a <b>regularizer</b> for the mode weights.</div>
-  <div class="cite">Zhang &amp; Chen 2022 (PIS) · Vargas et al. 2023 (DDS) · Berner et al. 2024 (DIS) · Richter &amp; Berner 2024 (log-variance) · Vargas et al. 2024 (CMCD) · Phillips et al. 2024 (PDDS) · Akhound-Sadegh et al. 2024 (iDEM) · He, <b class="me">Du</b> et al. 2025 (No trick, no treat) · Havens et al. 2025 (Adjoint Sampling) · Liu et al. 2025 (ASBS) · Blessing et al. 2026 (Bridge Matching Sampler) · Havens et al. 2026 (Flow Sampling)</div>
+  <div class="cite">Zhang &amp; Chen 2022 (PIS) · Vargas et al. 2023 (DDS) · Berner et al. 2024 (DIS) · Richter &amp; Berner 2024 (log-variance) · Vargas et al. 2024 (CMCD) · Phillips et al. 2024 (PDDS) · Akhound-Sadegh et al. 2024 (iDEM) · He*, <b class="me">Du</b>* et al. 2025 (No trick, no treat) · Havens et al. 2025 (Adjoint Sampling) · Liu et al. 2025 (ASBS) · Blessing et al. 2026 (Bridge Matching Sampler) · Havens et al. 2026 (Flow Sampling)</div>
 </section>
 
 <section class="slide" data-title="One derivation, every estimator" data-section="Neural samplers">

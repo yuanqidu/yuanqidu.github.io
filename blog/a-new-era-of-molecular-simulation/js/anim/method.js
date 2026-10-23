@@ -279,7 +279,7 @@
     // [x, high, title, subtitle, colour, group]
     const EV = [[210, 0, 'PIS · DDS · DIS', 'reverse KL on path space', CO, 1], [540, 1, 'Log-variance · CMCD', 'off-policy losses', CO, 1],
       [740, 0, 'PDDS', 'SMC particles as labels', GO, 2], [880, 1, 'iDEM', 'MC score estimate + buffer', GO, 2],
-      [1015, 0, 'Benchmarks', '“No trick, no treat”', GR, 0], [1120, 1, 'Adjoint Sampling', 'target gradient as label', TE, 3],
+      [1000, 0, 'No trick, no treat', 'our benchmark, 2025', C.navy, 0], [1135, 1, 'Adjoint Sampling', 'target gradient as label', TE, 3],
       [1260, 0, 'ASBS', 'general priors & schedules', TE, 3], [1400, 1, 'Bridge Matching Sampler', 'generalized fixed-point matching', TE, 3],
       [1530, 0, 'Flow Sampling', 'conditional denoising', TE, 3], [1655, 1, 'ATLAS · JANUS', 'this talk', VI, 4]];
     const BR = [[120, 600, CO, ['the path weight as the loss'], 1, 1], [690, 935, GO, ['right idea,', 'high-variance debiasing'], 3, 2],
@@ -288,6 +288,7 @@
     const shownAt = (i) => T0 + i * DT;
     function emph(g) { // dim the other groups while a card is being discussed
       if (step < 1 || step > 4) return 1;
+      if (g === 0) return step === 2 ? 1 : 0.32;   // the benchmark documented why PDDS and iDEM fail at scale
       return g === step ? 1 : 0.32;
     }
     function brace(x1, x2, y, col) {
@@ -311,6 +312,11 @@
         if (i >= nShow) return;
         const [x, high, t, sub, col, g] = e, a = E.out(E.clamp((clock - shownAt(i)) / 0.35)), top = high ? 60 : 170;
         ctx.save(); ctx.globalAlpha = a * emph(g);
+        if (g === 0) { // our benchmark: highlighted even without a group bracket
+          ctx.font = U.font(22, 700); const hw = ctx.measureText(t).width / 2 + 12;
+          roundRect(ctx, x - hw, top - 58, 2 * hw, 60, 12, rgba(C.navy, 0.08), rgba(C.navy, 0.55), 1.8);
+          U.circle(ctx, x, AX, 15, null, rgba(C.navy, 0.5), 2.2);
+        }
         ctx.strokeStyle = rgba(col, 0.7); ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(x, AX); ctx.lineTo(x, AX - (AX - top) * a); ctx.stroke();
         U.circle(ctx, x, AX, 8 * (0.6 + 0.4 * a) + (i === nShow - 1 && prog < 1 ? 2 : 0), col);
         text(ctx, t, x, top - 32 + (1 - a) * 10, { size: 22, weight: 700, color: col, align: 'center' });
