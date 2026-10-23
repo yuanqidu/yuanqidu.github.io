@@ -118,6 +118,12 @@
       U.circle(ctx, P.x + 30, P.y + 32, 16, active ? C.teal : C.muted);
       text(ctx, String(P.k), P.x + 30, P.y + 40, { size: 20, weight: 700, color: '#fff', align: 'center' });
       text(ctx, P.name, P.x + 56, P.y + 41, { size: 26, weight: 650, color: C.ink });
+      { // cost of each step: the buffer pays the two expensive ones once, the cheap ones are repeated
+        const [lab, col] = P.k <= 2 ? ['expensive', C.coral] : ['cheap, repeated', C.tealDark];
+        ctx.font = U.font(16, 700); const w = ctx.measureText(lab).width + 24;
+        roundRect(ctx, P.x + pw - 18 - w, P.y + 18, w, 28, 14, rgba(col, 0.12), rgba(col, 0.7), 1.4);
+        text(ctx, lab, P.x + pw - 18 - w / 2, P.y + 37, { size: 16, weight: 700, color: col, align: 'center' });
+      }
       const bx = P.x + 26, by = P.y + 70;
       if (P.k === 1) {
         miniBox(bx, by + 10, 120, prior, true);

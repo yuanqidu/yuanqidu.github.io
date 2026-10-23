@@ -152,31 +152,6 @@
   <div class="cite">Noé et al. 2019 (Boltzmann generators) · Zhang &amp; Chen 2022 · Vargas et al. 2023 · right panel: exact transport for this mixture (an ideally trained sampler)</div>
 </section>
 
-<section class="slide" data-title="Training without data: how the field got here" data-section="Neural samplers">
-  <div class="kicker method">Neural samplers · the line of work we build on</div>
-  <h2>Training without data: how the field got here</h2>
-  <canvas class="abs" style="left:90px;top:168px" width="1740" height="408" data-anim="litTimeline"></canvas>
-  <div class="abs" style="left:110px;top:588px;width:1700px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:26px">
-    <div class="card" style="padding:18px 24px;border-top:5px solid var(--coral)" data-f="1">
-      <div style="font-size:22px;color:var(--coral);font-weight:700">2022–24 · a divergence on whole paths</div>
-      <div class="eq" style="font-size:21px;margin:10px 0">$\mathrm{KL}\big(\Pf_\theta\,\big\|\,\Pb\big),\qquad\mathrm{Var}_{\mathbb Q}\Big[\log\dfrac{\mathrm d\Pb}{\mathrm d\Pf_\theta}\Big]$</div>
-      <div class="small" style="font-size:20px">Match generated paths to time-reversed paths from $\pi$; the log ratio is the <b>path weight</b> (coming up). But: backprop through the solver, no reuse of energy calls, mode collapse.</div>
-    </div>
-    <div class="card" style="padding:18px 24px;border-top:5px solid #C2870A" data-f="2">
-      <div style="font-size:22px;color:#A87406;font-weight:700">2024 · PDDS → iDEM: the right idea</div>
-      <div class="small" style="font-size:20px;margin-top:8px">Regress the score on the model's <b>own samples</b>; iDEM adds the replay buffer. Each step closer to the final loop.</div>
-      <div class="small" style="font-size:20px;margin-top:8px">But the debiasing sits <b>inside the label</b>: SMC weights (PDDS), an importance-sampled score $\nabla\log\frac1K\sum_k e^{-\beta U(x+s_t\varepsilon_k)}$ (iDEM). <b style="color:#B4492F">High variance → fails at scale</b>, as our benchmark <i>No trick, no treat</i> showed.</div>
-    </div>
-    <div class="card" style="padding:18px 24px;border-top:5px solid var(--teal)" data-f="3">
-      <div style="font-size:22px;color:var(--teal-dark);font-weight:700">2025–26 · fixed-point matching</div>
-      <div class="small" style="font-size:20px;margin-top:8px">Same loop, but the label is <b>one force</b> $\beta\mathbf F(X_N)$ at the model's own endpoint: no weights inside the regression, simulation-free, replay buffer.</div>
-      <div class="small" style="font-size:20px;margin-top:8px">Regression shapes each mode; it does not fix the <b>mode weights</b>.</div>
-    </div>
-  </div>
-  <div class="takeaway violet" data-f="4">ATLAS · JANUS = fixed-point matching <b>+</b> the 2022–24 path-weight loss, back as a <b>regularizer</b> for the mode weights.</div>
-  <div class="cite">Zhang &amp; Chen 2022 (PIS) · Vargas et al. 2023 (DDS) · Berner et al. 2024 (DIS) · Richter &amp; Berner 2024 (log-variance) · Vargas et al. 2024 (CMCD) · Phillips et al. 2024 (PDDS) · Akhound-Sadegh et al. 2024 (iDEM) · He*, <b class="me">Du</b>* et al. 2025 (No trick, no treat) · Havens et al. 2025 (Adjoint Sampling) · Liu et al. 2025 (ASBS) · Blessing et al. 2026 (Bridge Matching Sampler) · Havens et al. 2026 (Flow Sampling)</div>
-</section>
-
 <!-- =============================================================== 8. DATA VS ENERGY -->
 <section class="slide" data-title="Diffusion models: add noise, learn to reverse it" data-section="Neural samplers">
   <div class="kicker method">Neural samplers · what made diffusion models work</div>
@@ -235,15 +210,42 @@
   <div class="cite">De Bortoli et al. 2024 (target score matching) · Albergo, Boffi &amp; Vanden-Eijnden 2025 (stochastic interpolants) · Blessing et al., ICML 2026</div>
 </section>
 
+<section class="slide" data-title="How do we train it? How the field got here" data-section="Neural samplers">
+  <div class="kicker method">Neural samplers · how do we train it without data?</div>
+  <h2>How do we train it? How the field got here</h2>
+  <canvas class="abs" style="left:90px;top:168px" width="1740" height="408" data-anim="litTimeline"></canvas>
+  <div class="abs" style="left:110px;top:588px;width:1700px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:26px">
+    <div class="card" style="padding:18px 24px;border-top:5px solid var(--coral)" data-f="1">
+      <div style="font-size:22px;color:var(--coral);font-weight:700">2022–24 · a divergence on whole paths</div>
+      <div class="eq" style="font-size:21px;margin:10px 0">$\mathrm{KL}\big(\Pf_\theta\,\big\|\,\Pb\big),\qquad\mathrm{Var}_{\mathbb Q}\Big[\log\dfrac{\mathrm d\Pb}{\mathrm d\Pf_\theta}\Big]$</div>
+      <div class="small" style="font-size:20px">Match generated paths to time-reversed paths from $\pi$; the log ratio is the <b>path weight</b> (coming up). But: backprop through the solver, no reuse of energy calls, mode collapse.</div>
+    </div>
+    <div class="card" style="padding:18px 24px;border-top:5px solid #C2870A" data-f="2">
+      <div style="font-size:22px;color:#A87406;font-weight:700">2024 · PDDS → iDEM: the right idea</div>
+      <div class="small" style="font-size:20px;margin-top:8px">Regress the score on the model's <b>own samples</b>; iDEM adds the replay buffer. Each step closer to the final loop.</div>
+      <div class="small" style="font-size:20px;margin-top:8px">But the debiasing sits <b>inside the label</b>: SMC weights (PDDS), an importance-sampled score $\nabla\log\frac1K\sum_k e^{-\beta U(x+s_t\varepsilon_k)}$ (iDEM). <b style="color:#B4492F">High variance → fails at scale</b>, as our benchmark <i>No trick, no treat</i> showed.</div>
+    </div>
+    <div class="card" style="padding:18px 24px;border-top:5px solid var(--teal)" data-f="3">
+      <div style="font-size:22px;color:var(--teal-dark);font-weight:700">2025–26 · fixed-point matching</div>
+      <div class="small" style="font-size:20px;margin-top:8px">Same loop, but the label is <b>one force</b> $\beta\mathbf F(X_N)$ at the model's own endpoint: no weights inside the regression, simulation-free, replay buffer.</div>
+      <div class="small" style="font-size:20px;margin-top:8px">Regression shapes each mode; it does not fix the <b>mode weights</b>.</div>
+    </div>
+  </div>
+  <div class="takeaway violet" data-f="4">ATLAS · JANUS = fixed-point matching <b>+</b> the 2022–24 path-weight loss, back as a <b>regularizer</b> for the mode weights.</div>
+  <div class="cite">Zhang &amp; Chen 2022 (PIS) · Vargas et al. 2023 (DDS) · Berner et al. 2024 (DIS) · Richter &amp; Berner 2024 (log-variance) · Vargas et al. 2024 (CMCD) · Phillips et al. 2024 (PDDS) · Akhound-Sadegh et al. 2024 (iDEM) · He*, <b class="me">Du</b>* et al. 2025 (No trick, no treat) · Havens et al. 2025 (Adjoint Sampling) · Liu et al. 2025 (ASBS) · Blessing et al. 2026 (Bridge Matching Sampler) · Havens et al. 2026 (Flow Sampling)</div>
+</section>
+
 <!-- =============================================================== 10. FIXED-POINT LOOP -->
 <section class="slide" data-title="Fixed-point training loop" data-section="Neural samplers">
   <div class="kicker method">Neural samplers · no data at all</div>
   <h2>Fixed-point training: the model proposes, the physics corrects</h2>
   <div class="abs" style="left:110px;top:178px;width:1700px;text-align:center">
-    <div class="eqbox eq" style="font-size:25px">$s^{(k+1)}=\arg\min_s\displaystyle\int_0^1\!\lambda_t\;\mathbb E_{X_{0:N}\sim\Pf_{s^{(k)}}}\Big[\bar w\;\Big\|\,s(X'_t,t)-\frac{1}{\alpha_t}\beta\mathbf F(X_N)\Big\|^2\Big]\dd t,\qquad X'_t=\alpha_tX_N+s_t\varepsilon$</div>
+    <div class="eqbox eq" style="font-size:25px">$s^{(k+1)}=\arg\min_s\displaystyle\int_0^1\!\lambda_t\;\mathbb E_{X_{0:N}\sim\Pf_{s^{(k)}}}\Big[\textcolor{#E76F51}{\bar w}\;\Big\|\,s(X'_t,t)-\frac{1}{\alpha_t}\beta\mathbf F(X_N)\Big\|^2\Big]\dd t,\qquad X'_t=\alpha_tX_N+s_t\varepsilon$</div>
+    <div style="margin-top:6px;font-size:19px;color:#E76F51;font-weight:650">$\bar w$: the self-normalized <b>path weight</b>, discussed in the next slides</div>
   </div>
-  <canvas class="abs" style="left:195px;top:282px;transform:scale(0.9);transform-origin:0 0" width="1700" height="620" data-anim="fpLoop"></canvas>
-  <div class="takeaway" style="bottom:66px">$\pi$ is a fixed point: if the sampler already produces $\pi$, the labels average to the exact score. ($\bar w$: the path weight, next.)</div>
+  <canvas class="abs" style="left:195px;top:296px;transform:scale(0.9);transform-origin:0 0" width="1700" height="620" data-anim="fpLoop"></canvas>
+  <div class="abs small" style="left:195px;top:864px;width:1530px;font-size:21px;color:var(--ink)"><b>Why a buffer:</b> the two expensive steps, <b style="color:var(--coral)">simulating the model</b> (a full rollout) and <b style="color:var(--coral)">evaluating forces</b>, are paid once per sample; interpolating and regressing are cheap, so each buffered sample is reused for many gradient steps.</div>
+  <div class="takeaway" style="bottom:66px">$\pi$ is a fixed point: the labels then average to the exact score; the <b>path weight</b> $\textcolor{#E76F51}{\bar w}$ fixes the mode weights (next slides).</div>
   <div class="cite">Blessing et al., ICML 2026 (Bridge Matching Sampler) · Havens et al. 2025 (Adjoint Sampling) · right: real run of the fixed-point rule on a 1D toy (force labels, path-weighted buffer)</div>
 </section>
 
