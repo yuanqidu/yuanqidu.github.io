@@ -217,8 +217,9 @@
   <div class="abs" style="left:110px;top:588px;width:1700px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:26px">
     <div class="card" style="padding:18px 24px;border-top:5px solid var(--coral)" data-f="1">
       <div style="font-size:22px;color:var(--coral);font-weight:700">2022–24 · a divergence on whole paths</div>
-      <div class="eq" style="font-size:21px;margin:10px 0">$\mathrm{KL}\big(\Pf_\theta\,\big\|\,\Pb\big),\qquad\mathrm{Var}_{\mathbb Q}\Big[\log\dfrac{\mathrm d\Pb}{\mathrm d\Pf_\theta}\Big]$</div>
-      <div class="small" style="font-size:20px">Match generated paths to time-reversed paths from $\pi$; the log ratio is the <b>path weight</b> (coming up). But: backprop through the solver, no reuse of energy calls, mode collapse.</div>
+      <div class="eq" style="font-size:20px;margin:10px 0 2px">$\mathrm{KL}\big(\Pf_\theta\,\big\|\,\Pb\big)=\mathbb E_{\textcolor{#E76F51}{X_{0:N}\sim\Pf_\theta}}\Big[\log\dfrac{\mathrm d\Pf_\theta}{\mathrm d\Pb}(X_{0:N})\Big]$</div>
+      <div class="eq" style="font-size:20px;margin:0 0 8px">$\text{or}\ \ \mathrm{Var}_{X_{0:N}\sim\mathbb Q}\Big[\log\dfrac{\mathrm d\Pb}{\mathrm d\Pf_\theta}(X_{0:N})\Big]$</div>
+      <div class="small" style="font-size:20px">The reverse KL is evaluated on <b style="color:#E76F51">paths sampled from the model itself</b>; the log ratio is the <b>path weight</b> (coming up). But: backprop through the solver, no reuse of energy calls, mode collapse.</div>
     </div>
     <div class="card" style="padding:18px 24px;border-top:5px solid #C2870A" data-f="2">
       <div style="font-size:22px;color:#A87406;font-weight:700">2024 · PDDS → iDEM: the right idea</div>
