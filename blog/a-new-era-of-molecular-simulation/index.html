@@ -168,11 +168,12 @@
       <div class="succ"><svg viewBox="0 0 32 32"><path d="M9 24h15a6 6 0 0 0 0-12 8 8 0 0 0-15-2A6 6 0 0 0 9 24z"/></svg><div><div class="t">Weather</div><div class="d">GenCast · Price, Nature 2025</div></div></div>
     </div>
     <div data-f="1" style="margin-top:30px">
-      <div class="small" style="color:var(--ink);margin-bottom:10px">Forward $\Pf$ (generation) and backward $\Pb$ (noising) traverse the same marginals $p_t$; their drifts differ by exactly the <b>score</b>:</div>
-      <div class="eqbox eq" style="font-size:31px">$\mu^+_t(x)-\mu^-_t(x)=\sigma_t^2\,\nabla\log p_t(x)$</div>
+      <div class="small" style="color:var(--ink);margin-bottom:10px">Two processes through the same marginals $p_t$:</div>
+      <div class="eqbox eq" style="font-size:25px">$\begin{aligned}\Pf\ \text{(forward, generation, }0\to N)&:\quad \mathrm dX_t=\mu^+_t(X_t)\,\mathrm dt+\sigma_t\,\mathrm dW_t\\[4pt] \Pb\ \text{(backward, noising, }N\to 0)&:\quad \mathrm dX_t=\mu^-_t(X_t)\,\mathrm dt+\sigma_t\,\mathrm d\overleftarrow{W}_t\end{aligned}$</div>
+      <div class="small" data-f="2" style="color:var(--ink);margin-top:12px">Time reversal ties the drifts: $\mu^+_t=\mu^-_t+\sigma_t^2\,\nabla\log p_t$. The noising drift is chosen; the only unknown is the <b>score</b>.</div>
     </div>
   </div>
-  <div class="takeaway" data-f="2" style="left:900px">Learning a diffusion model = learning the <b>score</b> $\nabla\log p_t$ at every noise level.</div>
+  <div class="takeaway" data-f="3" style="left:900px">Learning a diffusion model = learning the <b>score</b> $\nabla\log p_t$ at every noise level.</div>
   <div class="cite">Sohl-Dickstein et al. 2015 · Ho et al. 2020 · Song et al. 2021 · Nelson 1967, Anderson 1982 (time reversal) · left: exact score of a 7-mode mixture</div>
 </section>
 
