@@ -1,4 +1,4 @@
-/* Method animations: target score identity, fixed-point loop (real 1D torus run), path weights, SMC steering. */
+/* Method animations: target score identity, fixed-point loop (real 1D torus run), path weights, SMC steering, APT replica exchange. */
 (function () {
   'use strict';
   const { C, rgba, mix, E, atom, flatAtom, roundRect, arrow, curvedArrow, text, richText, font, makeRng, wiggle, wrap01, minImage } = U;
@@ -206,6 +206,9 @@
     const hAt = (x) => last.h[Math.min(nb - 1, Math.floor(x * nb))];
     const W = paths.map(p => { const x1 = p[p.length - 1]; return T.p(x1) / Math.max(0.05, hAt(x1)); });
     const wmax = Math.max(...W);
+    // highlight a path that stays inside the plotted range (no wrap across the periodic boundary)
+    const inside = (p) => { let u = p[0], lo = u, hi = u; for (let k = 1; k < p.length; k++) { u += minImage(p[k] - p[k - 1]); lo = Math.min(lo, u); hi = Math.max(hi, u); } return lo > 0.06 && hi < 0.94; };
+    const HL = (() => { for (let i = 5; i < paths.length; i++) if (inside(paths[i])) return i; return 7; })();
     function draw() {
       S.clear();
       // left: paths
@@ -218,17 +221,15 @@
       vDensity(ctx, grid, tv.map(v => v / tm), X1, Y0, Y1, 90, 1, rgba(C.coral, 0.16), C.coral);
       const nShow = Math.min(paths.length, 4 + Math.floor(clock * 14));
       for (let i = 0; i < nShow; i++) {
-        const p = paths[i]; ctx.beginPath(); let prev = null;
-        for (let k = 0; k < p.length; k++) { const t = k / (p.length - 1), X = tx(t), Y = ty(p[k]); if (prev !== null && Math.abs(p[k] - prev) > 0.5) ctx.moveTo(X, Y); else if (k === 0) ctx.moveTo(X, Y); else ctx.lineTo(X, Y); prev = p[k]; }
-        ctx.strokeStyle = i === 7 ? C.teal : rgba(C.teal, 0.28); ctx.lineWidth = i === 7 ? 3 : 1.3; ctx.stroke();
+        const p = paths[i], tk = (k) => tx(k / (p.length - 1));
+        U.torusPath(ctx, p, p.length - 1, tk, ty, [X0, Y0, X1, Y1], i === HL ? C.teal : rgba(C.teal, 0.28), i === HL ? 3 : 1.3);
         const wr = Math.sqrt(W[i] / wmax);
         U.circle(ctx, tx(1) + 16, ty(p[p.length - 1]), 2.5 + 7 * wr, rgba(C.navy, 0.45));
       }
       // backward dashed version of highlighted path
-      if (nShow > 7) {
-        const p = paths[7]; ctx.save(); ctx.setLineDash([7, 6]); ctx.beginPath(); let prev = null;
-        for (let k = 0; k < p.length; k++) { const t = k / (p.length - 1), X = tx(t), Y = ty(p[k]) + 9; if (prev !== null && Math.abs(p[k] - prev) > 0.5) ctx.moveTo(X, Y); else if (k === 0) ctx.moveTo(X, Y); else ctx.lineTo(X, Y); prev = p[k]; }
-        ctx.strokeStyle = C.blue; ctx.lineWidth = 2.4; ctx.stroke(); ctx.restore();
+      if (nShow > HL) {
+        const p = paths[HL], tk = (k) => tx(k / (p.length - 1));
+        U.torusPath(ctx, p, p.length - 1, tk, ty, [X0, Y0, X1, Y1], C.blue, 2.4, [7, 6], 9);
       }
       text(ctx, 'forward P→', 28, S.h - 26, { size: 19, color: C.teal, weight: 600 });
       text(ctx, '- - backward P←', 150, S.h - 26, { size: 19, color: C.blue, weight: 600 });
@@ -267,6 +268,173 @@
 
   // ------------------------------------------------------------------
   // Sequential Monte Carlo steering toward a reward (training-free)
+  // ------------------------------------------------------------------
+  // Training a diffusion sampler without data: the literature timeline, revealed paper by paper;
+  // each build of the slide emphasises one group (path-weight losses, PDDS → iDEM, fixed-point matching, ATLAS · JANUS)
+  // ------------------------------------------------------------------
+  ANIMS.litTimeline = function (S, o) {
+    const ctx = S.ctx; let clock = 0, step = 0, stepT = 0;
+    const W0 = 1750, SC = S.w / W0, AX = 250;
+    const CO = C.coral, GO = '#C2870A', TE = C.teal, VI = C.violet, GR = '#8A96A3';
+    // [x, high, title, subtitle, colour, group]
+    const EV = [[210, 0, 'PIS · DDS · DIS', 'reverse KL on path space', CO, 1], [540, 1, 'Log-variance · CMCD', 'off-policy losses', CO, 1],
+      [740, 0, 'PDDS', 'SMC particles as labels', GO, 2], [880, 1, 'iDEM', 'MC score estimate + buffer', GO, 2],
+      [1015, 0, 'Benchmarks', '“No trick, no treat”', GR, 0], [1120, 1, 'Adjoint Sampling', 'target gradient as label', TE, 3],
+      [1260, 0, 'ASBS', 'general priors & schedules', TE, 3], [1400, 1, 'Bridge Matching Sampler', 'generalized fixed-point matching', TE, 3],
+      [1530, 0, 'Flow Sampling', 'conditional denoising', TE, 3], [1655, 1, 'ATLAS · JANUS', 'this talk', VI, 4]];
+    const BR = [[120, 600, CO, ['the path weight as the loss'], 1, 1], [690, 935, GO, ['right idea,', 'high-variance debiasing'], 3, 2],
+      [1080, 1740, TE, ['fixed-point matching: train like a diffusion model, without data'], 8, 3]];
+    const T0 = 0.4, DT = 0.48;
+    const shownAt = (i) => T0 + i * DT;
+    function emph(g) { // dim the other groups while a card is being discussed
+      if (step < 1 || step > 4) return 1;
+      return g === step ? 1 : 0.32;
+    }
+    function brace(x1, x2, y, col) {
+      const m = (x1 + x2) / 2; ctx.beginPath(); ctx.moveTo(x1, y); ctx.quadraticCurveTo(x1, y + 12, x1 + 12, y + 12); ctx.lineTo(m - 12, y + 12);
+      ctx.quadraticCurveTo(m, y + 12, m, y + 24); ctx.quadraticCurveTo(m, y + 12, m + 12, y + 12); ctx.lineTo(x2 - 12, y + 12); ctx.quadraticCurveTo(x2, y + 12, x2, y);
+      ctx.strokeStyle = col; ctx.lineWidth = 2.4; ctx.stroke();
+    }
+    function draw() {
+      S.clear(); ctx.save(); ctx.scale(SC, SC);
+      const nShow = Math.max(0, Math.min(EV.length, Math.floor((clock - T0) / DT) + 1)), prog = E.clamp((clock - T0) / (DT * (EV.length - 0.4)));
+      // axis, filled in as time passes
+      ctx.strokeStyle = '#D5DAE0'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(20, AX); ctx.lineTo(1722, AX); ctx.stroke();
+      ctx.strokeStyle = C.navy; ctx.lineWidth = 3.5; ctx.beginPath(); ctx.moveTo(20, AX); ctx.lineTo(20 + 1702 * prog, AX); ctx.stroke();
+      arrow(ctx, 1712, AX, 1740, AX, prog >= 1 ? C.navy : '#B8C0C8', 3, 14);
+      [[2022, 60], [2023, 380], [2024, 700], [2025, 1020], [2026, 1340]].forEach(([yr, x]) => {
+        ctx.strokeStyle = '#B8C0C8'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(x, AX - 9); ctx.lineTo(x, AX + 9); ctx.stroke();
+        text(ctx, String(yr), x, AX + 36, { size: 19, weight: 700, color: '#8A96A3', align: 'center' });
+      });
+      // papers
+      EV.forEach((e, i) => {
+        if (i >= nShow) return;
+        const [x, high, t, sub, col, g] = e, a = E.out(E.clamp((clock - shownAt(i)) / 0.35)), top = high ? 60 : 170;
+        ctx.save(); ctx.globalAlpha = a * emph(g);
+        ctx.strokeStyle = rgba(col, 0.7); ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(x, AX); ctx.lineTo(x, AX - (AX - top) * a); ctx.stroke();
+        U.circle(ctx, x, AX, 8 * (0.6 + 0.4 * a) + (i === nShow - 1 && prog < 1 ? 2 : 0), col);
+        text(ctx, t, x, top - 32 + (1 - a) * 10, { size: 22, weight: 700, color: col, align: 'center' });
+        text(ctx, sub, x, top - 9 + (1 - a) * 10, { size: 17, color: '#52606D', align: 'center' });
+        ctx.restore();
+      });
+      // PDDS → iDEM: increasingly close to the final loop
+      if (nShow >= 4) {
+        const a = E.clamp((clock - shownAt(3)) / 0.5);
+        ctx.save(); ctx.globalAlpha = a * emph(2); ctx.setLineDash([5, 4]); ctx.strokeStyle = GO; ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(752, AX - 14); ctx.quadraticCurveTo(810, AX - 48, 864, AX - 18); ctx.stroke(); ctx.setLineDash([]);
+        arrow(ctx, 856, AX - 22, 868, AX - 14, GO, 2, 9); ctx.restore();
+      }
+      // group braces, once the group is complete
+      BR.forEach(([x1, x2, col, lines, last, g]) => {
+        if (nShow <= last) return;
+        const a = E.out(E.clamp((clock - shownAt(last) - 0.25) / 0.45));
+        ctx.save(); ctx.globalAlpha = a * emph(g); brace(x1, x2, AX + 50, col);
+        lines.forEach((l, j) => text(ctx, l, (x1 + x2) / 2, AX + 106 + 26 * j, { size: 22, weight: 700, color: col, align: 'center' }));
+        ctx.restore();
+      });
+      ctx.restore();
+    }
+    return {
+      enter() { clock = 0; },
+      step(k) { if (k !== step) stepT = clock; step = k; },
+      frame(dt) { clock += dt; draw(); }, draw, ff: 6.5
+    };
+  };
+
+  // ------------------------------------------------------------------
+  // APT (accelerated parallel tempering): one replica per level of the same path q_0 = π → q_N ∝ π e^{ηr};
+  // neighbours swap through the (imperfect) transport kernels, accepted with the incremental path weight
+  // ------------------------------------------------------------------
+  ANIMS.aptSwap = function (S, o) {
+    const ctx = S.ctx; let rng = makeRng(17);
+    const X0 = 60, X1 = S.w - 250, Y0 = 50, Y1 = S.h - 60, L = 8, tau = 0.022, goal = 0.8;
+    const tx = (t) => X0 + t / L * (X1 - X0), ty = (x) => Y1 - x * (Y1 - Y0);
+    // same base and reward as the SMC panel: q_t ∝ π e^{(t/L) η r} is Gaussian at every level
+    const pb = 1 / (0.085 * 0.085), pr = 1 / 0.0222;
+    const sd = (t) => 1 / Math.sqrt(pb + (t / L) * pr), mu = (t) => (0.42 * pb + 0.8 * (t / L) * pr) / (pb + (t / L) * pr);
+    const lnN = (x, m, s) => -0.5 * ((x - m) / s) ** 2 - Math.log(s);
+    const lq = (x, t) => lnN(x, mu(t), sd(t));
+    // learned transport = the exact Gaussian map, slightly off (a learned map is never perfect)
+    const f = (x, t) => mu(t + 1) + 0.9 * (sd(t + 1) / sd(t)) * (x - mu(t)) + 0.012;
+    const g = (y, t) => mu(t) + (sd(t) / sd(t + 1)) * (y - mu(t + 1));
+    const lF = (y, x, t) => lnN(y, f(x, t), tau), lB = (x, y, t) => lnN(x, g(y, t), tau);
+    const lG = (a, b, t) => lq(b, t + 1) + lB(a, b, t) - lq(a, t) - lF(b, a, t);
+    const HB = 34, hist = new Array(HB).fill(0);
+    let x, rel, moves, phase, prog, round, acc, tries, nOut;
+    function reset() {
+      x = []; for (let t = 0; t <= L; t++) x.push(mu(t) + sd(t) * rng.normal());
+      round = 0; acc = 0; tries = 0; nOut = 0; hist.fill(0); relax();
+    }
+    function mh(v, t) { let y = v; for (let j = 0; j < 3; j++) { const z = y + 0.6 * sd(t) * rng.normal(); if (Math.log(rng.u()) < lq(z, t) - lq(y, t)) y = z; } return y; }
+    function relax() { x[0] = mu(0) + sd(0) * rng.normal(); rel = x.map((v, t) => t === 0 ? v : mh(v, t)); phase = 'relax'; prog = 0; moves = []; }
+    function propose() {
+      const par = round % 2; moves = [];
+      for (let t = par; t < L; t += 2) {
+        const yu = f(x[t], t) + tau * rng.normal(), yd = g(x[t + 1], t) + tau * rng.normal();
+        const ok = Math.log(rng.u()) < lG(x[t], yu, t) - lG(yd, x[t + 1], t); tries++; if (ok) acc++;
+        moves.push({ t, ok, xa: x[t], xb: x[t + 1], yu, yd });
+      }
+      phase = 'swap'; prog = 0;
+    }
+    function after() {
+      if (phase === 'relax') { x = rel; propose(); return; }
+      for (const m of moves) if (m.ok) { x[m.t + 1] = m.yu; x[m.t] = m.yd; }
+      round++; const k = Math.floor(x[L] * HB); if (k >= 0 && k < HB) hist[k]++; nOut++;
+      if (round > 70) reset(); else relax();
+    }
+    function draw() {
+      S.clear();
+      ctx.fillStyle = rgba(C.yellow, 0.25); ctx.fillRect(X0, ty(goal + 0.07), X1 - X0, ty(goal - 0.07) - ty(goal + 0.07));
+      text(ctx, 'reward r(x) high', X0 + 8, ty(goal + 0.07) - 10, { size: 19, color: C.gold, weight: 600 });
+      for (let t = 0; t <= L; t++) { // level q_t: a vertical density
+        const X = tx(t), m = mu(t), s = sd(t), peak = 1 / s;
+        ctx.beginPath(); ctx.moveTo(X, Y1); for (let i = 0; i <= 120; i++) { const v = i / 120; ctx.lineTo(X + 34 * Math.exp(lnN(v, m, s)) / peak, ty(v)); } ctx.lineTo(X, Y0); ctx.closePath();
+        ctx.fillStyle = rgba(mix(C.muted, C.teal, t / L), 0.16); ctx.fill();
+        ctx.strokeStyle = rgba(C.inkSoft, 0.18); ctx.setLineDash([4, 6]); ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(X, Y0); ctx.lineTo(X, Y1); ctx.stroke(); ctx.setLineDash([]);
+        richText(ctx, [['q', 'i'], [String(t), 'sub']], X, Y1 + 30, { size: 19, color: C.muted, align: 'center' });
+      }
+      const p = Math.min(prog * 1.25, 1), R = 9, moving = new Set();
+      if (phase === 'relax') {
+        for (let t = 0; t <= L; t++) {
+          const a = x[t], b = rel[t], y = a + (b - a) * E.inOut(p);
+          if (t > 0 && Math.abs(b - a) > 1e-9) { ctx.save(); ctx.setLineDash([4, 4]); ctx.strokeStyle = rgba(C.gold, 0.9); ctx.lineWidth = 2.5; ctx.beginPath(); ctx.moveTo(tx(t) - 15, ty(a)); ctx.lineTo(tx(t) - 15, ty(b)); ctx.stroke(); ctx.restore(); }
+          U.circle(ctx, tx(t), ty(y), 15, null, rgba(C.gold, 0.9), 3); U.circle(ctx, tx(t), ty(y), R, C.violet, '#fff', 2);
+        }
+        text(ctx, 'step 1: local MCMC at every level', X0 - 20, Y0 - 16, { size: 19, weight: 650, color: C.gold });
+      } else {
+        for (const m of moves) {
+          moving.add(m.t); moving.add(m.t + 1);
+          if (m.ok) {
+            ctx.strokeStyle = rgba(C.teal, 0.9); ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(tx(m.t), ty(m.xa)); ctx.lineTo(tx(m.t + 1), ty(m.yu)); ctx.moveTo(tx(m.t + 1), ty(m.xb)); ctx.lineTo(tx(m.t), ty(m.yd)); ctx.stroke();
+            U.circle(ctx, tx(m.t) + (tx(m.t + 1) - tx(m.t)) * p, ty(m.xa + (m.yu - m.xa) * p), R, C.violet, '#fff', 2);
+            U.circle(ctx, tx(m.t + 1) + (tx(m.t) - tx(m.t + 1)) * p, ty(m.xb + (m.yd - m.xb) * p), R, C.violet, '#fff', 2);
+          } else {
+            ctx.save(); ctx.setLineDash([5, 5]); ctx.strokeStyle = C.muted; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(tx(m.t), ty(m.xa)); ctx.lineTo(tx(m.t + 1), ty(m.xb)); ctx.stroke(); ctx.restore();
+            const mx = (tx(m.t) + tx(m.t + 1)) / 2, my = (ty(m.xa) + ty(m.xb)) / 2;
+            ctx.save(); ctx.strokeStyle = C.red; ctx.lineWidth = 3; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(mx - 6, my - 6); ctx.lineTo(mx + 6, my + 6); ctx.moveTo(mx + 6, my - 6); ctx.lineTo(mx - 6, my + 6); ctx.stroke(); ctx.restore();
+            U.circle(ctx, tx(m.t), ty(m.xa), R, C.violet, '#fff', 2); U.circle(ctx, tx(m.t + 1), ty(m.xb), R, C.violet, '#fff', 2);
+          }
+        }
+        for (let t = 0; t <= L; t++) if (!moving.has(t)) U.circle(ctx, tx(t), ty(x[t]), R, C.violet, '#fff', 2);
+        text(ctx, 'step 2: swap through the transport, accept with Gₜ', X0 - 20, Y0 - 16, { size: 19, weight: 650, color: C.tealDark });
+      }
+      // output at q_N vs the tilted target
+      const DX = X1 + 50, DW = S.w - DX - 20, tot = hist.reduce((a, b) => a + b, 0), q = (v) => Math.exp(lnN(v, mu(L), sd(L)));
+      const scl = DW / (q(mu(L)) * 1.1);
+      if (tot) hist.forEach((c, k) => { const w = c / (tot / HB) * scl; if (w > 0.5) roundRect(ctx, DX, ty((k + 1) / HB) + 1, Math.min(w, DW), Math.max(ty(k / HB) - ty((k + 1) / HB) - 2, 1), 2, rgba(C.violet, 0.75)); });
+      ctx.save(); ctx.setLineDash([7, 5]); ctx.strokeStyle = C.tealDark; ctx.lineWidth = 2.2; ctx.beginPath();
+      for (let i = 0; i <= 120; i++) { const v = i / 120, X = DX + q(v) * scl, Y = ty(v); if (i) ctx.lineTo(X, Y); else ctx.moveTo(X, Y); } ctx.stroke(); ctx.restore();
+      ctx.strokeStyle = C.faint; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(DX, Y0); ctx.lineTo(DX, Y1); ctx.stroke();
+      richText(ctx, [['output at ', 'n'], ['q', 'i'], ['N', 'sub']], DX + DW / 2, Y0 + 4, { size: 19, color: C.inkSoft, align: 'center' });
+      text(ctx, `${nOut} exact draws`, DX + DW / 2, Y1 + 30, { size: 18, color: C.violet, align: 'center', weight: 600 });
+      text(ctx, `round ${round} · swap acceptance ${tries ? (acc / tries).toFixed(2) : '–'}`, X1 + 10, Y0 - 16, { size: 18, color: C.inkSoft, align: 'right' });
+    }
+    reset();
+    return {
+      frame(dt) { prog += dt * 1.5; if (prog >= 1) after(); draw(); }, draw, ff: 8
+    };
+  };
+
   // ------------------------------------------------------------------
   ANIMS.smcSteer = function (S, o) {
     const ctx = S.ctx; let rng = makeRng(9);

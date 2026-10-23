@@ -177,6 +177,21 @@
   }
   function wrap01(x) { return x - Math.floor(x); }
   function minImage(d) { return d - Math.round(d); }
+  // draw a path on the 1D torus [0,1) as a continuous curve: unwrap it, then draw every periodic copy
+  // that meets [0,1], clipped to the plot rectangle [cx0, cy0, cx1, cy1] (leaves the top, re-enters at the bottom)
+  function torusPath(ctx, xs, upto, tx, ty, clip, color, lw, dash, dy = 0) {
+    const u = [xs[0]];
+    for (let k = 1; k <= upto; k++) u.push(u[k - 1] + minImage(xs[k] - xs[k - 1]));
+    const lo = Math.floor(Math.min(...u)), hi = Math.floor(Math.max(...u));
+    ctx.save(); ctx.beginPath(); ctx.rect(clip[0], clip[1], clip[2] - clip[0], clip[3] - clip[1]); ctx.clip();
+    ctx.strokeStyle = color; ctx.lineWidth = lw; ctx.lineJoin = 'round'; if (dash) ctx.setLineDash(dash);
+    for (let sh = lo; sh <= hi; sh++) {
+      ctx.beginPath();
+      for (let k = 0; k <= upto; k++) { const X = tx(k), Y = ty(u[k] - sh) + dy; if (k) ctx.lineTo(X, Y); else ctx.moveTo(X, Y); }
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
 
   // Lennard-Jones forces for 2D Kob-Andersen configurations (fractional coords in [0,1), box L)
   const KA_EPS = [[1.0, 1.5], [1.5, 0.5]], KA_SIG = [[1.0, 0.8], [0.8, 0.88]];
@@ -193,6 +208,6 @@
     return F;
   }
 
-  window.U = { makeRng, C, rgba, mix, hexToRgb, E, surface, font, FONT, SERIF, circle, atom, flatAtom, roundRect, arrow, curvedArrow, text, richText, wiggle, wrap01, minImage, kaForces };
+  window.U = { makeRng, C, rgba, mix, hexToRgb, E, surface, font, FONT, SERIF, circle, atom, flatAtom, roundRect, arrow, curvedArrow, text, richText, wiggle, wrap01, minImage, torusPath, kaForces };
   window.ANIMS = window.ANIMS || {};
 })();

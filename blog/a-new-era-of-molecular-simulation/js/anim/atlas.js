@@ -1,4 +1,4 @@
-/* ATLAS animations: crystal vs glass, size transfer, evaluation bars, umbrella windows, agentic design loop. */
+/* ATLAS animations: crystal vs glass, size transfer, evaluation bars, umbrella windows, agentic design loop, composition-amortized training. */
 (function () {
   'use strict';
   const { C, rgba, mix, E, atom, flatAtom, roundRect, arrow, curvedArrow, text, richText, font, makeRng, wiggle, wrap01, minImage } = U;
@@ -268,6 +268,139 @@
         if (nEval > 90) { pts.length = 0; nEval = 0; }
         draw();
       }, draw, ff: 30
+    };
+  };
+  // ------------------------------------------------------------------
+  // Composition-amortized training (ATLAS SI, Alg. 1): every sample in the batch draws its own composition c,
+  // is generated under c, labelled with F(x₁; c) and stored with c; regression replays mixed-composition batches.
+  // ------------------------------------------------------------------
+  ANIMS.atlasAmortized = function (S, o) {
+    const ctx = S.ctx; let rng = makeRng(31);
+    const W0 = 585, SC = S.w / W0, H0 = S.h / SC; // laid out at 585 px wide, drawn at any size
+    const EL = ['Fe', 'Mn', 'Ni', 'Ti', 'Cu', 'Cr', 'Co', 'Al'];
+    const COL = [C.steel, C.pink, C.teal, C.blue, C.copper, C.yellow, C.violet, C.green];
+    const NB = 4, NA = 16, NSLOT = 20, CW = 112, CG = (W0 - 40 - NB * CW) / (NB - 1), CX = (b) => 20 + b * (CW + CG), CY = 92;
+    const T = { draw: 1.1, gen: 1.8, label: 1.1, push: 0.9, regress: 3.0 }, ORDER = ['draw', 'gen', 'label', 'push', 'regress'];
+    const BY = 250, SW = 18, SG = (W0 - 40 - NSLOT * SW) / (NSLOT - 1), SX = (k) => 20 + k * (SW + SG), SH = 46;
+    let batch, buffer = [], phase, pt, clock = 0, calls = 0, steps = 0, flashes = [], nextFlash = 0, active = false;
+    function dirichlet(k) { const g = []; for (let i = 0; i < k; i++) g.push(-Math.log(Math.max(1e-9, rng.u()))); const sg = g.reduce((a, b) => a + b, 0); return g.map(v => v / sg); }
+    function drawComposition() {
+      const k = 2 + rng.int(4), idx = rng.shuffle(EL.map((_, i) => i)).slice(0, k).sort((a, b) => a - b), fr = dirichlet(k);
+      return { idx, fr };
+    }
+    function speciesFor(c) { // largest-remainder rounding of NA * c
+      const raw = c.fr.map(f => f * NA), n = raw.map(Math.floor); let left = NA - n.reduce((a, b) => a + b, 0);
+      raw.map((r, i) => [r - n[i], i]).sort((a, b) => b[0] - a[0]).forEach(([, i]) => { if (left > 0) { n[i]++; left--; } });
+      const sp = []; n.forEach((m, i) => { for (let j = 0; j < m; j++) sp.push(c.idx[i]); }); return rng.shuffle(sp);
+    }
+    function amorphous() { // random close packing on the unit torus (rejection with a minimum image distance)
+      const pts = []; let tries = 0;
+      while (pts.length < NA && tries < 6000) { tries++; const p = [rng.u(), rng.u()]; if (pts.every(q => Math.hypot(minImage(p[0] - q[0]), minImage(p[1] - q[1])) > 0.19)) pts.push(p); }
+      while (pts.length < NA) pts.push([rng.u(), rng.u()]);
+      return pts;
+    }
+    function forces(x1) { // pair repulsion, for the force arrows only
+      return x1.map((p, i) => { let fx = 0, fy = 0; x1.forEach((q, j) => { if (i === j) return; const dx = minImage(p[0] - q[0]), dy = minImage(p[1] - q[1]), r = Math.hypot(dx, dy); if (r < 0.3) { const m = (0.3 - r) / r; fx += m * dx; fy += m * dy; } }); return [fx + 0.03 * rng.normal(), fy + 0.03 * rng.normal()]; });
+    }
+    function newBatch() {
+      batch = []; for (let b = 0; b < NB; b++) { const c = drawComposition(), x1 = amorphous(); batch.push({ c, sp: speciesFor(c), x0: x1.map(() => [rng.u(), rng.u()]), x1, F: forces(x1), z: x1.map(() => [rng.normal(), rng.normal()]) }); }
+      phase = 'draw'; pt = 0;
+    }
+    function compBar(c, x, y, w, h, vertical, alpha = 1) {
+      let acc = 0;
+      c.idx.forEach((e, i) => { const f = c.fr[i]; ctx.fillStyle = rgba(COL[e], alpha); if (vertical) ctx.fillRect(x, y + h - (acc + f) * h, w, f * h); else ctx.fillRect(x + acc * w, y, f * w, h); acc += f; });
+      roundRect(ctx, x, y, w, h, 3, null, rgba(C.inkSoft, 0.35 * alpha), 1);
+    }
+    function cell(b, x, y, size, gt, showF, alpha = 1) {
+      const B = batch[b];
+      ctx.save(); ctx.globalAlpha *= alpha;
+      roundRect(ctx, x, y, size, size, 6, '#fff', rgba(C.inkSoft, 0.45), 1.6);
+      ctx.beginPath(); ctx.rect(x, y, size, size); ctx.clip();
+      const r = size * 0.075, tips = [];
+      B.x1.forEach((p1, i) => {
+        const p0 = B.x0[i], nz = 0.10 * (1 - gt);
+        const px = wrap01(p0[0] + minImage(p1[0] - p0[0]) * E.inOut(gt) + nz * B.z[i][0]), py = wrap01(p0[1] + minImage(p1[1] - p0[1]) * E.inOut(gt) + nz * B.z[i][1]);
+        for (let ox = -1; ox <= 1; ox++) for (let oy = -1; oy <= 1; oy++) {
+          const X = x + (px + ox) * size, Y = y + (py + oy) * size;
+          if (X < x - r || X > x + size + r || Y < y - r || Y > y + size + r) continue;
+          atom(ctx, X, Y, r, COL[B.sp[i]]);
+          if (showF > 0 && ox === 0 && oy === 0) tips.push([X, Y, B.F[i]]);
+        }
+      });
+      tips.forEach(([X, Y, f]) => { const m = Math.hypot(f[0], f[1]) || 1, ux = f[0] / m, uy = f[1] / m, L = (10 + Math.min(10, 80 * m)) * showF; arrow(ctx, X + ux * r * 0.6, Y + uy * r * 0.6, X + ux * (r + L), Y + uy * (r + L), C.red, 2.4, 7); });
+      ctx.restore();
+    }
+    function header(str, col) { text(ctx, str, 20, 30, { size: 19, weight: 650, color: col }); }
+    function draw() {
+      S.clear(); ctx.save(); ctx.scale(SC, SC); roundRect(ctx, 0, 0, W0, H0, 16, '#fff');
+      const u = E.clamp(pt / T[phase]);
+      // step header
+      if (phase === 'draw') header('① each sample draws its own composition c ~ Unif(simplex)', C.navy);
+      if (phase === 'gen') header('② generate x₁ with the current model, conditioned on c', C.tealDark);
+      if (phase === 'label') header('③ label: forces F(x₁; c), one potential call each', C.coral);
+      if (phase === 'push') header('④ push (x₁, F, c) into the replay buffer', C.violet);
+      if (phase === 'regress') header('⑤ regress the network on replayed batches (many steps)', C.navy);
+      // batch
+      for (let b = 0; b < NB; b++) {
+        const x = CX(b), B = batch[b];
+        if (phase === 'push' || phase === 'regress') continue;
+        const ca = phase === 'draw' ? E.clamp(u * 1.6 - b * 0.18) : 1;
+        if (ca > 0) {
+          compBar(B.c, x, 64, CW * ca, 16, false);
+          if (ca >= 1) { // element tags of this composition
+            let acc = 0; B.c.idx.forEach((e, i) => { const f = B.c.fr[i]; if (f > 0.16) text(ctx, EL[e], x + (acc + f / 2) * CW, 61, { size: 13, color: C.inkSoft, align: 'center', weight: 600 }); acc += f; });
+          }
+        }
+        const gt = phase === 'draw' ? 0 : phase === 'gen' ? u : 1;
+        if (phase !== 'draw' || u > 0.55) cell(b, x, CY, CW, gt, phase === 'label' ? E.out(u) : 0, phase === 'draw' ? E.clamp((u - 0.55) / 0.3) : 1);
+        if (phase === 'label' && u > 0.25) { roundRect(ctx, x + CW / 2 - 34, CY + CW - 30, 68, 24, 12, 'rgba(255,255,255,0.92)', rgba(C.coral, 0.6), 1.5); text(ctx, '+1 call', x + CW / 2, CY + CW - 12, { size: 15, color: C.coral, weight: 700, align: 'center' }); }
+      }
+      if (phase === 'push') { // cells fly into the first buffer slots
+        for (let b = 0; b < NB; b++) {
+          const k = NB - 1 - b, e = E.inOut(u), x = CX(b) + (SX(k) - CX(b)) * e, y = CY + (BY - CY) * e, sz = CW + (SW - CW) * e;
+          if (e < 0.85) cell(b, x, y, sz, 1, 0, 1 - e * 0.6); else compBar(batch[b].c, SX(k), BY, SW, SH, true);
+        }
+      }
+      if (phase === 'regress') {
+        text(ctx, 'every mini-batch mixes compositions;', W0 / 2, CY + 44, { size: 19, color: C.ink, align: 'center', weight: 600 });
+        richText(ctx, [['each entry is regressed onto ', 'n'], ['β', 'i'], ['F', 'n'], ['(', 'n'], ['x', 'i'], ['1', 'sub'], ['; ', 'n'], ['c', 'i'], [') at its own ', 'n'], ['c', 'i']], W0 / 2, CY + 74, { size: 19, color: C.inkSoft, align: 'center' });
+      }
+      // buffer
+      text(ctx, 'replay buffer  (x₁, F, c)', 20, BY - 12, { size: 16, color: C.muted, weight: 600 });
+      const shift = phase === 'push' ? E.inOut(u) * NB : 0;
+      buffer.forEach((c, k) => { const kk = k + shift; if (kk > NSLOT - 0.3) return; const x = 20 + kk * (SW + SG), fl = flashes.find(f => f.k === k);
+        compBar(c, x, BY, SW, SH, true, kk > NSLOT - 1 ? NSLOT - kk : 1);
+        if (fl) roundRect(ctx, x - 4, BY - 4, SW + 8, SH + 8, 5, null, rgba(C.navy, fl.a), 3);
+      });
+      // network + counters
+      const NX = W0 / 2 - 120, NY = BY + SH + 24, NW = 240, NH = 44;
+      roundRect(ctx, NX, NY, NW, NH, 12, phase === 'regress' ? rgba(C.navy, 0.92) : rgba(C.navy, 0.75));
+      richText(ctx, [['s', 'i'], ['θ', 'sub'], [', ', 'n'], ['b', 'i'], ['θ', 'sub'], ['(', 'n'], ['x', 'i'], ['t', 'sub'], [', ', 'n'], ['t', 'i'], [', ', 'n'], ['c', 'i'], [')', 'n']], NX + NW / 2, NY + 29, { size: 21, color: '#fff', align: 'center' });
+      flashes.forEach(f => { const x = SX(f.k) + SW / 2; ctx.save(); ctx.globalAlpha = f.a; curvedArrow(ctx, [x, BY + SH + 4, (x + NX + NW / 2) / 2, NY - 4, NX + NW / 2 + (x - W0 / 2) * 0.25, NY - 2], C.navy, 1.8, 8); ctx.restore(); });
+      text(ctx, `force calls ${calls}`, 20, H0 - 18, { size: 17, color: C.coral, weight: 650 });
+      text(ctx, `gradient steps ${steps}`, W0 - 20, H0 - 18, { size: 17, color: C.navy, weight: 650, align: 'right' });
+      text(ctx, 'one network for every c', W0 / 2, H0 - 18, { size: 16, color: C.tealDark, weight: 650, align: 'center' });
+      ctx.restore();
+    }
+    function advance() {
+      const i = ORDER.indexOf(phase);
+      if (phase === 'label') calls += NB;
+      if (phase === 'push') { buffer = batch.map(B => B.c).reverse().concat(buffer).slice(0, NSLOT); }
+      if (phase === 'regress') { newBatch(); return; }
+      phase = ORDER[i + 1]; pt = 0; flashes = []; nextFlash = 0;
+    }
+    function reset() { rng = makeRng(31); buffer = []; calls = 0; steps = 0; flashes = []; newBatch(); for (let r = 0; r < 3; r++) buffer = buffer.concat([drawComposition(), drawComposition()]); calls = buffer.length; newBatch(); }
+    reset();
+    return {
+      frame(dt) {
+        clock += dt; pt += dt;
+        flashes.forEach(f => f.a -= dt * 2.2); flashes = flashes.filter(f => f.a > 0);
+        if (phase === 'regress' && buffer.length) { nextFlash -= dt; if (nextFlash <= 0) { const ks = rng.shuffle(buffer.map((_, k) => k)).slice(0, 4); ks.forEach(k => flashes.push({ k, a: 1 })); steps += 25; nextFlash = 0.42; } }
+        if (pt >= T[phase]) advance();
+        if (calls > 400) reset();
+        draw();
+      },
+      draw, ff: 9.5
     };
   };
 })();

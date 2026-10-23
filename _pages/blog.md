@@ -9,7 +9,7 @@ redirect_from:
 
 Recent Blogs:
 ======
-* [A New Era of Molecular Simulation via Neural Samplers](https://yuanqidu.github.io/blog/a-new-era-of-molecular-simulation/) (interactive talk), 2026.
+* [A New Era of Molecular Simulation via Neural Samplers](https://yuanqidu.github.io/blog/a-new-era-of-molecular-simulation/) (talk slides), 2026.
 * [Pushing Probabilistic Machine Learning Out of Equilibrium](https://yuanqidu.github.io/blog/pushing-probabilistic-ml-out-of-equilibrium/), 2026.
 * [Towards Recursive Self-Improvement in AI Scientists](https://medium.com/@yuanqidu/towards-recursive-self-improvement-in-ai-scientists-f7a09c062d1c), 2026.
 * [Scientific Knowledge Emerges in LLMs and YOU CAN Access It](https://medium.com/@yuanqidu/scientific-knowledge-emerges-in-llms-and-you-can-access-it-75aa002c21c8), 2025.

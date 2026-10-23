@@ -253,7 +253,7 @@
         richText(ctx, [['⟨', 'n'], ['O', 'i'], ['⟩', 'n']], xm + 8, hy - hh + 60, { size: 26, color: C.navy });
       }
       text(ctx, 'observable O(x)', hx + hw / 2, hy + 34, { size: 20, color: C.inkSoft, align: 'center' });
-      text(ctx, 'free energies · phase diagrams · moduli', z3.x + z3.w / 2, 440, { size: 21, color: C.inkSoft, align: 'center' });
+      text(ctx, 'free energy · phase diagrams · moduli', z3.x + z3.w / 2, 440, { size: 21, color: C.inkSoft, align: 'center' });
       text(ctx, `${nObs} samples`, hx + hw, hy - hh + 20, { size: 19, color: C.muted, align: 'right' });
     }
     return {

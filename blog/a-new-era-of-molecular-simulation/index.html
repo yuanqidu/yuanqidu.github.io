@@ -105,7 +105,7 @@
       <li data-f="1"><b>Slow mixing.</b> Crossing a barrier $\Delta$ takes <span style="white-space:nowrap">$\sim e^{\beta\Delta}$</span>.</li>
       <li data-f="2"><b>Correlated samples.</b> Exact only as the chain length $\to\infty$.</li>
       <li data-f="3"><b>No amortization.</b> Every temperature, pressure or composition is a new run.</li>
-      <li data-f="4"><b>No free energies.</b> $F$, $S$ and phase boundaries need extra machinery.</li>
+      <li data-f="4"><b>No free energy.</b> $F$, $S$ and phase boundaries need extra machinery.</li>
     </ul>
   </div>
   <div class="takeaway coral" data-f="5">2D glassy states at $T=0.2$: parallel tempering needs $\mathbf{2\text{–}3\times10^{8}}$ energy evaluations for one converged free energy.</div>
@@ -147,7 +147,7 @@
   </div>
   <div class="abs" style="left:110px;top:900px;width:1700px;display:flex;gap:22px;justify-content:center">
     <span class="pill blue" data-f="1" style="font-size:24px;padding:8px 20px">amortized over T, P, μ, composition</span>
-    <span class="pill violet" data-f="2" style="font-size:24px;padding:8px 20px">path weights → exact averages &amp; free energies</span>
+    <span class="pill violet" data-f="2" style="font-size:24px;padding:8px 20px">path weights → exact averages &amp; free energy</span>
   </div>
   <div class="cite">Noé et al. 2019 (Boltzmann generators) · Zhang &amp; Chen 2022 · Vargas et al. 2023 · right panel: exact transport for this mixture (an ideally trained sampler)</div>
 </section>
@@ -168,40 +168,47 @@
       <div class="succ"><svg viewBox="0 0 32 32"><path d="M9 24h15a6 6 0 0 0 0-12 8 8 0 0 0-15-2A6 6 0 0 0 9 24z"/></svg><div><div class="t">Weather</div><div class="d">GenCast · Price, Nature 2025</div></div></div>
     </div>
     <div data-f="1" style="margin-top:30px">
-      <div class="small" style="color:var(--ink);margin-bottom:10px">Forward $\Pf$ (generation) and backward $\Pb$ (noising) traverse the same marginals $p_t$; their drifts differ by exactly the <b>score</b>:</div>
-      <div class="eqbox eq" style="font-size:31px">$\mu^+_t(x)-\mu^-_t(x)=\sigma_t^2\,\nabla\log p_t(x)$</div>
+      <div class="small" style="color:var(--ink);margin-bottom:10px">Forward $\Pf$ (generation) and backward $\Pb$ (noising) traverse the same marginals $p_t$: one <b>velocity</b> $b_t$, and drifts that differ by exactly the <b>score</b>:</div>
+      <div class="eqbox eq" style="font-size:31px">$\mu^\pm_t(x)=b_t(x)\pm\tfrac12\sigma_t^2\,\nabla\log p_t(x)$</div>
     </div>
   </div>
-  <div class="takeaway" data-f="2" style="left:900px">Learning a diffusion model = learning the <b>score</b> $\nabla\log p_t$ at every noise level.</div>
+  <div class="takeaway" data-f="2" style="left:900px">Learning a diffusion model = learning the <b>velocity</b> $b_t$ and the <b>score</b> $\nabla\log p_t$ at every $t$.</div>
   <div class="cite">Sohl-Dickstein et al. 2015 · Ho et al. 2020 · Song et al. 2021 · Nelson 1967, Anderson 1982 (time reversal) · left: exact score of a 7-mode mixture</div>
 </section>
 
-<section class="slide" data-title="With data: denoising score matching" data-section="Neural samplers">
+<section class="slide" data-title="With data: flow matching + denoising score matching" data-section="Neural samplers">
   <div class="kicker method">Neural samplers · scores from data</div>
-  <h2>With data: denoising score matching</h2>
+  <h2>With data: flow matching + denoising score matching</h2>
   <canvas class="abs" style="left:100px;top:180px" width="760" height="760" data-anim="dsmDemo"></canvas>
-  <div class="abs body" style="left:910px;top:205px;width:900px">
-    <div class="small" style="color:var(--ink);margin-bottom:10px">Noise a data point with the backward kernel:</div>
-    <div class="eqbox eq" style="font-size:28px">$X_t\sim\Pb(\cdot\mid X_N)=\mathcal N\big(\alpha_tX_N,\ s_t^2I\big),\qquad X_N\sim\pi\ \ (\text{data})$</div>
-    <div class="small" style="color:var(--ink);margin:26px 0 10px">Regress the score network onto the direction back to the clean point:</div>
-    <div class="eqbox eq" style="font-size:28px">$\mathcal L_{\rm DSM}(\theta)=\displaystyle\int_0^1\!\lambda_t\;\mathbb E\,\Big\|\,s_\theta(X_t,t)+\frac{X_t-\alpha_tX_N}{s_t^2}\Big\|^2\dd t$</div>
-    <div data-f="1" style="margin-top:26px">The minimizer is the conditional expectation of the label: <b>the score</b> $\nabla\log p_t$. Plain regression, so it scales.</div>
-    <div data-f="2" style="margin-top:22px;color:#B4492F;font-weight:600">But every label needs a clean sample $X_N\sim\pi$: exactly what we lack for a Boltzmann distribution.</div>
+  <div class="abs body" style="left:910px;top:186px;width:900px">
+    <div class="small" style="color:var(--ink);margin-bottom:8px">Interpolate between a prior draw $X_0\sim p_0$ and a data point $X_N\sim\pi$:</div>
+    <div class="eqbox eq" style="font-size:26px">$X_t=\alpha_tX_N+\beta_tX_0+\gamma_t\varepsilon,\qquad\varepsilon\sim\mathcal N(0,I)$</div>
+    <div class="tiny" style="margin-top:8px">Gaussian $p_0$: $X_t\mid X_N\sim\mathcal N(\alpha_tX_N,s_t^2I)$, $s_t^2=\beta_t^2+\gamma_t^2$, the noising kernel $\Pb$ of a diffusion. Uniform $p_0$ on the periodic cell: ATLAS.</div>
+    <div class="small" style="color:var(--ink);margin:18px 0 8px">Regress both fields; each label needs one clean sample:</div>
+    <div class="eqbox eq" style="font-size:24px;white-space:nowrap">$\mathcal L(\theta)=\displaystyle\int_0^1\mathbb E\Big[\big\|b_\theta(X_t,t)-\dot X_t\big\|^2+\lambda_t\Big\|s_\theta(X_t,t)+\frac{\varepsilon}{\gamma_t}\Big\|^2\Big]\dd t$</div>
+    <div class="tiny" style="margin-top:8px"><b>velocity</b>: flow matching, $\dot X_t=\dot\alpha_tX_N+\dot\beta_tX_0+\dot\gamma_t\varepsilon$ · <b>score</b>: denoising score identity, $\nabla\log p_t(x)=\mathbb E\big[-\varepsilon/\gamma_t\,\big|\,X_t=x\big]$</div>
+    <div data-f="1" style="margin-top:18px;font-size:26px">The minimizers are conditional expectations: $b_t=\mathbb E[\dot X_t\mid X_t]$ and the <b>score</b> $\nabla\log p_t$. Generate with drift $b+\tfrac12\sigma_t^2s$. Plain regression, so it scales.</div>
+    <div data-f="2" style="margin-top:14px;font-size:26px;color:#B4492F;font-weight:600">But every label needs a clean sample $X_N\sim\pi$: exactly what we lack for a Boltzmann distribution.</div>
   </div>
-  <div class="cite">Hyvärinen 2005 · Vincent 2011 · Ho et al. 2020 · Song et al. 2021 · left: exact score of the noised mixture ($\alpha_t=1$)</div>
+  <div class="cite">Vincent 2011 (denoising score identity) · Ho et al. 2020 · Song et al. 2021 · Lipman et al. 2023, Albergo &amp; Vanden-Eijnden 2023 (flow matching, interpolants) · left: exact score of the noised mixture ($\alpha_t=1$)</div>
 </section>
 
 <!-- =============================================================== 9. TSI -->
 <section class="slide" data-title="Without data: target score matching" data-section="Neural samplers">
   <div class="kicker method">Neural samplers · scores from energy</div>
   <h2>Without data: target score matching</h2>
-  <div class="abs body" style="left:110px;top:200px;width:860px">
-    <div class="small" style="color:var(--ink);margin-bottom:10px">Same noising kernel; integrate by parts to move the gradient onto the target:</div>
-    <div class="eqbox eq" style="font-size:26px">$\nabla\log p_t(x_t)=\dfrac{1}{\alpha_t}\,\mathbb E_{\pi(x_N\mid x_t)}\big[\nabla\log\tilde\pi(X_N)\big]=\dfrac{1}{\alpha_t}\,\mathbb E\big[\beta\mathbf F(X_N)\,\big|\,X_t=x_t\big]$</div>
-    <div class="tiny" style="margin-top:10px">the noised score is the posterior-averaged <b>force</b>; $Z$ never appears</div>
-    <div class="eqbox eq" style="font-size:26px;margin-top:24px">$\mathcal L_{\rm TSM}(\theta)=\displaystyle\int_0^1\!\lambda_t\;\mathbb E\,\Big\|\,s_\theta(X_t,t)-\frac{1}{\alpha_t}\,\beta\mathbf F(X_N)\Big\|^2\dd t$</div>
-    <div data-f="1" style="margin-top:26px"><span class="pill coral" style="font-size:21px">①</span> <b>data → forces</b>: physics enters through $\mathbf F=-\nabla U$, one force call per sample.</div>
-    <div data-f="2" style="margin-top:18px"><span class="pill coral" style="font-size:21px">②</span> but the expectation is still over $X_N\sim\pi$, the very thing we want to learn.</div>
+  <div class="abs body" style="left:110px;top:190px;width:860px">
+    <div class="small" style="color:var(--ink);margin-bottom:8px">Same interpolant; integrate by parts to move the gradient onto the target:</div>
+    <div class="eqbox eq" style="font-size:25px">$\nabla\log p_t(x_t)=\dfrac{1}{\alpha_t}\,\mathbb E\big[\nabla\log\tilde\pi(X_N)\,\big|\,X_t=x_t\big]=\dfrac{1}{\alpha_t}\,\mathbb E\big[\beta\mathbf F(X_N)\,\big|\,X_t=x_t\big]$</div>
+    <div class="tiny" style="margin-top:8px">the noised score is the posterior-averaged <b>force</b>; $Z$ never appears</div>
+    <div class="small" style="color:var(--ink);margin:16px 0 8px">The score label $\hat s_t$ depends on the prior:</div>
+    <div class="eqbox" style="font-size:20px;padding:12px 18px;line-height:1.55">
+      <div><b>Gaussian</b> (diffusion; JANUS): $\hat s_t=\tfrac{1}{\alpha_t}\beta\mathbf F(X_N)$, mixed with the prior score at small $\alpha_t$</div>
+      <div><b>Uniform on the periodic cell</b> (ATLAS): $\hat s_t=\beta\mathbf F(X_N)$, weight one at every $t$</div>
+    </div>
+    <div class="eqbox eq" style="font-size:24px;margin-top:14px;white-space:nowrap">$\mathcal L(\theta)=\displaystyle\int_0^1\mathbb E\Big[\big\|b_\theta(X_t,t)-\dot X_t\big\|^2+\lambda_t\big\|s_\theta(X_t,t)-\hat s_t\big\|^2\Big]\dd t$</div>
+    <div data-f="1" style="margin-top:16px;font-size:26px"><span class="pill coral" style="font-size:21px">①</span> <b>data → forces</b>: physics enters through $\mathbf F=-\nabla U$, one force call per sample; the velocity label needs no energy at all.</div>
+    <div data-f="2" style="margin-top:12px;font-size:26px"><span class="pill coral" style="font-size:21px">②</span> but the expectation is still over $X_N\sim\pi$, the very thing we want to learn.</div>
   </div>
   <canvas class="abs" style="left:1000px;top:190px" width="820" height="660" data-anim="tsiDemo"></canvas>
   <div class="cite">De Bortoli et al. 2024 (target score matching) · Albergo, Boffi &amp; Vanden-Eijnden 2025 (stochastic interpolants) · Blessing et al., ICML 2026</div>
@@ -212,10 +219,10 @@
   <div class="kicker method">Neural samplers · no data at all</div>
   <h2>Fixed-point training: the model proposes, the physics corrects</h2>
   <div class="abs" style="left:110px;top:178px;width:1700px;text-align:center">
-    <div class="eqbox eq" style="font-size:25px">$s^{(k+1)}=\arg\min_s\displaystyle\int_0^1\!\lambda_t\;\mathbb E_{X_{0:N}\sim\Pf_{s^{(k)}}}\Big[\bar w\;\Big\|\,s(X'_t,t)-\frac{1}{\alpha_t}\beta\mathbf F(X_N)\Big\|^2\Big]\dd t,\qquad X'_t=\alpha_tX_N+s_t\varepsilon$</div>
+    <div class="eqbox eq" style="font-size:24px">$\theta^{(k+1)}=\arg\min_\theta\displaystyle\int_0^1\mathbb E_{X_{0:N}\sim\Pf_{\theta^{(k)}}}\Big[\bar w\,\Big(\big\|b_\theta(X'_t,t)-\dot X'_t\big\|^2+\lambda_t\big\|s_\theta(X'_t,t)-\hat s_t\big\|^2\Big)\Big]\dd t,\qquad X'_t=\alpha_tX_N+\beta_tX'_0+\gamma_t\varepsilon$</div>
   </div>
   <canvas class="abs" style="left:195px;top:282px;transform:scale(0.9);transform-origin:0 0" width="1700" height="620" data-anim="fpLoop"></canvas>
-  <div class="takeaway" style="bottom:66px">$\pi$ is a fixed point: if the sampler already produces $\pi$, the labels average to the exact score. ($\bar w$: the path weight, next.)</div>
+  <div class="takeaway" style="bottom:66px">$\pi$ is a fixed point: the labels then average to the exact velocity and score. ($\bar w$: the path weight, next.)</div>
   <div class="cite">Blessing et al., ICML 2026 (Bridge Matching Sampler) · Havens et al. 2025 (Adjoint Sampling) · right: real run of the ATLAS rule on a 1D periodic toy (uniform prior, force labels, path-weighted buffer)</div>
 </section>
 
@@ -234,6 +241,31 @@
   <div class="cite">He, Hernández-Lobato, <b class="me">Du</b>†, Vargas†, ICLR 2026 (RNE) · Crooks 1999 · right: a real path of the toy sampler with its kernels</div>
 </section>
 
+<section class="slide" data-title="Training without data: how the field got here" data-section="Neural samplers">
+  <div class="kicker method">Neural samplers · the line of work we build on</div>
+  <h2>Training without data: how the field got here</h2>
+  <canvas class="abs" style="left:90px;top:168px" width="1740" height="408" data-anim="litTimeline"></canvas>
+  <div class="abs" style="left:110px;top:588px;width:1700px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:26px">
+    <div class="card" style="padding:18px 24px;border-top:5px solid var(--coral)" data-f="1">
+      <div style="font-size:22px;color:var(--coral);font-weight:700">2022–24 · the path weight <i>is</i> the loss</div>
+      <div class="eq" style="font-size:21px;margin:10px 0">$\mathrm{KL}(\Pf\,\|\,\Pb)=\mathbb E_{\Pf}\big[-\log w\big]+\log Z,\quad\mathrm{Var}_{\mathbb Q}\big[\log w\big]$</div>
+      <div class="small" style="font-size:20px">Zero exactly when $w$ is constant. But: backprop through the solver, no reuse of energy calls, mode collapse.</div>
+    </div>
+    <div class="card" style="padding:18px 24px;border-top:5px solid #C2870A" data-f="2">
+      <div style="font-size:22px;color:#A87406;font-weight:700">2024 · PDDS → iDEM: the right idea</div>
+      <div class="small" style="font-size:20px;margin-top:8px">Regress the score on the model's <b>own samples</b>; iDEM adds the replay buffer. Each step closer to the final loop.</div>
+      <div class="small" style="font-size:20px;margin-top:8px">But the debiasing sits <b>inside the label</b>: SMC weights (PDDS), an importance-sampled score $\nabla\log\frac1K\sum_k e^{-\beta U(x+s_t\varepsilon_k)}$ (iDEM). <b style="color:#B4492F">High variance → fails at scale.</b></div>
+    </div>
+    <div class="card" style="padding:18px 24px;border-top:5px solid var(--teal)" data-f="3">
+      <div style="font-size:22px;color:var(--teal-dark);font-weight:700">2025–26 · fixed-point matching</div>
+      <div class="small" style="font-size:20px;margin-top:8px">Same loop, but the label is <b>one force</b> $\beta\mathbf F(X_N)$ at the model's own endpoint: no weights inside the regression, simulation-free, replay buffer.</div>
+      <div class="small" style="font-size:20px;margin-top:8px">Regression shapes each mode; it does not fix the <b>mode weights</b>.</div>
+    </div>
+  </div>
+  <div class="takeaway violet" data-f="4">ATLAS · JANUS = fixed-point matching <b>+</b> the 2022–24 path-weight loss, back as a <b>regularizer</b> for the mode weights.</div>
+  <div class="cite">Zhang &amp; Chen 2022 (PIS) · Vargas et al. 2023 (DDS) · Berner et al. 2024 (DIS) · Richter &amp; Berner 2024 (log-variance) · Vargas et al. 2024 (CMCD) · Phillips et al. 2024 (PDDS) · Akhound-Sadegh et al. 2024 (iDEM) · He, <b class="me">Du</b> et al. 2025 (No trick, no treat) · Havens et al. 2025 (Adjoint Sampling) · Liu et al. 2025 (ASBS) · Blessing et al. 2026 (Bridge Matching Sampler) · Havens et al. 2026 (Flow Sampling)</div>
+</section>
+
 <section class="slide" data-title="One derivation, every estimator" data-section="Neural samplers">
   <div class="kicker method">Neural samplers · path weights</div>
   <h2>One derivation, every estimator</h2>
@@ -245,7 +277,7 @@
   </div>
   <i class="drv-shrink-on" data-f="4" hidden></i>
   <div class="abs ucol" style="left:880px;top:180px;width:930px">
-    <div class="card ucr" data-f="5"><div class="ucr-g">$g\equiv1$</div><div class="eq ucr-eq">$Z=\mathbb E_{\Pf}[w]$</div><span class="uc-tag">free energies</span></div>
+    <div class="card ucr" data-f="5"><div class="ucr-g">$g\equiv1$</div><div class="eq ucr-eq">$Z=\mathbb E_{\Pf}[w]$</div><span class="uc-tag">free energy</span></div>
     <div class="card ucr" data-f="6"><div class="ucr-g">$g=f$</div><div class="eq ucr-eq">$\mathbb E_\pi[f]=\mathbb E_{\Pf}[f\,w]\,/\,\mathbb E_{\Pf}[w]$</div><span class="uc-tag">exact averages</span></div>
     <div class="card ucr" data-f="7"><div class="ucr-g">$\tilde\pi\to h\,\tilde\pi$</div><div class="eq ucr-eq">$\mathbb E_q[f]=\mathbb E_{\Pf}[f\,h\,w]\,/\,\mathbb E_{\Pf}[h\,w]$</div><span class="uc-tag">steering · next</span></div>
   </div>
@@ -257,16 +289,18 @@
 <section class="slide" data-title="Steering with path weights" data-section="Neural samplers">
   <div class="kicker method">Neural samplers · steering</div>
   <h2>Steering: sample a tilted target with the same weights</h2>
-  <canvas class="abs" style="left:110px;top:205px" width="980" height="620" data-anim="smcSteer"></canvas>
+  <canvas class="abs fade" style="left:110px;top:205px" width="980" height="620" data-anim="smcSteer" data-f="0" data-f-out="4"></canvas>
+  <canvas class="abs fade" style="left:110px;top:205px" width="980" height="620" data-anim="aptSwap" data-f="4"></canvas>
   <div class="abs" style="left:1140px;top:200px;width:680px">
     <div class="drv" style="gap:22px">
       <div class="drv-row top"><div class="drv-n">1</div><div><div class="drv-l">tilt the target; same derivation with $\tilde\pi\to h\,\tilde\pi$</div><div class="eqbox eq" style="font-size:26px;margin-top:10px">$q_N\propto h\,\pi,\quad h=e^{\eta r}\quad\Rightarrow\quad\text{weight }h(X_N)\,w$</div></div></div>
       <div class="drv-row top" data-f="1"><div class="drv-n">2</div><div><div class="drv-l">a sharp $h$ makes one final weight noisy: switch it on along the path, with targets $q_t$</div><div class="eqbox eq" style="font-size:26px;margin-top:10px">$G_t=\dfrac{q_{t+1}(X_{t+1})\,\Qb(X_t\mid X_{t+1})}{q_t(X_t)\,\Qf(X_{t+1}\mid X_t)}$</div><div class="drv-l" style="margin-top:8px">$\prod_tG_t$ telescopes to the full path weight.</div></div></div>
       <div class="drv-row top" data-f="2"><div class="drv-n">3</div><div><div class="drv-l"><b style="color:var(--ink)">SMC</b>: multiply each particle's weight by $G_t$; resample when the ESS drops.</div></div></div>
+      <div class="drv-row top" data-f="4"><div class="drv-n">4</div><div><div class="drv-l"><b style="color:var(--ink)">APT</b>: keep one replica per level $q_t$; neighbours swap through the learned transport, accepted with the same $G_t$. Fresh prior draws enter at $q_0$, exact samples leave at $q_N$.</div></div></div>
     </div>
   </div>
-  <div class="takeaway blue" data-f="3"><b>No retraining</b>: one base sampler reaches any tilted target.</div>
-  <div class="cite">Wu et al. 2023 (twisted SMC) · He, Hernández-Lobato, <b class="me">Du</b>†, Vargas†, ICLR 2026 (RNE) · He, …, <b class="me">Du</b>, Syed, Vargas, ICLR 2026 (CREPE, replica exchange)</div>
+  <div class="takeaway blue" data-f="5"><b>No retraining</b>: one base sampler reaches any tilted target, by SMC or by APT.</div>
+  <div class="cite">Wu et al. 2023 (twisted SMC) · He, Hernández-Lobato, <b class="me">Du</b>†, Vargas†, ICLR 2026 (RNE) · Zhang, Potaptchik, He, <b class="me">Du</b>, Doucet, Vargas, Dau, Syed 2025 (APT) · He, …, <b class="me">Du</b>, Syed, Vargas, ICLR 2026 (CREPE)</div>
 </section>
 
 <!-- =============================================================== 13. ATLAS SECTION -->
@@ -295,14 +329,14 @@
 </section>
 
 <!-- =============================================================== 15. ATLAS METHOD -->
-<section class="slide" data-title="ATLAS: diffusion on the periodic cell, supervised by forces" data-section="ATLAS">
+<section class="slide" data-title="ATLAS: an interpolant on the periodic cell, supervised by forces" data-section="ATLAS">
   <div class="kicker atlas">ATLAS · method</div>
-  <h2>ATLAS: diffusion on the periodic cell, supervised by forces</h2>
+  <h2>ATLAS: an interpolant on the periodic cell, supervised by forces</h2>
   <canvas class="abs" style="left:90px;top:180px" width="820" height="830" data-anim="torusTransport" data-opts='{"config":"n64_T0.2","box":560,"by":40,"timebar":true,"forces":true,"seed":11}'></canvas>
   <div class="abs body" style="left:960px;top:215px;width:860px">
     <ul class="clean">
-      <li><b>Uniform prior</b> on the periodic cell; wrapped bridge to the sample $X_N$.</li>
-      <li data-f="1"><b>Force labels</b> with weight one at every $t$: no $1/\alpha_t$ on the torus.</li>
+      <li><b>Uniform prior</b> on the periodic cell; the interpolant is a wrapped bridge, $X_t=\mathrm{wrap}(X_0+\alpha_t\Delta+\gamma_t\varepsilon)$, $\Delta=\mathrm{wrap}(X_N-X_0)$.</li>
+      <li data-f="1"><b>Two heads</b>, velocity $b$ and score $s$; score label $\beta\mathbf F(X_N)$ with weight one at every $t$: no $1/\alpha_t$ on the torus.</li>
       <li data-f="2"><b>One E(3)-equivariant GNN</b>, conditioned on $T$ and composition.</li>
       <li data-f="3"><b>Local</b>: train on small cells, sample large ones.</li>
     </ul>
@@ -385,9 +419,9 @@
 <section class="slide" data-title="A foundation model across composition space" data-section="ATLAS">
   <div class="kicker atlas">ATLAS · foundation model</div>
   <h2>A foundation model across composition space</h2>
-  <div class="abs figcard" style="left:110px;top:190px;width:1080px;padding:10px"><img src="assets/figs/atlas_f4a.webp" alt=""></div>
-  <div class="abs figcard" style="left:1225px;top:190px;width:585px;padding:10px" data-f="1"><img src="assets/figs/atlas_f4b.webp" alt=""></div>
-  <div class="abs" style="left:110px;top:640px;width:1700px" data-f="2">
+  <canvas class="abs" style="left:110px;top:180px;border-radius:16px;box-shadow:0 1px 2px rgba(31,41,51,.05),0 6px 24px rgba(31,41,51,.07)" width="800" height="572" data-anim="atlasAmortized"></canvas>
+  <div class="abs figcard" style="left:1004px;top:180px;width:806px;padding:14px" data-f="1"><img src="assets/figs/atlas_f4b.webp" alt=""></div>
+  <div class="abs" style="left:110px;top:782px;width:1700px" data-f="2">
     <div class="row" style="gap:80px;align-items:flex-end">
       <div class="stat"><div class="num-big">36 GPU-h</div><div class="lbl">one-time pretraining</div></div>
       <div class="stat"><div class="num-big" style="color:var(--coral)">~20 GPU-h</div><div class="lbl">per composition, from scratch</div></div>
@@ -395,7 +429,7 @@
     </div>
   </div>
   <div class="takeaway" data-f="3">Zero-shot on a new composition already beats the best from-scratch run.</div>
-  <div class="cite">Cheng*, Blessing*, …, Domingo-Enrich†, <b class="me">Du</b>†, ATLAS (2026), Fig. 4a,b · Fe–Mn–Ni–Ti–Cu–Cr–Co–Al pool</div>
+  <div class="cite">Cheng*, Blessing*, …, Domingo-Enrich†, <b class="me">Du</b>†, ATLAS (2026), Fig. 4b, SI Alg. 1 · left: the composition-amortized training loop · right: total training loss vs. from-scratch cost</div>
 </section>
 
 <!-- =============================================================== 22. AGENTIC DESIGN -->
@@ -447,7 +481,7 @@
   <div class="abs body" style="left:1280px;top:215px;width:540px">
     <ul class="clean violet">
       <li data-f="1"><b>Species</b>: masked diffusion, each site revealed once; path weight in <b>closed form</b>.</li>
-      <li data-f="2"><b>Displacements, volume</b>: an SDE from physics-informed priors.</li>
+      <li data-f="2"><b>Displacements, volume</b>: the same interpolant with velocity $b$ and score $s$, from physics-informed Gaussian priors.</li>
       <li data-f="3"><b>One</b> equivariant GNN, conditioned on $(T,\Delta\mu)$.</li>
     </ul>
   </div>
@@ -488,9 +522,9 @@
 </section>
 
 <!-- =============================================================== 28. PHASE DIAGRAM METHOD -->
-<section class="slide" data-title="Free energies to phase diagrams" data-section="JANUS">
+<section class="slide" data-title="Free energy to phase diagrams" data-section="JANUS">
   <div class="kicker janus">JANUS · phase diagrams</div>
-  <h2>From free energies to phase diagrams</h2>
+  <h2>From free energy to phase diagrams</h2>
   <canvas class="abs" style="left:110px;top:200px" width="960" height="540" data-anim="commonTangent"></canvas>
   <div class="abs body" style="left:1130px;top:215px;width:680px">
     <ul class="clean violet">
@@ -569,8 +603,9 @@
 <section class="slide" data-title="A new era: simulation as a query" data-section="Outlook">
   <div class="kicker outlook">Outlook</div>
   <h2>A new era: simulation becomes a query</h2>
-  <canvas class="abs" style="left:395px;top:185px" width="1130" height="800" data-anim="flywheel"></canvas>
-</section>
+  <canvas class="abs" style="left:110px;top:170px" width="1700" height="720" data-anim="mlipEra"></canvas>
+  <div data-f="1"></div><div data-f="2"></div><div data-f="3"></div>
+  <div class="takeaway navy" data-f="4"><b>Train once, query many</b>: simulation becomes a query.</div></section>
 
 <!-- =============================================================== 34. OPEN PROBLEMS -->
 <section class="slide" data-title="Open problems" data-section="Outlook">
@@ -580,7 +615,7 @@
   <div class="abs body" style="left:940px;top:205px;width:870px">
     <ul class="clean coral">
       <li><b>Mode weights</b>: local labels cannot see basin masses.</li>
-      <li data-f="1"><b>Hardest free energies</b>: heavy-tailed weights in deep glasses and miscibility gaps.</li>
+      <li data-f="1"><b>Hardest free energy</b>: heavy-tailed weights in deep glasses and miscibility gaps.</li>
       <li data-f="2"><b>Scale</b>: $10^{3}$–$10^{4}$ atoms (interfaces, dislocations).</li>
       <li data-f="3"><b>Generality</b>: off-lattice insertion and deletion, flexible cells, melting.</li>
       <li data-f="4"><b>Dynamics and theory</b>: kinetics; convergence guarantees.</li>

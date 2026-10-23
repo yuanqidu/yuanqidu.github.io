@@ -148,11 +148,11 @@
     const tx = (k) => MX0 + k / K * (MX1 - MX0), ty = (x) => MY1 - x * (MY1 - MY0);
     const logw = D.x.map((_, i) => D.inc[i].reduce((a, b) => a + b, 0) + D.end[i]);
     const lmax = Math.max(...logw);
-    function drawPath(i, upto, color, lw) {
-      const xs = D.x[i]; ctx.beginPath(); let prev = null;
-      for (let k = 0; k <= upto; k++) { const X = tx(k), Y = ty(xs[k]); if (prev !== null && Math.abs(xs[k] - prev) > 0.5) ctx.moveTo(X, Y); else if (k === 0) ctx.moveTo(X, Y); else ctx.lineTo(X, Y); prev = xs[k]; }
-      ctx.strokeStyle = color; ctx.lineWidth = lw; ctx.stroke();
-    }
+    // cycle through paths that stay inside the plotted range (no wrap across the periodic boundary)
+    const inside = (p) => { let u = p[0], lo = u, hi = u; for (let k = 1; k < p.length; k++) { u += U.minImage(p[k] - p[k - 1]); lo = Math.min(lo, u); hi = Math.max(hi, u); } return lo > 0.04 && hi < 0.96; };
+    const SHOW = D.x.map((_, j) => j).filter(j => inside(D.x[j]));
+    if (SHOW.length < 3) SHOW.splice(0, SHOW.length, ...D.x.map((_, j) => j));
+    function drawPath(i, upto, color, lw) { U.torusPath(ctx, D.x[i], upto, tx, ty, [tx(0) - 2, MY0, tx(K) + 2, MY1], color, lw); }
     function gauss(cx, cy, mean, sd, dir, color, dashed, scale) { // vertical bell over state axis at time position cx
       ctx.save(); ctx.beginPath();
       for (let j = -40; j <= 40; j++) { const v = mean + j / 40 * 3.2 * sd; const d = Math.exp(-0.5 * (j / 40 * 3.2) ** 2); const X = cx + dir * d * scale, Y = cy(v); if (j === -40) ctx.moveTo(X, Y); else ctx.lineTo(X, Y); }
@@ -160,9 +160,9 @@
     }
     function draw() {
       S.clear();
-      const cyc = Math.floor(clock / P), i = cyc % nP, c = clock % P, k = Math.min(K - 1, Math.floor(c / per)), done = c >= K * per;
+      const cyc = Math.floor(clock / P), i = SHOW[cyc % SHOW.length], c = clock % P, k = Math.min(K - 1, Math.floor(c / per)), done = c >= K * per;
       // main panel
-      roundRect(ctx, MX0 - 50, MY0 - 30, MX1 - MX0 + 80, MY1 - MY0 + 60, 14, '#fff', rgba(C.inkSoft, 0.15), 1.5);
+      roundRect(ctx, MX0 - 50, MY0 - 30, MX1 - MX0 + 102, MY1 - MY0 + 60, 14, '#fff', rgba(C.inkSoft, 0.15), 1.5);
       for (let j = 0; j < nP; j++) if (j !== i) drawPath(j, K, rgba(C.teal, 0.14), 1.2);
       drawPath(i, done ? K : k + 1, C.teal, 3);
       const xs = D.x[i];
@@ -174,7 +174,7 @@
       text(ctx, 't = N', tx(K), MY1 + 24, { size: 18, color: C.muted, align: 'center' });
       text(ctx, 'one generated path X₀:N', MX0 - 34, MY0 - 8, { size: 18, color: C.tealDark, weight: 650 });
       // zoom on one step: forward kernel over X_{t+1}, backward kernel over X_t
-      const ZX = MX1 + 70, ZW = S.w - ZX - 10, ZY = 20, ZH = 290;
+      const ZX = MX1 + 86, ZW = S.w - ZX - 10, ZY = 20, ZH = 290;
       roundRect(ctx, ZX, ZY, ZW, ZH, 14, '#fff', rgba(C.inkSoft, 0.15), 1.5);
       const kk = done ? K - 1 : k, xa = xs[kk], xb = xs[kk + 1], sd = Math.sqrt(D.var[kk]);
       const dab = U.minImage(xb - xa), center = xa + dab / 2, span = Math.max(8 * sd, Math.abs(dab) * 3, 0.02);
@@ -184,8 +184,8 @@
       gauss(zxa, zy, D.mb[i][kk], sd, -1, C.blue, true, 70);
       ctx.strokeStyle = rgba(C.inkSoft, 0.5); ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(zxa, zy(xa)); ctx.lineTo(zxb, zy(xb)); ctx.stroke();
       U.circle(ctx, zxa, zy(xa), 7, C.tealDark); U.circle(ctx, zxb, zy(xb), 7, C.teal, '#fff', 1.5);
-      richText(ctx, [['X', 'i'], ['t', 'sub']], zxa - 12, zy(xa) + 26, { size: 19, color: C.ink, align: 'center' });
-      richText(ctx, [['X', 'i'], ['t+1', 'sub']], zxb + 14, zy(xb) + 26, { size: 19, color: C.ink, align: 'center' });
+      richText(ctx, [['X', 'i'], ['t', 'sub']], zxa + 14, zy(xa) - 14, { size: 19, color: C.ink });
+      richText(ctx, [['X', 'i'], ['t+1', 'sub']], zxb - 14, zy(xb) - 14, { size: 19, color: C.ink, align: 'right' });
       richText(ctx, [['P', 'i'], ['→', 'sup'], ['(X', 'n'], ['t+1', 'sub'], [' | X', 'n'], ['t', 'sub'], [')', 'n']], zxb + 10, ZY + 34, { size: 19, color: C.tealDark });
       richText(ctx, [['P', 'i'], ['←', 'sup'], ['(X', 'n'], ['t', 'sub'], [' | X', 'n'], ['t+1', 'sub'], [')', 'n']], ZX + 14, ZY + 34, { size: 19, color: C.blue });
       const incv = D.inc[i][kk];
