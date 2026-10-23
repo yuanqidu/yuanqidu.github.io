@@ -99,7 +99,8 @@
     const panels = [
       { x: 0, y: 0, name: 'Generate', k: 1 }, { x: 520, y: 0, name: 'Label', k: 2 },
       { x: 520, y: 360, name: 'Interpolate', k: 3 }, { x: 0, y: 360, name: 'Regress', k: 4 }];
-    const HX = 1040, HW = S.w - HX, HY = 40, HH = S.h - 70;
+    const PART = (o && o.part) || 'both';   // 'loop': the four steps only · 'live': the toy run only
+    const HX = PART === 'live' ? 0 : 1040, HW = S.w - HX, HY = 40, HH = S.h - 70;
     const prior = []; for (let i = 0; i < 16; i++) prior.push([rng.u(), rng.u()]);
     const cent = [[0.28, 0.32], [0.7, 0.3], [0.5, 0.72]]; const samp = [];
     for (let i = 0; i < 16; i++) { const c = cent[i % 3]; samp.push([c[0] + 0.09 * rng.normal(), c[1] + 0.09 * rng.normal(), i % 3]); }
@@ -163,6 +164,7 @@
       S.clear();
       const r = Math.floor(clock / ROUND) % (nR + 2), phase = Math.floor((clock % ROUND) / PH), u = ((clock % ROUND) % PH) / PH;
       const rr = Math.min(r, nR - 1);
+      if (PART !== 'live') {
       panels.forEach((P, i) => drawPanel(P, i === phase, u));
       // loop arrows
       const ac = C.teal;
@@ -172,6 +174,8 @@
       curvedArrow(ctx, [pw / 2 - 120, 356, pw / 2 - 150, 310, pw / 2 - 120, ph + 6], ac, 3, 13);
       text(ctx, 'Boltzmann is', 476, 300, { size: 21, color: C.navy, align: 'center', weight: 650 });
       text(ctx, 'a fixed point', 476, 326, { size: 21, color: C.navy, align: 'center', weight: 650 });
+      }
+      if (PART === 'loop') return;
       // histogram of model samples for the current round
       roundRect(ctx, HX, 0, HW, S.h, 18, '#fff', rgba(C.inkSoft, 0.15), 1.5);
       text(ctx, 'Live: model samples after each round', HX + 28, 44, { size: 24, weight: 650, color: C.ink });
@@ -218,8 +222,9 @@
       S.clear();
       // left: paths
       roundRect(ctx, 0, 0, LW, S.h, 18, '#fff', rgba(C.inkSoft, 0.15), 1.5);
-      text(ctx, 'Forward paths, each with a weight', 28, 44, { size: 24, weight: 650, color: C.ink });
-      const X0 = 90, X1 = LW - 150, Y0 = 90, Y1 = S.h - 70;
+      const LIK = o && o.likelihood;   // the marginal-likelihood estimator is overlaid in HTML above the paths
+      if (!LIK) text(ctx, 'Forward paths, each with a weight', 28, 44, { size: 24, weight: 650, color: C.ink });
+      const X0 = 90, X1 = LW - 150, Y0 = LIK ? 150 : 90, Y1 = S.h - 70;
       const tx = (t) => X0 + t * (X1 - X0), ty = (x) => Y1 - x * (Y1 - Y0);
       ctx.fillStyle = rgba(C.muted, 0.22); ctx.fillRect(X0 - 40, Y0, 40, Y1 - Y0);
       const grid = []; for (let i = 0; i <= 200; i++) grid.push(i / 200); const tv = grid.map(T.p), tm = Math.max(...tv);
@@ -273,6 +278,88 @@
 
   // ------------------------------------------------------------------
   // Sequential Monte Carlo steering toward a reward (training-free)
+  // ------------------------------------------------------------------
+  // Balls from the sky: relaxing under the forces finds every mode, but with basin-of-attraction weights;
+  // path weights rescale them to the Boltzmann weights (step 1)
+  // ------------------------------------------------------------------
+  ANIMS.ballDrop = function (S, o) {
+    const ctx = S.ctx; let rng = makeRng(23), clock = 0, step = 0, tStep = 0;
+    const WELLS = [[0.2, 0.10, 2.4], [0.53, 0.035, 3.6], [0.8, 0.06, 3.1]], BETA = 1.5;
+    const Uf = (x) => -WELLS.reduce((s_, [c, sd, a]) => s_ + a * Math.exp(-((x - c) ** 2) / (2 * sd * sd)), 0) + 40 * (x - 0.5) ** 4;
+    const dU = (x) => (Uf(x + 1e-5) - Uf(x - 1e-5)) / 2e-5;
+    // basins (split at the local maxima), their minima, Boltzmann and relaxation weights
+    const G = 2000, xs = [], us = []; for (let i = 0; i <= G; i++) { xs.push(i / G); us.push(Uf(i / G)); }
+    const cuts = [0]; for (let i = 1; i < G; i++) if (us[i] > us[i - 1] && us[i] > us[i + 1]) cuts.push(xs[i]); cuts.push(1);
+    const NB = cuts.length - 1, mins = [], boltz = [], relax = [];
+    let Zb = 0;
+    for (let k = 0; k < NB; k++) {
+      let best = 1e9, bx = 0, z = 0;
+      xs.forEach((x, i) => { if (x >= cuts[k] && x < cuts[k + 1]) { z += Math.exp(-BETA * us[i]); if (us[i] < best) { best = us[i]; bx = x; } } });
+      mins.push(bx); boltz.push(z); Zb += z; relax.push(cuts[k + 1] - cuts[k]);
+    }
+    for (let k = 0; k < NB; k++) boltz[k] /= Zb;
+    const basinOf = (x) => { for (let k = 0; k < NB; k++) if (x < cuts[k + 1]) return k; return NB - 1; };
+    // geometry
+    const X0 = 40, X1 = S.w - 40, YT = 120, YB = 380, BAR0 = S.h - 40, BARH = 300;
+    let umin = Infinity, umax = -Infinity; for (let i = 0; i <= G; i++) if (xs[i] > 0.04 && xs[i] < 0.96) { umin = Math.min(umin, us[i]); umax = Math.max(umax, us[i]); }
+    const px = (x) => X0 + x * (X1 - X0), py = (u) => YB - (u - umin) / (umax - umin) * (YB - YT);
+    // balls: stratified drop positions, each slides to its own basin minimum
+    const NBALL = 42, R = 9, balls = [];
+    const order = rng.shuffle([...Array(NBALL).keys()]);
+    const slot = new Array(NB).fill(0);
+    order.forEach((j, n) => {
+      const x0 = 0.04 + (j + 0.5) / NBALL * 0.92, b = basinOf(x0);
+      balls.push({ x0, b, t0: 0.5 + n * 0.075, s: slot[b]++ });
+    });
+    const counts = new Array(NB).fill(0); balls.forEach(bl => counts[bl.b]++);
+    balls.forEach(bl => { const n = counts[bl.b], off = (bl.s - (n - 1) / 2) * 0.0105; bl.xf = mins[bl.b] + off; });
+    const ease = E.inOut;
+    function ballPos(bl) {
+      const t = clock - bl.t0; if (t < 0) return null;
+      const yGround = py(Uf(bl.x0)) - R, tf = 0.45;
+      if (t < tf) { const u = t / tf; return [px(bl.x0), 40 + (yGround - 40) * u * u, false]; }
+      const u = E.clamp((t - tf) / 0.9), x = bl.x0 + (bl.xf - bl.x0) * ease(u);
+      return [px(x), py(Uf(x)) - R, u >= 1];
+    }
+    function draw() {
+      S.clear();
+      const e = step >= 1 ? E.inOut(E.clamp((clock - tStep) / 1.2)) : 0;
+      text(ctx, step >= 1 ? 'With path weights: the mass in each mode is corrected' : 'Drop balls anywhere, let the forces relax them', 0, 30, { size: 24, weight: 700, color: step >= 1 ? C.tealDark : C.ink });
+      text(ctx, step >= 1 ? 'every ball keeps its place; its weight, target over model density, rescales the modes' : 'every mode is found, but each fills by the width of its basin, not by its Boltzmann weight', 0, 58, { size: 17, color: C.inkSoft });
+      // landscape
+      ctx.beginPath(); for (let i = 0; i <= 400; i++) { const x = 0.03 + 0.94 * i / 400, X = px(x), Y = py(Uf(x)); if (i) ctx.lineTo(X, Y); else ctx.moveTo(X, Y); }
+      ctx.lineTo(px(0.97), YB + 24); ctx.lineTo(px(0.03), YB + 24); ctx.closePath(); ctx.fillStyle = rgba(C.steel, 0.12); ctx.fill();
+      ctx.beginPath(); for (let i = 0; i <= 400; i++) { const x = 0.03 + 0.94 * i / 400, X = px(x), Y = py(Uf(x)); if (i) ctx.lineTo(X, Y); else ctx.moveTo(X, Y); } ctx.strokeStyle = C.navy; ctx.lineWidth = 3; ctx.stroke();
+      text(ctx, 'energy U(x)', px(0.97), py(Uf(0.97)) - 12, { size: 16, color: C.inkSoft, align: 'right' });
+      // balls
+      const settled = new Array(NB).fill(0);
+      balls.forEach(bl => {
+        const p = ballPos(bl); if (!p) return; if (p[2]) settled[bl.b]++;
+        const sc = step >= 1 ? 1 + (Math.sqrt(boltz[bl.b] / relax[bl.b]) - 1) * e : 1, col = step >= 1 ? mix(C.steel, C.teal, e) : C.steel;
+        U.atom(ctx, p[0], p[1] - (sc - 1) * R, R * sc, col);
+      });
+      // bars: relaxation (grey), Boltzmann target (coral outline), with path weights (teal)
+      const tot = settled.reduce((a, b) => a + b, 0) || 1;
+      ctx.strokeStyle = rgba(C.inkSoft, 0.4); ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(X0, BAR0); ctx.lineTo(X1, BAR0); ctx.stroke();
+      for (let k = 0; k < NB; k++) {
+        const cx = px(mins[k]), fr = settled[k] / tot, bw = 34;
+        ctx.fillStyle = rgba(C.steel, 0.8); ctx.fillRect(cx - bw - 4, BAR0 - fr * BARH, bw, fr * BARH);
+        if (step >= 1) { const v = fr + (boltz[k] - fr) * e; ctx.fillStyle = rgba(C.teal, 0.85); ctx.fillRect(cx + 4, BAR0 - v * BARH, bw, v * BARH); }
+        ctx.save(); ctx.setLineDash([6, 4]); ctx.strokeStyle = C.coral; ctx.lineWidth = 2.5; ctx.strokeRect(cx - bw - 8, BAR0 - boltz[k] * BARH, 2 * bw + 16, boltz[k] * BARH); ctx.restore();
+        text(ctx, ['mode A', 'mode B', 'mode C'][k], cx, BAR0 + 24, { size: 16, color: C.inkSoft, align: 'center', weight: 600 });
+      }
+      const LX = X1 - 250, LY = BAR0 - BARH * 0.62;
+      ctx.fillStyle = rgba(C.steel, 0.8); ctx.fillRect(LX, LY - 12, 16, 14); text(ctx, 'relaxation (forces only)', LX + 24, LY, { size: 16, color: C.inkSoft });
+      ctx.save(); ctx.setLineDash([5, 3]); ctx.strokeStyle = C.coral; ctx.lineWidth = 2.2; ctx.strokeRect(LX, LY + 12, 16, 14); ctx.restore(); text(ctx, 'Boltzmann weight', LX + 24, LY + 24, { size: 16, color: C.coral });
+      if (step >= 1) { ctx.fillStyle = rgba(C.teal, 0.85); ctx.fillRect(LX, LY + 36, 16, 14); text(ctx, 'with path weights', LX + 24, LY + 48, { size: 16, color: C.tealDark, weight: 650 }); }
+    }
+    return {
+      enter() { clock = 0; },
+      step(k) { if (k >= 1 && step < 1) tStep = Math.max(clock, balls[balls.length - 1].t0 + 1.4); step = k; },
+      frame(dt) { clock += dt; draw(); }, draw, ff: 6
+    };
+  };
+
   // ------------------------------------------------------------------
   // Training a diffusion sampler without data: the literature timeline, revealed paper by paper;
   // each build of the slide emphasises one group (path-weight losses, PDDS → iDEM, fixed-point matching, ATLAS · JANUS)
@@ -364,7 +451,7 @@
     const X0 = 60, X1 = S.w - 250, Y0 = 50, Y1 = S.h - 60, L = 8, tau = 0.022, goal = 0.8;
     const tx = (t) => X0 + t / L * (X1 - X0), ty = (x) => Y1 - x * (Y1 - Y0);
     // same base and reward as the SMC panel: q_t ∝ π e^{(t/L) η r} is Gaussian at every level
-    const pb = 1 / (0.085 * 0.085), pr = 1 / 0.0222;
+    const pb = 1 / (0.085 * 0.085), pr = 2 * 3.0 / 0.02;   // same base and tilt as the SMC panel
     const sd = (t) => 1 / Math.sqrt(pb + (t / L) * pr), mu = (t) => (0.42 * pb + 0.8 * (t / L) * pr) / (pb + (t / L) * pr);
     const lnN = (x, m, s) => -0.5 * ((x - m) / s) ** 2 - Math.log(s);
     const lq = (x, t) => lnN(x, mu(t), sd(t));
@@ -451,24 +538,33 @@
 
   // ------------------------------------------------------------------
   ANIMS.smcSteer = function (S, o) {
+    // two runs on the same axes: first the base sampler (grey, lands on π), then SMC steering (teal, lands on q_N ∝ π e^{ηr})
     const ctx = S.ctx; let rng = makeRng(9);
     const X0 = 60, X1 = S.w - 230, Y0 = 50, Y1 = S.h - 60, K = 48, N = 20;
     const tx = (t) => X0 + t * (X1 - X0), ty = (x) => Y1 - x * (Y1 - Y0);
-    const goal = 0.8, eta = 9;
+    const goal = 0.8, TILT = 3.0, MB = 0.42, SB = 0.085, TH = 2.2;   // base π = N(0.42, 0.085²); q_t ∝ π e^{t·TILT·r}
     const r = (x) => -((x - goal) ** 2) / 0.02;
-    let parts, dead, k, clock, acc;
+    const pb = 1 / (SB * SB), pr = 2 * TILT / 0.02;
+    const mq = (t) => (MB * pb + goal * t * pr) / (pb + t * pr), sq = (t) => 1 / Math.sqrt(pb + t * pr);
+    const ST = 4.2 / K;
+    let base, parts, dead, k, kb, clock, acc, phase, tHold;
     function reset() {
-      parts = []; dead = []; k = 0; clock = 0; acc = 0;
-      for (let i = 0; i < N; i++) { const x = 0.5 + 0.08 * rng.normal(); parts.push({ hist: [x], logw: 0 }); }
+      base = []; parts = []; dead = []; k = 0; kb = 0; clock = 0; acc = 0; phase = 'base';
+      for (let i = 0; i < N; i++) base.push({ hist: [MB + 0.2 * rng.normal()] });
     }
     reset();
-    function stepSMC() {
-      const t = k / K, t1 = (k + 1) / K, h = 1 / K;
-      parts.forEach(p => { const x = p.hist[p.hist.length - 1]; const xn = x + h * 2.2 * (0.42 - x) + 0.27 * Math.sqrt(h) * rng.normal(); p.hist.push(xn); p.logw += eta * (t1 * r(xn) - t * r(x)) * 0.05; });
+    function stepBase() { // Ornstein–Uhlenbeck move that leaves π invariant
+      const h = 1 / K, sig = Math.sqrt(2 * TH) * SB;
+      base.forEach(p => { const x = p.hist[p.hist.length - 1]; p.hist.push(x + h * TH * (MB - x) + sig * Math.sqrt(h) * rng.normal()); });
+      kb++;
+    }
+    function startSteer() { parts = []; dead = []; k = 0; acc = 0; phase = 'steer'; for (let i = 0; i < N; i++) parts.push({ hist: [MB + 0.2 * rng.normal()], logw: 0 }); }
+    function stepSMC() { // guided move toward q_t, then reweight with the work and resample
+      const t = k / K, t1 = (k + 1) / K, h = 1 / K, m = mq(t1), sig = Math.sqrt(2 * TH) * sq(t1);
+      parts.forEach(p => { const x = p.hist[p.hist.length - 1]; const xn = x + h * TH * (m - x) + sig * Math.sqrt(h) * rng.normal(); p.hist.push(xn); p.logw += 0.5 * TILT * (t1 * r(xn) - t * r(x)); });
       k++;
-      if (k % 8 === 0 && k < K) { // resample
-        const m = Math.max(...parts.map(p => p.logw)); const w = parts.map(p => Math.exp(p.logw - m)); const sw = w.reduce((a, b) => a + b, 0);
-        const ess = sw * sw / w.reduce((a, b) => a + b * b, 0);
+      if (k % 8 === 0 && k < K) {
+        const mx = Math.max(...parts.map(p => p.logw)); const w = parts.map(p => Math.exp(p.logw - mx)); const sw = w.reduce((a, b) => a + b, 0);
         const cum = []; let c = 0; w.forEach(v => { c += v / sw; cum.push(c); });
         const counts = new Array(N).fill(0); for (let i = 0; i < N; i++) { const u = (i + rng.u()) / N; let j = 0; while (j < N - 1 && cum[j] < u) j++; counts[j]++; }
         const np = [];
@@ -476,28 +572,40 @@
         parts = np;
       }
     }
+    function path(hist, color, lw) { ctx.beginPath(); hist.forEach((x, i) => { const X = tx(i / K), Y = ty(x); if (i) ctx.lineTo(X, Y); else ctx.moveTo(X, Y); }); ctx.strokeStyle = color; ctx.lineWidth = lw; ctx.stroke(); }
     function draw() {
       S.clear();
       ctx.fillStyle = rgba(C.yellow, 0.25); ctx.fillRect(X0, ty(goal + 0.07), X1 - X0, ty(goal - 0.07) - ty(goal + 0.07));
       text(ctx, 'reward r(x) high', X0 + 8, ty(goal + 0.07) - 10, { size: 19, color: C.gold, weight: 600 });
       for (let j = 0; j <= 6; j++) { const x = tx(j / 6); ctx.strokeStyle = rgba(C.inkSoft, 0.18); ctx.setLineDash([4, 6]); ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(x, Y0); ctx.lineTo(x, Y1); ctx.stroke(); ctx.setLineDash([]); }
-      dead.forEach(d => { ctx.beginPath(); d.hist.forEach((x, i) => { const X = tx(i / K), Y = ty(x); if (i) ctx.lineTo(X, Y); else ctx.moveTo(X, Y); }); ctx.strokeStyle = rgba(C.muted, 0.55); ctx.lineWidth = 1.5; ctx.setLineDash([5, 4]); ctx.stroke(); ctx.setLineDash([]); const lx = tx((d.hist.length - 1) / K), ly = ty(d.hist[d.hist.length - 1]); ctx.strokeStyle = C.red; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(lx - 7, ly - 7); ctx.lineTo(lx + 7, ly + 7); ctx.moveTo(lx + 7, ly - 7); ctx.lineTo(lx - 7, ly + 7); ctx.stroke(); });
-      parts.forEach(p => { ctx.beginPath(); p.hist.forEach((x, i) => { const X = tx(i / K), Y = ty(x); if (i) ctx.lineTo(X, Y); else ctx.moveTo(X, Y); }); ctx.strokeStyle = rgba(C.teal, 0.7); ctx.lineWidth = 2; ctx.stroke(); const x = p.hist[p.hist.length - 1]; U.circle(ctx, tx((p.hist.length - 1) / K), ty(x), 6, C.teal, '#fff', 1.5); });
+      // base run (grey): faded once steering starts
+      const baseOn = phase === 'base' || phase === 'hold1';
+      base.forEach(p => { path(p.hist, rgba(C.steel, baseOn ? 0.75 : 0.28), baseOn ? 2 : 1.4); const x = p.hist[p.hist.length - 1]; U.circle(ctx, tx((p.hist.length - 1) / K), ty(x), baseOn ? 6 : 4.5, rgba(C.steel, baseOn ? 1 : 0.45), '#fff', 1.2); });
+      // steered run (teal)
+      dead.forEach(d => { ctx.save(); ctx.setLineDash([5, 4]); path(d.hist, rgba(C.muted, 0.55), 1.5); ctx.restore(); const lx = tx((d.hist.length - 1) / K), ly = ty(d.hist[d.hist.length - 1]); ctx.strokeStyle = C.red; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(lx - 7, ly - 7); ctx.lineTo(lx + 7, ly + 7); ctx.moveTo(lx + 7, ly - 7); ctx.lineTo(lx - 7, ly + 7); ctx.stroke(); });
+      parts.forEach(p => { path(p.hist, rgba(C.teal, 0.75), 2); const x = p.hist[p.hist.length - 1]; U.circle(ctx, tx((p.hist.length - 1) / K), ty(x), 6, C.teal, '#fff', 1.5); });
       text(ctx, 't = 0', X0, Y1 + 32, { size: 19, color: C.muted, align: 'center' });
       text(ctx, 't = N', X1, Y1 + 32, { size: 19, color: C.muted, align: 'center' });
-      richText(ctx, [['reweight with the work, ', 'n'], ['e', 'i'], ['−W', 'sup'], ['; resample: drop ✕, copy', 'n']], (X0 + X1) / 2, Y1 + 32, { size: 19, color: C.inkSoft, align: 'center' });
-      // terminal densities: base vs tilted
-      const DX = X1 + 40;
-      const base = (x) => Math.exp(-((x - 0.42) ** 2) / (2 * 0.085 ** 2)), tilt = (x) => base(x) * Math.exp(eta * 0.05 * r(x));
-      let mt = 0; for (let i = 0; i <= 100; i++) mt = Math.max(mt, tilt(i / 100));
-      ctx.beginPath(); ctx.moveTo(DX, Y1); for (let i = 0; i <= 100; i++) ctx.lineTo(DX + base(i / 100) * 120, ty(i / 100)); ctx.lineTo(DX, Y0); ctx.closePath(); ctx.fillStyle = rgba(C.muted, 0.3); ctx.fill();
-      ctx.beginPath(); ctx.moveTo(DX, Y1); for (let i = 0; i <= 100; i++) ctx.lineTo(DX + tilt(i / 100) / mt * 120, ty(i / 100)); ctx.lineTo(DX, Y0); ctx.closePath(); ctx.fillStyle = rgba(C.teal, 0.3); ctx.fill(); ctx.strokeStyle = C.teal; ctx.lineWidth = 2; ctx.stroke();
-      text(ctx, 'base π', DX + 70, ty(0.32), { size: 19, color: C.inkSoft });
-      text(ctx, 'tilted', DX + 70, ty(goal) + 5, { size: 19, color: C.tealDark, weight: 600 });
+      if (baseOn) text(ctx, 'base sampler, no steering: the samples follow π', (X0 + X1) / 2, Y1 + 32, { size: 19, color: C.inkSoft, align: 'center', weight: 600 });
+      else richText(ctx, [['SMC: reweight with the work, ', 'n'], ['e', 'i'], ['−W', 'sup'], ['; resample: drop ✕, copy', 'n']], (X0 + X1) / 2, Y1 + 32, { size: 19, color: C.tealDark, align: 'center' });
+      // terminal densities: base (grey) vs tilted (teal), well separated
+      const DX = X1 + 40, base_ = (x) => Math.exp(-0.5 * ((x - MB) / SB) ** 2), tilt = (x) => Math.exp(-0.5 * ((x - mq(1)) / sq(1)) ** 2);
+      ctx.beginPath(); ctx.moveTo(DX, Y1); for (let i = 0; i <= 120; i++) ctx.lineTo(DX + base_(i / 120) * 120, ty(i / 120)); ctx.lineTo(DX, Y0); ctx.closePath(); ctx.fillStyle = rgba(C.steel, 0.32); ctx.fill(); ctx.strokeStyle = rgba(C.steel, 0.9); ctx.lineWidth = 2; ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(DX, Y1); for (let i = 0; i <= 120; i++) ctx.lineTo(DX + tilt(i / 120) * 120, ty(i / 120)); ctx.lineTo(DX, Y0); ctx.closePath(); ctx.fillStyle = rgba(C.teal, 0.3); ctx.fill(); ctx.strokeStyle = C.teal; ctx.lineWidth = 2; ctx.stroke();
+      ctx.strokeStyle = rgba(C.inkSoft, 0.5); ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(DX, Y0); ctx.lineTo(DX, Y1); ctx.stroke();
+      text(ctx, 'base π', DX + 128, ty(MB) + 6, { size: 19, color: C.inkSoft, weight: 600 });
+      text(ctx, 'tilted', DX + 128, ty(mq(1)) + 6, { size: 19, color: C.tealDark, weight: 600 });
       richText(ctx, [['q', 'i'], ['N', 'sub'], [' ∝ ', 'n'], ['π', 'i'], [' e', 'n'], ['ηr', 'sup']], DX + 64, Y0 + 14, { size: 22, color: C.tealDark, align: 'center' });
     }
     return {
-      frame(dt) { clock += dt; acc += dt; const st = 4.6 / K; while (acc > st && k < K) { acc -= st; stepSMC(); } if (k >= K && clock > 7.5) { rng = makeRng(Math.floor(clock * 1000) % 9973); reset(); } draw(); }, draw, ff: 6
+      frame(dt) {
+        clock += dt; acc += dt;
+        if (phase === 'base') { while (acc > ST && kb < K) { acc -= ST; stepBase(); } if (kb >= K) { phase = 'hold1'; tHold = clock; } }
+        else if (phase === 'hold1') { if (clock - tHold > 1.2) startSteer(); }
+        else if (phase === 'steer') { while (acc > ST && k < K) { acc -= ST; stepSMC(); } if (k >= K) { phase = 'hold2'; tHold = clock; } }
+        else if (clock - tHold > 3) { rng = makeRng(Math.floor(clock * 1000) % 9973); reset(); }
+        draw();
+      }, draw, ff: 10.2
     };
   };
 })();

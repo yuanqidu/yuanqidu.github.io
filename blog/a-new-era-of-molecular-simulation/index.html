@@ -246,10 +246,28 @@
     <div class="eqbox eq" style="font-size:25px">$s^{(k+1)}=\arg\min_s\displaystyle\int_0^1\!\lambda_t\;\mathbb E_{X_{0:N}\sim\Pf_{s^{(k)}}}\Big[\textcolor{#E76F51}{\bar w}\;\Big\|\,s(X'_t,t)-\frac{1}{\alpha_t}\beta\mathbf F(X_N)\Big\|^2\Big]\dd t,\qquad X'_t=\alpha_tX_N+s_t\varepsilon$</div>
     <div style="margin-top:6px;font-size:19px;color:#E76F51;font-weight:650">$\bar w$: the self-normalized <b>path weight</b>, discussed in the next slides</div>
   </div>
-  <canvas class="abs" style="left:195px;top:296px;transform:scale(0.9);transform-origin:0 0" width="1700" height="620" data-anim="fpLoop"></canvas>
-  <div class="abs small" style="left:195px;top:864px;width:1530px;font-size:21px;color:var(--ink)"><b>Why a buffer:</b> the two expensive steps, <b style="color:var(--coral)">simulating the model</b> (a full rollout) and <b style="color:var(--coral)">evaluating forces</b>, are paid once per sample; interpolating and regressing are cheap, so each buffered sample is reused for many gradient steps.</div>
-  <div class="takeaway" style="bottom:66px">$\pi$ is a fixed point: the labels then average to the exact score; the <b>path weight</b> $\textcolor{#E76F51}{\bar w}$ fixes the mode weights (next slides).</div>
-  <div class="cite">Blessing et al., ICML 2026 (Bridge Matching Sampler) · Havens et al. 2025 (Adjoint Sampling) · right: real run of the fixed-point rule on a 1D toy (force labels, path-weighted buffer)</div>
+  <canvas class="abs" style="left:110px;top:322px;transform:scale(0.9);transform-origin:0 0" width="960" height="620" data-anim="fpLoop" data-opts='{"part":"loop"}'></canvas>
+  <div class="abs body" style="left:1030px;top:330px;width:780px">
+    <div class="lead b" style="font-size:28px;color:var(--navy)">Where the cost goes</div>
+    <div class="small" style="margin-top:14px;color:var(--ink)"><b>① Generate</b>: <b style="color:var(--coral)">expensive</b>, a full rollout of the model</div>
+    <div class="small" style="margin-top:8px;color:var(--ink)"><b>② Label</b>: <b style="color:var(--coral)">expensive</b>, one force call per sample, the only oracle calls</div>
+    <div class="small" style="margin-top:8px;color:var(--ink)"><b>③ Interpolate</b>: <b style="color:var(--teal-dark)">cheap</b>, fresh noise, no oracle</div>
+    <div class="small" style="margin-top:8px;color:var(--ink)"><b>④ Regress</b>: <b style="color:var(--teal-dark)">cheap</b>, plain regression</div>
+    <div class="small" data-f="1" style="margin-top:22px;color:var(--ink)"><b>Why a buffer:</b> pay ① and ② once per sample, then reuse every buffered sample for many cheap rounds of ③ and ④.</div>
+  </div>
+  <div class="takeaway" data-f="2">The buffer turns two expensive steps into a one-off cost per sample; training is cheap regression.</div>
+  <div class="cite">Blessing et al., ICML 2026 (Bridge Matching Sampler) · Havens et al. 2025 (Adjoint Sampling)</div>
+</section>
+
+<section class="slide" data-title="Fixed-point training on a toy" data-section="Neural samplers">
+  <div class="kicker method">Neural samplers · no data at all</div>
+  <h2>Forces find the modes; path weights fix their weights</h2>
+  <canvas class="abs" style="left:110px;top:180px" width="840" height="660" data-anim="ballDrop"></canvas>
+  <div data-f="1"></div>
+  <canvas class="abs fade" data-f="2" style="left:995px;top:180px;transform:scale(0.84);transform-origin:0 0" width="960" height="680" data-anim="fpLoop" data-opts='{"part":"live"}'></canvas>
+  <div class="abs small fade" data-f="2" style="left:995px;top:762px;width:810px;color:var(--ink)">A real run of the loop on a 1D toy: the path-weighted buffer lands on the right weights within a few rounds.</div>
+  <div class="takeaway" data-f="3">$\pi$ is a fixed point; the <b>path weight</b> $\textcolor{#E76F51}{\bar w}$ fixes the mode weights. Next: where it comes from.</div>
+  <div class="cite">left: schematic three-well landscape · right: real run of the fixed-point rule on a 1D toy (force labels, path-weighted buffer) · Blessing et al., ICML 2026</div>
 </section>
 
 <!-- =============================================================== 11. PATH WEIGHTS -->
@@ -282,7 +300,11 @@
     <div class="card ucr" data-f="6"><div class="ucr-g">$g=f$</div><div class="eq ucr-eq">$\mathbb E_\pi[f]=\mathbb E_{\Pf}[f\,w]\,/\,\mathbb E_{\Pf}[w]$</div><span class="uc-tag">exact averages</span></div>
     <div class="card ucr" data-f="7"><div class="ucr-g">$\tilde\pi\to h\,\tilde\pi$</div><div class="eq ucr-eq">$\mathbb E_q[f]=\mathbb E_{\Pf}[f\,h\,w]\,/\,\mathbb E_{\Pf}[h\,w]$</div><span class="uc-tag">steering · next</span></div>
   </div>
-  <canvas class="abs fade" data-f="4" style="left:263px;top:540px;transform:scale(0.82);transform-origin:0 0" width="1700" height="540" data-anim="pathWeights" data-opts='{"startStep":4,"zStep":5,"rwStep":6}'></canvas>
+  <canvas class="abs fade" data-f="4" style="left:263px;top:540px;transform:scale(0.82);transform-origin:0 0" width="1700" height="540" data-anim="pathWeights" data-opts='{"startStep":4,"zStep":5,"rwStep":6,"likelihood":true}'></canvas>
+  <div class="abs fade" data-f="4" style="left:283px;top:550px;width:620px">
+    <div style="font-size:17px;font-weight:650;color:var(--ink)">Paths give the model's likelihood: noise $x_N$ back with $\Pb$ and average</div>
+    <div class="eq" style="font-size:19px;margin-top:2px">$p_\theta(x_N)=\mathbb E_{X_{0:N-1}\sim\Pb(\cdot\mid x_N)}\Big[\dfrac{p_0(X_0)\prod_t\Pf(X_{t+1}\mid X_t)}{\prod_t\Pb(X_t\mid X_{t+1})}\Big],\qquad w=\dfrac{\tilde\pi(X_N)}{\hat p_\theta(X_N)}$</div>
+  </div>
   <div class="cite"><b class="me">Du</b>, blog: Pushing Probabilistic ML Out of Equilibrium, Part 5 · Jarzynski 1997 · Neal 2001 (AIS) · <b class="me">Du</b>*, He* et al., NeurIPS 2025 (FEAT) · He, Hernández-Lobato, <b class="me">Du</b>†, Vargas†, ICLR 2026 (RNE)</div>
 </section>
 
