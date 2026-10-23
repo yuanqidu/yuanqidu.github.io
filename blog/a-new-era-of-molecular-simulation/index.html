@@ -206,9 +206,10 @@
     <div class="eqbox eq" style="font-size:26px;margin-top:24px">$\mathcal L_{\rm TSM}(\theta)=\displaystyle\int_0^1\!\lambda_t\;\mathbb E\,\Big\|\,s_\theta(X_t,t)-\frac{1}{\alpha_t}\,\beta\mathbf F(X_N)\Big\|^2\dd t$</div>
     <div data-f="1" style="margin-top:26px"><span class="pill coral" style="font-size:21px">①</span> <b>data → forces</b>: physics enters through $\mathbf F=-\nabla U$, one force call per sample.</div>
     <div data-f="2" style="margin-top:18px"><span class="pill coral" style="font-size:21px">②</span> but the expectation is still over $X_N\sim\pi$, the very thing we want to learn.</div>
+    <div data-f="3" style="margin-top:22px;color:#D9741F;font-weight:650">The identity changes the <b>representation</b>, from data samples to the target score (forces), but on its own it does not give us a <b>learning algorithm</b>.</div>
   </div>
   <canvas class="abs" style="left:1000px;top:190px" width="820" height="660" data-anim="tsiDemo"></canvas>
-  <div class="cite">De Bortoli et al. 2024 (target score matching) · Albergo, Boffi &amp; Vanden-Eijnden 2025 (stochastic interpolants) · Blessing et al., ICML 2026</div>
+  <div class="cite">De Bortoli et al. 2024 (target score matching) · Blessing et al., ICML 2026</div>
 </section>
 
 <section class="slide" data-title="How do we train it? How the field got here" data-section="Neural samplers">
