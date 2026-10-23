@@ -282,8 +282,10 @@
       [1000, 0, 'No trick, no treat', 'our benchmark, 2025', C.navy, 0], [1135, 1, 'Adjoint Sampling', 'target gradient as label', TE, 3],
       [1260, 0, 'ASBS', 'general priors & schedules', TE, 3], [1400, 1, 'Bridge Matching Sampler', 'generalized fixed-point matching', TE, 3],
       [1530, 0, 'Flow Sampling', 'conditional denoising', TE, 3], [1655, 1, 'ATLAS · JANUS', 'this talk', VI, 4]];
-    const BR = [[120, 600, CO, ['the path weight as the loss'], 1, 1], [690, 935, GO, ['right idea,', 'high-variance debiasing'], 3, 2],
-      [1080, 1740, TE, ['fixed-point matching: train like a diffusion model, without data'], 8, 3]];
+    // [x1, x2, colour, label lines, index of the group's last paper, group, notable systems (checked against the papers)]
+    const BR = [[120, 600, CO, ['the path weight as the loss'], 1, 1, 'notable: LGCP 1600D · double well 50D · GMM-40 (2D)'],
+      [690, 935, GO, ['right idea, high-variance debiasing'], 3, 2, 'notable: LJ-13, LJ-55 (165D) · GMM-40 up to 20D'],
+      [1080, 1740, TE, ['fixed-point matching: train like a diffusion model, without data'], 8, 3, 'notable: alanine di- & tetrapeptide (Cartesian) · drug-like conformers (SPICE)']];
     const T0 = 0.4, DT = 0.48;
     const shownAt = (i) => T0 + i * DT;
     function emph(g) { // dim the other groups while a card is being discussed
@@ -331,11 +333,12 @@
         arrow(ctx, 856, AX - 22, 868, AX - 14, GO, 2, 9); ctx.restore();
       }
       // group braces, once the group is complete
-      BR.forEach(([x1, x2, col, lines, last, g]) => {
+      BR.forEach(([x1, x2, col, lines, last, g, sys]) => {
         if (nShow <= last) return;
         const a = E.out(E.clamp((clock - shownAt(last) - 0.25) / 0.45));
         ctx.save(); ctx.globalAlpha = a * emph(g); brace(x1, x2, AX + 50, col);
         lines.forEach((l, j) => text(ctx, l, (x1 + x2) / 2, AX + 106 + 26 * j, { size: 22, weight: 700, color: col, align: 'center' }));
+        text(ctx, sys, (x1 + x2) / 2, AX + 106 + 26 * lines.length + 6, { size: 17, color: mix(col, C.ink, 0.45), align: 'center', weight: 550 });
         ctx.restore();
       });
       ctx.restore();
@@ -422,7 +425,7 @@
           }
         }
         for (let t = 0; t <= L; t++) if (!moving.has(t)) U.circle(ctx, tx(t), ty(x[t]), R, C.violet, '#fff', 2);
-        text(ctx, 'step 2: swap through the transport, accept with Gₜ', X0 - 20, Y0 - 16, { size: 19, weight: 650, color: C.tealDark });
+        text(ctx, 'step 2: swap through the transport, accept with the work', X0 - 20, Y0 - 16, { size: 19, weight: 650, color: C.tealDark });
       }
       // output at q_N vs the tilted target
       const DX = X1 + 50, DW = S.w - DX - 20, tot = hist.reduce((a, b) => a + b, 0), q = (v) => Math.exp(lnN(v, mu(L), sd(L)));
@@ -477,7 +480,7 @@
       parts.forEach(p => { ctx.beginPath(); p.hist.forEach((x, i) => { const X = tx(i / K), Y = ty(x); if (i) ctx.lineTo(X, Y); else ctx.moveTo(X, Y); }); ctx.strokeStyle = rgba(C.teal, 0.7); ctx.lineWidth = 2; ctx.stroke(); const x = p.hist[p.hist.length - 1]; U.circle(ctx, tx((p.hist.length - 1) / K), ty(x), 6, C.teal, '#fff', 1.5); });
       text(ctx, 't = 0', X0, Y1 + 32, { size: 19, color: C.muted, align: 'center' });
       text(ctx, 't = N', X1, Y1 + 32, { size: 19, color: C.muted, align: 'center' });
-      text(ctx, 'resample: drop low weight ✕, copy high weight', (X0 + X1) / 2, Y1 + 32, { size: 19, color: C.inkSoft, align: 'center' });
+      richText(ctx, [['reweight with the work, ', 'n'], ['e', 'i'], ['−W', 'sup'], ['; resample: drop ✕, copy', 'n']], (X0 + X1) / 2, Y1 + 32, { size: 19, color: C.inkSoft, align: 'center' });
       // terminal densities: base vs tilted
       const DX = X1 + 40;
       const base = (x) => Math.exp(-((x - 0.42) ** 2) / (2 * 0.085 ** 2)), tilt = (x) => base(x) * Math.exp(eta * 0.05 * r(x));

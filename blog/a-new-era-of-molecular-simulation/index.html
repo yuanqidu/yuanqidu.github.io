@@ -294,12 +294,12 @@
   <div class="abs" style="left:1140px;top:200px;width:680px">
     <div class="drv" style="gap:22px">
       <div class="drv-row top"><div class="drv-n">1</div><div><div class="drv-l">tilt the target; same derivation with $\tilde\pi\to h\,\tilde\pi$</div><div class="eqbox eq" style="font-size:26px;margin-top:10px">$q_N\propto h\,\pi,\quad h=e^{\eta r}\quad\Rightarrow\quad\text{weight }h(X_N)\,w$</div></div></div>
-      <div class="drv-row top" data-f="1"><div class="drv-n">2</div><div><div class="drv-l">a sharp $h$ makes one final weight noisy: switch it on along the path, with targets $q_t$</div><div class="eqbox eq" style="font-size:26px;margin-top:10px">$G_t=\dfrac{q_{t+1}(X_{t+1})\,\Qb(X_t\mid X_{t+1})}{q_t(X_t)\,\Qf(X_{t+1}\mid X_t)}$</div><div class="drv-l" style="margin-top:8px">$\prod_tG_t$ telescopes to the full path weight.</div></div></div>
-      <div class="drv-row top" data-f="2"><div class="drv-n">3</div><div><div class="drv-l"><b style="color:var(--ink)">SMC</b>: multiply each particle's weight by $G_t$; resample when the ESS drops.</div></div></div>
-      <div class="drv-row top" data-f="4"><div class="drv-n">4</div><div><div class="drv-l"><b style="color:var(--ink)">APT</b>: keep one replica per level $q_t$; neighbours swap through the learned transport, accepted with the same $G_t$. Fresh prior draws enter at $q_0$, exact samples leave at $q_N$.</div></div></div>
+      <div class="drv-row top" data-f="1"><div class="drv-n">2</div><div><div class="drv-l">a sharp $h$ makes one final weight noisy: switch it on along the path, with targets $q_t$</div><div class="eqbox eq" style="font-size:26px;margin-top:10px">$G_t=\dfrac{q_{t+1}(X_{t+1})\,\Qb(X_t\mid X_{t+1})}{q_t(X_t)\,\Qf(X_{t+1}\mid X_t)}$</div><div class="drv-l" style="margin-top:8px">$W_t=-\log G_t$ is the <b>work</b> of one step; $\prod_tG_t$ telescopes to the full path weight.</div></div></div>
+      <div class="drv-row top" data-f="2"><div class="drv-n">3</div><div><div class="drv-l"><b style="color:var(--ink)">SMC</b> uses the work to <b>reweight</b>: $w\leftarrow w\,e^{-W_t}$; resample when the ESS drops.</div></div></div>
+      <div class="drv-row top" data-f="4"><div class="drv-n">4</div><div><div class="drv-l"><b style="color:var(--ink)">APT</b> uses the work to <b>swap</b>: one replica per level $q_t$; neighbours push through the learned transport and swap with probability $\min\{1,e^{-(W_\uparrow-W_\downarrow)}\}$. Exact samples leave at $q_N$.</div></div></div>
     </div>
   </div>
-  <div class="takeaway blue" data-f="5"><b>No retraining</b>: one base sampler reaches any tilted target, by SMC or by APT.</div>
+  <div class="takeaway blue" data-f="5"><b>No retraining</b>: one base sampler reaches any tilted target. SMC uses the work to reweight, APT uses it to swap.</div>
   <div class="cite">Wu et al. 2023 (twisted SMC) · He, Hernández-Lobato, <b class="me">Du</b>†, Vargas†, ICLR 2026 (RNE) · Zhang, Potaptchik, He, <b class="me">Du</b>, Doucet, Vargas, Dau, Syed 2025 (APT) · He, …, <b class="me">Du</b>, Syed, Vargas, ICLR 2026 (CREPE)</div>
 </section>
 
@@ -392,7 +392,7 @@
   <h2>Rare events by steering: umbrella windows</h2>
   <canvas class="abs" style="left:110px;top:200px" width="900" height="560" data-anim="umbrella"></canvas>
   <div class="abs figcard" style="left:1060px;top:205px;width:750px;padding:10px" data-f="1"><img src="assets/figs/atlas_f2d.webp" alt=""></div>
-  <div class="abs small" style="left:110px;top:780px;width:900px;color:var(--ink)" data-f="1"><b class="navy">Path weights:</b> window $k$ is a tilted target $q_k\propto\pi\,e^{-\beta u_k(\xi)}$, sampled by SMC; the $Z_k$ stitch into $F(\xi)$.</div>
+  <div class="abs small" style="left:110px;top:780px;width:900px;color:var(--ink)" data-f="1"><b class="navy">Path weights:</b> window $k$ is a tilted target $q_k\propto\pi\,e^{-\beta u_k(\xi)}$, sampled by SMC reweighting with the work; the $Z_k$ stitch into $F(\xi)$.</div>
   <div class="takeaway" data-f="2">Cage escape at $T=0.2$: $\Delta F^\ddagger=4.20\pm0.38\,k_{\mathrm B}T$ vs $3.97\,k_{\mathrm B}T$ (PT-MCMC), with no MD.</div>
   <div class="cite">Torrie &amp; Valleau 1977 (umbrella sampling) · Cheng*, Blessing*, …, Domingo-Enrich†, <b class="me">Du</b>†, ATLAS (2026), Fig. 2d · left: schematic</div>
 </section>
@@ -409,7 +409,7 @@
   <div class="abs" style="left:110px;top:790px;width:1700px">
     <div class="row" style="gap:28px">
       <div class="card" style="flex:1;padding:18px 24px" data-f="1"><div class="small" style="color:var(--ink)"><b>Short-range order</b>: base ensembles match experiment; SMC toward $q_N\propto\pi\,e^{-\eta(\alpha-\alpha^\ast)^2}$ moves the <b>whole distribution</b>.</div></div>
-      <div class="card" style="flex:1;padding:18px 24px" data-f="2"><div class="small" style="color:var(--ink)"><b>Bulk modulus</b>: reward the Tweedie estimate $\hat X_N(X_t)$; SMC enriches rare stiff glasses.</div></div>
+      <div class="card" style="flex:1;padding:18px 24px" data-f="2"><div class="small" style="color:var(--ink)"><b>Bulk modulus</b>: reward the Tweedie estimate $\hat X_N(X_t)$; SMC, reweighting with the work, enriches rare stiff glasses.</div></div>
     </div>
   </div>
   <div class="cite">Cheng*, Blessing*, …, Domingo-Enrich†, <b class="me">Du</b>†, ATLAS (2026), Fig. 3c,d · Cowley 1950 · He, Hernández-Lobato, <b class="me">Du</b>†, Vargas†, ICLR 2026 (RNE)</div>
@@ -559,7 +559,7 @@
   <div class="abs figcard" style="left:1020px;top:190px;width:790px;padding:10px" data-f="2"><img src="assets/figs/janus_f3e.webp" alt=""></div>
   <div class="abs" style="left:110px;top:790px;width:1700px">
     <div class="row" style="gap:28px">
-      <div class="card" style="flex:1;padding:18px 24px" data-f="1"><div class="small" style="color:var(--ink)"><b>CrCoNi, 800 K</b>: base SRO matches experiment; the same SMC steers $\alpha$ and $B$ (species factors cancel in $G_t$).</div></div>
+      <div class="card" style="flex:1;padding:18px 24px" data-f="1"><div class="small" style="color:var(--ink)"><b>CrCoNi, 800 K</b>: base SRO matches experiment; the same SMC, reweighting with the work, steers $\alpha$ and $B$ (species factors cancel in $G_t$).</div></div>
       <div class="card" style="flex:1;padding:18px 24px" data-f="2"><div class="small" style="color:var(--ink)"><b>LLM agent proposes Δμ</b> (Ag–Al–Au–Cu–Ni) for stiffness, ductility and reflectance; hypervolume saturates in ~<b>120</b> evaluations.</div></div>
     </div>
   </div>
