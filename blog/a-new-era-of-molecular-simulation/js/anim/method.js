@@ -288,7 +288,7 @@
       [1260, 0, 'ASBS', 'general priors & schedules', TE, 3], [1400, 1, 'Bridge Matching Sampler', 'generalized fixed-point matching', TE, 3],
       [1530, 0, 'Flow Sampling', 'conditional denoising', TE, 3], [1655, 1, 'ATLAS · JANUS', 'this talk', VI, 4]];
     // [x1, x2, colour, label lines, index of the group's last paper, group, notable systems (checked against the papers)]
-    const BR = [[120, 600, CO, ['the path weight as the loss'], 1, 1, 'notable: LGCP 1600D · double well 50D · GMM-40 (2D)'],
+    const BR = [[120, 600, CO, ['the path weight as the loss'], 1, 1, 'notable: double well 50D · GMM-40 (2D)'],
       [690, 935, GO, ['right idea, high-variance debiasing'], 3, 2, 'notable: LJ-13, LJ-55 (165D) · GMM-40 up to 20D'],
       [1080, 1740, TE, ['fixed-point matching: train like a diffusion model, without data'], 8, 3, 'notable: alanine di- & tetrapeptide (Cartesian) · drug-like conformers (SPICE)']];
     const T0 = 0.4, DT = 0.48;
