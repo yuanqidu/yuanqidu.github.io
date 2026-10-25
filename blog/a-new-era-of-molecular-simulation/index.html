@@ -215,27 +215,32 @@
 <section class="slide" data-title="How do we train it? How the field got here" data-section="Neural samplers">
   <div class="kicker method">Neural samplers · how do we train it without data?</div>
   <h2>How do we train it? How the field got here</h2>
-  <canvas class="abs" style="left:90px;top:168px" width="1740" height="408" data-anim="litTimeline"></canvas>
-  <div class="abs" style="left:110px;top:588px;width:1700px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:26px">
-    <div class="card" style="padding:18px 24px;border-top:5px solid var(--coral)" data-f="1">
-      <div style="font-size:22px;color:var(--coral);font-weight:700">2022–24 · a divergence on whole paths</div>
-      <div class="eq" style="font-size:20px;margin:10px 0 2px">$\mathrm{KL}\big(\Pf_\theta\,\big\|\,\Pb\big)=\mathbb E_{\textcolor{#E76F51}{X_{0:N}\sim\Pf_\theta}}\Big[\log\dfrac{\mathrm d\Pf_\theta}{\mathrm d\Pb}(X_{0:N})\Big]$</div>
-      <div class="eq" style="font-size:20px;margin:0 0 8px">$\text{or}\ \ \mathrm{Var}_{X_{0:N}\sim\mathbb Q}\Big[\log\dfrac{\mathrm d\Pb}{\mathrm d\Pf_\theta}(X_{0:N})\Big]$</div>
-      <div class="small" style="font-size:20px">The reverse KL is evaluated on <b style="color:#E76F51">paths sampled from the model itself</b>; the log ratio is the <b>path weight</b> (coming up). But: backprop through the solver, no reuse of energy calls, mode collapse.</div>
+  <canvas class="abs" style="left:40px;top:168px" width="1840" height="380" data-anim="litTimeline"></canvas>
+  <div class="abs" style="left:110px;top:550px;width:1700px;display:grid;grid-template-columns:0.8fr 1fr 1fr 1fr;gap:18px">
+    <div class="card" style="padding:16px 20px;border-top:5px solid #8A96A3" data-f="1">
+      <div style="font-size:20px;color:#5D6B78;font-weight:700">2018 · Boltzmann generators</div>
+      <div class="small" style="font-size:18px;margin-top:8px">A <b>normalizing flow</b>: exact likelihood $p_\theta(x)$, so reweighting to $\pi$ is exact.</div>
+      <div class="small" style="font-size:18px;margin-top:8px">But invertible layers limit <b>expressiveness</b>, and it is hard to <b>scale</b> to large, flexible systems.</div>
     </div>
-    <div class="card" style="padding:18px 24px;border-top:5px solid #C2870A" data-f="2">
-      <div style="font-size:22px;color:#A87406;font-weight:700">2024 · PDDS → iDEM: the right idea</div>
-      <div class="small" style="font-size:20px;margin-top:8px">Regress the score on the model's <b>own samples</b>; iDEM adds the replay buffer. Each step closer to the final loop.</div>
-      <div class="small" style="font-size:20px;margin-top:8px">But the debiasing sits <b>inside the label</b>: SMC weights (PDDS), an importance-sampled score $\nabla\log\frac1K\sum_k e^{-\beta U(x+s_t\varepsilon_k)}$ (iDEM). <b style="color:#B4492F">High variance → fails at scale.</b></div>
+    <div class="card" style="padding:16px 20px;border-top:5px solid var(--coral)" data-f="2">
+      <div style="font-size:20px;color:var(--coral);font-weight:700">2022–24 · a divergence on whole paths</div>
+      <div class="eq" style="font-size:18px;margin:10px 0 2px">$\mathrm{KL}\big(\Pf_\theta\,\big\|\,\Pb\big)=\mathbb E_{\textcolor{#E76F51}{X_{0:N}\sim\Pf_\theta}}\Big[\log\dfrac{\mathrm d\Pf_\theta}{\mathrm d\Pb}(X_{0:N})\Big]$</div>
+      <div class="eq" style="font-size:18px;margin:0 0 8px">$\text{or}\ \ \mathrm{Var}_{X_{0:N}\sim\mathbb Q}\Big[\log\dfrac{\mathrm d\Pb}{\mathrm d\Pf_\theta}(X_{0:N})\Big]$</div>
+      <div class="small" style="font-size:18px">The reverse KL is evaluated on <b style="color:#E76F51">paths sampled from the model itself</b>; the log ratio is the <b>path weight</b> (coming up). But: backprop through the solver, no reuse of energy calls, mode collapse.</div>
     </div>
-    <div class="card" style="padding:18px 24px;border-top:5px solid var(--teal)" data-f="3">
-      <div style="font-size:22px;color:var(--teal-dark);font-weight:700">2025–26 · fixed-point matching</div>
-      <div class="small" style="font-size:20px;margin-top:8px">Same loop, but the label is <b>one force</b> $\beta\mathbf F(X_N)$ at the model's own endpoint: no weights inside the regression, simulation-free, replay buffer.</div>
-      <div class="small" style="font-size:20px;margin-top:8px">Regression shapes each mode; it does not fix the <b>mode weights</b>.</div>
+    <div class="card" style="padding:16px 20px;border-top:5px solid #C2870A" data-f="3">
+      <div style="font-size:20px;color:#A87406;font-weight:700">2024 · PDDS → iDEM: the right idea</div>
+      <div class="small" style="font-size:18px;margin-top:8px">Regress the score on the model's <b>own samples</b>; iDEM adds the replay buffer. Each step closer to the final loop.</div>
+      <div class="small" style="font-size:18px;margin-top:8px">But the debiasing sits <b>inside the label</b>: SMC weights (PDDS), an importance-sampled score $\nabla\log\frac1K\sum_k e^{-\beta U(x+s_t\varepsilon_k)}$ (iDEM). <b style="color:#B4492F">High variance → fails at scale.</b></div>
+    </div>
+    <div class="card" style="padding:16px 20px;border-top:5px solid var(--teal)" data-f="4">
+      <div style="font-size:20px;color:var(--teal-dark);font-weight:700">2025–26 · fixed-point matching</div>
+      <div class="small" style="font-size:18px;margin-top:8px">Same loop, but the label is <b>one force</b> $\beta\mathbf F(X_N)$ at the model's own endpoint: no weights inside the regression, simulation-free, replay buffer.</div>
+      <div class="small" style="font-size:18px;margin-top:8px">Regression shapes each mode; it does not fix the <b>mode weights</b>.</div>
     </div>
   </div>
-  <div class="takeaway violet" data-f="4">ATLAS · JANUS = fixed-point matching <b>+</b> the 2022–24 path-weight loss, back as a <b>regularizer</b> for the mode weights.</div>
-  <div class="cite">Zhang &amp; Chen 2022 (PIS) · Vargas et al. 2023 (DDS) · Berner et al. 2024 (DIS) · Richter &amp; Berner 2024 (log-variance) · Vargas et al. 2024 (CMCD) · Phillips et al. 2024 (PDDS) · Akhound-Sadegh et al. 2024 (iDEM) · He*, <b class="me">Du</b>* et al. 2025 (No trick, no treat) · Havens et al. 2025 (Adjoint Sampling) · Liu et al. 2025 (ASBS) · Blessing et al. 2026 (Bridge Matching Sampler) · Havens et al. 2026 (Flow Sampling)</div>
+  <div class="takeaway violet" data-f="5" style="bottom:112px">ATLAS · JANUS = fixed-point matching <b>+</b> the 2022–24 path-weight loss, back as a <b>regularizer</b> for the mode weights.</div>
+  <div class="cite">Noé et al. 2018 (Boltzmann generators) · Zhang &amp; Chen 2022 (PIS) · Vargas et al. 2023 (DDS) · Berner et al. 2024 (DIS) · Richter &amp; Berner 2024 (log-variance) · Vargas et al. 2024 (CMCD) · Phillips et al. 2024 (PDDS) · Akhound-Sadegh et al. 2024 (iDEM) · He*, <b class="me">Du</b>* et al. 2025 (No trick, no treat) · Havens et al. 2025 (Adjoint Sampling) · Liu et al. 2025 (ASBS) · Blessing et al. 2026 (Bridge Matching Sampler) · Havens et al. 2026 (Flow Sampling)</div>
 </section>
 
 <!-- =============================================================== 10. FIXED-POINT LOOP -->

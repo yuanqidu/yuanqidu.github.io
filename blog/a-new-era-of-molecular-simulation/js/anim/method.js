@@ -366,22 +366,24 @@
   // ------------------------------------------------------------------
   ANIMS.litTimeline = function (S, o) {
     const ctx = S.ctx; let clock = 0, step = 0, stepT = 0;
-    const W0 = 1750, SC = S.w / W0, AX = 250;
+    const W0 = 2050, SC = S.w / W0, AX = 250, OFF = 300;   // OFF: room on the left for the 2018 (arXiv) Boltzmann generators, before an axis break
     const CO = C.coral, GO = '#C2870A', TE = C.teal, VI = C.violet, GR = '#8A96A3';
     // [x, high, title, subtitle, colour, group]
-    const EV = [[210, 0, 'PIS · DDS · DIS', 'reverse KL on path space', CO, 1], [540, 1, 'Log-variance · CMCD', 'off-policy losses', CO, 1],
-      [740, 0, 'PDDS', 'SMC particles as labels', GO, 2], [880, 1, 'iDEM', 'MC score estimate + buffer', GO, 2],
-      [1000, 0, 'No trick, no treat', 'our benchmark, 2025', C.navy, 0], [1135, 1, 'Adjoint Sampling', 'target gradient as label', TE, 3],
-      [1260, 0, 'ASBS', 'general priors & schedules', TE, 3], [1400, 1, 'Bridge Matching Sampler', 'generalized fixed-point matching', TE, 3],
-      [1530, 0, 'Flow Sampling', 'conditional denoising', TE, 3], [1655, 1, 'ATLAS · JANUS', 'this talk', VI, 4]];
+    const EV = [[-150, 0, 'Boltzmann generators', 'normalizing flow + reweighting', GR, 1],
+      [210, 0, 'PIS · DDS · DIS', 'reverse KL on path space', CO, 2], [540, 1, 'Log-variance · CMCD', 'off-policy losses', CO, 2],
+      [740, 0, 'PDDS', 'SMC particles as labels', GO, 3], [880, 1, 'iDEM', 'MC score estimate + buffer', GO, 3],
+      [1000, 0, 'No trick, no treat', 'our benchmark, 2025', C.navy, 0], [1135, 1, 'Adjoint Sampling', 'target gradient as label', TE, 4],
+      [1260, 0, 'ASBS', 'general priors & schedules', TE, 4], [1400, 1, 'Bridge Matching Sampler', 'generalized fixed-point matching', TE, 4],
+      [1530, 0, 'Flow Sampling', 'conditional denoising', TE, 4], [1655, 1, 'ATLAS · JANUS', 'this talk', VI, 5]];
     // [x1, x2, colour, label lines, index of the group's last paper, group, notable systems (checked against the papers)]
-    const BR = [[120, 600, CO, ['the path weight as the loss'], 1, 1, 'notable: double well 50D · GMM-40 (2D)'],
-      [690, 935, GO, ['right idea, high-variance debiasing'], 3, 2, 'notable: LJ-13, LJ-55 (165D) · GMM-40 up to 20D'],
-      [1080, 1740, TE, ['fixed-point matching: train like a diffusion model, without data'], 8, 3, 'notable: alanine di- & tetrapeptide (Cartesian) · drug-like conformers (SPICE)']];
+    const BR = [[-265, -35, GR, ['exact likelihood,', 'limited expressiveness'], 0, 1, ''],
+      [120, 600, CO, ['the path weight as the loss'], 2, 2, 'notable: double well 50D · GMM-40 (2D)'],
+      [690, 935, GO, ['right idea, high-variance debiasing'], 4, 3, 'notable: LJ-13, LJ-55 (165D) · GMM-40 up to 20D'],
+      [1080, 1740, TE, ['fixed-point matching: train like a diffusion model, without data'], 9, 4, 'notable: alanine di- & tetrapeptide (Cartesian) · drug-like conformers (SPICE)']];
     const T0 = 0.4, DT = 0.48;
     const shownAt = (i) => T0 + i * DT;
     function emph(g) { // dim the other groups while a card is being discussed
-      if (step < 1 || step > 4) return 1;
+      if (step < 1 || step > 5) return 1;
       if (g === 0) return 1;   // our benchmark stays highlighted at every build
       return g === step ? 1 : 0.32;
     }
@@ -394,9 +396,16 @@
       S.clear(); ctx.save(); ctx.scale(SC, SC);
       const nShow = Math.max(0, Math.min(EV.length, Math.floor((clock - T0) / DT) + 1)), prog = E.clamp((clock - T0) / (DT * (EV.length - 0.4)));
       // axis, filled in as time passes
-      ctx.strokeStyle = '#D5DAE0'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(20, AX); ctx.lineTo(1722, AX); ctx.stroke();
-      ctx.strokeStyle = C.navy; ctx.lineWidth = 3.5; ctx.beginPath(); ctx.moveTo(20, AX); ctx.lineTo(20 + 1702 * prog, AX); ctx.stroke();
-      arrow(ctx, 1712, AX, 1740, AX, prog >= 1 ? C.navy : '#B8C0C8', 3, 14);
+      const G1 = 286, G2 = 314, XE = 1722 + OFF;   // axis break between 2018 and 2022
+      const axis = (x2, col, lw) => { ctx.strokeStyle = col; ctx.lineWidth = lw; ctx.beginPath(); ctx.moveTo(20, AX); ctx.lineTo(Math.min(x2, G1), AX);
+        if (x2 > G2) { ctx.moveTo(G2, AX); ctx.lineTo(x2, AX); } ctx.stroke(); };
+      axis(XE, '#D5DAE0', 3); axis(20 + (XE - 20) * prog, C.navy, 3.5);
+      ctx.strokeStyle = '#8A96A3'; ctx.lineWidth = 2.4;
+      [G1, G2].forEach((x) => { ctx.beginPath(); ctx.moveTo(x - 6, AX + 12); ctx.lineTo(x + 6, AX - 12); ctx.stroke(); });
+      arrow(ctx, XE - 10, AX, XE + 18, AX, prog >= 1 ? C.navy : '#B8C0C8', 3, 14);
+      ctx.strokeStyle = '#B8C0C8'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(70, AX - 9); ctx.lineTo(70, AX + 9); ctx.stroke();
+      text(ctx, '2018', 70, AX + 36, { size: 19, weight: 700, color: '#8A96A3', align: 'center' });
+      ctx.translate(OFF, 0);
       [[2022, 60], [2023, 380], [2024, 700], [2025, 1020], [2026, 1340]].forEach(([yr, x]) => {
         ctx.strokeStyle = '#B8C0C8'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(x, AX - 9); ctx.lineTo(x, AX + 9); ctx.stroke();
         text(ctx, String(yr), x, AX + 36, { size: 19, weight: 700, color: '#8A96A3', align: 'center' });
@@ -418,9 +427,9 @@
         ctx.restore();
       });
       // PDDS → iDEM: increasingly close to the final loop
-      if (nShow >= 4) {
-        const a = E.clamp((clock - shownAt(3)) / 0.5);
-        ctx.save(); ctx.globalAlpha = a * emph(2); ctx.setLineDash([5, 4]); ctx.strokeStyle = GO; ctx.lineWidth = 2;
+      if (nShow >= 5) {
+        const a = E.clamp((clock - shownAt(4)) / 0.5);
+        ctx.save(); ctx.globalAlpha = a * emph(3); ctx.setLineDash([5, 4]); ctx.strokeStyle = GO; ctx.lineWidth = 2;
         ctx.beginPath(); ctx.moveTo(752, AX - 14); ctx.quadraticCurveTo(810, AX - 48, 864, AX - 18); ctx.stroke(); ctx.setLineDash([]);
         arrow(ctx, 856, AX - 22, 868, AX - 14, GO, 2, 9); ctx.restore();
       }
@@ -438,7 +447,7 @@
     return {
       enter() { clock = 0; },
       step(k) { if (k !== step) stepT = clock; step = k; },
-      frame(dt) { clock += dt; draw(); }, draw, ff: 6.5
+      frame(dt) { clock += dt; draw(); }, draw, ff: 7.2
     };
   };
 
