@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex, nofollow, noarchive">
+<title>Lattice Field Theory, from Ising to SU(3) · Yuanqi Du</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Yuanqi Du">
+<meta name="description" content="Talk slides: lattice field theory from the Ising model to SU(3) gauge theory and QCD, the Monte Carlo methods that sample it, and where machine-learned samplers fit in. Every figure is a live simulation.">
+<link rel="stylesheet" href="vendor/katex/katex.min.css">
+<link rel="stylesheet" href="css/deck.css">
+<style>
+
+  .slide > .kicker.grid { color: var(--blue); }
+  .slide > .kicker.spin { color: var(--teal-dark); }
+  .slide > .kicker.field { color: var(--copper); }
+  .slide > .kicker.gauge { color: var(--violet); }
+  .slide > .kicker.qcd { color: #B4492F; }
+  .slide > .kicker.meth { color: var(--navy); }
+  .title-slide h1 em { background: linear-gradient(90deg, var(--navy), var(--violet) 55%, #B4492F); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .red { color: #B4492F; }
+  .eqline { font-size: 28px; }
+  .dimnote { font-size: 18px; color: var(--muted); line-height: 1.35; }
+  .num-chip { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: var(--navy); color: #fff; font-weight: 700; font-size: 20px; flex: none; }
+  .step-row { display: flex; gap: 16px; align-items: flex-start; margin: 0 0 16px 0; }
+  .step-row .small { color: var(--ink); }
+  .mini { padding: 16px 20px 18px; }
+  .mini .h { font-size: 23px; font-weight: 680; color: var(--navy); line-height: 1.2; }
+  .mini .s { font-size: 19px; color: var(--ink-soft); line-height: 1.38; margin-top: 6px; }
+  .mini .r { font-size: 16px; color: var(--muted); line-height: 1.3; margin-top: 8px; }
+  .box { padding: 18px 22px 20px; border-radius: 16px; background: rgba(29,58,95,.06); border-left: 6px solid var(--navy); }
+  .box.teal { background: rgba(42,157,143,.09); border-left-color: var(--teal); }
+  .box.coral { background: rgba(231,111,81,.09); border-left-color: var(--coral); }
+  .box.violet { background: rgba(107,94,155,.09); border-left-color: var(--violet); }
+  .box .h { font-size: 22px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+  .box .s { font-size: 20px; line-height: 1.42; color: var(--ink); }
+  .tight > li { margin-bottom: 10px !important; }
+  ul.clean.sm { font-size: 22px; line-height: 1.4; }
+  ul.clean.xs { font-size: 20px; line-height: 1.38; }
+  /* the ladder */
+  .lad-names { display: grid; grid-template-columns: repeat(7, 1fr); gap: 38px; }
+  .lad-names .nm { font-size: 27px; font-weight: 720; color: var(--navy); text-align: center; }
+  .lad-names .wh { font-size: 18.5px; color: var(--ink-soft); text-align: center; line-height: 1.35; margin-top: 6px; }
+  .lad-names .nm.g { color: var(--violet); }
+  .lad-names .wh sup { line-height: 0; }
+  .scalebar { display: grid; grid-template-columns: 4fr 3fr; gap: 38px; font-size: 20px; font-weight: 650; }
+  .scalebar > div { padding: 10px 16px; border-radius: 10px; }
+  .scalebar .a { background: rgba(42,157,143,.10); color: var(--teal-dark); }
+  .scalebar .b { background: rgba(107,94,155,.12); color: var(--violet); text-align: right; }
+  /* results timeline */
+  .res { display: grid; grid-template-columns: 96px 1fr; gap: 6px 18px; align-items: baseline; }
+  .res .y { font-size: 24px; font-weight: 750; color: #B7793A; font-variant-numeric: tabular-nums; }
+  .res { row-gap: 14px; }
+  .res .t { font-size: 23px; color: var(--ink); line-height: 1.32; }
+  .res .t small { display: block; font-size: 17.5px; color: var(--muted); margin-top: 3px; }
+  /* dictionary table */
+  table.dict { border-collapse: collapse; width: 100%; font-size: 21px; }
+  table.dict th { text-align: left; font-weight: 700; padding: 8px 12px; border-bottom: 2px solid var(--ink); font-size: 20px; }
+  table.dict td { padding: 9px 12px; border-bottom: 1px solid var(--faint); line-height: 1.3; vertical-align: top; }
+  table.dict td:first-child { color: var(--ink); }
+  table.dict td:last-child { color: var(--ink-soft); }
+  /* cheat sheet and fermion table */
+  table.cheat { border-collapse: collapse; width: 100%; font-size: 22px; }
+  table.cheat th { text-align: left; font-weight: 700; padding: 11px 14px; border-bottom: 2px solid var(--ink); font-size: 21px; color: var(--navy); }
+  table.cheat td { padding: 15px 14px; border-bottom: 1px solid var(--faint); line-height: 1.32; vertical-align: top; color: var(--ink-soft); }
+  table.cheat td:first-child { color: var(--ink); font-weight: 700; white-space: nowrap; }
+  table.ferm { border-collapse: collapse; width: 100%; font-size: 17.5px; }
+  table.ferm th { text-align: left; font-weight: 700; padding: 6px 10px; border-bottom: 2px solid var(--ink); color: var(--navy); white-space: nowrap; }
+  table.ferm td { padding: 7px 10px; border-bottom: 1px solid var(--faint); line-height: 1.28; vertical-align: top; color: var(--ink-soft); }
+  table.ferm td:first-child { color: var(--ink); font-weight: 700; white-space: nowrap; }
+  table.mx { border-collapse: collapse; width: 100%; font-size: 19px; }
+  table.mx th { font-weight: 700; padding: 8px 8px; border-bottom: 2px solid var(--ink); font-size: 17.5px; text-align: center; color: var(--navy); }
+  table.mx th:first-child { text-align: left; }
+  table.mx td { padding: 9px 8px; border-bottom: 1px solid var(--faint); text-align: center; font-size: 22px; }
+  table.mx td:first-child { text-align: left; font-size: 19px; color: var(--ink); font-weight: 600; white-space: nowrap; }
+  .mx .y { color: var(--teal-dark); font-weight: 800; } .mx .m { color: var(--gold); font-weight: 800; } .mx .n { color: #C9CFD6; }
+  /* ML cards and family cards */
+  .fam { padding: 22px 26px 26px; border-top: 6px solid var(--navy); display: flex; flex-direction: column; gap: 10px; }
+  .fam .h { font-size: 27px; font-weight: 720; line-height: 1.15; }
+  .fam .e { font-size: 17.5px; color: var(--muted); }
+  .fam .l { font-size: 20.5px; line-height: 1.38; color: var(--ink); }
+  .fam .w { font-size: 20.5px; line-height: 1.38; color: var(--ink-soft); }
+  .fam .l b, .fam .w b { font-weight: 700; }
+  .big-stat { font-size: 88px; font-weight: 760; letter-spacing: -0.03em; color: var(--navy); line-height: 1; }
+  .big-stat small { font-size: 30px; font-weight: 600; color: var(--ink-soft); letter-spacing: 0; }
+  .canvas-cap { font-size: 17px; color: var(--muted); line-height: 1.35; }
+  .chip-row { display: flex; gap: 10px; flex-wrap: wrap; }
+
+</style>
+<script src="vendor/katex/katex.min.js"></script>
+<script src="vendor/katex/contrib/auto-render.min.js"></script>
+<script src="js/util.js"></script>
+<script src="js/engines.js"></script>
+<script src="js/anim/kit.js"></script>
+<script src="js/anim/intro.js"></script>
+<script src="js/anim/spins.js"></script>
+<script src="js/anim/fields.js"></script>
+<script src="js/anim/gauge.js"></script>
+<script src="js/anim/methods.js"></script>
+<script src="js/deck.js"></script>
+</head>
+<body>
+<div class="viewport"><div class="stage">
+<section class="slide title-slide" data-title="Lattice Field Theory, from Ising to SU(3)" data-section="Title">
+  <div class="wash"><i style="left:-180px;top:-220px;width:760px;height:560px;background:#D7E3F1"></i><i style="left:380px;top:800px;width:820px;height:520px;background:#E4DDF1"></i><i style="left:1300px;top:-260px;width:760px;height:600px;background:#F4DCCF"></i></div>
+  <div class="abs" style="left:124px;top:178px;font-size:21px;font-weight:650;letter-spacing:.16em;text-transform:uppercase;color:#B7793A">A tour in one talk</div>
+  <h1 style="top:226px;font-size:80px;width:880px">Lattice Field Theory, <em>from Ising to SU(3)</em></h1>
+  <div class="subtitle" style="top:470px;width:820px">Spins, fields and gauge links on a grid, and the Monte Carlo methods that sample them</div>
+  <div class="who" style="top:690px">Yuanqi Du</div>
+  <div class="aff" style="top:740px">Microsoft Research</div>
+  <div class="venue" style="top:830px;width:880px">A summary of the interactive notes · every figure is a live simulation</div>
+  <canvas class="abs" style="left:1060px;top:150px" width="740" height="740" data-anim="heroIsing" data-opts='{"L":192}'></canvas>
+  <div class="abs canvas-cap" style="left:1060px;top:906px;width:740px">A 192 × 192 Ising model at its critical temperature, updated live with Wolff clusters. Navy is the majority spin.</div>
+  <aside class="notes"><p>Today I want to give you a tour of lattice field theory: from the Ising model to SU(3) gauge theory, which is QCD, and the Monte Carlo methods that make it computable. [Animation] What you see is a 192 by 192 Ising model at its critical temperature, running live with Wolff cluster updates. Every figure in this talk is a small simulation like this one, checked against an exact answer wherever one exists.</p></aside>
+</section>
+
+<section class="slide" data-title="The whole story in five lines" data-section="Overview">
+  <div class="kicker intro">Overview</div>
+
+  <h2>The whole story in five lines</h2>
+  <div class="abs" style="left:110px;top:182px;width:1700px;display:grid;gap:13px"><div class="card ucr" style="grid-template-columns:60px 1fr;align-items:center;padding-top:16px;padding-bottom:17px" data-f="0"><div class="drv-n">1</div><div><span class="lead b" style="font-size:28px;color:var(--navy)">Replace spacetime by a grid</span><div class="small" style="margin-top:4px;color:var(--ink-soft)">A field becomes a finite list of numbers, and the path integral becomes an ordinary, if enormous, integral $Z=\int d\phi\,e^{-S[\phi]}$.</div></div></div><div class="card ucr" style="grid-template-columns:60px 1fr;align-items:center;padding-top:16px;padding-bottom:17px" data-f="1"><div class="drv-n">2</div><div><span class="lead b" style="font-size:28px;color:var(--navy)">Imaginary time makes $e^{-S}$ a Boltzmann weight</span><div class="small" style="margin-top:4px;color:var(--ink-soft)">A quantum field theory in $d$ dimensions <b>is</b> a statistical-mechanics model in $d$ dimensions. We compute by sampling configurations with probability $\propto e^{-S}$.</div></div></div><div class="card ucr" style="grid-template-columns:60px 1fr;align-items:center;padding-top:16px;padding-bottom:17px" data-f="2"><div class="drv-n">3</div><div><span class="lead b" style="font-size:28px;color:var(--navy)">The models form a ladder</span><div class="small" style="margin-top:4px;color:var(--ink-soft)">$\pm1$ → $q$ colours → an angle → a real number → phases on links → SU(2) → SU(3) matrices. The symmetry goes from global to local (gauge).</div></div></div><div class="card ucr" style="grid-template-columns:60px 1fr;align-items:center;padding-top:16px;padding-bottom:17px" data-f="3"><div class="drv-n">4</div><div><span class="lead b" style="font-size:28px;color:var(--navy)">The continuum limit is a critical point</span><div class="small" style="margin-top:4px;color:var(--ink-soft)">The correlation length in lattice units diverges, $\xi/a\to\infty$. That is why <b>critical slowing down</b> is the central algorithmic problem.</div></div></div><div class="card ucr" style="grid-template-columns:60px 1fr;align-items:center;padding-top:16px;padding-bottom:17px" data-f="4"><div class="drv-n">5</div><div><span class="lead b" style="font-size:28px;color:var(--navy)">Workhorses, and two frontiers</span><div class="small" style="margin-top:4px;color:var(--ink-soft)">Local updates, cluster algorithms, Hybrid Monte Carlo. Frontiers: topological freezing and the sign problem. Machine-learned samplers are a new branch aimed at both.</div></div></div></div>
+  <aside class="notes"><p>Here is the whole talk in five lines. First: put spacetime on a grid. A field becomes a finite list of numbers, and the path integral becomes an ordinary, if enormous, integral.</p>
+<p>[Build 1] Second: rotate to imaginary time. Then e to the minus S is a Boltzmann weight, so a quantum field theory in d dimensions is a statistical-mechanics model in d dimensions, and we compute by sampling.</p>
+<p>[Build 2] Third: the models form a ladder. What sits on the grid gets richer, from plus or minus one up to SU(3) matrices, and the symmetry goes from global to local.</p>
+<p>[Build 3] Fourth: the continuum limit is a critical point. That is why critical slowing down is the central algorithmic problem.</p>
+<p>[Build 4] And fifth: the workhorses are local updates, cluster algorithms and Hybrid Monte Carlo; the frontiers are topological freezing and the sign problem; and machine-learned samplers are a new branch aimed at both.</p></aside>
+</section>
+
+<section class="slide" data-title="The ladder of models" data-section="Overview">
+  <div class="kicker intro">Overview · the ladder</div>
+
+  <h2>The cast: seven models, one recipe</h2>
+  <div class="abs body" style="left:110px;top:176px;width:1700px">Each model is two choices: <b>what sits on the grid</b>, and <b>how neighbours are coupled</b> (the action $S$). Down the ladder the variables get richer and the symmetry gets bigger.</div>
+<canvas class="abs" style="left:110px;top:300px" width="1700" height="210" data-anim="ladder" data-opts='{"tile":210}'></canvas>
+  <div class="abs lad-names" style="left:110px;top:530px;width:1700px"><div><div class="nm">Ising</div><div class="wh">a spin <b>±1</b><br>on every site</div></div><div><div class="nm">Potts</div><div class="wh">one of <b>q colours</b><br>on every site</div></div><div><div class="nm">XY</div><div class="wh">an <b>angle θ</b><br>on every site</div></div><div><div class="nm">φ⁴</div><div class="wh">a <b>real number φ</b><br>on every site</div></div><div><div class="nm g">U(1)</div><div class="wh">a <b>phase</b> e<sup>iθ</sup><br>on every link</div></div><div><div class="nm g">SU(2)</div><div class="wh">a <b>2×2</b> unitary matrix<br>on every link</div></div><div><div class="nm g">SU(3)</div><div class="wh">a <b>3×3</b> unitary matrix<br>on every link: QCD</div></div></div>
+  <div class="abs scalebar" style="left:110px;top:690px;width:1700px" data-f="1"><div class="a">← global symmetry: variables on sites</div><div class="b">local (gauge) symmetry: matrices on links →</div></div>
+  <div class="abs small" style="left:110px;top:760px;width:1700px" data-f="1">Gauge tiles show each link matrix as a dial of its eigenvalue phases: one phase for U(1), a pair $e^{\pm i\alpha}$ for SU(2), three phases adding to zero for SU(3), coloured after QCD's three colours.</div>
+  <div class="takeaway navy" data-f="2">The same few ideas carry you from the first tile to the last: an action, a weight $e^{-S}$, Monte Carlo sampling, and a continuum limit at a critical point.</div>
+  <aside class="notes"><p>The cast is small. Each model is defined by two choices: what sits on each point of the grid, and how neighbours are coupled. [Animation] Ising: a spin up or down. Potts: one of q colours. XY: an angle. Phi-four: any real number. Then the gauge theories, where the variables live on the links between sites: a phase for U(1), a two-by-two matrix for SU(2), and a three-by-three matrix for SU(3), drawn here by the eigenvalue phases of each link.</p>
+<p>[Build 1] Moving right, the variables get richer and the symmetry gets bigger. In the last three it becomes local: an independent symmetry transformation at every point.</p>
+<p>[Build 2] And the same few ideas carry you all the way: an action, a weight e to the minus S, Monte Carlo sampling, and a continuum limit at a critical point.</p></aside>
+</section>
+
+<section class="slide" data-title="Strong coupling needs a non-perturbative method" data-section="Why">
+  <div class="kicker intro">Why lattice field theory</div>
+
+  <h2>Near 1 GeV the strong force has no small parameter</h2>
+  <div class="abs" style="left:110px;top:180px;width:720px">
+    <div class="body">Every particle is a ripple in a quantum field. Predictions are averages over all field configurations, Feynman's path integral:</div>
+    <div class="eqbox eq" style="margin:16px 0 12px">$\langle\mathcal O\rangle=\dfrac1Z\displaystyle\int\mathcal D\phi\;\mathcal O[\phi]\,e^{\,iS[\phi]/\hbar}$</div>
+    <div class="small" style="color:var(--ink)">Perturbation theory expands in a small coupling: superb for electromagnetism. The strong coupling $\alpha_s$ <b>runs</b>: small at high energy (asymptotic freedom, Nobel 2004), of order one near 1 GeV, exactly where protons and pions live.</div>
+  </div>
+<canvas class="abs" style="left:880px;top:172px" width="930" height="500" data-anim="alphas"></canvas>
+  <div class="abs" style="left:110px;top:700px;width:1700px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px" data-f="1"><div class="card mini" style="border-top:5px solid #B7793A"><div class="h">Confinement</div><div class="s">Quarks and gluons are never seen alone, only bound into hadrons.</div></div><div class="card mini" style="border-top:5px solid #B7793A"><div class="h">Mass from interaction</div><div class="s">Up and down quark masses give about 1% of the proton mass; the rest is field energy.</div></div><div class="card mini" style="border-top:5px solid #B7793A"><div class="h">Chiral symmetry breaking</div><div class="s">Why pions are so much lighter than protons.</div></div><div class="card mini" style="border-top:5px solid #B7793A"><div class="h">The QCD transition</div><div class="s">How the quark–gluon plasma of the early universe became hadrons.</div></div></div>
+  <div class="takeaway" data-f="2">We need a method without a small coupling. Lattice field theory is the only one known that is <b>systematically improvable from first principles</b>.</div>
+  <aside class="notes"><p>Why do we need this? Every particle is a ripple in a quantum field, and to predict anything you average over all field configurations, weighted by e to the i S. The usual approach expands in a small coupling. For electromagnetism the coupling is one over 137, and perturbation theory works spectacularly. [Animation] For the strong force, the coupling runs with the energy scale. It is small at high energy, which is asymptotic freedom, but it grows to order one near one GeV, which is exactly the scale of protons and pions. There, each order of perturbation theory is as large as the last.</p>
+<p>[Build 1] And that is where the most basic facts of nuclear physics are decided: confinement; the fact that 99 percent of the proton mass comes from field energy, not from quark masses; chiral symmetry breaking, which makes pions light; and the QCD transition in the early universe.</p>
+<p>[Build 2] So we need a method that does not rely on a small coupling. The lattice is the only one known that is systematically improvable from first principles.</p></aside>
+</section>
+
+<section class="slide" data-title="Wilson's grid and fifty years of results" data-section="Why" data-optional>
+  <div class="kicker intro">Why lattice field theory</div>
+
+  <h2>Wilson's grid (1974): three ideas, fifty years of results</h2>
+  <div class="abs" style="left:110px;top:186px;width:800px">
+    <div class="step-row"><span class="num-chip">1</span><div class="small"><b>The grid is a regulator.</b> No wavelength shorter than $2a$ exists, so the ultraviolet infinities never appear. Physics is the limit $a\to0$ at fixed physical quantities.</div></div>
+    <div class="step-row" data-f="1"><span class="num-chip">2</span><div class="small"><b>Gauge symmetry stays exact</b> at every lattice spacing, by putting the gauge field on the <b>links</b> between sites.</div></div>
+    <div class="step-row" data-f="2"><span class="num-chip">3</span><div class="small"><b>The integral can be sampled.</b> In imaginary time the weight is positive, so Monte Carlo applies. Creutz first did it for SU(2) gauge theory in 1980.</div></div>
+  </div>
+  <div class="abs" style="left:100px;top:575px" data-f="1"><svg width="780" height="320" viewBox="0 0 780 320" style="display:block">
+      <rect x="285" y="50" width="110" height="110" fill="rgba(107,94,155,.18)"/>
+      <g stroke="#D9D3C7" stroke-width="3"><line x1="65" y1="50" x2="725" y2="50"/><line x1="65" y1="160" x2="725" y2="160"/><line x1="65" y1="270" x2="725" y2="270"/><line x1="65" y1="50" x2="65" y2="270"/><line x1="175" y1="50" x2="175" y2="270"/><line x1="285" y1="50" x2="285" y2="270"/><line x1="395" y1="50" x2="395" y2="270"/><line x1="505" y1="50" x2="505" y2="270"/><line x1="615" y1="50" x2="615" y2="270"/><line x1="725" y1="50" x2="725" y2="270"/></g>
+      <line x1="395" y1="160" x2="505" y2="160" stroke="#E76F51" stroke-width="8" stroke-linecap="round"/>
+      <g fill="#1F2933"><circle cx="65" cy="50" r="6.5"/><circle cx="65" cy="160" r="6.5"/><circle cx="65" cy="270" r="6.5"/><circle cx="175" cy="50" r="6.5"/><circle cx="175" cy="160" r="6.5"/><circle cx="175" cy="270" r="6.5"/><circle cx="285" cy="50" r="6.5"/><circle cx="285" cy="160" r="6.5"/><circle cx="285" cy="270" r="6.5"/><circle cx="395" cy="50" r="6.5"/><circle cx="395" cy="160" r="6.5"/><circle cx="395" cy="270" r="6.5"/><circle cx="505" cy="50" r="6.5"/><circle cx="505" cy="160" r="6.5"/><circle cx="505" cy="270" r="6.5"/><circle cx="615" cy="50" r="6.5"/><circle cx="615" cy="160" r="6.5"/><circle cx="615" cy="270" r="6.5"/><circle cx="725" cy="50" r="6.5"/><circle cx="725" cy="160" r="6.5"/><circle cx="725" cy="270" r="6.5"/></g>
+      <text x="340" y="113" text-anchor="middle" font-size="27" font-style="italic" fill="#6B5E9B" font-family="Source Serif 4 Variable, Georgia, serif">U<tspan font-size="18" dy="7">P</tspan></text>
+      <text x="450" y="146" text-anchor="middle" font-size="25" font-style="italic" fill="#B4492F" font-family="Source Serif 4 Variable, Georgia, serif">U<tspan font-size="17" dy="7">x,μ</tspan></text>
+      <g stroke="#52606D" stroke-width="2"><line x1="65" y1="298" x2="175" y2="298"/><line x1="65" y1="290" x2="65" y2="306"/><line x1="175" y1="290" x2="175" y2="306"/></g>
+      <text x="120" y="292" text-anchor="middle" font-size="24" font-style="italic" fill="#52606D" font-family="Source Serif 4 Variable, Georgia, serif">a</text>
+      <text x="200" y="304" font-size="18" fill="#8A96A3" font-family="Inter Variable, Inter, sans-serif">sites: matter · links: gauge field · plaquette: smallest loop</text>
+    </svg></div>
+  <div class="abs card" style="left:980px;top:180px;width:830px;padding:28px 30px 30px" data-f="3">
+    <div class="lead b" style="color:#B7793A;margin-bottom:14px">Lattice QCD as a precision tool</div>
+    <div class="res">
+      <div class="y">2006</div><div class="t">The QCD transition is a smooth crossover, not a phase transition<small>Aoki et al., Nature · centred near T ≈ 156 MeV (HotQCD 2019)</small></div>
+      <div class="y">2008</div><div class="t">Light hadron masses from QCD, given quark masses and one scale<small>Dürr et al., Science</small></div>
+      <div class="y">2015</div><div class="t">The 1.29 MeV neutron–proton mass difference<small>Borsanyi et al., Science (QCD + electromagnetism)</small></div>
+      <div class="y">2021</div><div class="t">Hadronic vacuum polarization for the muon's g − 2<small>Borsanyi et al., Nature · in 2025 the Standard-Model prediction adopted lattice results; theory and experiment now agree</small></div>
+      <div class="y">ongoing</div><div class="t">Quark masses, $\alpha_s$, decay constants, form factors<small>averaged by the FLAG review</small></div>
+    </div>
+  </div>
+  <div class="cite">K. G. Wilson, Phys. Rev. D 10, 2445 (1974) · M. Creutz, Phys. Rev. D 21, 2308 (1980)</div>
+  <aside class="notes"><p>Kenneth Wilson proposed it in 1974, and three ideas make it work. First, the grid is a regulator: no wavelength shorter than two lattice spacings exists, so the ultraviolet infinities never appear, and physics is the limit a to zero.</p>
+<p>[Build 1] Second, gauge symmetry stays exact at every lattice spacing, because the gauge field lives on the links. We will see how.</p>
+<p>[Build 2] Third, after rotating to imaginary time the integral has a positive weight, so it can be sampled. Michael Creutz did this for SU(2) in 1980.</p>
+<p>[Build 3] Fifty years later lattice QCD is a precision tool. The QCD transition is a crossover, not a phase transition, centred near 156 MeV. Light hadron masses come out of QCD given only quark masses and one scale. The neutron–proton mass difference, 1.29 MeV. And the hadronic contribution to the muon's magnetic moment: in 2025 the Standard-Model prediction switched to lattice results, and theory and experiment now agree.</p></aside>
+</section>
+
+<section class="slide" data-title="Imaginary time turns fields into statistical mechanics" data-section="Why">
+  <div class="kicker intro">Why lattice field theory</div>
+
+  <h2>Imaginary time turns quantum fields into statistical mechanics</h2>
+  <div class="abs" style="left:110px;top:176px;width:880px">
+    <div class="body">Rotate $t=-i\tau$ (a Wick rotation): the oscillating weight becomes a decaying one,</div>
+    <div class="eqbox eq" style="margin:12px 0 0">$e^{\,iS_M/\hbar}\;\longrightarrow\;e^{-S_E/\hbar},\qquad S_E\ge0$</div>
+  </div>
+<canvas class="abs" style="left:100px;top:350px" width="900" height="540" data-anim="wick"></canvas>
+  <div class="abs" style="left:1060px;top:180px;width:750px" data-f="2">
+    <table class="dict">
+      <tr><th>Euclidean field theory</th><th>Statistical mechanics</th></tr>
+      <tr><td>weight $e^{-S_E/\hbar}$</td><td>Boltzmann weight $e^{-H/k_BT}$</td></tr>
+      <tr><td>$\hbar$: quantum fluctuations</td><td>$k_BT$: thermal fluctuations</td></tr>
+      <tr><td>path integral $\int\mathcal D\phi\,e^{-S_E}$</td><td>partition function $\sum e^{-H/k_BT}$</td></tr>
+      <tr><td>vacuum expectation value</td><td>thermal average</td></tr>
+      <tr><td>mass of the lightest particle $m$</td><td>inverse correlation length $1/\xi$</td></tr>
+      <tr><td>continuum limit $a\to0$</td><td>critical point $\xi/a\to\infty$</td></tr>
+      <tr><td>time extent $L_t\,a$</td><td>inverse temperature $1/T$</td></tr>
+    </table>
+    <div class="small" style="margin-top:20px"><b>Universality:</b> near a critical point the details stop mattering, so the toy models describe real systems: Ising ↔ the liquid–gas critical point; XY ↔ superfluid helium films; φ⁴ ↔ the Higgs field; SU(3) ↔ QCD.</div>
+  </div>
+  <div class="takeaway" data-f="3">A quantum field theory in $d$ dimensions <b>is</b> a classical statistical system in $d$ dimensions: same algorithms, universal answers.</div>
+  <aside class="notes"><p>Here is the step that makes the lattice computable. Replace real time by imaginary time. [Animation] On the left is the complex time plane; on the right, the weight for a one-variable toy action. At angle zero this is e to the i S: modulus one everywhere, oscillating faster and faster, and the integral comes from delicate cancellations. No sampler can work with that.</p>
+<p>[Build 1] Now rotate the time axis by 90 degrees. The weight becomes e to the minus S: real, positive and peaked. A probability density you can sample.</p>
+<p>[Build 2] With that, quantum field theory and statistical mechanics share a dictionary. The action is energy over temperature; Planck's constant plays the role of temperature; the path integral is a partition function; and two entries matter most for the rest of the talk: the mass of a particle is an inverse correlation length, and the continuum limit is the approach to a critical point.</p>
+<p>[Build 3] So a quantum field theory in d dimensions is a classical statistical system in d dimensions. The same algorithms serve particle physics and condensed matter, and the results are universal.</p></aside>
+</section>
+
+<section class="slide" data-title="Why ML people should care" data-section="Why">
+  <div class="kicker intro">Why lattice field theory · for ML</div>
+
+  <h2>Why lattice field theory is a proving ground for ML samplers</h2>
+  <div class="abs" style="left:110px;top:182px;width:1100px;display:grid;gap:14px"><div class="card mini" style="border-left:5px solid var(--teal)" data-f="0"><div class="h">The target is known</div><div class="s">$p(\phi)\propto e^{-S[\phi]}$ up to normalization, with $S$ cheap to evaluate and to differentiate.</div></div><div class="card mini" style="border-left:5px solid var(--teal)" data-f="1"><div class="h">Exactness is not optional</div><div class="s">Results are compared with experiment at the per-mille level: samples must be asymptotically unbiased (exact MCMC, or reweighting with a known density).</div></div><div class="card mini" style="border-left:5px solid var(--teal)" data-f="2"><div class="h">The dimension is huge</div><div class="s">A $96^3\times192$ QCD lattice: 4 links per site, 8 real numbers per link.</div></div><div class="card mini" style="border-left:5px solid var(--teal)" data-f="3"><div class="h">Symmetry is everywhere</div><div class="s">Translations, internal symmetries, and gauge symmetry: an independent SU(3) rotation at each of ~10⁸ sites leaves $S$ unchanged.</div></div><div class="card mini" style="border-left:5px solid var(--teal)" data-f="4"><div class="h">Mixing is slow</div><div class="s">Topological sectors, first-order transitions and critical slowing down make the target effectively multimodal for local samplers.</div></div></div>
+  <div class="abs card" style="left:1270px;top:182px;width:540px;padding:30px 32px 32px;text-align:left" data-f="2">
+    <div class="small" style="color:var(--ink-soft)">variables in one sample of a current QCD ensemble</div>
+    <div class="big-stat" style="margin-top:14px">5 × 10⁹</div>
+    <div class="dimnote" style="margin-top:14px">$96^3\cdot192$ sites × 4 links × 8 reals</div>
+    <div class="small" style="margin-top:22px">about 36,000 times the numbers in one 224 × 224 RGB image</div>
+  </div>
+  <div class="takeaway violet" data-f="5">Normalizing flows came to lattice field theory in 2019 (Albergo, Kanwar &amp; Shanahan) and became gauge-equivariant in 2020–21. More at the end.</div>
+  <aside class="notes"><p>For the machine-learning people in the room: lattice field theory is a near-perfect proving ground for samplers. First, the target is known exactly up to normalization, and the action is cheap to evaluate and to differentiate.</p>
+<p>[Build 1] Second, exactness is not optional. Results are compared with experiment at the per-mille level, so samples must be asymptotically unbiased.</p>
+<p>[Build 2] Third, the dimension is huge: one configuration of a current QCD ensemble has about five billion real numbers, some 36,000 times the numbers in a 224 by 224 colour image.</p>
+<p>[Build 3] Fourth, symmetry is everywhere, including gauge symmetry: an independent SU(3) rotation at each of about a hundred million sites leaves the action unchanged.</p>
+<p>[Build 4] And fifth, mixing is slow: topological sectors, first-order transitions and critical slowing down make the target effectively multimodal.</p>
+<p>[Build 5] That is why normalizing flows were brought to lattice field theory in 2019 and made gauge-equivariant soon after. We will come back to them at the end.</p></aside>
+</section>
+
+<section class="slide" data-title="The recipe: from a path integral to a grid" data-section="Grid">
+  <div class="kicker grid">From path integral to grid</div>
+
+  <h2>The recipe: from a path integral to a grid, in four steps</h2>
+  <div class="abs" style="left:110px;top:186px;width:780px">
+    <div class="step-row"><span class="num-chip">1</span><div class="small">Replace spacetime by a hypercubic grid $x=a\,n$, $n\in\mathbb Z^d$, with $L$ points per direction and periodic boundaries.</div></div>
+    <div class="step-row"><span class="num-chip">2</span><div class="small">Replace the field $\phi(x)$ by one variable $\phi_n$ per site (for gauge fields, one per link).</div></div>
+    <div class="step-row"><span class="num-chip">3</span><div class="small">Derivatives become differences, integrals become sums: $\partial_\mu\phi\to(\phi_{n+\hat\mu}-\phi_n)/a$, $\int d^dx\to a^d\sum_n$.</div></div>
+    <div class="step-row"><span class="num-chip">4</span><div class="small">Sample configurations with probability $e^{-S}/Z$ and average over them.</div></div>
+    <div class="small" style="margin-top:22px" data-f="1">For a free scalar field of mass $m$:</div>
+    <div class="eqbox" style="margin-top:10px;font-size:23px" data-f="1">$S=\displaystyle\sum_n a^d\Big[\tfrac12\sum_\mu\frac{(\phi_{n+\hat\mu}-\phi_n)^2}{a^2}+\tfrac12m^2\phi_n^2\Big],\quad Z=\int\prod_n d\phi_n\,e^{-S}$</div>
+  </div>
+<canvas class="abs" style="left:960px;top:196px" width="850" height="470" data-anim="discretize"></canvas>
+  <div class="abs canvas-cap" style="left:960px;top:684px;width:850px">A smooth random field (left) and the same field read at the sites of grids with spacing $a$ = 32, 16, 8, 4 pixels (right, cycling). Fine grids reproduce the shape, at the price of $(L/a)^d$ variables.</div>
+  <div class="takeaway" data-f="2">A finite grid has finitely many variables, so every quantity is computable. The spacing $a$ is scaffolding: physics is what survives $a\to0$.</div>
+  <aside class="notes"><p>The recipe has four steps, and it is the same for every model today. A hypercubic grid with periodic boundaries; one variable per site, or per link for gauge fields; derivatives become differences and integrals become sums; then sample with probability e to the minus S over Z. [Animation] On the right, a smooth random field, and the same field read off at the sites of grids of decreasing spacing. Coarse grids lose the shape; fine grids reproduce it, at the price of more variables.</p>
+<p>[Build 1] For a free scalar field the lattice action is just this sum, and the path integral is an ordinary integral over L to the d real numbers.</p>
+<p>[Build 2] Two things to hold onto: on a finite grid everything is finite and computable, and the spacing a is scaffolding. The physical answers are the ones that survive a going to zero.</p></aside>
+</section>
+
+<section class="slide" data-title="Quantum mechanics is a 1D lattice field theory" data-section="Grid" data-optional>
+  <div class="kicker grid">From path integral to grid · warm-up</div>
+
+  <h2>Warm-up: quantum mechanics is a 1D lattice field theory</h2>
+  <div class="abs" style="left:110px;top:180px;width:540px">
+    <div class="small" style="color:var(--ink)">One particle in a potential $V$. Its "field" is the path $x(\tau)$. Slice Euclidean time into steps of length $a$, periodic:</div>
+    <div class="eqbox" style="margin:14px 0 18px;font-size:23px">$S=\displaystyle\sum_{n}\Big[\frac{m}{2a}(x_{n+1}-x_n)^2+a\,V(x_n)\Big]$</div>
+    <ul class="clean xs tight">
+      <li>A configuration is a <b>path</b>, sampled with probability $e^{-S}/Z$.</li>
+      <li>Histogram of positions → ground-state density $|\psi_0(x)|^2$.</li>
+      <li data-f="1">The correlator decays with the gap: $C(\tau)=\langle x(\tau)x(0)\rangle\to c\,e^{-(E_1-E_0)\tau}$.</li>
+      <li data-f="1">Effective mass $m_{\rm eff}(\tau)=\tfrac1a\ln\tfrac{C(\tau)}{C(\tau+a)}$: its plateau is $E_1-E_0$.</li>
+      <li data-f="2">Double well: the path tunnels between the wells (<b>instantons</b>); the gap is small (0.23 at this $a$), and local updates struggle to balance the two wells.</li>
+    </ul>
+  </div>
+<canvas class="abs" style="left:670px;top:176px" width="1140" height="700" data-anim="qmPaths"></canvas>
+  <div class="cite">Creutz &amp; Freedman, Ann. Phys. 132, 427 (1981) · live Metropolis, $a=0.5$, 32 time slices · grey curves: exact, from the transfer matrix</div>
+  <div class="takeaway navy" data-f="3" style="left:660px">This is how lattice QCD computes the proton mass: a correlator between two time slices, and its effective-mass plateau.</div>
+  <aside class="notes"><p>The simplest field theory has zero space dimensions: one particle in a potential. Its field is the path x of tau. Slice imaginary time into steps and you get this action: a kinetic term that keeps the path from jumping, and the potential. [Animation] Here is a live Metropolis simulation of paths in a harmonic well. The histogram of positions converges onto the exact ground-state density, computed from the transfer matrix.</p>
+<p>[Build 1] The correlator of x decays with the energy gap, so its local decay rate, the effective mass, has a plateau at E1 minus E0. The orange points settle onto the dashed exact value. We read off a quantum energy gap from random paths alone.</p>
+<p>[Build 2] Now switch to a double well. The path sits in one well and occasionally tunnels to the other: these jumps are instantons. The gap is small, 0.23 at this lattice spacing, because tunnelling is slow, and the local sampler struggles: watch how long the histogram takes to balance the two wells. Keep that in mind: it is a first taste of topological freezing.</p>
+<p>[Build 3] This is literally how lattice QCD computes the proton mass: replace x by an operator with the quantum numbers of a proton, and find the effective-mass plateau of its correlator.</p></aside>
+</section>
+
+<section class="slide" data-title="The continuum limit is a critical point" data-section="Grid">
+  <div class="kicker grid">From path integral to grid</div>
+
+  <h2>The continuum limit is a critical point</h2>
+  <div class="abs" style="left:110px;top:186px;width:760px">
+    <div class="small" style="color:var(--ink)">The lattice does not know $a$ in metres. You set dimensionless couplings and measure dimensionless numbers like $\xi/a$. A particle of mass $m$ is a correlation decaying as $e^{-r/\xi}$ with $\xi=1/m$. Fixed physics on ever finer grids means</div>
+    <div class="eqbox eq" style="margin:16px 0 16px">$a\to0\ \text{at fixed}\ \xi\quad\Longleftrightarrow\quad\xi/a\to\infty$</div>
+    <div class="small" style="color:var(--ink)">A diverging correlation length <b>is</b> a critical point. Continuum field theories live at the critical points of lattice models, and universality is why a crude grid can still give exact continuum physics.</div>
+    <div class="small" style="margin-top:14px" data-f="1">The renormalization group makes this visible: coarse-grain and watch the picture flow. At $T_c$ every level looks alike: a <b>fixed point</b>.</div>
+  </div>
+<canvas class="abs" style="left:900px;top:170px" width="910" height="560" data-anim="rgBlocks" data-opts='{"panel":150,"gapx":26,"gapy":26}'></canvas>
+  <div class="takeaway coral" data-f="2"><b>The algorithmic sting.</b> A local move carries information about one lattice spacing per update, so decorrelating a region of size $\xi$ takes $\sim(\xi/a)^z$ sweeps with $z\approx2$: <b>critical slowing down</b>.</div>
+  <aside class="notes"><p>Nothing on the lattice knows the value of a in metres. You set dimensionless couplings and measure dimensionless numbers like the correlation length in lattice units. A particle of fixed mass has a fixed correlation length, so describing it on ever finer grids means xi over a goes to infinity. A diverging correlation length is the definition of a critical point. So continuum field theories live at the critical points of lattice models, and universality is why a crude grid can still give exact continuum physics.</p>
+<p>[Build 1] [Animation] The renormalization group makes this visible. Three Ising models at slightly below, at, and slightly above the critical temperature, each coarse-grained three times by majority rule. Below T_c the blocks flow to perfect order; above, to noise. At T_c every level looks statistically alike: the critical point is a fixed point.</p>
+<p>[Build 2] And here is the sting. A local Monte Carlo move carries information about one lattice spacing per update, so decorrelating a region of size xi takes about xi to the z sweeps, with z around two. That is critical slowing down, the central computational problem of the field.</p></aside>
+</section>
+
+<section class="slide" data-title="Monte Carlo in one slide" data-section="Monte Carlo">
+  <div class="kicker grid">Monte Carlo</div>
+
+  <h2>Monte Carlo in one slide</h2>
+  <div class="abs" style="left:110px;top:180px;width:780px">
+    <div class="small" style="color:var(--ink)">A 100 × 100 Ising lattice has $2^{10000}$ configurations. Sample instead, and average:</div>
+    <div class="eqbox" style="margin:12px 0 16px;font-size:24px">$\langle\mathcal O\rangle\approx\dfrac1K\displaystyle\sum_{k=1}^K\mathcal O[\phi^{(k)}],\qquad\text{error}\approx\sigma_{\mathcal O}\sqrt{2\tau_{\rm int}/K}$</div>
+    <div class="small" style="color:var(--ink)">A Markov chain samples $p=e^{-S}/Z$ if it is ergodic and obeys detailed balance. <b>Metropolis</b> (1953): propose a symmetric change, accept with</div>
+    <div class="eqbox" style="margin:12px 0 14px;font-size:24px">$P_{\rm acc}=\min\big(1,\,e^{-\Delta S}\big),\qquad\Delta S=S[\phi']-S[\phi]$</div>
+    <div class="small" style="color:var(--ink)">$Z$ never appears. Changing one site touches only its neighbours: $O(1)$ work per update, $O(V)$ per <b>sweep</b>.</div>
+    <ul class="clean xs tight" style="margin-top:14px" data-f="1">
+      <li><b>Heat bath</b> (Gibbs): draw the new value from its exact conditional; always accepted.</li>
+      <li><b>Overrelaxation</b>: jump to the "mirror image" value with the same action; free, but not ergodic alone.</li>
+    </ul>
+  </div>
+<canvas class="abs" style="left:930px;top:196px" width="880" height="520" data-anim="metroSteps" data-opts='{"box":500}'></canvas>
+  <div class="takeaway" data-f="2"><b>Figure of merit:</b> $\tau_{\rm int}=\tfrac12+\sum_{t\ge1}\rho(t)$ sweeps per independent sample. Compare algorithms by <b>cost per effective sample</b>.</div>
+  <aside class="notes"><p>Monte Carlo in one slide. Even a 100 by 100 Ising lattice has two to the ten thousand configurations, so we sample and average, with a statistical error controlled by the integrated autocorrelation time. Lattice Monte Carlo is Markov chain Monte Carlo. Metropolis, 1953: propose a symmetric change, accept with probability min of one and e to the minus delta S. [Animation] Here is one step at a time on an eight by eight Ising model: pick a spin, add up its four neighbours, compute the energy change, compare with a uniform random number. The normalization Z never appears, and each update costs order one work.</p>
+<p>[Build 1] Two other single-variable updates recur all talk: heat bath, which draws the new value from its exact conditional and is always accepted; and overrelaxation, which jumps to the mirror image with the same action: a free move, but not ergodic on its own.</p>
+<p>[Build 2] The figure of merit is the autocorrelation time: sweeps per independent sample. We compare algorithms by cost per effective sample. If you come from ML, this is the MCMC you know; what is special here is locality, huge symmetry groups, and the demand for exact answers.</p></aside>
+</section>
+
+<section class="slide" data-title="The Ising model" data-section="Spins">
+  <div class="kicker spin">Spin models · Ising</div>
+
+  <h2>The Ising model: the hydrogen atom of statistical physics</h2>
+  <div class="abs" style="left:110px;top:180px;width:640px">
+    <div class="small" style="color:var(--ink)">A spin $s_i=\pm1$ on each site; neighbours like to align:</div>
+    <div class="eqbox" style="margin:12px 0 16px;font-size:25px">$H=-J\displaystyle\sum_{\langle ij\rangle}s_is_j-h\sum_is_i,\qquad p(s)=\frac{e^{-H/T}}{Z}$</div>
+    <div class="small" style="color:var(--ink)">At $h=0$, flipping every spin is a symmetry ($\mathbb Z_2$). Below $T_c$ it is <b>spontaneously broken</b>: $|m|>0$.</div>
+    <div class="small" style="color:var(--ink);margin-top:14px">Exactly solvable in 2D (Onsager 1944; Yang 1952):</div>
+    <div class="eqbox" style="margin:12px 0 16px;font-size:23px">$T_c=\dfrac{2}{\ln(1+\sqrt2)}\approx2.269,\quad |m|=\big(1-\sinh^{-4}\tfrac2T\big)^{1/8}$</div>
+    <div class="small" style="color:var(--ink)" data-f="1">Near $T_c$: power laws, $|m|\propto(T_c-T)^{1/8}$ and $\xi\propto|T-T_c|^{-1}$. These <b>critical exponents</b> are universal. In 3D there is no exact solution; Monte Carlo and the conformal bootstrap give $\nu\approx0.630$.</div>
+  </div>
+<canvas class="abs" style="left:800px;top:172px" width="1010" height="760" data-anim="isingTemps" data-opts='{"box":310}'></canvas>
+  <div class="cite">128 × 128 lattices, Wolff + Metropolis, live · dark curve: exact infinite-volume magnetization</div>
+  <aside class="notes"><p>The Ising model is the hydrogen atom of statistical physics: the simplest model with a phase transition, and the place where most simulation ideas were first tried. Spins plus or minus one, neighbours like to align. At zero field, flipping every spin is a symmetry, and below a critical temperature that symmetry is spontaneously broken. [Animation] Three live lattices: ordered at T equals 1.8, critical at T_c, with domains of every size, and disordered at T equals 3. In two dimensions Onsager solved it exactly, with T_c about 2.269.</p>
+<p>[Build 1] Near T_c quantities follow power laws, with critical exponents one eighth for the magnetization and one for the correlation length. The dark curve is the exact infinite-volume magnetization, and the coral dots are our three running simulations sitting on it. These exponents are universal: anything in the 2D Ising class, including phi-four theory later, shares them. In three dimensions there is no exact solution, and Monte Carlo and the conformal bootstrap give nu about 0.630.</p></aside>
+</section>
+
+<section class="slide" data-title="Critical slowing down" data-section="Spins">
+  <div class="kicker spin">Spin models · the central problem</div>
+
+  <h2>Critical slowing down: local updates cannot keep up</h2>
+  <div class="abs" style="left:110px;top:186px;width:560px">
+    <div class="small" style="color:var(--ink)">To change the magnetization of a correlated region of size $\xi$, information must diffuse across it:</div>
+    <div class="eqbox eq" style="margin:14px 0 14px">$\tau\propto\xi^{\,z}\ \ \longrightarrow\ \ \tau\propto L^{z}\ \text{at}\ T_c$</div>
+    <div class="small" style="color:var(--ink)">For Metropolis and heat bath in the 2D Ising model, the <b>dynamical exponent</b> is $z\approx2.17$.</div>
+    <div class="small" style="color:var(--ink);margin-top:14px">In field theory it strikes as $a\to0$: halving $a$ doubles $\xi/a$, and multiplies the autocorrelation time by $2^z\approx4.5$ on top of $2^d$ times more sites.</div>
+    <div class="box teal" style="margin-top:22px" data-f="1"><div class="s">Doubling $L$ makes Metropolis ≈ 4.5 × slower per independent sample; Wolff hardly changes ($z\approx0.25$).</div></div>
+  </div>
+<canvas class="abs" style="left:700px;top:176px" width="1110" height="720" data-anim="csdRace" data-opts='{"box":290}'></canvas>
+  <div class="cite">Same number of spin flips per sweep for both · $\tau_{\rm int}$ with the automatic window of Madras &amp; Sokal (1988) over the last 24,000 sweeps</div>
+  <aside class="notes"><p>Now the central problem. Local algorithms change one spin at a time, so changing the magnetization of a correlated region requires information to diffuse across it. The autocorrelation time grows like xi to the z, and at T_c on a finite lattice, like L to the z. For Metropolis in 2D Ising, z is about 2.17. In field theory this strikes as a goes to zero: halving the spacing multiplies the autocorrelation time by about 4.5, on top of 2 to the d more sites. [Animation] Two copies of the same 32 by 32 lattice at T_c, with the same number of spin flips per sweep. Metropolis on the left wanders slowly; Wolff on the right jumps between positive and negative magnetization within a few sweeps.</p>
+<p>[Build 1] The autocorrelation functions make it quantitative: Metropolis needs well over a hundred sweeps per independent sample of the magnetization; Wolff needs about one. Double L and Metropolis gets 4.5 times worse; Wolff hardly changes, because its z is about 0.25.</p></aside>
+</section>
+
+<section class="slide" data-title="Cluster algorithms" data-section="Spins">
+  <div class="kicker spin">Spin models · clusters</div>
+
+  <h2>Cluster algorithms: flip whole correlated regions</h2>
+  <div class="abs" style="left:110px;top:180px;width:900px">
+    <div class="small" style="color:var(--ink)">Fortuin–Kasteleyn (1972): connect equal neighbours with probability</div>
+    <div class="eqbox eq" style="margin:12px 0 14px">$p=1-e^{-2J/T}$</div>
+    <div class="small" style="color:var(--ink)">and the clusters can be flipped independently. <b>Swendsen–Wang</b> (1987) flips all of them; <b>Wolff</b> (1989) grows and flips one, from a random seed. This $p$ makes detailed balance exact, so no move is ever rejected.</div>
+    <ul class="clean xs tight" style="margin-top:16px">
+      <li>Mean Wolff cluster size = magnetic susceptibility.</li>
+      <li>At $T_c$ clusters are fractal and come in all sizes, so one flip changes every length scale: $z$ drops from 2.17 to about 0.25.</li>
+    </ul>
+    <div class="box coral" style="margin-top:18px" data-f="2"><div class="h">Why QCD does not use them</div><div class="s">They need an embedded Ising structure with unfrustrated couplings. Ising, Potts and O(N) models have one; spin glasses and gauge theories with quarks do not, and no efficient cluster algorithm is known. Lattice QCD uses molecular dynamics instead. Cousin: the <b>worm algorithm</b> (Prokof'ev &amp; Svistunov 2001).</div></div>
+  </div>
+<canvas class="abs" style="left:1080px;top:176px" width="730" height="760" data-anim="clusterAnatomy"></canvas>
+  <div class="cite">Why $p=1-e^{-2J/T}$ gives detailed balance: backup slide</div>
+  <aside class="notes"><p>The cure for critical slowing down in spin models came from a reformulation by Fortuin and Kasteleyn in 1972. Connect equal neighbours with probability one minus e to the minus 2J over T, and the resulting clusters can be flipped independently. Swendsen and Wang turned this into an algorithm in 1987; Wolff simplified it in 1989 to growing a single cluster from a random seed. [Animation] Here is a Wolff move: the cluster grows through equal neighbours, orange bonds are accepted, grey ticks refused, and then the whole cluster flips. That particular p is exactly what makes detailed balance hold, so there is never an accept-reject step.</p>
+<p>[Build 1] Swendsen–Wang places bonds everywhere at once, colours every cluster, and gives each a fresh random spin. At T_c clusters are fractal and come in all sizes, so one move changes the configuration on every length scale.</p>
+<p>[Build 2] So why does QCD not use them? They need a special structure: an embedded Ising model with unfrustrated couplings. Ising, Potts and O(N) have one. Spin glasses, and gauge theories with quarks, do not, and no efficient cluster algorithm is known. That is why lattice QCD relies on molecular dynamics.</p></aside>
+</section>
+
+<section class="slide" data-title="Two lessons from testing the samplers" data-section="Spins" data-optional>
+  <div class="kicker spin">Spin models · lessons</div>
+
+  <h2>Two bugs worth remembering (caught while testing the demos)</h2>
+  <div class="abs" style="left:110px;top:190px;width:1700px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:stretch">
+    <div class="card" style="padding:26px 30px 28px;border-top:6px solid var(--coral)">
+      <div class="lead b" style="color:#B4492F">Measure at times that do not depend on the state</div>
+      <div class="small" style="margin-top:12px;color:var(--ink)">A natural Wolff "sweep": flip clusters until $N$ spins have flipped, then measure. Each move is exact, but big clusters end the sweep early, so the <b>moment of measurement</b> depends on the configuration.</div>
+      <div class="small" style="margin-top:12px">2D Ising at $T=3$: energy −0.8245 instead of the exact −0.8173, about <b>20 standard errors</b>. Caught because XY energies from Wolff disagreed with three local algorithms.</div>
+      <div class="small" style="margin-top:12px;color:var(--ink)"><b>Fix:</b> a fixed number of clusters per sweep, tuned in warm-up, then frozen.</div>
+    </div>
+    <div class="card" style="padding:26px 30px 28px;border-top:6px solid var(--violet)" data-f="1">
+      <div class="lead b" style="color:var(--violet)">Fixed trajectory lengths can resonate</div>
+      <div class="small" style="margin-top:12px;color:var(--ink)">HMC on a free field: $\langle\phi^2\rangle$ drifted <b>4σ</b> away from the exact value. A fixed trajectory length can resonate with a mode of the field and stop it from decorrelating.</div>
+      <div class="small" style="margin-top:12px;color:var(--ink)"><b>Fix:</b> jitter the step size randomly from trajectory to trajectory (Mackenzie 1989).</div>
+    </div>
+  </div>
+  <div class="takeaway navy" data-f="2">The general lesson, familiar from adaptive MCMC: anything you adapt must stop adapting, or must not depend on the current state, before you measure. And always test against an exact answer.</div>
+  <aside class="notes"><p>A short detour with two bugs we caught while building the demos behind this talk, because they generalize. The first: a natural way to define a Wolff sweep is to keep flipping clusters until N spins have flipped, then measure. Every cluster move is exact, but big clusters end the sweep early, so the moment of measurement depends on the configuration. That biased the energy of the 2D Ising model at T equals 3 by about 20 standard errors. The fix is a fixed number of clusters per sweep, tuned in warm-up and then frozen.</p>
+<p>[Build 1] The second: HMC on a free field drifted four sigma away from the exact value of phi squared. A fixed trajectory length resonated with a mode of the field. Jittering the step size randomly from trajectory to trajectory cured it, a trick from Mackenzie in 1989.</p>
+<p>[Build 2] The lesson is familiar from adaptive MCMC: anything you adapt must stop adapting, or must not depend on the current state, before you measure. And always test against an exact answer; that is how both were caught.</p></aside>
+</section>
+
+<section class="slide" data-title="Potts: first-order transitions" data-section="Spins" data-optional>
+  <div class="kicker spin">Spin models · Potts</div>
+
+  <h2>The Potts model: more colours, and first-order transitions</h2>
+  <div class="abs" style="left:110px;top:180px;width:600px">
+    <div class="eqbox" style="font-size:25px">$H=-J\displaystyle\sum_{\langle ij\rangle}\delta_{s_i,s_j},\quad s_i\in\{0,\dots,q-1\}$</div>
+    <div class="small" style="color:var(--ink);margin-top:14px">$q=2$ is Ising. In 2D, duality gives $\beta_c=\ln(1+\sqrt q)$ exactly. For $q\le4$ the transition is continuous; for $q>4$ it is <b>first order</b> (Baxter 1973): two phases coexist at $\beta_c$.</div>
+    <div class="small" style="color:var(--ink);margin-top:14px" data-f="1">To switch phase, a finite box must build two interfaces: rate $\propto e^{-2\sigma L^{d-1}}$. <b>Supercritical slowing down</b>, exponential in $L$; no local or cluster move fixes it.</div>
+    <div class="small" style="color:var(--ink);margin-top:14px" data-f="1">Cure: change the ensemble, then reweight. Multicanonical (Berg &amp; Neuhaus 1991), Wang–Landau (2001), parallel tempering (1986, 1996).</div>
+    <div class="box violet" style="margin-top:18px" data-f="2"><div class="s"><b>Why QCD cares:</b> near deconfinement, SU(3) gauge theory behaves like the 3D 3-state Potts model (Svetitsky &amp; Yaffe 1982), and indeed deconfines through a first-order transition.</div></div>
+  </div>
+<canvas class="abs" style="left:740px;top:176px" width="1070" height="770" data-anim="pottsFirstOrder" data-opts='{"box":380}'></canvas>
+  <div class="cite">Live Swendsen–Wang updates at $\beta_c$ · dashed: exact energies of the two coexisting phases (Baxter)</div>
+  <aside class="notes"><p>Replace the two spin values by q colours, with an energy reward for equal neighbours. For q equals 2 it is Ising again. In two dimensions duality gives the critical point exactly. What changes with q is the nature of the transition: continuous for q up to 4, first order above 4, as Baxter showed. [Animation] Here is q equals 3 at the critical point: domains of all sizes, and the order parameter cloud has a three-fold shape. Remember that shape.</p>
+<p>[Build 1] Now q equals 8 on a 24 by 24 lattice. The energy jumps between two levels, and the histogram grows two peaks at the exact energies of the ordered and disordered phases. To get from one phase to the other a finite box must build two interfaces, which happens with a probability exponentially small in L to the d minus one. That is supercritical slowing down, and no local or cluster algorithm fixes it. The cure is to change the ensemble, multicanonical sampling, Wang–Landau or parallel tempering, and reweight back.</p>
+<p>[Build 2] And this matters for QCD: near deconfinement, SU(3) gauge theory behaves like the three-dimensional 3-state Potts model, and indeed deconfines through a first-order transition.</p></aside>
+</section>
+
+<section class="slide" data-title="The XY model: vortices and BKT" data-section="Spins">
+  <div class="kicker spin">Spin models · XY</div>
+
+  <h2>The XY model: vortices, topology and the BKT transition</h2>
+  <div class="abs" style="left:110px;top:180px;width:960px">
+    <div class="eqbox" style="font-size:25px">$H=-J\displaystyle\sum_{\langle ij\rangle}\cos(\theta_i-\theta_j)$, a continuous U(1) symmetry</div>
+    <ul class="clean xs tight" style="margin-top:18px">
+      <li><b>No ordinary order in 2D</b> (Mermin–Wagner 1966): long-wavelength spin waves cost almost nothing and wash out any magnetization.</li>
+      <li><b>A topological transition instead</b> (Berezinskii 1971; Kosterlitz &amp; Thouless 1973; Nobel 2016). Below $T_{\rm BKT}\approx0.893$ vortices come in bound pairs and correlations decay as a power law; above it free vortices proliferate.</li>
+    </ul>
+    <div class="small" style="color:var(--ink);margin-top:8px" data-f="1">A vortex is our first <b>topological</b> object. The winding number around a loop is an integer, so smooth changes cannot alter it:</div>
+    <div class="eqbox" style="margin-top:12px;font-size:23px" data-f="1">$n=\dfrac1{2\pi}\displaystyle\sum_{\text{loop}}\big(\theta_j-\theta_i\big)_{\text{wrapped to }(-\pi,\pi]}\in\mathbb Z$</div>
+    <div class="small" style="color:var(--ink);margin-top:14px" data-f="2">Topological charges of exactly this kind return in gauge theories, where they cause one of the hardest sampling problems. XY is O(2); the 2D O(3) and CP<sup>N−1</sup> models are classic toy QCDs (asymptotic freedom, a mass gap, instantons).</div>
+  </div>
+<canvas class="abs" style="left:1120px;top:176px" width="690" height="800" data-anim="xyVortices"></canvas>
+  <div class="cite">64 × 64, Wolff + overrelaxation + Metropolis, live; builds raise $T$ from 0.5 to 0.9 to 1.3</div>
+  <aside class="notes"><p>Now let each spin be an angle. The symmetry is continuous, and two things change. First, in 2D there is no ordinary order at any nonzero temperature: Mermin–Wagner. Long-wavelength spin waves cost almost nothing and wash out the magnetization. Second, there is still a transition, of a new kind: Berezinskii, Kosterlitz and Thouless. [Animation] At low temperature you see smooth colour gradients, spin waves, and almost no vortices.</p>
+<p>[Build 1] A vortex is a point around which the spins wind by 2 pi. The winding number around any loop is an integer, so small smooth changes cannot alter it. This is our first topological object. [Animation] Near T_BKT, about 0.893, the few vortices come in tightly bound vortex–antivortex pairs.</p>
+<p>[Build 2] Above it, free vortices proliferate and correlations decay exponentially. That unbinding is the BKT transition, which earned a Nobel Prize in 2016. Topological charges of exactly this kind come back in gauge theories, where they cause one of the hardest sampling problems. XY is the N equals 2 O(N) model; the 2D O(3) and CP N minus 1 models are classic toy versions of QCD.</p></aside>
+</section>
+
+<section class="slide" data-title="Three ways to update an angle" data-section="Spins" data-optional>
+  <div class="kicker spin">Spin models · updates</div>
+
+  <h2>Three ways to update an angle</h2>
+  <div class="abs" style="left:110px;top:186px;width:560px;display:grid;gap:16px">
+    <div class="card mini" style="border-left:5px solid var(--blue)"><div class="h">Metropolis</div><div class="s">Random kick $\theta'=\theta+\delta$, accept with $\min(1,e^{-\Delta E/T})$. Simple and general; small steps diffuse slowly, big ones get rejected.</div></div>
+    <div class="card mini" style="border-left:5px solid var(--teal)"><div class="h">Heat bath</div><div class="s">Draw directly from the conditional, a von Mises law $p(\theta)\propto e^{\beta\,\mathbf h\cdot\mathbf s(\theta)}$ with local field $\mathbf h=\sum_j\mathbf s_j$. Always accepted.</div></div>
+    <div class="card mini" style="border-left:5px solid var(--coral)"><div class="h">Overrelaxation</div><div class="s">Reflect about $\mathbf h$: $\theta'=2\varphi_h-\theta$. Energy unchanged, so free and always accepted; not ergodic alone.</div></div>
+  </div>
+<canvas class="abs" style="left:720px;top:190px" width="1090" height="620" data-anim="angleUpdates"></canvas>
+  <div class="takeaway">Heat bath plus a few overrelaxation sweeps is still the standard recipe for pure gauge theories (Adler 1981; Creutz 1987; Brown &amp; Woch 1987).</div>
+  <aside class="notes"><p>With continuous variables there are three natural local updates, and good algorithms combine them. [Animation] One XY spin with four fixed neighbours; on the right, its conditional distribution. Metropolis: a random kick, accepted or rejected; small steps diffuse slowly and large ones get rejected. Heat bath: draw directly from the conditional, a von Mises distribution around the local field; always accepted. Overrelaxation: reflect the spin about the local field. The energy is exactly unchanged, so the move is free and always accepted, and it carries the spin as far as possible; but it never changes the energy, so on its own it is not ergodic.</p>
+<p>For gauge theories, a heat-bath sweep followed by a few overrelaxation sweeps is still the standard recipe.</p></aside>
+</section>
+
+<section class="slide" data-title="φ⁴ theory" data-section="Fields">
+  <div class="kicker field">Fields · φ⁴</div>
+
+  <h2>φ⁴ theory: a field that takes any real value</h2>
+  <div class="abs" style="left:110px;top:180px;width:660px">
+    <div class="eqbox" style="font-size:22px">$S=\displaystyle\int d^dx\Big[\tfrac12(\partial\phi)^2+\tfrac12m_0^2\phi^2+\tfrac{\lambda_0}{4!}\phi^4\Big]$</div>
+    <div class="small" style="color:var(--ink);margin-top:12px">The Landau–Ginzburg theory of the Ising class; with a complex doublet, the Higgs sector. On the lattice, rescaled:</div>
+    <div class="eqbox" style="margin-top:12px;font-size:22px">$S=\displaystyle\sum_x\Big[-2\kappa\sum_{\mu}\phi_x\phi_{x+\hat\mu}+\phi_x^2+\lambda(\phi_x^2-1)^2\Big]$</div>
+    <ul class="clean xs tight" style="margin-top:16px">
+      <li>$\lambda=0$: a free (Gaussian) field, stable for $\kappa<1/(2d)$.</li>
+      <li>$\lambda\to\infty$: $\phi=\pm1$, the <b>Ising model</b> with $J/T=2\kappa$.</li>
+      <li data-f="1">Raising the hopping $\kappa$ breaks $\phi\to-\phi$: $\langle\phi\rangle\ne0$.</li>
+      <li data-f="2"><b>Universality, measured:</b> for every $\lambda$, Binder cumulants of 16² and 32² lattices cross at $U\approx0.61$, the 2D Ising value.</li>
+    </ul>
+  </div>
+<canvas class="abs" style="left:800px;top:176px" width="1010" height="720" data-anim="phi4Live" data-opts='{"box":560}'></canvas>
+  <div class="cite">64 × 64, Metropolis + Brower–Tamayo cluster updates, live · builds: $(\lambda,\kappa)=(1,0.2)$ double wells without order → $(1,0.4)$ ordered → $(5,0.256)$ an Ising model in disguise, at its critical point</div>
+  <aside class="notes"><p>Spins are discrete or have fixed length. A genuine field takes any real value at each point. The simplest interacting scalar theory is phi-four. It is the Landau–Ginzburg theory of the Ising class, and with a complex doublet, the Higgs sector. On the lattice it is conventional to write it with a hopping parameter kappa and a quartic coupling lambda. Lambda zero is a free Gaussian field; lambda to infinity pins phi to plus or minus one, and the model becomes Ising. [Animation] At lambda one and kappa 0.2, the histogram has two peaks, so every site sits in a double well, yet the signs are random and the magnetization is zero. Local double wells are not enough to break the symmetry.</p>
+<p>[Build 1] Raise the hopping past the critical curve and same-sign domains take over: the symmetry is broken, and the dot in the phase diagram has crossed into the broken phase.</p>
+<p>[Build 2] At lambda equals 5, sitting on its critical point, the histogram collapses onto two narrow peaks near plus and minus one, and you see domains of every size: an Ising model in disguise. And universality can be measured: for every lambda, Binder cumulants of two lattice sizes cross at about 0.61, the universal 2D Ising value.</p></aside>
+</section>
+
+<section class="slide" data-title="The free field: an exact flow" data-section="Fields" data-optional>
+  <div class="kicker field">Fields · free field</div>
+
+  <h2>The free field: mass = 1/ξ, and sampling is an exact flow</h2>
+  <div class="abs" style="left:110px;top:200px;width:1700px;display:grid;grid-template-columns:repeat(3,1fr);gap:26px">
+    <div class="small" style="color:var(--ink)">At $\lambda=0$ the integral is Gaussian: $S=\tfrac12\sum_x\phi_x(-\hat\Delta+m^2)\phi_x$. Momentum modes decouple: $\langle|\tilde\phi_p|^2\rangle=1/(\hat p^2+m^2)$.</div>
+    <div class="small" style="color:var(--ink)">The propagator $\langle\phi_x\phi_0\rangle\sim e^{-m|x|}$: a particle of mass $m$ <b>is</b> a correlation that dies over a distance $\xi=1/m$.</div>
+    <div class="small" style="color:var(--ink)" data-f="1">Sampling is trivial: noise → multiply each mode by $(\hat p^2+m^2)^{-1/2}$ → FFT. An exact <b>flow</b> from white noise to the field.</div>
+  </div>
+<canvas class="abs" style="left:110px;top:360px" width="1700" height="420" data-anim="gffFlow" data-opts='{"box":330,"m":0.08}'></canvas>
+  <div class="takeaway violet" data-f="2">For interacting theories no such linear map exists. Learned samplers try to find a nonlinear one.</div>
+  <aside class="notes"><p>At lambda equals zero everything is exactly solvable. In momentum space the modes decouple, each with variance one over p-hat squared plus m squared. [Animation] The correlation function, the propagator, decays like e to the minus m r: a particle of mass m is a correlation that dies over a distance one over m. That is the cleanest example of the dictionary.</p>
+<p>[Build 1] And sampling is trivial: take white noise, multiply each Fourier mode by the inverse square root of p-hat squared plus m squared, and transform back. The plot checks the measured correlation against the exact lattice propagator. Generative modellers will recognise this as an exact flow from noise to the field.</p>
+<p>[Build 2] For interacting theories no such linear map exists. Learned samplers try to find a nonlinear one.</p></aside>
+</section>
+
+<section class="slide" data-title="Hybrid Monte Carlo" data-section="Fields">
+  <div class="kicker field">Fields · Hybrid Monte Carlo</div>
+
+  <h2>Hybrid Monte Carlo: the workhorse of lattice QCD</h2>
+  <div class="abs" style="left:110px;top:180px;width:560px">
+    <div class="small" style="color:var(--ink)">Duane, Kennedy, Pendleton &amp; Roweth (1987), for lattice QCD. Statisticians know it as <b>Hamiltonian</b> Monte Carlo (Stan, NUTS). Give each variable a momentum:</div>
+    <div class="eqbox eq" style="margin:12px 0 14px">$H(\phi,\pi)=\tfrac12\sum_x\pi_x^2+S[\phi]$</div>
+    <div class="step-row"><span class="num-chip">1</span><div class="small">Draw fresh momenta $\pi_x\sim\mathcal N(0,1)$.</div></div>
+    <div class="step-row"><span class="num-chip">2</span><div class="small">Integrate $\dot\phi=\pi$, $\dot\pi=-\partial S/\partial\phi$ with <b>leapfrog</b>: $n$ steps of size $\epsilon$.</div></div>
+    <div class="step-row"><span class="num-chip">3</span><div class="small">Accept the end point with $\min(1,e^{-\Delta H})$.</div></div>
+    <div class="small" style="color:var(--ink)">Leapfrog is reversible and volume-preserving, so the method is exact for any $\epsilon$: errors cost acceptance, never correctness.</div>
+  </div>
+<canvas class="abs" style="left:700px;top:176px" width="1110" height="560" data-anim="hmcTraj"></canvas>
+  <div class="abs" style="left:700px;top:760px;width:1110px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px" data-f="1">
+    <div class="card mini" style="border-top:5px solid var(--copper)"><div class="h">Global moves</div><div class="s">every variable moves, guided by the force; cost per trajectory grows like $V^{5/4}$</div></div>
+    <div class="card mini" style="border-top:5px solid var(--copper)"><div class="h">Quarks</div><div class="s">only the <b>force</b> is needed: one sparse linear solve per step handles $\det D$</div></div>
+    <div class="card mini" style="border-top:5px solid var(--copper)"><div class="h">Weak spots</div><div class="s">slow modes (topology), costly solvers, resonances of a fixed trajectory length</div></div>
+  </div>
+  <aside class="notes"><p>For continuous fields there is a far more powerful update, and it is the workhorse of lattice QCD: Hybrid Monte Carlo, invented by Duane, Kennedy, Pendleton and Roweth in 1987. Statistics and machine learning know it as Hamiltonian Monte Carlo. Give every variable a fictitious momentum, draw fresh Gaussian momenta, integrate Hamilton's equations with the leapfrog integrator, and accept the end point with min of one and e to the minus delta H. [Animation] A phi-four chain of 48 sites: the field in blue, the momenta as coral bars. Below, the changes in kinetic and potential energy mirror each other along the trajectory while their sum, H, stays nearly constant, so almost every trajectory is accepted even though every site moved. Leapfrog is reversible and volume-preserving, so the method is exact for any step size: integration errors cost acceptance, never correctness.</p>
+<p>[Build 1] Why it rules QCD: global moves guided by the gradient, a cost per trajectory growing only like V to the five quarters, and above all, quarks. Integrating them out leaves a determinant that couples all links, and HMC only needs its force: one sparse linear solve per step. Its weak spots: slow modes like topology, the cost of those solves, and resonances of a fixed trajectory length.</p></aside>
+</section>
+
+<section class="slide" data-title="Local symmetry needs variables on links" data-section="Gauge">
+  <div class="kicker gauge">Gauge fields · U(1)</div>
+
+  <h2>Local symmetry needs variables on the links</h2>
+  <div class="abs" style="left:110px;top:180px;width:640px">
+    <div class="small" style="color:var(--ink)">Rotate a complex matter field by a <b>different</b> phase at every site, $\varphi_x\to e^{i\Lambda_x}\varphi_x$: the hopping term $\varphi_x^*\varphi_{x+\hat\mu}$ is no longer invariant. Comparing phases at two points needs a <b>parallel transporter</b> on the link:</div>
+    <div class="eqbox" style="margin:14px 0 14px;font-size:23px">$U_{x,\mu}=e^{i\theta_{x,\mu}}\to e^{i\Lambda_x}U_{x,\mu}e^{-i\Lambda_{x+\hat\mu}},\quad U_{x,\mu}\approx e^{iaA_\mu(x)}$</div>
+    <div class="small" style="color:var(--ink)" data-f="1">The smallest invariant: the <b>plaquette</b>, the product of links around a square. Its angle is the magnetic flux, $\theta_P\approx a^2F_{\mu\nu}$. Wilson's action:</div>
+    <div class="eqbox" style="margin-top:12px;font-size:23px" data-f="1">$S=\beta\displaystyle\sum_P\big(1-\cos\theta_P\big)\ \xrightarrow{a\to0}\ \frac1{4e^2}\int F_{\mu\nu}F_{\mu\nu}$</div>
+  </div>
+<canvas class="abs" style="left:790px;top:186px" width="1020" height="470" data-anim="gaugeXform" data-opts='{"sp":100}'></canvas>
+  <div class="abs" style="left:790px;top:690px;width:1020px;display:grid;grid-template-columns:1fr 1fr;gap:18px" data-f="2">
+    <div class="card mini" style="border-left:5px solid var(--violet)"><div class="h">Only closed loops are physical</div><div class="s">A configuration and all its gauge transforms have the same weight; only gauge-invariant observables can be nonzero (Elitzur).</div></div>
+    <div class="card mini" style="border-left:5px solid var(--violet)"><div class="h">Compact angles bring topology</div><div class="s">Keeping phases rather than $A_\mu$ keeps gauge invariance exact, and makes the action periodic: topology, and monopoles in 4D.</div></div>
+  </div>
+  <aside class="notes"><p>So far symmetries were global. The forces of nature come from local symmetries. Take a complex matter field and demand invariance under a different phase rotation at every site. The hopping term is no longer invariant: comparing phases at two points has become meaningless, unless we add a new variable that says how to carry a phase from one site to its neighbour. That is the link variable, a phase on each link, and in the continuum limit it is e to the i a times the vector potential. [Animation] Here a random gauge transformation rotates every site by its own angle and every link by the difference of its endpoints. Individual arrows and dials change. The covariant hop does not, and neither does the plaquette angle in each square.</p>
+<p>[Build 1] The plaquette, the product of links around a square, is the smallest gauge-invariant object, and its angle is the magnetic flux through the square. Wilson's action charges a cost for every plaquette, and it becomes Maxwell's action as a goes to zero.</p>
+<p>[Build 2] Two consequences: only closed loops are physical; and because Wilson kept compact phases, the action is periodic, which brings topology.</p></aside>
+</section>
+
+<section class="slide" data-title="2D U(1): exact answers and hidden topology" data-section="Gauge">
+  <div class="kicker gauge">Gauge fields · U(1) in 2D</div>
+
+  <h2>2D U(1) gauge theory: exact answers and hidden topology</h2>
+  <div class="abs" style="left:110px;top:180px;width:560px">
+    <div class="small" style="color:var(--ink)">Exactly solvable in 2D: after gauge fixing, plaquettes are independent with weight $e^{\beta\cos\theta_P}$, so</div>
+    <div class="eqbox eq" style="margin:12px 0 16px">$\langle\cos\theta_P\rangle=I_1(\beta)/I_0(\beta)$</div>
+    <div class="small" style="color:var(--ink)">The topological charge is an integer on a periodic lattice, like a winding number:</div>
+    <div class="eqbox eq" style="margin:12px 0 16px">$Q=\dfrac1{2\pi}\displaystyle\sum_P\theta_P,\ \ \theta_P\in(-\pi,\pi]$</div>
+    <div class="small" style="color:var(--ink)" data-f="1"><b>Gradient flow</b> (Lüscher 2010) flows downhill in the action, $\dot\theta=-\partial S/\partial\theta$. The ultraviolet noise melts; lumps of same-sign flux remain, <b>instantons</b>, and $Q$ does not change. In QCD this is how topology is measured and the scale is set.</div>
+  </div>
+<canvas class="abs" style="left:720px;top:180px" width="1090" height="640" data-anim="u1Live" data-opts='{"box":520,"beta":3}'></canvas>
+  <div class="cite">32 × 32, heat bath + overrelaxation at $\beta=3$, live; the flow acts on a frozen copy</div>
+  <aside class="notes"><p>In two dimensions this U(1) gauge theory is exactly solvable: after fixing a gauge the plaquettes are independent, and the average plaquette is a ratio of Bessel functions. [Animation] The colours are the plaquette angles of a live 32 by 32 simulation at beta 3, and the measured average sits on the exact curve. The topological charge, the sum of plaquette angles over 2 pi, is an integer on a periodic lattice, just like a winding number. You can see it jump between integers as we sample.</p>
+<p>[Build 1] Now take a configuration with a few units of charge and smooth it with the gradient flow: flow downhill in the action. The ultraviolet noise melts away, and what remains are lumps of same-sign flux: the topological charge, localized into instantons. And Q stays exactly the same during the flow. This is why gradient flow is the standard way to measure topology, and to set the lattice scale, in modern QCD.</p></aside>
+</section>
+
+<section class="slide" data-title="Wilson loops and confinement" data-section="Gauge">
+  <div class="kicker gauge">Gauge fields · confinement</div>
+
+  <h2>Wilson loops and confinement</h2>
+  <div class="abs" style="left:110px;top:170px;width:1700px">
+    <div class="small" style="color:var(--ink)">A static charge and anticharge at distance $R$, living for Euclidean time $T$: their world-lines form a rectangle, and the gauge field's response is the product of links around it.</div>
+    <div class="eqbox" style="margin-top:12px;font-size:25px">$W(R,T)=\Big\langle\displaystyle\prod_{\ell\in\partial(R\times T)}U_\ell\Big\rangle\propto e^{-V(R)\,T}$. Area law $W\sim e^{-\sigma RT}$ ⇒ $V(R)=\sigma R$: <b>confinement</b>, with string tension $\sigma$.</div>
+  </div>
+<canvas class="abs" style="left:110px;top:362px" width="1700" height="510" data-anim="wilsonArea" data-opts='{"box":410,"beta":3}'></canvas>
+  <div class="takeaway navy" data-f="3">Big loops get noisy fast: the signal $e^{-\sigma A}$ shrinks exponentially, the noise does not (fought with smearing and multilevel methods). In QCD the flux tube breaks by creating a quark–antiquark pair: mesons, never free quarks.</div>
+  <aside class="notes"><p>How do you see confinement? Put a static charge and anticharge a distance R apart for a Euclidean time T. Their world-lines form a rectangle, and the gauge field's response is the Wilson loop: the product of links around it, which decays like e to the minus the potential times T. [Animation] On the left a 4 by 3 loop is traced link by link. When the walker closes the loop, the phase it collected equals the sum of the twelve plaquette angles inside: a lattice Stokes theorem. That is why a Wilson loop measures the enclosed flux.</p>
+<p>[Build 1] If W falls off with the area, the potential grows linearly and pulling the charges apart costs ever more energy: confinement, with string tension sigma. The measured points fall on the exact line; in 2D U(1) the area law holds exactly.</p>
+<p>[Build 2] And the static potential, from ratios of loops, is linear.</p>
+<p>[Build 3] Notice how big loops get noisy: the signal shrinks exponentially while the noise does not, a general signal-to-noise problem. And in QCD the flux tube eventually breaks by creating a quark–antiquark pair, which is why we see mesons and never free quarks.</p></aside>
+</section>
+
+<section class="slide" data-title="Topological freezing" data-section="Gauge">
+  <div class="kicker gauge">Gauge fields · topology</div>
+
+  <h2>Topological freezing: correct in principle, stuck in practice</h2>
+  <div class="abs" style="left:110px;top:180px;width:560px">
+    <div class="small" style="color:var(--ink)">As $\beta$ grows (the continuum limit here), plaquettes are pinned near $\theta_P=0$. Changing $Q$ needs one to pass through $\pm\pi$, costing about $2\beta$: the tunnelling rate falls exponentially.</div>
+    <div class="small" style="color:var(--ink);margin-top:14px">The chain is still exact in principle. In practice it stays in one sector for longer than any run, and averages are <b>biased</b> by that sector.</div>
+    <div class="box coral" style="margin-top:20px" data-f="1"><div class="h">In 4D QCD</div><div class="s">With HMC the autocorrelation time of $Q$ grows like $a^{-5}$ or faster (Schaefer, Sommer &amp; Virotta 2011). Topological susceptibility, the η′ mass and axion physics become unreliable on fine lattices.</div></div>
+    <div class="small" style="margin-top:18px" data-f="2"><b>Responses:</b> open boundaries (Lüscher &amp; Schaefer 2011) · tempering in the boundary conditions (Hasenbusch 2017) · metadynamics (Laio et al. 2016) · <b>generative models</b> proposing all sectors at once (Kanwar et al. 2020: gauge-equivariant flows on exactly this model).</div>
+  </div>
+<canvas class="abs" style="left:720px;top:186px" width="1090" height="700" data-anim="topoFreeze"></canvas>
+  <div class="cite">Four independent 16 × 16 chains, heat bath + overrelaxation, live · exact $\langle Q^2\rangle$ from the independent-plaquette solution</div>
+  <aside class="notes"><p>Now the problem that brought machine learning into the field. As beta grows, which is the continuum limit, each plaquette is pinned closer to zero. To change Q by one unit, some plaquette angle must pass through plus or minus pi, which costs about 2 beta in action. [Animation] Four independent chains at beta 2, 4, 6 and 8. At beta 2, Q changes almost every sweep. At 6, a few times per thousand. At 8, essentially never. And look at the right: a frozen chain reports the Q squared of whatever sector it is stuck in, not the exact average. The chain is not slow in a harmless way; averages are biased by the sector it happens to be in.</p>
+<p>[Build 1] In four-dimensional QCD the same thing happens: with HMC the autocorrelation time of Q grows roughly like a to the minus five or faster. Anything sensitive to topology becomes unreliable on fine lattices.</p>
+<p>[Build 2] The established responses: open boundary conditions that let topology flow in and out, tempering in the boundary conditions, metadynamics. And generative models that propose configurations from all sectors directly; Kanwar and colleagues demonstrated gauge-equivariant flows on exactly this 2D U(1) model in 2020.</p></aside>
+</section>
+
+<section class="slide" data-title="SU(2) and SU(3): matrices that do not commute" data-section="QCD">
+  <div class="kicker qcd">Non-abelian gauge theory</div>
+
+  <h2>SU(2) and SU(3): link variables that do not commute</h2>
+  <div class="abs" style="left:110px;top:180px;width:820px">
+    <div class="small" style="color:var(--ink)">Quarks carry three colours. A gauge transformation is an independent SU(3) matrix $\Omega_x$ at every site, and links become matrices:</div>
+    <div class="eqbox" style="margin:12px 0 12px;font-size:23px">$U_{x,\mu}\to\Omega_xU_{x,\mu}\Omega^\dagger_{x+\hat\mu},\qquad S=\beta\displaystyle\sum_P\Big(1-\tfrac1N\,\mathrm{Re\,Tr}\,U_P\Big),\quad\beta=\frac{2N}{g^2}$</div>
+    <div class="small" style="color:var(--ink)">SU(2): unit quaternions, 3 parameters. SU(3): 8 parameters, one per gluon. Matrices do not commute, so gluons carry colour and interact with each other: the reason the coupling <b>shrinks</b> at short distances, and believed to cause confinement.</div>
+    <div class="small" style="color:var(--ink);margin-top:16px" data-f="1"><b>Updating one link.</b> The action depends only on the sum $A$ of its six <b>staples</b>: local weight $\exp(\tfrac\beta N\mathrm{Re\,Tr}\,UA)$.</div>
+    <ul class="clean xs tight" style="margin-top:10px" data-f="1">
+      <li>SU(2): draw the new link exactly, Creutz's heat bath (1980), made efficient by Kennedy &amp; Pendleton (1985).</li>
+      <li>SU(3): update SU(2) subgroups in turn, Cabibbo &amp; Marinari (1982).</li>
+      <li>Then a few overrelaxation sweeps: still the method of choice for pure gauge theory.</li>
+    </ul>
+  </div>
+<canvas class="abs" style="left:980px;top:176px" width="830" height="330" data-anim="orderMatters"></canvas>
+  <div class="abs" style="left:1240px;top:560px" data-f="1"><svg width="360" height="300" viewBox="-60 -140 360 300" style="display:block">
+  <g stroke="#D9D3C7" stroke-width="3">
+    <line x1="-40" y1="-110" x2="240" y2="-110"/><line x1="-40" y1="0" x2="240" y2="0"/><line x1="-40" y1="110" x2="240" y2="110"/>
+    <line x1="0" y1="-130" x2="0" y2="130"/><line x1="200" y1="-130" x2="200" y2="130"/>
+  </g>
+  <g fill="none" stroke="#6B5E9B" stroke-width="7" stroke-linejoin="round" stroke-linecap="round" opacity=".85">
+    <polyline points="0,0 0,-110 200,-110 200,0"/><polyline points="0,0 0,110 200,110 200,0"/>
+  </g>
+  <line x1="0" y1="0" x2="200" y2="0" stroke="#E76F51" stroke-width="9" stroke-linecap="round"/>
+  <g fill="#1F2933"><circle cx="0" cy="0" r="7"/><circle cx="200" cy="0" r="7"/><circle cx="0" cy="-110" r="5"/><circle cx="200" cy="-110" r="5"/><circle cx="0" cy="110" r="5"/><circle cx="200" cy="110" r="5"/></g>
+  <text x="100" y="-14" text-anchor="middle" font-size="22" font-weight="700" fill="#B4492F" font-family="Inter Variable, Inter, sans-serif">U</text>
+  <text x="100" y="-122" text-anchor="middle" font-size="19" font-weight="650" fill="#6B5E9B" font-family="Inter Variable, Inter, sans-serif">staple</text>
+  <text x="100" y="148" text-anchor="middle" font-size="19" font-weight="650" fill="#6B5E9B" font-family="Inter Variable, Inter, sans-serif">staple</text>
+</svg></div>
+  <div class="abs dimnote" style="left:990px;top:640px;width:250px" data-f="1">In 2D a link has two staples; in 4D it has six. Their sum is all the link sees.</div>
+  <aside class="notes"><p>In QCD the quarks carry three colours, a gauge transformation is an independent SU(3) matrix at every site, and the link variables become SU(3) matrices too. The Wilson action is the same idea, with a trace. SU(2) matrices have three parameters, unit quaternions; SU(3) matrices have eight, one per gluon. [Animation] The big difference is that matrices do not commute: two quarter turns in opposite orders leave the block in different orientations, while phases always commute. In electromagnetism photons carry no charge, but gluons carry colour and interact with each other. That is why the coupling decreases at short distances, and it is believed to cause confinement.</p>
+<p>[Build 1] Updating one link: the action depends only on the sum of its staples, the other three links of each plaquette containing it. For SU(2) you can draw the new link exactly, Creutz's heat bath, made efficient by Kennedy and Pendleton. For SU(3), Cabibbo and Marinari update a sequence of SU(2) subgroups. Follow each heat-bath sweep with a few overrelaxation sweeps, and that is still the method of choice for pure gauge theory.</p></aside>
+</section>
+
+<section class="slide" data-title="Creutz 1980: confinement survives the continuum limit" data-section="QCD" data-optional>
+  <div class="kicker qcd">Non-abelian gauge theory · Creutz 1980</div>
+
+  <h2>Four gauge groups in four dimensions</h2>
+  <div class="abs body" style="left:110px;top:170px;width:1700px">A 4⁴ lattice, live. Sweep $\beta$ up from a disordered start (<span class="coral b">coral</span>), then back down (<span class="blue b">blue</span>), and record the average plaquette.</div>
+<canvas class="abs" style="left:110px;top:250px" width="1700" height="520" data-anim="gauge4d"></canvas>
+  <div class="abs" style="left:110px;top:800px;width:1700px;display:grid;grid-template-columns:1fr 1fr 2fr;gap:22px">
+    <div class="small"><b>Z₂:</b> an abrupt jump near β ≈ 0.44 with hysteresis, a first-order transition (Creutz, Jacobs &amp; Rebbi 1979).</div>
+    <div class="small"><b>U(1):</b> confined ↔ <b>Coulomb</b> phase near β ≈ 1.0, with a free photon: where electromagnetism lives.</div>
+    <div class="small" style="color:var(--ink)"><b>SU(2), SU(3): no jump.</b> The confining strong-coupling regime connects smoothly to the asymptotically free continuum limit $\beta\to\infty$: confinement can survive the continuum limit (Creutz 1980).</div>
+  </div>
+  <aside class="notes"><p>Here are four gauge groups on a 4 to the 4 lattice, all running live: Z2, U(1), SU(2) and SU(3). [Animation] Each sweeps beta upwards from a disordered start, in coral, then back down, in blue, measuring the average plaquette. Dashed curves are the leading strong- and weak-coupling predictions.</p>
+<p>Z2 jumps abruptly near beta 0.44, and the up and down branches do not coincide: hysteresis, the hallmark of a first-order transition, which Creutz, Jacobs and Rebbi saw in 1979. U(1) switches between a confined phase and a Coulomb phase with a free, massless photon; our electromagnetism lives in the Coulomb phase. SU(2) and SU(3) show no jump at all: the curve slides smoothly from strong to weak coupling. That was Creutz's 1980 result: the confining strong-coupling regime is connected, without a phase transition, to the asymptotically free continuum limit. So confinement can survive the continuum limit.</p></aside>
+</section>
+
+<section class="slide" data-title="Deconfinement and the Polyakov loop" data-section="QCD">
+  <div class="kicker qcd">QCD · deconfinement</div>
+
+  <h2>Deconfinement: the Polyakov loop and centre symmetry</h2>
+  <div class="abs" style="left:110px;top:180px;width:780px">
+    <div class="small" style="color:var(--ink)">A short Euclidean time direction is a high temperature, $T=1/(aN_t)$. The order parameter of confinement is the trace of the time links around the time circle:</div>
+    <div class="eqbox" style="margin:12px 0 14px;font-size:24px">$P(\mathbf x)=\tfrac1N\mathrm{Tr}\displaystyle\prod_{t}U_4(\mathbf x,t),\qquad\langle P\rangle\propto e^{-F_q/T}$</div>
+    <div class="small" style="color:var(--ink)">Confined: an isolated quark costs infinite free energy, $\langle P\rangle=0$. Deconfined (quark–gluon plasma): $\langle P\rangle\ne0$.</div>
+    <div class="small" style="color:var(--ink);margin-top:14px" data-f="1"><b>Centre symmetry.</b> Multiply the time links on one slice by $z=e^{2\pi ik/N}$: every plaquette is unchanged, but $P\to zP$. Deconfinement is the spontaneous breaking of $\mathbb Z_N$, like the $N$-state Potts model.</div>
+    <div class="small" style="color:var(--ink);margin-top:14px" data-f="2">Pure SU(3) deconfines at a first-order transition (3D 3-state Potts), SU(2) at a second-order one (3D Ising). Real quarks break centre symmetry: the transition becomes the smooth crossover near 156 MeV.</div>
+  </div>
+<canvas class="abs" style="left:950px;top:186px" width="860" height="560" data-anim="polyakov" data-opts='{"box":560}'></canvas>
+  <div class="cite">SU(3) on a 6³ × 2 lattice, heat bath + two overrelaxation sweeps, live · each dot: the spatially averaged Polyakov loop of one configuration · builds: β = 5.5, a centre transformation, β = 4.8</div>
+  <aside class="notes"><p>A short Euclidean time direction means a high temperature. The order parameter of confinement is the Polyakov loop: the trace of the product of time links wrapping once around the time circle. It measures the free energy of a single static quark, so it vanishes when quarks are confined and is nonzero in the quark–gluon plasma. [Animation] This is SU(3) on a 6 cubed by 2 lattice at beta 5.5, the deconfined side. Each dot is one configuration's Polyakov loop in the complex plane, and the cloud sits near one of three directions.</p>
+<p>[Build 1] Why three? Multiply all time links on one time slice by a centre element of SU(3), a cube root of unity times the identity. Every plaquette is unchanged, but the Polyakov loop is multiplied by that phase. Watch the cloud jump to the next direction: all three are equivalent. Deconfinement is the spontaneous breaking of this Z3 centre symmetry, exactly like the ordering of the 3-state Potts model, a spin model with three colours.</p>
+<p>[Build 2] Lower beta to 4.8, the confined side, and the cloud collapses onto the origin. In large volumes pure SU(3) deconfines at a first-order transition, like the 3D 3-state Potts model. Real quarks break centre symmetry, and the transition becomes the smooth crossover at about 156 MeV.</p></aside>
+</section>
+
+<section class="slide" data-title="Adding quarks: determinants and doublers" data-section="QCD">
+  <div class="kicker qcd">QCD · quarks</div>
+
+  <h2>Adding quarks: determinants and doublers</h2>
+  <div class="abs" style="left:110px;top:176px;width:800px">
+    <div class="small" style="color:var(--ink)">Quarks are anticommuting Grassmann variables, which a computer cannot sample. The action is quadratic in them, so integrate them out exactly:</div>
+    <div class="eqbox" style="margin:12px 0 12px;font-size:23px">$Z=\displaystyle\int\mathcal DU\,\big(\det D[U]\big)^{N_f}e^{-S_g[U]},\quad \det(D^\dagger D)\propto\int\mathcal D\phi^\dagger\mathcal D\phi\,e^{-\phi^\dagger(D^\dagger D)^{-1}\phi}$</div>
+    <div class="small" style="color:var(--ink)">The determinant couples all links. <b>Pseudofermions</b> $\phi$ turn it into a Gaussian integral that HMC can handle, at the price of a huge sparse solve $(D^\dagger D)\chi=\phi$ per step: most of the world's lattice-QCD computing goes into conjugate gradient, deflation and multigrid solvers.</div>
+    <div class="small" style="color:var(--ink);margin-top:16px" data-f="1"><b>Doublers.</b> A naive derivative gives $E\propto\sin(pa)/a$, which vanishes at $p=0$ <b>and</b> $p=\pi/a$: one quark field becomes $2^4=16$. Nielsen–Ninomiya (1981): no local lattice action with exact chiral symmetry avoids this. Something has to give.</div>
+  </div>
+<canvas class="abs" style="left:960px;top:176px" width="850" height="400" data-anim="doubling" data-step-map='[0,0,1]'></canvas>
+  <div class="abs" style="left:960px;top:600px;width:850px" data-f="2">
+    <table class="ferm"><tr><th>lattice fermions</th><th>trick</th><th>price</th></tr><tr><td>Wilson (+ clover)</td><td>Wilson term gives doublers a mass ~ 2r/a</td><td>breaks chiral symmetry; additive mass renormalization</td></tr><tr><td>Staggered</td><td>spread spinor components over a 2⁴ hypercube</td><td>four "tastes", removed by rooting the determinant</td></tr><tr><td>Domain wall</td><td>a fifth dimension with chiral modes on its walls</td><td>roughly 10–20 × the cost</td></tr><tr><td>Overlap</td><td>exact Ginsparg–Wilson chiral symmetry</td><td>the most expensive (matrix sign function)</td></tr><tr><td>Twisted mass</td><td>chirally rotated Wilson mass term</td><td>automatic O(a) improvement; breaks isospin and parity at finite a</td></tr></table>
+  </div>
+  <aside class="notes"><p>Finally, quarks. They are fermions, described by anticommuting Grassmann variables that a computer cannot sample. But the action is quadratic in them, so they can be integrated out exactly, leaving a determinant of the lattice Dirac operator. For two light flavours the weight is still positive. But the determinant couples all the links, so the standard trick writes it as a Gaussian integral over bosonic pseudofermion fields, and samples everything with HMC. Every molecular-dynamics step then needs the solution of a huge sparse linear system. That is where most of the world's lattice-QCD computing time goes.</p>
+<p>[Build 1] There is a second, more surprising problem. [Animation] The naive lattice derivative gives a dispersion relation with a second minimum at the edge of the Brillouin zone: a second, unwanted light particle, a doubler. In four dimensions one quark field turns into sixteen. Nielsen and Ninomiya proved this cannot be avoided by any local lattice action with exact chiral symmetry.</p>
+<p>[Build 2] Wilson's fix adds a term that lifts the doubler to an energy of order 2r over a, which disappears from the spectrum as a goes to zero, at the price of breaking chiral symmetry. The table summarizes the trade-offs people choose between: Wilson and clover, staggered, domain wall, overlap and twisted mass.</p></aside>
+</section>
+
+<section class="slide" data-title="Seventy years of lattice algorithms" data-section="Methods" data-optional>
+  <div class="kicker meth">The methods map</div>
+
+  <h2>Seventy years of lattice algorithms</h2>
+<canvas class="abs" style="left:110px;top:170px" width="1700" height="690" data-anim="timeline"></canvas>
+  <div class="takeaway navy">Every method answers one question: how do we get many independent samples from $e^{-S}/Z$, or avoid sampling altogether? Each family was born to solve a problem the earlier ones could not.</div>
+  <aside class="notes"><p>Let me zoom out. [Animation] Seventy years of lattice algorithms in six families. Local Markov chains from Metropolis in 1953, heat bath and overrelaxation for gauge theories. Cluster and worm algorithms from the late eighties. Molecular dynamics, HMC in 1987, then mass preconditioning, rational HMC and multigrid solvers. Extended ensembles: reweighting, multicanonical, parallel tempering, open boundaries, metadynamics. Methods beyond Monte Carlo: Hamiltonian formulations, complex Langevin, tensor networks, thimbles, quantum simulation. And since 2019, machine learning.</p>
+<p>Every method answers the same question: how do we get many independent samples from e to the minus S, or avoid sampling altogether? And each family was born to solve a problem the earlier ones could not.</p></aside>
+</section>
+
+<section class="slide" data-title="Six families of methods" data-section="Methods" data-optional>
+  <div class="kicker meth">The methods map</div>
+
+  <h2>Six families of methods, and why people like them</h2>
+  <div class="abs" style="left:110px;top:176px;width:1700px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px"><div class="card fam" style="border-top-color:#4C72B0"><div class="h" style="color:#4C72B0">Local Markov chains</div><div class="e">Metropolis · heat bath · overrelaxation</div><div class="l"><b>Liked for:</b> universal, provably exact, trivially parallel (checkerboard), easy to verify</div><div class="w"><b>Struggles with:</b> critical slowing down ($z\approx2$), topological freezing</div></div><div class="card fam" style="border-top-color:#2A9D8F"><div class="h" style="color:#2A9D8F">Cluster &amp; worm</div><div class="e">Swendsen–Wang · Wolff · worm</div><div class="l"><b>Liked for:</b> nearly remove critical slowing down; never reject</div><div class="w"><b>Struggles with:</b> model-specific; nothing efficient for gauge theories with quarks</div></div><div class="card fam" style="border-top-color:#E76F51"><div class="h" style="color:#E76F51">Molecular dynamics</div><div class="e">HMC · RHMC · Langevin</div><div class="l"><b>Liked for:</b> global, gradient-guided moves; handle $\det D$; scale gently; GPU software ecosystems</div><div class="w"><b>Struggles with:</b> freezing on fine lattices; cost of the linear solves</div></div><div class="card fam" style="border-top-color:#6B5E9B"><div class="h" style="color:#6B5E9B">Extended ensembles</div><div class="e">multicanonical · Wang–Landau · tempering · metadynamics · open boundaries</div><div class="l"><b>Liked for:</b> cross barriers no local move can; reweighting extrapolates for free</div><div class="w"><b>Struggles with:</b> weights must be learned; reweighting variance grows with volume</div></div><div class="card fam" style="border-top-color:#1D3A5F"><div class="h" style="color:#1D3A5F">Beyond Monte Carlo</div><div class="e">strong coupling · tensor networks · quantum hardware · complex Langevin · thimbles</div><div class="l"><b>Liked for:</b> no sampling: no sign problem, no autocorrelation; real time</div><div class="w"><b>Struggles with:</b> so far limited in dimension and scale</div></div><div class="card fam" style="border-top-color:#D1495B"><div class="h" style="color:#D1495B">Machine learning</div><div class="e">normalizing flows · stochastic flows · diffusion · learned solvers</div><div class="l"><b>Liked for:</b> independent proposals: no autocorrelation; exact density for exact correction and free energies; reuse across parameters</div><div class="w"><b>Struggles with:</b> scaling with volume; training cost vs HMC; building in gauge symmetry</div></div></div>
+  <aside class="notes"><p>Here is what each family is liked for and where it struggles. Local chains: universal, exact, trivially parallel, but critical slowing down and freezing. Clusters: nearly remove critical slowing down, but are model-specific and do not exist for gauge theories with quarks. Molecular dynamics: global gradient-guided moves and the only practical route with dynamical quarks, but freezing on fine lattices and expensive solves. Extended ensembles: cross barriers and reweight, but the weights must be learned and reweighting variance grows with volume. Beyond Monte Carlo: no sampling means no sign problem and no autocorrelation, but limited so far in dimension and scale.</p>
+<p>And machine learning: independent proposals mean no autocorrelation and, in principle, no freezing; an exact model density allows an exact correction and direct free energies; and a trained model can be reused across parameters. The open problems are scaling with volume, training cost compared with HMC, and building in gauge symmetry.</p></aside>
+</section>
+
+<section class="slide" data-title="Normalizing flows for lattice fields" data-section="Methods">
+  <div class="kicker meth">The methods map · machine learning</div>
+
+  <h2>Normalizing flows: exact densities, independent samples</h2>
+  <div class="abs" style="left:110px;top:180px;width:960px">
+    <div class="small" style="color:var(--ink)">An invertible map from noise to fields, $\phi=T(z)$, $z\sim\mathcal N(0,1)$, built from layers with cheap Jacobians, so the model density is exact:</div>
+    <div class="eqbox" style="margin:12px 0 14px;font-size:24px">$\log q(\phi)=\log\mathcal N(z)-\log\Big|\det\dfrac{\partial T}{\partial z}\Big|$</div>
+    <div class="small" style="color:var(--ink)">Train by the reverse Kullback–Leibler divergence. It needs only samples from $q$ and the action: <b>no training data</b>.</div>
+    <div class="eqbox" style="margin:12px 0 18px;font-size:24px">$\mathrm{KL}(q\Vert p)=\mathbb E_{\phi\sim q}\big[\log q(\phi)+S(\phi)\big]+\log Z$</div>
+    <div class="small" style="color:var(--ink)" data-f="1">$q$ is never exactly $p$, so correct it, exactly:</div>
+    <ul class="clean xs tight" style="margin-top:10px" data-f="1">
+      <li><b>Flow-based MCMC:</b> independence Metropolis–Hastings with proposal $q$, accept $\min\!\big(1,\frac{p(\phi')q(\phi)}{p(\phi)q(\phi')}\big)$ (Albergo, Kanwar &amp; Shanahan 2019).</li>
+      <li><b>Reweighting:</b> weights $w=e^{-S}/q$; their mean estimates $Z$, hence the free energy (Nicoli et al. 2021).</li>
+    </ul>
+  </div>
+<canvas class="abs" style="left:1150px;top:176px" width="660" height="720" data-anim="flowMorph"></canvas>
+  <div class="cite">Right: 900 Gaussian samples carried to a two-site φ⁴ distribution by two coupling layers, here computed exactly from the target; a neural flow learns them, with many more layers and variables.</div>
+  <aside class="notes"><p>So how do flows work here? A normalizing flow is an invertible map from simple noise to field configurations, built from layers whose Jacobian determinant is cheap, so the model density is known exactly. [Animation] On the right, 900 Gaussian samples carried to the distribution of a two-site phi-four model by two coupling layers: first move phi one alone, then move phi two given phi one. Here the layers are computed exactly from the target; a neural flow learns them approximately, with many more layers and variables.</p>
+<p>The flow is trained by minimizing the reverse KL divergence, which needs only samples from the model and the action. No training data at all.</p>
+<p>[Build 1] Since the model is never exactly the target, the samples are corrected, exactly. Either use the flow as the proposal of an independence Metropolis–Hastings chain, as Albergo, Kanwar and Shanahan did in 2019; or give each sample the importance weight e to the minus S over q, whose average estimates the partition function, and with it the free energy.</p></aside>
+</section>
+
+<section class="slide" data-title="Independent proposals beat freezing, and stay exact" data-section="Methods">
+  <div class="kicker meth">The methods map · machine learning</div>
+
+  <h2>Independent proposals cross barriers, and stay exact</h2>
+  <div class="abs" style="left:110px;top:180px;width:560px">
+    <div class="small" style="color:var(--ink)">A one-dimensional caricature of topological freezing: sectors at the integers, barriers that grow with $\beta$ (here $\beta=8$).</div>
+    <ul class="clean xs tight" style="margin-top:16px">
+      <li>The <b>local chain</b> stays in one sector.</li>
+      <li>The <b>flow chain</b>, proposals from a model $q$ plus a Metropolis test, hops between sectors every few steps.</li>
+      <li data-f="1">Make the model worse: acceptance drops, but the histogram still matches $p$. The test makes the result exact <b>whatever the model</b>; quality only buys efficiency.</li>
+    </ul>
+  </div>
+<canvas class="abs" style="left:720px;top:176px" width="1090" height="700" data-anim="flowToy"></canvas>
+  <div class="takeaway coral" data-f="2"><b>The open problem:</b> in a field theory $q$ must be good on every site at once. Small per-site errors make the acceptance of independent proposals decay exponentially with volume.</div>
+  <aside class="notes"><p>Why do independent proposals help with freezing? Here is a one-dimensional caricature: sectors at the integers, separated by barriers that grow with beta. [Animation] The local chain, in violet, is stuck in one sector. The flow chain, in blue, proposes from a model q and applies a Metropolis test: it hops between sectors every few steps, and its histogram matches the target.</p>
+<p>[Build 1] Now make the model worse. The acceptance drops, but the histogram still matches p. The Metropolis test makes the result exact whatever the model; the quality of the model only buys efficiency.</p>
+<p>[Build 2] And here is the catch. In a field theory, q must be good on every site at once. If each site is a little off, the acceptance of an independent proposal shrinks exponentially with the volume. That scaling problem is the central open question for flows.</p></aside>
+</section>
+
+<section class="slide" data-title="Where the ML frontier is" data-section="Methods">
+  <div class="kicker meth">The methods map · machine learning</div>
+
+  <h2>Where the machine-learning frontier is</h2>
+  <div class="abs" style="left:110px;top:180px;width:1700px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px 22px"><div class="card mini" style="border-top:5px solid #D1495B;padding:20px 24px 22px" data-f="0"><div class="h" style="font-size:27px">Symmetry</div><div class="s" style="font-size:22px;margin-top:10px;line-height:1.42">Flows equivariant under translations and gauge transformations: U(1) (Kanwar et al. 2020), SU(N) (Boyda et al. 2021), any dimension (Abbott et al. 2023).</div></div><div class="card mini" style="border-top:5px solid #D1495B;padding:20px 24px 22px" data-f="1"><div class="h" style="font-size:27px">Fermions and QCD</div><div class="s" style="font-size:22px;margin-top:10px;line-height:1.42">Flows for theories with dynamical fermions (Albergo et al. 2021); proof-of-principle sampling of QCD configurations (Abbott et al. 2022).</div></div><div class="card mini" style="border-top:5px solid #D1495B;padding:20px 24px 22px" data-f="2"><div class="h" style="font-size:27px">Flows meet MCMC</div><div class="s" style="font-size:22px;margin-top:10px;line-height:1.42">Stochastic normalizing flows as non-equilibrium transport (Caselle et al. 2022), CRAFT (Matthews et al. 2022), learned trivializing flows inside HMC (Bacchio et al. 2023). Jarzynski-type weights link them to diffusion and non-equilibrium samplers.</div></div><div class="card mini" style="border-top:5px solid #D1495B;padding:20px 24px 22px" data-f="3"><div class="h" style="font-size:27px">Diffusion models</div><div class="s" style="font-size:22px;margin-top:10px;line-height:1.42">Score-based models trained on lattice configurations, whose sampling dynamics resembles stochastic quantization (Wang, Aarts &amp; Zhou 2023).</div></div><div class="card mini" style="border-top:5px solid #D1495B;padding:20px 24px 22px" data-f="4"><div class="h" style="font-size:27px">Beyond sampling</div><div class="s" style="font-size:22px;margin-top:10px;line-height:1.42">Gauge-equivariant networks as preconditioners for Dirac solvers (Lehner &amp; Wettig 2023); lattice gauge-equivariant CNNs (Favoni et al. 2022); learned actions and observables.</div></div><div class="card mini" style="border-top:5px solid var(--navy);padding:20px 24px 22px" data-f="5"><div class="h" style="font-size:27px">Start here</div><div class="s" style="font-size:22px;margin-top:10px;line-height:1.42">Review: Cranmer, Kanwar, Racanière, Rezende &amp; Shanahan, <i>Nat. Rev. Phys.</i> 2023. Hands-on tutorial: Albergo et al., arXiv:2101.08176 (2021).</div></div></div>
+  <div class="takeaway violet" data-f="6">Lattice field theory asks of a sampler what molecular simulation does, at $10^9$ dimensions: an exact target, exact answers, huge symmetry groups, and multimodality.</div>
+  <aside class="notes"><p>Where is the frontier? First, symmetry: flows that are equivariant under translations and gauge transformations, for U(1), then SU(N), then in arbitrary dimension.</p>
+<p>[Build 1] Second, fermions and QCD: flows for theories with dynamical fermions, and proof-of-principle sampling of QCD configurations.</p>
+<p>[Build 2] Third, mixing flows with MCMC: stochastic normalizing flows, which are non-equilibrium transport with weights; annealed flow transport like CRAFT; and learned trivializing flows used inside HMC. Annealing with importance weights and Jarzynski-type free-energy estimators link this line directly to diffusion-based and non-equilibrium samplers.</p>
+<p>[Build 3] Fourth, diffusion models trained on lattice configurations, whose sampling dynamics resembles stochastic quantization.</p>
+<p>[Build 4] Fifth, beyond sampling: gauge-equivariant networks as preconditioners for the Dirac solves that dominate the cost, and learned actions and observables.</p>
+<p>[Build 5] If you want to start, the 2023 Nature Reviews Physics review and the hands-on tutorial by Albergo and colleagues are the places.</p>
+<p>[Build 6] In one sentence: lattice field theory asks of a sampler what molecular simulation does, at a billion dimensions.</p></aside>
+</section>
+
+<section class="slide" data-title="The sign problem" data-section="Methods">
+  <div class="kicker meth">The methods map · frontier</div>
+
+  <h2>The sign problem: when $e^{-S}$ is not a probability</h2>
+  <div class="abs" style="left:110px;top:176px;width:620px">
+    <div class="small" style="color:var(--ink)">The Euclidean weight is complex for QCD at nonzero baryon density (neutron stars), for real-time dynamics, and for many fermion systems (the Hubbard model away from half filling). Sample $|e^{-S}|$ and move the phase into the observable:</div>
+    <div class="eqbox" style="margin:12px 0 12px;font-size:23px">$\langle\mathcal O\rangle=\dfrac{\langle\mathcal O\,e^{i\theta}\rangle_{|\cdot|}}{\langle e^{i\theta}\rangle_{|\cdot|}},\qquad\langle e^{i\theta}\rangle_{|\cdot|}=\dfrac{Z}{Z_{|\cdot|}}=e^{-V\Delta f}$</div>
+    <div class="small" style="color:var(--ink)" data-f="1">The average sign decays <b>exponentially with volume</b>; the noise shrinks only like $1/\sqrt N$. NP-hard in general (Troyer &amp; Wiese 2005): no universal fix is expected.</div>
+    <div class="small" style="margin-top:14px" data-f="2"><b>Attacks, tailored to the model:</b> Taylor expansion and imaginary chemical potential · reweighting · complex Langevin · Lefschetz thimbles and learned contour deformations · dual variables and worms · tensor networks · quantum computers.</div>
+  </div>
+<canvas class="abs" style="left:780px;top:186px" width="1030" height="640" data-anim="signPhases"></canvas>
+  <div class="cite">Toy model: $V$ independent Gaussians with weight $e^{-x^2/2+i\mu x}$, $\mu=0.5$; exact average sign $e^{-V\mu^2/2}$ · builds show $V$ = 2, 8, 32 on the circle</div>
+  <aside class="notes"><p>The last frontier. Everything so far relied on e to the minus S being positive. In several of the most interesting situations it is complex: QCD at nonzero baryon density, which is neutron-star cores and the phase diagram of nuclear matter; real-time dynamics; and many fermion systems in condensed matter. You can still sample the modulus and move the phase into the observable. [Animation] In this toy, each sample carries a phase; with two sites the phases cluster to one side and the average is easy to measure.</p>
+<p>[Build 1] But the average sign is a ratio of two partition functions, so it decays exponentially with the volume, while the statistical error shrinks only like one over root N. With eight sites the phases already spread around the circle.</p>
+<p>[Build 2] With 32 they cover it, the average arrow shrinks to nothing, and the measured points hit the noise floor. In general the problem is NP-hard, so no universal fix is expected. The attacks are tailored: Taylor expansion and imaginary chemical potential, complex Langevin, Lefschetz thimbles and learned contour deformations, dual variables, tensor networks, and quantum computers.</p></aside>
+</section>
+
+<section class="slide" data-title="Cheat sheet" data-section="Takeaways" data-optional>
+  <div class="kicker meth">Takeaways</div>
+
+  <h2>Cheat sheet</h2>
+  <div class="abs" style="left:110px;top:170px;width:1700px">
+    <table class="cheat"><tr><th>model</th><th>variables</th><th>symmetry</th><th>key facts</th><th>go-to algorithm</th></tr><tr><td>Ising</td><td>$s=\pm1$ on sites</td><td>$\mathbb Z_2$, global</td><td>2D: $T_c=2/\ln(1+\sqrt2)$, $\beta=\tfrac18$, $\nu=1$</td><td>Wolff / Swendsen–Wang</td></tr><tr><td>Potts</td><td>$q$ colours on sites</td><td>$S_q$, global</td><td>2D: $\beta_c=\ln(1+\sqrt q)$; first order for $q>4$</td><td>Swendsen–Wang, multicanonical</td></tr><tr><td>XY, O(N)</td><td>unit vectors on sites</td><td>O(N), global</td><td>2D XY: BKT at $T\approx0.893$; no order (Mermin–Wagner)</td><td>Wolff + overrelaxation</td></tr><tr><td>φ⁴</td><td>real $\phi$ on sites</td><td>$\mathbb Z_2$, global</td><td>Ising class for all $\lambda>0$; Gaussian at $\lambda=0$</td><td>HMC + cluster</td></tr><tr><td>U(1) gauge</td><td>phases on links</td><td>U(1), local</td><td>2D: exactly solvable, area law, integer topology; 4D: confined ↔ Coulomb</td><td>heat bath + overrelaxation</td></tr><tr><td>SU(2) gauge</td><td>2×2 unitary on links</td><td>SU(2), local</td><td>4D: no bulk transition; deconfinement second order</td><td>Kennedy–Pendleton + OR</td></tr><tr><td>SU(3), QCD</td><td>3×3 unitary on links (+ quarks)</td><td>SU(3), local</td><td>pure gauge: first-order deconfinement; with quarks: crossover near 156 MeV</td><td>Cabibbo–Marinari + OR; HMC/RHMC with quarks</td></tr></table>
+  </div>
+  <aside class="notes"><p>For reference, the cheat sheet: for each model, its variables, its symmetry, the key exact facts, and the go-to algorithm. I will leave this up for a moment.</p></aside>
+</section>
+
+<section class="slide" data-title="Takeaways" data-section="Takeaways">
+  <div class="kicker meth">Takeaways</div>
+
+  <h2>Takeaways</h2>
+  <div class="abs" style="left:110px;top:176px;width:1700px;display:grid;gap:12px"><div class="card ucr" style="grid-template-columns:60px 1fr;align-items:center;padding-top:15px;padding-bottom:16px" data-f="0"><div class="drv-n">1</div><div><span class="lead b" style="font-size:28px">A quantum field theory on a grid is statistical mechanics</span><div class="small" style="margin-top:4px">imaginary time turns $e^{iS}$ into a probability $e^{-S}/Z$; we compute by sampling</div></div></div><div class="card ucr" style="grid-template-columns:60px 1fr;align-items:center;padding-top:15px;padding-bottom:16px" data-f="1"><div class="drv-n">2</div><div><span class="lead b" style="font-size:28px">The continuum limit is a critical point</span><div class="small" style="margin-top:4px">$\xi/a\to\infty$, so critical slowing down is built in: compare samplers by cost per effective sample</div></div></div><div class="card ucr" style="grid-template-columns:60px 1fr;align-items:center;padding-top:15px;padding-bottom:16px" data-f="2"><div class="drv-n">3</div><div><span class="lead b" style="font-size:28px">Seven models, one ladder</span><div class="small" style="margin-top:4px">spins → fields → link matrices; global → local symmetry; Ising, Potts, XY, φ⁴, U(1), SU(2), SU(3)</div></div></div><div class="card ucr" style="grid-template-columns:60px 1fr;align-items:center;padding-top:15px;padding-bottom:16px" data-f="3"><div class="drv-n">4</div><div><span class="lead b" style="font-size:28px">Each obstacle bred a family of methods</span><div class="small" style="margin-top:4px">clusters for critical slowing down · extended ensembles for barriers · HMC for quarks</div></div></div><div class="card ucr" style="grid-template-columns:60px 1fr;align-items:center;padding-top:15px;padding-bottom:16px" data-f="4"><div class="drv-n">5</div><div><span class="lead b" style="font-size:28px">The hard problems are open, and ML is a new tool for them</span><div class="small" style="margin-top:4px">topological freezing and the sign problem; flows must scale with volume and respect gauge symmetry</div></div></div></div>
+  <div class="takeaway solid" data-f="5"><div class="tk-main">Sample $e^{-S}$ exactly, <span class="tk-tag">and fight the slow modes.</span></div></div>
+  <aside class="notes"><p>Let me summarize. First, a quantum field theory on a grid, in imaginary time, is statistical mechanics: we compute by sampling e to the minus S.</p>
+<p>[Build 1] Second, the continuum limit is a critical point, so critical slowing down is built in, and samplers must be compared by cost per effective sample.</p>
+<p>[Build 2] Third, a ladder of seven models takes you from spins to fields to link matrices, from global to local symmetry, from Ising to QCD.</p>
+<p>[Build 3] Fourth, each obstacle bred a family of methods: clusters for critical slowing down, extended ensembles for barriers, HMC for quarks.</p>
+<p>[Build 4] And fifth, the hard problems are open: topological freezing and the sign problem. Machine learning is a new tool for them, if flows can scale with volume and respect gauge symmetry.</p>
+<p>[Build 5] In one line: sample e to the minus S exactly, and fight the slow modes.</p></aside>
+</section>
+
+<section class="slide" data-title="Thank you" data-section="Takeaways">
+  <div class="wash"><i style="left:-160px;top:-200px;width:760px;height:560px;background:#D7E3F1"></i><i style="left:1240px;top:620px;width:820px;height:640px;background:#E4DDF1"></i><i style="left:600px;top:760px;width:700px;height:500px;background:#F4DCCF"></i></div>
+  <div class="abs" style="left:110px;top:170px;font-size:96px;font-weight:720;letter-spacing:-0.03em;color:var(--navy)">Thank you!</div>
+  <div class="abs lead soft" style="left:116px;top:310px">Questions are very welcome.</div>
+  <div class="abs small" style="left:116px;top:410px;width:860px;line-height:1.55">
+    <b>Companion:</b> <i>Lattice Field Theory, from Ising to SU(3)</i>, interactive notes with 30 live simulations, each engine tested against exact results.<br><br>
+    <b>Where to start reading</b><br>
+    Smit, <i>Introduction to Quantum Fields on a Lattice</i> (2002) · Gattringer &amp; Lang, <i>QCD on the Lattice</i> (2010) · Newman &amp; Barkema, <i>Monte Carlo Methods in Statistical Physics</i> (1999) · Cranmer et al., <i>Nat. Rev. Phys.</i> 5, 526 (2023) · Albergo et al., arXiv:2101.08176
+  </div>
+  <canvas class="abs" style="left:1080px;top:170px" width="700" height="700" data-anim="heroIsing" data-opts='{"L":160}'></canvas>
+  <aside class="notes"><p>Thank you. I am happy to take questions. All of the simulations come from the companion notes, which have thirty interactive versions of these demos.</p></aside>
+</section>
+
+<section class="slide" data-title="Backup: glossary" data-section="Backup" data-backup>
+  <div class="kicker meth">Backup</div>
+
+  <h2>Backup: glossary</h2>
+  <div class="abs" style="left:110px;top:160px;width:820px"><table class="dict" style="font-size:18.5px"><tr><td style="width:250px;font-weight:650">Action $S$</td><td>the "energy over temperature" of a configuration; weight $e^{-S}$</td></tr><tr><td style="width:250px;font-weight:650">Sweep</td><td>one update attempt per variable: the unit of Monte Carlo time</td></tr><tr><td style="width:250px;font-weight:650">Autocorrelation time $\tau_{\rm int}$</td><td>sweeps per effectively independent sample</td></tr><tr><td style="width:250px;font-weight:650">Correlation length $\xi$</td><td>distance over which fluctuations are correlated; inverse of the lightest mass</td></tr><tr><td style="width:250px;font-weight:650">Critical point</td><td>continuous transition where $\xi\to\infty$; where continuum theories live</td></tr><tr><td style="width:250px;font-weight:650">Universality</td><td>same symmetry and dimension ⇒ same critical exponents</td></tr><tr><td style="width:250px;font-weight:650">Order parameter</td><td>zero in the symmetric phase, nonzero in the broken one: $m$, $\langle\phi\rangle$, $\langle P\rangle$</td></tr><tr><td style="width:250px;font-weight:650">Binder cumulant</td><td>$U=1-\langle m^4\rangle/3\langle m^2\rangle^2$; curves for different $L$ cross at $T_c$</td></tr><tr><td style="width:250px;font-weight:650">Hopping parameter $\kappa$</td><td>nearest-neighbour coupling of lattice φ⁴ (and Wilson fermions)</td></tr></table></div>
+  <div class="abs" style="left:990px;top:160px;width:820px"><table class="dict" style="font-size:18.5px"><tr><td style="width:250px;font-weight:650">Gauge symmetry</td><td>an independent transformation at every site; only invariants are physical</td></tr><tr><td style="width:250px;font-weight:650">Link, plaquette, staple</td><td>parallel transporter $U_{x,\mu}\approx e^{iaA_\mu}$; product around a square; the 3 links completing a plaquette</td></tr><tr><td style="width:250px;font-weight:650">Wilson loop, string tension</td><td>product of links around a loop; area law $e^{-\sigma A}$ = confinement</td></tr><tr><td style="width:250px;font-weight:650">Polyakov loop</td><td>trace of the time links around the time circle; order parameter of deconfinement</td></tr><tr><td style="width:250px;font-weight:650">Topological charge $Q$</td><td>integer winding of the gauge field; its slow sampling is topological freezing</td></tr><tr><td style="width:250px;font-weight:650">Gradient (Wilson) flow</td><td>smoothing by flowing down the action; measures topology, sets the scale</td></tr><tr><td style="width:250px;font-weight:650">Pseudofermions</td><td>bosonic fields representing the quark determinant inside HMC</td></tr><tr><td style="width:250px;font-weight:650">Doublers</td><td>spurious extra fermions of naive discretizations, $2^d$ of them</td></tr><tr><td style="width:250px;font-weight:650">Sign problem</td><td>complex weight; average sign decays exponentially with volume</td></tr></table></div>
+  <aside class="notes"><p>Backup: a glossary of the terms used in the talk, for reference.</p></aside>
+</section>
+
+<section class="slide" data-title="Backup: which method for which model" data-section="Backup" data-backup>
+  <div class="kicker meth">Backup</div>
+
+  <h2>Backup: which method for which model?</h2>
+  <div class="abs" style="left:110px;top:170px;width:1300px">
+    <table class="mx"><tr><th>method</th><th>Ising</th><th>Potts</th><th>XY / O(N)</th><th>φ⁴</th><th>U(1)</th><th>SU(N)</th><th>QCD + quarks</th></tr><tr><td>Metropolis</td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="m">~</span></td><td><span class="n">·</span></td></tr><tr><td>Heat bath (Gibbs)</td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="m">~</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="n">·</span></td></tr><tr><td>Overrelaxation</td><td><span class="n">·</span></td><td><span class="n">·</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="n">·</span></td></tr><tr><td>Cluster (SW, Wolff)</td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="n">·</span></td><td><span class="n">·</span></td><td><span class="n">·</span></td></tr><tr><td>Worm</td><td><span class="y">✓</span></td><td><span class="m">~</span></td><td><span class="y">✓</span></td><td><span class="m">~</span></td><td><span class="m">~</span></td><td><span class="m">~</span></td><td><span class="m">~</span></td></tr><tr><td>Hybrid Monte Carlo</td><td><span class="n">·</span></td><td><span class="n">·</span></td><td><span class="m">~</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td></tr><tr><td>(Complex) Langevin</td><td><span class="n">·</span></td><td><span class="n">·</span></td><td><span class="m">~</span></td><td><span class="m">~</span></td><td><span class="m">~</span></td><td><span class="m">~</span></td><td><span class="m">~</span></td></tr><tr><td>Multicanonical / tempering</td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="m">~</span></td><td><span class="m">~</span></td><td><span class="m">~</span></td><td><span class="m">~</span></td><td><span class="m">~</span></td></tr><tr><td>Tensor networks</td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="m">~</span></td><td><span class="y">✓</span></td><td><span class="m">~</span></td><td><span class="n">·</span></td></tr><tr><td>Flows and diffusion</td><td><span class="m">~</span></td><td><span class="n">·</span></td><td><span class="m">~</span></td><td><span class="m">~</span></td><td><span class="m">~</span></td><td><span class="m">~</span></td><td><span class="m">~</span></td></tr></table>
+  </div>
+  <div class="abs small" style="left:1460px;top:190px;width:350px"><span class="b" style="color:var(--teal-dark)">✓</span> standard choice<br><span class="b" style="color:var(--gold)">~</span> special cases or active research<br><span style="color:#B9C0C8;font-weight:700">·</span> not used or not applicable</div>
+  <aside class="notes"><p>Backup: the method-by-model matrix. Check marks are standard choices; tildes are special cases or active research. Note the last row: flows and diffusion are still research everywhere, but they are being tried on every model.</p></aside>
+</section>
+
+<section class="slide" data-title="Backup: two derivations" data-section="Backup" data-backup>
+  <div class="kicker meth">Backup</div>
+
+  <h2>Backup: why clusters need no accept/reject, and the φ⁴ dictionary</h2>
+  <div class="abs" style="left:110px;top:180px;width:820px">
+    <div class="lead b navy">Wolff's bond probability</div>
+    <div class="small" style="color:var(--ink);margin-top:10px">Flip a cluster $C$. On its boundary, $n_{\rm same}$ pairs had equal spins before the flip, $n_{\rm diff}$ unequal. Building exactly $C$ required rejecting each of the $n_{\rm same}$ boundary bonds; the reverse move swaps the roles:</div>
+    <div class="eqbox" style="margin-top:12px;font-size:23px">$\dfrac{T(\text{fwd})}{T(\text{rev})}=(1-p)^{\,n_{\rm same}-n_{\rm diff}},\qquad\Delta E=2J\,(n_{\rm same}-n_{\rm diff})$</div>
+    <div class="small" style="color:var(--ink);margin-top:12px">Detailed balance needs this ratio to equal $e^{-\Delta E/T}$ for every cluster: exactly when $1-p=e^{-2J/T}$.</div>
+  </div>
+  <div class="abs" style="left:990px;top:180px;width:820px">
+    <div class="lead b navy">Continuum ↔ lattice φ⁴</div>
+    <div class="small" style="color:var(--ink);margin-top:10px">Discretize $\partial_\mu\phi\to(\phi_{x+\hat\mu}-\phi_x)/a$ and expand the square: the cross terms become the hopping term with coefficient $\kappa$. Matching the two forms:</div>
+    <div class="eqbox" style="margin-top:12px;font-size:23px">$a^{(d-2)/2}\phi_{\rm cont}=\sqrt{2\kappa}\,\phi,\quad (am_0)^2=\dfrac{1-2\lambda}{\kappa}-2d,\quad a^{4-d}\lambda_0=\dfrac{6\lambda}{\kappa^2}$</div>
+  </div>
+  <div class="abs" style="left:110px;top:640px;width:1700px">
+    <div class="lead b navy">A study path</div>
+    <div class="small" style="color:var(--ink);margin-top:8px">1. Metropolis and Wolff for 2D Ising, checked against Onsager · 2. fit $z$ from $\tau_{\rm int}$ at $L$ = 16, 32, 64 · 3. HMC for φ⁴, checked against the free propagator; $\kappa_c$ at $\lambda=1$ from Binder crossings · 4. 2D U(1): $I_1/I_0$, the area law, freezing · 5. 4D SU(2): Creutz's plaquette curve and the $N_t=2$ Polyakov transition · 6. a first flow for 2D φ⁴ as a Metropolis proposal (Albergo et al. 2019, 2021; Kanwar et al. 2020).</div>
+  </div>
+  <aside class="notes"><p>Backup. On the left, why Wolff's bond probability needs no accept-reject step: the ratio of forward and reverse proposal probabilities is one minus p to the power n-same minus n-diff, and the energy change is 2J times the same difference, so detailed balance holds for every cluster exactly when one minus p equals e to the minus 2J over T. On the right, the dictionary between the continuum and lattice forms of phi-four. At the bottom, a study path: six exercises that reproduce the main demos of this talk.</p></aside>
+</section>
+</div></div>
+</body>
+</html>

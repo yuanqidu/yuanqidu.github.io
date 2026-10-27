@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex, nofollow, noarchive">
+<title>Climbing Jacob's Ladder: How Quantum Chemistry Learned to Approximate · Yuanqi Du</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Yuanqi Du">
+<meta name="description" content="Talk slides: how quantum chemistry approximates the Schrödinger equation, from Hartree-Fock and coupled clusters to Jacob's ladder of density functionals and machine learning. Figures are computed with PySCF and an in-browser engine.">
+<link rel="stylesheet" href="vendor/katex/katex.min.css">
+<link rel="stylesheet" href="css/deck.css">
+<style>
+
+  .slide > .kicker.open { color: #B7793A; }
+  .slide > .kicker.wf { color: var(--navy); }
+  .slide > .kicker.dft { color: var(--teal-dark); }
+  .slide > .kicker.fail { color: #B4492F; }
+  .slide > .kicker.prac { color: var(--copper); }
+  .slide > .kicker.ml { color: var(--violet); }
+  .title-slide h1 em { background: linear-gradient(90deg, var(--navy), var(--teal) 55%, var(--violet)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .quote { font-family: var(--serif); font-size: 37px; line-height: 1.45; color: var(--ink); }
+  .quote .hl2 { background: linear-gradient(transparent 58%, rgba(42,157,143,.28) 58%); }
+  .qsrc { font-size: 22px; color: var(--ink-soft); margin-top: 26px; }
+  .num-chip { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: var(--navy); color: #fff; font-weight: 700; font-size: 20px; flex: none; }
+  .step-row { display: flex; gap: 16px; align-items: flex-start; margin: 0 0 16px 0; }
+  .mini { padding: 16px 20px 18px; }
+  .mini .h { font-size: 23px; font-weight: 680; color: var(--navy); line-height: 1.2; }
+  .mini .s { font-size: 19px; color: var(--ink-soft); line-height: 1.38; margin-top: 6px; }
+  .mini .r { font-size: 16px; color: var(--muted); line-height: 1.3; margin-top: 8px; }
+  .box { padding: 18px 22px 20px; border-radius: 16px; background: rgba(29,58,95,.06); border-left: 6px solid var(--navy); }
+  .box.teal { background: rgba(42,157,143,.09); border-left-color: var(--teal); }
+  .box.coral { background: rgba(231,111,81,.09); border-left-color: var(--coral); }
+  .box.violet { background: rgba(107,94,155,.09); border-left-color: var(--violet); }
+  .box.gold { background: rgba(217,162,27,.10); border-left-color: var(--gold); }
+  .box .h { font-size: 22px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+  .box .s { font-size: 20px; line-height: 1.42; color: var(--ink); }
+  ul.clean.sm { font-size: 23px; line-height: 1.4; }
+  ul.clean.xs { font-size: 20px; line-height: 1.38; }
+  ul.clean.sm > li, ul.clean.xs > li { margin-bottom: 12px; }
+  .big-stat { font-size: 76px; font-weight: 760; letter-spacing: -0.03em; color: var(--navy); line-height: 1; }
+  .big-stat small { font-size: 28px; font-weight: 600; color: var(--ink-soft); letter-spacing: 0; }
+  .canvas-cap { font-size: 17px; color: var(--muted); line-height: 1.35; }
+  table.dict { border-collapse: collapse; width: 100%; font-size: 21px; }
+  table.dict th { text-align: left; font-weight: 700; padding: 8px 12px; border-bottom: 2px solid var(--ink); font-size: 20px; color: var(--navy); }
+  table.dict td { padding: 9px 12px; border-bottom: 1px solid var(--faint); line-height: 1.3; vertical-align: top; color: var(--ink-soft); }
+  table.dict td:first-child { color: var(--ink); font-weight: 650; }
+  table.dict.sm { font-size: 18.5px; } table.dict.sm td { padding: 7px 10px; } table.dict.sm th { font-size: 18px; padding: 6px 10px; }
+  .lad2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .rung { display: grid; grid-template-columns: 210px 1fr 120px; gap: 14px; align-items: center; padding: 12px 18px; border-radius: 12px; background: #fff; margin-bottom: 10px; box-shadow: 0 1px 2px rgba(31,41,51,.05), 0 4px 14px rgba(31,41,51,.05); }
+  .rung .n { font-size: 24px; font-weight: 760; }
+  .rung .d { font-size: 18.5px; color: var(--ink-soft); line-height: 1.3; }
+  .rung .c { font-size: 19px; font-weight: 700; color: var(--ink); text-align: right; font-variant-numeric: tabular-nums; }
+  .eqbig { font-size: 34px; }
+  .tag { display: inline-block; font-size: 15px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 3px 10px; border-radius: 6px; background: rgba(29,58,95,.08); color: var(--navy); }
+  .mlcard { padding: 22px 26px 24px; border-top: 6px solid var(--violet); display: flex; flex-direction: column; gap: 10px; }
+  .mlcard .h { font-size: 27px; font-weight: 720; line-height: 1.15; color: var(--violet); }
+  .mlcard .e { font-size: 18px; color: var(--muted); }
+  .mlcard .l { font-size: 20px; line-height: 1.38; color: var(--ink); }
+  .open-rank { display: grid; grid-template-columns: 56px 1fr; gap: 24px 18px; align-items: baseline; }
+  .open-rank .k { font-size: 28px; font-weight: 800; color: var(--copper); text-align: right; }
+  .open-rank .t { font-size: 27px; line-height: 1.3; color: var(--ink); font-weight: 600; }
+  .open-rank .t small { display: block; font-size: 20px; color: var(--ink-soft); margin-top: 4px; font-weight: 400; }
+
+</style>
+<script src="vendor/katex/katex.min.js"></script>
+<script src="vendor/katex/contrib/auto-render.min.js"></script>
+<script src="js/util.js"></script>
+<script src="js/qc/linalg.js"></script>
+<script src="js/qc/gauss.js"></script>
+<script src="js/data/atoms.js"></script>
+<script src="js/data/curves.js"></script>
+<script src="js/data/pople.js"></script>
+<script src="js/data/ladder.js"></script>
+<script src="js/data/barrier.js"></script>
+<script src="js/data/ar2.js"></script>
+<script src="js/data/hybrid.js"></script>
+<script src="js/anim/kit.js"></script>
+<script src="js/anim/qkit.js"></script>
+<script src="js/anim/open.js"></script>
+<script src="js/anim/wf.js"></script>
+<script src="js/anim/dft.js"></script>
+<script src="js/anim/fail.js"></script>
+<script src="js/anim/ml.js"></script>
+<script src="js/deck.js"></script>
+</head>
+<body>
+<div class="viewport"><div class="stage">
+<section class="slide title-slide" data-title="Climbing Jacob's Ladder" data-section="Title">
+  <div class="wash"><i style="left:-180px;top:-220px;width:760px;height:560px;background:#D7E3F1"></i><i style="left:380px;top:800px;width:820px;height:520px;background:#D5ECE7"></i><i style="left:1300px;top:-260px;width:760px;height:600px;background:#E4DDF1"></i></div>
+  <div class="abs" style="left:124px;top:178px;font-size:21px;font-weight:650;letter-spacing:.16em;text-transform:uppercase;color:#B7793A">A century of approximations</div>
+  <h1 style="top:226px;font-size:78px;width:900px">Climbing <em>Jacob's Ladder</em></h1>
+  <div class="subtitle" style="top:420px;width:860px">How quantum chemistry learned to approximate the Schrödinger equation: Hartree–Fock and coupled clusters, density functionals rung by rung, and what machine learning adds</div>
+  <div class="who" style="top:690px">Yuanqi Du</div>
+  <div class="aff" style="top:740px">Microsoft Research</div>
+  <div class="venue" style="top:830px;width:880px">Every figure is computed: PySCF, or a small electronic-structure engine running in this page</div>
+  <canvas class="abs" style="left:1040px;top:150px" width="780" height="760" data-anim="heroShells"></canvas>
+  <div class="abs canvas-cap" style="left:1040px;top:918px;width:780px">Electron density of the noble gases from Hartree–Fock, computed in the browser. Each peak is a shell: K, L, M, N, O.</div>
+  <aside class="notes"><p>Thanks for having me. This talk is about one idea that runs through a century of quantum chemistry: we know the exact equation, we can almost never solve it, so the whole field is a sequence of <b>approximations</b>, each with a price and a characteristic way of failing.</p>
+<p>The picture on the right is a good example of what I mean by "computed". It is the electron density of the noble gases, from Hartree–Fock, calculated by a small engine running in this web page. The peaks are the shells, K, L, M, N, O. Every figure in this talk is either computed this way or with PySCF, and at the end I'll show how those numbers were checked.</p>
+<p>Plan: the problem, the wavefunction ladder, Jacob's ladder of density functionals, where functionals fail, a word on practice, and then what machine learning changes.</p></aside>
+</section>
+
+<section class="slide" data-title="Dirac 1929" data-section="Overview">
+  <div class="kicker open">The challenge</div>
+
+  <div class="abs" style="left:150px;top:150px;width:1560px">
+    <div class="quote">“The underlying physical laws necessary for the mathematical theory of a large part of physics and the whole of chemistry are thus completely known, and the difficulty is only that the exact application of these laws leads to equations much too complicated to be soluble. <span class="hl2" data-f="1">It therefore becomes desirable that approximate practical methods of applying quantum mechanics should be developed, which can lead to an explanation of the main features of complex atomic systems without too much computation.</span>”</div>
+    <div class="qsrc">P. A. M. Dirac, <i>Quantum Mechanics of Many-Electron Systems</i>, Proc. R. Soc. A 123, 714 (1929)</div>
+  </div>
+  <div class="takeaway navy" data-f="2">This talk is about that second sentence: <b>approximate practical methods</b>, which ones chemists built over a century, and why.</div>
+  <aside class="notes"><p>Most of you have seen the first half of this quote. It is usually misquoted, even in the 1998 Nobel press release, so this is the verbatim text from the 1929 paper.</p>
+<p>The first sentence is the famous one: the laws are completely known, the equations are too complicated. <b>(click)</b> The second sentence is the one people drop, and it is the program for this talk: "approximate practical methods ... without too much computation". Dirac was asking for exactly what Hartree, Fock, Kohn, Pople and the machine-learning people have been building.</p></aside>
+</section>
+
+<section class="slide" data-title="The story in six lines" data-section="Overview">
+  <div class="kicker open">Overview</div>
+
+  <h2>The story in six lines</h2>
+  <div class="abs" style="left:110px;top:176px;width:1700px;display:grid;gap:12px"><div class="card" style="display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:center;padding:14px 22px 15px" data-f="0"><div class="num-chip" style="width:44px;height:44px">1</div><div><span class="b" style="font-size:26px;color:var(--navy)">One equation, no exact solutions</span><div class="small" style="margin-top:3px;font-size:21px">The electronic Schrödinger equation is known exactly. Solving it exactly costs exponentially in the number of electrons.</div></div></div><div class="card" style="display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:center;padding:14px 22px 15px" data-f="1"><div class="num-chip" style="width:44px;height:44px">2</div><div><span class="b" style="font-size:26px;color:var(--navy)">Two ways to approximate</span><div class="small" style="margin-top:3px;font-size:21px">Approximate the <b>wavefunction</b> (Hartree–Fock, then perturbation theory, CI, coupled clusters), or replace it by the <b>density</b> (DFT).</div></div></div><div class="card" style="display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:center;padding:14px 22px 15px" data-f="2"><div class="num-chip" style="width:44px;height:44px">3</div><div><span class="b" style="font-size:26px;color:var(--navy)">The wavefunction ladder converges, slowly and expensively</span><div class="small" style="margin-top:3px;font-size:21px">CCSD(T) in a big basis reaches 1 kcal/mol for small molecules, at a cost that grows like $N^7$.</div></div></div><div class="card" style="display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:center;padding:14px 22px 15px" data-f="3"><div class="num-chip" style="width:44px;height:44px">4</div><div><span class="b" style="font-size:26px;color:var(--navy)">Jacob's ladder trades cost for accuracy, without a guarantee</span><div class="small" style="margin-top:3px;font-size:21px">Each rung adds an ingredient: density, gradient, kinetic energy density, exact exchange, unoccupied orbitals. Higher is usually better, not always.</div></div></div><div class="card" style="display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:center;padding:14px 22px 15px" data-f="4"><div class="num-chip" style="width:44px;height:44px">5</div><div><span class="b" style="font-size:26px;color:var(--navy)">The failures are systematic</span><div class="small" style="margin-top:3px;font-size:21px">Self-interaction, static correlation and dispersion explain most of the big errors; each fix tends to break something else.</div></div></div><div class="card" style="display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:center;padding:14px 22px 15px" data-f="5"><div class="num-chip" style="width:44px;height:44px">6</div><div><span class="b" style="font-size:26px;color:var(--navy)">Machine learning changes the economics</span><div class="small" style="margin-top:3px;font-size:21px">Learned potentials, functionals and wavefunctions move top-rung accuracy toward bottom-rung cost. The labels still come from the ladder.</div></div></div></div>
+  <aside class="notes"><p>Here is the whole talk in six lines, so you can follow where we are.</p>
+<p>One: the equation is known; solving it is exponential. Two: two strategies, approximate the wavefunction or replace it by the density. Three: the wavefunction ladder converges systematically, and CCSD(T) in a big basis gets about 1 kcal/mol for small molecules, but its cost grows like N to the seventh. Four: Jacob's ladder of density functionals trades cost for accuracy by adding ingredients, without any guarantee. Five: the big DFT failures come from a small number of systematic errors. Six: machine learning moves top-rung accuracy toward bottom-rung cost, but the labels still come from the ladder.</p></aside>
+</section>
+
+<section class="slide" data-title="The yardstick: 1 kcal/mol" data-section="Overview">
+  <div class="kicker open">Overview · accuracy</div>
+
+  <h2>The yardstick: 1 kcal/mol out of 70,000</h2>
+<canvas class="abs" style="left:110px;top:170px" width="1700" height="560" data-anim="bars" data-opts='{"items":[{"l":"total energy of N₂","v":68740,"c":"#1D3A5F"},{"l":"correlation energy (what Hartree–Fock misses)","v":344,"c":"#4C72B0","s":1},{"l":"energy to break the triple bond","v":228,"c":"#2A9D8F","s":1},{"l":"a typical reaction barrier","v":20,"c":"#E0A030","s":2},{"l":"factor 10 in a rate at room temperature","v":1.364,"c":"#E76F51","s":2},{"l":"chemical accuracy","v":1,"c":"#B4492F","s":2,"b":1}],"log":1,"min":0.5,"max":200000,"ticks":[1,10,100,1000,10000,100000],"unit":"kcal/mol","fmt":"sig","lw":560,"fs":21,"xl":"kcal/mol, log scale"}' data-step-map='[0,1,2,2]'></canvas>
+  <div class="abs small" style="left:110px;top:760px;width:1700px" data-f="2">Pople, Nobel lecture 1998: "a global accuracy of 1 kcal/mole would be appropriate". At room temperature an error of 1.36 kcal/mol is a factor of 10 in a rate or a binding constant.</div>
+  <div class="takeaway" data-f="3">Chemistry lives in <b>differences</b> of total energies, at a relative precision of about 10⁻⁵. Approximations survive only when their errors cancel between reactants and products.</div>
+  <div class="cite">N₂: total energy −109.54 E<sub>h</sub>, Hartree–Fock limit −108.99 E<sub>h</sub>, D<sub>e</sub> 228.5 kcal/mol (W4-11) · 1 E<sub>h</sub> = 627.5 kcal/mol = 27.21 eV</div>
+  <aside class="notes"><p>Why is this hard? Because of the scale. Take N₂. Its total energy is about 69,000 kcal/mol. <b>(click)</b> The correlation energy, the part Hartree–Fock misses, is 344 kcal/mol, and the energy to break the triple bond is 228. <b>(click)</b> A typical barrier is 20, and chemistry cares about 1 kcal/mol.</p>
+<p>Pople's Nobel lecture set the target as "a global accuracy of 1 kcal/mole". The physical reason: at room temperature 1.36 kcal/mol is a factor of ten in a rate or an equilibrium constant. So we need relative accuracy around 10⁻⁵ on total energies, which nobody achieves directly. What saves us is that errors cancel between reactants and products, and every method in this talk lives or dies by how well its errors cancel.</p></aside>
+</section>
+
+<section class="slide" data-title="Why it matters" data-section="Overview" data-optional>
+  <div class="kicker open">Overview · scale</div>
+
+  <h2>Quantum chemistry is one of the largest users of scientific computing</h2>
+  <div class="abs" style="left:110px;top:190px;width:1700px;display:grid;grid-template-columns:repeat(3,1fr);gap:26px">
+    <div class="card" style="padding:28px 30px"><div class="big-stat">≈ 20%</div><div class="small" style="margin-top:14px">of node-hours at NERSC (2018) and 22.8% of ARCHER2 went to <b>one DFT code</b>, VASP</div></div>
+    <div class="card" style="padding:28px 30px" data-f="1"><div class="big-stat">33,000</div><div class="small" style="margin-top:14px">papers a year mention "density functional" (2025), against fewer than 90 in 1985</div></div>
+    <div class="card" style="padding:28px 30px" data-f="2"><div class="big-stat">#4</div><div class="small" style="margin-top:14px">most-cited paper of all time: PBE (1996), 174,137 citations (Web of Science, 2025). LYP is #10, Becke 1993 #22</div></div>
+  </div>
+  <div class="abs" style="left:110px;top:520px;width:1700px" data-f="3">
+    <ul class="clean sm">
+      <li>Catalysts, batteries, drug binding, polymorphs, spectra: decisions that hinge on a few kcal/mol.</li>
+      <li>Over half of polymorph pairs differ by less than 0.5 kcal/mol; free-energy methods for drug binding reach about 1.25 kcal/mol RMSE.</li>
+      <li>Machine-learning datasets are built on these methods: OMol25 spent 6.6 billion CPU core-hours on DFT labels.</li>
+    </ul>
+  </div>
+  <div class="cite">NERSC workload analyses 2018–25 · ARCHER2 report (Nov 2025) · OpenAlex counts · Nature top-100 papers (2014, 2025 update) · Price et al. polymorphs; FEP+ benchmarks</div>
+  <aside class="notes"><p>A quick word on scale, because it surprises people outside the field. VASP alone, one DFT code, used about 20% of NERSC node-hours in 2018 and 22.8% of the UK's ARCHER2. More than 33,000 papers a year mention density functionals. And the PBE functional paper is the fourth most-cited paper of all time, across all of science.</p>
+<p>The decisions downstream are fine-grained: over half of polymorph pairs differ by less than half a kcal/mol, and the best free-energy methods for drug binding have errors around 1.25 kcal/mol. And machine-learning datasets are now built on these methods: OMol25 cost 6.6 billion CPU core-hours of DFT.</p></aside>
+</section>
+
+<section class="slide" data-title="One equation for all of chemistry" data-section="The problem">
+  <div class="kicker open">The problem</div>
+
+  <h2>One equation for all of chemistry</h2>
+  <div class="abs" style="left:110px;top:186px;width:1700px">
+    <div class="eqbox eqbig" style="padding:22px 34px">$\hat H\,\Psi(\mathbf r_1,\dots,\mathbf r_N)=E\,\Psi,\qquad \hat H=\underbrace{-\tfrac12\sum_i\nabla_i^2}_{\text{kinetic}}\;\underbrace{-\sum_{i,A}\frac{Z_A}{|\mathbf r_i-\mathbf R_A|}}_{\text{nuclei}}\;+\underbrace{\sum_{i\lt j}\frac{1}{|\mathbf r_i-\mathbf r_j|}}_{\text{electron–electron}}$</div>
+  </div>
+  <div class="abs" style="left:110px;top:420px;width:820px">
+    <ul class="clean sm">
+      <li data-f="1"><b>Born–Oppenheimer (1927):</b> nuclei are 1,836× heavier, so solve for electrons at fixed nuclei. The energy $E(\mathbf R)$ is the potential energy surface: structures, barriers, vibrations.</li>
+      <li data-f="2"><b>Antisymmetry:</b> $\Psi$ changes sign when two electrons swap (Pauli).</li>
+      <li data-f="3"><b>The last term couples everything.</b> Without it the problem separates into one-electron problems and is easy.</li>
+    </ul>
+  </div>
+  <div class="abs card" style="left:990px;top:430px;width:820px;padding:26px 30px" data-f="3">
+    <div class="lead b" style="color:var(--navy);font-size:28px">Atomic units, used throughout</div>
+    <table class="dict" style="margin-top:12px">
+      <tr><td>1 hartree (E<sub>h</sub>)</td><td>27.211 eV = 627.51 kcal/mol</td></tr>
+      <tr><td>1 kcal/mol</td><td>1.594 mE<sub>h</sub> = 43.4 meV = 350 cm⁻¹</td></tr>
+      <tr><td>1 bohr</td><td>0.529 Å</td></tr>
+    </table>
+  </div>
+  <div class="takeaway" data-f="4">Everything in this talk approximates the <b>electron–electron term</b>: its average (mean field), its corrections (correlation), or its effect on the density (DFT).</div>
+  <aside class="notes"><p>Here is the equation. Kinetic energy, attraction to nuclei, and repulsion between electrons. <b>(click)</b> Born–Oppenheimer: nuclei are almost two thousand times heavier, so we solve for the electrons at fixed nuclei; the energy as a function of nuclear positions is the potential energy surface, which gives structures, barriers and vibrations. <b>(click)</b> The wavefunction must be antisymmetric. <b>(click)</b> And the last term is the whole difficulty: without it, the problem separates into one-electron problems, which are easy.</p>
+<p>Units: I'll use hartree and kcal/mol. One hartree is 627.5 kcal/mol; 1 kcal/mol is 1.6 millihartree.</p>
+<p><b>(click)</b> Everything that follows approximates that electron–electron term: its average, its corrections, or its effect on the density.</p></aside>
+</section>
+
+<section class="slide" data-title="The exponential wall" data-section="The problem">
+  <div class="kicker open">The problem</div>
+
+  <h2>The exponential wall</h2>
+  <div class="abs" style="left:110px;top:176px;width:640px">
+    <div class="body">$\Psi$ depends on $3N$ coordinates. Tabulating it, even crudely, takes $p^{3N}$ numbers.</div>
+    <div class="box gold" style="margin-top:22px" data-f="1"><div class="s">Hartree (1948): a wavefunction of 78 variables "would require 10<sup>78</sup> entries".<br><br>Kohn (Nobel lecture, 1999): beyond about 10 atoms, wavefunction methods hit an <b>exponential wall</b>; for $N\gtrsim10^3$ the wavefunction "is not a legitimate scientific concept".</div></div>
+    <div class="small" style="margin-top:22px" data-f="2">Exact methods (full CI) in a finite basis grow just as fast. The 2024 record is 1.3 × 10¹² determinants: propane in the smallest basis.</div>
+  </div>
+<canvas class="abs" style="left:800px;top:170px" width="1010" height="640" data-anim="wall" data-step-map='[0,1,2,2]'></canvas>
+  <div class="takeaway coral" data-f="3">So every practical method is an approximation that throws away most of $\Psi$. <b>Which</b> part to throw away is the history of the field.</div>
+  <aside class="notes"><p>Why not just solve it numerically? The wavefunction has 3N coordinates. Even with three grid points per coordinate you need 3 to the 3N numbers. That's the red band. <b>(click)</b> Hartree said this in 1948: 78 variables would need 10 to the 78 entries. Kohn's Nobel lecture called it the exponential wall: beyond about ten atoms, wavefunction methods at chemical accuracy hit it, and for a thousand electrons the wavefunction "is not a legitimate scientific concept".</p>
+<p><b>(click)</b> Working in a basis doesn't save you: full CI, the exact answer in a basis, grows just as fast. The record, in 2024, is 1.3 trillion determinants, for propane in the smallest basis there is. The universe has 10⁸⁰ atoms; caffeine's full CI would need far more numbers than that.</p>
+<p><b>(click)</b> So every method throws away most of Ψ. Which part to throw away is the history of the field.</p></aside>
+</section>
+
+<section class="slide" data-title="A century of approximations" data-section="The problem">
+  <div class="kicker open">History</div>
+
+  <h2>A century of approximations</h2>
+<canvas class="abs" style="left:110px;top:160px" width="1700" height="720" data-anim="timeline"></canvas>
+  <div class="cite">Dates of the first publication; see the blog for sources</div>
+  <aside class="notes"><p>Let the timeline run. Four lanes: wavefunction methods, density functionals, basis sets and codes, and machine learning.</p>
+<p>The 1920s and 30s: Schrödinger, Heitler and London's H₂ bond, Hartree's self-consistent field, Hylleraas's helium, Fock and Slater's antisymmetrization, Møller–Plesset. Thomas–Fermi and Dirac's exchange started the density lane at the same time.</p>
+<p>The 1950s: Boys's Gaussians and Roothaan's matrix formulation make computation possible. The 1960s: Hohenberg–Kohn and Kohn–Sham, and Čížek's coupled clusters. Then Pople's Gaussian program, and through the 80s the functionals that work for molecules, B88 and LYP, then hybrids. CCSD(T) appears in 1989. The 1998 Nobel prize went to Kohn and Pople.</p>
+<p>The ML lane starts in 2007 with Behler–Parrinello potentials and arrives at learned functionals and huge datasets in 2021–2025.</p></aside>
+</section>
+
+<section class="slide" data-title="Two ladders" data-section="The problem" data-optional>
+  <div class="kicker open">Roadmap</div>
+
+  <h2>Two ladders</h2>
+  <div class="abs lad2" style="left:110px;top:170px;width:1700px">
+    <div><div class="lead b" style="color:var(--navy);margin-bottom:12px">Wavefunction methods</div><div class="rung"><div class="n" style="color:#1F2933">Full CI</div><div class="d">exact in the basis</div><div class="c">$e^N$</div></div><div class="rung"><div class="n" style="color:#1F2933">CCSD(T)</div><div class="d">+ perturbative triples</div><div class="c">$N^7$</div></div><div class="rung"><div class="n" style="color:#B4492F">CCSD</div><div class="d">coupled cluster, doubles</div><div class="c">$N^6$</div></div><div class="rung"><div class="n" style="color:#D16BA5">MP2</div><div class="d">second-order perturbation</div><div class="c">$N^5$</div></div><div class="rung"><div class="n" style="color:#8E9AA6">Hartree–Fock</div><div class="d">mean field, exact exchange</div><div class="c">$N^4$</div></div><div class="small" style="margin-top:10px"><b>Systematic:</b> each step is a controlled improvement; the top is exact.</div></div>
+    <div data-f="1"><div class="lead b" style="color:var(--teal-dark);margin-bottom:12px">Density functionals</div><div class="rung"><div class="n" style="color:#6B5E9B">double hybrid</div><div class="d">+ unoccupied orbitals</div><div class="c">$N^5$</div></div><div class="rung"><div class="n" style="color:#4C72B0">hybrid</div><div class="d">+ exact exchange</div><div class="c">$N^4$</div></div><div class="rung"><div class="n" style="color:#2A9D8F">meta-GGA</div><div class="d">+ kinetic energy density</div><div class="c">$N^3$</div></div><div class="rung"><div class="n" style="color:#E0A030">GGA</div><div class="d">+ gradient</div><div class="c">$N^3$</div></div><div class="rung"><div class="n" style="color:#C8692E">LDA</div><div class="d">density</div><div class="c">$N^3$</div></div><div class="small" style="margin-top:10px"><b>Pragmatic:</b> cheaper at every rung, but no rung is exact, and no guarantee that up is better.</div></div>
+  </div>
+  <div class="takeaway navy" data-f="2">Cost exponents are for a molecule of size $N$ with fixed basis per atom (Pople's Nobel lecture; DFT with standard algorithms).</div>
+  <aside class="notes"><p>The talk is organized around two ladders. On the left, wavefunction methods: Hartree–Fock, MP2, CCSD, CCSD(T), full CI, with costs N⁴ up to exponential. This ladder is systematic: each rung is a controlled improvement and the top is exact.</p>
+<p><b>(click)</b> On the right, density functionals, Jacob's ladder: LDA, GGA, meta-GGA, hybrid, double hybrid. Cheaper at every rung, but no rung is exact, and going up is not guaranteed to help. Keep both in mind; the ML part at the end is about connecting them.</p></aside>
+</section>
+
+<section class="slide section-slide" data-title="Wavefunctions" data-section="Wavefunctions">
+  <div class="sec-num" style="color:var(--navy)">Part I</div>
+  <h2 class="sec-title">Wavefunctions</h2>
+  <div class="sec-sub">Mean field first, then correlation, one systematic step at a time</div>
+  <div class="sec-paper">Hartree 1928 · Fock 1930 · Møller–Plesset 1934 · Boys 1950 · Roothaan 1951 · Čížek 1966 · Pople 1970s–1998 · Raghavachari et al. 1989</div>
+  <aside class="notes"><p>Part one: the wavefunction ladder. Mean field first, then correlation, one systematic step at a time.</p></aside>
+</section>
+
+<section class="slide" data-title="Hartree–Fock: the mean field" data-section="Wavefunctions">
+  <div class="kicker wf">Part I · Hartree–Fock</div>
+
+  <h2>Hartree–Fock: each electron in the average field of the others</h2>
+  <div class="abs" style="left:110px;top:176px;width:760px">
+    <div class="body">Best single Slater determinant: antisymmetric by construction, so exchange is <b>exact</b>; correlation is absent.</div>
+    <div class="eqbox eq" style="margin:18px 0">$\hat f\,\phi_i=\varepsilon_i\,\phi_i,\qquad \hat f=-\tfrac12\nabla^2+v_{\rm nuc}+\hat J-\hat K$</div>
+    <div class="small">$\hat f$ depends on the orbitals it produces, so it is solved by iteration: guess orbitals, build the field, re-solve, repeat. Hartree (1928): "a process of successive approximation".</div>
+    <div class="small" style="margin-top:16px" data-f="1">Roothaan and Hall (1951) expand orbitals in a basis: $\mathbf{FC}=\mathbf{SC}\boldsymbol\varepsilon$, a matrix problem. Cost $\propto N^4$ (two-electron integrals).</div>
+  </div>
+<canvas class="abs" style="left:920px;top:170px" width="890" height="600" data-anim="scfConv"></canvas>
+  <div class="abs canvas-cap" style="left:920px;top:780px;width:890px">Self-consistent-field iterations of the atom engine in this page (DIIS extrapolation): about 10–20 cycles to µE<sub>h</sub>.</div>
+  <div class="takeaway" data-f="2">Hartree–Fock gets <b>99.5% of the total energy</b> right. The missing 0.5% is the correlation energy, and it is most of chemistry.</div>
+  <aside class="notes"><p>Hartree–Fock is the best single Slater determinant. Because a determinant is antisymmetric, exchange is treated exactly. What's missing is correlation: each electron sees only the average of the others.</p>
+<p>The Fock operator depends on its own solutions, so we iterate: guess orbitals, build the field, solve, repeat until nothing changes. Hartree called it "a process of successive approximation" in 1928. On the right are real convergence histories from the engine in this page: ten to twenty iterations to microhartree, with DIIS extrapolation.</p>
+<p><b>(click)</b> Roothaan and Hall turned it into a matrix problem in a basis, FC = SCε. The cost is dominated by the two-electron integrals, N⁴.</p>
+<p><b>(click)</b> And the punchline: Hartree–Fock gets about 99.5% of the total energy. The missing half percent is most of chemistry.</p></aside>
+</section>
+
+<section class="slide" data-title="Basis sets: why Gaussians" data-section="Wavefunctions">
+  <div class="kicker wf">Part I · basis sets</div>
+
+  <h2>Basis sets: Gaussians are wrong in shape, right in cost</h2>
+  <div class="abs" style="left:110px;top:176px;width:700px">
+    <ul class="clean sm">
+      <li>Atomic orbitals look like $e^{-\zeta r}$ (Slater): a cusp at the nucleus, an exponential tail.</li>
+      <li data-f="1"><b>Boys (1950):</b> use Gaussians $e^{-\alpha r^2}$. Their products are Gaussians, so every integral is analytic. Fix the shape by contracting several (STO-3G: three per orbital).</li>
+      <li data-f="3">Names to decode: <b>6-31G*</b> (Pople: split valence + polarization), <b>cc-pVXZ</b> (Dunning 1989: correlation-consistent, X = D, T, Q, 5 → extrapolate), <b>def2-TZVP</b> (Ahlrichs).</li>
+    </ul>
+  </div>
+<canvas class="abs" style="left:860px;top:170px" width="950" height="620" data-anim="stoFit" data-step-map='[0,1,3,3]'></canvas>
+  <div class="abs canvas-cap" style="left:860px;top:800px;width:950px">Best fits of a Slater 1s orbital by 1, 3 and 6 Gaussians, recomputed here (the 3-Gaussian fit reproduces Hehre, Stewart & Pople's 1969 STO-3G exponents to six digits).</div>
+  <div class="takeaway navy" data-f="3">Correlation energy converges slowly with basis size (error ∝ X⁻³), because no smooth basis captures the electron–electron cusp.</div>
+  <aside class="notes"><p>The orbitals have to be expanded in something. Real atomic orbitals look like e to the minus r, Slater functions, with a cusp at the nucleus and an exponential tail.</p>
+<p><b>(click)</b> Boys's insight in 1950: use Gaussians instead. The product of two Gaussians on different centres is a Gaussian, so every integral is analytic. The shape is wrong, so you contract several: one Gaussian is poor; three, the famous STO-3G, is decent; six is close, except right at the cusp, in the inset. These fits are recomputed here, and the three-Gaussian fit reproduces Pople's 1969 exponents to six digits.</p>
+<p><b>(click)</b> The names you'll see: 6-31G*, Pople's split-valence sets; cc-pVXZ, Dunning's correlation-consistent sets, designed so you can extrapolate in X; def2 from Ahlrichs. The correlation energy converges slowly, as X to the minus three, because no smooth basis captures the electron–electron cusp. That's why explicitly correlated F12 methods exist.</p></aside>
+</section>
+
+<section class="slide" data-title="What Hartree-Fock misses" data-section="Wavefunctions">
+  <div class="kicker wf">Part I · correlation</div>
+
+  <h2>99.5% of the energy, about half of each bond</h2>
+  <div class="abs" style="left:110px;top:176px;width:640px">
+    <div class="body">Löwdin (1959): the correlation energy is $E_{\rm exact}-E_{\rm HF}$.</div>
+    <div class="box" style="margin-top:18px"><div class="s">Helium: $E_{\rm HF}=-2.86168$, exact $-2.90372\ E_h$. The difference, 42 mE<sub>h</sub> = <b>26 kcal/mol</b>, is only 1.4% of the energy.</div></div>
+    <div class="small" style="margin-top:20px" data-f="1">But bonds are made of differences. Hartree–Fock recovers 67% of water's atomization energy and 50% of N₂'s, and it does not bind F₂ or O₃ at all.</div>
+  </div>
+<canvas class="abs" style="left:800px;top:170px" width="1010" height="650" data-anim="hfBonds"></canvas>
+  <div class="takeaway coral" data-f="2">Electrons avoid each other more than a mean field allows: each carries a <b>Coulomb hole</b>. Correlation energy is comparable to bond energies.</div>
+  <div class="cite">Bars: PySCF, Hartree–Fock/aug-cc-pVQZ at CCSD(T)/cc-pVTZ geometries, against W4-11 reference atomization energies (Karton et al. 2011)</div>
+  <aside class="notes"><p>Löwdin's 1959 definition: the correlation energy is exact minus Hartree–Fock. For helium that's 42 millihartree, 26 kcal/mol, 1.4% of the energy.</p>
+<p><b>(click)</b> But look at bonds. Dark bars are the exact atomization energies, from the W4-11 benchmark; grey bars are Hartree–Fock, computed with PySCF in a large basis. Hartree–Fock gets about two thirds of water's atomization energy, about half of N₂'s, and it does not bind F₂ or ozone at all: those bars go negative.</p>
+<p><b>(click)</b> The physics: electrons avoid each other more than a mean field allows. Each one carries a Coulomb hole. That avoidance is worth as much energy as the bonds themselves.</p></aside>
+</section>
+
+<section class="slide" data-title="H2 in a minimal basis" data-section="Wavefunctions">
+  <div class="kicker wf">Part I · static correlation</div>
+
+  <h2>Breaking H₂: one determinant is not enough</h2>
+<canvas class="abs" style="left:110px;top:170px" width="1700" height="640" data-anim="h2min"></canvas>
+  <div class="abs canvas-cap" style="left:110px;top:816px;width:1700px">Computed live in this page: STO-3G basis, restricted and unrestricted Hartree–Fock and full CI (two configurations). Matches Szabo &amp; Ostlund: −1.1167 and −1.1373 E<sub>h</sub> at 1.4 bohr.</div>
+  <div class="takeaway" data-f="2"><b>Static correlation</b>: near-degenerate configurations. RHF keeps ionic terms forever; UHF gets the energy by breaking spin symmetry (⟨S²⟩ → 1); only a second configuration fixes both.</div>
+  <aside class="notes"><p>The simplest place to see what goes wrong: H₂ in the smallest basis, computed live. The grey curve is restricted Hartree–Fock. Near equilibrium it's fine. Stretch the bond and it climbs far above two hydrogen atoms.</p>
+<p>The bars on the right explain why. A single doubly occupied bonding orbital puts both electrons on the same atom, H⁺H⁻, half of the time, at every distance. At dissociation that's absurd.</p>
+<p><b>(click)</b> Full CI here is just two configurations, bonding squared and antibonding squared. The second configuration enters with a negative sign and cancels the ionic terms, so the ionic weight goes to zero as the bond breaks, and the energy goes to two atoms.</p>
+<p><b>(click)</b> Unrestricted Hartree–Fock gets the energy by putting the up electron on one atom and the down electron on the other, at the cost of breaking spin symmetry. This is static correlation, and we'll see it again in DFT.</p></aside>
+</section>
+
+<section class="slide" data-title="Configuration interaction and size consistency" data-section="Wavefunctions" data-optional>
+  <div class="kicker wf">Part I · coupled clusters</div>
+
+  <h2>Truncated CI is not size consistent; coupled clusters are</h2>
+  <div class="abs" style="left:110px;top:176px;width:700px">
+    <div class="small"><b>CI</b>: $\Psi=c_0\Phi_0+\sum c_i^a\Phi_i^a+\sum c_{ij}^{ab}\Phi_{ij}^{ab}+\dots$ Exact if all excitations are kept (full CI), variational, but factorial.</div>
+    <div class="small" style="margin-top:14px">Truncate at doubles (CISD) and a test fails: $N$ non-interacting molecules should have $N$ times the energy of one.</div>
+    <div class="box teal" style="margin-top:20px" data-f="2"><div class="h">Coupled cluster (Čížek 1966)</div><div class="s">$\Psi=e^{\hat T}\Phi_0,\ \hat T=\hat T_1+\hat T_2+\dots$<br>The exponential contains products of excitations ($\tfrac12\hat T_2^2$: quadruples), so separate fragments stay separate. CCSD is exact for any number of separated two-electron systems.</div></div>
+  </div>
+<canvas class="abs" style="left:860px;top:170px" width="950" height="620" data-anim="sizeCons" data-step-map='[0,1,1,1]'></canvas>
+  <div class="takeaway navy" data-f="3">Size consistency is why coupled clusters, not truncated CI, became the standard.</div>
+  <aside class="notes"><p>Configuration interaction writes Ψ as the reference plus all singly, doubly, ... excited determinants. Keep all of them and you have full CI: exact in the basis, factorial in cost. So you truncate, usually at doubles.</p>
+<p><b>(click)</b> And truncation fails a simple test. Take N hydrogen molecules far apart. The exact correlation energy is N times one molecule's. CISD only allows two excitations in the whole system, so it can't correlate all molecules at once. With this analytic model built from the live H₂ calculation, CISD recovers about 92% per molecule at N = 8, 58% at N = 100, and it tends to zero for large N.</p>
+<p><b>(click)</b> Coupled cluster fixes this with an exponential: e to the T contains products of excitations, so separate fragments stay separate. For separated two-electron systems CCSD is exact for any N. That property, size consistency, is why coupled clusters became the standard.</p></aside>
+</section>
+
+<section class="slide" data-title="Perturbation theory and the gold standard" data-section="Wavefunctions">
+  <div class="kicker wf">Part I · coupled clusters</div>
+
+  <h2>MP2, CCSD and the "gold standard" CCSD(T)</h2>
+  <div class="abs" style="left:110px;top:176px;width:820px">
+    <div class="small"><b>Møller–Plesset (1934)</b>: treat $\hat H-\hat f$ as a perturbation. The second-order energy is cheap ($N^5$) and catches most dynamic correlation:</div>
+    <div class="eqbox eq" style="margin:12px 0 18px">$E^{(2)}=\sum_{ij,ab}\dfrac{|\langle ij\|ab\rangle|^2}{4(\varepsilon_i+\varepsilon_j-\varepsilon_a-\varepsilon_b)}$</div>
+    <div class="small" data-f="1"><b>CCSD(T)</b> (Raghavachari, Trucks, Pople &amp; Head-Gordon 1989): iterate CCSD ($N^6$), then add connected triples once by perturbation theory ($N^7$). Errors from omitted higher triples and quadruples largely cancel.</div>
+  </div>
+  <div class="abs card" style="left:990px;top:180px;width:820px;padding:24px 28px" data-f="2">
+    <div class="lead b" style="color:var(--navy);font-size:26px">Ozone's asymmetric stretch (cm⁻¹), from the 1989 paper</div>
+    <table class="dict" style="margin-top:12px">
+      <tr><td>CCSD+T(CCSD)</td><td>imaginary (wrong)</td></tr>
+      <tr><td>QCISD(T)</td><td>934</td></tr>
+      <tr><td>CCSD(T)</td><td><b>977</b></td></tr>
+      <tr><td>experiment</td><td>1089</td></tr>
+    </table>
+    <div class="small" style="margin-top:16px">Atomization energies at the basis-set limit, mean absolute error (Bak et al. 2000): HF 405, MP2 and CCSD about 32, <b>CCSD(T) 0.8 kJ/mol</b>.</div>
+  </div>
+  <div class="takeaway" data-f="3">Doubling a molecule makes CCSD(T) $2^7=128$ times more expensive. That price, not accuracy, is what limits it.</div>
+  <aside class="notes"><p>Two more pieces. Møller–Plesset perturbation theory: treat the difference between the true Hamiltonian and the Fock operator as a perturbation. Second order, MP2, is the cheapest correlated method, N⁵, and catches a large part of the dynamic correlation.</p>
+<p><b>(click)</b> CCSD(T), from 1989, Raghavachari, Trucks, Pople and Head-Gordon: solve CCSD iteratively, N⁶, then add the connected triples once with perturbation theory, N⁷. It works better than it should, partly because errors from the neglected higher triples and quadruples cancel.</p>
+<p><b>(click)</b> The 1989 paper's test was ozone's asymmetric stretch: one earlier triples variant gave an imaginary frequency; CCSD(T) gave 977 against 1089 measured. Across many molecules at the basis-set limit, Bak and co-workers found atomization-energy errors of 405 kJ/mol for Hartree–Fock, about 32 for MP2 and CCSD, and 0.8 for CCSD(T).</p>
+<p><b>(click)</b> The limit is price: double the molecule and CCSD(T) costs 128 times more.</p></aside>
+</section>
+
+<section class="slide" data-title="The Pople diagram" data-section="Wavefunctions">
+  <div class="kicker wf">Part I · model chemistries</div>
+
+  <h2>Pople's two-dimensional chart, computed for water</h2>
+<canvas class="abs" style="left:110px;top:160px" width="1250" height="700" data-anim="pople" data-step-map='[0,1,2,2]'></canvas>
+  <div class="abs" style="left:1400px;top:180px;width:410px">
+    <div class="small">Pople (Nobel lecture, 1998): a <b>model chemistry</b> is a method and a basis, applied uniformly.</div>
+    <div class="small" style="margin-top:16px" data-f="1">Right: more correlation. Down: bigger basis. The exact answer sits in the bottom-right corner, reached only by extrapolation.</div>
+    <div class="small" style="margin-top:16px" data-f="2">Composite recipes walk this chart cheaply: G2 0.92, G3 1.02, G4 0.83 kcal/mol; W1 0.30, W2 0.23; W4 0.085 kcal/mol RMSD vs ATcT.</div>
+  </div>
+  <div class="takeaway navy" data-f="3">Both axes must converge together: CCSD(T) in a small basis is worse than Hartree–Fock in a large one for some properties.</div>
+  <aside class="notes"><p>Pople's way of organizing all this, from his Nobel lecture: a two-dimensional chart, methods across, basis sets down. A model chemistry is one cell, applied uniformly to every molecule.</p>
+<p>This is that chart computed for water with PySCF on this laptop, energies in hartree, colour showing distance from the best estimate, with timings. <b>(click)</b> Going right adds correlation; going down adds basis functions. Each direction alone stalls.</p>
+<p><b>(click)</b> The exact answer is the bottom-right corner, which you reach only by extrapolation. Composite methods walk this chart cleverly: G2, G3 and G4 get to about 1 kcal/mol; the W-n methods of Martin's group get W4 to 0.085 kcal/mol against active thermochemical tables.</p></aside>
+</section>
+
+<section class="slide" data-title="Climbing the wavefunction ladder" data-section="Wavefunctions">
+  <div class="kicker wf">Part I · results</div>
+
+  <h2>Climbing the wavefunction ladder: 17 atomization energies</h2>
+<canvas class="abs" style="left:110px;top:160px" width="1700" height="640" data-anim="taeMAE" data-opts='{"methods":[["HF","Hartree–Fock","#8E9AA6",0],["MP2/cc-pvdz","MP2 / cc-pVDZ","#D16BA5",1],["CCSD(T)/cc-pvdz","CCSD(T) / cc-pVDZ","#1F2933",1],["MP2/CBS","MP2 / basis-set limit","#D16BA5",2],["CCSD/CBS","CCSD / basis-set limit","#B4492F",2],["CCSD(T)/cc-pvtz","CCSD(T) / cc-pVTZ","#1F2933",3],["CCSD(T)/cc-pvqz","CCSD(T) / cc-pVQZ","#1F2933",3],["CCSD(T)/CBS","CCSD(T) / basis-set limit","#1F2933",3]],"log":1,"min":0.3,"max":150,"ticks":[0.3,1,3,10,30,100],"bars":{"lw":400,"fs":21}}' data-step-map='[0,1,2,3,3]'></canvas>
+  <div class="takeaway" data-f="4">Method <b>and</b> basis: CCSD(T) is off by 24 kcal/mol in cc-pVDZ and 9 in cc-pVTZ; at the basis-set limit, 1.2 (frozen core, no relativity).</div>
+  <div class="cite">PySCF; frozen-core MP2/CCSD/CCSD(T) in cc-pVXZ, X⁻³ extrapolation from (T,Q); molecules: H₂ CH₄ NH₃ H₂O HF C₂H₂ C₂H₄ HCN CO N₂ NO O₂ F₂ CO₂ OH H₂CO O₃; reference W4-11</div>
+  <aside class="notes"><p>Here is the ladder in numbers, for 17 small molecules against the W4-11 reference: H₂ to ozone, including radicals and the hard cases F₂ and O₃. Mean absolute error of atomization energies, log scale.</p>
+<p>Hartree–Fock is off by about a hundred kcal/mol. <b>(click)</b> Correlated methods in a double-zeta basis are still off by 17 to 30: the right method in the wrong basis. <b>(click)</b> At the basis-set limit MP2 and CCSD sit at 8 or 9 kcal/mol, in opposite directions. <b>(click)</b> CCSD(T) converges as the basis grows, and at the extrapolated limit it is 1.2 kcal/mol. The remainder here is mostly core correlation, which these frozen-core calculations leave out on purpose.</p>
+<p><b>(click)</b> So the top of this ladder works, if you can pay for it.</p></aside>
+</section>
+
+<section class="slide" data-title="Where the ladder breaks: N2" data-section="Wavefunctions">
+  <div class="kicker wf">Part I · multireference</div>
+
+  <h2>Where single-reference methods break: pulling N₂ apart</h2>
+<canvas class="abs" style="left:110px;top:160px" width="1260" height="660" data-anim="n2" data-step-map='[0,1,2,2]'></canvas>
+  <div class="abs" style="left:1410px;top:190px;width:400px">
+    <div class="small">Six electrons in three breaking bonds: many configurations matter at once.</div>
+    <div class="small" style="margin-top:16px" data-f="1">Perturbative (T) diverges: CCSD(T) dives far <b>below</b> the exact curve, an "unphysical hump".</div>
+    <div class="small" style="margin-top:16px" data-f="2"><b>Multireference</b>: CASSCF treats the 6 bonding electrons in 6 orbitals exactly; NEVPT2 adds dynamic correlation and follows full CI.</div>
+  </div>
+  <div class="takeaway coral" data-f="3">The "gold standard" assumes one dominant determinant. Bond breaking, diradicals and many transition-metal systems violate that assumption.</div>
+  <div class="cite">PySCF, 6-31G, frozen 1s; full CI by CASCI over all valence orbitals</div>
+  <aside class="notes"><p>Now the failure mode. Pull N₂ apart: three bonds, six electrons, and near dissociation many configurations matter at once. This is 6-31G with frozen cores, so full CI is feasible, in black.</p>
+<p>Restricted Hartree–Fock goes far too high, as for H₂. <b>(click)</b> MP2, CCSD and CCSD(T) follow full CI near equilibrium, then fail. CCSD(T) is the striking one: past about 2 Å it dives far below the exact curve, the "unphysical hump". The perturbative triples are dividing by small energy gaps.</p>
+<p><b>(click)</b> Multireference methods are built for this: CASSCF treats the six bonding electrons in six orbitals exactly; NEVPT2 adds the dynamic correlation on top, and tracks full CI all the way.</p>
+<p><b>(click)</b> The gold standard assumes one dominant determinant, and bond breaking, diradicals and many transition-metal compounds break that assumption.</p></aside>
+</section>
+
+<section class="slide" data-title="The price of the top rungs" data-section="Wavefunctions" data-optional>
+  <div class="kicker wf">Part I · cost</div>
+
+  <h2>The price of the top rungs, and how it has fallen</h2>
+  <div class="abs" style="left:110px;top:180px;width:820px">
+    <table class="dict">
+      <tr><th>method</th><th>cost</th><th>routine size (2025)</th></tr>
+      <tr><td>Hartree–Fock, DFT</td><td>$N^3$–$N^4$</td><td>hundreds of atoms (GPUs: 168 atoms in 309 s)</td></tr>
+      <tr><td>MP2</td><td>$N^5$</td><td>~100 atoms</td></tr>
+      <tr><td>CCSD(T), canonical</td><td>$N^7$</td><td>20–40 atoms</td></tr>
+      <tr><td>local CCSD(T)</td><td>≈ $N$</td><td>hundreds of atoms; crambin (644) in 2013</td></tr>
+      <tr><td>full CI</td><td>$e^N$</td><td>record: 1.3 × 10¹² determinants</td></tr>
+    </table>
+  </div>
+  <div class="abs card" style="left:990px;top:180px;width:820px;padding:24px 28px" data-f="1">
+    <div class="lead b" style="color:var(--navy);font-size:26px">One n-dodecane conformer, aug-cc-pVTZ, 16 cores</div>
+    <table class="dict" style="margin-top:12px">
+      <tr><td>DF-CCSD(T)</td><td>74.8 h</td></tr>
+      <tr><td>DLPNO-CCSD(T₁)</td><td>0.83 h</td></tr>
+      <tr><td>LNO-CCSD(T)</td><td>0.23 h</td></tr>
+      <tr><td>canonical CCSD(T)-F12</td><td>"over 3 weeks"</td></tr>
+    </table>
+  </div>
+  <div class="takeaway" data-f="2">Kohn's 1999 wall stood at about 10 atoms. Locality (correlation is short-ranged) pushed it to ~1,000 atoms for well-behaved molecules. Strong correlation is still exponential.</div>
+  <aside class="notes"><p>A quick look at cost in practice. Canonical CCSD(T) is routine up to twenty or forty atoms. The big change in the last fifteen years is local correlation: because dynamic correlation is short-ranged, you can truncate the excitation space by distance. DLPNO-CCSD(T) handled crambin, a 644-atom protein, in 2013.</p>
+<p><b>(click)</b> One benchmark on n-dodecane: density-fitted canonical CCSD(T) took 75 hours, DLPNO under an hour, LNO 14 minutes.</p>
+<p><b>(click)</b> Kohn's wall moved from ten atoms to roughly a thousand for well-behaved molecules. For strongly correlated systems it hasn't moved.</p></aside>
+</section>
+
+<section class="slide section-slide" data-title="Density functional theory" data-section="DFT">
+  <div class="sec-num" style="color:var(--teal-dark)">Part II</div>
+  <h2 class="sec-title">Density functional theory</h2>
+  <div class="sec-sub">Replace the wavefunction by the density, then climb Jacob's ladder by adding ingredients</div>
+  <div class="sec-paper">Thomas–Fermi 1927 · Hohenberg–Kohn 1964 · Kohn–Sham 1965 · Becke 1988, 1993 · Lee–Yang–Parr 1988 · PBE 1996 · Perdew &amp; Schmidt 2001 · SCAN 2015</div>
+  <aside class="notes"><p>Part two: density functional theory. Replace the wavefunction by the density, then climb Jacob's ladder by adding ingredients.</p></aside>
+</section>
+
+<section class="slide" data-title="The density is enough" data-section="DFT" data-optional>
+  <div class="kicker dft">Part II · foundations</div>
+
+  <h2>The density is enough, in principle</h2>
+  <div class="abs" style="left:110px;top:180px;width:820px">
+    <div class="body">$n(\mathbf r)$ has 3 variables for any number of electrons. Thomas and Fermi (1927) tried energy as a functional of $n$ alone: no shells, and no molecule binds (Teller 1962).</div>
+    <div class="box teal" style="margin-top:22px" data-f="1"><div class="h">Hohenberg–Kohn (1964)</div><div class="s">1. The ground-state density determines the external potential, hence everything.<br>2. A universal functional $F[n]$ exists, and $E[n]=F[n]+\int v\,n$ is minimized by the true density.</div></div>
+    <div class="small" style="margin-top:20px" data-f="2">The catch: the theorem proves $F[n]$ exists and says nothing about its form. Finding it efficiently for all systems is QMA-hard (Schuch &amp; Verstraete 2009).</div>
+  </div>
+  <div class="abs card" style="left:990px;top:180px;width:820px;padding:26px 30px" data-f="1">
+    <div class="lead b" style="color:var(--teal-dark);font-size:27px">Proof idea, in four lines</div>
+    <div class="small" style="margin-top:12px;color:var(--ink)">Suppose two potentials $v\neq v'$ give the same density $n$. Use each ground state as a trial state for the other Hamiltonian:</div>
+    <div class="eq" style="margin:12px 0;font-size:25px">$E\lt E'+\int(v-v')\,n,\qquad E'\lt E+\int(v'-v)\,n$</div>
+    <div class="small" style="color:var(--ink)">Adding them gives $E+E'\lt E+E'$, a contradiction. So $n\mapsto v$ is one-to-one.</div>
+  </div>
+  <div class="takeaway" data-f="3">Density functional theory is exact and almost useless, until Kohn and Sham's trick a year later.</div>
+  <aside class="notes"><p>The density depends on three variables no matter how many electrons you have. Thomas and Fermi tried this in 1927: energy as a functional of density alone. It gives no shell structure, and Teller proved that no molecule binds.</p>
+<p><b>(click)</b> Hohenberg and Kohn, 1964: the ground-state density determines the external potential, so it determines everything. The proof is four lines, on the right: assume two potentials give the same density, use each ground state as a trial function for the other, add the inequalities and get a contradiction.</p>
+<p><b>(click)</b> The catch: the universal functional exists, but the theorem says nothing about its form, and computing it efficiently for all systems is QMA-hard. <b>(click)</b> So DFT in 1964 was exact and almost useless.</p></aside>
+</section>
+
+<section class="slide" data-title="Kohn–Sham: put the unknown where it is small" data-section="DFT">
+  <div class="kicker dft">Part II · Kohn–Sham</div>
+
+  <h2>Kohn–Sham (1965): put the unknown where it is small</h2>
+  <div class="abs" style="left:110px;top:176px;width:820px">
+    <div class="body">Use <b>non-interacting</b> electrons that have the same density. Their kinetic energy $T_s$ is computed exactly from orbitals; only one piece is unknown:</div>
+    <div class="eqbox eq" style="margin:16px 0">$E[n]=T_s[n]+\int v\,n+\underbrace{\tfrac12\!\iint\!\frac{n(\mathbf r)n(\mathbf r')}{|\mathbf r-\mathbf r'|}}_{J[n]}+E_{\rm xc}[n]$</div>
+    <div class="small" data-f="1">$E_{\rm xc}$ collects exchange, correlation, and the kinetic-energy correction. Self-consistent orbitals as in Hartree–Fock, at the same or lower cost.</div>
+    <div class="small" style="margin-top:14px" data-f="2">$E_{\rm xc}$ is 10% of the energy but larger than any bond energy. Everything below is about approximating it.</div>
+  </div>
+<canvas class="abs" style="left:960px;top:180px" width="850" height="520" data-anim="ksParts"></canvas>
+  <div class="abs canvas-cap" style="left:960px;top:710px;width:850px">Kohn–Sham energy components of neon (PBE), from the engine in this page.</div>
+  <div class="takeaway" data-f="3">Kohn and Sham shrank the unknown from the whole kinetic energy to a small, smooth remainder. That is why DFT works.</div>
+  <aside class="notes"><p>Kohn and Sham's trick, a year later: use fictitious non-interacting electrons that have the same density. Their kinetic energy is computed exactly from orbitals. The Hartree energy is classical. Everything else, exchange, correlation, and the kinetic-energy correction, goes into one term, E_xc.</p>
+<p><b>(click)</b> The equations look just like Hartree–Fock, with the same or lower cost.</p>
+<p><b>(click)</b> The bars are neon's energy components from the engine in this page. E_xc is about 10% of the total: small compared with the kinetic energy, but larger than any bond energy in chemistry. Every functional you've heard of is an approximation to that one red bar.</p>
+<p><b>(click)</b> That's why DFT works: Kohn and Sham shrank the unknown from the whole kinetic energy to a small, smooth remainder.</p></aside>
+</section>
+
+<section class="slide" data-title="Jacob's ladder" data-section="DFT">
+  <div class="kicker dft">Part II · Jacob's ladder</div>
+
+  <h2>Jacob's ladder (Perdew &amp; Schmidt, 2001)</h2>
+<canvas class="abs" style="left:110px;top:160px" width="1700" height="720" data-anim="jacob" data-step-map='[0,1,2,3,4,5,5]'></canvas>
+  <div class="takeaway navy" data-f="6">Each rung adds an <b>ingredient</b> computed from the orbitals. Higher rungs can satisfy more exact constraints, and cost more.</div>
+  <aside class="notes"><p>In 2001 Perdew and Schmidt organized the approximations as Jacob's ladder: from the Hartree world, no exchange or correlation, up to the heaven of chemical accuracy. Each rung adds an ingredient.</p>
+<p><b>(click)</b> Rung one, LDA: the density at each point. <b>(click)</b> Rung two, GGA: its gradient. <b>(click)</b> Rung three, meta-GGA: the kinetic energy density of the orbitals. <b>(click)</b> Rung four, hybrids: exact exchange, which needs the occupied orbitals non-locally. <b>(click)</b> Rung five: unoccupied orbitals, double hybrids and RPA.</p>
+<p><b>(click)</b> Higher rungs can satisfy more exact constraints, and cost more. Now let's climb, one rung at a time.</p></aside>
+</section>
+
+<section class="slide" data-title="Rung 1: the uniform electron gas" data-section="DFT">
+  <div class="kicker dft">Part II · LDA</div>
+
+  <h2>Rung 1, LDA: borrow the uniform electron gas</h2>
+  <div class="abs" style="left:110px;top:176px;width:800px">
+    <div class="eqbox eq">$E_{\rm xc}^{\rm LDA}=\int n\,\varepsilon_{\rm xc}^{\rm unif}(n)\,d\mathbf r,\qquad \varepsilon_{\rm x}^{\rm unif}=-\tfrac34\left(\tfrac3\pi\right)^{1/3}n^{1/3}$</div>
+    <ul class="clean sm" style="margin-top:20px">
+      <li>Exchange: exact for the gas (Dirac 1930). Correlation: Ceperley &amp; Alder's quantum Monte Carlo (1980), fitted by VWN (1980) and PW92.</li>
+      <li data-f="1">It works better than it should: the LDA exchange-correlation hole is that of a real system, so it obeys the sum rule (Gunnarsson &amp; Lundqvist 1976).</li>
+      <li data-f="2">Good geometries and solids; for molecules it <b>overbinds every molecule</b>: G2/97 atomization energies, MAE 82.9 kcal/mol, mean error +82.9.</li>
+    </ul>
+  </div>
+<canvas class="abs" style="left:960px;top:176px" width="850" height="560" data-anim="b88fit" data-opts='{"only":"lda"}' data-step-map='[0,0,0,0]'></canvas>
+  <div class="abs canvas-cap" style="left:960px;top:746px;width:850px">LDA exchange energies of the noble gases vs exact (Hartree–Fock orbitals): 14% too small for He, 3.7% for Rn.</div>
+  <div class="takeaway" data-f="3">Bonds are made where the density is far from uniform. The next rung lets the functional see <b>how fast the density changes</b>.</div>
+  <div class="cite">Becke, J. Chem. Phys. 140, 18A301 (2014), Table IV</div>
+  <aside class="notes"><p>The local density approximation takes the exchange-correlation energy per electron of a uniform electron gas at the local density. Exchange is known exactly, Dirac 1930, the n to the one third formula. Correlation comes from Ceperley and Alder's quantum Monte Carlo of 1980, fitted by VWN and Perdew–Wang.</p>
+<p><b>(click)</b> It works better than it should, because the LDA exchange-correlation hole belongs to a real physical system, so it satisfies the sum rule. Errors in the shape of the hole average out.</p>
+<p>On the right, the exchange energies of the noble gases with LDA versus exact: 14% too small for helium, still 3.7% for radon.</p>
+<p><b>(click)</b> For molecules, LDA overbinds everything: on the G2/97 set, the mean absolute error is 82.9 kcal/mol and the mean signed error is also +82.9, so every single molecule is overbound.</p>
+<p><b>(click)</b> Bonds form where the density is far from uniform, so the next rung lets the functional see the gradient.</p></aside>
+</section>
+
+<section class="slide" data-title="Rung 2: gradients" data-section="DFT">
+  <div class="kicker dft">Part II · GGA</div>
+
+  <h2>Rung 2, GGA: add the gradient</h2>
+  <div class="abs" style="left:110px;top:176px;width:760px">
+    <div class="eqbox eq">$E_{\rm x}^{\rm GGA}=\int n\,\varepsilon_{\rm x}^{\rm unif}(n)\,F_{\rm x}(s)\,d\mathbf r,\qquad s=\dfrac{|\nabla n|}{2k_Fn}$</div>
+    <div class="small" style="margin-top:18px">The naive gradient expansion makes things <b>worse</b>. GGAs choose $F_{\rm x}(s)$ to fix it.</div>
+    <div class="small" style="margin-top:14px" data-f="1"><b>B88</b> (Becke): correct $-1/r$ energy density far out, one parameter $\beta$ fitted to exact exchange energies of the noble gases.</div>
+    <div class="small" style="margin-top:14px" data-f="2"><b>PBE</b> (Perdew, Burke, Ernzerhof 1996): no fit. $\kappa=0.804$ from the Lieb–Oxford bound, $\mu=0.2195$ to recover the LDA linear response.</div>
+  </div>
+<canvas class="abs" style="left:920px;top:170px" width="890" height="600" data-anim="fx" data-step-map='[0,1,2,2]'></canvas>
+  <div class="takeaway" data-f="3">Atomization-energy errors fall fivefold: G2 set MAE 83.8 (LSD) → 17.1 kcal/mol (PBE). B88 + LYP (1988) made DFT a chemistry method.</div>
+  <div class="cite">Tao, Perdew, Staroverov &amp; Scuseria, PRL 91, 146401 (2003), 148 molecules · Perdew, Burke &amp; Ernzerhof, PRL 77, 3865 (1996)</div>
+  <aside class="notes"><p>A GGA multiplies the LDA exchange by an enhancement factor that depends on the reduced gradient s. The naive gradient expansion actually makes things worse, because it breaks the sum rule, so GGAs choose F_x(s) more carefully.</p>
+<p><b>(click)</b> Becke's 1988 choice: one parameter, beta, and the right minus one over r energy density far from the atom. <b>(click)</b> PBE, 1996: no fitted parameter. Kappa comes from the Lieb–Oxford bound, the dashed line; mu recovers LDA's linear response.</p>
+<p><b>(click)</b> The payoff: atomization energies improve fivefold, from 84 to 17 kcal/mol on the G2 set. B88 exchange with Lee–Yang–Parr correlation, both 1988, is what made DFT a chemistry method.</p></aside>
+</section>
+
+<section class="slide" data-title="Becke's one-parameter fit" data-section="DFT">
+  <div class="kicker dft">Part II · design</div>
+
+  <h2>Becke 1988: one parameter, six atoms, refit live</h2>
+<canvas class="abs" style="left:110px;top:160px" width="1700" height="600" data-anim="b88fit" data-step-map='[0,1,2,2]'></canvas>
+  <div class="abs small" style="left:110px;top:770px;width:1700px" data-f="1">Sweep $\beta$, compute B88 exchange on Hartree–Fock densities of He, Ne, Ar, Kr, Xe, Rn, minimize the squared error: the minimum lands at 0.0042, Becke's value.</div>
+  <div class="takeaway navy" data-f="2"><b>Two design philosophies</b> from the start: fit a flexible form to data (Becke, Truhlar, Head-Gordon, Grimme) or derive it from exact constraints (Perdew). Becke (2014): "Both groups are really doing the same thing."</div>
+  <aside class="notes"><p>Here is Becke's fit, redone live. Each group of bars is a noble gas, He to Rn: the exchange energy error, computed on Hartree–Fock densities from this page.</p>
+<p><b>(click)</b> Now sweep beta from small to large and watch the B88 errors and the sum of squares on the right. The minimum lands at 0.0042, Becke's published value; our refit gives 0.00421. One parameter, six atoms, and the functional is still used 38 years later.</p>
+<p><b>(click)</b> PBE, with no fitted parameter, does nearly as well. This is the founding split of the field: fit a flexible form to data, the Becke, Truhlar, Head-Gordon, Grimme tradition, or derive it from exact constraints, Perdew's tradition. Becke's own comment in 2014 was that both groups are really doing the same thing.</p></aside>
+</section>
+
+<section class="slide" data-title="Rung 3: kinetic energy density" data-section="DFT">
+  <div class="kicker dft">Part II · meta-GGA</div>
+
+  <h2>Rung 3, meta-GGA: recognize what kind of region you are in</h2>
+  <div class="abs" style="left:110px;top:176px;width:760px">
+    <div class="small">Add the kinetic energy density $\tau=\tfrac12\sum_i|\nabla\phi_i|^2$. The combination</div>
+    <div class="eqbox eq" style="margin:12px 0 16px">$\alpha=\dfrac{\tau-\tau_W}{\tau_{\rm unif}},\qquad \tau_W=\dfrac{|\nabla n|^2}{8n}$</div>
+    <div class="small">tells single-orbital regions ($\alpha=0$: covalent bonds, H atoms) from slowly varying ones ($\alpha\approx1$) and weak overlaps ($\alpha\gg1$).</div>
+    <div class="small" style="margin-top:16px" data-f="1"><b>SCAN</b> (Sun, Ruzsinszky, Perdew 2015): "obeying all 17 known exact constraints that a meta-GGA can". r²SCAN (2020) restores numerical stability. M06-L and B97M-V take the fitting route.</div>
+  </div>
+<canvas class="abs" style="left:920px;top:170px" width="890" height="600" data-anim="alphaAr"></canvas>
+  <div class="abs canvas-cap" style="left:920px;top:780px;width:890px">α(r) across the argon atom, from Hartree–Fock orbitals in this page. Each shell has its own one-orbital region.</div>
+  <div class="takeaway" data-f="2">G2 atomization energies: TPSS 6.2 kcal/mol, at almost GGA cost. GMTKN55 averages: GGA 10.47, meta-GGA 9.96. The gain is uneven.</div>
+  <aside class="notes"><p>Meta-GGAs add the kinetic energy density tau. The useful combination is alpha, which compares tau with its single-orbital limit and with the uniform gas.</p>
+<p>Alpha equals zero where one orbital dominates, like a covalent bond or a hydrogen atom; it's about one where the density varies slowly; and it's large where closed shells meet. The plot is alpha across an argon atom, computed here: you can see each shell's one-orbital region, and spikes where shells overlap.</p>
+<p><b>(click)</b> SCAN, in 2015, used this to satisfy all 17 exact constraints known for a meta-GGA; r²SCAN in 2020 made it numerically well behaved. M06-L and B97M-V are fitted meta-GGAs.</p>
+<p><b>(click)</b> TPSS brings G2 errors to about 6 kcal/mol at nearly GGA cost. But across the big GMTKN55 benchmark, the meta-GGA average is barely better than the GGA average. The gain is uneven.</p></aside>
+</section>
+
+<section class="slide" data-title="Rung 4: a fraction of exact exchange" data-section="DFT">
+  <div class="kicker dft">Part II · hybrids</div>
+
+  <h2>Rung 4, hybrids: mix in exact exchange</h2>
+  <div class="abs" style="left:110px;top:176px;width:820px">
+    <div class="small">The adiabatic connection links the non-interacting system ($\lambda=0$, pure exchange) to the real one ($\lambda=1$). Becke (1993): interpolate.</div>
+    <div class="eqbox eq" style="margin:14px 0 18px">$E_{\rm xc}=a\,E_{\rm x}^{\rm HF}+(1-a)\,E_{\rm x}^{\rm DFA}+E_{\rm c}^{\rm DFA}$</div>
+    <ul class="clean sm">
+      <li data-f="1"><b>B3PW91</b> (1993): three parameters fitted to 56 atomization energies, 2.4 kcal/mol. <b>B3LYP</b> (1994) swapped in LYP, and inherited VWN's RPA fit, not VWN5: Frisch "didn't specify which version of VWN".</li>
+      <li data-f="2"><b>PBE0</b> (1996–99): $a=\tfrac14$ from a perturbation-theory argument, no fit.</li>
+      <li data-f="3"><b>Range separation</b> (ωB97X-V, CAM-B3LYP): exact exchange at long range, where semilocal exchange fails worst.</li>
+    </ul>
+  </div>
+  <div class="abs card" style="left:990px;top:190px;width:820px;padding:24px 28px" data-f="1">
+    <div class="lead b" style="color:var(--blue);font-size:26px">Most cited papers of all time (Nature, 2025)</div>
+    <table class="dict" style="margin-top:10px">
+      <tr><td>#4</td><td>PBE (1996): 174,137</td></tr>
+      <tr><td>#10</td><td>Lee, Yang &amp; Parr (1988)</td></tr>
+      <tr><td>#22</td><td>Becke (1993)</td></tr>
+    </table>
+    <div class="small" style="margin-top:14px">B3LYP was #2 in the DFT popularity poll in 2010, and #8 in 2025.</div>
+  </div>
+  <div class="takeaway" data-f="4">G2 atomization energies: PBE0 4.4–5.1 kcal/mol. Exact exchange removes part of the self-interaction error, at Hartree–Fock cost ($N^4$).</div>
+  <aside class="notes"><p>Hybrids mix in exact, Hartree–Fock exchange. The justification is the adiabatic connection: at zero coupling the exchange-correlation energy is pure exchange, at full coupling it is the real thing, so interpolate.</p>
+<p><b>(click)</b> Becke's 1993 three-parameter hybrid hit 2.4 kcal/mol on 56 atomization energies. B3LYP replaced his correlation with LYP; Frisch's implementation used the RPA fit of VWN rather than VWN5, and later said he "didn't specify which version of VWN". Different codes still disagree about B3LYP because of that.</p>
+<p><b>(click)</b> PBE0 uses one quarter exact exchange, from a perturbation argument, with no fit. <b>(click)</b> Range-separated hybrids use exact exchange at long range, where semilocal exchange fails worst.</p>
+<p>On the right, citation counts: PBE is the fourth most-cited paper in all of science.</p>
+<p><b>(click)</b> Hybrids bring G2 errors to about 4–5 kcal/mol, at Hartree–Fock cost.</p></aside>
+</section>
+
+<section class="slide" data-title="How much exact exchange?" data-section="DFT" data-optional>
+  <div class="kicker dft">Part II · hybrids</div>
+
+  <h2>How much exact exchange? There is no single answer</h2>
+<canvas class="abs" style="left:110px;top:160px" width="1180" height="660" data-anim="hybridScan" data-step-map='[0,1,2,2]'></canvas>
+  <div class="abs" style="left:1330px;top:190px;width:480px">
+    <div class="small">PBE-based hybrids with a fraction $a$ of exact exchange, $a=0\dots1$, computed with PySCF.</div>
+    <div class="small" style="margin-top:16px" data-f="1">Atomization energies want about a quarter. The H + H₂ barrier wants about 85%: a stretched, delocalized transition state is where self-interaction hurts most.</div>
+    <div class="small" style="margin-top:16px" data-f="2">One global $a$ cannot serve both. Range separation and local hybrids make $a$ depend on position.</div>
+  </div>
+  <div class="takeaway coral" data-f="3">A fitted parameter is a compromise between errors with different physical origins. The compromise shifts with the training set.</div>
+  <div class="cite">TAE vs CCSD(T)/CBS (aug-cc-pVTZ); barrier vs full CI/aug-cc-pVQZ</div>
+  <aside class="notes"><p>So how much exact exchange? We ran PBE-based hybrids with every fraction from zero to one, with PySCF.</p>
+<p>The navy curve: atomization energies of our 17 molecules. The best fraction is around a quarter. <b>(click)</b> The coral curve: the H + H₂ barrier height error. It wants about 85 percent. The transition state stretches bonds and spreads one electron over three atoms, exactly where self-interaction hurts.</p>
+<p><b>(click)</b> No single global fraction serves both. That's the motivation for range separation and local hybrids, which let the fraction depend on position.</p>
+<p><b>(click)</b> A fitted parameter is a compromise between errors with different physical origins, and the compromise shifts with whatever you trained on.</p></aside>
+</section>
+
+<section class="slide" data-title="Rung 5 and the big benchmark" data-section="DFT">
+  <div class="kicker dft">Part II · benchmarks</div>
+
+  <h2>Rung 5 and the big benchmark: GMTKN55</h2>
+  <div class="abs" style="left:110px;top:176px;width:640px">
+    <div class="small"><b>Double hybrids</b> (Grimme 2006, B2PLYP): add second-order perturbation theory on Kohn–Sham orbitals, using unoccupied orbitals:</div>
+    <div class="eqbox" style="margin:12px 0 16px;font-size:23px">$E_{\rm xc}=0.53E_{\rm x}^{\rm HF}+0.47E_{\rm x}^{\rm B88}+0.73E_{\rm c}^{\rm LYP}+0.27E_{\rm c}^{\rm PT2}$</div>
+    <div class="small" data-f="1">GMTKN55 (Goerigk et al. 2017): 55 subsets, 1,505 relative energies, weighted mean absolute deviation (WTMAD-2).</div>
+    <div class="small" style="margin-top:14px" data-f="2">Without dispersion B3LYP scores 16.38, worse than SCAN at 8.72: higher is not automatically better.</div>
+  </div>
+<canvas class="abs" style="left:800px;top:170px" width="1010" height="640" data-anim="bars" data-opts='{"items":[{"l":"B3LYP (no dispersion)","v":16.38,"c":"#B4492F"},{"l":"PBE-D3(BJ)","v":10.32,"c":"#E0A030"},{"l":"GGA average","v":10.47,"c":"#E0A030","b":1},{"l":"SCAN-D3(BJ)","v":7.86,"c":"#2A9D8F"},{"l":"meta-GGA average","v":9.96,"c":"#2A9D8F","b":1},{"l":"B3LYP-D3(BJ)","v":6.42,"c":"#4C72B0","s":1},{"l":"ωB97X-V","v":3.98,"c":"#4C72B0","s":1},{"l":"hybrid average","v":6.82,"c":"#4C72B0","s":1,"b":1},{"l":"DSD-BLYP-D3(BJ)","v":3.08,"c":"#6B5E9B","s":2},{"l":"double-hybrid average","v":3.57,"c":"#6B5E9B","s":2,"b":1}],"min":0,"max":18,"ticks":[0,3,6,9,12,15,18],"unit":"","dec":2,"lw":360,"fs":20,"xl":"GMTKN55 WTMAD-2 (kcal/mol), 1,505 relative energies"}' data-step-map='[0,1,2,2]'></canvas>
+  <div class="takeaway" data-f="3">Averaged over chemistry, each rung roughly halves the error from hybrids up, and dispersion corrections matter as much as the rung.</div>
+  <div class="cite">Goerigk, Hansen, Bauer, Ehrlich, Najibi &amp; Grimme, PCCP 19, 32184 (2017), and the GMTKN55 website</div>
+  <aside class="notes"><p>Rung five. Double hybrids, introduced by Grimme in 2006 with B2PLYP: on top of a hybrid, add second-order perturbation theory computed with Kohn–Sham orbitals, using the unoccupied orbitals. The cost becomes N⁵.</p>
+<p><b>(click)</b> How do we compare all of these? GMTKN55, from Grimme's group in 2017: 55 subsets, 1,505 relative energies, thermochemistry, barriers, noncovalent interactions, summarized in a weighted error, WTMAD-2.</p>
+<p>The bars: rung averages in bold, and the best representatives. <b>(click)</b> Hybrids average 6.8, the best range-separated hybrids are under 4. <b>(click)</b> Double hybrids average 3.6, with DSD-BLYP at 3.1.</p>
+<p>And the warning on top: B3LYP without a dispersion correction scores 16.4, worse than SCAN at 8.7. Higher is not automatically better.</p></aside>
+</section>
+
+<section class="slide" data-title="Our ladder: 17 molecules" data-section="DFT">
+  <div class="kicker dft">Part II · results</div>
+
+  <h2>The same 17 molecules, every rung</h2>
+<canvas class="abs" style="left:110px;top:160px" width="1700" height="690" data-anim="taeMAE" data-opts='{"methods":[["HF","Hartree–Fock","#8E9AA6",0],["LDA","LDA","#C8692E",0],["PBE","PBE","#E0A030",1],["BLYP","BLYP","#C98A12",1],["TPSS","TPSS","#7FBFB5",2],["SCAN","SCAN","#2A9D8F",2],["r2SCAN","r²SCAN","#1F7A6F",2],["B97M-V","B97M-V","#3E8E6E",2],["B3LYP","B3LYP","#4C72B0",3],["PBE0","PBE0","#7B9CD0",3],["M06-2X","M06-2X","#2F5597",3],["wB97M-V","ωB97M-V","#3C5A8A",3],["B2PLYP","B2PLYP","#6B5E9B",4],["CCSD(T)/CBS","CCSD(T)/CBS","#1F2933",4]],"log":1,"min":0.3,"max":150,"ticks":[0.3,1,3,10,30,100],"bars":{"lw":300,"fs":20}}' data-step-map='[0,1,2,3,4,4]'></canvas>
+  <div class="takeaway" data-f="5">On small-molecule thermochemistry the ladder works as advertised, LDA → GGA → meta-GGA → hybrid, but the best hybrids still average 1.6–2 kcal/mol, not 1, and every one misses ozone by 7 or more.</div>
+  <div class="cite">PySCF, aug-cc-pVQZ, (99,590) grids, CCSD(T)/cc-pVTZ geometries; mean absolute error vs W4-11; B2PLYP assembled from its parts</div>
+  <aside class="notes"><p>Our own version, the same 17 molecules with every rung, all with PySCF in a quadruple-zeta basis against W4-11.</p>
+<p>Hartree–Fock and LDA are off by tens of kcal/mol in opposite directions: Hartree–Fock underbinds, LDA overbinds. <b>(click)</b> GGAs bring it to around ten. <b>(click)</b> Meta-GGAs, a few kcal/mol, with large differences between them. <b>(click)</b> Hybrids, around two to four. <b>(click)</b> B2PLYP and CCSD(T) at the top.</p>
+<p><b>(click)</b> On small-molecule thermochemistry the ladder works as advertised. But note that even the best hybrids sit at about 2 kcal/mol, not 1. Getting the last factor of two is the hard part, and it's where machine learning is aimed.</p></aside>
+</section>
+
+<section class="slide" data-title="Dispersion: the missing piece" data-section="DFT">
+  <div class="kicker dft">Part II · dispersion</div>
+
+  <h2>Dispersion: an interaction no semilocal rung can see</h2>
+<canvas class="abs" style="left:110px;top:160px" width="1260" height="660" data-anim="ar2" data-step-map='[0,1,2,2]'></canvas>
+  <div class="abs" style="left:1410px;top:190px;width:400px">
+    <div class="small">Two argon atoms bind only through correlated fluctuations of distant electrons, a $-C_6/R^6$ attraction.</div>
+    <div class="small" style="margin-top:16px" data-f="1">Semilocal functionals see only local overlap: LDA binds for the wrong reason, B3LYP is repulsive.</div>
+    <div class="small" style="margin-top:16px" data-f="2">Fixes outside the ladder: pairwise $C_6$ terms (Grimme's D2–D4, 2004–2017) or nonlocal kernels (VV10, built into ωB97X-V and B97M-V).</div>
+  </div>
+  <div class="takeaway" data-f="3">Dispersion is not a rung: it is a missing piece at every rung. With D3, B3LYP's GMTKN55 error drops from 16.4 to 6.4 kcal/mol.</div>
+  <div class="cite">PySCF, counterpoise-corrected; CCSD(T)/aug-cc-pVQZ, functionals/aug-cc-pVTZ · well depth 99.4 cm⁻¹ at 3.76 Å (Patkowski &amp; Szalewicz 2010)</div>
+  <aside class="notes"><p>One interaction that no semilocal rung can see: dispersion. Two argon atoms have no bond, only correlated fluctuations of their electron clouds, giving the minus C6 over R to the sixth attraction.</p>
+<p>Black is CCSD(T) with counterpoise correction, close to the experimental well of 99 wavenumbers at 3.76 Å.</p>
+<p><b>(click)</b> LDA binds, but for the wrong reason: it overbinds wherever densities overlap. PBE barely binds, B3LYP and Hartree–Fock are purely repulsive.</p>
+<p><b>(click)</b> The fixes sit outside the ladder: pairwise C6 corrections, Grimme's D2 through D4, or nonlocal correlation kernels like VV10, which is built into ωB97X-V and B97M-V, the dashed curves.</p>
+<p><b>(click)</b> Dispersion isn't a rung; it's missing at every rung. Adding D3 takes B3LYP's GMTKN55 error from 16.4 to 6.4.</p></aside>
+</section>
+
+<section class="slide section-slide" data-title="Where it fails" data-section="Failures">
+  <div class="sec-num" style="color:#B4492F">Part III</div>
+  <h2 class="sec-title">Where it fails</h2>
+  <div class="sec-sub">Three systematic errors explain most of the big failures</div>
+  <div class="sec-paper">Perdew &amp; Zunger 1981 · Perdew, Parr, Levy &amp; Balduz 1982 · Cohen, Mori-Sánchez &amp; Yang 2008 · Medvedev et al. 2017</div>
+  <aside class="notes"><p>Part three: where it fails. A small number of systematic errors explains most of the big failures.</p></aside>
+</section>
+
+<section class="slide" data-title="One electron, wrong answer" data-section="Failures">
+  <div class="kicker fail">Part III · self-interaction</div>
+
+  <h2>Self-interaction: wrong even for one electron</h2>
+<canvas class="abs" style="left:110px;top:160px" width="1260" height="660" data-anim="h2plus" data-step-map='[0,1,2,2]'></canvas>
+  <div class="abs" style="left:1410px;top:190px;width:400px">
+    <div class="small">H₂⁺ has one electron: no exchange, no correlation, $E_{\rm xc}=-J$ exactly. Hartree–Fock is exact.</div>
+    <div class="small" style="margin-top:16px" data-f="1">Approximate $E_{\rm xc}$ does not cancel the electron's repulsion with itself. Spreading the electron over two protons lowers that spurious energy.</div>
+    <div class="small" style="margin-top:16px" data-f="2">Hybrids and range separation reduce it; none removes it.</div>
+  </div>
+  <div class="takeaway coral" data-f="3">Self-interaction error: too-low barriers, over-delocalized charges, too-small band gaps. PBE overbinds stretched He₂⁺ by 47 kcal/mol.</div>
+  <div class="cite">PySCF, aug-cc-pVTZ, unrestricted Kohn–Sham</div>
+  <aside class="notes"><p>Start with the simplest possible molecule: H₂⁺, one electron. There's nothing to correlate, so Hartree–Fock is exact, the black curve.</p>
+<p><b>(click)</b> Approximate functionals go wrong as the bond stretches. With one electron, E_xc should exactly cancel the electron's Coulomb repulsion with itself. Approximate functionals don't cancel it, and spreading the electron over two protons lowers that spurious self-repulsion. So the stretched molecule comes out tens of kcal/mol too stable.</p>
+<p><b>(click)</b> Hybrids and range-separated hybrids reduce the error; none removes it.</p>
+<p><b>(click)</b> This self-interaction error is behind too-low reaction barriers, over-delocalized charges and too-small band gaps. For He₂⁺, PBE overbinds by 47 kcal/mol.</p></aside>
+</section>
+
+<section class="slide" data-title="Fractional electrons" data-section="Failures">
+  <div class="kicker fail">Part III · delocalization</div>
+
+  <h2>The exact energy is a straight line between integers</h2>
+<canvas class="abs" style="left:110px;top:160px" width="1180" height="660" data-anim="fracN" data-step-map='[0,1,2,3,3]'></canvas>
+  <div class="abs" style="left:1330px;top:190px;width:480px">
+    <div class="small">Perdew, Parr, Levy &amp; Balduz (1982): for a fractional number of electrons the exact $E(N)$ is <b>piecewise linear</b>, with kinks at integers.</div>
+    <div class="small" style="margin-top:14px" data-f="1">Hartree–Fock is nearly straight, slightly concave: it mildly penalizes spreading charge (localization error).</div>
+    <div class="small" style="margin-top:14px" data-f="2">LDA and PBE are convex: they reward spreading (delocalization error), the many-electron face of self-interaction.</div>
+    <div class="small" style="margin-top:14px" data-f="3">B3LYP's 20% exact exchange helps only a little: global hybrids reduce the error, they do not remove it.</div>
+  </div>
+  <div class="takeaway" data-f="4">Cohen, Mori-Sánchez &amp; Yang (2008): fractional charge and fractional spin explain the large DFT errors. DM21 (2021) was trained on exactly these conditions.</div>
+  <div class="cite">Beryllium from Be²⁺ (2 electrons) to Be (4), adding 2s electrons; computed in this page</div>
+  <aside class="notes"><p>A cleaner way to see the same thing. Perdew, Parr, Levy and Balduz showed in 1982 that for fractional electron numbers, the exact energy is a straight line between integers. We compute beryllium from Be²⁺ to Be⁺ to neutral Be here, adding electrons to the 2s orbital, and subtract those straight lines, so exact is the flat black line.</p>
+<p><b>(click)</b> Hartree–Fock is almost straight and bows slightly upward, concave: it mildly penalizes spreading charge, a localization error. <b>(click)</b> LDA and PBE bow far downward, convex, by about 20 kcal/mol at half-integer charge: they reward fractional charge. That's delocalization error, the many-electron version of self-interaction.</p>
+<p><b>(click)</b> B3LYP's 20% exact exchange helps only a little. Global hybrids reduce the error; they don't remove it.</p>
+<p><b>(click)</b> Cohen, Mori-Sánchez and Yang argued in 2008 that fractional charge and fractional spin explain most large DFT errors. DeepMind's DM21 was trained precisely on these conditions.</p></aside>
+</section>
+
+<section class="slide" data-title="Orbital energies and the potential" data-section="Failures" data-optional>
+  <div class="kicker fail">Part III · potentials</div>
+
+  <h2>Orbital energies: the HOMO should be minus the ionization energy</h2>
+<canvas class="abs" style="left:110px;top:160px" width="1050" height="640" data-anim="homoIP" data-step-map='[0,1,2,3,3]'></canvas><canvas class="abs" style="left:1200px;top:160px" width="610" height="640" data-anim="vxcTail"></canvas>
+  <div class="abs canvas-cap" style="left:110px;top:806px;width:1050px">Atoms H–Ar in this page's engine, against NIST ionization energies. LDA and PBE orbital energies are about 40% too shallow.</div>
+  <div class="abs canvas-cap" style="left:1200px;top:806px;width:610px">Neon: semilocal potentials die exponentially; the exact one falls as −1/r.</div>
+  <div class="takeaway" data-f="4">Exact DFT has $\varepsilon_{\rm HOMO}=-I$ (Janak; Perdew et al.). Semilocal potentials miss the $-1/r$ tail, so orbital energies, band gaps and Rydberg states come out wrong even when total energies are good.</div>
+  <aside class="notes"><p>A related failure. In exact DFT the highest occupied orbital energy is minus the ionization energy. The black line is the measured ionization energy of atoms hydrogen to argon.</p>
+<p><b>(click)</b> Hartree–Fock orbital energies, Koopmans' theorem, are close. <b>(click)</b> LDA and PBE are about 40% too shallow. <b>(click)</b> B3LYP is in between.</p>
+<p>The reason is on the right: an electron far from neon should feel minus one over r, the hole it leaves behind. Semilocal potentials die exponentially. So orbital energies, band gaps and Rydberg states come out wrong even when total energies are good.</p></aside>
+</section>
+
+<section class="slide" data-title="Static correlation in DFT" data-section="Failures">
+  <div class="kicker fail">Part III · static correlation</div>
+
+  <h2>Stretched bonds: the symmetry dilemma</h2>
+<canvas class="abs" style="left:110px;top:160px" width="1260" height="660" data-anim="h2dft" data-step-map='[0,1,2,2]'></canvas>
+  <div class="abs" style="left:1410px;top:190px;width:400px">
+    <div class="small">Restricted Kohn–Sham keeps the right spin symmetry and gets the energy wrong: tens of kcal/mol too high at dissociation.</div>
+    <div class="small" style="margin-top:16px" data-f="1">Unrestricted Kohn–Sham gets the energy by breaking the symmetry: a spin-up atom and a spin-down atom, not a singlet.</div>
+    <div class="small" style="margin-top:16px" data-f="2">The exact functional would do both. Fractional spin is the condition it must satisfy.</div>
+  </div>
+  <div class="takeaway coral" data-f="3">Static correlation and self-interaction pull in opposite directions: exact exchange cures the second and worsens the first. This tension is why no hybrid fixes both.</div>
+  <div class="cite">PySCF, aug-cc-pVTZ; each curve relative to two H atoms with the same method</div>
+  <aside class="notes"><p>Back to stretched H₂, now with DFT. Each curve is relative to two hydrogen atoms computed with the same method, so a correct curve ends at zero.</p>
+<p>Restricted Kohn–Sham keeps the correct singlet symmetry and ends tens of kcal/mol too high: the same static-correlation failure as restricted Hartree–Fock, only smaller.</p>
+<p><b>(click)</b> Unrestricted Kohn–Sham gets the right energy by breaking the symmetry, a spin-up atom and a spin-down atom. The energy is right, the state is wrong.</p>
+<p><b>(click)</b> The exact functional would do both; the condition it must satisfy is the fractional-spin condition.</p>
+<p><b>(click)</b> And here's the deep problem: exact exchange reduces self-interaction but worsens static correlation. That tension is why no hybrid fixes both.</p></aside>
+</section>
+
+<section class="slide" data-title="Barrier heights" data-section="Failures" data-optional>
+  <div class="kicker fail">Part III · barriers</div>
+
+  <h2>The simplest reaction: H + H₂ → H₂ + H</h2>
+<canvas class="abs" style="left:110px;top:160px" width="1260" height="690" data-anim="barrierBars" data-step-map='[0,1,2,2]'></canvas>
+  <div class="abs" style="left:1410px;top:190px;width:400px">
+    <div class="small">Three electrons, so full CI is exact in the basis: 9.6 kcal/mol, the textbook value.</div>
+    <div class="small" style="margin-top:16px" data-f="1">The transition state stretches two bonds and spreads one electron: semilocal functionals overstabilize it and the barrier nearly vanishes.</div>
+    <div class="small" style="margin-top:16px" data-f="2">Hartree–Fock overshoots (no correlation). Hybrids with more exact exchange do better.</div>
+  </div>
+  <div class="takeaway" data-f="3">Reaction barriers are where rung 2 and 3 functionals are least trustworthy: GMTKN55 barrier subsets, GGA average 16.8 kcal/mol.</div>
+  <div class="cite">PySCF, aug-cc-pVQZ, fixed geometries (H₂ 0.7414 Å; collinear saddle, 0.9298 Å)</div>
+  <aside class="notes"><p>The simplest chemical reaction, a hydrogen atom attacking H₂. Three electrons, so full CI is exact in the basis: 9.6 kcal/mol, the textbook value.</p>
+<p><b>(click)</b> Semilocal functionals overstabilize the stretched transition state, so the barrier nearly vanishes: a few kcal/mol. <b>(click)</b> Hartree–Fock overshoots badly, and hybrids with more exact exchange do better.</p>
+<p><b>(click)</b> Barriers are where GGAs and meta-GGAs are least trustworthy: the GGA average on GMTKN55's barrier subsets is about 17 kcal/mol.</p></aside>
+</section>
+
+<section class="slide" data-title="Energies right, densities wrong?" data-section="Failures" data-optional>
+  <div class="kicker fail">Part III · densities</div>
+
+  <h2>Better energies, worse densities?</h2>
+  <div class="abs" style="left:110px;top:180px;width:820px">
+    <div class="body">Medvedev, Bushmarinov, Sun, Perdew &amp; Lyssenko (<i>Science</i> 2017) compared densities of small atoms and ions with CCSD densities.</div>
+    <ul class="clean sm" style="margin-top:20px">
+      <li data-f="1">Functionals got more accurate in energy up to the early 2000s, and densities improved with them.</li>
+      <li data-f="1">After that, heavily fitted functionals kept improving energies while their densities <b>got worse</b>: "straying from the path toward the exact functional".</li>
+      <li data-f="2">Replies (Kepp; Brorsen et al.; Gould; Mezei et al.) questioned the metric and the highly charged ions, but the warning stuck.</li>
+    </ul>
+  </div>
+  <div class="abs card" style="left:990px;top:190px;width:820px;padding:26px 30px" data-f="2">
+    <div class="lead b" style="color:#B4492F;font-size:27px">What it means for practice</div>
+    <ul class="clean coral xs" style="margin-top:14px">
+      <li>Benchmarks of energies alone can reward error cancellation.</li>
+      <li>Density-corrected DFT evaluates the functional on a Hartree–Fock density when the self-consistent density is the problem.</li>
+      <li>Learned functionals need constraints, not just data, to stay on the path.</li>
+    </ul>
+  </div>
+  <div class="takeaway" data-f="3">Fitting and constraints are not rivals: the best modern functionals use both.</div>
+  <aside class="notes"><p>A controversy worth knowing about. In 2017 Medvedev, Perdew and co-workers compared DFT densities of small atoms and ions with accurate CCSD densities.</p>
+<p><b>(click)</b> Functionals improved in both energy and density until the early 2000s. After that, heavily parameterized functionals kept improving energies while their densities got worse: "straying from the path toward the exact functional".</p>
+<p><b>(click)</b> Several replies questioned the metric and the highly charged ions. But the lesson stuck: benchmarks of energies alone can reward error cancellation. Density-corrected DFT is one practical response, and for learned functionals it argues for building constraints in, not just fitting data.</p></aside>
+</section>
+
+<section class="slide" data-title="The hard frontier" data-section="Failures">
+  <div class="kicker fail">Part III · open</div>
+
+  <h2>The hard frontier: transition metals and strong correlation</h2>
+  <div class="abs" style="left:110px;top:180px;width:1700px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+    <div class="card mini" style="border-top:5px solid #B4492F"><div class="h">Spin states</div><div class="s">SSE17 benchmark: common functionals err by 5–7 kcal/mol, CCSD(T) by 1.5. Fe(II) porphyrin: triplet (2018) or quintet (2020)?</div></div>
+    <div class="card mini" style="border-top:5px solid #B4492F" data-f="1"><div class="h">Cr₂</div><div class="s">Six bonds between two atoms. Predicted binding energies spread by more than 0.6 eV within a decade; settled in 2022 by reassigning one measured vibrational level.</div></div>
+    <div class="card mini" style="border-top:5px solid #B4492F" data-f="2"><div class="h">Even "exact" methods disagree</div><div class="s">Benzene near-full-CI estimates scatter by 1.3 mE<sub>h</sub>. For a 132-atom complex, CCSD(T) and diffusion Monte Carlo differed by 7.6 kcal/mol.</div></div>
+  </div>
+  <div class="abs" style="left:110px;top:500px;width:1700px" data-f="3">
+    <div class="small">Tools at the top of the wavefunction ladder: CASSCF/CASPT2/NEVPT2, DMRG, selected CI, auxiliary-field and diffusion Monte Carlo, and neural-network wavefunctions. Each is exponential or expensive somewhere.</div>
+  </div>
+  <div class="takeaway coral" data-f="3">Catalysis and bioinorganic chemistry live here, and no rung of either ladder is reliably below 1 kcal/mol for them.</div>
+  <aside class="notes"><p>Where neither ladder is reliable yet. Spin-state energetics of transition-metal complexes: common functionals err by 5–7 kcal/mol, CCSD(T) by about 1.5, and for iron porphyrin even high-level methods disagreed on whether the ground state is a triplet or a quintet.</p>
+<p><b>(click)</b> The chromium dimer, a sextuple bond: predicted binding energies spread by more than 0.6 eV over a decade, and the problem was resolved in 2022 partly by reassigning an experimental vibrational level.</p>
+<p><b>(click)</b> And even our "exact" methods have error bars: near-exact methods for benzene scatter by 1.3 millihartree, and for a 132-atom complex CCSD(T) and diffusion Monte Carlo disagreed by 7.6 kcal/mol.</p>
+<p><b>(click)</b> Catalysis and bioinorganic chemistry live here.</p></aside>
+</section>
+
+<section class="slide" data-title="How chemists choose today" data-section="Practice">
+  <div class="kicker prac">Part IV · practice</div>
+
+  <h2>How chemists choose a method today</h2>
+  <div class="abs" style="left:110px;top:180px;width:1700px;display:grid;grid-template-columns:repeat(4,1fr);gap:22px">
+    <div class="card mini" style="border-top:5px solid var(--copper)"><div class="h">Screening</div><div class="s">Thousands of structures: semiempirical tight binding (GFN2-xTB) or a "3c" composite (r²SCAN-3c), or an ML potential.</div></div>
+    <div class="card mini" style="border-top:5px solid var(--copper)" data-f="1"><div class="h">Workhorse</div><div class="s">A hybrid or meta-GGA <b>with dispersion</b> in a triple-zeta basis: ωB97X-V, ωB97M-V, PBE0-D4, r²SCAN-D4.</div></div>
+    <div class="card mini" style="border-top:5px solid var(--copper)" data-f="2"><div class="h">Refinement</div><div class="s">Double hybrids, or local CCSD(T) (DLPNO, LNO) single points on the DFT geometries.</div></div>
+    <div class="card mini" style="border-top:5px solid var(--copper)" data-f="3"><div class="h">Hard cases</div><div class="s">Check for multireference character; use CASSCF/NEVPT2 or DMRG; compare several functionals.</div></div>
+  </div>
+  <div class="abs" style="left:110px;top:520px;width:1700px" data-f="4">
+    <div class="box gold"><div class="s">Bursch, Mewes, Hansen &amp; Grimme, "Best-practice DFT protocols" (2022), on B3LYP/6-31G*: "there is no reason for using this outdated but still popular method". Its small basis and missing dispersion cancel each other's errors, by luck.</div></div>
+  </div>
+  <div class="abs small" style="left:110px;top:700px;width:1700px" data-f="5">Precision is no longer the problem: all-electron codes agree on crystal equations of state to about 1 meV/atom (Lejaeghere et al. 2016). The functional's error is orders of magnitude larger.</div>
+  <div class="takeaway" data-f="5">The working answer to "which rung?": the cheapest one whose known failure modes do not apply to your system.</div>
+  <aside class="notes"><p>A short slide on practice. Screening thousands of structures: tight binding, a composite like r²SCAN-3c, or an ML potential. <b>(click)</b> The workhorse: a hybrid or meta-GGA with a dispersion correction in a triple-zeta basis. <b>(click)</b> Refinement: double hybrids, or local CCSD(T) single points. <b>(click)</b> Hard cases: test for multireference character and use multireference methods.</p>
+<p><b>(click)</b> Grimme's group wrote in 2022 that there is no reason to keep using B3LYP/6-31G*, the most popular combination of the 1990s. It works for small organics because its small basis and missing dispersion cancel each other, by luck.</p>
+<p><b>(click)</b> And note that numerical precision is no longer the issue: codes agree to about 1 meV per atom on crystals. The functional's error is orders of magnitude bigger. The practical rule: use the cheapest rung whose known failure modes don't apply to your system.</p></aside>
+</section>
+
+<section class="slide section-slide" data-title="Machine learning" data-section="ML">
+  <div class="sec-num" style="color:var(--violet)">Part V</div>
+  <h2 class="sec-title">Machine learning</h2>
+  <div class="sec-sub">New rungs, or a new ladder?</div>
+  <div class="sec-paper">Behler &amp; Parrinello 2007 · Snyder et al. 2012 · Smith et al. 2019 · Pfau et al. 2020 · Kirkpatrick et al. 2021 · Levine et al. 2025 · Luise et al. 2025–26</div>
+  <aside class="notes"><p>Part five: machine learning. Does it add new rungs, or build a new ladder?</p></aside>
+</section>
+
+<section class="slide" data-title="Three ways ML enters" data-section="ML">
+  <div class="kicker ml">Part V · overview</div>
+
+  <h2>Three places to put a neural network</h2>
+  <div class="abs" style="left:110px;top:180px;width:1700px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+    <div class="card mlcard"><div class="h">Skip the electrons</div><div class="e">machine-learned interatomic potentials</div><div class="l">Learn $E(\mathbf R)$ and forces from quantum-chemistry labels. Behler–Parrinello (2007) to universal models (MACE, UMA).</div><div class="l"><b>Ceiling:</b> the method that made the labels.</div></div>
+    <div class="card mlcard" data-f="1"><div class="h">Learn $E_{\rm xc}$</div><div class="e">machine-learned functionals</div><div class="l">Keep Kohn–Sham; learn only the unknown piece, from wavefunction-quality labels. DM21 (2021), Skala (2025–26).</div><div class="l"><b>Goal:</b> top-rung accuracy at low-rung cost.</div></div>
+    <div class="card mlcard" data-f="2"><div class="h">Learn $\Psi$</div><div class="e">neural-network wavefunctions</div><div class="l">Variational Monte Carlo with a network ansatz: FermiNet, PauliNet (2020), Psiformer, LapNet, Orbformer.</div><div class="l"><b>No labels:</b> the variational principle is the loss.</div></div>
+  </div>
+  <div class="takeaway violet" data-f="3">The first two inherit the ladder's accuracy through their training data; the third climbs the wavefunction ladder itself, at a high price.</div>
+  <aside class="notes"><p>There are three places to put a neural network.</p>
+<p>First, skip the electrons: learn the energy as a function of nuclear positions, a machine-learned interatomic potential, from Behler–Parrinello in 2007 to today's universal models. Its ceiling is the method that produced the labels.</p>
+<p><b>(click)</b> Second, keep Kohn–Sham and learn only the unknown piece, E_xc, from wavefunction-quality labels. DM21 and Skala. The goal is top-rung accuracy at low-rung cost.</p>
+<p><b>(click)</b> Third, learn the wavefunction itself, variational Monte Carlo with a neural-network ansatz. No labels needed: the variational principle is the loss.</p>
+<p><b>(click)</b> The first two inherit the ladder through their data. The third climbs the wavefunction ladder directly, at a high price.</p></aside>
+</section>
+
+<section class="slide" data-title="Potentials inherit their labels" data-section="ML">
+  <div class="kicker ml">Part V · potentials</div>
+
+  <h2>Learned potentials inherit their labels</h2>
+<canvas class="abs" style="left:110px;top:160px" width="1100" height="560" data-anim="bars" data-opts='{"items":[{"l":"QM9 (2014): B3LYP/6-31G(2df,p)","v":134000,"c":"#4C72B0"},{"l":"ANI-1x (2018–20): ωB97x/6-31G(d)","v":5000000,"c":"#4C72B0"},{"l":"OMol25 (2025): ωB97M-V/def2-TZVPD","v":140000000,"c":"#3C5A8A"},{"l":"ANI-1ccx: CCSD(T)/CBS","v":500000,"c":"#1F2933","s":1},{"l":"MSR-ACC/TAE25: W1-F12","v":73040,"c":"#6B5E9B","s":1},{"l":"Skala-1.1 training labels","v":410000,"c":"#6B5E9B","s":1}],"log":1,"min":10000,"max":1000000000,"ticks":[10000,100000,1000000,10000000,100000000,1000000000],"fmt":"sig","lw":520,"fs":20,"xl":"number of reference calculations (log scale)"}' data-step-map='[0,1,1,1]'></canvas>
+  <div class="abs" style="left:1260px;top:180px;width:550px">
+    <div class="small">OMol25: more than 100 million calculations, 6.6 billion CPU core-hours, the first 83 elements, up to 350 atoms. Meta's UMA was trained on about half a billion structures.</div>
+    <div class="small" style="margin-top:16px" data-f="1">ANI-1ccx used transfer learning from DFT to CCSD(T)/CBS: near-CCSD(T) accuracy for organic molecules, "billions of times faster".</div>
+    <div class="small" style="margin-top:16px" data-f="2">The bottleneck has moved from running quantum chemistry to <b>generating</b> it: which rung, which systems, with what error bars.</div>
+  </div>
+  <div class="takeaway violet" data-f="3">An ML potential is a fast interpolator of one rung. It cannot be more accurate than its labels, so choosing the rung for the labels is the scientific decision.</div>
+  <div class="cite">Ramakrishnan et al. 2014 · Smith et al. 2019, 2020 · Levine et al. 2025 (OMol25) · Wood et al. 2025 (UMA) · Ehlert et al. 2026 (MSR-ACC)</div>
+  <aside class="notes"><p>Datasets for learned potentials have grown by three orders of magnitude in a decade: QM9 was B3LYP with a small basis; OMol25, from Meta and collaborators in 2025, is over 100 million ωB97M-V calculations, 6.6 billion CPU core-hours, the first 83 elements, up to 350 atoms.</p>
+<p><b>(click)</b> At the top, much smaller sets of wavefunction-quality labels: ANI-1ccx transferred from DFT to CCSD(T)/CBS; Microsoft's MSR-ACC set has 73,000 W1-F12 atomization energies, part of the labels used for Skala.</p>
+<p><b>(click)</b> The bottleneck has moved from running quantum chemistry to generating it: which rung, which systems, with what error bars.</p>
+<p><b>(click)</b> A learned potential is a fast interpolator of one rung. It cannot beat its labels.</p></aside>
+</section>
+
+<section class="slide" data-title="Learning the functional: DM21 to Skala" data-section="ML">
+  <div class="kicker ml">Part V · functionals</div>
+
+  <h2>Learning the functional: from DM21 to Skala</h2>
+<canvas class="abs" style="left:110px;top:160px" width="1100" height="660" data-anim="skala" data-step-map='[0,1,2,2,2]'></canvas>
+  <div class="abs" style="left:1250px;top:180px;width:560px">
+    <div class="small"><b>DM21</b> (DeepMind, 2021): a local hybrid trained on 1,161 reactions plus 1,074 fractional-charge and fractional-spin densities, which fixes H₂⁺ and stretched H₂. About 30% of transition-metal SCF runs fail to converge.</div>
+    <div class="small" style="margin-top:14px" data-f="2"><b>Skala</b> (Microsoft Research, 2025–26): meta-GGA inputs with <b>learned non-locality</b>; 385,217 parameters; about 400,000 wavefunction-quality labels.</div>
+    <div class="small" style="margin-top:14px" data-f="3">GMTKN55 2.80 vs 3.23 for ωB97M-V; W4-17 1.06–1.23 kcal/mol. Honest caveats: 98.9% first-try SCF convergence, and its model card says "not a production model".</div>
+  </div>
+  <div class="takeaway violet" data-f="4">The trade-off that defined Jacob's ladder, accuracy for cost, is no longer fixed. What the labels cannot teach, such as exact constraints, still has to be built in.</div>
+  <div class="cite">Kirkpatrick et al., Science 374, 1385 (2021) · Zhao, Gould &amp; Vuckovic 2024 · Luise et al., arXiv:2506.14665 (v1 2025, v6 2026) · GMTKN55 rung averages: Goerigk et al. 2017</div>
+  <aside class="notes"><p>Learned functionals aim directly at the trade-off that defines Jacob's ladder. The plot puts GMTKN55 error against a schematic cost. Rung averages first: GGA, meta-GGA, hybrid, double hybrid, accuracy bought with cost.</p>
+<p>DM21 from DeepMind in 2021 was a local hybrid trained on about a thousand reactions plus a thousand fractional-charge and fractional-spin densities, the conditions from part three. It fixed H₂⁺ and stretched H₂. But it's a hybrid, and about 30% of transition-metal SCF runs failed to converge.</p>
+<p><b>(click)</b> The best traditional functionals on each rung. <b>(click)</b> Skala, from Microsoft Research: meta-GGA inputs, but learned non-local features, 385,000 parameters, trained on about 400,000 wavefunction-quality energies. On GMTKN55 it scores 2.80, against 3.23 for ωB97M-V, at roughly meta-GGA cost.</p>
+<p><b>(click)</b> Honest caveats: version 1.1 is slightly worse than 1.0 on W4-17; its SCF converges on the first try 98.9% of the time versus 99.9% for traditional functionals; the model card says it is not a production model.</p>
+<p><b>(click)</b> But the trade-off that defined Jacob's ladder is no longer fixed. What data can't teach, exact constraints, still has to be built in.</p></aside>
+</section>
+
+<section class="slide" data-title="Neural wavefunctions and quantum computers" data-section="ML" data-optional>
+  <div class="kicker ml">Part V · wavefunctions</div>
+
+  <h2>The top of the wavefunction ladder: neural networks and qubits</h2>
+  <div class="abs" style="left:110px;top:180px;width:780px">
+    <ul class="clean violet sm">
+      <li><b>FermiNet</b> (2020): N₂ and hydrogen-chain dissociation "to significantly higher accuracy than the coupled cluster method", without a basis set.</li>
+      <li data-f="1">System sizes grow fast: LapNet reached 116 electrons; the 84-electron benzene dimer fell from >10,000 to 1,800 A100 GPU-hours.</li>
+      <li data-f="2"><b>Orbformer</b> (2026): pretrained on 22,000 structures, transferable across molecules.</li>
+    </ul>
+  </div>
+<canvas class="abs" style="left:940px;top:170px" width="870" height="560" data-anim="femoco"></canvas>
+  <div class="abs canvas-cap" style="left:940px;top:740px;width:870px">Estimated cost of computing FeMoco, nitrogenase's active site, on a fault-tolerant quantum computer: ≈ 4.5 million physical qubits for 8.6 hours (2025). No quantum computer yet beats classical methods on a real molecule.</div>
+  <div class="takeaway violet" data-f="3">Both attack strong correlation, where both ladders are weakest. Neither is routine yet.</div>
+  <div class="cite">Pfau et al., PRR 2, 033429 (2020) · Li et al. 2024 (LapNet) · Foster et al., Nat. Commun. 17, 9976 (2026) · Low et al., PRX (2025) · Lee et al. 2023</div>
+  <aside class="notes"><p>At the top of the wavefunction ladder, two approaches to strong correlation. Neural-network wavefunctions: FermiNet in 2020 described N₂ and hydrogen-chain dissociation better than coupled clusters, without a basis set. <b>(click)</b> Sizes are growing fast: LapNet reached 116 electrons, and the benzene dimer dropped from over 10,000 to 1,800 GPU-hours. <b>(click)</b> Orbformer, 2026, is pretrained on 22,000 structures and transfers between molecules.</p>
+<p>On the right, quantum computers: estimated gate counts for FeMoco, the nitrogenase cofactor, fell by about 150,000 times in eight years, to roughly 4.5 million physical qubits for 8.6 hours. But no quantum computer has yet beaten classical methods on a real molecule.</p>
+<p><b>(click)</b> Both aim at strong correlation, where both ladders are weakest; neither is routine.</p></aside>
+</section>
+
+<section class="slide" data-title="A new ladder" data-section="ML">
+  <div class="kicker ml">Part V · synthesis</div>
+
+  <h2>A new ladder: accuracy flows down, cost stays low</h2>
+  <div class="abs" style="left:110px;top:180px;width:1700px">
+    <svg width="1700" height="520" viewBox="0 0 1700 520" style="display:block">
+      <defs><marker id="ah" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#6B5E9B"/></marker></defs>
+      <g font-family="Inter Variable, Inter, sans-serif">
+        <rect x="0" y="10" width="430" height="110" rx="16" fill="#1F2933"/><text x="215" y="58" text-anchor="middle" font-size="28" font-weight="700" fill="#fff">W4, CCSD(T)/CBS, FCI-QMC</text><text x="215" y="92" text-anchor="middle" font-size="19" fill="#C9D1D9">10³–10⁵ labels · near-exact · expensive</text>
+        <rect x="0" y="200" width="430" height="110" rx="16" fill="#4C72B0"/><text x="215" y="248" text-anchor="middle" font-size="28" font-weight="700" fill="#fff">hybrid DFT (ωB97M-V)</text><text x="215" y="282" text-anchor="middle" font-size="19" fill="#E6EEF8">10⁸ labels · ~2–4 kcal/mol · moderate</text>
+        <rect x="0" y="390" width="430" height="110" rx="16" fill="#E0A030"/><text x="215" y="438" text-anchor="middle" font-size="28" font-weight="700" fill="#fff">semilocal DFT, xTB</text><text x="215" y="472" text-anchor="middle" font-size="19" fill="#fff">any system · ~5–10 kcal/mol · cheap</text>
+        <rect x="640" y="70" width="460" height="150" rx="18" fill="#6B5E9B"/><text x="870" y="134" text-anchor="middle" font-size="30" font-weight="700" fill="#fff">learned functional</text><text x="870" y="172" text-anchor="middle" font-size="20" fill="#EAE6F5">top-rung labels → semilocal cost</text>
+        <rect x="640" y="300" width="460" height="150" rx="18" fill="#8A7CC0"/><text x="870" y="364" text-anchor="middle" font-size="30" font-weight="700" fill="#fff">learned potential</text><text x="870" y="402" text-anchor="middle" font-size="20" fill="#fff">any labels → force-field cost</text>
+        <path d="M430,65 C540,65 540,145 636,145" stroke="#6B5E9B" stroke-width="5" fill="none" marker-end="url(#ah)"/>
+        <path d="M430,255 C540,255 540,375 636,375" stroke="#6B5E9B" stroke-width="5" fill="none" marker-end="url(#ah)"/>
+        <path d="M870,220 L870,296" stroke="#6B5E9B" stroke-width="5" fill="none" marker-end="url(#ah)"/>
+        <path d="M1100,145 C1200,145 1220,190 1300,190" stroke="#6B5E9B" stroke-width="5" fill="none" marker-end="url(#ah)"/>
+        <path d="M1100,375 C1200,375 1220,330 1300,330" stroke="#6B5E9B" stroke-width="5" fill="none" marker-end="url(#ah)"/>
+        <rect x="1305" y="130" width="390" height="260" rx="18" fill="#fff" stroke="#6B5E9B" stroke-width="3"/>
+        <text x="1500" y="210" text-anchor="middle" font-size="28" font-weight="700" fill="#1F2933">chemistry at scale</text>
+        <text x="1500" y="252" text-anchor="middle" font-size="20" fill="#52606D">catalysts, materials,</text><text x="1500" y="282" text-anchor="middle" font-size="20" fill="#52606D">drug binding, dynamics,</text><text x="1500" y="312" text-anchor="middle" font-size="20" fill="#52606D">with error bars</text>
+      </g>
+    </svg>
+  </div>
+  <div class="takeaway violet" data-f="1">The rungs do not disappear: they become a <b>data pipeline</b>. The open questions move to the top (more accurate labels) and to the sides (uncertainty, transferability, constraints).</div>
+  <aside class="notes"><p>Putting it together. The rungs don't disappear; they become a data pipeline. On the left, labels: a few thousand to a hundred thousand near-exact energies; a hundred million hybrid-DFT calculations; cheap semilocal data for anything.</p>
+<p>In the middle, models that compress them: learned functionals that bring top-rung labels to semilocal cost, and learned potentials that bring any labels to force-field cost. On the right, chemistry at scale.</p>
+<p><b>(click)</b> The open questions move to the top, more and better labels, and to the sides: uncertainty, transferability, and the constraints that data alone won't teach.</p></aside>
+</section>
+
+<section class="slide" data-title="Open problems" data-section="Close">
+  <div class="kicker prac">Outlook</div>
+
+  <h2>Open problems, ranked by importance × tractability</h2>
+  <div class="abs open-rank" style="left:110px;top:176px;width:1150px"><div class="k">1</div><div class="t">Reference data and uncertainty<small>Every learned model inherits its labels; "gold standards" disagree by several kcal/mol at 100+ atoms.</small></div><div class="k">2</div><div class="t">A more exact functional<small>Learned and constraint-aware, transferable to transition metals and solids, with a convergent SCF.</small></div><div class="k">3</div><div class="t">Free energies in solution and solids<small>Sampling, nuclear quantum effects, solvent: where most chemistry happens.</small></div><div class="k">4</div><div class="t">Transition metals and strong correlation<small>Spin states, multiple bonds between metals, catalytic cycles.</small></div><div class="k">5</div><div class="t">Noncovalent interactions at scale<small>Large polarizable systems, molecular crystals, binding.</small></div><div class="k">6</div><div class="t">Excited states and photochemistry<small>TD-DFT errors of 0.1–0.3 eV, charge-transfer failures; blind challenges.</small></div></div>
+  <div class="abs card" style="left:1320px;top:190px;width:490px;padding:26px 28px">
+    <div class="small">My ranking, for a team working at the boundary of machine learning and electronic structure. Lower on the list: heavy elements, linear scaling, and quantum computers (important, but not yet tractable).</div>
+  </div>
+  <aside class="notes"><p>My ranking of open problems, by importance times tractability, for a team working between ML and electronic structure. This is judgement, not a survey.</p>
+<p>One: reference data and uncertainty. Every learned model inherits its labels, and gold standards disagree by several kcal/mol beyond a hundred atoms. Two: a more exact functional, learned and constraint-aware, that transfers to metals and solids and converges reliably. Three: free energies in solution and solids, where most chemistry happens. Four: transition metals and strong correlation. Five: noncovalent interactions in large systems. Six: excited states.</p>
+<p>Heavy elements, linear scaling and quantum computing matter but are less tractable or less urgent right now.</p></aside>
+</section>
+
+<section class="slide" data-title="Takeaways" data-section="Close">
+  <div class="kicker open">Takeaways</div>
+
+  <h2>Five things to remember</h2>
+  <div class="abs" style="left:110px;top:176px;width:1700px;display:grid;gap:14px"><div class="card" style="display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:center;padding:16px 22px" data-f="0"><div class="num-chip" style="width:44px;height:44px">1</div><div><span class="b" style="font-size:27px;color:var(--navy)">Every method is an approximation to one equation.</span><div class="small" style="margin-top:3px;font-size:21px">Dirac said so in 1929; the century since is about which part of Ψ to throw away.</div></div></div><div class="card" style="display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:center;padding:16px 22px" data-f="1"><div class="num-chip" style="width:44px;height:44px">2</div><div><span class="b" style="font-size:27px;color:var(--navy)">The wavefunction ladder is systematic.</span><div class="small" style="margin-top:3px;font-size:21px">HF → MP2 → CCSD → CCSD(T) converges toward exact, at N⁴ … N⁷ cost, and fails when one determinant is not enough.</div></div></div><div class="card" style="display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:center;padding:16px 22px" data-f="2"><div class="num-chip" style="width:44px;height:44px">3</div><div><span class="b" style="font-size:27px;color:var(--navy)">Jacob's ladder is pragmatic.</span><div class="small" style="margin-top:3px;font-size:21px">Density → gradient → τ → exact exchange → unoccupied orbitals: usually better and costlier, never guaranteed.</div></div></div><div class="card" style="display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:center;padding:16px 22px" data-f="3"><div class="num-chip" style="width:44px;height:44px">4</div><div><span class="b" style="font-size:27px;color:var(--navy)">Errors have physics.</span><div class="small" style="margin-top:3px;font-size:21px">Self-interaction, static correlation and missing dispersion explain the large failures; fixes for one often worsen another.</div></div></div><div class="card" style="display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:center;padding:16px 22px" data-f="4"><div class="num-chip" style="width:44px;height:44px">5</div><div><span class="b" style="font-size:27px;color:var(--navy)">ML changes the price, not the target.</span><div class="small" style="margin-top:3px;font-size:21px">Learned functionals and potentials carry top-rung accuracy toward low-rung cost; the labels and the constraints decide how far.</div></div></div></div>
+  <aside class="notes"><p>Five things to remember. <b>(click)</b> Every method approximates one equation; Dirac asked for exactly this. <b>(click)</b> The wavefunction ladder is systematic and expensive, and fails when one determinant isn't enough. <b>(click)</b> Jacob's ladder is pragmatic: usually better as you climb, never guaranteed. <b>(click)</b> The errors have physics: self-interaction, static correlation, dispersion. <b>(click)</b> Machine learning changes the price, not the target: the labels and the constraints decide how far it goes.</p></aside>
+</section>
+
+<section class="slide title-slide" data-title="Thank you" data-section="Close">
+  <div class="wash"><i style="left:-180px;top:-220px;width:760px;height:560px;background:#D7E3F1"></i><i style="left:1300px;top:600px;width:760px;height:600px;background:#E4DDF1"></i></div>
+  <h1 style="top:250px;font-size:96px">Thank you</h1>
+  <div class="subtitle" style="top:420px;width:1500px">The companion blog has the full story, live demos (any atom, any functional), and every reference.</div>
+  <div class="abs small" style="left:124px;top:560px;width:1600px;color:var(--ink-soft)">Data in this talk: PySCF 2.14 (curves, Pople diagram, atomization energies, Ar₂, barrier, hybrid scan) and a JavaScript Hartree–Fock/Kohn–Sham atom engine checked against NIST, numerical Hartree–Fock limits, Libxc and PySCF. Reference energies: W4-11 (Karton, Daon &amp; Martin 2011).</div>
+  <div class="who" style="top:760px">Yuanqi Du</div>
+  <div class="aff" style="top:810px">Microsoft Research</div>
+  <aside class="notes"><p>Thank you. The companion blog has the long version, with live demos where you can pick any atom and functional, and full references. Happy to take questions.</p></aside>
+</section>
+
+<section class="slide" data-title="Units and yardsticks" data-section="Backup" data-backup>
+  <div class="kicker open">Backup</div>
+
+  <h2>Units and yardsticks</h2>
+  <div class="abs" style="left:110px;top:180px;width:1100px">
+    <table class="dict">
+      <tr><th>quantity</th><th>value</th></tr>
+      <tr><td>1 hartree</td><td>27.2114 eV = 627.509 kcal/mol = 2625.5 kJ/mol = 219,474.6 cm⁻¹</td></tr>
+      <tr><td>1 kcal/mol</td><td>4.184 kJ/mol = 0.04336 eV = 1.594 mE<sub>h</sub> = 349.8 cm⁻¹ ≈ 503 K</td></tr>
+      <tr><td>RT ln 10 at 298 K</td><td>1.364 kcal/mol: one decade in a rate or equilibrium constant</td></tr>
+      <tr><td>1 bohr</td><td>0.529177 Å</td></tr>
+      <tr><td>chemical accuracy</td><td>1 kcal/mol (Pople 1998: "a global accuracy of 1 kcal/mole")</td></tr>
+    </table>
+  </div>
+  <aside class="notes"><p>Backup: unit conversions. One hartree is 627.5 kcal/mol or 27.2 eV; 1 kcal/mol is 1.6 millihartree; 1.36 kcal/mol is a factor of ten in a rate at room temperature.</p></aside>
+</section>
+
+<section class="slide" data-title="How the live figures were checked" data-section="Backup" data-backup>
+  <div class="kicker open">Backup</div>
+
+  <h2>How the computed figures were checked</h2>
+  <div class="abs" style="left:110px;top:180px;width:1700px">
+    <table class="dict">
+      <tr><th>engine / data</th><th>check</th><th>agreement</th></tr>
+      <tr><td>XC functionals (Slater, VWN, PW92, B88, PBE, LYP)</td><td>Libxc, 60 spin-polarized points each</td><td>relative 10⁻⁷ or better</td></tr>
+      <tr><td>atoms, LDA (VWN5)</td><td>NIST SRD 141: H, He, N, Ne, Ar, Cr, Kr</td><td>≤ 1.5 × 10⁻⁵ E<sub>h</sub></td></tr>
+      <tr><td>atoms, Hartree–Fock</td><td>numerical HF limits He, Be, Ne, Ar, Kr</td><td>≤ 1.5 × 10⁻⁵ E<sub>h</sub></td></tr>
+      <tr><td>atoms, PBE/BLYP/PBE0/B3LYP</td><td>PySCF in the identical basis</td><td>≤ 2 × 10⁻⁶ E<sub>h</sub></td></tr>
+      <tr><td>B88 β refit</td><td>Becke 1988</td><td>0.00421 vs 0.0042</td></tr>
+      <tr><td>H₂ / HeH⁺ RHF, UHF, FCI</td><td>PySCF; Szabo &amp; Ostlund</td><td>≤ 10⁻⁸ E<sub>h</sub></td></tr>
+      <tr><td>STO-3G fit</td><td>Hehre, Stewart &amp; Pople 1969</td><td>six digits</td></tr>
+    </table>
+    <div class="small" style="margin-top:20px">Molecular data: PySCF 2.14 with tight convergence; scripts in compute/ (curves.py, pople.py, ladder.py, barrier.py, ar2.py, hybrid_scan.py).</div>
+  </div>
+  <aside class="notes"><p>Backup: validation. The JavaScript engine in these slides was checked against Libxc for every functional component, against the NIST atomic reference data for LDA, against numerical Hartree–Fock limits, and against PySCF in the identical basis for GGAs and hybrids. The H₂ engine matches PySCF to 10⁻⁸ hartree. The molecular data are PySCF 2.14.</p></aside>
+</section>
+
+<section class="slide" data-title="Functional glossary" data-section="Backup" data-backup>
+  <div class="kicker open">Backup</div>
+
+  <h2>Functionals in this talk</h2>
+  <div class="abs" style="left:110px;top:170px;width:1700px">
+    <table class="dict sm">
+      <tr><th>name</th><th>rung</th><th>what it is</th></tr>
+      <tr><td>LDA (SVWN5)</td><td>1</td><td>Slater exchange + VWN fit to Ceperley–Alder correlation</td></tr>
+      <tr><td>PBE, BLYP</td><td>2</td><td>constraint-based GGA (1996); Becke 88 exchange + Lee–Yang–Parr correlation</td></tr>
+      <tr><td>TPSS, SCAN, r²SCAN</td><td>3</td><td>constraint-based meta-GGAs (2003, 2015, 2020)</td></tr>
+      <tr><td>M06-L, B97M-V</td><td>3</td><td>fitted meta-GGAs (Truhlar 2006; Mardirossian &amp; Head-Gordon 2015, with VV10)</td></tr>
+      <tr><td>B3LYP, PBE0</td><td>4</td><td>20% exact exchange with three fitted mixing parameters; 25%, non-empirical</td></tr>
+      <tr><td>M06-2X, ωB97X-V, ωB97M-V</td><td>4</td><td>fitted global hybrid (54% HF); range-separated hybrids with VV10 (2014, 2016)</td></tr>
+      <tr><td>B2PLYP, DSD-BLYP</td><td>5</td><td>double hybrids: 53% HF exchange, 27% MP2 correlation (Grimme 2006); spin-scaled</td></tr>
+      <tr><td>-D3(BJ), -D4, VV10</td><td>add-on</td><td>pairwise or nonlocal dispersion corrections</td></tr>
+    </table>
+  </div>
+  <aside class="notes"><p>Backup: a glossary of the functionals named in the talk, by rung, and whether they are fitted or constraint-based.</p></aside>
+</section>
+</div></div>
+</body>
+</html>

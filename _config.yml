@@ -196,6 +196,10 @@ defaults:
       path: "acs-spring-2027"
     values:
       sitemap: false
+  - scope:
+      path: "decks-igpes6"
+    values:
+      sitemap: false
   # _posts
   - scope:
       path: ""
