@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="robots" content="noindex, nofollow, noarchive">
+<title>A New Era of Molecular Simulation · Yuanqi Du</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="vendor/katex/katex.min.css">
+<link rel="stylesheet" href="css/deck.css">
+<style>
+  /* general-audience deck: a few extra pieces on top of deck.css */
+  .badge { display: inline-flex; align-items: center; gap: 10px; padding: 7px 18px; border-radius: 999px; font-size: 20px; font-weight: 650; background: #FBE9E4; color: #B4492F; box-shadow: 0 1px 2px rgba(31,41,51,.05); }
+  .badge::before { content: ''; width: 10px; height: 10px; border-radius: 50%; background: var(--coral); }
+  .pt { margin: 0 0 22px 0; }
+  .pt .h { font-size: 27px; font-weight: 680; color: var(--navy); }
+  .pt .d { font-size: 22px; line-height: 1.42; color: var(--ink-soft); margin-top: 4px; }
+  .pt .h.blue { color: var(--blue); } .pt .h.coral { color: #C8553B; }
+  .quote { font-family: var(--serif); font-style: italic; font-size: 26px; line-height: 1.4; color: var(--ink); border-left: 5px solid var(--teal); padding: 6px 0 6px 22px; }
+  .quote .by { display: block; font-family: var(--sans); font-style: normal; font-size: 18px; color: var(--muted); margin-top: 8px; }
+  .res { padding: 22px 26px 24px; }
+  .res .n { font-size: 54px; font-weight: 720; letter-spacing: -0.02em; line-height: 1; }
+  .res .h { font-size: 25px; font-weight: 680; color: var(--ink); margin-top: 10px; }
+  .res .d { font-size: 21px; line-height: 1.42; color: var(--ink-soft); margin-top: 8px; }
+  .cap-top { font-size: 24px; font-weight: 680; color: var(--navy); }
+  .cap-sub { font-size: 19px; color: var(--ink-soft); margin-top: 2px; }
+  /* material names and new findings */
+  .chem { display: inline-block; padding: 0 9px; margin: 2px 1px; border-radius: 8px; font-weight: 720; color: var(--navy); background: rgba(29,58,95,.08); white-space: nowrap; }
+  .chem.t { color: var(--teal-dark); background: rgba(42,157,143,.13); }
+  .chem.v { color: #4E4380; background: rgba(107,94,155,.14); }
+  .chem.isnew { color: #B4492F; background: rgba(231,111,81,.14); }
+  .new { display: inline-block; vertical-align: 3px; margin-left: 10px; padding: 2px 11px; border-radius: 999px; font-size: 15px; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; color: #fff; background: var(--coral); }
+  .new.soft { color: #B4492F; background: rgba(231,111,81,.15); }
+  .slide > .kicker.omnia { color: #C8553B; }
+  .road { display: flex; gap: 12px; }
+  .road span { padding: 6px 18px; border-radius: 999px; font-size: 19px; font-weight: 680; color: var(--muted); background: #ECEEF1; transition: background .35s, color .35s; }
+  .slide[data-step="0"] .road.om .r0 { background: var(--copper); color: #fff; }
+  .slide[data-step="1"] .road.om .r1 { background: var(--blue); color: #fff; }
+  .slide[data-step="2"] .road.om .r2, .slide[data-step="3"] .road.om .r2 { background: #A87A0E; color: #fff; }
+  .omx .pt .h { font-size: 34px; }
+  .omx .pt .d { font-size: 25px; line-height: 1.5; margin-top: 8px; }
+  .omni { margin-top: 30px; font-size: 24px; line-height: 1.5; color: var(--ink); }
+  .slide > .kicker.kin { color: var(--blue); }
+  .slide[data-step="0"] .road.kin .r0 { background: var(--violet); color: #fff; }
+  .slide[data-step="1"] .road.kin .r1 { background: var(--blue); color: #fff; }
+  .slide[data-step="2"] .road.kin .r2 { background: var(--navy); color: #fff; }
+  .slide[data-step="3"] .road.kin .r3, .slide[data-step="4"] .road.kin .r3 { background: #C8553B; color: #fff; }
+  .run { display: inline-block; vertical-align: 5px; margin-left: 12px; padding: 2px 11px; border-radius: 999px; font-size: 14px; font-weight: 750; letter-spacing: .08em; text-transform: uppercase; color: var(--teal-dark); background: rgba(42,157,143,.14); }
+  .run.wip { color: #8A6A0B; background: rgba(217,162,27,.17); }
+  .omni .tag { display: inline-block; vertical-align: 3px; margin-right: 10px; padding: 2px 12px; border-radius: 999px; font-size: 16px; font-weight: 750; letter-spacing: .08em; color: #fff; background: var(--coral); }
+  /* three key points in highlighted boxes (neural samplers slide) */
+  .trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .trio > div { padding: 16px 24px 18px; border-radius: 16px; background: rgba(42,157,143,.10); border-left: 6px solid var(--teal); }
+  .trio .h { font-size: 29px; font-weight: 700; line-height: 1.2; color: var(--teal-dark); }
+  .trio .d { font-size: 20px; line-height: 1.35; color: var(--ink-soft); margin-top: 6px; }
+</style>
+<script src="vendor/katex/katex.min.js"></script>
+<script src="vendor/katex/contrib/auto-render.min.js"></script>
+<script src="js/util.js"></script>
+<script src="js/data/ka.js"></script>
+<script src="js/data/acarbon.js"></script>
+<script src="js/anim/intro.js"></script>
+<script src="js/anim/atlas.js"></script>
+<script src="js/anim/janus.js"></script>
+<script src="js/anim/outro.js"></script>
+<script src="js/anim/general.js"></script>
+<script src="js/deck.js"></script>
+</head>
+<body>
+<div class="viewport"><div class="stage">
+
+<!-- =============================================================== 1. TITLE -->
+<section class="slide title-slide" data-title="A new era of molecular simulation" data-section="Title">
+  <div class="wash"><i style="left:-160px;top:-200px;width:760px;height:560px;background:#BFE3DC"></i><i style="left:420px;top:760px;width:820px;height:520px;background:#F7DCC6"></i><i style="left:1240px;top:-240px;width:820px;height:640px;background:#DDD7F1"></i><i style="left:1500px;top:760px;width:600px;height:500px;background:#CFE2F4"></i></div>
+  <h1 style="top:170px">A New Era of <em>Molecular Simulation</em></h1>
+  <div class="subtitle" style="top:395px">How generative AI, grounded in non-equilibrium thermodynamics, learns how matter behaves from the laws of physics alone</div>
+  <div class="who" style="top:548px">Yuanqi Du</div>
+  <div class="aff" style="top:598px">Microsoft Research</div>
+  <div class="abs team" style="left:124px;top:690px">
+    <div>
+      <div class="grp-h teal">Contributed by two MSR interns</div>
+      <div class="people">
+        <div class="person"><img src="assets/people/mouyang.webp" alt=""><div class="nm">Mouyang Cheng</div><div class="af">MIT</div></div>
+        <div class="person"><img src="assets/people/denis.webp" alt=""><div class="nm">Denis Blessing</div><div class="af">KIT</div></div>
+      </div>
+    </div>
+    <div>
+      <div class="grp-h">Co-led with</div>
+      <div class="people">
+        <div class="person"><img src="assets/people/carles.webp" alt=""><div class="nm">Carles Domingo-Enrich</div><div class="af">Microsoft Research</div></div>
+      </div>
+    </div>
+  </div>
+  <canvas class="abs" style="left:1030px;top:60px" width="860" height="960" data-anim="torusTransport" data-opts='{"hero":true,"plain":true,"timebar":true,"box":600,"config":"n144_T0.3","by":120,"seed":3}'></canvas>
+  <aside class="notes">
+    <p>Thank you. This talk is about a new way to simulate matter at the atomic scale: instead of waiting for atoms to wander into their natural arrangements, we train a generative AI model, much like an image generator, that produces those arrangements directly, and it learns this from the laws of physics rather than from data.</p>
+    <p>The animation is a real example: a glassy mixture of two kinds of atoms. They start as random noise and are transported into a physically correct arrangement, then back again.</p>
+    <p>Two MSR interns, Mouyang Cheng and Denis Blessing, contributed to the work I will show, and I co-led it with Carles Domingo-Enrich.</p>
+  </aside>
+</section>
+
+<!-- =============================================================== 2. WHY IT MATTERS -->
+<section class="slide" data-title="Molecular simulation is essential" data-section="Why it matters">
+  <div class="kicker intro">Why it matters</div>
+  <h2>Molecular simulation is essential to the problems that matter most</h2>
+  <canvas class="abs" style="left:110px;top:178px" width="1700" height="640" data-anim="impactHub"></canvas>
+  <div class="takeaway" data-f="1">Behind each one is the same question: <b>at real-world temperatures, which arrangements do the atoms take, and how likely is each?</b> Molecular simulation is one of the biggest uses of supercomputers: quantum-mechanical calculations of atoms alone take over 30% of all computing time at NERSC, a US national supercomputing centre.</div>
+  <div class="cite">NERSC workload: Camps et al., arXiv:2509.09882 (2025), DFT &gt;30% of yearly cycles · UK national supercomputer ARCHER2: Turner, EPCC (2022), one DFT code (VASP) ~⅓ of all use</div>
+  <aside class="notes">
+    <p>Why does molecular simulation matter? Because almost every problem on this slide comes down to atoms in motion at a finite temperature: how fast Li⁺ moves through a battery electrolyte, how tightly a drug binds its protein, which catalyst makes clean fuel, how Fe behaves at the pressures of Earth's core, how dopants sit in a Si chip, which single defect in diamond makes a good qubit, which alloy survives a jet engine, and why glass is a glass.</p>
+    <p>[Build 1] Behind each one is the same question: at real-world temperatures, which arrangements do the atoms take, and how likely is each one? Binding strengths, melting points and phase diagrams all follow from the answer. Molecular simulation is how we answer it on a computer, and it is one of the biggest uses of supercomputers: at NERSC, the US Department of Energy's science supercomputing centre, density functional theory alone takes more than 30% of all computing time (Camps et al. 2025), and on the UK's national supercomputer ARCHER2 a single such code, VASP, uses about a third (EPCC 2022).</p>
+  </aside>
+</section>
+
+<!-- =============================================================== 3. NON-EQUILIBRIUM -->
+<section class="slide" data-title="Grounded in non-equilibrium thermodynamics" data-section="The idea">
+  <div class="kicker method">The key idea</div>
+  <h2>Grounded in non-equilibrium thermodynamics</h2>
+  <canvas class="abs" style="left:100px;top:185px" width="800" height="800" data-anim="mpemba"></canvas>
+  <div class="abs" style="left:960px;top:340px;width:850px">
+    <div class="quote" style="font-size:34px">“The fact that the water has previously been warmed contributes to its freezing quickly: for so it cools sooner.”<span class="by">Aristotle, <i>Meteorology</i> (c. 350 BC)</span></div>
+    <div class="pt" style="margin-top:48px"><div class="h">Hot water can freeze first: the Mpemba effect</div><div class="d">Rediscovered in 1963 by Erasto Mpemba, a Tanzanian schoolboy, and still debated today.</div></div>
+    <div class="pt" data-f="1"><div class="h coral">Fast, and still exact</div><div class="d">Fast processes lag behind, but tracking the work makes them exact (Jarzynski 1997; Crooks 1999). Neural samplers build on this.</div></div>
+  </div>
+  <div class="takeaway coral" style="left:960px">Thermodynamics was born in the Industrial Revolution, for equilibrium. <b>Far from equilibrium, exact laws came only in the 1990s.</b></div>
+  <div class="cite">Aristotle, <i>Meteorology</i> I.12 · Mpemba &amp; Osborne, Phys. Educ. 1969 · Burridge &amp; Linden 2016 · Kumar &amp; Bechhoefer, Nature 2020 · Carnot 1824 · Jarzynski 1997 · Crooks 1999 · schematic animation</div>
+  <aside class="notes">
+    <p>Before the method, a puzzle. About 2,300 years ago, Aristotle wrote that water that has been warmed first freezes more quickly. In 1963 a Tanzanian schoolboy, Erasto Mpemba, noticed the same thing while making ice cream, and published it with the physicist Denis Osborne in 1969; it is now called the Mpemba effect. The animation is schematic: the hot cup cools faster, overtakes the warm one, and freezes first. Whether, and when, this happens in water is still debated, and careful experiments disagree (Burridge and Linden 2016); in 2020 it was shown cleanly with a microscopic bead in water, where the hotter start cooled exponentially faster (Kumar and Bechhoefer, Nature). Thermodynamics itself was born in the Industrial Revolution, from Carnot's 1824 study of steam engines, and it describes systems in equilibrium. Far from equilibrium is much harder: exact general laws came only in the 1990s. And it is full of beautiful surprises like this one.</p>
+    <p>[Build 1] Out of equilibrium is also where our method comes from. Classical simulation is quasi-static: it changes so slowly that the system stays in equilibrium at every moment. That is exact, but slow: a small model glass needs 10^8 to 10^9 energy evaluations. A fast process cannot keep up, so it is normally biased. But in 1997 and 1999, Jarzynski and Crooks showed that if you record the work done along each fast path, you recover exact equilibrium answers; this was confirmed in 2002 by pulling single RNA molecules apart with optical tweezers. Diffusion models, the engines behind today's image generators, are such out-of-equilibrium processes. A neural sampler drives noise to equilibrium fast and tracks the work along the way, so it is both fast and exact.</p>
+  </aside>
+</section>
+
+<!-- =============================================================== 4. NEURAL SAMPLERS -->
+<section class="slide" data-title="Neural samplers: generative AI that learns from physics" data-section="The idea">
+  <div class="kicker method">Neural samplers</div>
+  <h2>Neural samplers: generative AI that learns from physics, not data</h2>
+  <div class="abs" style="left:110px;top:172px;width:760px;text-align:center"><div class="cap-top">Image generators</div><div class="cap-sub">learned from billions of images</div></div>
+  <canvas class="abs" style="left:190px;top:240px" width="600" height="610" data-anim="pixelDenoise"></canvas>
+  <div class="abs" style="left:1000px;top:172px;width:810px;text-align:center" data-f="1"><div class="cap-top teal">Neural samplers</div><div class="cap-sub">learned from the <b>forces</b> alone</div></div>
+  <canvas class="abs" style="left:1105px;top:222px" width="600" height="650" data-anim="torusTransport" data-opts='{"hero":true,"plain":true,"forces":true,"timebar":true,"box":480,"config":"n64_T0.2","by":20,"seed":11}' data-f="1"></canvas>
+  <div class="abs trio" style="left:110px;top:884px;width:1700px">
+    <div data-f="2"><div class="h">No data needed</div><div class="d">The AI proposes; physics answers with forces.</div></div>
+    <div data-f="3"><div class="h">Every evaluation is reused</div><div class="d">Costly physics answers are stored and replayed.</div></div>
+    <div data-f="4"><div class="h">Train once, inference many times</div><div class="d">Same model, new temperatures and compositions.</div></div>
+  </div>
+  <aside class="notes">
+    <p>How do we build such a process? With generative AI. Image generators start from random noise and turn it into a picture; they learned how from billions of example images.</p>
+    <p>[Build 1] A neural sampler does the same with atoms: from a random scatter to an equilibrium structure. The crucial difference is that there are no examples to learn from: nobody has a photo album of equilibrium glasses, because producing them is exactly the expensive problem. Instead the AI learns from physics. The red arrows are the forces on every atom of a real model glass.</p>
+    <p>[Build 2] Three things make this work. No data needed: the AI proposes structures, physics answers with the forces, and the AI learns, round after round.</p>
+    <p>[Build 3] Every evaluation is reused: asking the physics is the expensive part, so every answer is stored and replayed many times.</p>
+    <p>[Build 4] Train once, inference many times: the same model answers new questions, a new temperature or a new composition, without starting over.</p>
+  </aside>
+</section>
+
+<!-- =============================================================== 5. ATLAS: GLASS -->
+<section class="slide" data-title="ATLAS: equilibrium glasses" data-section="ATLAS">
+  <div class="kicker atlas">ATLAS · amorphous materials</div>
+  <div class="abs" style="right:110px;top:42px"><span class="badge">ATLAS is under review at <i>Science</i></span></div>
+  <h2>ATLAS: equilibrium glasses, from the energy alone</h2>
+  <canvas class="abs" style="left:100px;top:190px" width="900" height="600" data-anim="glassVsCrystal"></canvas>
+  <div class="abs" style="left:1060px;top:200px;width:750px">
+    <div class="pt"><div class="h">One of our oldest high-tech materials</div><div class="d">Made for over 4,000 years and in every screen and optical fibre. Metallic glasses (since 1960) are unusually strong and springy. A glass has no repeating pattern, and no database of equilibrated glasses exists to learn from.</div></div>
+    <div class="quote" data-f="1">“The deepest and most interesting unsolved problem in solid state theory is probably the theory of the nature of glass and the glass transition.”<span class="by">P. W. Anderson, Nobel laureate in physics, <i>Science</i> (1995)</span></div>
+  </div>
+  <div class="abs" style="left:110px;top:818px;width:1700px;display:grid;grid-template-columns:1fr 1fr 1.15fr;gap:24px">
+    <div class="card res" data-f="2"><div class="n teal">&gt;500×</div><div class="d">fewer energy evaluations for the free energy of a glass, accurate to <b>0.2%</b></div></div>
+    <div class="card res" data-f="3"><div class="n navy">1 model</div><div class="d">from hot liquid to cold glass, conditioned on temperature and composition</div></div>
+    <div class="card res" data-f="4"><div class="n copper" style="font-size:44px">matches experiment</div><div class="d">short-range order in metallic glasses <span class="chem t">CuZr</span> <span class="chem t">CrCoNi</span></div></div>
+  </div>
+  <div class="cite">Cheng*, Blessing*, …, Domingo-Enrich†, <b class="me">Du</b>†, ATLAS, arXiv:2607.19198 · Klement et al. 1960 · Anderson, Science 1995 · left: real snapshot of a model glass vs. a crystal</div>
+  <aside class="notes">
+    <p>Two systems show what this enables. The first, ATLAS, is about glasses, and the paper is under review at Science.</p>
+    <p>Glass is one of our oldest manufactured materials, over four thousand years old, and it is in every screen and optical fibre. Since 1960 we also have metallic glasses, metals frozen before they can crystallise, which are unusually strong and springy. A glass has no repeating pattern: it is a whole population of jammed arrangements, exactly the hard sampling problem, and there is no database of equilibrated glasses to learn from. [Build 1] As Phil Anderson put it, the nature of glass is perhaps the deepest unsolved problem in solid-state theory.</p>
+    <p>[Build 2] ATLAS gets the free energy of a model glass to within 0.2 percent with more than 500 times fewer energy evaluations than the gold-standard simulation. [Build 3] One model covers everything from the hot liquid to the cold glass. [Build 4] And on real metallic glasses, CuZr and CrCoNi, its structures reproduce the short-range chemical order measured in experiments.</p>
+  </aside>
+</section>
+
+<!-- =============================================================== 6. ATLAS: FOUNDATION MODEL + AGENT -->
+<section class="slide" data-title="ATLAS: a foundation model an AI agent can use" data-section="ATLAS">
+  <div class="kicker atlas">ATLAS · foundation model and agentic design</div>
+  <div class="abs" style="right:110px;top:42px"><span class="badge">ATLAS is under review at <i>Science</i></span></div>
+  <h2>ATLAS: one foundation model, put to work by an AI agent</h2>
+  <canvas class="abs" style="left:100px;top:195px" width="1000" height="600" data-anim="agentLoop"></canvas>
+  <div class="abs" style="left:1150px;top:195px;width:660px;display:flex;flex-direction:column;gap:20px">
+    <div class="card res" data-f="1"><div class="n navy">~300×</div><div class="d">less training compute over 480 compositions: pretrain once (36 GPU-hours) instead of ~20 GPU-hours per composition</div></div>
+    <div class="card res" data-f="2"><div class="n violet">480</div><div class="d">ATLAS queries for an LLM agent to map the best stiffness–ductility trade-offs, choosing up to 5 of 8 elements</div></div>
+    <div class="card res" data-f="3"><div class="h" style="margin:0">Design rule it found <span class="new soft">found by the agent</span></div><div class="d"><span class="chem t">Co</span> <span class="chem t">Ni</span> <span class="chem t">Ti</span> in every Pareto-optimal alloy; <span class="chem">Fe</span> <span class="chem">Cu</span> tune; <span class="chem">Mn</span> <span class="chem">Al</span> nearly absent</div></div>
+  </div>
+  <div class="takeaway" data-f="4">An AI agent can now ask hundreds of what-if questions, and each answer is a full equilibrium ensemble.</div>
+  <div class="cite">Cheng*, Blessing*, …, Domingo-Enrich†, <b class="me">Du</b>†, ATLAS (2026), Fig. 4 · left: schematic of the asynchronous agent loop · candidates are model-guided hypotheses for higher-fidelity validation</div>
+  <aside class="notes">
+    <p>ATLAS is also a foundation model: one network, conditioned on composition, covers a whole family of alloys. [Build 1] Pretraining costs 36 GPU-hours once; training a separate model per composition costs about 20 GPU-hours each, so across 480 compositions that is about 300 times less compute.</p>
+    <p>[Build 2] Because each query is cheap, an AI agent can use it as a tool. The animation is the loop: a language-model agent proposes alloys, ATLAS samples their equilibrium structures, we compute stiffness and ductility, and the agent keeps the best trade-offs and proposes the next batch. Choosing up to five of eight elements, the best trade-offs are mapped within 480 queries.</p>
+    <p>[Build 3] And it extracts a design rule: Co, Ni and Ti appear in every Pareto-optimal alloy, Fe and Cu act as tuners, and Mn and Al are nearly absent. These are hypotheses for higher-fidelity validation. [Build 4] An AI agent can now ask hundreds of what-if questions, and each answer is a full equilibrium ensemble.</p>
+  </aside>
+</section>
+
+<!-- =============================================================== 7. JANUS: PHASE DIAGRAMS -->
+<section class="slide" data-title="JANUS: who sits where, and alloy phase diagrams" data-section="JANUS">
+  <div class="kicker janus">JANUS · alloys</div>
+  <h2>JANUS: who sits where, and alloy phase diagrams</h2>
+  <canvas class="abs" style="left:100px;top:180px" width="900" height="560" data-anim="whoSitsWhere"></canvas>
+  <div class="abs small" style="left:130px;top:752px;width:900px;color:var(--ink)"><b class="violet">JANUS</b>, after the two-faced Roman god: one model, <b>discrete</b> and <b>continuous</b>.</div>
+  <div class="abs figcard" style="left:1080px;top:185px;width:520px;padding:10px" data-f="1"><img src="assets/figs/janus_f3a.webp" alt="Cu–Ag phase diagram"></div>
+  <div class="abs cap" style="left:1080px;top:652px;width:730px;font-size:19px" data-f="1">Phase diagram of <span class="chem v">Cu–Ag</span></div>
+  <div class="abs card res" style="left:1080px;top:752px;width:730px;display:flex;gap:24px;align-items:center;padding:18px 24px" data-f="2"><div class="n violet" style="flex:none">~10³×</div><div class="d" style="margin:0">fewer energy evaluations, training included: the <span class="chem v">Cu–Ag</span> miscibility gap and <span class="chem v">Ni–Cr</span> fcc vs. bcc</div></div>
+  <div class="takeaway violet" data-f="3">Phase diagrams become inference over one model, trained across temperature and chemical potential.</div>
+  <div class="cite">Blessing*, Cheng*, …, Domingo-Enrich†, <b class="me">Du</b>†, JANUS, arXiv:2608.19116, Fig. 3 · left: toy lattice of three elements</div>
+  <aside class="notes">
+    <p>The second model, JANUS, is about chemical disorder: crystals where the lattice is regular, but which element sits on each site is not. Three things happen at once: elements swap sites, a discrete choice; atoms shift off their ideal positions, which is continuous; and vacancies and dopants come and go. JANUS, named after the two-faced Roman god, handles the discrete and continuous faces in one model.</p>
+    <p>[Build 1] Metallurgists navigate with phase diagrams: which structure is stable at each temperature and composition. Every point is a free-energy comparison, so each is expensive. This is Cu–Ag: inside the grey dome the two metals separate, and JANUS, in orange, recovers the boundary. [Build 2] For Cu–Ag and Ni–Cr, that takes about a thousand times fewer energy evaluations than the reference, even counting training. [Build 3] Phase diagrams become inference over one model, trained across temperature and chemical potential, the knob that sets the composition.</p>
+  </aside>
+</section>
+
+<!-- =============================================================== 8. JANUS: DEFECT DISCOVERY LOOP -->
+<section class="slide" data-title="JANUS: a discovery loop for quantum defects" data-section="JANUS">
+  <div class="kicker janus">JANUS · quantum defects</div>
+  <h2>JANUS: a discovery loop for quantum defects</h2>
+  <canvas class="abs" style="left:100px;top:200px" width="960" height="560" data-anim="defectDiscovery"></canvas>
+  <div class="abs" style="left:1110px;top:192px;width:700px">
+    <div class="pt"><div class="h">Why defects</div><div class="d">One impurity next to a vacancy in Si or diamond can be a qubit, a quantum sensor or a single-photon source.</div></div>
+    <div class="pt" data-f="1"><div class="h">The loop</div><div class="d">JANUS generates 8,000 equilibrium structures with 15 dopants and vacancies that come and go; we count which pairs and triplets appear more often than random mixing, and check those with quantum chemistry (hybrid DFT).</div></div>
+    <div class="pt" data-f="2"><div class="h">Known centres re-emerge</div><div class="d"><span class="chem v">Ge–V</span> in diamond · <span class="chem v">P–V</span> (the E centre) in Si</div></div>
+    <div class="pt" data-f="3"><div class="h">New candidates <span class="new">new</span></div><div class="d"><span class="chem isnew">S–Ti</span> <span class="chem isnew">Ga–[Ga]–P</span> in Si · <span class="chem isnew">B–[O]–O</span> <span class="chem isnew">Fe–V</span> in diamond</div></div>
+  </div>
+  <div class="takeaway violet" data-f="4">A first-principles shortlist for quantum technologies; excited-state calculations and experiments come next.</div>
+  <div class="cite">Blessing*, Cheng*, …, Domingo-Enrich†, <b class="me">Du</b>†, JANUS (2026), Fig. 4 · V = vacancy · left: schematic of the screening loop</div>
+  <aside class="notes">
+    <p>JANUS can also discover. Colour centres, an impurity next to a vacancy in Si or diamond, are used as qubits, quantum sensors and single-photon sources, and finding new ones is a search problem.</p>
+    <p>[Build 1] The loop: one model per host, Si or diamond, with fifteen possible dopants plus vacancies, and atoms can come and go. JANUS generates 8,000 equilibrium structures; we count which pairs and triplets appear more often than random mixing would predict, which is what the animation shows; and we check the enriched ones with hybrid-functional DFT.</p>
+    <p>[Build 2] Known colour centres re-emerge without being asked for: Ge–V in diamond, and the P–V E centre in Si, which validates the screen. [Build 3] And new candidates show deep electronic levels: S–Ti and Ga–[Ga]–P in Si, B–[O]–O and Fe–V in diamond. [Build 4] They are a first-principles shortlist; excited-state calculations and experiments come next.</p>
+  </aside>
+</section>
+
+<!-- =============================================================== 9. NEW ERA -->
+<section class="slide" data-title="A new era: simulation becomes inference" data-section="Outlook">
+  <div class="kicker outlook">The bigger picture</div>
+  <h2>A new era: simulation becomes inference</h2>
+  <canvas class="abs" style="left:110px;top:170px" width="1700" height="720" data-anim="mlipEra" data-opts='{"plain":true}'></canvas>
+  <div data-f="1"></div><div data-f="2"></div><div data-f="3"></div>
+  <div class="abs" style="left:110px;top:900px;width:1700px;display:flex;gap:28px" data-f="4">
+    <div class="takeaway navy" style="position:static;flex:1.25;padding:18px 28px"><b>Train once, inference many times</b>: a new temperature, alloy or design goal is one inference, not a new simulation.</div>
+    <div class="takeaway solid" style="position:static;flex:1;padding:16px 28px" data-f="5"><div style="font-size:26px;font-weight:700"><span class="tk-tag">Already trained:</span> an even larger foundation sampler</div><div class="tk-sub" style="font-size:20px;margin-top:4px">same recipe, scaled up. Stay tuned.</div></div>
+  </div>
+  <aside class="notes">
+    <p>Stepping back. Since 2017, universal machine-learned potentials went from a few elements to most of the periodic table: computing energies and forces is no longer the bottleneck. [Build 1] Those forces are exactly what teaches a foundation sampler, ATLAS or JANUS, to produce equilibrium structures on demand. [Build 2] Because every sample comes with its weight, thermodynamics (free energy, entropy, phase diagrams) becomes a calculation on top of the samples. [Build 3] And because each inference is cheap, an AI agent can use the sampler as a tool: propose a material, read back its properties, propose the next one.</p>
+    <p>[Build 4] Train once, inference many times: a new temperature, alloy or design goal is one inference with the trained sampler, not a new simulation campaign. [Build 5] And ATLAS and JANUS are only the beginning: we have already trained an even larger foundation sampler with the same recipe, which we will share soon.</p>
+  </aside>
+</section>
+
+<!-- =============================================================== 10. NEXT: OMNIA -->
+<section class="slide" data-title="Next: OMNIA, universal neural samplers" data-section="Outlook">
+  <div class="kicker omnia">Future work</div>
+  <h2>Next: OMNIA, universal neural samplers</h2>
+  <div class="abs road om" style="left:840px;top:300px"><span class="r0">1 · Liquids</span><span class="r1">2 · Surfaces</span><span class="r2">3 · Batteries</span></div>
+  <!-- one example per click: each canvas and its text replace the previous ones -->
+  <canvas class="abs" style="left:110px;top:176px" width="648" height="672" data-anim="omniaMelt" data-opts='{"zoom":1.2,"at":0}' data-f="0" data-f-out="1"></canvas>
+  <div class="abs omx" style="left:840px;top:372px;width:970px" data-f="0" data-f-out="1">
+    <div class="pt"><div class="h">Phase diagrams that include the melt</div><div class="d">Where a material melts, and which crystal coexists with the melt below that: the starting point for making it (synthesis).</div></div>
+    <div class="omni"><span class="tag">OMNIA</span>samples the liquid and the crystals with one model; their free energies give the whole map, melt included.</div>
+  </div>
+  <canvas class="abs" style="left:110px;top:176px" width="648" height="672" data-anim="omniaSurface" data-opts='{"zoom":1.2,"at":1}' data-f="1" data-f-out="2"></canvas>
+  <div class="abs omx" style="left:840px;top:372px;width:970px" data-f="1" data-f-out="2">
+    <div class="pt"><div class="h">Hydrogen on Pd, a workhorse catalyst</div><div class="d">The H₂ pressure sets how many H atoms sit on the surface and just beneath it, at equilibrium. Those just beneath decide what the catalyst makes.</div></div>
+    <div class="omni"><span class="tag">OMNIA</span>samples how many H atoms there are, and where, at each pressure.</div>
+  </div>
+  <canvas class="abs" style="left:110px;top:176px" width="648" height="672" data-anim="omniaBattery" data-opts='{"zoom":1.2,"at":2}' data-f="2"></canvas>
+  <div class="abs omx" style="left:840px;top:372px;width:970px" data-f="2">
+    <div class="pt"><div class="h">Na⁺ in the amorphous carbon of a sodium-ion battery</div><div class="d">Different amorphous carbons capture different amounts of Na⁺. Where the ions sit is still debated.</div></div>
+    <div class="omni"><span class="tag">OMNIA</span>samples each carbon at a fixed voltage: how many Na⁺ it holds, and where.</div>
+  </div>
+  <div class="takeaway coral" data-f="3"><b>OMNIA</b>, Latin for “all things”: one sampler for every ensemble, from melts to surfaces and electrodes, <b>where atoms come and go</b>.</div>
+  <div class="cite">Future work; schematic animations · Pd catalysts: Teschner et al., Science 2008 · Na⁺ in hard carbon: Stevens &amp; Dahn, J. Electrochem. Soc. 2000</div>
+  <aside class="notes">
+    <p>What comes next. ATLAS keeps the number of atoms and the box fixed; JANUS lets atoms swap and come and go, but only on the sites of a crystal. Our next step is OMNIA, Latin for "all things": universal neural samplers, one model for every ensemble, not tied to the sites of a crystal. Like ATLAS and JANUS, it samples equilibrium states, not the process that leads to them. Three examples of what that opens up, one at a time.</p>
+    <p>First, liquids. A phase diagram that includes the liquid tells us how to make a material: where it melts, and which crystal coexists with the melt below that. The animation reads the map along one composition: above the top line everything is liquid; between the lines, A crystals coexist with a liquid richer in B; below the bottom line everything is solid. Lines like these are how metallurgists and crystal growers choose a recipe. OMNIA samples the liquid and the crystals with one model; their free energies give the whole map, melt included.</p>
+    <p>[Build 1] Second, surfaces. Pd is a workhorse catalyst for adding hydrogen to molecules. In equilibrium with the gas, hydrogen sits on the surface and just beneath it, and the gas pressure sets how much. How much sits just under the surface decides what the catalyst makes: Pd saturated with hydrogen hydrogenates unselectively, and selectivity appears only when the subsurface is controlled (Teschner et al., Science 2008). OMNIA samples how many H atoms there are, and where, at each pressure.</p>
+    <p>[Build 2] Third, batteries. The anode of a sodium-ion battery is usually hard carbon, a disordered, amorphous carbon. Different amorphous carbons capture different amounts of Na⁺: the animation shows three amorphous carbons in 3D as carbon webs of different density, each with the Na⁺ it holds inside at the same voltage: the more open the web, the more Na⁺ it holds. Where the sodium sits is still debated. OMNIA samples each carbon at a fixed voltage: how many Na⁺ it holds, and where. That is a way to compare candidate anode carbons. The structures and counts are schematic.</p>
+    <p>[Build 3] OMNIA: one sampler for every ensemble, from melts to surfaces and electrodes, where atoms come and go.</p>
+  </aside>
+</section>
+
+<!-- =============================================================== 11. NEXT: KINETICS -->
+<section class="slide" data-title="Next: kinetics, from how likely to how fast" data-section="Outlook">
+  <div class="kicker kin">Future work</div>
+  <h2>Next: kinetics, from how likely to how fast</h2>
+  <div class="abs omx" style="left:840px;top:182px;width:970px">
+    <div class="pt"><div class="h">Committor estimation: will it finish, or fall back?</div><div class="d">For each arrangement of the atoms, we estimate the chance it goes on to finish the change. From these chances come the rates.</div></div>
+  </div>
+  <div class="abs road kin" style="left:840px;top:372px"><span class="r0">1 · Ions in water</span><span class="r1">2 · HCN → adenine</span><span class="r2">3 · Host–guest</span><span class="r3">4 · Disease</span></div>
+  <!-- one example per click: each canvas and its text replace the previous ones -->
+  <canvas class="abs" style="left:110px;top:176px" width="648" height="672" data-anim="kinIons" data-opts='{"zoom":1.2,"at":0}' data-f="0" data-f-out="1"></canvas>
+  <div class="abs omx" style="left:840px;top:440px;width:970px" data-f="0" data-f-out="1">
+    <div class="pt"><div class="h">NaCl assembling in explicit water<span class="run">working</span></div><div class="d">Na⁺ and Cl⁻ find each other among 256 water molecules. The water decides: the distance between the ions alone does not tell whether they will pair.</div></div>
+  </div>
+  <canvas class="abs" style="left:110px;top:176px" width="648" height="672" data-anim="kinAdenine" data-opts='{"zoom":1.2,"at":1}' data-f="1" data-f-out="2"></canvas>
+  <div class="abs omx" style="left:840px;top:440px;width:970px" data-f="1" data-f-out="2">
+    <div class="pt"><div class="h">From HCN to adenine<span class="run wip">in progress</span></div><div class="d">Five HCN molecules can join into adenine, the A in DNA and RNA (Oró 1960). Mapping the route in water, and how fast it runs, is prebiotic discovery.</div></div>
+  </div>
+  <canvas class="abs" style="left:110px;top:176px" width="648" height="672" data-anim="kinHost" data-opts='{"zoom":1.2,"at":2}' data-f="2" data-f-out="3"></canvas>
+  <div class="abs omx" style="left:840px;top:440px;width:970px" data-f="2" data-f-out="3">
+    <div class="pt"><div class="h">Host–guest binding in explicit water<span class="run wip">in progress</span></div><div class="d">A small molecule slips into a host's cavity, pushing the water out, and later leaves. How fast it binds and unbinds, not only how tightly, matters for drugs and sensors.</div></div>
+  </div>
+  <canvas class="abs" style="left:110px;top:176px" width="648" height="672" data-anim="kinMisfold" data-opts='{"zoom":1.2,"at":3}' data-f="3"></canvas>
+  <div class="abs omx" style="left:840px;top:440px;width:970px" data-f="3">
+    <div class="pt"><div class="h">Disease: when folding takes a wrong turn</div><div class="d">A protein's working shape is usually its most stable one. In cystic fibrosis, one missing amino acid raises the barrier to it: the protein gets stuck misfolded, and the cell destroys it.</div></div>
+  </div>
+  <div class="takeaway blue" data-f="4"><b>From how likely to how fast</b>: committors turn samples into rates. The processes on the last slide have rates too: crystals forming from a melt, H entering Pd, Na⁺ entering carbon.</div>
+  <div class="cite">NaCl in water: Geissler, Dellago &amp; Chandler, J. Phys. Chem. B 1999 · adenine: Oró, BBRC 1960 · cystic fibrosis: Cheng et al., Cell 1990; Qu, Strickland &amp; Thomas, J. Biol. Chem. 1997 · schematic animations</div>
+  <aside class="notes">
+    <p>One more direction: kinetics. Everything so far is about how likely each arrangement is, which is thermodynamics. Many questions are about how fast: how quickly ions pair up, how fast a reaction runs, how long a drug stays bound. Those rates are set by rare crossings of a barrier.</p>
+    <p>The key quantity is the committor: for each arrangement of the atoms, the chance that it goes on to finish the change rather than fall back. From these chances come the rates. This is what we have been working on: estimating committors. Under each animation, a small energy picture shows the same thing: the system rattles in one valley for a long time, then crosses the barrier quickly; the curve's colour and the percentage give the committor along the way.</p>
+    <p>First, Na⁺ and Cl⁻ assembling in water, with 256 explicit water molecules; this one already works. It is a classic test: Geissler, Dellago and Chandler showed in 1999 that the distance between the ions does not tell you whether they will pair; the surrounding water decides. In the animation the committor climbs as the last water between the ions moves away.</p>
+    <p>[Build 1] Second, chemistry in solution: from HCN to adenine. Adenine, the A in DNA and RNA, is five HCN molecules joined together, and Oró made it from ammonium cyanide solution in 1960. Which route the reaction takes in water, and how fast, is a question of prebiotic discovery; this is in progress. The animation is schematic; the real route runs through several intermediates.</p>
+    <p>[Build 2] Third, host–guest binding in explicit water: a small guest slips into the cavity of a host, pushing the water out, and later leaves. How fast it binds and unbinds, not only how tightly, matters for drugs and sensors; this is also in progress.</p>
+    <p>[Build 3] Why rates matter for health. A protein's working shape is usually its most stable one, so thermodynamics is on our side; what can go wrong is the path. In cystic fibrosis, the most common mutation removes a single amino acid, F508. That slows the correct folding of the CFTR protein (Qu, Strickland and Thomas, 1997): in the energy picture the barrier to the working shape rises (the dashed line is the normal barrier), so the chain takes the other path, gets stuck misfolded, and the cell destroys it before it can work (Cheng et al., Cell 1990). The chance to fold right drops sharply. The disease is kinetic: the good state is still the most stable one, it just cannot be reached in time.</p>
+    <p>[Build 4] From how likely to how fast: committors turn samples into rates. And the processes from the previous slide have rates too: how fast crystals form from a melt, how fast hydrogen enters Pd, how fast sodium enters the carbon of a battery anode.</p>
+  </aside>
+</section>
+
+<!-- =============================================================== 12. BACK TO THE PROBLEMS -->
+<section class="slide" data-title="Back to the problems that matter" data-section="Outlook">
+  <div class="kicker intro">Back to why it matters</div>
+  <h2>Back to the problems that matter: what we can now explore</h2>
+  <canvas class="abs" style="left:110px;top:178px" width="1700" height="640" data-anim="impactHub" data-opts='{"next":true}'></canvas>
+  <div class="takeaway" data-f="1">Each one becomes <b>one inference with a trained sampler</b>, not a new simulation campaign.</div>
+  <div class="cite">ATLAS (glasses, agentic design) and JANUS (alloys, defects): this talk · OMNIA: future work</div>
+  <aside class="notes">
+    <p>Let me go back to where we started: the same problems, now with the questions these samplers let us ask.</p>
+    <p>Batteries: how many Na⁺ or Li⁺ ions an anode stores at each voltage. Medicines: how tightly a candidate drug binds, with water molecules free to come and go in the pocket. Climate: catalysts at real gas pressures, and how much CO₂ a sorbent captures. Earth: where Fe melts at the pressures of Earth's core, which sets the temperature where the solid inner core meets the liquid outer core. Semiconductors: which dopants and defects form at the growth temperature. Quantum technology: a shortlist of new defect qubits before any experiment, as JANUS just did. Alloys: phase diagrams all the way down from the melt, which tell us how to cast and heat-treat them. Glass: which melts freeze into a glass, and glasses designed by an AI agent, as with ATLAS.</p>
+    <p>[Build 1] Each one becomes one inference with a trained sampler, not a new simulation campaign.</p>
+  </aside>
+</section>
+
+<!-- =============================================================== 13. THANK YOU -->
+<section class="slide" data-title="Thank you" data-section="Outlook">
+  <div class="wash"><i style="left:-160px;top:-200px;width:760px;height:560px;background:#BFE3DC"></i><i style="left:1240px;top:620px;width:820px;height:640px;background:#DDD7F1"></i></div>
+  <div class="abs" style="left:110px;top:90px;font-size:80px;font-weight:720;letter-spacing:-0.03em;color:var(--navy)">Thank you!</div>
+  <div class="abs" style="left:110px;top:225px;width:1080px">
+    <div class="pt"><div class="h">1 · Essential, but slow</div><div class="d">Molecular simulation underpins batteries, drugs, alloys and quantum technology; classical methods pay for exactness with time.</div></div>
+    <div class="pt"><div class="h">2 · Out of equilibrium, yet exact</div><div class="d">Neural samplers learn from physics alone, drive noise to equilibrium fast, and stay exact by tracking the work along the way.</div></div>
+    <div class="pt"><div class="h">3 · Foundation samplers are here</div><div class="d">ATLAS (glasses; under review at <i>Science</i>) and JANUS (alloys, defects); an even larger model is already trained.</div></div>
+  </div>
+  <canvas class="abs" style="left:1240px;top:40px" width="640" height="640" data-anim="torusTransport" data-opts='{"hero":true,"plain":true,"box":430,"config":"n256_T0.5","seed":21}'></canvas>
+  <div class="abs team" style="left:110px;top:655px">
+    <div>
+      <div class="grp-h teal">Contributed by two MSR interns</div>
+      <div class="people">
+        <div class="person"><img src="assets/people/mouyang.webp" alt=""><div class="nm">Mouyang Cheng</div><div class="af">MIT</div></div>
+        <div class="person"><img src="assets/people/denis.webp" alt=""><div class="nm">Denis Blessing</div><div class="af">KIT</div></div>
+      </div>
+    </div>
+    <div>
+      <div class="grp-h">Co-led by</div>
+      <div class="people">
+        <div class="person"><img src="assets/people/carles.webp" alt=""><div class="nm">Carles Domingo-Enrich</div><div class="af">Microsoft Research</div></div>
+        <div class="person"><img src="assets/people/yuanqi.webp" alt=""><div class="nm">Yuanqi Du</div><div class="af">Microsoft Research</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="abs small" style="left:110px;top:930px;width:1700px;line-height:1.6;color:var(--ink)">
+    <b class="teal">ATLAS</b> · arXiv:2607.19198 (under review at <i>Science</i>) &nbsp;·&nbsp; <b class="violet">JANUS</b> · arXiv:2608.19116 &nbsp;·&nbsp; yuanqidu@microsoft.com &nbsp;·&nbsp; yuanqidu.github.io
+  </div>
+  <aside class="notes"><p>To summarise: molecular simulation is essential, but classical methods pay for exactness with time. Neural samplers learn from physics alone, go out of equilibrium to be fast, and track the work to stay exact. ATLAS and JANUS are the first foundation samplers, and a larger one is already trained. Two MSR interns, Mouyang Cheng and Denis Blessing, contributed to this work; Carles Domingo-Enrich and I co-led the projects. Happy to take questions.</p></aside>
+</section>
+
+</div></div>
+</body>
+</html>
