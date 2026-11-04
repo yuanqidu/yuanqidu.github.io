@@ -51,6 +51,11 @@
   .trio > div { padding: 16px 24px 18px; border-radius: 16px; background: rgba(42,157,143,.10); border-left: 6px solid var(--teal); }
   .trio .h { font-size: 29px; font-weight: 700; line-height: 1.2; color: var(--teal-dark); }
   .trio .d { font-size: 20px; line-height: 1.35; color: var(--ink-soft); margin-top: 6px; }
+  .trio .p { font-size: 29px; font-weight: 700; line-height: 1.2; color: #C62828; margin-bottom: 6px; }
+  /* first-principles slide: two pillars and their equations */
+  .trio.duo { grid-template-columns: repeat(2, 1fr); }
+  .eq { font-size: 40px; text-align: center; color: var(--ink); }
+  .cap-top.big { font-size: 32px; } .cap-sub.big { font-size: 24px; margin-top: 4px; }
 </style>
 <script src="vendor/katex/katex.min.js"></script>
 <script src="vendor/katex/contrib/auto-render.min.js"></script>
@@ -110,7 +115,29 @@
   </aside>
 </section>
 
-<!-- =============================================================== 3. NON-EQUILIBRIUM -->
+<!-- =============================================================== 3. FIRST PRINCIPLES -->
+<section class="slide" data-title="First principles: quantum and statistical mechanics" data-section="The idea">
+  <div class="kicker method">First principles</div>
+  <h2>Two laws of physics tell us how matter behaves</h2>
+  <div class="abs" style="left:110px;top:178px;width:820px;text-align:center"><div class="cap-top big blue">Quantum mechanics</div><div class="cap-sub big">how atoms <b>interact</b></div><div class="eq" style="margin-top:14px">$\hat H\psi = {\color{#1D3A5F}E}\,\psi$</div></div>
+  <canvas class="abs" style="left:110px;top:345px" width="820" height="430" data-anim="qmBond"></canvas>
+  <div class="abs" style="left:990px;top:178px;width:820px;text-align:center" data-f="1"><div class="cap-top big teal">Statistical mechanics</div><div class="cap-sub big">which structures they <b>form</b></div><div class="eq" style="margin-top:14px">$p(x) \propto e^{-{\color{#1D3A5F}E(x)}/k_B T}$</div></div>
+  <canvas class="abs" style="left:990px;top:345px" width="820" height="430" data-anim="boltzLandscape" data-opts='{"hard":3}' data-f="1"></canvas>
+  <div class="abs trio duo" style="left:110px;top:820px;width:1700px">
+    <div data-f="2"><div class="h">First principles: exact, no data needed</div></div>
+    <div data-f="3"><div class="p">Sampling is hard</div><div class="h" data-f="4">Inspiration: faster non-equilibrium processes</div></div>
+  </div>
+  <div class="cite">Schrödinger 1926 · Boltzmann 1877, Gibbs 1902 · schematic animations</div>
+  <aside class="notes">
+    <p>Where do the answers come from? Two pillars of physics. Quantum mechanics tells us how atoms interact: the electrons decide the energy of any arrangement of atoms, and the forces that push them back when a bond is stretched or squeezed.</p>
+    <p>[Build 1] Statistical mechanics tells us which structures they form. At a given temperature, each arrangement appears with a probability set by its energy, the Boltzmann distribution. When it is cold, almost everything sits in the deepest valley, here an ordered crystal; when it is hot, the other valleys fill in.</p>
+    <p>[Build 2] Together, these are first principles: in principle they are exact, and they need no data at all.</p>
+    <p>[Build 3] The catch is sampling. The valleys are separated by high barriers, so a conventional simulation, moving atoms step by step, stays stuck in one valley and rarely crosses: a small model glass needs 10^8 to 10^9 energy evaluations.</p>
+    <p>[Build 4] So we look for inspiration in faster processes that do not wait for equilibrium: non-equilibrium processes.</p>
+  </aside>
+</section>
+
+<!-- =============================================================== 4. NON-EQUILIBRIUM -->
 <section class="slide" data-title="Grounded in non-equilibrium thermodynamics" data-section="The idea">
   <div class="kicker method">The key idea</div>
   <h2>Grounded in non-equilibrium thermodynamics</h2>
@@ -137,16 +164,16 @@
   <div class="abs" style="left:1000px;top:172px;width:810px;text-align:center" data-f="1"><div class="cap-top teal">Neural samplers</div><div class="cap-sub">learned from the <b>forces</b> alone</div></div>
   <canvas class="abs" style="left:1105px;top:222px" width="600" height="650" data-anim="torusTransport" data-opts='{"hero":true,"plain":true,"forces":true,"timebar":true,"box":480,"config":"n64_T0.2","by":20,"seed":11}' data-f="1"></canvas>
   <div class="abs trio" style="left:110px;top:884px;width:1700px">
-    <div data-f="2"><div class="h">No data needed</div><div class="d">The AI proposes; physics answers with forces.</div></div>
-    <div data-f="3"><div class="h">Every evaluation is reused</div><div class="d">Costly physics answers are stored and replayed.</div></div>
-    <div data-f="4"><div class="h">Train once, inference many times</div><div class="d">Same model, new temperatures and compositions.</div></div>
+    <div data-f="2"><div class="p">No data available</div><div class="h">Learn from physics</div></div>
+    <div data-f="3"><div class="p">Quantum calculations are costly</div><div class="h">Every evaluation is reused</div></div>
+    <div data-f="4"><div class="p">Thousands of runs to explore</div><div class="h">Train once, inference many times</div></div>
   </div>
   <aside class="notes">
     <p>How do we build such a process? With generative AI. Image generators start from random noise and turn it into a picture; they learned how from billions of example images.</p>
     <p>[Build 1] A neural sampler does the same with atoms: from a random scatter to an equilibrium structure. The crucial difference is that there are no examples to learn from: nobody has a photo album of equilibrium glasses, because producing them is exactly the expensive problem. Instead the AI learns from physics. The red arrows are the forces on every atom of a real model glass.</p>
-    <p>[Build 2] Three things make this work. No data needed: the AI proposes structures, physics answers with the forces, and the AI learns, round after round.</p>
-    <p>[Build 3] Every evaluation is reused: asking the physics is the expensive part, so every answer is stored and replayed many times.</p>
-    <p>[Build 4] Train once, inference many times: the same model answers new questions, a new temperature or a new composition, without starting over.</p>
+    <p>[Build 2] Three things make this work. First, there is no data available, so we learn from physics: the AI proposes structures, physics answers with the forces, and the AI learns, round after round.</p>
+    <p>[Build 3] Second, quantum calculations are expensive, so every evaluation is reused: each answer is stored and replayed many times.</p>
+    <p>[Build 4] Third, exploring the space means running the model thousands of times or more, so we train once and run inference many times: new temperatures, new compositions, without starting over.</p>
   </aside>
 </section>
 
@@ -165,7 +192,7 @@
     <div class="card res" data-f="3"><div class="n navy">1 model</div><div class="d">from hot liquid to cold glass, conditioned on temperature and composition</div></div>
     <div class="card res" data-f="4"><div class="n copper" style="font-size:44px">matches experiment</div><div class="d">short-range order in metallic glasses <span class="chem t">CuZr</span> <span class="chem t">CrCoNi</span></div></div>
   </div>
-  <div class="cite">Cheng*, Blessing*, …, Domingo-Enrich†, <b class="me">Du</b>†, ATLAS, arXiv:2607.19198 · Klement et al. 1960 · Anderson, Science 1995 · left: real snapshot of a model glass vs. a crystal</div>
+  <div class="cite">Cheng*, Blessing*, …, <b class="me">Domingo-Enrich</b>†, <b class="me">Du</b>†, ATLAS, arXiv:2607.19198 · Klement et al. 1960 · Anderson, Science 1995 · left: real snapshot of a model glass vs. a crystal</div>
   <aside class="notes">
     <p>Two systems show what this enables. The first, ATLAS, is about glasses, and the paper is under review at Science.</p>
     <p>Glass is one of our oldest manufactured materials, over four thousand years old, and it is in every screen and optical fibre. Since 1960 we also have metallic glasses, metals frozen before they can crystallise, which are unusually strong and springy. A glass has no repeating pattern: it is a whole population of jammed arrangements, exactly the hard sampling problem, and there is no database of equilibrated glasses to learn from. [Build 1] As Phil Anderson put it, the nature of glass is perhaps the deepest unsolved problem in solid-state theory.</p>
@@ -185,7 +212,7 @@
     <div class="card res" data-f="3"><div class="h" style="margin:0">Design rule it found <span class="new soft">found by the agent</span></div><div class="d"><span class="chem t">Co</span> <span class="chem t">Ni</span> <span class="chem t">Ti</span> in every Pareto-optimal alloy; <span class="chem">Fe</span> <span class="chem">Cu</span> tune; <span class="chem">Mn</span> <span class="chem">Al</span> nearly absent</div></div>
   </div>
   <div class="takeaway" data-f="4">An AI agent can now ask hundreds of what-if questions, and each answer is a full equilibrium ensemble.</div>
-  <div class="cite">Cheng*, Blessing*, …, Domingo-Enrich†, <b class="me">Du</b>†, ATLAS (2026), Fig. 4 · left: schematic of the asynchronous agent loop · candidates are model-guided hypotheses for higher-fidelity validation</div>
+  <div class="cite">Cheng*, Blessing*, …, <b class="me">Domingo-Enrich</b>†, <b class="me">Du</b>†, ATLAS (2026), Fig. 4 · left: schematic of the asynchronous agent loop · candidates are model-guided hypotheses for higher-fidelity validation</div>
   <aside class="notes">
     <p>ATLAS is also a foundation model: one network, conditioned on composition, covers a whole family of alloys. [Build 1] Pretraining costs 36 GPU-hours once; training a separate model per composition costs about 20 GPU-hours each, so across 480 compositions that is about 300 times less compute.</p>
     <p>[Build 2] Because each query is cheap, an AI agent can use it as a tool. The animation is the loop: a language-model agent proposes alloys, ATLAS samples their equilibrium structures, we compute stiffness and ductility, and the agent keeps the best trade-offs and proposes the next batch. Choosing up to five of eight elements, the best trade-offs are mapped within 480 queries.</p>
@@ -203,7 +230,7 @@
   <div class="abs cap" style="left:1080px;top:652px;width:730px;font-size:19px" data-f="1">Phase diagram of <span class="chem v">Cu–Ag</span></div>
   <div class="abs card res" style="left:1080px;top:752px;width:730px;display:flex;gap:24px;align-items:center;padding:18px 24px" data-f="2"><div class="n violet" style="flex:none">~10³×</div><div class="d" style="margin:0">fewer energy evaluations, training included: the <span class="chem v">Cu–Ag</span> miscibility gap and <span class="chem v">Ni–Cr</span> fcc vs. bcc</div></div>
   <div class="takeaway violet" data-f="3">Phase diagrams become inference over one model, trained across temperature and chemical potential.</div>
-  <div class="cite">Blessing*, Cheng*, …, Domingo-Enrich†, <b class="me">Du</b>†, JANUS, arXiv:2608.19116, Fig. 3 · left: toy lattice of three elements</div>
+  <div class="cite">Blessing*, Cheng*, …, <b class="me">Domingo-Enrich</b>†, <b class="me">Du</b>†, JANUS, arXiv:2608.19116, Fig. 3 · left: toy lattice of three elements</div>
   <aside class="notes">
     <p>The second model, JANUS, is about chemical disorder: crystals where the lattice is regular, but which element sits on each site is not. Three things happen at once: elements swap sites, a discrete choice; atoms shift off their ideal positions, which is continuous; and vacancies and dopants come and go. JANUS, named after the two-faced Roman god, handles the discrete and continuous faces in one model.</p>
     <p>[Build 1] Metallurgists navigate with phase diagrams: which structure is stable at each temperature and composition. Every point is a free-energy comparison, so each is expensive. This is Cu–Ag: inside the grey dome the two metals separate, and JANUS, in orange, recovers the boundary. [Build 2] For Cu–Ag and Ni–Cr, that takes about a thousand times fewer energy evaluations than the reference, even counting training. [Build 3] Phase diagrams become inference over one model, trained across temperature and chemical potential, the knob that sets the composition.</p>
@@ -222,7 +249,7 @@
     <div class="pt" data-f="3"><div class="h">New candidates <span class="new">new</span></div><div class="d"><span class="chem isnew">S–Ti</span> <span class="chem isnew">Ga–[Ga]–P</span> in Si · <span class="chem isnew">B–[O]–O</span> <span class="chem isnew">Fe–V</span> in diamond</div></div>
   </div>
   <div class="takeaway violet" data-f="4">A first-principles shortlist for quantum technologies; excited-state calculations and experiments come next.</div>
-  <div class="cite">Blessing*, Cheng*, …, Domingo-Enrich†, <b class="me">Du</b>†, JANUS (2026), Fig. 4 · V = vacancy · left: schematic of the screening loop</div>
+  <div class="cite">Blessing*, Cheng*, …, <b class="me">Domingo-Enrich</b>†, <b class="me">Du</b>†, JANUS (2026), Fig. 4 · V = vacancy · left: schematic of the screening loop</div>
   <aside class="notes">
     <p>JANUS can also discover. Colour centres, an impurity next to a vacancy in Si or diamond, are used as qubits, quantum sensors and single-photon sources, and finding new ones is a search problem.</p>
     <p>[Build 1] The loop: one model per host, Si or diamond, with fifteen possible dopants plus vacancies, and atoms can come and go. JANUS generates 8,000 equilibrium structures; we count which pairs and triplets appear more often than random mixing would predict, which is what the animation shows; and we check the enriched ones with hybrid-functional DFT.</p>

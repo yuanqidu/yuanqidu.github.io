@@ -1147,4 +1147,108 @@
       }
     });
   };
+  // ------------------------------------------------------------------
+  // First principles, part 1 (quantum mechanics): two atoms held by their electrons; the energy curve E(r) gives the force
+  // ------------------------------------------------------------------
+  ANIMS.qmBond = function (S, o) {
+    const ctx = S.ctx, rng = makeRng(5);
+    const R0 = 150, AMP = 46, W = 2.3, D = 1, A = 1.9;              // equilibrium distance (px), vibration, Morse depth / width
+    const morse = r => D * (1 - Math.exp(-A * (r - R0) / 100)) ** 2 - D;
+    const CX = 205, CY = 215, RA = 42, ECOL = '#7B6FD0';
+    const dots = []; for (let i = 0; i < 230; i++) dots.push({ a: rng.u() * 6.283, s: rng.u(), k: rng.u(), ph: rng.u() * 6.283 });
+    const GX0 = 470, GX1 = 790, GY0 = 70, GY1 = 330, rLo = 95, rHi = 330;
+    const gx = r => GX0 + (r - rLo) / (rHi - rLo) * (GX1 - GX0), gy = e => GY1 - 30 - (e + D) / (1.25 * D) * (GY1 - GY0 - 50);
+    let clock = 0;
+    const sep = () => R0 + AMP * Math.sin(W * clock) + 0.25 * AMP * (1 - Math.cos(2 * W * clock)) / 2;
+    function draw() {
+      S.clear();
+      const r = sep(), xa = CX - r / 2, xb = CX + r / 2;
+      // electron cloud: a shimmering density around both nuclei and along the bond
+      ctx.save();
+      for (const d of dots) {
+        const onA = d.k < 0.4, onB = d.k >= 0.4 && d.k < 0.8;
+        let x, y;
+        if (onA || onB) { const c = onA ? xa : xb, rr = RA + 8 + 34 * Math.sqrt(d.s); x = c + rr * Math.cos(d.a + 0.25 * Math.sin(clock * 1.3 + d.ph)); y = CY + 0.85 * rr * Math.sin(d.a + 0.25 * Math.sin(clock * 1.3 + d.ph)); }
+        else { const u = (d.s - 0.5); x = (xa + xb) / 2 + u * (r - 30); y = CY + 26 * Math.sin(d.a + clock * 1.1 + d.ph) * (1 - 1.6 * u * u); }
+        U.circle(ctx, x, y, 2.6, rgba(ECOL, 0.22 + 0.18 * Math.sin(clock * 2 + d.ph) ** 2));
+      }
+      ctx.restore();
+      atom(ctx, xa, CY, RA, C.blue); atom(ctx, xb, CY, RA, C.orange);
+      // restoring force
+      const f = -(r - R0) * 0.9;
+      if (Math.abs(f) > 6) { U.arrow(ctx, xa, CY - 70, xa - f, CY - 70, C.red, 4, 14); U.arrow(ctx, xb, CY - 70, xb + f, CY - 70, C.red, 4, 14); }
+      text(ctx, 'electrons', CX, CY + 118, { size: 21, weight: 650, color: ECOL, align: 'center' });
+      text(ctx, 'decide the energy and forces', CX, CY + 146, { size: 20, color: C.inkSoft, align: 'center' });
+      // energy curve E(r)
+      ctx.save(); ctx.strokeStyle = rgba(C.inkSoft, 0.5); ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(GX0, GY0); ctx.lineTo(GX0, GY1); ctx.lineTo(GX1, GY1); ctx.stroke(); ctx.restore();
+      ctx.save(); ctx.beginPath(); ctx.rect(GX0, GY0, GX1 - GX0, GY1 - GY0); ctx.clip();
+      ctx.beginPath(); for (let i = 0; i <= 200; i++) { const rr = rLo + (rHi - rLo) * i / 200, y = gy(morse(rr)); if (i) ctx.lineTo(gx(rr), y); else ctx.moveTo(gx(rr), y); }
+      ctx.strokeStyle = C.navy; ctx.lineWidth = 3.5; ctx.stroke(); ctx.restore();
+      U.circle(ctx, gx(r), gy(morse(r)), 11, C.red, '#fff', 3);
+      text(ctx, 'energy', GX0 - 12, GY0 + 12, { size: 20, weight: 650, color: C.navy, align: 'right' });
+      text(ctx, 'distance', GX1, GY1 + 32, { size: 20, weight: 650, color: C.navy, align: 'right' });
+    }
+    return { frame(dt) { clock += dt; draw(); }, draw, enter() { } };
+  };
+
+  // ------------------------------------------------------------------
+  // First principles, part 2 (statistical mechanics): an energy landscape and its Boltzmann probability as temperature changes.
+  // o.hard (build index): a conventional sampler gets stuck in one valley
+  // ------------------------------------------------------------------
+  ANIMS.boltzLandscape = function (S, o) {
+    const ctx = S.ctx, rng = makeRng(9);
+    const WELLS = [[0.18, 0.72, 0.075], [0.5, 1.0, 0.07], [0.81, 0.86, 0.075]];
+    const En = x => WELLS.reduce((e, [m, a, s]) => e - a * Math.exp(-((x - m) ** 2) / (2 * s * s)), 0) + 1.3 * (2 * x - 1) ** 6;
+    const dEn = x => (En(x + 1e-4) - En(x - 1e-4)) / 2e-4;
+    const N = 300, xs = [...Array(N + 1).keys()].map(i => i / N), es = xs.map(En);
+    const eMin = Math.min(...es), eMax = 0.45;
+    const X0 = 50, X1 = 790, EY0 = 40, EY1 = 225, PY0 = 252, PY1 = 352;
+    const px = x => X0 + x * (X1 - X0), ey = e => EY1 - (Math.min(e, eMax) - eMin) / (eMax - eMin) * (EY1 - EY0);
+    const T_LO = 0.07, T_HI = 0.55, T_HARD = 0.09, PER = 9;
+    let clock = 0, hard = false, hardT = 0, w = 0.18;
+    // little structure icons: ordered in the deepest valley, disordered elsewhere
+    const icons = WELLS.map((wl, k) => { const r2 = makeRng(40 + k), pts = []; for (let i = 0; i < 3; i++) for (let j = 0; j < 3; j++) pts.push([(i - 1) * 15 + (k === 1 ? 0 : r2.normal() * 4), (j - 1) * 15 + (k === 1 ? 0 : r2.normal() * 4), (i + j + k) % 3 === 0 ? 1 : 0]); return pts; });
+    const temp = () => hard ? T_HARD : T_LO + (T_HI - T_LO) * (0.5 - 0.5 * Math.cos(2 * Math.PI * clock / PER));
+    function draw() {
+      S.clear();
+      const T = temp(), ps = es.map(e => Math.exp(-(e - eMin) / T)), pmax = Math.max(...ps);
+      // probability
+      ctx.save(); ctx.globalAlpha = hard ? 0.35 : 1;
+      ctx.beginPath(); ctx.moveTo(px(0), PY1); xs.forEach((x, i) => ctx.lineTo(px(x), PY1 - ps[i] / pmax * (PY1 - PY0))); ctx.lineTo(px(1), PY1); ctx.closePath();
+      ctx.fillStyle = rgba(C.teal, 0.28); ctx.fill(); ctx.strokeStyle = C.teal; ctx.lineWidth = 3; ctx.stroke();
+      ctx.restore();
+      ctx.save(); ctx.strokeStyle = rgba(C.inkSoft, 0.4); ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(X0, PY1); ctx.lineTo(X1, PY1); ctx.stroke(); ctx.restore();
+      text(ctx, 'probability', X0 - 8, PY0 + 18, { size: 20, weight: 650, color: C.tealDark, align: 'left' });
+      // energy landscape
+      ctx.save(); ctx.beginPath(); ctx.rect(X0 - 10, EY0, X1 - X0 + 20, EY1 - EY0 + 10); ctx.clip();
+      ctx.beginPath(); xs.forEach((x, i) => { const y = EY1 - (es[i] - eMin) / (eMax - eMin) * (EY1 - EY0); if (i) ctx.lineTo(px(x), y); else ctx.moveTo(px(x), y); });
+      ctx.strokeStyle = C.navy; ctx.lineWidth = 3.5; ctx.stroke(); ctx.restore();
+      text(ctx, 'energy', X0 - 8, EY0 - 8, { size: 20, weight: 650, color: C.navy });
+      WELLS.forEach(([m], k) => { const cx = px(m), cy = ey(En(m)) - 66; icons[k].forEach(([dx, dy, t]) => atom(ctx, cx + dx, cy + dy, 7, t ? C.orange : C.blue, 0.9)); });
+      // temperature slider
+      const sy = 402, sx0 = X0 + 90, sx1 = X1 - 90, f = (T - T_LO) / (T_HI - T_LO), kx = sx0 + (sx1 - sx0) * f;
+      ctx.save(); ctx.lineCap = 'round'; const g = ctx.createLinearGradient(sx0, 0, sx1, 0); g.addColorStop(0, C.blue); g.addColorStop(1, C.coral);
+      ctx.strokeStyle = g; ctx.lineWidth = 6; ctx.beginPath(); ctx.moveTo(sx0, sy); ctx.lineTo(sx1, sy); ctx.stroke(); ctx.restore();
+      U.circle(ctx, kx, sy, 11, '#fff', mix(C.blue, C.coral, f), 4);
+      text(ctx, 'cold', sx0 - 20, sy + 7, { size: 20, color: C.inkSoft, align: 'right' });
+      text(ctx, 'hot', sx1 + 20, sy + 7, { size: 20, color: C.inkSoft });
+      // a conventional sampler, stuck in one valley
+      if (hard) {
+        const a = E.clamp(hardT / 0.5);
+        const wy = ey(En(w)) - 13;
+        atom(ctx, px(w), wy, 13, C.red, a);
+        text(ctx, 'stuck: barriers are rarely crossed', px(0.36), EY0 + 4, { size: 20, weight: 700, color: '#C62828', alpha: a });
+      }
+    }
+    function stepWalker(dt) {
+      const n = Math.round(dt * 600);
+      for (let i = 0; i < n; i++) { w += -dEn(w) * 4e-5 + Math.sqrt(2 * T_HARD * 4e-5) * rng.normal() * 0.6; w = E.clamp(w, 0.06, 0.32); }
+    }
+    return {
+      frame(dt) { if (hard) { hardT += dt; stepWalker(dt); } else clock += dt; draw(); },
+      draw, enter() { },
+      step(k) { const h = o.hard !== undefined && k >= o.hard; if (h && !hard) { hardT = 0; w = 0.18; } hard = h; }
+    };
+  };
 })();
