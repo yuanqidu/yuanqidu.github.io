@@ -62,11 +62,12 @@
 <script src="js/util.js?v=687f7668"></script>
 <script src="js/data/ka.js?v=e5f7cd97"></script>
 <script src="js/data/acarbon.js?v=a0a5bbc9"></script>
+<script src="js/data/scaling.js?v=c62189eb"></script>
 <script src="js/anim/intro.js?v=e4e90f92"></script>
 <script src="js/anim/atlas.js?v=604f6736"></script>
 <script src="js/anim/janus.js?v=1cc9cfc7"></script>
 <script src="js/anim/outro.js?v=c8e3ad88"></script>
-<script src="js/anim/general.js?v=1ad59dbe"></script>
+<script src="js/anim/general.js?v=107fff63"></script>
 <script src="js/deck.js?v=e0414619"></script>
 </head>
 <body>
@@ -217,6 +218,30 @@
     <p>ATLAS is also a foundation model: one network, conditioned on composition, covers a whole family of alloys. [Build 1] Pretraining costs 36 GPU-hours once; training a separate model per composition costs about 20 GPU-hours each, so across 480 compositions that is about 300 times less compute.</p>
     <p>[Build 2] Because each query is cheap, an AI agent can use it as a tool. The animation is the loop: a language-model agent proposes alloys, ATLAS samples their equilibrium structures, we compute stiffness and ductility, and the agent keeps the best trade-offs and proposes the next batch. Choosing up to five of eight elements, the best trade-offs are mapped within 480 queries.</p>
     <p>[Build 3] And it extracts a design rule: Co, Ni and Ti appear in every Pareto-optimal alloy, Fe and Cu act as tuners, and Mn and Al are nearly absent. These are hypotheses for higher-fidelity validation. [Build 4] An AI agent can now ask hundreds of what-if questions, and each answer is a full equilibrium ensemble.</p>
+  </aside>
+</section>
+
+<!-- =============================================================== ATLAS: SCALING -->
+<section class="slide" data-title="Scaling: bigger models, more systems" data-section="ATLAS">
+  <div class="kicker atlas">ATLAS · scaling</div>
+  <h2>Scaling up: bigger models, more systems</h2>
+  <div class="abs" style="left:110px;top:172px;width:820px;text-align:center"><div class="cap-top">A bigger network</div><div class="cap-sub">34 new alloys, never seen in training</div></div>
+  <canvas class="abs" style="left:110px;top:240px" width="820" height="560" data-anim="scaleFront" data-opts='{"at":0}'></canvas>
+  <div class="abs" style="left:990px;top:172px;width:820px;text-align:center" data-f="3" data-f-out="5"><div class="cap-top">More systems</div><div class="cap-sub">34 measured, 340 projected</div></div>
+  <div class="abs" style="left:990px;top:172px;width:820px;text-align:center" data-f="5"><div class="cap-top">In reality: thousands of systems, or more</div><div class="cap-sub">34 measured, the rest projected</div></div>
+  <canvas class="abs" style="left:990px;top:240px" width="820" height="560" data-anim="scaleShift" data-opts='{"at":3}' data-f="3"></canvas>
+  <div class="abs trio duo" style="left:110px;top:842px;width:1700px">
+    <div data-f="2"><div class="h">Bigger network: 5× lower error</div></div>
+    <div data-f="4" style="display:grid"><div class="h" style="grid-area:1/1" data-f="4" data-f-out="5">10× more systems: 2.4× the compute, not 10×</div><div class="h" style="grid-area:1/1" data-f="5">Thousands of systems: ~50–100× less compute</div></div>
+  </div>
+  <div class="cite">Unpublished · 34 held-out amorphous alloys at their glass transition · error: energy offset from long reference runs, in thermal standard deviations (RMS over alloys) · GPU-hours on NVIDIA B200 · more systems: projected from the 34 measured</div>
+  <aside class="notes">
+    <p>How does this scale? Here are 34 new alloys, never seen in training, near their glass transition. On the vertical axis is the error against long reference runs, lower is better; on the horizontal axis the total compute, training included. The previous best method gets better the longer it runs.</p>
+    <p>[Build 1] Our sampler with a small network, 100 thousand parameters, levels off at a high error.</p>
+    <p>[Build 2] With a large network, 9 million parameters, the same method goes much lower: about five times lower error than the small network, and at the same compute about three times lower than the previous best method, for example 0.9 versus 2.8 at 5 GPU-hours. The three curves are three training lengths: train briefly and you start early but level off higher; train longer and you level off lower. You pick the trade-off you need.</p>
+    <p>[Build 3] Now the second kind of scaling: more systems. The previous best method starts from scratch on every system, so ten times more systems costs ten times more compute.</p>
+    <p>[Build 4] Our model is trained once and reused, so going from 34 to 340 systems costs only about 2.4 times more compute. The more systems you need, the bigger the advantage.</p>
+    <p>[Build 5] And in reality we need far more than 340: a screening campaign looks at thousands to millions of candidate materials. Here is the compute to reach the same target error against the number of systems. The previous best grows in proportion; ours pays the training once and then very little per system. The gap grows from 7 times at 34 systems to 28 times at 340, about 50 times at 3,400 and about 90 times at 34,000, levelling off near 100 times. These are projections from the 34 measured systems, assuming new systems behave like them.</p>
   </aside>
 </section>
 
