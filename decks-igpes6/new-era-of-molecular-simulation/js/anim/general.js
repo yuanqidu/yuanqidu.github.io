@@ -1300,24 +1300,32 @@
     };
   }
 
+  // Error axis from 2.5 down. Each curve starts at its first point inside the axis (error <= 2.5), marked with a dot, rather
+  // than being cut by the axis.
+  const YMAX = 2.5, inAxis = pts => { const i = pts.findIndex(p => p[1] <= YMAX); return i < 0 ? [] : pts.slice(i); };
+  function startDot(S, G, P, pts, col, t) {
+    if (!pts.length || t <= 0) return; const x = G.X(pts[0][0]);
+    if (x <= P.x0 + (P.x1 - P.x0) * t) U.circle(S.ctx, x, G.Y(pts[0][1]), 8, col, '#fff', 2.5);
+  }
+
   // Left panel: error vs total compute for the best previous method and our sampler with a small and a large network
   ANIMS.scaleFront = function (S, o) {
     const ctx = S.ctx, D = SCALING_DATA;
     const P = { x0: 100, x1: S.w - 20, y0: 24, y1: S.h - 92 };
-    const G = logPlot(S, P, [0.6, 200], [0.18, 5], 'GPU-hours: training + inference', 'error  (lower is better)');
+    const G = logPlot(S, P, [0.6, 200], [0.18, YMAX], 'GPU-hours: training + inference', 'error  (lower is better)');
     const R = reveal(o, 3);
     function draw() {
       S.clear(); G.axes();
       const t = R.t, E2 = E.smooth;
-      G.line(D.nrpt, SC.prev, E2(t[0]));
-      D.nrpt.forEach(([c, y]) => { if (y <= 5 && G.X(c) <= P.x0 + (P.x1 - P.x0) * E2(t[0])) U.circle(ctx, G.X(c), G.Y(y), 7, SC.prev, '#fff', 2); });
-      G.line(D.small, SC.small, E2(t[1]));
+      G.line(inAxis(D.nrpt), SC.prev, E2(t[0]));
+      D.nrpt.forEach(([c, y]) => { if (y <= YMAX && G.X(c) <= P.x0 + (P.x1 - P.x0) * E2(t[0])) U.circle(ctx, G.X(c), G.Y(y), 7, SC.prev, '#fff', 2); });
+      const sm = inAxis(D.small); G.line(sm, SC.small, E2(t[1])); startDot(S, G, P, sm, SC.small, E2(t[1]));
       const SH = ['#5CC4B0', '#1F9E89', '#0D5C50'];   // short, medium, long training
-      D.tradeoffs.forEach((q, i) => G.line(q.pts, SH[i], E2(E.clamp(t[2] * 1.5 - i * 0.25))));
+      D.tradeoffs.forEach((q, i) => { const ti = E2(E.clamp(t[2] * 1.5 - i * 0.25)); G.line(q.pts, SH[i], ti); startDot(S, G, P, q.pts, SH[i], ti); });
       const la = (i, str, x, y, align = 'right') => text(ctx, str, x, y, { size: 22, weight: 700, color: [SC.prev, SC.small, SC.large][i], align, alpha: E.clamp(t[i] * 2 - 1) });
       const last = D.nrpt[D.nrpt.length - 1];
-      la(0, 'previous best', G.X(0.68), G.Y(3.1), 'left');
-      la(1, 'ours, small network (100k parameters)', P.x1, G.Y(2.46) - 14);
+      la(0, 'previous best', G.X(17), G.Y(1.6), 'left');
+      la(1, 'ours, small network (100k parameters)', P.x1, G.Y(2.46) + 32);
       la(2, 'ours, large network', G.X(2.4), G.Y(0.38), 'left'); la(2, '(9M parameters)', G.X(2.4), G.Y(0.38) + 28, 'left');
       D.tradeoffs.forEach((q, i) => text(ctx, (q.train < 10 ? q.train.toFixed(1) : Math.round(q.train)) + ' h training', P.x1, G.Y(q.floor) + (i === 2 ? 28 : -12),
         { size: 19, weight: 650, color: SH[i], align: 'right', alpha: E.clamp(t[2] * 2 - 1) }));
@@ -1329,7 +1337,7 @@
   ANIMS.scaleShift = function (S, o) {
     const ctx = S.ctx, D = SCALING_DATA.shift, cv = D.curves;
     const P = { x0: 100, x1: S.w - 20, y0: 24, y1: S.h - 92 };
-    const G = logPlot(S, P, [0.6, 2000], [0.18, 5], 'GPU-hours: training + inference', 'error  (lower is better)');
+    const G = logPlot(S, P, [0.6, 2000], [0.18, YMAX], 'GPU-hours: training + inference', 'error  (lower is better)');
     const R = reveal(o, 3);
     const M = SCALING_DATA.systems;
     const P2 = { x0: 128, x1: S.w - 20, y0: 24, y1: S.h - 92 };
@@ -1358,7 +1366,7 @@
       const y = G.Y(D.target), xa = G.X(a), xb = xa + (G.X(b) - xa) * E.smooth(t);
       U.arrow(ctx, xa, y, xb, y, col, 4, 16);
       U.circle(ctx, xa, y, 8, col, '#fff', 2.5);
-      if (where === 'left') haloText(ctx, lab, xa - 4, y - 16, { size: 26, weight: 800, color: col, alpha: t, align: 'right' });
+      if (where === 'left') haloText(ctx, lab, xa - 14, y - 40, { size: 26, weight: 800, color: col, alpha: t, align: 'right' });
       else haloText(ctx, lab, (xa + G.X(b)) / 2, y - 16, { size: 26, weight: 800, color: col, alpha: t });
     }
     function draw() {
@@ -1372,19 +1380,21 @@
       G.axes();
       const t = R.t, E2 = E.smooth;
       ctx.save(); ctx.setLineDash([3, 6]); ctx.strokeStyle = rgba(C.inkSoft, 0.7); ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(P.x0, G.Y(D.target)); ctx.lineTo(P.x1, G.Y(D.target)); ctx.stroke(); ctx.restore();
-      G.line(cv['prev' + D.n1], SC.prev, E2(t[0])); G.line(cv['prev' + D.n2], SC.prev, E2(t[0]), [12, 9]);
-      G.line(cv['ours' + D.n1], SC.large, E2(t[1])); G.line(cv['ours' + D.n2], SC.large, E2(t[1]), [12, 9]);
+      for (const [k, col, ti] of [['prev', SC.prev, E2(t[0])], ['ours', SC.large, E2(t[1])]]) {
+        const a = inAxis(cv[k + D.n1]), b = inAxis(cv[k + D.n2]);
+        G.line(a, col, ti); G.line(b, col, ti, [12, 9]); startDot(S, G, P, a, col, ti); startDot(S, G, P, b, col, ti);
+      }
       arrow(0, D.prev[0], D.prev[1], SC.prev, '×' + Math.round(D.prev[1] / D.prev[0]), 'above');
       arrow(1, D.ours[0], D.ours[1], SC.large, '×' + (D.ours[1] / D.ours[0]).toFixed(1), 'left');
-      text(ctx, 'previous best', G.X(420), G.Y(2.3), { size: 22, weight: 700, color: SC.prev, align: 'center', alpha: E.clamp(t[0] * 2 - 1) });
+      text(ctx, 'previous best', G.X(150), G.Y(0.3), { size: 22, weight: 700, color: SC.prev, align: 'left', alpha: E.clamp(t[0] * 2 - 1) });
       text(ctx, 'ours', G.X(2.6), G.Y(0.62), { size: 22, weight: 700, color: SC.large, align: 'center', alpha: E.clamp(t[1] * 2 - 1) });
       // key: solid = 34 systems, dashed = 340
-      const kx = P.x1 - 250, ky = P.y0 + 10;
+      const kx = P.x0 + 30, ky = P.y1 - 64;
       ctx.save(); ctx.strokeStyle = C.inkSoft; ctx.lineWidth = 3.5; ctx.beginPath(); ctx.moveTo(kx, ky); ctx.lineTo(kx + 46, ky); ctx.stroke();
       ctx.setLineDash([10, 7]); ctx.beginPath(); ctx.moveTo(kx, ky + 34); ctx.lineTo(kx + 46, ky + 34); ctx.stroke(); ctx.restore();
       text(ctx, D.n1 + ' systems', kx + 60, ky + 7, { size: 20, color: C.ink });
       text(ctx, D.n2 + ' systems', kx + 60, ky + 41, { size: 20, color: C.ink });
-      haloText(ctx, 'target error', P.x1 - 4, G.Y(D.target) - 10, { size: 18, weight: 500, color: C.inkSoft, align: 'right' });
+      haloText(ctx, 'target error', P.x1 - 4, G.Y(D.target) + 26, { size: 18, weight: 500, color: C.inkSoft, align: 'right' });
     }
     return { frame(dt) { R.tick(dt); draw(); }, draw, enter() { R.enter(); }, step(k) { R.step(k); }, ff: 2 };
   };

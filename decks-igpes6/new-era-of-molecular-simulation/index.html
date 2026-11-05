@@ -67,7 +67,7 @@
 <script src="js/anim/atlas.js?v=604f6736"></script>
 <script src="js/anim/janus.js?v=1cc9cfc7"></script>
 <script src="js/anim/outro.js?v=c8e3ad88"></script>
-<script src="js/anim/general.js?v=107fff63"></script>
+<script src="js/anim/general.js?v=7550c406"></script>
 <script src="js/deck.js?v=e0414619"></script>
 </head>
 <body>
@@ -289,12 +289,11 @@
   <canvas class="abs" style="left:110px;top:170px" width="1700" height="720" data-anim="mlipEra" data-opts='{"plain":true}'></canvas>
   <div data-f="1"></div><div data-f="2"></div><div data-f="3"></div>
   <div class="abs" style="left:110px;top:900px;width:1700px;display:flex;gap:28px" data-f="4">
-    <div class="takeaway navy" style="position:static;flex:1.25;padding:18px 28px"><b>Train once, inference many times</b>: a new temperature, alloy or design goal is one inference, not a new simulation.</div>
-    <div class="takeaway solid" style="position:static;flex:1;padding:16px 28px" data-f="5"><div style="font-size:26px;font-weight:700"><span class="tk-tag">Already trained:</span> an even larger foundation sampler</div><div class="tk-sub" style="font-size:20px;margin-top:4px">same recipe, scaled up. Stay tuned.</div></div>
+    <div class="takeaway navy" style="position:static;flex:1;padding:18px 28px"><b>Train once, inference many times</b>: a new temperature, alloy or design goal is one inference, not a new simulation.</div>
   </div>
   <aside class="notes">
     <p>Stepping back. Since 2017, universal machine-learned potentials went from a few elements to most of the periodic table: computing energies and forces is no longer the bottleneck. [Build 1] Those forces are exactly what teaches a foundation sampler, ATLAS or JANUS, to produce equilibrium structures on demand. [Build 2] Because every sample comes with its weight, thermodynamics (free energy, entropy, phase diagrams) becomes a calculation on top of the samples. [Build 3] And because each inference is cheap, an AI agent can use the sampler as a tool: propose a material, read back its properties, propose the next one.</p>
-    <p>[Build 4] Train once, inference many times: a new temperature, alloy or design goal is one inference with the trained sampler, not a new simulation campaign. [Build 5] And ATLAS and JANUS are only the beginning: we have already trained an even larger foundation sampler with the same recipe, which we will share soon.</p>
+    <p>[Build 4] Train once, inference many times: a new temperature, alloy or design goal is one inference with the trained sampler, not a new simulation campaign.</p>
   </aside>
 </section>
 
@@ -389,7 +388,7 @@
   <div class="abs" style="left:110px;top:225px;width:1080px">
     <div class="pt"><div class="h">1 · Essential, but slow</div><div class="d">Molecular simulation underpins batteries, drugs, alloys and quantum technology; classical methods pay for exactness with time.</div></div>
     <div class="pt"><div class="h">2 · Out of equilibrium, yet exact</div><div class="d">Neural samplers learn from physics alone, drive noise to equilibrium fast, and stay exact by tracking the work along the way.</div></div>
-    <div class="pt"><div class="h">3 · Foundation samplers are here</div><div class="d">ATLAS (glasses; under review at <i>Science</i>) and JANUS (alloys, defects); an even larger model is already trained.</div></div>
+    <div class="pt"><div class="h">3 · Foundation samplers are here</div><div class="d">ATLAS (glasses; under review at <i>Science</i>) and JANUS (alloys, defects).</div></div>
   </div>
   <canvas class="abs" style="left:1240px;top:40px" width="640" height="640" data-anim="torusTransport" data-opts='{"hero":true,"plain":true,"box":430,"config":"n256_T0.5","seed":21}'></canvas>
   <div class="abs team" style="left:110px;top:655px">
@@ -411,7 +410,7 @@
   <div class="abs small" style="left:110px;top:930px;width:1700px;line-height:1.6;color:var(--ink)">
     <b class="teal">ATLAS</b> · arXiv:2607.19198 (under review at <i>Science</i>) &nbsp;·&nbsp; <b class="violet">JANUS</b> · arXiv:2608.19116 &nbsp;·&nbsp; yuanqidu@microsoft.com &nbsp;·&nbsp; yuanqidu.github.io
   </div>
-  <aside class="notes"><p>To summarise: molecular simulation is essential, but classical methods pay for exactness with time. Neural samplers learn from physics alone, go out of equilibrium to be fast, and track the work to stay exact. ATLAS and JANUS are the first foundation samplers, and a larger one is already trained. Two MSR interns, Mouyang Cheng and Denis Blessing, contributed to this work; Carles Domingo-Enrich and I co-led the projects. Happy to take questions.</p></aside>
+  <aside class="notes"><p>To summarise: molecular simulation is essential, but classical methods pay for exactness with time. Neural samplers learn from physics alone, go out of equilibrium to be fast, and track the work to stay exact. ATLAS and JANUS are the first foundation samplers. Two MSR interns, Mouyang Cheng and Denis Blessing, contributed to this work; Carles Domingo-Enrich and I co-led the projects. Happy to take questions.</p></aside>
 </section>
 
 </div></div>
