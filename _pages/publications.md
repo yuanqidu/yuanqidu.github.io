@@ -51,6 +51,11 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
           <em>Jiajun He, José Miguel Hernández-Lobato, <b>Yuanqi Du†</b>, Francisco Vargas†</em><br>
           ICLR 2026 | <a href="https://arxiv.org/abs/2506.05668">paper</a>
       </div>
+      <div class="pub-card" data-topic="large-language-model" data-year="2026" data-selected="true">
+          <strong>MoLRSI: A Recursive Self-Improving AI agent for Molecular Discovery</strong><br>
+          <em>Yikun Zhang, Xiwei Cheng, Mingze Yuan, ..., Tianyu Liu, <b>Yuanqi Du†</b>, Nir Hacohen, James J. Collins, Wengong Jin</em><br>
+          arXiv preprint arXiv:2610.39714 | <a href="https://arxiv.org/abs/2610.39714">paper</a>
+      </div>
       <div class="pub-card" data-topic="large-language-model" data-year="2026" data-selected="false">
           <strong>Recipes for Steering and Scaling LLMs via Sampling</strong><br>
           <em>Jiajun He, Zongyu Guo, José Miguel Hernández-Lobato, <b>Yuanqi Du†</b></em><br>
