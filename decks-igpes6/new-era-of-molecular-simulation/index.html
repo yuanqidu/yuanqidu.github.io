@@ -207,6 +207,11 @@
   <div class="abs" style="right:110px;top:42px"><span class="badge">ATLAS is under review at <i>Science</i></span></div>
   <h2>ATLAS: one foundation model, put to work by an AI agent</h2>
   <canvas class="abs" style="left:100px;top:195px" width="1000" height="600" data-anim="agentLoop" data-opts='{"build":true}'></canvas>
+  <div class="abs" style="left:110px;top:836px;width:1700px;display:flex;align-items:center;gap:14px;font-size:22px;color:var(--ink)">
+    <b class="violet" style="flex:none">Search space</b>
+    <span style="flex:none"><span class="chem">Fe</span><span class="chem">Mn</span><span class="chem">Ni</span><span class="chem">Ti</span><span class="chem">Cu</span><span class="chem">Cr</span><span class="chem">Co</span><span class="chem">Al</span></span>
+    <span>choose 2–5 of 8: 28 + 56 + 70 + 56 = <b>210</b> element sets, each with any fractions</span>
+  </div>
   <div class="abs" style="left:1150px;top:195px;width:660px;display:flex;flex-direction:column;gap:20px">
     <div class="card res" data-f="1"><div class="n navy">~300×</div><div class="d">less training compute over 480 compositions: pretrain once (36 GPU-hours) instead of ~20 GPU-hours per composition</div></div>
     <div class="card res" data-f="2"><div class="n violet">480</div><div class="d">ATLAS queries for an LLM agent to map the best stiffness–ductility trade-offs, choosing up to 5 of 8 elements</div></div>
@@ -216,7 +221,7 @@
   <div class="cite">Cheng*, Blessing*, …, <b class="me">Domingo-Enrich</b>†, <b class="me">Du</b>†, ATLAS (2026), Fig. 4 · left: schematic of the asynchronous agent loop · candidates are model-guided hypotheses for higher-fidelity validation</div>
   <aside class="notes">
     <p>ATLAS is also a foundation model: one network, conditioned on composition, covers a whole family of alloys. [Build 1] Pretraining costs 36 GPU-hours once; training a separate model per composition costs about 20 GPU-hours each, so across 480 compositions that is about 300 times less compute.</p>
-    <p>[Build 2] Because each query is cheap, an AI agent can use it as a tool. The animation is the loop: a language-model agent proposes alloys, ATLAS samples their equilibrium structures, we compute stiffness and ductility, and the agent reads the current Pareto frontier, the best trade-offs so far, and proposes the next batch to push it outward. The red line is the frontier now; the dashed lines are earlier frontiers it has already moved past. Choosing up to five of eight elements, the best trade-offs are mapped within 480 queries.</p>
+    <p>[Build 2] Because each query is cheap, an AI agent can use it as a tool. The animation is the loop: a language-model agent proposes alloys, ATLAS samples their equilibrium structures, we compute stiffness and ductility, and the agent reads the current Pareto frontier, the best trade-offs so far, and proposes the next batch to push it outward. The red line is the frontier now; the dashed lines are earlier frontiers it has already moved past. The search space, along the bottom: pick two to five of these eight elements, which is 28 + 56 + 70 + 56 = 210 element sets, and each set comes with a continuum of fractions. Within that space, the best trade-offs are mapped within 480 queries.</p>
     <p>[Build 3] And it extracts a design rule: Co, Ni and Ti appear in every Pareto-optimal alloy, Fe and Cu act as tuners, and Mn and Al are nearly absent. These are hypotheses for higher-fidelity validation. [Build 4] So AI agents can search to expand the Pareto frontier: hundreds of what-if inferences, and each one is a full equilibrium ensemble.</p>
   </aside>
 </section>
@@ -251,13 +256,14 @@
   <h2>JANUS: who sits where, and alloy phase diagrams</h2>
   <canvas class="abs" style="left:100px;top:180px" width="900" height="560" data-anim="whoSitsWhere"></canvas>
   <div class="abs small" style="left:130px;top:752px;width:900px;color:var(--ink)"><b class="violet">JANUS</b>, after the two-faced Roman god: one model, <b>discrete</b> and <b>continuous</b>.</div>
+  <div class="abs quote" style="left:130px;top:806px;width:900px;font-size:24px;border-left-color:var(--violet)">“Crystals are like people: it is the defects in them which tend to make them interesting.”<span class="by" style="display:inline;margin-left:12px">Colin Humphreys, materials scientist</span></div>
   <div class="abs figcard" style="left:1080px;top:185px;width:520px;padding:10px" data-f="1"><img src="assets/figs/janus_f3a.webp" alt="Cu–Ag phase diagram"></div>
   <div class="abs cap" style="left:1080px;top:652px;width:730px;font-size:19px" data-f="1">Phase diagram of <span class="chem v">Cu–Ag</span></div>
   <div class="abs card res" style="left:1080px;top:752px;width:730px;display:flex;gap:24px;align-items:center;padding:18px 24px" data-f="2"><div class="n violet" style="flex:none">~10³×</div><div class="d" style="margin:0">fewer energy evaluations, training included: the <span class="chem v">Cu–Ag</span> miscibility gap and <span class="chem v">Ni–Cr</span> fcc vs. bcc</div></div>
   <div class="takeaway violet" data-f="3">Phase diagrams become inference over one model, trained across temperature and chemical potential.</div>
   <div class="cite">Blessing*, Cheng*, …, <b class="me">Domingo-Enrich</b>†, <b class="me">Du</b>†, JANUS, arXiv:2608.19116, Fig. 3 · left: toy lattice of three elements</div>
   <aside class="notes">
-    <p>The second model, JANUS, is about chemical disorder: crystals where the lattice is regular, but which element sits on each site is not. Three things happen at once: elements swap sites, a discrete choice; atoms shift off their ideal positions, which is continuous; and vacancies and dopants come and go. JANUS, named after the two-faced Roman god, handles the discrete and continuous faces in one model.</p>
+    <p>The second model, JANUS, is about chemical disorder: crystals where the lattice is regular, but which element sits on each site is not. Three things happen at once: elements swap sites, a discrete choice; atoms shift off their ideal positions, which is continuous; and vacancies and dopants come and go. JANUS, named after the two-faced Roman god, handles the discrete and continuous faces in one model. As the materials scientist Colin Humphreys put it, crystals are like people: it is the defects in them that make them interesting.</p>
     <p>[Build 1] Metallurgists navigate with phase diagrams: which structure is stable at each temperature and composition. Every point is a free-energy comparison, so each is expensive. This is Cu–Ag: inside the grey dome the two metals separate, and JANUS, in orange, recovers the boundary. [Build 2] For Cu–Ag and Ni–Cr, that takes about a thousand times fewer energy evaluations than the reference, even counting training. [Build 3] Phase diagrams become inference over one model, trained across temperature and chemical potential, the knob that sets the composition.</p>
   </aside>
 </section>
@@ -273,12 +279,12 @@
     <div class="pt" data-f="2"><div class="h">Known centres re-emerge</div><div class="d"><span class="chem v">Ge–V</span> in diamond · <span class="chem v">P–V</span> (the E centre) in Si</div></div>
     <div class="pt" data-f="3"><div class="h">New candidates <span class="new">new</span></div><div class="d"><span class="chem isnew">S–Ti</span> <span class="chem isnew">Ga–[Ga]–P</span> in Si · <span class="chem isnew">B–[O]–O</span> <span class="chem isnew">Fe–V</span> in diamond</div></div>
   </div>
-  <div class="takeaway violet" data-f="4">A first-principles shortlist for quantum technologies; excited-state calculations and experiments come next.</div>
+  <div class="takeaway violet" data-f="4">A first-principles shortlist for quantum technologies.</div>
   <div class="cite">Blessing*, Cheng*, …, <b class="me">Domingo-Enrich</b>†, <b class="me">Du</b>†, JANUS (2026), Fig. 4 · V = vacancy · left: schematic of the screening loop</div>
   <aside class="notes">
     <p>JANUS can also discover. Colour centres, an impurity next to a vacancy in Si or diamond, are used as qubits, quantum sensors and single-photon sources, and finding new ones is a search problem.</p>
     <p>[Build 1] The loop: one model per host, Si or diamond, with fifteen possible dopants plus vacancies, and atoms can come and go. JANUS generates 8,000 equilibrium structures; we count which pairs and triplets appear more often than random mixing would predict, which is what the animation shows; and we check the enriched ones with hybrid-functional DFT.</p>
-    <p>[Build 2] Known colour centres re-emerge without being asked for: Ge–V in diamond, and the P–V E centre in Si, which validates the screen. [Build 3] And new candidates show deep electronic levels: S–Ti and Ga–[Ga]–P in Si, B–[O]–O and Fe–V in diamond. [Build 4] They are a first-principles shortlist; excited-state calculations and experiments come next.</p>
+    <p>[Build 2] Known colour centres re-emerge without being asked for: Ge–V in diamond, and the P–V E centre in Si, which validates the screen. [Build 3] And new candidates show deep electronic levels: S–Ti and Ga–[Ga]–P in Si, B–[O]–O and Fe–V in diamond. [Build 4] They are a first-principles shortlist for quantum technologies.</p>
   </aside>
 </section>
 
