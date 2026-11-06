@@ -62,12 +62,12 @@
 <script src="js/util.js?v=687f7668"></script>
 <script src="js/data/ka.js?v=e5f7cd97"></script>
 <script src="js/data/acarbon.js?v=a0a5bbc9"></script>
-<script src="js/data/scaling.js?v=c62189eb"></script>
+<script src="js/data/scaling.js?v=ff2fb025"></script>
 <script src="js/anim/intro.js?v=e4e90f92"></script>
-<script src="js/anim/atlas.js?v=604f6736"></script>
+<script src="js/anim/atlas.js?v=0479762b"></script>
 <script src="js/anim/janus.js?v=1cc9cfc7"></script>
 <script src="js/anim/outro.js?v=c8e3ad88"></script>
-<script src="js/anim/general.js?v=7550c406"></script>
+<script src="js/anim/general.js?v=9d37f45e"></script>
 <script src="js/deck.js?v=e0414619"></script>
 </head>
 <body>
@@ -206,18 +206,18 @@
   <div class="kicker atlas">ATLAS · foundation model and agentic design</div>
   <div class="abs" style="right:110px;top:42px"><span class="badge">ATLAS is under review at <i>Science</i></span></div>
   <h2>ATLAS: one foundation model, put to work by an AI agent</h2>
-  <canvas class="abs" style="left:100px;top:195px" width="1000" height="600" data-anim="agentLoop"></canvas>
+  <canvas class="abs" style="left:100px;top:195px" width="1000" height="600" data-anim="agentLoop" data-opts='{"build":true}'></canvas>
   <div class="abs" style="left:1150px;top:195px;width:660px;display:flex;flex-direction:column;gap:20px">
     <div class="card res" data-f="1"><div class="n navy">~300×</div><div class="d">less training compute over 480 compositions: pretrain once (36 GPU-hours) instead of ~20 GPU-hours per composition</div></div>
     <div class="card res" data-f="2"><div class="n violet">480</div><div class="d">ATLAS queries for an LLM agent to map the best stiffness–ductility trade-offs, choosing up to 5 of 8 elements</div></div>
     <div class="card res" data-f="3"><div class="h" style="margin:0">Design rule it found <span class="new soft">found by the agent</span></div><div class="d"><span class="chem t">Co</span> <span class="chem t">Ni</span> <span class="chem t">Ti</span> in every Pareto-optimal alloy; <span class="chem">Fe</span> <span class="chem">Cu</span> tune; <span class="chem">Mn</span> <span class="chem">Al</span> nearly absent</div></div>
   </div>
-  <div class="takeaway" data-f="4">An AI agent can now ask hundreds of what-if questions, and each answer is a full equilibrium ensemble.</div>
+  <div class="takeaway" data-f="4"><b>AI agents search to expand the Pareto frontier</b>: hundreds of what-if inferences, each a full equilibrium ensemble.</div>
   <div class="cite">Cheng*, Blessing*, …, <b class="me">Domingo-Enrich</b>†, <b class="me">Du</b>†, ATLAS (2026), Fig. 4 · left: schematic of the asynchronous agent loop · candidates are model-guided hypotheses for higher-fidelity validation</div>
   <aside class="notes">
     <p>ATLAS is also a foundation model: one network, conditioned on composition, covers a whole family of alloys. [Build 1] Pretraining costs 36 GPU-hours once; training a separate model per composition costs about 20 GPU-hours each, so across 480 compositions that is about 300 times less compute.</p>
-    <p>[Build 2] Because each query is cheap, an AI agent can use it as a tool. The animation is the loop: a language-model agent proposes alloys, ATLAS samples their equilibrium structures, we compute stiffness and ductility, and the agent keeps the best trade-offs and proposes the next batch. Choosing up to five of eight elements, the best trade-offs are mapped within 480 queries.</p>
-    <p>[Build 3] And it extracts a design rule: Co, Ni and Ti appear in every Pareto-optimal alloy, Fe and Cu act as tuners, and Mn and Al are nearly absent. These are hypotheses for higher-fidelity validation. [Build 4] An AI agent can now ask hundreds of what-if questions, and each answer is a full equilibrium ensemble.</p>
+    <p>[Build 2] Because each query is cheap, an AI agent can use it as a tool. The animation is the loop: a language-model agent proposes alloys, ATLAS samples their equilibrium structures, we compute stiffness and ductility, and the agent reads the current Pareto frontier, the best trade-offs so far, and proposes the next batch to push it outward. The red line is the frontier now; the dashed lines are earlier frontiers it has already moved past. Choosing up to five of eight elements, the best trade-offs are mapped within 480 queries.</p>
+    <p>[Build 3] And it extracts a design rule: Co, Ni and Ti appear in every Pareto-optimal alloy, Fe and Cu act as tuners, and Mn and Al are nearly absent. These are hypotheses for higher-fidelity validation. [Build 4] So AI agents can search to expand the Pareto frontier: hundreds of what-if inferences, and each one is a full equilibrium ensemble.</p>
   </aside>
 </section>
 
@@ -232,7 +232,7 @@
   <canvas class="abs" style="left:990px;top:240px" width="820" height="560" data-anim="scaleShift" data-opts='{"at":3}' data-f="3"></canvas>
   <div class="abs trio duo" style="left:110px;top:842px;width:1700px">
     <div data-f="2"><div class="h">Bigger network: 5× lower error</div></div>
-    <div data-f="4" style="display:grid"><div class="h" style="grid-area:1/1" data-f="4" data-f-out="5">10× more systems: 2.4× the compute, not 10×</div><div class="h" style="grid-area:1/1" data-f="5">Thousands of systems: ~50–100× less compute</div></div>
+    <div data-f="4" style="display:grid"><div class="h" style="grid-area:1/1" data-f="4" data-f-out="5">10× more systems: 2.45× the compute, not 10×</div><div class="h" style="grid-area:1/1" data-f="5">Thousands of systems: ~50–100× less compute</div></div>
   </div>
   <div class="cite">Unpublished · 34 held-out amorphous alloys at their glass transition · error: energy offset from long reference runs, in thermal standard deviations (RMS over alloys) · GPU-hours on NVIDIA B200 · more systems: projected from the 34 measured</div>
   <aside class="notes">
@@ -240,7 +240,7 @@
     <p>[Build 1] Our sampler with a small network, 100 thousand parameters, levels off at a high error.</p>
     <p>[Build 2] With a large network, 9 million parameters, the same method goes much lower: about five times lower error than the small network, and at the same compute about three times lower than the previous best method, for example 0.9 versus 2.8 at 5 GPU-hours. The three curves are three training lengths: train briefly and you start early but level off higher; train longer and you level off lower. You pick the trade-off you need.</p>
     <p>[Build 3] Now the second kind of scaling: more systems. The previous best method starts from scratch on every system, so ten times more systems costs ten times more compute.</p>
-    <p>[Build 4] Our model is trained once and reused, so going from 34 to 340 systems costs only about 2.4 times more compute. The more systems you need, the bigger the advantage.</p>
+    <p>[Build 4] Our model is trained once and reused, so going from 34 to 340 systems costs only about 2.45 times more compute. The dots on the previous best curves are its measured runs, scaled up for 340 systems. The more systems you need, the bigger the advantage.</p>
     <p>[Build 5] And in reality we need far more than 340: a screening campaign looks at thousands to millions of candidate materials. Here is the compute to reach the same target error against the number of systems. The previous best grows in proportion; ours pays the training once and then very little per system. The gap grows from 7 times at 34 systems to 28 times at 340, about 50 times at 3,400 and about 90 times at 34,000, levelling off near 100 times. These are projections from the 34 measured systems, assuming new systems behave like them.</p>
   </aside>
 </section>

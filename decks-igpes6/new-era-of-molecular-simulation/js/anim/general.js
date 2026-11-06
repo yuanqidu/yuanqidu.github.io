@@ -1255,11 +1255,11 @@
   // Scaling slide (data: js/data/scaling.js, from pareto_frontier_figures). Shared log-log plot helper.
   // ------------------------------------------------------------------
   const SC = { prev: '#E4572E', small: '#7A5BC7', large: '#1F9E89' };
-  function logPlot(S, P, xr, yr, xlab, ylab, yt = [0.2, 0.5, 1, 2, 5, 10]) {
+  function logPlot(S, P, xr, yr, xlab, ylab, yt = [0.2, 0.5, 1, 2, 5, 10], ylin = false) {   // log x; log y unless ylin
     const fmt = v => v >= 1e6 ? v / 1e6 + 'M' : v >= 1000 ? v / 1000 + 'k' : String(v);
     const ctx = S.ctx, L = Math.log10;
     const X = c => P.x0 + (L(c) - L(xr[0])) / (L(xr[1]) - L(xr[0])) * (P.x1 - P.x0);
-    const Y = y => P.y1 - (L(y) - L(yr[0])) / (L(yr[1]) - L(yr[0])) * (P.y1 - P.y0);
+    const Y = ylin ? y => P.y1 - (y - yr[0]) / (yr[1] - yr[0]) * (P.y1 - P.y0) : y => P.y1 - (L(y) - L(yr[0])) / (L(yr[1]) - L(yr[0])) * (P.y1 - P.y0);
     function axes() {
       ctx.save(); ctx.lineWidth = 1;
       for (let d = Math.floor(L(xr[0])); d <= Math.ceil(L(xr[1])); d++) for (const m of [1, 2, 5]) {
@@ -1333,11 +1333,12 @@
     return { frame(dt) { R.tick(dt); draw(); }, draw, enter() { R.enter(); }, step(k) { R.step(k); }, ff: 2 };
   };
 
-  // Right panel: 34 measured vs 340 projected systems; arrows show how much more total compute each method needs at the target error
+  // Right panel, after Pareto figure 2 (zoom): 34 measured vs 340 projected systems on the same axes, linear error 0.4-2.5;
+  // arrows show how much more total compute each method needs at the target error (circle: 34 systems, square: 340)
   ANIMS.scaleShift = function (S, o) {
-    const ctx = S.ctx, D = SCALING_DATA.shift, cv = D.curves;
+    const ctx = S.ctx, D = SCALING_DATA.fig2, cv = D.curves;
     const P = { x0: 100, x1: S.w - 20, y0: 24, y1: S.h - 92 };
-    const G = logPlot(S, P, [0.6, 2000], [0.18, YMAX], 'GPU-hours: training + inference', 'error  (lower is better)');
+    const G = logPlot(S, P, [1.5, 1000], [0.4, YMAX], 'GPU-hours: training + inference', 'error  (lower is better)', [0.5, 1, 1.5, 2, 2.5], true);
     const R = reveal(o, 3);
     const M = SCALING_DATA.systems;
     const P2 = { x0: 128, x1: S.w - 20, y0: 24, y1: S.h - 92 };
@@ -1364,10 +1365,11 @@
     function arrow(i, a, b, col, lab, where) {
       const t = E.clamp(R.t[i] * 1.6 - 0.6); if (t <= 0) return;
       const y = G.Y(D.target), xa = G.X(a), xb = xa + (G.X(b) - xa) * E.smooth(t);
-      U.arrow(ctx, xa, y, xb, y, col, 4, 16);
-      U.circle(ctx, xa, y, 8, col, '#fff', 2.5);
-      if (where === 'left') haloText(ctx, lab, xa - 14, y - 40, { size: 26, weight: 800, color: col, alpha: t, align: 'right' });
-      else haloText(ctx, lab, (xa + G.X(b)) / 2, y - 16, { size: 26, weight: 800, color: col, alpha: t });
+      U.arrow(ctx, xa, y, xb - 11, y, col, 4, 16);
+      U.circle(ctx, xa, y, 9, col, '#fff', 2.5);
+      if (t >= 1) { ctx.save(); ctx.fillStyle = '#fff'; ctx.strokeStyle = col; ctx.lineWidth = 3.5; ctx.fillRect(xb - 9, y - 9, 18, 18); ctx.strokeRect(xb - 9, y - 9, 18, 18); ctx.restore(); }
+      const xm = (xa + G.X(b)) / 2;
+      haloText(ctx, lab, xm, where === 'below' ? y + 34 : y - 16, { size: 24, weight: 800, color: col, alpha: t });
     }
     function draw() {
       S.clear();
@@ -1380,21 +1382,29 @@
       G.axes();
       const t = R.t, E2 = E.smooth;
       ctx.save(); ctx.setLineDash([3, 6]); ctx.strokeStyle = rgba(C.inkSoft, 0.7); ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(P.x0, G.Y(D.target)); ctx.lineTo(P.x1, G.Y(D.target)); ctx.stroke(); ctx.restore();
+      const xr = ti => P.x0 + (P.x1 - P.x0) * ti;
+      const band = pts => { const q = inAxis(pts), j = q.findIndex(p => p[1] < 0.4); return j < 0 ? q : q.slice(0, j); };   // stop at the bottom edge
       for (const [k, col, ti] of [['prev', SC.prev, E2(t[0])], ['ours', SC.large, E2(t[1])]]) {
-        const a = inAxis(cv[k + D.n1]), b = inAxis(cv[k + D.n2]);
+        const a = band(cv[k + D.n1]), b = band(cv[k + D.n2]);
         G.line(a, col, ti); G.line(b, col, ti, [12, 9]); startDot(S, G, P, a, col, ti); startDot(S, G, P, b, col, ti);
       }
-      arrow(0, D.prev[0], D.prev[1], SC.prev, '×' + Math.round(D.prev[1] / D.prev[0]), 'above');
-      arrow(1, D.ours[0], D.ours[1], SC.large, '×' + (D.ours[1] / D.ours[0]).toFixed(1), 'left');
-      text(ctx, 'previous best', G.X(150), G.Y(0.3), { size: 22, weight: 700, color: SC.prev, align: 'left', alpha: E.clamp(t[0] * 2 - 1) });
-      text(ctx, 'ours', G.X(2.6), G.Y(0.62), { size: 22, weight: 700, color: SC.large, align: 'center', alpha: E.clamp(t[1] * 2 - 1) });
-      // key: solid = 34 systems, dashed = 340
-      const kx = P.x0 + 30, ky = P.y1 - 64;
-      ctx.save(); ctx.strokeStyle = C.inkSoft; ctx.lineWidth = 3.5; ctx.beginPath(); ctx.moveTo(kx, ky); ctx.lineTo(kx + 46, ky); ctx.stroke();
-      ctx.setLineDash([10, 7]); ctx.beginPath(); ctx.moveTo(kx, ky + 34); ctx.lineTo(kx + 46, ky + 34); ctx.stroke(); ctx.restore();
-      text(ctx, D.n1 + ' systems', kx + 60, ky + 7, { size: 20, color: C.ink });
-      text(ctx, D.n2 + ' systems', kx + 60, ky + 41, { size: 20, color: C.ink });
-      haloText(ctx, 'target error', P.x1 - 4, G.Y(D.target) + 26, { size: 18, weight: 500, color: C.inkSoft, align: 'right' });
+      // the measured runs of the previous best (filled: 34 systems; open: the same runs scaled to 340 systems)
+      D.runs.forEach(([c1, c2, y]) => {
+        if (y > YMAX || y < 0.4) return;
+        if (G.X(c1) <= xr(E2(t[0]))) U.circle(ctx, G.X(c1), G.Y(y), 7, SC.prev, '#fff', 2);
+        if (G.X(c2) <= xr(E2(t[0])) && c2 <= 1000) U.circle(ctx, G.X(c2), G.Y(y), 7, '#fff', SC.prev, 2.5);
+      });
+      arrow(0, D.prev[0], D.prev[1], SC.prev, '×' + Math.round(D.prev[1] / D.prev[0]), 'below');
+      arrow(1, D.ours[0], D.ours[1], SC.large, '×' + (D.ours[1] / D.ours[0]).toFixed(2), 'above');
+      text(ctx, 'previous best', G.X(130), G.Y(2.2), { size: 22, weight: 700, color: SC.prev, align: 'left', alpha: E.clamp(t[0] * 2 - 1) });
+      text(ctx, 'ours', G.X(160), G.Y(0.62), { size: 22, weight: 700, color: SC.large, align: 'center', alpha: E.clamp(t[1] * 2 - 1) });
+      // key: solid = 34 systems (measured), dashed = 340 (projected)
+      const kx = P.x0 + 24, ky = G.Y(0.62);
+      ctx.save(); ctx.strokeStyle = C.inkSoft; ctx.lineWidth = 3.5; ctx.beginPath(); ctx.moveTo(kx, ky); ctx.lineTo(kx + 44, ky); ctx.stroke();
+      ctx.setLineDash([10, 7]); ctx.beginPath(); ctx.moveTo(kx, ky + 32); ctx.lineTo(kx + 44, ky + 32); ctx.stroke(); ctx.restore();
+      text(ctx, D.n1 + ' systems', kx + 56, ky + 7, { size: 19, color: C.ink });
+      text(ctx, D.n2 + ' (projected)', kx + 56, ky + 39, { size: 19, color: C.ink });
+      haloText(ctx, 'target error', P.x1 - 4, G.Y(D.target) - 10, { size: 18, weight: 500, color: C.inkSoft, align: 'right' });
     }
     return { frame(dt) { R.tick(dt); draw(); }, draw, enter() { R.enter(); }, step(k) { R.step(k); }, ff: 2 };
   };

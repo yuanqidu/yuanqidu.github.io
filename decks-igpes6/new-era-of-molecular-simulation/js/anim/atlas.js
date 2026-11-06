@@ -193,6 +193,9 @@
     const pts = [], fly = [];
     const PX = 680, PY = 30, PW = S.w - PX - 20, PH = S.h - 110;
     let nEval = 0;
+    // o.build: make the agent's construction of the Pareto frontier explicit (earlier frontiers left behind as faded
+    // dashed lines, newcomers to the frontier flash, dominated region shaded, labels)
+    const BUILD = !!o.build, snaps = [], SNAP = 10;
     function propose() {
       const progress = Math.min(1, nEval / 40);
       const k = 2 + rng.int(3); const chosen = [];
@@ -203,6 +206,12 @@
     }
     function score(comp) {
       const g = (e) => (comp.find(c => c[0] === e) || [0, 0])[1];
+      if (BUILD) {   // schematic: the reachable trade-off curve moves outward as the agent learns (more Co/Ni/Ti, more rounds)
+        const fp = g('Co') + g('Ni') + g('Ti'), prog = Math.min(1, nEval / 70);
+        const rho = Math.min(1, 0.42 + 0.18 * fp + 0.38 * Math.sqrt(prog) + 0.06 * rng.normal() - 0.12 * rng.u());
+        const t = rng.u();
+        return { x: E.clamp(rho * (0.12 + 0.84 * t), 0.03, 0.97), y: E.clamp(rho * (0.95 - 0.62 * t * t), 0.05, 0.95) };
+      }
       const q = 0.9 * g('Co') + 0.8 * g('Ni') + 0.6 * g('Ti') + 0.3 * g('Fe') - 0.4 * g('Mn') - 0.3 * g('Al') + 0.1 * rng.normal();
       const G = 0.15 + 0.7 * E.clamp(q) + 0.05 * rng.normal();
       const BG = 0.92 - 0.55 * G * G + 0.12 * (rng.u() - 0.3) - 0.15 * (1 - E.clamp(q)) * rng.u();
@@ -220,8 +229,8 @@
       const blink = (Math.sin(clock * 2.3) > 0.97) ? 0.2 : 1;
       ctx.save(); ctx.translate(AX, AY); ctx.scale(1, blink); U.circle(ctx, -26, 0, 11, C.violet); U.circle(ctx, 26, 0, 11, C.violet); ctx.restore();
       text(ctx, 'LLM agent', AX, AY + 96, { size: 23, weight: 650, color: C.violet, align: 'center' });
-      text(ctx, 'reasons over history,', AX, AY + 124, { size: 17, color: C.inkSoft, align: 'center' });
-      text(ctx, 'proposes compositions', AX, AY + 146, { size: 17, color: C.inkSoft, align: 'center' });
+      text(ctx, BUILD ? 'reads the frontier,' : 'reasons over history,', AX, AY + 124, { size: 17, color: C.inkSoft, align: 'center' });
+      text(ctx, BUILD ? 'proposes alloys to push it' : 'proposes compositions', AX, AY + 146, { size: 17, color: C.inkSoft, align: 'center' });
       // cards
       cards.forEach(c => {
         const a = c.state === 'idle' ? 0.45 : 1;
@@ -242,7 +251,7 @@
       arrow(ctx, 610, AY, PX - 12, AY, rgba(C.teal, 0.7), 2.5, 11);
       text(ctx, 'B, G, B/G', (610 + PX) / 2 - 4, AY - 12, { size: 16, color: C.tealDark, align: 'center', weight: 600 });
       curvedArrow(ctx, [PX + PW / 2, PY + PH + 30, 420, S.h + 20, AX + 10, AY + 150 + 14], rgba(C.violet, 0.55), 2.5, 11, [7, 6]);
-      text(ctx, 'Pareto set + history', 420, S.h - 8, { size: 17, color: C.violet, align: 'center' });
+      text(ctx, BUILD ? 'Pareto frontier + history' : 'Pareto set + history', 420, S.h - 8, { size: 17, color: C.violet, align: 'center' });
       // flying chips
       fly.forEach(f => { const u = E.inOut(f.u); const x = f.x0 + (f.x1 - f.x0) * u, y = f.y0 + (f.y1 - f.y0) * u - Math.sin(Math.PI * u) * 30; U.circle(ctx, x, y, 7, f.col); });
       // Pareto plot
@@ -251,10 +260,35 @@
       ctx.strokeStyle = rgba(C.inkSoft, 0.5); ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(gx, gy); ctx.lineTo(gx, gy + gh); ctx.lineTo(gx + gw, gy + gh); ctx.stroke();
       text(ctx, 'stiffness  G →', gx + gw, gy + gh + 30, { size: 17, color: C.inkSoft, align: 'right' });
       ctx.save(); ctx.translate(gx - 18, gy + gh / 2); ctx.rotate(-Math.PI / 2); text(ctx, 'ductility proxy  B/G →', 0, 0, { size: 17, color: C.inkSoft, align: 'center' }); ctx.restore();
-      pts.forEach(p => U.circle(ctx, gx + p.x * gw, gy + (1 - p.y) * gh, 5.5, rgba(C.blue, 0.6)));
-      const fr = front();
+      const fr = front(), PXp = p => gx + p.x * gw, PYp = p => gy + (1 - p.y) * gh;
+      if (BUILD && fr.length > 1) {
+        // dominated region (everything below and left of the frontier)
+        ctx.beginPath(); ctx.moveTo(gx, gy + gh); ctx.lineTo(gx, PYp(fr[0])); fr.forEach(p => ctx.lineTo(PXp(p), PYp(p))); ctx.lineTo(PXp(fr[fr.length - 1]), gy + gh); ctx.closePath();
+        ctx.fillStyle = rgba(C.red, 0.06); ctx.fill();
+        // earlier frontiers, older = fainter
+        snaps.forEach((f, k) => {
+          const a = 0.45 + 0.5 * (k + 1) / snaps.length;
+          ctx.save(); ctx.setLineDash([6, 6]); ctx.strokeStyle = rgba(C.red, a * 0.7); ctx.lineWidth = 2.2; ctx.beginPath();
+          f.forEach((p, i) => { if (i) ctx.lineTo(PXp(p), PYp(p)); else ctx.moveTo(PXp(p), PYp(p)); }); ctx.stroke(); ctx.restore();
+        });
+      }
+      pts.forEach(p => U.circle(ctx, PXp(p), PYp(p), 5.5, rgba(C.blue, 0.6)));
       if (fr.length > 1) { ctx.beginPath(); fr.forEach((p, i) => { const x = gx + p.x * gw, y = gy + (1 - p.y) * gh; if (i) ctx.lineTo(x, y); else ctx.moveTo(x, y); }); ctx.strokeStyle = C.red; ctx.lineWidth = 2.5; ctx.stroke(); fr.forEach(p => U.circle(ctx, gx + p.x * gw, gy + (1 - p.y) * gh, 8, null, C.red, 2.2)); }
-      text(ctx, `${nEval} ATLAS evaluations`, PX + PW - 14, PY + 30, { size: 17, color: C.muted, align: 'right' });
+      if (BUILD) {
+        pts.forEach(p => { if (p.flash > 0) { const r = 8 + 22 * (1 - p.flash); U.circle(ctx, PXp(p), PYp(p), r, null, rgba(C.red, p.flash), 3); } });
+        if (fr.length > 1) {   // label just outside the middle of the frontier (the empty, not-yet-reached side)
+          const q = fr[Math.floor((fr.length - 1) / 2)], lx = Math.min(PXp(q) + 16, gx + gw - 150), ly = PYp(q) - 16;
+          ctx.save(); ctx.font = U.font(19, 750); ctx.textAlign = 'left'; ctx.lineWidth = 6; ctx.strokeStyle = '#fff'; ctx.lineJoin = 'round';
+          ctx.strokeText('Pareto frontier', lx, ly); ctx.fillStyle = C.red; ctx.fillText('Pareto frontier', lx, ly); ctx.restore();
+        }
+        // key, in the empty dominated corner
+        const kx = gx + 22, ky = gy + gh - 54;
+        ctx.save(); ctx.strokeStyle = C.red; ctx.lineWidth = 2.5; ctx.beginPath(); ctx.moveTo(kx, ky); ctx.lineTo(kx + 34, ky); ctx.stroke();
+        ctx.setLineDash([6, 6]); ctx.strokeStyle = rgba(C.red, 0.6); ctx.lineWidth = 2.2; ctx.beginPath(); ctx.moveTo(kx, ky + 28); ctx.lineTo(kx + 34, ky + 28); ctx.stroke(); ctx.restore();
+        text(ctx, 'frontier now', kx + 44, ky + 6, { size: 16, color: C.ink });
+        text(ctx, 'earlier frontiers', kx + 44, ky + 34, { size: 16, color: C.inkSoft });
+        text(ctx, `round ${Math.floor(nEval / 4) + 1} · ${nEval} evaluations`, PX + PW - 14, PY + 30, { size: 17, color: C.muted, align: 'right' });
+      } else text(ctx, `${nEval} ATLAS evaluations`, PX + PW - 14, PY + 30, { size: 17, color: C.muted, align: 'right' });
     }
     return {
       frame(dt) {
@@ -264,8 +298,15 @@
           else { c.prog += dt / c.dur; if (c.prog >= 1) { const p = score(c.comp); fly.push({ x0: c.x + c.w, y0: c.y + c.h / 2, x1: PX + 50 + p.x * (PW - 74), y1: PY + 24 + (1 - p.y) * (PH - 70), u: 0, col: C.teal, pt: p }); c.state = 'idle'; c.wait = 0.25 + rng.u() * 0.4; } }
         });
         for (const f of fly) f.u += dt / 0.7;
-        for (let i = fly.length - 1; i >= 0; i--) if (fly[i].u >= 1) { if (fly[i].pt) { pts.push(fly[i].pt); nEval++; } fly.splice(i, 1); }
-        if (nEval > 90) { pts.length = 0; nEval = 0; }
+        for (let i = fly.length - 1; i >= 0; i--) if (fly[i].u >= 1) {
+          if (fly[i].pt) {
+            const p = fly[i].pt; pts.push(p); nEval++;
+            if (BUILD) { if (front().includes(p)) p.flash = 1; if (nEval % SNAP === 0) { snaps.push(front().map(q => ({ x: q.x, y: q.y }))); if (snaps.length > 4) snaps.shift(); } }
+          }
+          fly.splice(i, 1);
+        }
+        if (BUILD) pts.forEach(p => { if (p.flash > 0) p.flash = Math.max(0, p.flash - dt / 1.1); });
+        if (nEval > 90) { pts.length = 0; nEval = 0; snaps.length = 0; }
         draw();
       }, draw, ff: 30
     };
