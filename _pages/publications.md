@@ -36,6 +36,11 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
           <em>Mouyang Cheng, Denis Blessing, Botao Yu, Gerhard Neumann, Mingda Li, Carles Domingo-Enrich†, <b>Yuanqi Du†</b></em><br>
           arXiv preprint arXiv:2607.19198 | <a href="https://arxiv.org/abs/2607.19198">paper</a>
       </div>
+      <div class="pub-card" data-topic="large-language-model" data-year="2026" data-selected="true">
+          <strong>MoLRSI: A Recursive Self-Improving AI agent for Molecular Discovery</strong><br>
+          <em>Yikun Zhang, Xiwei Cheng, Mingze Yuan, ..., Tianyu Liu†, <b>Yuanqi Du†</b>, Nir Hacohen†, James J. Collins†, Wengong Jin†</em><br>
+          arXiv preprint arXiv:2610.39714 | <a href="https://arxiv.org/abs/2610.39714">paper</a>
+      </div>
       <div class="pub-card" data-topic="control-sampling" data-year="2026" data-selected="true">
           <strong>Rare Event Analysis via Stochastic Optimal Control</strong><br>
           <em><b>Yuanqi Du</b>, Jiajun He, Dinghuai Zhang, Eric Vanden-Eijnden, Carles Domingo-Enrich</em><br>
@@ -50,11 +55,6 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
           <strong>RNE: A Plug-and-play Framework for Diffusion Density Estimation and Inference-time Control</strong><br>
           <em>Jiajun He, José Miguel Hernández-Lobato, <b>Yuanqi Du†</b>, Francisco Vargas†</em><br>
           ICLR 2026 | <a href="https://arxiv.org/abs/2506.05668">paper</a>
-      </div>
-      <div class="pub-card" data-topic="large-language-model" data-year="2026" data-selected="true">
-          <strong>MoLRSI: A Recursive Self-Improving AI agent for Molecular Discovery</strong><br>
-          <em>Yikun Zhang, Xiwei Cheng, Mingze Yuan, ..., Tianyu Liu, <b>Yuanqi Du†</b>, Nir Hacohen, James J. Collins, Wengong Jin</em><br>
-          arXiv preprint arXiv:2610.39714 | <a href="https://arxiv.org/abs/2610.39714">paper</a>
       </div>
       <div class="pub-card" data-topic="large-language-model" data-year="2026" data-selected="false">
           <strong>Recipes for Steering and Scaling LLMs via Sampling</strong><br>
