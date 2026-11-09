@@ -309,26 +309,28 @@
     "source_affiliation": "SandboxAQ",
     "verified_affiliation": "SandboxAQ",
     "local_image": "acs-spring-2027/images/mary-pitman.jpg",
-    "profile_url": "https://www.researchgate.net/profile/Mary-Pitman",
-    "portrait_profile_url": "https://pharmsci.uci.edu/2022/09/08/mary-pitman-receives-molecular-sciences-software-institute-software-fellowship/",
-    "image_url": "https://pharmsci.uci.edu/files/2024/10/Mary-Pitman.jpg",
+    "profile_url": null,
+    "portrait_profile_url": "https://molssi.org/fellows/mary-pitman/",
+    "image_url": "https://molssi.org/wp-content/uploads/2022/07/Mary-Pitman.png",
     "verified_on": "2026-11-09",
     "image_verification": {
       "http_status": 200,
-      "original_dimensions": "784x480",
+      "original_dimensions": "343x512",
       "format": "JPEG",
-      "width": 480,
-      "height": 480,
-      "bytes": 36225,
-      "sha256": "af3a82638a4528aae2f40c51929a35f6240ba4a06c3385cc241ebc027dcc139a",
+      "width": 400,
+      "height": 400,
+      "bytes": 31555,
+      "sha256": "cbc12dfd4c43e13af698ffa026b9c036eb898078c6acbcc4cda43a515bd92ff5",
       "visually_checked": true,
-      "processing": "Center-cropped to 480 by 480 pixels."
+      "processing": "Removed the 3-pixel source border, took a 336 by 400 pixel crop from the top, and extended the blue background 32 pixels on each side (feathered blend) to make a 400 by 400 square with a less tight framing."
     },
     "license": null,
     "rights_note": "No explicit portrait reuse license located on the source page; reuse permission is not established.",
     "caveats": [
       "The organizer confirmed the SandboxAQ affiliation on 2026-11-09. The Mobley Lab alumni page (https://mobleylab.org/people) also lists her as Staff Research Scientist at SandboxAQ; another listing on that page names OpenEye.",
-      "The portrait comes from a 2022 UC Irvine news item about her MolSSI fellowship."
+      "The organizer asked on 2026-11-09 that her name not link to any website; profile_url is intentionally null.",
+      "The portrait is the full-length version of her 2022 MolSSI Software Fellow photo (the same photo appears tightly cropped in a UC Irvine news item). The side background is digitally extended; the subject is not altered.",
+      "Her X avatar is not a headshot; LinkedIn requires sign-in."
     ]
   },
   {
