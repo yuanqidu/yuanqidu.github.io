@@ -300,5 +300,123 @@
       "The organizer selected the LinkedIn profile for both the speaker link and portrait. The downloaded image is the 800-pixel rendition from the profile photo's srcset in the browser, not its cover photo.",
       "The signed image URL expires, so retain the local copy and use the LinkedIn profile as the rediscovery source."
     ]
+  },
+  {
+    "id": "mary-pitman",
+    "source_name": "Mary Pitman",
+    "display_name": "Mary Pitman",
+    "role": "speaker",
+    "source_affiliation": "SandboxAQ",
+    "verified_affiliation": "SandboxAQ",
+    "local_image": "acs-spring-2027/images/mary-pitman.jpg",
+    "profile_url": "https://www.researchgate.net/profile/Mary-Pitman",
+    "portrait_profile_url": "https://pharmsci.uci.edu/2022/09/08/mary-pitman-receives-molecular-sciences-software-institute-software-fellowship/",
+    "image_url": "https://pharmsci.uci.edu/files/2024/10/Mary-Pitman.jpg",
+    "verified_on": "2026-11-09",
+    "image_verification": {
+      "http_status": 200,
+      "original_dimensions": "784x480",
+      "format": "JPEG",
+      "width": 480,
+      "height": 480,
+      "bytes": 36225,
+      "sha256": "af3a82638a4528aae2f40c51929a35f6240ba4a06c3385cc241ebc027dcc139a",
+      "visually_checked": true,
+      "processing": "Center-cropped to 480 by 480 pixels."
+    },
+    "license": null,
+    "rights_note": "No explicit portrait reuse license located on the source page; reuse permission is not established.",
+    "caveats": [
+      "The organizer confirmed the SandboxAQ affiliation on 2026-11-09. The Mobley Lab alumni page (https://mobleylab.org/people) also lists her as Staff Research Scientist at SandboxAQ; another listing on that page names OpenEye.",
+      "The portrait comes from a 2022 UC Irvine news item about her MolSSI fellowship."
+    ]
+  },
+  {
+    "id": "abba-leffler",
+    "source_name": "Abba Leffler",
+    "display_name": "Abba Leffler",
+    "role": "speaker",
+    "source_affiliation": "Schrödinger",
+    "verified_affiliation": "Schrödinger",
+    "local_image": "acs-spring-2027/images/abba-leffler.jpg",
+    "profile_url": "https://abbalefflerny.com/about/",
+    "portrait_profile_url": "https://abbalefflerny.com/about/",
+    "image_url": "https://abbalefflerny.com/wp-content/uploads/2025/12/abba-e-leffler-is-a-senior-principal-scientist-in-the-therapeutics-group.jpg",
+    "verified_on": "2026-11-09",
+    "image_verification": {
+      "http_status": 200,
+      "original_dimensions": "2500x1667",
+      "format": "JPEG",
+      "width": 480,
+      "height": 480,
+      "bytes": 46098,
+      "sha256": "a296a7367e85f3763de123695535c10b93cbf38b7b7cf7061a8b3dd1d9386b4f",
+      "visually_checked": true,
+      "processing": "Cropped to a 900 by 900 pixel head-and-shoulders square, then resized to 480 by 480 pixels."
+    },
+    "license": null,
+    "rights_note": "No explicit portrait reuse license located on the source page; reuse permission is not established.",
+    "caveats": [
+      "The organizer confirmed the Schrödinger affiliation on 2026-11-09. The personal website describes him as a Senior Principal Scientist in Schrödinger's therapeutics group; it is self-published."
+    ]
+  },
+  {
+    "id": "daniel-smith",
+    "source_name": "Daniel Smith",
+    "display_name": "Daniel Smith",
+    "role": "panelist",
+    "source_affiliation": "Achira",
+    "verified_affiliation": "Achira",
+    "local_image": "acs-spring-2027/images/daniel-smith.jpg",
+    "profile_url": "https://www.linkedin.com/in/dgasmith/",
+    "portrait_profile_url": "https://molssi.org/mss-daniel-smith/",
+    "image_url": "https://molssi.org/wp-content/uploads/2022/04/daniel-smith.jpeg",
+    "verified_on": "2026-11-09",
+    "image_verification": {
+      "http_status": 200,
+      "original_dimensions": "800x859",
+      "format": "JPEG",
+      "width": 480,
+      "height": 480,
+      "bytes": 49986,
+      "sha256": "8b245c20586b6ed0bbe84329108b87cb3498912ac713478ab41d9e3e2e87cf71",
+      "visually_checked": true,
+      "processing": "Top 800 by 800 pixel square, resized to 480 by 480 pixels."
+    },
+    "license": null,
+    "rights_note": "No explicit portrait reuse license located on the source page; reuse permission is not established.",
+    "caveats": [
+      "The organizer supplied the Achira affiliation on 2026-11-09. Achira's site (https://achira.ai/) lists Daniel Smith as CTO and links to the LinkedIn profile used as his panel link.",
+      "The portrait is from his MolSSI former-software-scientist profile (Daniel G. A. Smith, 2016-2020), so it may be older. His GitHub avatar is not a headshot."
+    ]
+  },
+  {
+    "id": "ben-birnbaum",
+    "source_name": "Ben Birnbaum",
+    "display_name": "Ben Birnbaum",
+    "role": "panelist",
+    "source_affiliation": "Inductive Bio",
+    "verified_affiliation": "Inductive Bio",
+    "local_image": "acs-spring-2027/images/ben-birnbaum.jpg",
+    "profile_url": "https://www.inductive.bio/about",
+    "portrait_profile_url": "https://www.inductive.bio/about",
+    "image_url": "https://cdn.prod.website-files.com/6a95adf7c7e2ee3ef0ebbfa0/6a971f5ef6d9dcde6411597c_Ben%20Birnbaum%2C%20Ph.D..avif",
+    "verified_on": "2026-11-09",
+    "image_verification": {
+      "http_status": 200,
+      "original_dimensions": "450x450",
+      "format": "JPEG",
+      "width": 450,
+      "height": 450,
+      "bytes": 47061,
+      "sha256": "c193c8836ea7d9a246b43a8311c51700085355bb8cbb93d42642927eb35d4dfe",
+      "visually_checked": true,
+      "processing": "Converted from AVIF to JPEG without resizing."
+    },
+    "license": null,
+    "rights_note": "No explicit portrait reuse license located on the source page; reuse permission is not established.",
+    "caveats": [
+      "The organizer confirmed the Inductive Bio affiliation on 2026-11-09. The Inductive Bio about page lists him as Cofounder, President, and CTO."
+    ]
   }
 ]

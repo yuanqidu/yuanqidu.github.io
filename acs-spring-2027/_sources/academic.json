@@ -197,29 +197,5 @@
       "This is an archival genuine photograph published in a 2010 Berkeley Lab award announcement, which explicitly identifies him and credits the photographer. The stylized 2022 avatar on his current homepage was rejected and is not included.",
       "A more recent authorized photograph would be preferable. No image-specific reuse license or permission was established."
     ]
-  },
-  {
-    "id": "alex-dickson",
-    "source_name": "Alex Dickson",
-    "display_name": "Alex Dickson",
-    "source_affiliation": "Michigan State",
-    "verified_affiliation": "Michigan State University",
-    "local_image": "acs-spring-2027/images/alex-dickson.jpg",
-    "profile_url": "https://directory.natsci.msu.edu/Directory/Profiles/Person/100331",
-    "name_verification_url": "https://www.egr.msu.edu/~alexrd/people.html",
-    "image_url": "https://directory.natsci.msu.edu/media/Directory/Profiles/alex20220803134430-1.jpg",
-    "verified_on": "2026-09-14",
-    "image_status": "downloaded-and-validated",
-    "http_status": 200,
-    "image_format": "JPEG",
-    "width": 450,
-    "height": 450,
-    "bytes": 75454,
-    "sha256": "9d0222287695a04e03323944db6048edb6ad88fad1396fae9267260ebcc25802",
-    "processing": "Original image bytes; no resizing.",
-    "caveats": [
-      "The official directory lists Alexander R Dickson; his own lab uses Alex Dickson, matching the organizer's preferred display name. The university affiliation agrees.",
-      "No image-specific reuse license or permission was established."
-    ]
   }
 ]

@@ -21,14 +21,14 @@ underscore. Do not publish the workbook or private invitation notes.
 The speaker and panel rosters include accepted, tentatively accepted, and informally
 accepted participants only. Invitation statuses remain in the private workbook
 and are not included in the public page or its markup.
-Pratyush Tiwary appears as both a speaker and a panelist: there are 19 unique
-speakers/panelists and 20 speaker/panelist cards. Pending invitations, suggestions, and declines
+Pratyush Tiwary appears as both a speaker and a panelist: there are 22 unique
+speakers/panelists (17 speakers, 6 panelists) and 23 speaker/panelist cards. Pending invitations, suggestions, and declines
 must not be added to the public roster.
 
 The four organizers are listed separately with their names and supplied
 affiliations only. Do not include email addresses or mailto links in that section.
 
-There are 19 speaker/panelist headshots. David Kamber's speaker link and portrait
+There are 22 speaker/panelist headshots. David Kamber's speaker link and portrait
 use the LinkedIn profile explicitly selected by the organizer:
 https://www.linkedin.com/in/david-kamber-6a26625a/
 The 200 by 200 pixel headshot is retained locally because its signed image URL
@@ -46,6 +46,12 @@ srcset in the browser, not from the cover photo.
 Jutta Rogal's profile and portrait use the Simons Foundation source explicitly
 selected by the organizer:
 https://www.simonsfoundation.org/people/jutta-rogal/
+
+Roster update supplied by the organizer on 2026-11-09: Mary Pitman (SandboxAQ)
+and Abba Leffler (Schrodinger) were added as speakers; Daniel Smith (Achira) and
+Ben Birnbaum (Inductive Bio) were added to the panel; Alex Dickson was removed
+from the panel and his portrait deleted. With 17 speakers, the roster exceeds
+the 16 talk slots in the tentative schedule.
 
 Gavin Crooks's affiliation is Achira, as supplied by the organizer on
 2026-09-26; his speaker link points to https://achira.ai/. This replaces the
