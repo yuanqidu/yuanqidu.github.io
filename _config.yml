@@ -197,6 +197,10 @@ defaults:
     values:
       sitemap: false
   - scope:
+      path: "siam-mds26"
+    values:
+      sitemap: false
+  - scope:
       path: "decks-igpes6"
     values:
       sitemap: false
