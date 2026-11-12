@@ -1,7 +1,7 @@
 /* Intro animations: hero transport, micro->macro pipeline, trapped MCMC, MCMC vs neural sampler, data vs energy. */
 (function () {
   'use strict';
-  const { C, rgba, mix, E, atom, flatAtom, roundRect, arrow, text, richText, font, makeRng, wiggle, wrap01, minImage } = U;
+  const { C, rgba, mix, E, atom, flatAtom, roundRect, arrow, text, font, makeRng, wiggle, wrap01, minImage } = U;
 
   // ------------------------------------------------------------------
   // Periodic-box transport of a real 2D Kob-Andersen configuration:
@@ -154,11 +154,18 @@
         ctx.strokeStyle = grad; ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x0 + (x1 - x0) * ph.t, y0); ctx.stroke();
         U.circle(ctx, x0 + (x1 - x0) * ph.t, y0, 11, '#fff', ph.name === 'bwd' ? C.blue : C.teal, 4);
         ctx.restore();
-        text(ctx, o.hero ? 'prior' : 'uniform prior', x0, y0 + 40, { size: o.hero ? 22 : 24, color: C.inkSoft });
-        text(ctx, 'Boltzmann ensemble', x1, y0 + 40, { size: o.hero ? 22 : 24, color: C.inkSoft, align: 'right' });
-        const lab = ph.name === 'bwd' ? 'backward P← (noising)' : ph.name === 'fwd' ? 'forward P→ (generation)' : ph.name === 'hold' ? (o.forces ? 'label: forces βF(X_N)' : 't = N') : 't = 0';
+        text(ctx, o.plain ? 'random noise' : o.hero ? 'prior' : 'uniform prior', x0, y0 + 40, { size: o.hero ? 22 : 24, color: C.inkSoft });
+        text(ctx, o.plain ? 'equilibrium structure' : 'Boltzmann ensemble', x1, y0 + 40, { size: o.hero ? 22 : 24, color: C.inkSoft, align: 'right' });
         const col = ph.name === 'bwd' ? C.blue : ph.name === 'hold' && o.forces ? C.coral : C.teal;
-        text(ctx, lab, (x0 + x1) / 2, y0 - 20, { size: o.hero ? 22 : 25, color: col, align: 'center', weight: 600 });
+        const lo = { size: o.hero ? 22 : 25, color: col, align: 'center', weight: 600 };
+        if (o.plain) { // plain-language labels (general.html): words only, canvas text
+          const lab = ph.name === 'bwd' ? 'back to noise' : ph.name === 'fwd' ? 'generating' : ph.name === 'hold' ? (o.forces ? 'physics feedback: the force on every atom' : 'a new sample') : 'start from noise';
+          text(ctx, lab, (x0 + x1) / 2, y0 - 20, lo);
+        } else { // the deck's notation, typeset by KaTeX (S.tex): one label per phase
+          const [key, src] = ph.name === 'bwd' ? ['bwd', 'backward $\\Pb$ (noising)'] : ph.name === 'fwd' ? ['fwd', 'forward $\\Pf$ (generation)']
+            : ph.name === 'hold' ? (o.forces ? ['force', 'label: forces $\\beta\\mathbf F(X_N)$'] : ['tN', '$t=N$']) : ['t0', '$t=0$'];
+          S.tex(key, src, (x0 + x1) / 2, y0 - 20, lo);
+        }
       }
     }
     return {
@@ -218,7 +225,7 @@
       ctx.stroke();
       const rr = 1.12 + 0.05 * Math.sin(clock * 3.3), uu = 4 * (Math.pow(1 / rr, 12) - Math.pow(1 / rr, 6));
       U.circle(ctx, gx + (rr - 0.92) / 1.6 * gw, gy + gh * 0.55 - uu * 55, 7, C.coral);
-      richText(ctx, [['U', 'i'], ['(', 'n'], ['r', 'i'], [')', 'n']], gx + 8, gy + 18, { size: 22, color: C.inkSoft });
+      S.tex('Ur', '$U(r)$', gx + 8, gy + 18, { size: 22, color: C.inkSoft }); // notation is typeset by KaTeX (S.tex); words and counts stay canvas text
       text(ctx, 'potential energy from DFT or an MLIP', z1.x + z1.w / 2, 470, { size: 21, color: C.inkSoft, align: 'center' });
 
       // zone 2: stacked cards
@@ -229,7 +236,7 @@
         roundRect(ctx, x, y, cw, ch, 10, rgba('#FFFFFF', a), rgba(C.inkSoft, 0.35 * a), 1.5);
         if (depth <= 1) c.pts.forEach(p => { const px = x + 15 + p.x * (cw - 30) + 3 * wiggle(p.s, clock * 3), py = y + 15 + p.y * (ch - 30) + 3 * wiggle(p.s + 3, clock * 3); flatAtom(ctx, px, py, p.t ? 9 : 12, p.t ? C.kaB : C.kaA, a); });
       });
-      richText(ctx, [['π', 'i'], ['(', 'n'], ['x', 'i'], [') ∝ exp(−', 'n'], ['β', 'i'], ['U', 'i'], ['(', 'n'], ['x', 'i'], ['))', 'n']], z2.x + z2.w / 2 + 20, 400, { size: 27, color: C.ink, align: 'center' });
+      S.tex('boltz', '$\\pi(x)\\propto e^{-\\beta U(x)}$', z2.x + z2.w / 2 + 20, 400, { size: 27, color: C.ink, align: 'center' });
       text(ctx, 'every configuration, weighted by Boltzmann', z2.x + z2.w / 2 + 20, 440, { size: 21, color: C.inkSoft, align: 'center' });
 
       // arrows between zones
@@ -250,9 +257,9 @@
       if (nObs > 2) {
         const m = sum / nObs; const xm = hx + m * hw;
         ctx.save(); ctx.setLineDash([6, 6]); ctx.strokeStyle = C.navy; ctx.lineWidth = 2.5; ctx.beginPath(); ctx.moveTo(xm, hy + 4); ctx.lineTo(xm, hy - hh + 40); ctx.stroke(); ctx.restore();
-        richText(ctx, [['⟨', 'n'], ['O', 'i'], ['⟩', 'n']], xm + 8, hy - hh + 60, { size: 26, color: C.navy });
+        S.tex('meanO', '$\\langle O\\rangle$', xm + 8, hy - hh + 60, { size: 26, color: C.navy });
       }
-      text(ctx, 'observable O(x)', hx + hw / 2, hy + 34, { size: 20, color: C.inkSoft, align: 'center' });
+      S.tex('obs', 'observable $O(x)$', hx + hw / 2, hy + 34, { size: 20, color: C.inkSoft, align: 'center' });
       text(ctx, 'free energy · phase diagrams · moduli', z3.x + z3.w / 2, 440, { size: 21, color: C.inkSoft, align: 'center' });
       text(ctx, `${nObs} samples`, hx + hw, hy - hh + 20, { size: 19, color: C.muted, align: 'right' });
     }
@@ -292,7 +299,7 @@
       ctx.lineTo(sx(xmax), Y1 + 10); ctx.closePath(); ctx.fillStyle = rgba(C.blue, 0.08); ctx.fill();
       ctx.beginPath(); for (let k = 0; k <= 400; k++) { const xx = xmin + (xmax - xmin) * k / 400; if (k) ctx.lineTo(sx(xx), sy(Uf(xx))); else ctx.moveTo(sx(xx), sy(Uf(xx))); }
       ctx.strokeStyle = C.blue; ctx.lineWidth = 3.5; ctx.stroke();
-      text(ctx, 'rugged energy landscape U(x)', X0 + 4, Y0 - 34, { size: 22, color: C.inkSoft });
+      S.tex('land', 'rugged energy landscape $U(x)$', X0 + 4, Y0 - 34, { size: 22, color: C.inkSoft }); // notation is typeset by KaTeX (S.tex)
       // walker trail + walker
       for (let k = 0; k < trail.length; k++) { const a = k / trail.length; U.circle(ctx, sx(trail[k]), sy(Uf(trail[k])) - 12, 3, rgba(C.ink, 0.25 * a)); }
       let wx = x, wy = sy(Uf(x)) - 14;
@@ -301,14 +308,19 @@
       // histogram vs truth
       const hy = S.h - 40, hh = 120; const mx = Math.max(...hist, 1);
       text(ctx, 'visited by the chain', X0 + 4, hy - hh - 14, { size: 20, color: C.ink });
-      text(ctx, 'true Boltzmann π(x)', X0 + 240, hy - hh - 14, { size: 20, color: C.coral });
+      S.tex('truth', 'true Boltzmann $\\pi(x)$', X0 + 240, hy - hh - 14, { size: 20, color: C.coral });
       for (let b = 0; b < 80; b++) { const h = hist[b] / mx * hh; ctx.fillStyle = rgba(C.ink, 0.7); ctx.fillRect(sx(xmin + b / 80 * (xmax - xmin)) + 1, hy - h, (X1 - X0) / 80 - 2, h); }
       const tm = Math.max(...truth); ctx.beginPath(); for (let b = 0; b < 80; b++) { const xx = sx(xmin + (b + 0.5) / 80 * (xmax - xmin)), yy = hy - truth[b] / tm * hh; if (b) ctx.lineTo(xx, yy); else ctx.moveTo(xx, yy); } ctx.strokeStyle = C.coral; ctx.lineWidth = 2.5; ctx.setLineDash([8, 6]); ctx.stroke(); ctx.setLineDash([]);
       ctx.strokeStyle = rgba(C.inkSoft, 0.4); ctx.lineWidth = 1.2; ctx.beginPath(); ctx.moveTo(X0, hy); ctx.lineTo(X1, hy); ctx.stroke();
       // counter
       const e = evals; const exp = Math.floor(Math.log10(Math.max(1, e))); const mant = (e / Math.pow(10, exp)).toFixed(1);
       text(ctx, 'energy evaluations', X1, Y0 - 34, { size: 20, color: C.inkSoft, align: 'right' });
-      richText(ctx, [[mant + ' × 10', 'n'], [String(exp), 'sup']], X1, Y0 + 2, { size: 34, color: C.navy, weight: 700, align: 'right' });
+      // the number is typeset by KaTeX in three pieces laid out right to left ("× 10^k", the last digit, the leading digit and the point):
+      // each piece is typeset once and only moved or swapped afterwards, so nothing is re-typeset while the digits run
+      const cs = { size: 34, color: C.navy, align: 'right' }, [mi, mf] = mant.split('.');
+      let cx = X1 - S.tex('pow' + exp, '$\\boldsymbol{{}\\times 10^{' + exp + '}}$', X1, Y0 + 2, cs).w;
+      cx -= S.tex('frac' + mf, '$\\boldsymbol{' + mf + '}$', cx, Y0 + 2, cs).w;
+      S.tex('int' + mi, '$\\boldsymbol{' + mi + '.}$', cx, Y0 + 2, cs);
     }
     return {
       frame(dt) {
@@ -364,6 +376,7 @@
     let mx = G.mu[2][0] + 0.1, my = G.mu[2][1] + 0.1, steps = 0; const mtrail = [];
     // neural sampler batches
     let batch = null, done = [], nsamp = 0, clock = 0, modesHit = new Set();
+    let shown = o && o.reveal ? 0 : 1; // with {"reveal": true} the neural-sampler panel appears on the first click
     const K = 70, sigma = (t) => 0.75 * Math.sin(Math.PI * t) + 0.05;
     function newBatch() { const pts = []; for (let i = 0; i < 26; i++) { pts.push({ x: rng.normal(), y: rng.normal(), path: [] }); } batch = { pts, k: 0, acc: 0 }; }
     newBatch();
@@ -377,13 +390,14 @@
     function draw() {
       S.clear();
       panel(L, 'MCMC / molecular dynamics', 'one long correlated chain, local moves', C.coral);
-      panel(R, 'Neural sampler', 'learned transport, independent samples in one pass', C.teal);
+      if (shown) panel(R, 'Neural sampler', 'learned transport, independent samples in one pass', C.teal);
       // MCMC trail
       ctx.save(); ctx.beginPath(); ctx.rect(L.x, L.y, pw, ph); ctx.clip();
       ctx.beginPath(); mtrail.forEach((p, i) => { const [x, y] = toPx(L, p[0], p[1]); if (i) ctx.lineTo(x, y); else ctx.moveTo(x, y); }); ctx.strokeStyle = rgba(C.ink, 0.35); ctx.lineWidth = 1.2; ctx.stroke();
       const [wx, wy] = toPx(L, mx, my); U.circle(ctx, wx, wy, 9, C.coral, '#fff', 2.5);
       ctx.restore();
       text(ctx, `${steps.toLocaleString()} steps · modes visited: 1 / 5`, L.x + pw - 24, L.y + ph - 26, { size: 21, color: C.coral, align: 'right', weight: 600 });
+      if (!shown) return;
       // neural sampler
       ctx.save(); ctx.beginPath(); ctx.rect(R.x, R.y, pw, ph); ctx.clip();
       done.forEach(d => { const [x, y] = toPx(R, d.x, d.y); U.circle(ctx, x, y, 4.2, rgba(C.tealDark, Math.max(0.25, d.a))); });
@@ -405,6 +419,7 @@
         // MCMC: unadjusted Langevin
         for (let i = 0; i < 4; i++) { const eps = 0.0022; const [gx, gy] = G.grad(mx, my); mx += eps * gx + Math.sqrt(2 * eps) * rng.normal(); my += eps * gy + Math.sqrt(2 * eps) * rng.normal(); steps++; mtrail.push([mx, my]); if (mtrail.length > 700) mtrail.shift(); }
         // sampler
+        if (!shown) { draw(); return; }
         if (batch) {
           batch.acc += dt; const stepT = 2.0 / K;
           while (batch.acc > stepT && batch.k < K) {
@@ -416,7 +431,9 @@
         } else { this._wait -= dt; if (this._wait <= 0) newBatch(); }
         done.forEach(d => d.a *= 0.9985); if (done.length > 600) done.splice(0, done.length - 600);
         draw();
-      }, draw, ff: 6.85
+      },
+      step(k) { if (!(o && o.reveal)) return; const on = k >= 1 ? 1 : 0; if (on && !shown) { done = []; nsamp = 0; modesHit = new Set(); newBatch(); } shown = on; },
+      draw, ff: 6.85
     };
   };
 

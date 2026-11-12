@@ -72,7 +72,7 @@
     const ctx = canvas.getContext('2d');
     const s = { canvas, ctx, w, h, k: 1 };
     s.resize = function (stageScale) {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2.5);
+      const dpr = /[?&]lowres\b/.test(location.search) ? 1 : Math.min(window.devicePixelRatio || 1, 2.5);
       const k = Math.max(0.5, stageScale * dpr);
       s.k = k;
       canvas.width = Math.round(w * k); canvas.height = Math.round(h * k);
@@ -82,9 +82,68 @@
       if (color) { ctx.fillStyle = color; ctx.fillRect(0, 0, canvas.width, canvas.height); }
       else ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.setTransform(s.k, 0, 0, s.k, 0, 0);
+      if (s._tex) texStale(s._tex);
+    };
+    // Real LaTeX on top of the canvas (KaTeX in a DOM layer that sits exactly over the canvas).
+    //   S.tex(key, src, x, y, { size, color, weight, align: 'left'|'center'|'right', valign: 'baseline'|'middle', alpha })
+    // src is text in which $...$ is LaTeX, as in the slide HTML (a pure formula is '$...$'; the deck macros \Pf, \Pb, \dd work).
+    // x, y are canvas coordinates; by default y is the text baseline, as in U.text. Call it on every draw, like a canvas call:
+    // a label that is not requested during a draw is hidden when that draw ends. Returns { w, h } in canvas units.
+    // Keep src constant per key where possible (changing it re-typesets); animate with x, y and alpha.
+    s.tex = function (key, src, x, y, o) {
+      o = o || {};
+      const T = s._tex || (s._tex = texLayer(s));
+      let it = T.items.get(key);
+      if (!it) { const el = document.createElement('div'); el.className = 'ctex'; T.layer.appendChild(el); it = { el, src: null, size: 0, weight: 0, base: 0, w: 0, h: 0, css: {} }; T.items.set(key, it); }
+      const size = o.size || 22, weight = o.weight || 500;
+      const set = (k, v) => { if (it.css[k] !== v) { it.css[k] = v; it.el.style[k] = v; } };
+      set('display', 'block');
+      if (it.src !== src || it.size !== size || it.weight !== weight || it.epoch !== TEX.epoch) {
+        set('fontSize', size + 'px'); set('fontWeight', String(weight));
+        it.el.innerHTML = '<span class="ctex-b"></span>' + texHtml(src);
+        it.src = src; it.size = size; it.weight = weight; it.epoch = TEX.epoch;
+        it.base = it.el.firstChild.offsetTop; it.w = it.el.offsetWidth; it.h = it.el.offsetHeight;
+      }
+      const al = o.align || 'left', mid = o.valign === 'middle';
+      set('left', (Math.round(x * 100) / 100) + 'px'); set('top', (Math.round((mid ? y : y - it.base) * 100) / 100) + 'px');
+      set('transform', `translate(${al === 'center' ? '-50%' : al === 'right' ? '-100%' : '0'}, ${mid ? '-50%' : '0'})`);
+      set('color', o.color || C.ink);
+      const a = o.alpha === undefined ? 1 : Math.max(0, Math.min(1, o.alpha));
+      set('opacity', String(Math.round(a * 1000) / 1000));
+      it.fresh = true;
+      return { w: it.w, h: it.h };
     };
     return s;
   }
+  // ---- the DOM layer behind S.tex
+  const TEX = { epoch: 0, layers: new Set(), cache: new Map(), macros: { '\\Pf': '\\overrightarrow{P}', '\\Pb': '\\overleftarrow{P}', '\\Qf': '\\overrightarrow{Q}', '\\Qb': '\\overleftarrow{Q}', '\\dd': '\\mathrm{d}' } };
+  function texHtml(src) { // text with $...$ -> HTML (typeset once per distinct string)
+    let h = TEX.cache.get(src); if (h !== undefined) return h;
+    const esc = (t) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+    h = src.split('$').map((part, i) => {
+      if (i % 2 === 0) return esc(part);
+      try { return window.katex.renderToString(part, { throwOnError: false, strict: false, trust: true, macros: Object.assign({}, TEX.macros) }); } catch (e) { return esc(part); }
+    }).join('');
+    if (TEX.cache.size > 600) TEX.cache.clear();
+    TEX.cache.set(src, h); return h;
+  }
+  function texLayer(s) {
+    const c = s.canvas, layer = document.createElement('div');
+    layer.className = 'ctex-layer' + (c.classList.contains('fade') ? ' fade' : '');
+    ['data-f', 'data-f-out'].forEach(a => { if (c.hasAttribute(a)) layer.setAttribute(a, c.getAttribute(a)); });
+    ['f-vis', 'f-past'].forEach(k => { if (c.classList.contains(k)) layer.classList.add(k); });
+    layer.style.left = c.offsetLeft + 'px'; layer.style.top = c.offsetTop + 'px';
+    if (c.style.transform) { layer.style.transform = c.style.transform; layer.style.transformOrigin = c.style.transformOrigin || '50% 50%'; layer.style.width = s.w + 'px'; layer.style.height = s.h + 'px'; }
+    c.parentNode.insertBefore(layer, c.nextSibling);
+    const T = { layer, items: new Map(), queued: false };
+    TEX.layers.add(T); return T;
+  }
+  function texStale(T) { // called by S.clear(): labels not asked for again in this draw disappear when it ends
+    T.items.forEach(it => { it.fresh = false; });
+    if (T.queued) return; T.queued = true;
+    Promise.resolve().then(() => { T.queued = false; T.items.forEach(it => { if (!it.fresh && it.css.display !== 'none') { it.css.display = 'none'; it.el.style.display = 'none'; } }); });
+  }
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { TEX.epoch++; }); // re-measure baselines once the fonts are in
 
   // ---------- drawing primitives ----------
   const FONT = '"Inter Variable", "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif';
@@ -208,6 +267,6 @@
     return F;
   }
 
-  window.U = { makeRng, C, rgba, mix, hexToRgb, E, surface, font, FONT, SERIF, circle, atom, flatAtom, roundRect, arrow, curvedArrow, text, richText, wiggle, wrap01, minImage, torusPath, kaForces };
+  window.U = { texMacros: TEX.macros, makeRng, C, rgba, mix, hexToRgb, E, surface, font, FONT, SERIF, circle, atom, flatAtom, roundRect, arrow, curvedArrow, text, richText, wiggle, wrap01, minImage, torusPath, kaForces };
   window.ANIMS = window.ANIMS || {};
 })();

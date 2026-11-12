@@ -97,6 +97,8 @@ canvas[data-anim] { display: block; }
 [data-f].f-past { opacity: 0; transform: none; pointer-events: none; }
 [data-f].fade { transform: none; }
 [data-f].dim-past.f-past { opacity: .28; }
+/* table rows revealed on a click: keep the rules of rows that are not shown yet invisible */
+tr[data-f]:not(.f-vis), tr[data-f]:not(.f-vis) > td { border-color: transparent !important; }
 .hl { background: linear-gradient(transparent 62%, rgba(233,196,106,.45) 62%); padding: 0 2px; }
 
 /* ===== title & section slides ===== */
@@ -126,6 +128,16 @@ canvas[data-anim] { display: block; }
 .person .nm { font-size: 22px; font-weight: 650; color: var(--ink); line-height: 1.2; }
 .person .af { font-size: 18px; color: var(--muted); margin-top: 3px; }
 .person .tag { font-size: 16px; color: var(--teal-dark); margin-top: 3px; font-weight: 600; }
+/* thank-you slides: who drove and who led the work */
+.team { display: flex; align-items: flex-start; gap: 0 64px; }
+.team .grp-h { font-size: 22px; font-weight: 700; color: var(--navy); margin-bottom: 14px; white-space: nowrap; text-align: center; }
+.team .grp-h.teal { color: var(--teal-dark); }
+.team .people { gap: 0 26px; flex-wrap: nowrap; }
+.team .person { width: auto; min-width: 190px; }
+.team .person img { width: 118px; height: 118px; }
+.team .person .nm { font-size: 20px; white-space: nowrap; }
+.team .person .af { font-size: 16px; }
+.team .thx { align-self: center; font-size: 20px; line-height: 1.45; color: var(--muted); max-width: 340px; }
 
 /* tables */
 table.cmp { border-collapse: collapse; font-size: 25px; width: 100%; }
@@ -189,8 +201,8 @@ body.presenter { background: #15191E; color: #E8ECEF; overflow: hidden; }
 .drv-row.top { align-items: flex-start; }
 .drv-n { flex: none; width: 42px; height: 42px; border-radius: 50%; background: var(--navy); color: #fff; font-size: 21px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
 .drv-l { font-size: 23px; line-height: 1.35; color: var(--ink-soft); }
-.drv-row > .drv-l { flex: none; width: 400px; }
-.drv-eq { font-size: 27px; }
+.drv-row > .drv-l { flex: none; width: var(--drvl, 400px); }
+.drv-eq { font-size: 27px; white-space: nowrap; }
 .uc { padding: 16px 22px 18px; }
 .uc-h { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: 22px; font-weight: 650; color: var(--navy); }
 .uc-tag { font-size: 19px; font-weight: 600; color: var(--teal-dark); background: rgba(42,157,143,.10); border-radius: 999px; padding: 3px 12px; white-space: nowrap; }
@@ -209,3 +221,88 @@ body.export .drv-shrink { transition: none; }
 .ucr-d { grid-column: 2 / span 2; font-size: 19px; line-height: 1.35; color: var(--ink-soft); }
 /* small note under a term of a big equation */
 .eq-note { position: absolute; left: 0; right: 0; top: 100%; margin-top: 10px; font-size: 24px; font-weight: 600; letter-spacing: 0; text-align: center; white-space: nowrap; color: var(--teal-dark); }
+
+/* ===== reweighting-with-flows slide (prefix rw-) ===== */
+.rw-is { display: flex; align-items: center; gap: 28px; }
+.rw-need { padding: 11px 22px 12px; border-radius: 14px; background: rgba(42,157,143,.10); border-left: 6px solid var(--teal); font-size: 24px; line-height: 1.3; font-weight: 600; color: var(--ink); white-space: nowrap; }
+.rw-need b { color: var(--teal-dark); font-weight: 700; }
+.rw-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.rw-eq.eqbox { display: flex; align-items: center; justify-content: center; min-height: 96px; padding: 8px 14px; font-size: 25px; }
+.rw-pc { margin-top: 12px; font-size: 22px; line-height: 1.32; color: var(--ink); display: flex; flex-direction: column; gap: 8px; }
+.rw-pc > div { padding: 8px 16px 9px; border-radius: 12px; }
+.rw-pc .pro { background: rgba(42,157,143,.10); border-left: 5px solid var(--teal); } .rw-pc .pro b { color: var(--teal-dark); font-weight: 700; }
+.rw-pc .con { background: rgba(231,111,81,.09); border-left: 5px solid var(--coral); } .rw-pc .con b { color: #B4492F; font-weight: 700; }
+
+/* ===== OMNIA teaser slides (prefix om-) ===== */
+.slide > .kicker.om-k { color: #C8553B; }
+.om-chips { display: flex; gap: 12px; }
+.om-chips > span { padding: 6px 18px; border-radius: 999px; font-size: 21px; font-weight: 600; color: var(--ink-soft); background: #ECEEF1; white-space: nowrap; }
+.om-chips > span.on { background: #C8553B; color: #fff; }
+.om-col { display: flex; flex-direction: column; gap: 18px; align-items: stretch; }
+.om-box { padding: 16px 24px 18px; border-radius: 16px; background: rgba(42,157,143,.10); border-left: 6px solid var(--teal); }
+.om-box .p { font-size: 27px; font-weight: 700; line-height: 1.25; color: #C62828; }
+.om-box .h { font-size: 27px; font-weight: 700; line-height: 1.25; color: var(--teal-dark); }
+.om-box .p + .h { margin-top: 8px; }
+.eqbox.om-eq { align-self: flex-start; font-size: 27px; }
+.om-stat { display: flex; align-items: center; gap: 24px; padding: 16px 26px 18px; }
+.om-stat .n { flex: none; font-size: 56px; font-weight: 720; letter-spacing: -0.02em; line-height: 1; color: var(--teal); white-space: nowrap; }
+.om-stat .d { font-size: 23px; line-height: 1.35; color: var(--ink-soft); }
+
+/* ===== Pharos teaser slides: rare events by stochastic optimal control (prefix ph-) ===== */
+.ph-col { display: flex; flex-direction: column; gap: 16px; }
+.ph-box { padding: 14px 24px 16px; border-radius: 16px; background: rgba(42,157,143,.10); border-left: 6px solid var(--teal); }
+.ph-box.coral { background: rgba(231,111,81,.10); border-left-color: var(--coral); }
+.ph-box.blue { background: rgba(76,114,176,.10); border-left-color: var(--blue); }
+.ph-box .h { font-size: 28px; font-weight: 700; line-height: 1.25; color: var(--teal-dark); }
+.ph-box.coral .h { color: #B4492F; }
+.ph-box.blue .h { color: #3B5D99; }
+.ph-box .e { font-size: 24px; margin-top: 8px; color: var(--ink); white-space: nowrap; }
+.ph-box .d { font-size: 21px; line-height: 1.35; color: var(--ink); margin-top: 6px; }
+.ph-fig { left: 110px; top: 182px; width: 1700px; height: 448px; display: flex; justify-content: center; align-items: center; gap: 26px; }
+.ph-fig .figcard { padding: 12px; flex: none; }
+.ph-fig .figcard img { height: 424px; width: auto; }
+.ph-cap { flex: none; width: 270px; font-size: 20px; line-height: 1.55; color: var(--ink-soft); }
+.ph-cap b { color: var(--ink); font-weight: 680; }
+.ph-cap i { font-style: normal; font-size: 22px; }
+.ph-cards { left: 110px; top: 662px; width: 1700px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; align-items: stretch; }
+.ph-card { padding: 16px 20px 18px; transition: box-shadow .3s; }
+.ph-card .k { font-size: 18px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+.ph-card .n { font-size: 40px; font-weight: 720; letter-spacing: -0.02em; line-height: 1.15; color: var(--teal-dark); margin-top: 6px; white-space: nowrap; }
+.ph-card .d { font-size: 20px; line-height: 1.32; color: var(--ink-soft); margin-top: 6px; }
+.ph-card .d b { color: var(--ink); font-weight: 680; }
+.slide[data-step="0"] .ph-card.c0, .slide[data-step="1"] .ph-card.c1, .slide[data-step="2"] .ph-card.c2,
+.slide[data-step="3"] .ph-card.c3, .slide[data-step="4"] .ph-card.c4 { box-shadow: 0 0 0 3px var(--teal), 0 6px 24px rgba(31,41,51,.08); }
+
+/* ===== "same form" row on the micro→macro slide: Bayesian posterior and KL-regularized RL as highlighted boxes ===== */
+.same-row { display: flex; align-items: center; gap: 22px; }
+.same-lead { font-size: 27px; font-weight: 680; color: var(--navy); white-space: nowrap; }
+.same-box { padding: 10px 22px 12px; border-radius: 14px; background: rgba(76,114,176,.10); border-left: 6px solid var(--blue); font-size: 26px; color: var(--ink); white-space: nowrap; }
+.same-box b { color: #3B5D99; font-weight: 700; margin-right: 10px; }
+
+/* ===== future-work slides (OMNIA, rare events): additions ===== */
+.om-lab { font-size: 25px; font-weight: 680; line-height: 1.3; color: var(--navy); margin-bottom: 12px; }
+.eqbox.om-eq.big { font-size: 32px; padding: 18px 28px; }
+
+
+/* ===== diffusion primer: the forward (teal) and backward (blue) SDE; the one whose process is playing in the animation stands out ===== */
+.sde2 { display: flex; flex-direction: column; gap: 10px; }
+.sde2 > div { display: grid; grid-template-columns: 400px 1fr; column-gap: 22px; align-items: baseline; padding: 14px 22px; border-radius: 14px; background: #fff; box-shadow: 0 1px 2px rgba(31,41,51,.04), 0 4px 16px rgba(31,41,51,.05); border-left: 6px solid transparent; transition: opacity .45s ease, background-color .45s ease, border-color .45s ease; }
+.sde2 .f { color: var(--teal-dark); } .sde2 .b { color: var(--blue); }
+/* the process that the animation is simulating is solid (tinted, coloured edge), the other one is shaded */
+.slide[data-sde="f"] .sde2 .f { background: #E2F1EE; border-left-color: var(--teal); }
+.slide[data-sde="b"] .sde2 .b { background: #E5EBF5; border-left-color: var(--blue); }
+.slide[data-sde="f"] .sde2 .b, .slide[data-sde="b"] .sde2 .f.f-vis { opacity: .3; }
+body.export .sde2 > div:not([data-f]), body.export .sde2 > div.f-vis { opacity: 1 !important; background: #fff !important; border-left-color: transparent !important; }
+/* a highlighted key phrase inside a takeaway (the physical work on the path-weight slide) */
+.work-chip { display: inline-block; white-space: nowrap; margin-left: 8px; padding: 3px 16px 5px; border-radius: 12px; background: rgba(240,162,58,.22); border: 2px solid rgba(217,116,31,.6); color: #A8500C; font-weight: 650; }
+
+/* a quotation inside a bullet (Anderson on glasses) */
+.quote { margin: 12px 0 4px; padding: 14px 24px 14px; border-left: 6px solid var(--teal); border-radius: 0 14px 14px 0; background: rgba(42,157,143,.09); font-style: italic; font-size: 28px; line-height: 1.42; color: var(--ink); }
+.quote .by { display: block; margin-top: 10px; font-style: normal; font-weight: 650; font-size: 22px; color: var(--teal-dark); text-align: right; }
+/* LaTeX labels over a canvas (S.tex in js/util.js): a zero-size layer at the canvas's top-left corner */
+.ctex-layer { position: absolute; width: 0; height: 0; pointer-events: none; }
+.ctex { position: absolute; left: 0; top: 0; white-space: nowrap; line-height: 1.25; pointer-events: none; }
+.ctex .ctex-b { display: inline-block; width: 0; height: 0; vertical-align: baseline; }
+.ctex .katex { font-size: 1.12em; }
+/* a fragment that waits for something else to move out of the way before it fades in (the overlay on the estimator slide) */
+[data-f].late.f-vis { transition-delay: .5s; }

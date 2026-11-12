@@ -12,35 +12,42 @@
 <meta property="og:url" content="https://yuanqidu.github.io/blog/a-new-era-of-molecular-simulation/">
 <meta property="og:image" content="https://yuanqidu.github.io/blog/a-new-era-of-molecular-simulation/og.png">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="vendor/katex/katex.min.css">
-<link rel="stylesheet" href="css/deck.css">
-<script src="vendor/katex/katex.min.js"></script>
-<script src="vendor/katex/contrib/auto-render.min.js"></script>
-<script src="js/util.js"></script>
-<script src="js/data/ka.js"></script>
-<script src="js/data/fp.js"></script>
-<script src="js/anim/intro.js"></script>
-<script src="js/anim/method.js"></script>
-<script src="js/anim/theory.js"></script>
-<script src="js/anim/atlas.js"></script>
-<script src="js/anim/janus.js"></script>
-<script src="js/anim/outro.js"></script>
-<script src="js/deck.js"></script>
+<link rel="stylesheet" href="vendor/katex/katex.min.css?v=a4b0d354">
+<link rel="stylesheet" href="css/deck.css?v=12aa8754">
+<script src="vendor/katex/katex.min.js?v=03dce885"></script>
+<script src="vendor/katex/contrib/auto-render.min.js?v=2499f8f8"></script>
+<script src="js/util.js?v=86b6a347"></script>
+<script src="js/data/ka.js?v=e5f7cd97"></script>
+<script src="js/data/fp.js?v=1a92331d"></script>
+<script src="js/data/acarbon.js?v=a0a5bbc9"></script>
+<script src="js/anim/intro.js?v=679c2dbf"></script>
+<script src="js/anim/intro_mat.js?v=0a7ec377"></script>
+<script src="js/anim/method.js?v=4d019883"></script>
+<script src="js/anim/theory.js?v=2129d0ae"></script>
+<script src="js/anim/reweight.js?v=85859bbf"></script>
+<script src="js/anim/pathweight.js?v=0d81efa1"></script>
+<script src="js/anim/modefig.js?v=61c0097b"></script>
+<script src="js/anim/atlas.js?v=61af95c4"></script>
+<script src="js/anim/janus.js?v=e225f069"></script>
+<script src="js/anim/lattices.js?v=bd8c68c6"></script>
+<script src="js/anim/outro.js?v=78a2cad7"></script>
+<script src="js/anim/omnia.js?v=45d136b0"></script>
+<script src="js/anim/pharos.js?v=305029e0"></script>
+<script src="js/anim/artree.js?v=59417a7f"></script>
+<script src="js/deck.js?v=67135da1"></script>
 </head>
 <body>
 <div class="viewport"><div class="stage">
 
-<!-- =============================================================== 1. TITLE -->
 <section class="slide title-slide" data-title="A new era of molecular simulation via neural samplers" data-section="Title">
   <div class="wash"><i style="left:-160px;top:-200px;width:760px;height:560px;background:#BFE3DC"></i><i style="left:420px;top:760px;width:820px;height:520px;background:#F7DCC6"></i><i style="left:1240px;top:-240px;width:820px;height:640px;background:#DDD7F1"></i><i style="left:1500px;top:760px;width:600px;height:500px;background:#CFE2F4"></i></div>
   <h1>A New Era of Molecular Simulation via <em>Neural Samplers</em></h1>
-  <div class="subtitle">Learning to sample equilibrium ensembles, from the energy alone</div>
+  <div class="subtitle">Learning to sample equilibrium ensembles directly from interatomic potentials</div>
   <div class="who">Yuanqi Du</div>
   <div class="aff">Microsoft Research</div>
   <canvas class="abs" style="left:1030px;top:60px" width="860" height="960" data-anim="torusTransport" data-opts='{"hero":true,"timebar":true,"box":600,"config":"n144_T0.3","by":120,"seed":3}'></canvas>
 </section>
 
-<!-- =============================================================== 2. COLLABORATORS -->
 <section class="slide" data-title="Joint work with" data-section="Intro">
   <div class="kicker intro">Joint work</div>
   <h2>Joint work with</h2>
@@ -50,113 +57,148 @@
       <div class="person lg"><img src="assets/people/denis.webp" alt=""><div class="nm">Denis Blessing*</div><div class="af">KIT · MSR intern</div><div class="tag">ATLAS · JANUS</div></div>
       <div class="person lg"><img src="assets/people/carles.webp" alt=""><div class="nm">Carles Domingo-Enrich†</div><div class="af">MSR New England</div><div class="tag">ATLAS · JANUS</div></div>
     </div>
-    <div class="people" style="justify-content:center;gap:24px 58px;margin-top:40px">
-      <div class="person"><img src="assets/people/botao.webp" alt=""><div class="nm">Botao Yu</div><div class="af">OSU · MSR intern</div><div class="tag">ATLAS</div></div>
-      <div class="person"><img src="assets/people/geri.webp" alt=""><div class="nm">Gerhard Neumann</div><div class="af">KIT</div><div class="tag">ATLAS</div></div>
-      <div class="person"><img src="assets/people/mingda.webp" alt=""><div class="nm">Mingda Li</div><div class="af">MIT</div><div class="tag">ATLAS · JANUS</div></div>
-      <div class="person"><img src="assets/people/maximilian.webp" alt=""><div class="nm">Maximilian Schebek</div><div class="af">FU Berlin</div><div class="tag">JANUS</div></div>
-      <div class="person"><img src="assets/people/jutta.webp" alt=""><div class="nm">Jutta Rogal</div><div class="af">Flatiron Institute</div><div class="tag">JANUS</div></div>
+    <div class="people" data-f="1" style="justify-content:center;gap:24px 58px;margin-top:40px">
+      <div class="person" style="width:250px"><img src="assets/people/jiajun.webp" alt=""><div class="nm">Jiajun He</div><div class="af">Cambridge</div><div class="tag">FEAT · RNE</div></div>
+      <div class="person" style="width:250px"><img src="assets/people/francisco.webp" alt=""><div class="nm">Francisco Vargas</div><div class="af">Cambridge</div><div class="tag">FEAT · RNE</div></div>
+      <div class="person" style="width:250px"><img src="assets/people/eric.webp" alt=""><div class="nm">Eric Vanden-Eijnden</div><div class="af">NYU</div><div class="tag">FEAT</div></div>
     </div>
   </div>
-  <div class="abs small" style="left:110px;top:880px;width:1700px;line-height:1.55">
-    <b class="teal">ATLAS</b>: A Foundation Neural Sampler for Amorphous Materials. Cheng*, Blessing*, Yu, Neumann, Li, <b class="me">Domingo-Enrich</b>†, <b class="me">Du</b>†. arXiv:2607.19198<br>
-    <b class="violet">JANUS</b>: A Multimodal Foundation Neural Sampler for Disordered Materials. Blessing*, Cheng*, Schebek, Rogal, Li, <b class="me">Domingo-Enrich</b>†, <b class="me">Du</b>†. arXiv:2608.19116
+  <div class="abs small" style="left:110px;top:850px;width:1700px;line-height:1.55">
+    <b class="teal">ATLAS</b>: A Foundation Neural Sampler for Amorphous Materials. Cheng*, Blessing*, Yu, Neumann, Li, Domingo-Enrich†, <b class="me">Du</b>†. arXiv:2607.19198<br>
+    <b class="violet">JANUS</b>: A Multimodal Foundation Neural Sampler for Disordered Materials. Blessing*, Cheng*, Schebek, Rogal, Li, Domingo-Enrich†, <b class="me">Du</b>†. arXiv:2608.19116
+  </div>
+  <div class="abs" data-f="1" style="left:110px;top:936px;width:1700px;font-size:17.5px;line-height:1.55;color:var(--muted)">
+    <b class="me">Du</b>*, He*, Vargas, Wang, Gomes, Hernández-Lobato, Vanden-Eijnden, FEAT (NeurIPS 2025) &nbsp;·&nbsp; He, Hernández-Lobato, <b class="me">Du</b>†, Vargas†, RNE (ICLR 2026)
   </div>
   <div class="cite">* equal contribution · † co-corresponding</div>
 </section>
 
-<!-- =============================================================== 3. ROADMAP -->
 <section class="slide" data-title="Roadmap" data-section="Intro">
   <div class="kicker intro">Roadmap</div>
   <h2>Today</h2>
   <div class="abs" style="left:110px;top:330px;width:1700px">
     <div class="row" style="gap:28px">
-      <div class="card" style="flex:1;padding:30px 30px 34px"><div class="pill" style="background:#F5EADF;color:#B7793A">1</div><div class="lead b" style="margin:18px 0 10px">The sampling bottleneck</div><div class="small">why ensembles stay expensive, even with machine-learned potentials</div></div>
-      <div class="card" style="flex:1;padding:30px 30px 34px"><div class="pill blue">2</div><div class="lead b" style="margin:18px 0 10px">Neural samplers</div><div class="small">training without data; path weights</div></div>
-      <div class="card" style="flex:1;padding:30px 30px 34px"><div class="pill">3</div><div class="lead b" style="margin:18px 0 10px">ATLAS</div><div class="small">amorphous materials</div></div>
-      <div class="card" style="flex:1;padding:30px 30px 34px"><div class="pill violet">4</div><div class="lead b" style="margin:18px 0 10px">JANUS</div><div class="small">alloys and defects, beyond the canonical ensemble</div></div>
-      <div class="card" style="flex:1;padding:30px 30px 34px"><div class="pill gray" style="color:var(--navy)">5</div><div class="lead b" style="margin:18px 0 10px">Simulation to discovery</div><div class="small">samplers as tools for discovery; open problems</div></div>
+      <div class="card" data-f="1" style="flex:1;padding:30px 30px 34px"><div class="pill" style="background:#F5EADF;color:#B7793A">1</div><div class="lead b" style="margin:18px 0 10px">The sampling bottleneck</div><div class="small">fundamental challenges in sampling</div></div>
+      <div class="card" data-f="1" style="flex:1;padding:30px 30px 34px"><div class="pill blue">2</div><div class="lead b" style="margin:18px 0 10px">Neural samplers</div><div class="small">path weights support estimation and inference</div></div>
+      <div class="card" data-f="2" style="flex:1;padding:30px 30px 34px"><div class="pill">3</div><div class="lead b" style="margin:18px 0 10px">ATLAS</div><div class="small">amorphous systems with high energy barriers</div></div>
+      <div class="card" data-f="2" style="flex:1;padding:30px 30px 34px"><div class="pill violet">4</div><div class="lead b" style="margin:18px 0 10px">JANUS</div><div class="small">joint discrete and continuous sampling</div></div>
+      <div class="card" data-f="2" style="flex:1;padding:30px 30px 34px"><div class="pill gray" style="color:var(--navy)">5</div><div class="lead b" style="margin:18px 0 10px">What comes next</div><div class="small">open problems and future work</div></div>
     </div>
   </div>
 </section>
 
-<!-- =============================================================== 4. MICRO -> MACRO -->
-<section class="slide" data-title="From microscopic interactions to macroscopic behavior" data-section="The sampling problem">
+<section class="slide" data-aud="mat" data-title="From microscopic interactions to macroscopic behavior" data-section="The sampling problem">
+  <div class="kicker intro">Condensed-phase systems</div>
+  <h2>From microscopic interactions to macroscopic behavior</h2>
+    <div class="abs body" style="left:110px;top:184px;width:1700px">
+    <div class="row" style="gap:60px;align-items:center">
+      <div class="eqbox eq">$\tilde\pi(x)=e^{-\beta U(x)},\qquad \beta=\dfrac{1}{k_{\mathrm B}T}$</div>
+      <div class="eqbox eq" data-f="1">$Z=\displaystyle\int\tilde\pi(x)\,\dd x,\qquad F=-\beta^{-1}\log Z,\qquad \langle O\rangle=\frac{1}{Z}\int O(x)\,\tilde\pi(x)\,\dd x$</div>
+    </div>
+  </div>
+  <div class="abs same-row" style="left:110px;top:306px;width:1700px">
+    <div class="same-lead" data-f="2">Same form:</div>
+    <div class="same-box" data-f="2"><b>Bayesian posterior</b> $p(\theta\mid\mathcal D)\propto p(\mathcal D\mid\theta)\,p(\theta)$</div>
+    <div class="same-box" data-f="3"><b>KL-regularized RL</b> $\pi^\star(x)\propto\pi_{\mathrm{ref}}(x)\,e^{\beta\,r(x)}$</div>
+  </div>
+    <canvas class="abs" style="left:110px;top:388px" width="1700" height="430" data-anim="condensedTrio" data-opts='{"offset":4}'></canvas>
+  <div data-f="4"></div><div data-f="5"></div><div data-f="6"></div>
+    <div class="takeaway" data-f="7">Given the energy $U$, understanding an atomistic system at finite temperature is a <b>sampling problem</b>.</div>
+</section>
+
+<section class="slide" data-aud="mat" data-title="The bottleneck: sampling equilibrium ensembles" data-section="The sampling problem">
+  <div class="kicker intro">The sampling problem</div>
+  <h2>The bottleneck: local moves get trapped</h2>
+  <canvas class="abs" style="left:110px;top:200px" width="1000" height="690" data-anim="glassTrap"></canvas>
+  <div data-f="1"></div>
+  <div class="abs body" style="left:1180px;top:235px;width:630px">
+    <ul class="clean coral">
+      <li data-f="2"><b>Slow mixing</b>: a barrier $\Delta$ costs <span style="white-space:nowrap">$\sim e^{\beta\Delta}$</span></li>
+      <li data-f="3"><b>Correlated samples</b>: long autocorrelation times</li>
+      <li data-f="4"><b>No amortization</b>: new $T$, $P$ or composition = new run</li>
+      <li data-f="5"><b>Free energy needs extra calculation</b>: $F$, $S$, phase boundaries</li>
+    </ul>
+  </div>
+  <div class="takeaway coral" data-f="6">2D glass at $T=0.2$: parallel tempering needs $\sim\mathbf{10^{8}}$ energy evaluations for one free energy.</div>
+  <div class="cite">Metropolis et al. 1953 · Swendsen &amp; Wang 1986 · Kob &amp; Andersen 1995 · Cheng*, Blessing*, …, Domingo-Enrich†, <b class="me">Du</b>†, ATLAS (2026)</div>
+</section>
+
+<section class="slide" data-aud="ml" data-title="From microscopic interactions to macroscopic behavior" data-section="The sampling problem">
   <div class="kicker intro">Molecular simulation</div>
   <h2>From microscopic interactions to macroscopic behavior</h2>
   <canvas class="abs" style="left:110px;top:230px" width="1700" height="480" data-anim="microMacro"></canvas>
   <div class="abs body" style="left:110px;top:740px;width:1700px">
-    <div class="row" style="gap:60px;align-items:baseline">
-      <div class="eqbox eq">$\pi(x)=\dfrac{\tilde\pi(x)}{Z},\qquad \tilde\pi(x)=e^{-\beta U(x)},\qquad Z=\displaystyle\int\tilde\pi(x)\,\dd x$</div>
-      <div class="eqbox eq">$\langle O\rangle=\mathbb E_\pi[O],\qquad F=-\beta^{-1}\log Z$</div>
-      <div class="eqbox eq">$\beta=\dfrac{1}{k_{\mathrm B}T}$</div>
+    <div class="row" style="gap:60px;align-items:center">
+      <div class="eqbox eq" data-f="1">$\tilde\pi(x)=e^{-\beta U(x)},\qquad \beta=\dfrac{1}{k_{\mathrm B}T}$</div>
+      <div class="eqbox eq" data-f="4">$Z=\displaystyle\int\tilde\pi(x)\,\dd x,\qquad F=-\beta^{-1}\log Z,\qquad \langle O\rangle=\frac{1}{Z}\int O(x)\,\tilde\pi(x)\,\dd x$</div>
     </div>
   </div>
-  <div class="takeaway" data-f="1">Given the energy function $U$, understanding a molecular system at finite temperature is a <b>sampling problem</b>.</div>
+  <div class="abs same-row" style="left:110px;top:846px;width:1700px">
+    <div class="same-lead" data-f="2">Same form:</div>
+    <div class="same-box" data-f="2"><b>Bayesian posterior</b> $p(\theta\mid\mathcal D)\propto p(\mathcal D\mid\theta)\,p(\theta)$</div>
+    <div class="same-box" data-f="3"><b>KL-regularized RL</b> $\pi^\star(x)\propto\pi_{\mathrm{ref}}(x)\,e^{\beta\,r(x)}$</div>
+  </div>
+  <div class="takeaway" data-f="5">Given the energy $U$, understanding an atomistic system at finite temperature is a <b>sampling problem</b>.</div>
 </section>
 
-<!-- =============================================================== 5. BOTTLENECK -->
-<section class="slide" data-title="The bottleneck: sampling equilibrium ensembles" data-section="The sampling problem">
+<section class="slide" data-aud="ml" data-title="The bottleneck: sampling equilibrium ensembles" data-section="The sampling problem">
   <div class="kicker intro">The sampling problem</div>
   <h2>The bottleneck: local moves get trapped</h2>
   <canvas class="abs" style="left:110px;top:220px" width="1000" height="620" data-anim="mcmcTrap"></canvas>
   <div class="abs body" style="left:1180px;top:235px;width:630px">
     <ul class="clean coral">
-      <li data-f="1"><b>Slow mixing.</b> Crossing a barrier $\Delta$ takes <span style="white-space:nowrap">$\sim e^{\beta\Delta}$</span>.</li>
-      <li data-f="2"><b>Correlated samples.</b> Exact only as the chain length $\to\infty$.</li>
-      <li data-f="3"><b>No amortization.</b> Every temperature, pressure or composition is a new run.</li>
-      <li data-f="4"><b>No free energy.</b> $F$, $S$ and phase boundaries need extra machinery.</li>
+      <li data-f="1"><b>Slow mixing</b>: a barrier $\Delta$ costs <span style="white-space:nowrap">$\sim e^{\beta\Delta}$</span></li>
+      <li data-f="2"><b>Correlated samples</b>: long autocorrelation times</li>
+      <li data-f="3"><b>No amortization</b>: new $T$, $P$ or composition = new run</li>
+      <li data-f="4"><b>Free energy needs extra calculation</b>: $F$, $S$, phase boundaries</li>
     </ul>
   </div>
-  <div class="takeaway coral" data-f="5">2D glassy states at $T=0.2$: parallel tempering needs on the order of $\mathbf{10^{8}}$ energy evaluations for one converged free energy.</div>
-  <div class="cite">Metropolis et al. 1953 · Swendsen &amp; Wang 1986 (replica exchange) · reference numbers: Cheng*, Blessing*, …, <b class="me">Domingo-Enrich</b>†, <b class="me">Du</b>†, ATLAS (2026)</div>
+  <div class="takeaway coral" data-f="5">2D glass at $T=0.2$: parallel tempering needs $\sim\mathbf{10^{8}}$ energy evaluations for one free energy.</div>
+  <div class="cite">Metropolis et al. 1953 · Swendsen &amp; Wang 1986 · Cheng*, Blessing*, …, Domingo-Enrich†, <b class="me">Du</b>†, ATLAS (2026)</div>
 </section>
 
-<!-- =============================================================== 6. MLIP FRAMING -->
-<section class="slide" data-title="MLIPs made each step cheap, not the walk short" data-section="The sampling problem">
+<section class="slide" data-title="MLIPs made each step cheap, not sampling easier" data-section="The sampling problem" data-optional>
   <div class="kicker intro">The sampling problem</div>
-  <h2>Machine-learned potentials made each step cheap, not the walk short</h2>
+  <h2 style="font-size:46px;margin-top:4px">Machine-learned potentials made each step cheap, not sampling easier</h2>
   <div class="abs" style="left:110px;top:300px;width:1700px;text-align:center">
-    <div style="font-size:50px;font-weight:600;color:var(--navy);letter-spacing:-0.01em">cost of a simulation &nbsp;=&nbsp; <span id="mlipA" style="position:relative;padding:6px 16px;border-radius:14px;background:rgba(231,111,81,.10);color:#B4492F"># energy evaluations<span class="focus-ring fade" data-f="3"></span></span> &nbsp;×&nbsp; <span style="position:relative;padding:6px 16px;border-radius:14px;background:rgba(42,157,143,.10);color:var(--teal-dark)">cost per evaluation<span class="eq-note fade" data-f="1">↓&nbsp; DFT → MLIP</span></span></div>
+    <div style="font-size:50px;font-weight:600;color:var(--navy);letter-spacing:-0.01em">cost of a simulation &nbsp;=&nbsp; <span style="position:relative;padding:6px 16px;border-radius:14px;background:rgba(42,157,143,.10);color:var(--teal-dark)">cost per evaluation<span class="eq-note fade" data-f="1">↓&nbsp; DFT → MLIP</span></span> &nbsp;×&nbsp; <span id="mlipA" style="position:relative;padding:6px 16px;border-radius:14px;background:rgba(231,111,81,.10);color:#B4492F"># energy evaluations<span class="focus-ring fade" data-f="3"></span></span></div>
   </div>
   <div class="abs" style="left:150px;top:430px;width:1645px;display:flex;gap:85px;align-items:flex-start">
-    <div class="card" style="flex:1;padding:28px 34px" data-f="2">
-      <div class="lead b coral">Unchanged by MLIPs</div>
-      <div class="body" style="margin-top:10px">The number of evaluations: $10^{8}$–$10^{9}$ for hard systems.</div>
-    </div>
     <div class="card" style="flex:1;padding:28px 34px" data-f="1">
       <div class="lead b teal">Machine-learned interatomic potentials</div>
-      <div class="body" style="margin-top:10px"><b>Replace DFT as the force field</b>: near-DFT accuracy, orders of magnitude cheaper per call; <b>universal MLIPs</b> (e.g. MACE-MPA-0) cover most of the periodic table.</div>
-      <div class="small" style="margin-top:12px">but each call is still a forward pass through $10^{6}$–$10^{8}$ parameters</div>
+      <div class="body" style="margin-top:10px">Near-DFT accuracy, orders of magnitude cheaper per call. <b>Universal MLIPs</b> cover most of the periodic table.</div>
+    </div>
+    <div class="card" style="flex:1;padding:28px 34px" data-f="2">
+      <div class="lead b coral">Unchanged by MLIPs</div>
+      <div class="body" style="margin-top:10px">Equilibrium sampling still takes significant time.</div>
     </div>
   </div>
   <div class="takeaway solid" data-f="3">
     <div class="tk-main"><span class="tk-tag">This talk:</span> neural samplers address this problem</div>
-    <div class="tk-sub">Fewer evaluations × cheaper evaluations: the two efficiency gains multiply.</div>
+    <div class="tk-sub">Fewer evaluations × cheaper evaluations.</div>
   </div>
-  <div class="cite">Behler &amp; Parrinello 2007 · Batatia et al. 2022 (MACE) · Batatia et al. 2025 (MACE-MPA-0 foundation model)</div>
+  <div class="cite">Behler &amp; Parrinello 2007 · Batatia et al. 2022 · Batatia et al. 2025</div>
 </section>
 
-<!-- =============================================================== 7. NEURAL SAMPLERS -->
 <section class="slide" data-title="Neural samplers: learn the sampler" data-section="Neural samplers">
   <div class="kicker method">Neural samplers</div>
   <h2>Neural samplers: learn the sampler instead of running a chain</h2>
-  <canvas class="abs" style="left:110px;top:200px" width="1700" height="560" data-anim="samplerVsMcmc"></canvas>
-  <div class="abs" style="left:110px;top:790px;width:1700px;text-align:center">
-    <div class="eqbox eq" style="font-size:28px"><b style="font-family:var(--sans);color:var(--navy);margin-right:18px">Goal:</b>$X_0\sim p_0,\qquad X_{t+1}\sim\Pf_\theta(\cdot\mid X_t)=\mathcal N\big(X_t+\mu^+_\theta(X_t,t)\,\delta,\ \sigma_t^2\delta\big),\qquad X_N\approx\pi\propto e^{-\beta U}$</div>
+  <canvas class="abs" style="left:110px;top:200px" width="1700" height="560" data-anim="samplerVsMcmc" data-opts='{"reveal":true}'></canvas>
+  <div data-f="1"></div>
+  <div class="abs" data-f="2" style="left:110px;top:790px;width:1700px;text-align:center">
+    <div class="eqbox eq" style="font-size:28px"><b style="font-family:var(--sans);color:var(--navy);margin-right:18px">Goal:</b>$X_0\sim p_0,\qquad X_{t+1}\sim\Pf_\theta(\cdot\mid X_t)=\mathcal N\big(X_t+\mu^+_\theta(X_t,t)\,\delta,\ \sigma_t^2\delta\,I\big),\qquad X_N\approx\pi\propto e^{-\beta U}$</div>
   </div>
   <div class="abs" style="left:110px;top:900px;width:1700px;display:flex;gap:22px;justify-content:center">
-    <span class="pill blue" data-f="1" style="font-size:24px;padding:8px 20px">amortized over T, P, μ, composition</span>
-    <span class="pill violet" data-f="2" style="font-size:24px;padding:8px 20px">path weights → exact averages &amp; free energy</span>
+    <span class="pill blue" data-f="3" style="font-size:24px;padding:8px 20px">amortized over thermodynamic conditions</span>
+    <span class="pill violet" data-f="4" style="font-size:24px;padding:8px 20px">path weights → ensemble properties, free energy &amp; steering</span>
   </div>
-  <div class="cite">Noé et al. 2019 (Boltzmann generators) · Zhang &amp; Chen 2022 · Vargas et al. 2023 · right panel: exact transport for this mixture (an ideally trained sampler)</div>
+  <div class="cite">Noé et al. 2019 · Zhang &amp; Chen 2022 · Vargas et al. 2023</div>
 </section>
 
-<!-- =============================================================== 8. DATA VS ENERGY -->
-<section class="slide" data-title="Diffusion models: add noise, learn to reverse it" data-section="Neural samplers">
-  <div class="kicker method">Neural samplers · what made diffusion models work</div>
-  <h2>Diffusion models: add noise, learn to reverse it</h2>
-  <canvas class="abs" style="left:100px;top:180px" width="760" height="800" data-anim="diffusionPrimer"></canvas>
+<section class="slide" data-title="Learning generative models from non-equilibrium transport" data-section="Neural samplers">
+  <div class="kicker method">Neural samplers · diffusion models</div>
+  <h2>Learning generative models from non-equilibrium transport</h2>
+  <canvas class="abs" style="left:100px;top:180px" width="760" height="800" data-anim="diffusionPrimer" data-opts='{"noiseStep":1,"genStep":2}'></canvas>
   <div class="abs" style="left:900px;top:195px;width:910px">
     <div class="small" style="margin-bottom:12px;color:var(--ink)">The generative models behind a decade of breakthroughs:</div>
     <div class="succ-grid">
@@ -169,358 +211,366 @@
     </div>
     <div data-f="1" style="margin-top:30px">
       <div class="small" style="color:var(--ink);margin-bottom:10px">Two processes through the same marginals $p_t$:</div>
-      <div class="eqbox eq" style="font-size:25px">$\begin{aligned}\Pf\ \text{(forward, generation, }0\to N)&:\quad \mathrm dX_t=\mu^+_t(X_t)\,\mathrm dt+\sigma_t\,\mathrm dW_t\\[4pt] \Pb\ \text{(backward, noising, }N\to 0)&:\quad \mathrm dX_t=\mu^-_t(X_t)\,\mathrm dt+\sigma_t\,\mathrm d\overleftarrow{W}_t\end{aligned}$</div>
-      <div class="small" data-f="2" style="color:var(--ink);margin-top:12px">Time reversal ties the drifts: $\mu^+_t=\mu^-_t+\sigma_t^2\,\nabla\log p_t$. The noising drift is chosen; the only unknown is the <b>score</b>.</div>
+      <div class="eq sde2" style="font-size:25px">
+        <div class="b"><span>$\Pb\ \text{(backward, noising, }N\to 0):$</span><span>$\mathrm dX_t=\mu^-_t(X_t)\,\mathrm dt+\sigma_t\,\mathrm d\overleftarrow{W}_t$</span></div>
+        <div class="f" data-f="2"><span>$\Pf\ \text{(forward, generation, }0\to N):$</span><span>$\mathrm dX_t=\mu^+_t(X_t)\,\mathrm dt+\sigma_t\,\mathrm dW_t$</span></div>
+      </div>
+      <div class="small" data-f="3" style="color:var(--ink);margin-top:14px">Time reversal: $\textcolor{#1F7A6F}{\mu^+_t}=\textcolor{#4C72B0}{\mu^-_t}+\sigma_t^2\,\nabla\log p_t$. The only unknown is the <b>score</b>.</div>
     </div>
   </div>
-  <div class="takeaway" data-f="3" style="left:900px">Learning a diffusion model = learning the <b>score</b> $\nabla\log p_t$ at every noise level.</div>
-  <div class="cite">Sohl-Dickstein et al. 2015 · Ho et al. 2020 · Song et al. 2021 · Nelson 1967, Anderson 1982 (time reversal) · left: exact score of a 7-mode mixture</div>
+  <div class="takeaway" data-f="4" style="left:900px">Learning a diffusion model = learning the <b>score</b> $\nabla\log p_t$ at every noise level.</div>
+  <div class="cite">Sohl-Dickstein et al. 2015 · Ho et al. 2020 · Song et al. 2021 · Nelson 1967 · Anderson 1982</div>
 </section>
 
-<section class="slide" data-title="With data: denoising score matching" data-section="Neural samplers">
+<section class="slide" data-title="Learning from data: denoising score matching" data-section="Neural samplers">
   <div class="kicker method">Neural samplers · scores from data</div>
-  <h2>With data: denoising score matching</h2>
+  <h2>Learning from data: denoising score matching</h2>
   <canvas class="abs" style="left:100px;top:180px" width="760" height="760" data-anim="dsmDemo"></canvas>
   <div class="abs body" style="left:910px;top:192px;width:900px">
-    <div class="small" style="color:var(--ink);margin-bottom:10px">Noise a data point with the backward kernel:</div>
-    <div class="eqbox eq" style="font-size:26px">$X_t\sim\Pb(\cdot\mid X_N)=\mathcal N\big(\alpha_tX_N,\ s_t^2I\big),\qquad X_N\sim\pi\ \ (\text{data})$</div>
-    <div class="small" style="color:var(--ink);margin:18px 0 8px">Bayes' rule over the clean point gives the noised score:</div>
-    <div class="eqbox eq" style="font-size:23px;white-space:nowrap">$\nabla\log p_t(x_t)=\mathbb E_{\pi(x_N\mid x_t)}\big[\nabla_{x_t}\log\Pb(x_t\mid X_N)\big]=\mathbb E\Big[-\dfrac{X_t-\alpha_tX_N}{s_t^2}\,\Big|\,X_t=x_t\Big]$</div>
-    <div class="tiny" style="margin-top:10px">denoising score identity: the noised score is the posterior-averaged <b>kernel score</b>; one clean sample gives an unbiased label</div>
-    <div class="small" style="color:var(--ink);margin:18px 0 8px">Regress the score network onto that label, the direction back to the clean point:</div>
-    <div class="eqbox eq" style="font-size:25px">$\mathcal L_{\rm DSM}(\theta)=\displaystyle\int_0^1\!\lambda_t\;\mathbb E\,\Big\|\,s_\theta(X_t,t)+\frac{X_t-\alpha_tX_N}{s_t^2}\Big\|^2\dd t$</div>
-    <div data-f="1" style="margin-top:20px;font-size:26px">The minimizer is the conditional expectation of the label: <b>the score</b> $\nabla\log p_t$. Plain regression, so it scales.</div>
-    <div data-f="2" style="margin-top:14px;font-size:26px;color:#B4492F;font-weight:600">But every label needs a clean sample $X_N\sim\pi$: exactly what we lack for a Boltzmann distribution.</div>
+    <div class="small" style="color:var(--ink);margin-bottom:10px">Noise a data point $X_N\sim\pi$:</div>
+    <div class="eqbox eq" style="font-size:25px;white-space:nowrap">$X_t\sim\Pb(\cdot\mid X_N)=\mathcal N\big(\alpha_tX_N,\ s_t^2I\big)\quad\Longleftrightarrow\quad X_t=\alpha_tX_N+s_t\,\varepsilon$</div>
+    <div data-f="1">
+      <div class="small" style="color:var(--ink);margin:18px 0 8px">The <b>denoising score identity</b> gives the noised score:</div>
+      <div class="eqbox eq" style="font-size:23px;white-space:nowrap">$\nabla\log p_t(x_t)=\mathbb E_{\pi(x_N\mid x_t)}\big[\nabla_{x_t}\log\Pb(x_t\mid X_N)\big]=\mathbb E\Big[-\dfrac{X_t-\alpha_tX_N}{s_t^2}\,\Big|\,X_t=x_t\Big]$</div>
+    </div>
+    <div data-f="2">
+      <div class="small" style="color:var(--ink);margin:18px 0 8px">Regress the network onto that label:</div>
+      <div class="eqbox eq" style="font-size:25px">$\mathcal L_{\rm DSM}(\theta)=\displaystyle\sum_t\lambda_t\;\mathbb E\,\Big\|\,s_\theta(X_t,t)+\frac{X_t-\alpha_tX_N}{s_t^2}\Big\|^2$</div>
+    </div>
+    <div data-f="3" style="margin-top:20px;font-size:26px">Minimizer = <b>the score</b> $\nabla\log p_t$. Plain regression, so it scales.</div>
+    <div data-f="4" style="margin-top:14px;font-size:26px;color:#B4492F;font-weight:600">But it needs clean samples $X_N\sim\pi$: exactly what we lack.</div>
   </div>
-  <div class="cite">Hyvärinen 2005 · Vincent 2011 (denoising score identity) · Ho et al. 2020 · Song et al. 2021 · left: exact score of the noised mixture ($\alpha_t=1$)</div>
-</section>
-
-<!-- =============================================================== 9. TSI -->
-<section class="slide" data-title="Without data: target score matching" data-section="Neural samplers">
-  <div class="kicker method">Neural samplers · scores from energy</div>
-  <h2>Without data: target score matching</h2>
-  <div class="abs body" style="left:110px;top:200px;width:860px">
-    <div class="small" style="color:var(--ink);margin-bottom:10px">Same noising kernel; integrate by parts to move the gradient onto the target:</div>
-    <div class="eqbox eq" style="font-size:26px">$\nabla\log p_t(x_t)=\dfrac{1}{\alpha_t}\,\mathbb E_{\pi(x_N\mid x_t)}\big[\nabla\log\tilde\pi(X_N)\big]=\dfrac{1}{\alpha_t}\,\mathbb E\big[\beta\mathbf F(X_N)\,\big|\,X_t=x_t\big]$</div>
-    <div class="tiny" style="margin-top:10px">the noised score is the posterior-averaged <b>force</b>; $Z$ never appears</div>
-    <div class="eqbox eq" style="font-size:26px;margin-top:24px">$\mathcal L_{\rm TSM}(\theta)=\displaystyle\int_0^1\!\lambda_t\;\mathbb E\,\Big\|\,s_\theta(X_t,t)-\frac{1}{\alpha_t}\,\beta\mathbf F(X_N)\Big\|^2\dd t$</div>
-    <div data-f="1" style="margin-top:26px"><span class="pill coral" style="font-size:21px">①</span> <b>data → forces</b>: physics enters through $\mathbf F=-\nabla U$, one force call per sample.</div>
-    <div data-f="2" style="margin-top:18px"><span class="pill coral" style="font-size:21px">②</span> but the expectation is still over $X_N\sim\pi$, the very thing we want to learn.</div>
-    <div data-f="3" style="margin-top:22px;color:#D9741F;font-weight:650">The identity changes the <b>representation</b>, from data samples to the target score (forces), but on its own it does not give us a <b>learning algorithm</b>.</div>
-  </div>
-  <canvas class="abs" style="left:1000px;top:190px" width="820" height="660" data-anim="tsiDemo"></canvas>
-  <div class="cite">De Bortoli et al. 2024 (target score matching) · Blessing et al., ICML 2026</div>
+  <div class="takeaway blue" data-f="5" style="left:910px;padding:18px 24px;font-size:24.5px;white-space:nowrap">Learning from data = <b>forward KL</b> $\mathrm{KL}\big(\Pb\,\big\|\,\Pf_\theta\big)$: an expectation over <b>data</b>.</div>
+  <div class="cite">Hyvärinen 2005 · Vincent 2011 · Ho et al. 2020 · Song et al. 2021</div>
 </section>
 
 <section class="slide" data-title="How do we train it? How the field got here" data-section="Neural samplers">
   <div class="kicker method">Neural samplers · how do we train it without data?</div>
   <h2>How do we train it? How the field got here</h2>
-  <canvas class="abs" style="left:40px;top:168px" width="1840" height="380" data-anim="litTimeline"></canvas>
+  <canvas class="abs" style="left:40px;top:168px" width="1840" height="380" data-anim="litTimeline" data-opts='{"upto":3,"emph":[null,[1],[2]]}'></canvas>
   <div class="abs" style="left:110px;top:550px;width:1700px;display:grid;grid-template-columns:0.8fr 1fr 1fr 1fr;gap:18px">
     <div class="card" style="padding:16px 20px;border-top:5px solid #8A96A3" data-f="1">
       <div style="font-size:20px;color:#5D6B78;font-weight:700">2018 · Boltzmann generators</div>
-      <div class="small" style="font-size:18px;margin-top:8px">A <b>normalizing flow</b>: exact likelihood $p_\theta(x)$, so reweighting to $\pi$ is exact.</div>
-      <div class="small" style="font-size:18px;margin-top:8px">But invertible layers limit <b>expressiveness</b>, and it is hard to <b>scale</b> to large, flexible systems.</div>
+      <div class="small" style="font-size:20px;margin-top:8px">A <b>normalizing flow</b>: exact likelihood, exact reweighting.</div>
+      <div class="small" style="font-size:20px;margin-top:8px">But invertible layers limit <b>expressiveness</b> and <b>scale</b>.</div>
     </div>
     <div class="card" style="padding:16px 20px;border-top:5px solid var(--coral)" data-f="2">
       <div style="font-size:20px;color:var(--coral);font-weight:700">2022–24 · a divergence on whole paths</div>
       <div class="eq" style="font-size:18px;margin:10px 0 2px">$\mathrm{KL}\big(\Pf_\theta\,\big\|\,\Pb\big)=\mathbb E_{\textcolor{#E76F51}{X_{0:N}\sim\Pf_\theta}}\Big[\log\dfrac{\mathrm d\Pf_\theta}{\mathrm d\Pb}(X_{0:N})\Big]$</div>
       <div class="eq" style="font-size:18px;margin:0 0 8px">$\text{or}\ \ \mathrm{Var}_{X_{0:N}\sim\mathbb Q}\Big[\log\dfrac{\mathrm d\Pb}{\mathrm d\Pf_\theta}(X_{0:N})\Big]$</div>
-      <div class="small" style="font-size:18px">The reverse KL is evaluated on <b style="color:#E76F51">paths sampled from the model itself</b>; the log ratio is the <b>path weight</b> (coming up). But: backprop through the solver, no reuse of energy calls, mode collapse.</div>
-    </div>
-    <div class="card" style="padding:16px 20px;border-top:5px solid #C2870A" data-f="3">
-      <div style="font-size:20px;color:#A87406;font-weight:700">2024 · PDDS → iDEM: the right idea</div>
-      <div class="small" style="font-size:18px;margin-top:8px">Regress the score on the model's <b>own samples</b>; iDEM adds the replay buffer. Each step closer to the final loop.</div>
-      <div class="small" style="font-size:18px;margin-top:8px">But the debiasing sits <b>inside the label</b>: SMC weights (PDDS), an importance-sampled score $\nabla\log\frac1K\sum_k e^{-\beta U(x+s_t\varepsilon_k)}$ (iDEM). <b style="color:#B4492F">High variance → fails at scale.</b></div>
-    </div>
-    <div class="card" style="padding:16px 20px;border-top:5px solid var(--teal)" data-f="4">
-      <div style="font-size:20px;color:var(--teal-dark);font-weight:700">2025–26 · fixed-point matching</div>
-      <div class="small" style="font-size:18px;margin-top:8px">Same loop, but the label is <b>one force</b> $\beta\mathbf F(X_N)$ at the model's own endpoint: no weights inside the regression, simulation-free, replay buffer.</div>
-      <div class="small" style="font-size:18px;margin-top:8px">Regression shapes each mode; it does not fix the <b>mode weights</b>.</div>
+      <div class="small" style="font-size:20px">On <b style="color:#E76F51">the model's own paths</b>; the log ratio is the <b>path weight</b>.</div>
+      <div class="small" style="font-size:20px;margin-top:8px">But: backprop through the solver, no reuse of energy calls, mode collapse.</div>
     </div>
   </div>
-  <div class="takeaway violet" data-f="5" style="bottom:112px">ATLAS · JANUS = fixed-point matching <b>+</b> the 2022–24 path-weight loss, back as a <b>regularizer</b> for the mode weights.</div>
-  <div class="cite">Noé et al. 2018 (Boltzmann generators) · Zhang &amp; Chen 2022 (PIS) · Vargas et al. 2023 (DDS) · Berner et al. 2024 (DIS) · Richter &amp; Berner 2024 (log-variance) · Vargas et al. 2024 (CMCD) · Phillips et al. 2024 (PDDS) · Akhound-Sadegh et al. 2024 (iDEM) · He*, <b class="me">Du</b>* et al. 2025 (No trick, no treat) · Havens et al. 2025 (Adjoint Sampling) · Liu et al. 2025 (ASBS) · Blessing et al. 2026 (Bridge Matching Sampler) · Havens et al. 2026 (Flow Sampling)</div>
+  <div class="takeaway coral" data-f="3" style="bottom:112px">Without data: in some sense the <b>reverse KL</b>, an expectation over <b style="color:#E76F51">the model's own samples</b>.</div>
+  <div class="cite">Noé et al. 2018 · Zhang &amp; Chen 2022 · Vargas et al. 2023 · Berner et al. 2024 · Richter &amp; Berner 2024 · Vargas et al. 2024</div>
 </section>
 
-<!-- =============================================================== 10. FIXED-POINT LOOP -->
+<section class="slide" data-title="Learning from the target density: target score matching" data-section="Neural samplers">
+  <div class="kicker method">Neural samplers · scores from the target density</div>
+  <h2>Learning from the target density: target score matching</h2>
+  <div class="abs body" style="left:110px;top:200px;width:860px">
+    <div class="small" style="color:var(--ink);margin-bottom:8px"><b>DSI</b> · learning from data: label = <b style="color:#B4492F">denoising score</b></div>
+    <div class="eqbox eq" style="font-size:23px;white-space:nowrap">$\nabla\log p_t(x_t)=\mathbb E_{\pi(x_N\mid x_t)}\big[{\color{#B4492F}\nabla_{x_t}\log\Pb(x_t\mid X_N)}\big]=\mathbb E_{\pi(x_N\mid x_t)}\Big[{\color{#B4492F}-\dfrac{X_t-\alpha_tX_N}{s_t^2}}\Big]$</div>
+    <div data-f="1">
+      <div class="small" style="color:var(--ink);margin:22px 0 8px"><b>TSI</b> · learning from the target density: label = <b style="color:#1F7A6F">force</b></div>
+      <div class="eqbox eq" style="font-size:23px;white-space:nowrap">$\nabla\log p_t(x_t)=\mathbb E_{\pi(x_N\mid x_t)}\Big[{\color{#1F7A6F}\dfrac{1}{\alpha_t}\nabla\log\pi(X_N)}\Big]=\mathbb E_{\pi(x_N\mid x_t)}\Big[{\color{#1F7A6F}\dfrac{\beta\mathbf F(X_N)}{\alpha_t}}\Big]$</div>
+    </div>
+    <div class="eqbox eq" data-f="2" style="font-size:26px;margin-top:22px">$\mathcal L_{\rm TSM}(\theta)=\displaystyle\sum_t\lambda_t\;\mathbb E\,\Big\|\,s_\theta(X_t,t)-{\color{#1F7A6F}\frac{\beta\mathbf F(X_N)}{\alpha_t}}\Big\|^2$</div>
+    <div data-f="3" style="margin-top:20px;padding:10px 20px 12px;border-radius:14px;background:rgba(42,157,143,.10);border-left:6px solid var(--teal)">Same for <b style="color:var(--teal-dark)">stochastic interpolants</b>: <span style="white-space:nowrap">$X_t=\alpha_tX_N+\beta_tX_0+\gamma_t\,\varepsilon$</span></div>
+    <div data-f="4" style="margin-top:20px"><span class="pill coral" style="font-size:21px">①</span> <b>label: denoising score → force</b>, one force call per sample.</div>
+    <div data-f="5" style="margin-top:14px"><span class="pill coral" style="font-size:21px">②</span> but the expectation is still over $X_N\sim\pi$: it still needs samples.</div>
+    <div data-f="6" style="margin-top:18px;color:#D9741F;font-weight:650">The target density supplies the <b>label</b>, not the <b>samples</b>: not yet a <b>learning algorithm</b>.</div>
+  </div>
+  <canvas class="abs" style="left:1000px;top:190px" width="820" height="660" data-anim="tsiDemo"></canvas>
+  <div class="cite">De Bortoli et al. 2024 · Blessing et al., ICML 2026</div>
+</section>
+
+<section class="slide" data-title="How the field got here: PDDS and iDEM to fixed-point matching" data-section="Neural samplers">
+  <div class="kicker method">Neural samplers · how do we train it without data?</div>
+  <h2>How do we train it? How the field got here</h2>
+  <canvas class="abs" style="left:40px;top:168px" width="1840" height="380" data-anim="litTimeline" data-opts='{"from":3,"emph":[null,[3],[4],[5]]}'></canvas>
+  <div class="abs" style="left:110px;top:550px;width:1700px;display:grid;grid-template-columns:0.8fr 1fr 1fr 1fr;gap:18px">
+    <div class="card" style="padding:16px 20px;border-top:5px solid #8A96A3">
+      <div style="font-size:20px;color:#5D6B78;font-weight:700">2018 · Boltzmann generators</div>
+      <div class="small" style="font-size:20px;margin-top:8px">A <b>normalizing flow</b>: exact likelihood, exact reweighting.</div>
+      <div class="small" style="font-size:20px;margin-top:8px">But invertible layers limit <b>expressiveness</b> and <b>scale</b>.</div>
+    </div>
+    <div class="card" style="padding:16px 20px;border-top:5px solid var(--coral)">
+      <div style="font-size:20px;color:var(--coral);font-weight:700">2022–24 · a divergence on whole paths</div>
+      <div class="eq" style="font-size:18px;margin:10px 0 2px">$\mathrm{KL}\big(\Pf_\theta\,\big\|\,\Pb\big)=\mathbb E_{\textcolor{#E76F51}{X_{0:N}\sim\Pf_\theta}}\Big[\log\dfrac{\mathrm d\Pf_\theta}{\mathrm d\Pb}(X_{0:N})\Big]$</div>
+      <div class="eq" style="font-size:18px;margin:0 0 8px">$\text{or}\ \ \mathrm{Var}_{X_{0:N}\sim\mathbb Q}\Big[\log\dfrac{\mathrm d\Pb}{\mathrm d\Pf_\theta}(X_{0:N})\Big]$</div>
+      <div class="small" style="font-size:20px">On <b style="color:#E76F51">the model's own paths</b>; the log ratio is the <b>path weight</b>.</div>
+      <div class="small" style="font-size:20px;margin-top:8px">But: backprop through the solver, no reuse of energy calls, mode collapse.</div>
+    </div>
+    <div class="card" style="padding:16px 20px;border-top:5px solid #C2870A" data-f="1">
+      <div style="font-size:20px;color:#A87406;font-weight:700">2024 · PDDS → iDEM: the right idea</div>
+      <div class="small" style="font-size:20px;margin-top:8px">Regress the score on the model's <b>own samples</b>; iDEM adds a replay buffer.</div>
+      <div class="small" style="font-size:20px;margin-top:8px">But importance weights sit <b>inside the label</b>. <b style="color:#B4492F">High variance → fails at scale.</b></div>
+    </div>
+    <div class="card" style="padding:16px 20px;border-top:5px solid var(--teal)" data-f="2">
+      <div style="font-size:20px;color:var(--teal-dark);font-weight:700">2025–26 · fixed-point matching</div>
+      <div class="small" style="font-size:20px;margin-top:8px">The label is <b>one force</b> $\beta\mathbf F(X_N)$ at the model's own endpoint: no weights inside the regression.</div>
+      <div class="small" style="font-size:20px;margin-top:8px">But regression does not fix the <b>mode weights</b>.</div>
+    </div>
+  </div>
+  <div class="takeaway violet" data-f="3" style="bottom:112px">ATLAS · JANUS = fixed-point matching <b>+</b> the path-weight loss as a <b>regularizer</b> for the mode weights.</div>
+  <div class="cite">Noé et al. 2018 · Zhang &amp; Chen 2022 · Vargas et al. 2023 · Berner et al. 2024 · Richter &amp; Berner 2024 · Vargas et al. 2024 · Phillips et al. 2024 · Akhound-Sadegh et al. 2024 · He*, <b class="me">Du</b>* et al. 2025 · Havens et al. 2025 · Liu et al. 2025 · Blessing et al. 2026 · Havens et al. 2026</div>
+</section>
+
 <section class="slide" data-title="Fixed-point training loop" data-section="Neural samplers">
   <div class="kicker method">Neural samplers · no data at all</div>
   <h2>Fixed-point training: the model proposes, the physics corrects</h2>
   <div class="abs" style="left:110px;top:178px;width:1700px;text-align:center">
-    <div class="eqbox eq" style="font-size:25px">$s^{(k+1)}=\arg\min_s\displaystyle\int_0^1\!\lambda_t\;\mathbb E_{X_{0:N}\sim\Pf_{s^{(k)}}}\Big[\textcolor{#E76F51}{\bar w}\;\Big\|\,s(X'_t,t)-\frac{1}{\alpha_t}\beta\mathbf F(X_N)\Big\|^2\Big]\dd t,\qquad X'_t=\alpha_tX_N+s_t\varepsilon$</div>
-    <div style="margin-top:6px;font-size:19px;color:#E76F51;font-weight:650">$\bar w$: the self-normalized <b>path weight</b>, discussed in the next slides</div>
+    <div class="eqbox eq" style="font-size:25px">$s^{(k+1)}=\arg\min_s\displaystyle\sum_t\lambda_t\;\mathbb E_{X_{0:N}\sim\Pf_{s^{(k)}}}\Big[\textcolor{#E76F51}{\bar w^{\lambda_k}}\;\Big\|\,s(X'_t,t)-\frac{1}{\alpha_t}\beta\mathbf F(X_N)\Big\|^2\Big],\qquad X'_t=\alpha_tX_N+s_t\varepsilon$</div>
+    <div style="margin-top:6px;font-size:19px;color:#E76F51;font-weight:650">$\bar w$: the self-normalized <b>path weight</b> (next slides) &nbsp;·&nbsp; $\lambda_k\in[0,1]$: <b>annealing schedule</b></div>
   </div>
   <canvas class="abs" style="left:110px;top:322px;transform:scale(0.9);transform-origin:0 0" width="960" height="620" data-anim="fpLoop" data-opts='{"part":"loop"}'></canvas>
-  <div class="abs body" style="left:1030px;top:330px;width:780px">
-    <div class="lead b" style="font-size:28px;color:var(--navy)">Where the cost goes</div>
-    <div class="small" style="margin-top:14px;color:var(--ink)"><b>① Generate</b>: <b style="color:var(--coral)">expensive</b>, a full rollout of the model</div>
-    <div class="small" style="margin-top:8px;color:var(--ink)"><b>② Label</b>: <b style="color:var(--coral)">expensive</b>, one force call per sample, the only oracle calls</div>
-    <div class="small" style="margin-top:8px;color:var(--ink)"><b>③ Interpolate</b>: <b style="color:var(--teal-dark)">cheap</b>, fresh noise, no oracle</div>
-    <div class="small" style="margin-top:8px;color:var(--ink)"><b>④ Regress</b>: <b style="color:var(--teal-dark)">cheap</b>, plain regression</div>
-    <div class="small" data-f="1" style="margin-top:22px;color:var(--ink)"><b>Why a buffer:</b> pay ① and ② once per sample, then reuse every buffered sample for many cheap rounds of ③ and ④.</div>
+  <div class="abs body" style="left:1040px;top:372px;width:770px">
+    <div data-f="1" style="padding:18px 26px;border-radius:16px;background:rgba(231,111,81,.09);border-left:6px solid var(--coral)"><b style="color:#B4492F">Expensive, once per sample</b><div class="small" style="color:var(--ink);margin-top:6px">① generate: a full rollout &nbsp;·&nbsp; ② label: one force call</div></div>
+    <div data-f="2" style="margin-top:26px;padding:18px 26px;border-radius:16px;background:rgba(42,157,143,.09);border-left:6px solid var(--teal)"><b style="color:var(--teal-dark)">Cheap, repeated</b><div class="small" style="color:var(--ink);margin-top:6px">③ interpolate: fresh noise &nbsp;·&nbsp; ④ regress</div></div>
   </div>
-  <div class="takeaway" data-f="2">The buffer turns two expensive steps into a one-off cost per sample; training is cheap regression.</div>
-  <div class="cite">Blessing et al., ICML 2026 (Bridge Matching Sampler) · Havens et al. 2025 (Adjoint Sampling)</div>
+  <div class="takeaway" data-f="3">Expensive steps get repeated use; interpolant training is cheap.</div>
+  <div class="cite">Blessing et al., ICML 2026 · Havens et al. 2025</div>
 </section>
 
-<section class="slide" data-title="Fixed-point training on a toy" data-section="Neural samplers">
+<section class="slide" data-title="Fixed-point training on a toy" data-section="Neural samplers" data-optional>
   <div class="kicker method">Neural samplers · no data at all</div>
   <h2>Forces find the modes; path weights fix their weights</h2>
-  <canvas class="abs" style="left:110px;top:180px" width="840" height="660" data-anim="ballDrop"></canvas>
+  <canvas class="abs" style="left:110px;top:186px" width="1700" height="640" data-anim="modeWeightFig"></canvas>
   <div data-f="1"></div>
-  <canvas class="abs fade" data-f="2" style="left:995px;top:180px;transform:scale(0.84);transform-origin:0 0" width="960" height="680" data-anim="fpLoop" data-opts='{"part":"live"}'></canvas>
-  <div class="abs small fade" data-f="2" style="left:995px;top:762px;width:810px;color:var(--ink)">A real run of the loop on a 1D toy: the path-weighted buffer lands on the right weights within a few rounds.</div>
-  <div class="takeaway" data-f="3">$\pi$ is a fixed point; the <b>path weight</b> $\textcolor{#E76F51}{\bar w}$ fixes the mode weights. Next: where it comes from.</div>
-  <div class="cite">left: schematic three-well landscape · right: real run of the fixed-point rule on a 1D toy (force labels, path-weighted buffer) · Blessing et al., ICML 2026</div>
+  <div class="takeaway" data-f="2">$\pi$ is a fixed point; the <b>path weight</b> $\textcolor{#E76F51}{\bar w}$ fixes the mode weights. Next: where that weight comes from.</div>
+  <div class="cite">Blessing et al., ICML 2026</div>
 </section>
 
-<!-- =============================================================== 11. PATH WEIGHTS -->
-<section class="slide" data-title="Path weights: time reversal is Bayes' rule in time" data-section="Neural samplers">
-  <div class="kicker method">Neural samplers · path weights</div>
-  <h2>Path weights: time reversal is Bayes' rule in time</h2>
-  <div class="abs" style="left:110px;top:182px;width:1700px;display:flex;gap:26px;align-items:center">
-    <div class="eqbox eq" style="font-size:25px">$p_t(X_t)\,\Pf(X_{t+1}\mid X_t)=p_{t+1}(X_{t+1})\,\Pb(X_t\mid X_{t+1})$</div>
-    <div style="font-size:34px;color:var(--ink-soft)">⟹</div>
-    <div class="eqbox eq" style="font-size:25px">$\dfrac{p_N(X_N)}{p_0(X_0)}=\dfrac{\prod_t\Pf(X_{t+1}\mid X_t)}{\prod_t\Pb(X_t\mid X_{t+1})}$</div>
-    <div class="small" style="color:var(--ink);width:430px">intractable marginals = a ratio of <b>tractable kernels</b>: one network call per step, no Jacobians</div>
+<section class="slide" data-title="Reweighting with flows: pros and cons" data-section="Neural samplers" data-optional>
+  <div class="kicker method">Neural samplers · reweighting</div>
+  <h2>Reweighting with flows: pros and cons</h2>
+  <div class="abs rw-is" style="left:110px;top:178px;width:1700px">
+    <div class="eqbox eq" style="font-size:27px">$x\sim p_\theta,\qquad w=\dfrac{\tilde\pi(x)}{p_\theta(x)}\qquad\Longrightarrow\qquad Z=\mathbb E_{p_\theta}[w],\qquad \mathbb E_\pi[f]=\mathbb E_{p_\theta}[f\,w]\,/\,\mathbb E_{p_\theta}[w]$</div>
+    <div class="rw-need"><b>Likelihood $p_\theta(x)$</b>: a convenient choice<br>for inference and estimation</div>
   </div>
-  <canvas class="abs" style="left:110px;top:312px" width="1700" height="560" data-anim="pathKernel"></canvas>
-  <div class="takeaway" data-f="1" style="bottom:62px">Path weight $\;w(X_{0:N})=\dfrac{\tilde\pi(X_N)\prod_t\Pb(X_t\mid X_{t+1})}{p_0(X_0)\prod_t\Pf(X_{t+1}\mid X_t)}\;$ computable for <b>any</b> model; $W=-\log w$ is the work.</div>
-  <div class="cite">He, Hernández-Lobato, <b class="me">Du</b>†, Vargas†, ICLR 2026 (RNE) · Crooks 1999 · right: a real path of the toy sampler with its kernels</div>
+  <canvas class="abs" style="left:110px;top:296px" width="1700" height="312" data-anim="reweightFlows" data-opts='{"map":[0,1,1,2,2,3,3,4],"strip":false}'></canvas>
+  <div class="abs rw-cols" style="left:110px;top:624px;width:1700px">
+    <div data-f="1">
+      <div class="eqbox eq rw-eq">$\log p_\theta(x)=\log p_0(z)-\log\big|\det\partial_z f_\theta(z)\big|$</div>
+      <div class="rw-pc"><div class="pro"><b>Pro:</b> exact likelihood in one pass.</div><div class="con" data-f="2"><b>Con:</b> invertible layers, a Jacobian determinant.</div></div>
+    </div>
+    <div data-f="3">
+      <div class="eqbox eq rw-eq">$\log p_\theta(X_N)=\log p_0(X_0)-\displaystyle\int_0^N\!\nabla\!\cdot v_\theta(X_t,t)\,\dd t$</div>
+      <div class="rw-pc"><div class="pro"><b>Pro:</b> any network.</div><div class="con" data-f="4"><b>Con:</b> a divergence at every step.</div></div>
+    </div>
+    <div data-f="5">
+      <div class="eqbox eq rw-eq">$p_\theta(X_N)=\displaystyle\int p_0(x_0)\prod_t\Pf(x_{t+1}\mid x_t)\,\dd x_{0:N-1}$</div>
+      <div class="rw-pc"><div class="pro"><b>Pro:</b> any network; Gaussian steps.</div><div class="con" data-f="6"><b>Con:</b> the likelihood is an integral over all paths.</div></div>
+    </div>
+  </div>
+  <div class="takeaway" data-f="7">With noise, the likelihood is expensive to calculate, but the <b>path weight</b> is the key quantity for estimation and inference.</div>
+  <div class="cite">Jarzynski 2002 · Rezende &amp; Mohamed 2015 · Chen et al. 2018 · Grathwohl et al. 2019 · Noé et al. 2019 · Albergo et al. 2019 · Gabrié et al. 2022</div>
 </section>
 
-<section class="slide" data-title="One derivation, every estimator" data-section="Neural samplers">
+<section class="slide" data-title="Path weights: trajectory balance generalizes Bayes' rule" data-section="Neural samplers">
   <div class="kicker method">Neural samplers · path weights</div>
-  <h2>One derivation, every estimator</h2>
-  <div class="abs drv drv-shrink" style="left:110px;top:180px;width:1080px;gap:18px">
-    <div class="drv-row"><div style="width:42px;flex:none"></div><div class="drv-l" style="color:var(--ink)">what we want: an integral against <span style="white-space:nowrap">$\tilde\pi=e^{-\beta U}$</span></div><div class="eqbox eq drv-eq">$I[g]=\displaystyle\int g(x_N)\,\textcolor{#E76F51}{\tilde\pi(x_N)}\,\dd x_N$</div></div>
-    <div class="drv-row" data-f="1"><div class="drv-n">1</div><div class="drv-l">insert the <b style="color:#4C72B0">backward kernels</b>; they integrate to one</div><div class="eqbox eq drv-eq">$=\displaystyle\int g(x_N)\,\textcolor{#E76F51}{\tilde\pi(x_N)}\,\textcolor{#4C72B0}{\prod_t\Pb(x_t\mid x_{t+1})}\;\dd x_{0:N}$</div></div>
-    <div class="drv-row" data-f="2"><div class="drv-n">2</div><div class="drv-l">multiply and divide by the <b style="color:#1F7A6F">forward path density</b></div><div class="eqbox eq drv-eq">$=\displaystyle\int g(x_N)\,\underbrace{\frac{\textcolor{#E76F51}{\tilde\pi(x_N)}\,\textcolor{#4C72B0}{\prod_t\Pb}}{\textcolor{#1F7A6F}{p_0(x_0)\prod_t\Pf}}}_{w(x_{0:N})}\;\textcolor{#1F7A6F}{p_0(x_0)\prod_t\Pf}\;\dd x_{0:N}$</div></div>
-    <div class="drv-row" data-f="3"><div class="drv-n">3</div><div class="drv-l">read it as an average over <b style="color:var(--ink)">generated paths</b><div class="drv-sub">exact for <b>any</b> model with full support</div></div><div class="eqbox eq drv-eq">$=\mathbb E_{\Pf}\big[\,g(X_N)\,w(X_{0:N})\,\big]$</div></div>
+  <h2>Path weights: trajectory balance generalizes Bayes' rule</h2>
+  <div class="abs" style="left:110px;top:170px;width:1700px;display:flex;gap:28px;align-items:flex-end">
+    <div><div class="small" style="color:var(--ink);margin-bottom:6px"><b>Trajectory balance</b></div><div class="eqbox eq" style="font-size:23px;white-space:nowrap">$p_0(X_0)\prod_t\Pf(X_{t+1}\mid X_t)=p_N(X_N)\prod_t\Pb(X_t\mid X_{t+1})$</div></div>
+    <div data-f="1"><div class="small" style="color:var(--ink);margin-bottom:6px">a generalization of <b>Bayes' rule</b>, its one-step case</div><div class="eqbox eq" style="font-size:23px;white-space:nowrap">$p_t(X_t)\,\Pf(X_{t+1}\mid X_t)=p_{t+1}(X_{t+1})\,\Pb(X_t\mid X_{t+1})$</div></div>
+    <div class="small" data-f="2" style="color:var(--ink);flex:1;min-width:0;font-size:21px">intractable marginals = a ratio of <b>tractable kernels</b>: no Jacobian, no divergence</div>
+  </div>
+  <canvas class="abs" style="left:110px;top:312px" width="1700" height="560" data-anim="pathWeightStory" data-opts='{"bayes":false}'></canvas>
+  <div class="takeaway" data-f="3" style="bottom:62px">Path weight $\;w(X_{0:N})=\dfrac{\tilde\pi(X_N)\prod_t\Pb(X_t\mid X_{t+1})}{p_0(X_0)\prod_t\Pf(X_{t+1}\mid X_t)}\;$ for <b>arbitrary kernels</b>. <span class="work-chip">$W=-\log w$ is the physical work</span></div>
+  <div class="cite">Crooks 1999 · Neal 2001 · Del Moral, Doucet &amp; Jasra 2006 · Malkin et al. 2022 · He, Hernández-Lobato, <b class="me">Du</b>†, Vargas†, RNE (ICLR 2026)</div>
+</section>
+
+<section class="slide" data-title="Path weight for inference and estimation" data-section="Neural samplers">
+  <div class="kicker method">Neural samplers · path weights</div>
+  <h2>Path weight for inference and estimation</h2>
+  <div class="abs drv drv-shrink" style="left:110px;top:180px;width:1200px;gap:18px;--drvl:380px">
+    <div class="drv-row"><div style="width:42px;flex:none"></div><div class="drv-l" style="color:var(--ink)">what we want: an average under the target <span style="white-space:nowrap">$\pi\propto e^{-\beta U}$</span></div><div class="eqbox eq drv-eq">$\mathbb E_\pi[f]=\displaystyle\int f(x_N)\,\textcolor{#E76F51}{\pi(x_N)}\,\dd x_N$</div></div>
+    <div class="drv-row" data-f="1"><div class="drv-n">1</div><div class="drv-l">insert the <b style="color:#4C72B0">backward kernels</b>; they integrate to one</div><div class="eqbox eq drv-eq">$=\displaystyle\int f(x_N)\,\textcolor{#E76F51}{\pi(x_N)}\,\textcolor{#4C72B0}{\prod_t\Pb(x_t\mid x_{t+1})}\;\dd x_{0:N}$</div></div>
+    <div class="drv-row" data-f="2"><div class="drv-n">2</div><div class="drv-l">multiply and divide by the <b style="color:#1F7A6F">forward path density</b></div><div class="eqbox eq drv-eq" style="font-size:22px">$=\displaystyle\int f(x_N)\,\underbrace{\frac{\textcolor{#E76F51}{\pi(x_N)}\,\textcolor{#4C72B0}{\prod_t\Pb(x_t\mid x_{t+1})}}{\textcolor{#1F7A6F}{p_0(x_0)\prod_t\Pf(x_{t+1}\mid x_t)}}}_{w(x_{0:N})}\;\textcolor{#1F7A6F}{p_0(x_0)\prod_t\Pf(x_{t+1}\mid x_t)}\;\dd x_{0:N}$</div></div>
+    <div class="drv-row" data-f="3"><div class="drv-n">3</div><div class="drv-l">read it as an average over <b style="color:var(--ink)">generated paths</b><div class="drv-sub">self-normalized importance sampling (<b>SNIS</b>) on path space, for <b>arbitrary</b> kernels with full support</div></div><div class="eqbox eq drv-eq">$=\mathbb E_{\Pf}\big[\,f(X_N)\,w(X_{0:N})\,\big]$</div></div>
   </div>
   <i class="drv-shrink-on" data-f="4" hidden></i>
-  <div class="abs ucol" style="left:880px;top:180px;width:930px">
-    <div class="card ucr" data-f="5"><div class="ucr-g">$g\equiv1$</div><div class="eq ucr-eq">$Z=\mathbb E_{\Pf}[w]$</div><span class="uc-tag">free energy</span></div>
-    <div class="card ucr" data-f="6"><div class="ucr-g">$g=f$</div><div class="eq ucr-eq">$\mathbb E_\pi[f]=\mathbb E_{\Pf}[f\,w]\,/\,\mathbb E_{\Pf}[w]$</div><span class="uc-tag">exact averages</span></div>
-    <div class="card ucr" data-f="7"><div class="ucr-g">$\tilde\pi\to h\,\tilde\pi$</div><div class="eq ucr-eq">$\mathbb E_q[f]=\mathbb E_{\Pf}[f\,h\,w]\,/\,\mathbb E_{\Pf}[h\,w]$</div><span class="uc-tag">steering · next</span></div>
+  <div class="abs ucol" style="left:910px;top:180px;width:900px">
+    <div class="card ucr" data-f="5" style="grid-template-columns:212px 1fr auto"><div class="ucr-g" style="font-size:20px;line-height:1.22">free energy</div><div class="eq ucr-eq">$Z=\mathbb E_{\Pf}[w]=\mathbb E_{\Pf}\big[e^{-W}\big]$</div><span class="uc-tag">estimation · Jarzynski equality</span></div>
+    <div class="card ucr" data-f="6" style="grid-template-columns:212px 1fr auto"><div class="ucr-g" style="font-size:20px;line-height:1.22">self-normalized importance sampling</div><div class="eq ucr-eq">$\mathbb E_\pi[f]=\mathbb E_{\Pf}[f\,w]\,/\,\mathbb E_{\Pf}[w]$</div><span class="uc-tag">estimation</span></div>
+    <div class="card ucr" data-f="7" style="grid-template-columns:212px 1fr auto"><div class="ucr-g" style="font-size:20px;line-height:1.22">tilting, $\pi\to h\,\pi$</div><div class="eq ucr-eq">$\mathbb E_q[f]=\mathbb E_{\Pf}[f\,h\,w]\,/\,\mathbb E_{\Pf}[h\,w]$</div><span class="uc-tag">inference</span></div>
   </div>
-  <canvas class="abs fade" data-f="4" style="left:263px;top:540px;transform:scale(0.82);transform-origin:0 0" width="1700" height="540" data-anim="pathWeights" data-opts='{"startStep":4,"zStep":5,"rwStep":6,"likelihood":true}'></canvas>
-  <div class="abs fade" data-f="4" style="left:283px;top:550px;width:620px">
-    <div style="font-size:17px;font-weight:650;color:var(--ink)">Paths give the model's likelihood: noise $x_N$ back with $\Pb$ and average</div>
-    <div class="eq" style="font-size:19px;margin-top:2px">$p_\theta(x_N)=\mathbb E_{X_{0:N-1}\sim\Pb(\cdot\mid x_N)}\Big[\dfrac{p_0(X_0)\prod_t\Pf(X_{t+1}\mid X_t)}{\prod_t\Pb(X_t\mid X_{t+1})}\Big]$</div>
+  <canvas class="abs fade" data-f="4" style="left:263px;top:540px" width="1394" height="443" data-anim="pathWeightEstimators" data-opts='{"startStep":4,"zStep":5}'></canvas>
+  <div class="abs fade late" data-f="4" data-f-out="5" style="left:283px;top:548px;width:640px">
+    <div style="font-size:20px;font-weight:650;color:var(--ink);white-space:nowrap">The model's likelihood: conditional expectation over paths, ELBO</div>
+    <div class="eq" style="font-size:20px;margin-top:2px">$p_\theta(X_N)=\mathbb E_{\Pb(\cdot\mid X_N)}\Big[\dfrac{p_0(X_0)\prod_t\Pf(X_{t+1}\mid X_t)}{\prod_t\Pb(X_t\mid X_{t+1})}\ \Big|\ X_N\Big]$</div>
   </div>
-  <div class="cite"><b class="me">Du</b>, blog: Pushing Probabilistic ML Out of Equilibrium, Part 5 · Jarzynski 1997 · Neal 2001 (AIS) · <b class="me">Du</b>*, He* et al., NeurIPS 2025 (FEAT) · He, Hernández-Lobato, <b class="me">Du</b>†, Vargas†, ICLR 2026 (RNE)</div>
+  <div class="cite"><b class="me">Du</b>, blog: Pushing Probabilistic ML Out of Equilibrium, Part 5 · Jarzynski 1997 · Neal 2001 · <b class="me">Du</b>*, He* et al., FEAT (NeurIPS 2025) · He, Hernández-Lobato, <b class="me">Du</b>†, Vargas†, RNE (ICLR 2026)</div>
 </section>
 
-<!-- =============================================================== 12. STEERING -->
 <section class="slide" data-title="Steering with path weights" data-section="Neural samplers">
   <div class="kicker method">Neural samplers · steering</div>
   <h2>Steering: sample a tilted target with the same weights</h2>
-  <canvas class="abs fade" style="left:110px;top:205px" width="980" height="620" data-anim="smcSteer" data-f="0" data-f-out="4"></canvas>
-  <canvas class="abs fade" style="left:110px;top:205px" width="980" height="620" data-anim="aptSwap" data-f="4"></canvas>
+  <canvas class="abs fade" style="left:110px;top:205px" width="980" height="620" data-anim="smcSteer" data-f="0" data-f-out="3"></canvas>
+  <canvas class="abs fade" style="left:110px;top:205px" width="980" height="620" data-anim="aptSwap" data-f="3"></canvas>
   <div class="abs" style="left:1140px;top:200px;width:680px">
     <div class="drv" style="gap:22px">
-      <div class="drv-row top"><div class="drv-n">1</div><div><div class="drv-l">tilt the target; same derivation with $\tilde\pi\to h\,\tilde\pi$</div><div class="eqbox eq" style="font-size:26px;margin-top:10px">$q_N\propto h\,\pi,\quad h=e^{\eta r}\quad\Rightarrow\quad\text{weight }h(X_N)\,w$</div></div></div>
-      <div class="drv-row top" data-f="1"><div class="drv-n">2</div><div><div class="drv-l">a sharp $h$ makes one final weight noisy: switch it on along the path, with targets $q_t$</div><div class="eqbox eq" style="font-size:26px;margin-top:10px">$G_t=\dfrac{q_{t+1}(X_{t+1})\,\Qb(X_t\mid X_{t+1})}{q_t(X_t)\,\Qf(X_{t+1}\mid X_t)}$</div><div class="drv-l" style="margin-top:8px">$W_t=-\log G_t$ is the <b>work</b> of one step; $\prod_tG_t$ telescopes to the full path weight.</div></div></div>
+      <div class="drv-row top"><div class="drv-n">1</div><div><div class="drv-l">tilt the target; same derivation with $\pi\to h\,\pi$</div><div class="eqbox eq" style="font-size:26px;margin-top:10px">$\textcolor{#6B5E9B}{q_N}\propto h\,\pi,\quad h=e^{\eta r}\quad\Rightarrow\quad\text{weight }h(X_N)\,w$</div><div class="drv-l" style="font-size:18.5px;margin-top:8px;white-space:nowrap">$h$: property reward · umbrella window $e^{-\beta u(\xi)}$ · new temperature $\pi^{\gamma-1}$</div></div></div>
+      <div class="drv-row top" data-f="1"><div class="drv-n">2</div><div><div class="drv-l">sharp $h$: one final weight is noisy, so switch it on along the path, targets $\textcolor{#6B5E9B}{q_t}$</div><div class="eqbox eq" style="font-size:26px;margin-top:10px">$G_t=\dfrac{\textcolor{#6B5E9B}{q_{t+1}}(X_{t+1})\,\textcolor{#6B5E9B}{\Qb}(X_t\mid X_{t+1})}{\textcolor{#6B5E9B}{q_t}(X_t)\,\textcolor{#6B5E9B}{\Qf}(X_{t+1}\mid X_t)}$</div><div class="drv-l" style="margin-top:8px">$W_t=-\log G_t$ is the <b>work</b> of one step; $\prod_tG_t$ telescopes to the full path weight.</div></div></div>
       <div class="drv-row top" data-f="2"><div class="drv-n">3</div><div><div class="drv-l"><b style="color:var(--ink)">SMC</b> uses the work to <b>reweight</b>: $w\leftarrow w\,e^{-W_t}$; resample when the ESS drops.</div></div></div>
-      <div class="drv-row top" data-f="4"><div class="drv-n">4</div><div><div class="drv-l"><b style="color:var(--ink)">APT</b> uses the work to <b>swap</b>: one replica per level $q_t$; neighbours push through the learned transport and swap with probability $\min\{1,e^{-(W_\uparrow-W_\downarrow)}\}$. Exact samples leave at $q_N$.</div></div></div>
+      <div class="drv-row top" data-f="3"><div class="drv-n">4</div><div><div class="drv-l"><b style="color:var(--ink)">APT</b> (parallel tempering) uses the work to <b>swap</b>: one replica per level $\textcolor{#6B5E9B}{q_t}$; neighbours swap with probability $\min\{1,e^{-(W_\uparrow-W_\downarrow)}\}$.</div></div></div>
     </div>
   </div>
-  <div class="takeaway blue" data-f="5"><b>No retraining</b>: one base sampler reaches any tilted target. SMC uses the work to reweight, APT uses it to swap.</div>
-  <div class="cite">Wu et al. 2023 (twisted SMC) · He, Hernández-Lobato, <b class="me">Du</b>†, Vargas†, ICLR 2026 (RNE) · Zhang, Potaptchik, He, <b class="me">Du</b>, Doucet, Vargas, Dau, Syed 2025 (APT) · He, …, <b class="me">Du</b>, Syed, Vargas, ICLR 2026 (CREPE)</div>
+  <div class="takeaway violet" data-f="4"><b>No retraining</b>: one base sampler reaches any <b style="color:var(--violet)">tilted</b> target.</div>
+  <div class="cite">Wu et al. 2023 · He, Hernández-Lobato, <b class="me">Du</b>†, Vargas†, RNE (ICLR 2026) · Zhang, Potaptchik, He, <b class="me">Du</b>, Doucet, Vargas, Dau, Syed, APT (2025) · He, …, <b class="me">Du</b>, Syed, Vargas, CREPE (ICLR 2026)</div>
 </section>
 
-<!-- =============================================================== 13. ATLAS SECTION -->
 <section class="slide section-slide" data-title="ATLAS" data-section="ATLAS">
   <div class="wash"><i style="left:-200px;top:-200px;width:800px;height:600px;background:#C7E8E2"></i><i style="left:1300px;top:700px;width:760px;height:520px;background:#F3E3C8"></i></div>
   <div class="sec-num teal">Part I</div>
   <h2 class="sec-title">ATLAS</h2>
   <div class="sec-sub">A foundation neural sampler for <b class="teal">amorphous materials</b></div>
-  <div class="sec-paper">Mouyang Cheng*, Denis Blessing*, Botao Yu, Gerhard Neumann, Mingda Li, <b class="me">Carles Domingo-Enrich</b>†, <b class="me">Yuanqi Du</b>†<br><span class="muted">arXiv:2607.19198 (2026)</span></div>
+  <div class="sec-paper">Mouyang Cheng*, Denis Blessing*, Botao Yu, Gerhard Neumann, Mingda Li, Carles Domingo-Enrich†, <b class="me">Yuanqi Du</b>†<br><span class="muted">arXiv:2607.19198 (2026)</span></div>
   <div class="abs figcard" style="left:880px;top:270px;width:960px"><img src="assets/figs/atlas_f1a.webp" alt="ATLAS overview"></div>
 </section>
 
-<!-- =============================================================== 14. AMORPHOUS -->
-<section class="slide" data-title="Amorphous materials: ensemble properties" data-section="ATLAS">
+<section class="slide" data-title="Amorphous materials: ensemble properties" data-section="ATLAS" data-optional>
   <div class="kicker atlas">ATLAS · amorphous materials</div>
   <h2>Amorphous materials: properties come from ensembles</h2>
   <canvas class="abs" style="left:110px;top:205px" width="900" height="600" data-anim="glassVsCrystal"></canvas>
   <div class="abs body" style="left:1090px;top:225px;width:720px">
     <ul class="clean">
-      <li data-f="1"><b>Why they matter</b>: disorder gives tunable mechanical, transport and optical properties.</li>
-      <li data-f="2"><b>Why they are hard</b>: below $T_g$, equilibration needs rare collective rearrangements.</li>
-      <li data-f="3"><b>No data</b>: no database of equilibrated amorphous ensembles.</li>
+      <li data-f="1"><b>Why they matter</b>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin:12px 0 16px"><span class="pill" style="font-size:21px">phone screens</span><span class="pill" style="font-size:21px">optical fibres</span><span class="pill" style="font-size:21px">thin-film solar cells</span><span class="pill" style="font-size:21px">metallic glasses</span><span class="pill" style="font-size:21px">glass-ceramics</span></div>
+        <div class="quote" data-f="2">“The deepest and most interesting unsolved problem in solid state theory is probably the theory of the nature of glass and the glass transition.”<span class="by">P. W. Anderson, 1995</span></div></li>
+      <li data-f="3"><b>Why they are hard</b>: below $T_g$, equilibration needs rare collective rearrangements.</li>
+      <li data-f="4"><b>No data</b>: no database of equilibrated amorphous ensembles.</li>
     </ul>
   </div>
-  <div class="cite">left: real 2D Kob–Andersen snapshot at T = 0.2 (glass) vs an ordered binary crystal</div>
+  <div class="cite">Anderson, Science 267, 1615 (1995)</div>
 </section>
 
-<!-- =============================================================== 15. ATLAS METHOD -->
-<section class="slide" data-title="From diffusion to an interpolant on the periodic cell" data-section="ATLAS">
-  <div class="kicker atlas">ATLAS · what changes on the periodic cell</div>
-  <h2>From diffusion to an interpolant on the periodic cell</h2>
-  <div class="abs body" style="left:110px;top:186px;width:1700px">
-    <div class="small" style="color:var(--ink);margin-bottom:14px">Atoms live in a periodic box: the natural prior is <b>uniform</b> (an ideal gas), not a Gaussian. So ATLAS replaces Gaussian noising by a <b>stochastic interpolant</b> from the uniform prior to the target.</div>
-    <table class="cmp" style="width:100%;border-collapse:collapse;font-size:23px;line-height:1.35">
-      <tr style="color:var(--ink-soft);font-size:20px"><td style="width:20%;padding:8px 12px"></td><td style="width:36%;padding:8px 12px;font-weight:700;color:var(--blue)">so far: diffusion</td><td style="padding:8px 12px;font-weight:700;color:var(--teal-dark)">ATLAS: interpolant on the cell</td></tr>
-      <tr style="border-top:1px solid #E3E7EB"><td style="padding:10px 12px;color:var(--ink-soft)">prior $p_0$</td><td style="padding:10px 12px">Gaussian $\mathcal N(0,I)$</td><td style="padding:10px 12px">uniform on the periodic cell</td></tr>
-      <tr style="border-top:1px solid #E3E7EB"><td style="padding:10px 12px;color:var(--ink-soft)">path to $X_N$</td><td style="padding:10px 12px">$X_t=\alpha_tX_N+s_t\varepsilon$</td><td style="padding:10px 12px">$X_t=\mathrm{wrap}\big(X_0+\alpha_t\Delta+\gamma_t\varepsilon\big),\ \ \Delta=\mathrm{wrap}(X_N-X_0)$</td></tr>
-      <tr style="border-top:1px solid #E3E7EB"><td style="padding:10px 12px;color:var(--ink-soft)">what we learn</td><td style="padding:10px 12px">the score $s$</td><td style="padding:10px 12px">a <b>velocity</b> $b$ and the score $s$; generate with drift $b+\tfrac12\sigma_t^2\,s$</td></tr>
-      <tr style="border-top:1px solid #E3E7EB" data-f="1"><td style="padding:10px 12px;color:var(--ink-soft)">score label</td><td style="padding:10px 12px">$\tfrac{1}{\alpha_t}\,\beta\mathbf F(X_N)$</td><td style="padding:10px 12px">$\hat s=\beta\mathbf F(X_N)$, weight one at every $t$: no $1/\alpha_t$ on the torus</td></tr>
-      <tr style="border-top:1px solid #E3E7EB" data-f="1"><td style="padding:10px 12px;color:var(--ink-soft)">velocity label</td><td style="padding:10px 12px;color:var(--muted)">not needed</td><td style="padding:10px 12px">$\hat b=\dot\alpha_t\,\Delta-\dot\gamma_t\gamma_t\,\hat s$: the bridge's own velocity</td></tr>
-    </table>
-    <div data-f="2" style="margin-top:22px;text-align:center"><div class="eqbox eq" style="font-size:27px;display:inline-block">$\mathcal L(\theta)=\displaystyle\int_0^1\mathbb E\Big[\big\|s_\theta(X_t,t)-\beta\mathbf F(X_N)\big\|^2+\big\|b_\theta(X_t,t)-\hat b\big\|^2\Big]\dd t$</div></div>
-  </div>
-  <div class="takeaway" data-f="3">Same fixed-point loop and the same path weights; only the prior, the bridge and a second head change.</div>
-  <div class="cite">Albergo, Boffi &amp; Vanden-Eijnden 2023 (stochastic interpolants) · Blessing et al., ICML 2026 (Bridge Matching Sampler) · Cheng*, Blessing*, …, <b class="me">Domingo-Enrich</b>†, <b class="me">Du</b>†, ATLAS (2026), SI Alg. 1</div>
-</section>
-
-<section class="slide" data-title="ATLAS: an interpolant on the periodic cell, supervised by forces" data-section="ATLAS">
+<section class="slide" data-title="ATLAS: an interpolant on the periodic cell, supervised by forces" data-section="ATLAS" data-optional>
   <div class="kicker atlas">ATLAS · method</div>
   <h2>ATLAS: an interpolant on the periodic cell, supervised by forces</h2>
   <canvas class="abs" style="left:90px;top:180px" width="820" height="830" data-anim="torusTransport" data-opts='{"config":"n64_T0.2","box":560,"by":40,"timebar":true,"forces":true,"seed":11}'></canvas>
   <div class="abs body" style="left:960px;top:215px;width:860px">
     <ul class="clean">
       <li><b>Uniform prior</b> on the periodic cell; wrapped interpolant to the sample $X_N$.</li>
-      <li data-f="1"><b>Force labels</b> with weight one at every $t$; velocity and score from one network.</li>
+      <li data-f="1"><b>Force labels</b> at every $t$; velocity and score from one network.</li>
       <li data-f="2"><b>One E(3)-equivariant GNN</b>, conditioned on $T$ and composition.</li>
       <li data-f="3"><b>Local</b>: train on small cells, sample large ones.</li>
     </ul>
   </div>
-  <div class="cite">Cheng*, Blessing*, …, <b class="me">Domingo-Enrich</b>†, <b class="me">Du</b>†, ATLAS (2026) · Blessing et al. 2026 (BMS) · De Bortoli et al. 2024 · Schütt et al. 2021 (PaiNN) · animation: real KA snapshot with its Lennard-Jones forces</div>
+  <div class="cite">Cheng*, Blessing*, …, Domingo-Enrich†, <b class="me">Du</b>†, ATLAS (2026) · Blessing et al., ICML 2026 · De Bortoli et al. 2024 · Schütt et al. 2021</div>
 </section>
 
-<!-- =============================================================== 16. KA STRUCTURE -->
-<section class="slide" data-title="One model from liquid to glass (2D Kob–Andersen)" data-section="ATLAS">
+<section class="slide" data-title="One model from liquid to glass: structure and free energy (2D Kob–Andersen)" data-section="ATLAS">
   <div class="kicker atlas">ATLAS · validation</div>
   <h2>One model from liquid to glass: 2D Kob–Andersen</h2>
-  <div class="abs figcard" style="left:110px;top:195px;width:230px;padding:10px"><img src="assets/figs/atlas_f2a_snaps.webp" alt=""></div>
-  <div class="abs figcard" style="left:360px;top:195px;width:600px;padding:10px"><img src="assets/figs/ka_gr_pe.webp" alt=""></div>
-  <div class="abs" style="left:110px;top:965px;font-size:19px;color:var(--ink-soft)"><b style="color:#222">—</b> PT-MCMC (reference) &nbsp;&nbsp; <b style="color:#2E6FBF">—</b> ATLAS samples &nbsp;&nbsp; shaded: ATLAS ± 2 s.d. (bootstrap)</div>
-  <div class="abs body" style="left:1030px;top:220px;width:780px">
-    <div class="lead b" style="margin-bottom:16px">Kob–Andersen 80:20 Lennard-Jones mixture</div>
-    <div class="small" style="margin-bottom:26px">$N=64$, $T\in[0.2,\,5]$: a standard model of glassy states</div>
-    <ul class="clean">
-      <li data-f="1">$g(r)$ and $p(E)$ match parallel tempering.</li>
-      <li data-f="2">$p(E)$ checks the <b>Boltzmann weights</b>, not just the structures.</li>
-    </ul>
+  <div class="abs" style="left:110px;top:196px;width:560px;font-size:25px;color:var(--ink);white-space:nowrap">$g(r)$ and $p(E)$ match parallel tempering</div>
+  <div class="abs figcard" style="left:110px;top:250px;width:540px;padding:10px"><img src="assets/figs/ka_gr_pe.webp" alt=""></div>
+  <div class="abs" style="left:110px;top:924px;font-size:19px;color:var(--ink-soft);white-space:nowrap"><b style="color:#222">—</b> PT-MCMC &nbsp;&nbsp; <b style="color:#2E6FBF">—</b> ATLAS</div>
+  <div class="abs" data-f="1" style="left:690px;top:196px;width:640px;font-size:25px;color:var(--ink);white-space:nowrap"><b>Free energy</b> from path weights (Jarzynski)</div>
+  <div class="abs figcard" data-f="1" style="left:690px;top:250px;width:640px;padding:10px"><img src="assets/figs/ka_free.webp" alt=""></div>
+  <div class="abs" data-f="2" style="left:1370px;top:196px;width:440px;font-size:25px;color:var(--ink);white-space:nowrap"><b>Energy evaluations</b> at $T=0.2$</div>
+  <canvas class="abs" data-f="2" style="left:1370px;top:205px" width="440" height="470" data-anim="evalBars" data-opts='{"only":"ev","title":false,"startStep":2}'></canvas>
+  <div class="takeaway" data-f="3" style="left:690px;bottom:168px;white-space:nowrap">Glass at $T=0.2$: free-energy error $2\times10^{-3}$, <b>&gt;500×</b> fewer energy evaluations.</div>
+  <div class="cite">Cheng*, Blessing*, …, Domingo-Enrich†, <b class="me">Du</b>†, ATLAS (2026) · Shirts &amp; Chodera 2008</div>
+</section>
+
+<section class="slide" data-only="short" data-title="Metallic glasses: steering, one model, design" data-section="ATLAS">
+  <div class="kicker atlas">ATLAS · metallic glasses</div>
+  <h2>Metallic glasses: steering, one model for all compositions, design</h2>
+  <div class="abs" style="left:110px;top:196px;width:600px;font-size:25px;color:var(--ink);white-space:nowrap"><b>Steering</b> to experimental short-range order</div>
+  <div class="abs figcard" style="left:110px;top:250px;width:600px;padding:10px"><img src="assets/figs/atlas_f3c.webp" alt=""></div>
+  <div class="abs" data-f="1" style="left:750px;top:196px;width:420px;font-size:25px;color:var(--ink);white-space:nowrap"><b>One model</b> across compositions</div>
+  <div class="abs" data-f="1" style="left:750px;top:270px;width:420px">
+    <div class="stat"><div class="num-big" style="color:var(--navy)">~300×</div><div class="lbl">less compute over 480 compositions</div></div>
+    <div class="small" style="margin-top:26px;font-size:21px;color:var(--ink)"><b>36 GPU-h</b> once, against <b>~20 GPU-h</b> per composition from scratch</div>
   </div>
-  <div class="cite">Cheng*, Blessing*, …, <b class="me">Domingo-Enrich</b>†, <b class="me">Du</b>†, ATLAS (2026), Fig. 2a (updated) · rows: T = 2.0, 0.5, 0.2</div>
+  <div class="abs" data-f="2" style="left:1210px;top:196px;width:600px;font-size:25px;color:var(--ink);white-space:nowrap"><b>Agentic design</b>: Pareto front in 480 evaluations</div>
+  <div class="abs figcard" data-f="2" style="left:1210px;top:250px;width:600px;padding:10px"><img src="assets/figs/atlas_f4d.webp" alt=""></div>
+  <div class="takeaway navy" data-f="3" style="bottom:170px"><b>Train once, inference many times</b>: a new target, composition or design goal is one inference, not a new simulation.</div>
+  <div class="cite">Cheng*, Blessing*, …, Domingo-Enrich†, <b class="me">Du</b>†, ATLAS (2026) · He, Hernández-Lobato, <b class="me">Du</b>†, Vargas†, RNE (ICLR 2026)</div>
 </section>
 
-<!-- =============================================================== 17. FREE ENERGY -->
-<section class="slide" data-title="Free energy and entropy with >500x fewer evaluations" data-section="ATLAS">
-  <div class="kicker atlas">ATLAS · thermodynamics</div>
-  <h2>Free energy and entropy with &gt;500× fewer energy evaluations</h2>
-  <div class="abs figcard" style="left:110px;top:195px;width:560px;padding:8px"><img src="assets/figs/ka_free.webp" alt=""></div>
-  <div class="abs figcard" style="left:110px;top:580px;width:560px;padding:8px" data-f="1"><img src="assets/figs/ka_entropy.webp" alt=""></div>
-  <canvas class="abs" style="left:760px;top:200px" width="880" height="470" data-anim="evalBars" data-opts='{"startStep":2}' data-f="2"></canvas>
-  <div class="abs small" style="left:760px;top:700px;width:1050px;color:var(--ink)" data-f="2">
-    <b class="navy">Path weights:</b> $Z=\mathbb E_{\Pf}[w]$ anchors $F$ at high $T$, MBAR carries it to the glass; $S=(\langle U\rangle-F)/T$.
-  </div>
-  <div class="takeaway" data-f="3" style="left:760px">Glass at $T=0.2$: free-energy error $2\times10^{-3}$.</div>
-  <div class="cite">Cheng*, Blessing*, …, <b class="me">Domingo-Enrich</b>†, <b class="me">Du</b>†, ATLAS (2026), Fig. 2b,e · Shirts &amp; Chodera 2008 (MBAR) · reference: converged PT-MCMC with ≈4.5×10⁸ evaluations</div>
-</section>
-
-<!-- =============================================================== 18. SIZE TRANSFER -->
-<section class="slide" data-title="Size transfer" data-section="ATLAS" data-optional>
-  <div class="kicker atlas">ATLAS · transferability</div>
-  <h2>Train on 64 particles, sample 512</h2>
-  <canvas class="abs" style="left:110px;top:200px" width="780" height="620" data-anim="sizeTransfer"></canvas>
-  <div class="abs figcard" style="left:960px;top:215px;width:850px;padding:10px"><img src="assets/figs/ka_size.webp" alt=""></div>
-  <div class="abs body" style="left:960px;top:760px;width:850px">Free energy per particle within <b>~3%</b> of PT-MCMC up to <span style="white-space:nowrap">$N=256$</span>.</div>
-  <div class="cite">Cheng*, Blessing*, …, <b class="me">Domingo-Enrich</b>†, <b class="me">Du</b>†, ATLAS (2026), Fig. 2c (updated) · left: real KA configurations at N = 128, 256, 512</div>
-</section>
-
-<!-- =============================================================== 19. PMF -->
-<section class="slide" data-title="Rare events by steering: PMF" data-section="ATLAS" data-optional>
-  <div class="kicker atlas">ATLAS · rare events</div>
-  <h2>Rare events by steering: umbrella windows</h2>
-  <canvas class="abs" style="left:110px;top:200px" width="900" height="560" data-anim="umbrella"></canvas>
-  <div class="abs figcard" style="left:1060px;top:205px;width:750px;padding:10px" data-f="1"><img src="assets/figs/atlas_f2d.webp" alt=""></div>
-  <div class="abs small" style="left:110px;top:780px;width:900px;color:var(--ink)" data-f="1"><b class="navy">Path weights:</b> window $k$ is a tilted target $q_k\propto\pi\,e^{-\beta u_k(\xi)}$, sampled by SMC reweighting with the work; the $Z_k$ stitch into $F(\xi)$.</div>
-  <div class="takeaway" data-f="2">Cage escape at $T=0.2$: $\Delta F^\ddagger=4.20\pm0.38\,k_{\mathrm B}T$ vs $3.97\,k_{\mathrm B}T$ (PT-MCMC), with no MD.</div>
-  <div class="cite">Torrie &amp; Valleau 1977 (umbrella sampling) · Cheng*, Blessing*, …, <b class="me">Domingo-Enrich</b>†, <b class="me">Du</b>†, ATLAS (2026), Fig. 2d · left: schematic</div>
-</section>
-
-<!-- =============================================================== 20. METALLIC GLASS STEERING -->
-<section class="slide" data-title="Steering metallic glasses" data-section="ATLAS">
+<section class="slide" data-title="Steering metallic glasses" data-section="ATLAS" data-optional>
   <div class="kicker atlas">ATLAS · metallic glasses</div>
   <h2>Steering metallic glasses: experiment and properties</h2>
   <div class="abs figcard" style="left:110px;top:190px;width:900px;padding:10px"><img src="assets/figs/atlas_f3c.webp" alt=""></div>
   <div class="abs figcard" style="left:1040px;top:190px;width:470px;padding:10px" data-f="2"><img src="assets/figs/atlas_f3d.webp" alt=""></div>
   <div class="abs body" style="left:1545px;top:200px;width:270px;font-size:23px">
-    <div class="b">CuZr, CrCoNi</div><div class="small" style="font-size:20px">EAM potentials, $N=128$</div>
+    <div class="b">CuZr, CrCoNi</div><div class="small" style="font-size:20px;color:var(--ink)">EAM potentials, $N=128$</div>
   </div>
   <div class="abs" style="left:110px;top:790px;width:1700px">
     <div class="row" style="gap:28px">
-      <div class="card" style="flex:1;padding:18px 24px" data-f="1"><div class="small" style="color:var(--ink)"><b>Short-range order</b>: base ensembles match experiment; SMC toward $q_N\propto\pi\,e^{-\eta(\alpha-\alpha^\ast)^2}$ moves the <b>whole distribution</b>.</div></div>
-      <div class="card" style="flex:1;padding:18px 24px" data-f="2"><div class="small" style="color:var(--ink)"><b>Bulk modulus</b>: reward the Tweedie estimate $\hat X_N(X_t)$; SMC, reweighting with the work, enriches rare stiff glasses.</div></div>
+      <div class="card" style="flex:1;padding:18px 24px" data-f="1"><div class="small" style="color:var(--ink)"><b>Short-range order</b>: matches experiment; SMC toward $q_N\propto\pi\,e^{-\eta(\alpha-\alpha^\ast)^2}$ moves the <b>whole distribution</b>.</div></div>
+      <div class="card" style="flex:1;padding:18px 24px" data-f="2"><div class="small" style="color:var(--ink)"><b>Bulk modulus</b>: reward on the Tweedie estimate $\hat X_N(X_t)$; SMC enriches rare stiff glasses.</div></div>
     </div>
   </div>
-  <div class="cite">Cheng*, Blessing*, …, <b class="me">Domingo-Enrich</b>†, <b class="me">Du</b>†, ATLAS (2026), Fig. 3c,d · Cowley 1950 · He, Hernández-Lobato, <b class="me">Du</b>†, Vargas†, ICLR 2026 (RNE)</div>
+  <div class="cite">Cheng*, Blessing*, …, Domingo-Enrich†, <b class="me">Du</b>†, ATLAS (2026) · Cowley 1950 · He, Hernández-Lobato, <b class="me">Du</b>†, Vargas†, RNE (ICLR 2026)</div>
 </section>
 
-<!-- =============================================================== 21. FOUNDATION MODEL -->
-<section class="slide" data-title="A foundation model across composition space" data-section="ATLAS">
+<section class="slide" data-title="A foundation model across composition space" data-section="ATLAS" data-optional>
   <div class="kicker atlas">ATLAS · foundation model</div>
   <h2>A foundation model across composition space</h2>
-  <canvas class="abs" style="left:110px;top:180px;border-radius:16px;box-shadow:0 1px 2px rgba(31,41,51,.05),0 6px 24px rgba(31,41,51,.07)" width="800" height="572" data-anim="atlasAmortized"></canvas>
-  <div class="abs figcard" style="left:1004px;top:180px;width:806px;padding:14px" data-f="1"><img src="assets/figs/atlas_f4b.webp" alt=""></div>
-  <div class="abs" style="left:110px;top:782px;width:1700px" data-f="2">
+  <canvas class="abs" style="left:110px;top:180px" width="1700" height="580" data-anim="atlasAmortized"></canvas>
+  <div data-f="1"></div><div data-f="2"></div><div data-f="3"></div><div data-f="4"></div>
+  <div class="abs" style="left:110px;top:782px;width:1700px">
     <div class="row" style="gap:80px;align-items:flex-end">
-      <div class="stat"><div class="num-big">36 GPU-h</div><div class="lbl">one-time pretraining</div></div>
-      <div class="stat"><div class="num-big" style="color:var(--coral)">~20 GPU-h</div><div class="lbl">per composition, from scratch</div></div>
-      <div class="stat"><div class="num-big" style="color:var(--navy)">~300×</div><div class="lbl">less compute over 480 compositions</div></div>
+      <div class="stat" data-f="5"><div class="num-big">36 GPU-h</div><div class="lbl">one-time pretraining</div></div>
+      <div class="stat" data-f="6"><div class="num-big" style="color:var(--coral)">~20 GPU-h</div><div class="lbl">per composition, from scratch</div></div>
+      <div class="stat" data-f="7"><div class="num-big" style="color:var(--navy)">~300×</div><div class="lbl">less compute over 480 compositions</div></div>
     </div>
   </div>
-  <div class="takeaway" data-f="3">Zero-shot on a new composition already beats the best from-scratch run.</div>
-  <div class="cite">Cheng*, Blessing*, …, <b class="me">Domingo-Enrich</b>†, <b class="me">Du</b>†, ATLAS (2026), Fig. 4b, SI Alg. 1 · left: the composition-amortized training loop · right: total training loss vs. from-scratch cost</div>
+  <div class="takeaway" data-f="8">Zero-shot on a new composition already beats the best from-scratch run.</div>
+  <div class="cite">Cheng*, Blessing*, …, Domingo-Enrich†, <b class="me">Du</b>†, ATLAS (2026)</div>
 </section>
 
-<!-- =============================================================== 22. AGENTIC DESIGN -->
-<section class="slide" data-title="Agentic inverse design with ATLAS" data-section="ATLAS">
+<section class="slide" data-title="Agentic inverse design with ATLAS" data-section="ATLAS" data-optional>
   <div class="kicker atlas">ATLAS · agentic design</div>
   <h2>Agentic inverse design: LLM agent × ATLAS × universal MLIP</h2>
   <canvas class="abs" style="left:110px;top:195px" width="1000" height="600" data-anim="agentLoop"></canvas>
-  <div class="abs figcard" style="left:1140px;top:195px;width:670px;padding:10px" data-f="1"><img src="assets/figs/atlas_f4d.webp" alt=""></div>
+  <div class="abs figcard" style="left:1140px;top:195px;width:670px;padding:10px" data-f="2"><img src="assets/figs/atlas_f4d.webp" alt=""></div>
   <div class="abs" style="left:110px;top:830px;width:1700px">
     <div class="row" style="gap:24px">
-      <div class="card" style="flex:1;padding:16px 22px" data-f="1"><div class="small" style="color:var(--ink)"><b>Task</b>: ≤5 of 8 elements; MACE-MPA-0; objectives $B$, $G$, $B/G$.</div></div>
+      <div class="card" style="flex:1;padding:16px 22px" data-f="1"><div class="small" style="color:var(--ink)"><b>Task</b>: ≤5 of 8 elements; universal MLIP; objectives $B$, $G$, $B/G$.</div></div>
       <div class="card" style="flex:1;padding:16px 22px" data-f="2"><div class="small" style="color:var(--ink)"><b>Result</b>: Pareto front converges within <b>480</b> ATLAS evaluations.</div></div>
       <div class="card" style="flex:1;padding:16px 22px" data-f="3"><div class="small" style="color:var(--ink)"><b>Design rules</b>: Co, Ni, Ti in every Pareto alloy.</div></div>
     </div>
   </div>
-  <div class="cite">Cheng*, Blessing*, …, <b class="me">Domingo-Enrich</b>†, <b class="me">Du</b>†, ATLAS (2026), Fig. 4d · left: schematic of the asynchronous agent loop · candidates are model-guided hypotheses for higher-fidelity validation</div>
+  <div class="cite">Cheng*, Blessing*, …, Domingo-Enrich†, <b class="me">Du</b>†, ATLAS (2026)</div>
 </section>
 
-<!-- =============================================================== 23. JANUS SECTION -->
 <section class="slide section-slide" data-title="JANUS" data-section="JANUS">
   <div class="wash"><i style="left:-200px;top:-200px;width:800px;height:600px;background:#DDD6F2"></i><i style="left:1250px;top:720px;width:800px;height:520px;background:#F4DCCB"></i></div>
   <div class="sec-num violet">Part II</div>
   <h2 class="sec-title">JANUS</h2>
   <div class="sec-sub">A multimodal foundation neural sampler for <b class="violet">chemically disordered materials</b></div>
-  <div class="sec-paper">Denis Blessing*, Mouyang Cheng*, Maximilian Schebek, Jutta Rogal, Mingda Li, <b class="me">Carles Domingo-Enrich</b>†, <b class="me">Yuanqi Du</b>†<br><span class="muted">arXiv:2608.19116 (2026)</span></div>
+  <div class="abs" style="left:120px;top:540px;width:880px;display:grid;grid-template-columns:auto 1fr;gap:14px 18px;align-items:center;font-size:24px;color:var(--ink)">
+    <b data-f="1">Alloys</b><div data-f="1" style="display:flex;gap:10px"><span class="pill violet" style="font-size:21px">stainless steel</span><span class="pill violet" style="font-size:21px">jet-engine superalloys</span><span class="pill violet" style="font-size:21px">high-entropy alloys</span></div>
+    <b data-f="2">Defects</b><div data-f="2" style="display:flex;gap:10px"><span class="pill violet" style="font-size:21px">dopants in silicon chips</span><span class="pill violet" style="font-size:21px">colour centres in diamond</span></div>
+  </div>
+  <div class="sec-paper" style="top:690px">Denis Blessing*, Mouyang Cheng*, Maximilian Schebek, Jutta Rogal, Mingda Li, Carles Domingo-Enrich†, <b class="me">Yuanqi Du</b>†<br><span class="muted">arXiv:2608.19116 (2026)</span></div>
   <div class="abs figcard" style="left:1040px;top:120px;width:800px"><img src="assets/figs/janus_f1a.webp" alt="JANUS overview"></div>
 </section>
 
-<!-- =============================================================== 24. ENSEMBLES -->
 <section class="slide" data-title="Beyond the canonical ensemble" data-section="JANUS">
   <div class="kicker janus">JANUS · beyond NVT</div>
   <h2>Beyond the canonical ensemble</h2>
-  <canvas class="abs" style="left:110px;top:190px" width="1700" height="530" data-anim="ensembles4"></canvas>
-  <div class="abs" style="left:110px;top:735px;width:1700px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;text-align:center" data-f="1">
+  <canvas class="abs" style="left:110px;top:190px" width="1700" height="530" data-anim="ensembles4" data-opts='{"reveal":true}'></canvas>
+  <div class="abs" style="left:110px;top:735px;width:1700px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px;text-align:center">
     <div class="eqbox eq" style="font-size:26px;padding:12px 6px">$p(x)\propto e^{-\beta U}$</div>
-    <div class="eqbox eq" style="font-size:26px;padding:12px 6px">$p(x,v)\propto e^{-\beta(U+Pv)}$</div>
-    <div class="eqbox eq" style="font-size:26px;padding:12px 6px">$p(a,x,v)\propto e^{-\beta(U+Pv-\mu\cdot N)}$</div>
-    <div class="eqbox eq" style="font-size:26px;padding:12px 6px">$p(a,x)\propto e^{-\beta(U-\mu\cdot N)}$</div>
+    <div class="eqbox eq" data-f="1" style="font-size:26px;padding:12px 6px">$p(x,v)\propto e^{-\beta(U+Pv)}$</div>
+    <div class="eqbox eq" data-f="2" style="font-size:26px;padding:12px 6px">$p(a,x,v)\propto e^{-\beta(U+Pv-\mu\cdot N)}$</div>
+    <div class="eqbox eq" data-f="3" style="font-size:26px;padding:12px 6px">$p(a,x)\propto e^{-\beta(U-\mu\cdot N)}$</div>
   </div>
-  <div class="takeaway violet" data-f="2">Mixed state: <i>who</i> sits on each site (discrete $a$) × <i>how far</i> from it $(x,v)$; path weights carry over unchanged.</div>
-  <div class="cite">Blessing*, Cheng*, …, <b class="me">Domingo-Enrich</b>†, <b class="me">Du</b>†, JANUS (2026) · Schebek et al. 2024 (conditional Boltzmann generators for phase diagrams)</div>
+  <div class="abs" data-f="4" style="left:110px;top:808px;width:1700px;display:grid;grid-template-columns:repeat(4,1fr);column-gap:14px;text-align:center">
+    <div style="grid-column:3 / span 2;height:16px;border:3px solid var(--violet);border-top:0;border-radius:0 0 14px 14px"></div>
+    <div style="grid-column:3 / span 2;margin-top:8px;font-size:25px;color:var(--violet)">on a <b>lattice</b>: each site holds a species or a vacancy</div>
+  </div>
+  <div class="takeaway violet" data-f="5">Mixed state: <i>who</i> sits on each site (discrete $a$) × <i>how far</i> from it $(x,v)$; path weights carry over unchanged.</div>
+  <div class="cite">Blessing*, Cheng*, …, Domingo-Enrich†, <b class="me">Du</b>†, JANUS (2026) · Schebek et al. 2024</div>
 </section>
 
-<!-- =============================================================== 25. JANUS GENERATION -->
 <section class="slide" data-title="JANUS: masked discrete + continuous diffusion" data-section="JANUS">
   <div class="kicker janus">JANUS · method</div>
   <h2>JANUS: masked discrete × continuous diffusion</h2>
@@ -528,30 +578,28 @@
   <div class="abs body" style="left:1280px;top:215px;width:540px">
     <ul class="clean violet">
       <li data-f="1"><b>Species</b>: masked diffusion, each site revealed once; path weight in <b>closed form</b>.</li>
-      <li data-f="2"><b>Displacements, volume</b>: the same interpolant with velocity $b$ and score $s$, from physics-informed Gaussian priors.</li>
+      <li data-f="2"><b>Displacements, volume</b>: the same interpolant, from Gaussian priors.</li>
       <li data-f="3"><b>One</b> equivariant GNN, conditioned on $(T,\Delta\mu)$.</li>
     </ul>
   </div>
-  <div class="cite">Austin et al. 2021 · Sahoo et al. 2024 · Shi et al. 2024 · Ou et al. 2025 (masked diffusion) · Blessing*, Cheng*, …, <b class="me">Domingo-Enrich</b>†, <b class="me">Du</b>†, JANUS (2026) · animation: toy lattice</div>
+  <div class="cite">Austin et al. 2021 · Sahoo et al. 2024 · Shi et al. 2024 · Ou et al. 2025 · Blessing*, Cheng*, …, Domingo-Enrich†, <b class="me">Du</b>†, JANUS (2026)</div>
 </section>
 
-<!-- =============================================================== 26. SOFT LABELS -->
-<section class="slide" data-title="The discrete analogue of a force" data-section="JANUS">
+<section class="slide" data-title="The discrete analogue of a “score”" data-section="JANUS">
   <div class="kicker janus">JANUS · discrete training signal</div>
-  <h2>What is the discrete analogue of a force?</h2>
+  <h2>What is the discrete analogue of a “score”?</h2>
   <canvas class="abs" style="left:100px;top:190px" width="900" height="640" data-anim="softLabel"></canvas>
   <div class="abs body" style="left:1060px;top:215px;width:760px">
     <ul class="clean violet">
       <li><b>With data</b>: cross-entropy against the <i>one-hot</i> clean symbol.</li>
-      <li data-f="1"><b>Without data</b>: $K$ substitution energies (one batched call) give the <b>exact</b> conditional $\rho_i(b\mid\mathbf a_{-i},\mathbf x)$.</li>
-      <li data-f="2"><b>The soft label is the label</b>, as the force is for the score: its conditional expectation is the exact posterior<div style="margin:12px 0 10px"><span class="eqbox eq" style="font-size:25px">$q^\star_i(b\mid\mathbf a_t,\mathbf x_t)=\mathbb E\big[\,\rho_i(b\mid\mathbf a_{-i},\mathbf x)\,\big|\,\mathbf a_t,\mathbf x_t\big]$</span></div><div class="small">cross-entropy against $\rho_i$ regresses onto it; Boltzmann is a fixed point</div></li>
-      <li data-f="3">One-hot labels from its <b>own</b> samples: every model would be a fixed point.</li>
+      <li data-f="1"><b>Without data</b>: one-hot labels from its <b>own</b> samples, and <b style="color:#B4492F">every model would be a fixed point</b>.</li>
+      <li data-f="2"><b>Soft label instead</b>: all other sites fixed, vary one, renormalize<div style="margin:12px 0 10px"><span class="eqbox eq" style="font-size:25px">$\rho_i(b\mid\mathbf a_{-i},\mathbf x)=\dfrac{\tilde\pi(\mathbf a_{i\to b},\mathbf x)}{\sum_{b'}\tilde\pi(\mathbf a_{i\to b'},\mathbf x)}$</span></div></li>
+      <li data-f="3"><b>The soft label is the discrete “score”</b>: its conditional expectation is the exact posterior<div style="margin:12px 0 10px"><span class="eqbox eq" style="font-size:25px">$q^\star_i(b\mid\mathbf a_t,\mathbf x_t)=\mathbb E\big[\,\rho_i(b\mid\mathbf a_{-i},\mathbf x)\,\big|\,\mathbf a_t,\mathbf x_t\big]$</span></div></li>
     </ul>
   </div>
-  <div class="cite">Blessing*, Cheng*, …, <b class="me">Domingo-Enrich</b>†, <b class="me">Du</b>†, JANUS (2026) · He, Blessing, Cheng, <b class="me">Du</b>, Domingo-Enrich 2026 (discrete fixed-point samplers, arXiv:2610.01739) · animation: toy nearest-neighbour energy</div>
+  <div class="cite">Blessing*, Cheng*, …, Domingo-Enrich†, <b class="me">Du</b>†, JANUS (2026) · He, Blessing, Cheng, <b class="me">Du</b>, Domingo-Enrich, DIG-IN (arXiv:2610.01739)</div>
 </section>
 
-<!-- =============================================================== 27. VALIDATION -->
 <section class="slide" data-title="Validation: Ising and Cu–Ni" data-section="JANUS" data-optional>
   <div class="kicker janus">JANUS · validation</div>
   <h2>Validation: Ising, and Cu–Ni with all three channels</h2>
@@ -560,16 +608,15 @@
   <div class="abs figcard" style="left:700px;top:675px;width:440px;padding:8px" data-f="2"><img src="assets/figs/janus_f2e.webp" alt=""></div>
   <div class="abs small" style="left:1180px;top:690px;width:630px;color:var(--ink)">
     <ul class="clean violet">
-      <li><b>2D Ising</b>: one model over $(T,\Delta\mu)$ matches Wolff MC through $T_c$.</li>
+      <li><b>2D Ising</b>: one model over $(T,\Delta\mu)$ matches MCMC through $T_c$.</li>
       <li data-f="1"><b>fcc Cu–Ni</b>: species, displacements and volume match reference MC.</li>
       <li data-f="2"><b>Size transfer</b>: trained at $N=108$, accurate at $N=256$.</li>
     </ul>
   </div>
-  <div class="cite">Blessing*, Cheng*, …, <b class="me">Domingo-Enrich</b>†, <b class="me">Du</b>†, JANUS (2026), Fig. 2</div>
+  <div class="cite">Blessing*, Cheng*, …, Domingo-Enrich†, <b class="me">Du</b>†, JANUS (2026)</div>
 </section>
 
-<!-- =============================================================== 28. PHASE DIAGRAM METHOD -->
-<section class="slide" data-title="Free energy to phase diagrams" data-section="JANUS">
+<section class="slide" data-title="Free energy to phase diagrams" data-section="JANUS" data-optional>
   <div class="kicker janus">JANUS · phase diagrams</div>
   <h2>From free energy to phase diagrams</h2>
   <canvas class="abs" style="left:110px;top:200px" width="960" height="540" data-anim="commonTangent"></canvas>
@@ -581,10 +628,10 @@
       <li data-f="4"><b>fcc vs bcc</b>: one model per lattice, on a common absolute scale.</li>
     </ul>
   </div>
-  <div class="cite">Frenkel &amp; Ladd 1984 · Schebek et al. 2024 · Blessing*, Cheng*, …, <b class="me">Domingo-Enrich</b>†, <b class="me">Du</b>†, JANUS (2026) · left: illustration with a regular-solution model</div>
+  <canvas class="abs" data-f="4" style="left:1130px;top:592px" width="680" height="392" data-anim="latticeCells"></canvas>
+  <div class="cite">Frenkel &amp; Ladd 1984 · Schebek et al. 2024 · Blessing*, Cheng*, …, Domingo-Enrich†, <b class="me">Du</b>†, JANUS (2026)</div>
 </section>
 
-<!-- =============================================================== 29. PHASE DIAGRAM RESULTS -->
 <section class="slide" data-title="Phase diagrams with ~1000x fewer evaluations" data-section="JANUS">
   <div class="kicker janus">JANUS · phase diagrams</div>
   <h2>Phase diagrams with ~10³× fewer energy evaluations</h2>
@@ -595,105 +642,115 @@
     <div class="small" style="color:var(--ink)" data-f="2"><b>Energy evaluations</b>: reference MC (dark) vs JANUS (light), training included.</div>
   </div>
   <div class="takeaway violet" data-f="3">Miscibility gap (Cu–Ag) and fcc/bcc competition (Ni–Cr) recovered.</div>
-  <div class="cite">Blessing*, Cheng*, …, <b class="me">Domingo-Enrich</b>†, <b class="me">Du</b>†, JANUS (2026), Fig. 3a–c</div>
+  <div class="cite">Blessing*, Cheng*, …, Domingo-Enrich†, <b class="me">Du</b>†, JANUS (2026)</div>
 </section>
 
-<!-- =============================================================== 30. ALLOY STEERING + DESIGN -->
-<section class="slide" data-title="Steering and agentic design of alloys" data-section="JANUS">
-  <div class="kicker janus">JANUS · steering &amp; design</div>
-  <h2>Steering and agentic design of alloys</h2>
-  <div class="abs figcard" style="left:110px;top:190px;width:880px;padding:10px"><img src="assets/figs/janus_f3d.webp" alt=""></div>
-  <div class="abs figcard" style="left:1020px;top:190px;width:790px;padding:10px" data-f="2"><img src="assets/figs/janus_f3e.webp" alt=""></div>
-  <div class="abs" style="left:110px;top:790px;width:1700px">
-    <div class="row" style="gap:28px">
-      <div class="card" style="flex:1;padding:18px 24px" data-f="1"><div class="small" style="color:var(--ink)"><b>CrCoNi, 800 K</b>: base SRO matches experiment; the same SMC, reweighting with the work, steers $\alpha$ and $B$ (species factors cancel in $G_t$).</div></div>
-      <div class="card" style="flex:1;padding:18px 24px" data-f="2"><div class="small" style="color:var(--ink)"><b>LLM agent proposes Δμ</b> (Ag–Al–Au–Cu–Ni) for stiffness, ductility and reflectance; hypervolume saturates in ~<b>120</b> evaluations.</div></div>
-    </div>
-  </div>
-  <div class="cite">Blessing*, Cheng*, …, <b class="me">Domingo-Enrich</b>†, <b class="me">Du</b>†, JANUS (2026), Fig. 3d,e · Zhang et al. 2020; Sheriff et al. 2024 (SRO in CrCoNi)</div>
-</section>
-
-<!-- =============================================================== 31. DEFECTS -->
-<section class="slide" data-title="Grand-canonical sampling for quantum defects" data-section="JANUS">
+<section class="slide" data-title="Grand-canonical sampling for quantum defects" data-section="JANUS" data-optional>
   <div class="kicker janus">JANUS · discovery</div>
   <h2>Grand-canonical sampling for defect discovery</h2>
   <canvas class="abs" style="left:100px;top:190px" width="960" height="560" data-anim="defectDiscovery"></canvas>
-  <div class="abs figcard" style="left:1090px;top:190px;width:720px;padding:10px" data-f="2"><img src="assets/figs/janus_f4b.webp" alt=""></div>
+  <div class="abs figcard" style="left:1090px;top:190px;width:720px;padding:10px" data-f="3"><img src="assets/figs/janus_f4b.webp" alt=""></div>
   <div class="abs" style="left:110px;top:780px;width:1700px">
     <div class="row" style="gap:22px">
       <div class="card" style="flex:1;padding:16px 22px" data-f="1"><div class="small" style="color:var(--ink)"><b>Sampler</b>: one $\mu VT$ model per host (Si, diamond): 15 dopants + vacancy.</div></div>
-      <div class="card" style="flex:1;padding:16px 22px" data-f="1"><div class="small" style="color:var(--ink)"><b>Screen</b>: 8,000 samples → enriched pairs and triplets → hybrid DFT.</div></div>
-      <div class="card" style="flex:1;padding:16px 22px" data-f="2"><div class="small" style="color:var(--ink)"><b>Found</b>: known centres re-emerge (Si <i>E</i> centre, Ge–V); new: <b>S–Ti</b> (Si), <b>B–O–O</b> (diamond).</div></div>
+      <div class="card" style="flex:1;padding:16px 22px" data-f="2"><div class="small" style="color:var(--ink)"><b>Screen</b>: 8,000 samples → enriched pairs and triplets → hybrid DFT.</div></div>
+      <div class="card" style="flex:1;padding:16px 22px" data-f="3"><div class="small" style="color:var(--ink)"><b>Found</b>: known centres re-emerge (Si <i>E</i> centre, Ge–V); new: <b>S–Ti</b> (Si), <b>B–O–O</b> (diamond).</div></div>
     </div>
   </div>
-  <div class="cite">Blessing*, Cheng*, …, <b class="me">Domingo-Enrich</b>†, <b class="me">Du</b>†, JANUS (2026), Fig. 4 · left: schematic of the screening loop · candidates require excited-state validation (ZPL, Huang–Rhys, spin relaxation)</div>
+  <div class="cite">Blessing*, Cheng*, …, Domingo-Enrich†, <b class="me">Du</b>†, JANUS (2026)</div>
 </section>
 
-<!-- =============================================================== 32. SUMMARY TABLE -->
-<section class="slide" data-title="One recipe, two foundation samplers" data-section="Outlook">
+<section class="slide" data-title="One recipe, two foundation samplers" data-section="Outlook" data-optional>
   <div class="kicker outlook">Summary</div>
   <h2>One recipe, two foundation samplers</h2>
   <div class="abs" style="left:110px;top:230px;width:1700px">
     <table class="cmp lg">
       <tr><th></th><th class="atlas">ATLAS</th><th class="janus">JANUS</th></tr>
       <tr><td>materials</td><td>amorphous: glasses, metallic glasses</td><td>crystalline disorder: alloys, dopants, vacancies</td></tr>
-      <tr><td>state</td><td>positions on the periodic cell $\mathbb T^{dN}$</td><td>species $\mathbf a$ (discrete) + displacements $\mathbf u$ + log-volume $v$</td></tr>
-      <tr><td>ensembles</td><td>$NVT$</td><td>$NPT$, $\Delta\mu NPT$ (semi-grand), $\mu VT$ (grand canonical)</td></tr>
-      <tr><td>labels</td><td>forces $\beta\mathbf F(X_N)$</td><td>forces, virial + single-site conditionals $\rho_i$</td></tr>
+      <tr data-f="1"><td>state</td><td>positions on the periodic cell $\mathbb T^{dN}$</td><td>species $\mathbf a$ (discrete) + displacements $\mathbf u$ + log-volume $v$</td></tr>
+      <tr data-f="2"><td>ensembles</td><td>$NVT$</td><td>$NPT$, $\Delta\mu NPT$ (semi-grand), $\mu VT$ (grand canonical)</td></tr>
+      <tr data-f="3"><td>labels</td><td>forces $\beta\mathbf F(X_N)$</td><td>forces, virial + single-site conditionals $\rho_i$</td></tr>
     </table>
   </div>
-  <div class="takeaway navy" data-f="1"><b>Generate → label with exact local statistics → interpolate → regress</b></div>
-  <div class="cite">Cheng*, Blessing*, …, <b class="me">Domingo-Enrich</b>†, <b class="me">Du</b>†, ATLAS, arXiv:2607.19198 · Blessing*, Cheng*, …, <b class="me">Domingo-Enrich</b>†, <b class="me">Du</b>†, JANUS, arXiv:2608.19116 · Blessing et al., ICML 2026</div>
+  <div class="takeaway navy" data-f="4"><b>Generate → label with exact local statistics → interpolate → regress</b></div>
+  <div class="cite">Cheng*, Blessing*, …, Domingo-Enrich†, <b class="me">Du</b>†, ATLAS, arXiv:2607.19198 · Blessing*, Cheng*, …, Domingo-Enrich†, <b class="me">Du</b>†, JANUS, arXiv:2608.19116</div>
 </section>
 
-<!-- =============================================================== 33. NEW ERA -->
-<section class="slide" data-title="A new era: simulation as a query" data-section="Outlook">
+<section class="slide" data-title="A new era: simulation becomes inference" data-section="Outlook" data-optional>
   <div class="kicker outlook">Outlook</div>
-  <h2>A new era: simulation becomes a query</h2>
-  <canvas class="abs" style="left:110px;top:170px" width="1700" height="720" data-anim="mlipEra"></canvas>
-  <div data-f="1"></div><div data-f="2"></div><div data-f="3"></div>
-  <div class="takeaway navy" data-f="4"><b>Train once, query many</b>: simulation becomes a query.</div></section>
+  <h2>A new era: simulation becomes inference</h2>
+  <canvas class="abs" style="left:110px;top:170px" width="1700" height="720" data-anim="mlipEra" data-opts='{"offset":1,"header":false}'></canvas>
+  <div class="abs" data-f="1" style="left:110px;top:594px;width:1700px;padding:12px 24px 14px;border-radius:14px;background:rgba(231,111,81,.10);border-left:6px solid var(--coral);font-size:25px;line-height:1.3;color:var(--ink);white-space:nowrap"><b style="color:#B4492F">Even with universal MLIPs, one blocker remains:</b> sampling equilibrium ensembles is too slow to explore unknown chemical space.</div>
+  <div data-f="2"></div><div data-f="3"></div><div data-f="4"></div>
+  <div class="takeaway navy" data-f="5"><b>Train once, inference many times</b>: a new temperature, composition or design goal is one inference, not a new simulation.</div></section>
 
-<!-- =============================================================== 34. OPEN PROBLEMS -->
 <section class="slide" data-title="Open problems" data-section="Outlook">
   <div class="kicker outlook">Outlook</div>
   <h2>Open problems</h2>
-  <canvas class="abs" style="left:110px;top:220px" width="760" height="460" data-anim="modeWeights"></canvas>
+  <canvas class="abs" style="left:110px;top:212px" width="790" height="472" data-anim="modeWeightFig" data-opts='{"compact":true}'></canvas>
   <div class="abs body" style="left:940px;top:205px;width:870px">
     <ul class="clean coral">
       <li><b>Mode weights</b>: local labels cannot see basin masses.</li>
-      <li data-f="1"><b>Hardest free energy</b>: heavy-tailed weights in deep glasses and miscibility gaps.</li>
-      <li data-f="2"><b>Scale</b>: $10^{3}$–$10^{4}$ atoms (interfaces, dislocations).</li>
-      <li data-f="3"><b>Generality</b>: off-lattice insertion and deletion, flexible cells, melting.</li>
-      <li data-f="4"><b>Dynamics and theory</b>: kinetics; convergence guarantees.</li>
+      <li data-f="1"><b>Path weights</b> can have high variance.</li>
+      <li data-f="2"><b>Interpolants</b>: what makes a good one?</li>
+      <li data-f="3"><b>Generality</b>: off-lattice insertion and deletion, flexible cells, melting. <span class="pill coral" style="vertical-align:3px;margin-left:6px;white-space:nowrap">next: OMNIA</span></li>
+      <li data-f="4"><b>Dynamics and theory</b>: kinetics; convergence guarantees. <span class="pill blue" style="vertical-align:3px;margin-left:6px;white-space:nowrap">next: Pharos</span></li>
     </ul>
   </div>
   <div class="takeaway navy" data-f="5">Toward a <b>universal</b> neural sampler, as broadly useful as today's universal MLIPs.</div>
 </section>
 
-<!-- =============================================================== 35. THANK YOU -->
+<section class="slide" data-title="OMNIA: one sampler for every ensemble" data-section="Outlook">
+  <div class="kicker om-k">Future work · OMNIA</div>
+  <h2>OMNIA: one sampler for every ensemble</h2>
+  <div class="abs om-chips" style="left:110px;top:176px">
+    <span>$NVT$ · glasses</span><span>$NPT$ · polymorphs</span><span>$\Delta\mu NPT$ · alloys, melts</span><span class="on">$\mu VT$ · surfaces, electrodes</span>
+  </div>
+  <canvas class="abs" style="left:110px;top:236px" width="900" height="640" data-anim="omniaGasSurface"></canvas>
+  <div class="abs om-col" style="left:1054px;top:290px;width:756px;gap:30px">
+    <div data-f="1"><div class="om-lab">Grand canonical, $\mu VT$: the number of atoms fluctuates</div><div class="eqbox eq om-eq big">$p(x,N)\;\propto\;e^{-\beta\,(U(x)-\mu N)}$</div></div>
+    <div class="om-box" data-f="2" style="background:rgba(231,111,81,.10);border-left-color:var(--coral)"><div class="p">GCMC: one insertion or deletion at a time</div></div>
+  </div>
+  <div class="takeaway coral" data-f="3"><b>OMNIA</b>: one sampler for every ensemble, from melts to surfaces and electrodes.</div>
+  <div class="cite">Cheng*, Blessing*, He, Li, Domingo-Enrich†, <b class="me">Du</b>†, OMNIA (in preparation) · Adams 1975</div>
+</section>
+
+<section class="slide" data-title="Rare events: learning to control physical dynamics" data-section="Outlook">
+  <div class="kicker outlook">Future work · rare events</div>
+  <h2>From how likely to how fast: learning to control rare events</h2>
+  <canvas class="abs" style="left:100px;top:182px" width="900" height="700" data-anim="pharosControl" data-opts='{"map":[-1,0,2,2]}'></canvas>
+  <div class="abs ph-col" style="left:1040px;top:196px;width:770px;gap:20px">
+    <div class="ph-box blue"><div class="h">This talk: a simple reference process</div><div class="e">$X_t=\alpha_tX_N+s_t\,\varepsilon$</div><div class="d">bridges of an interpolant, chosen by us</div></div>
+    <div class="ph-box coral" data-f="1"><div class="h">Now: a physical reference process</div><div class="e">$\mathrm dZ_t=b(Z_t)\,\mathrm dt+\sigma\,\mathrm dW_t,\qquad Z=(x,v)$</div><div class="d">underdamped Langevin dynamics: it waits in $A$</div></div>
+    <div class="ph-box" data-f="2"><div class="h">Controlled dynamics</div><div class="e">$\mathrm dZ^u_t=\big[b(Z^u_t)+\sigma\,u_t(Z^u_t)\big]\,\mathrm dt+\sigma\,\mathrm dW_t$</div><div class="d">optimal control $u^*=\sigma^\top\nabla\log q$: every path reaches $B$ before $A$</div></div>
+  </div>
+  <div class="takeaway navy" data-f="3">The committor $q(z)=\mathbb P_z(\tau_B&lt;\tau_A)$ gives kinetics and rates: <b>REACT → Pharos</b>.</div>
+  <div class="cite"><b class="me">Du</b>, He, Zhang, Vanden-Eijnden, Domingo-Enrich, REACT (arXiv:2604.13213) · He*, Chen*, …, Domingo-Enrich†, <b class="me">Du</b>†, Pharos (in preparation)</div>
+</section>
+
+<section class="slide" data-title="Autoregressive models are non-equilibrium processes too" data-section="Outlook" data-optional>
+  <div class="kicker outlook">Autoregressive transport</div>
+  <h2>Autoregressive models are non-equilibrium processes too</h2>
+  <canvas class="abs" style="left:110px;top:170px" width="1700" height="540" data-anim="arTree"></canvas>
+  <div class="abs" style="left:110px;top:718px;width:1700px;display:grid;grid-template-columns:500px 1fr 1fr;gap:18px">
+    <div class="card uc" data-f="1"><div class="uc-h">Forward kernel: append a token <span class="uc-tag">generate</span></div><div class="eq uc-eq">$\Pf_i(x_{0:i}\mid x_{0:i-1})=p(x_i\mid x_{\lt i})$</div></div>
+    <div class="card uc" data-f="2"><div class="uc-h">Backward kernel: delete the last token <span class="uc-tag" style="background:rgba(231,111,81,.12);color:#B4492F">trivial</span></div><div class="eq uc-eq" style="font-size:22px">$\Pb_{i-1}(x_{0:i-1}\mid x_{0:i})=\dfrac{p_{i-1}(x_{0:i-1})\,\Pf_i(x_{0:i}\mid x_{0:i-1})}{p_i(x_{0:i})}=1$</div></div>
+    <div class="card uc" data-f="3"><div class="uc-h">Path weight <span class="uc-tag">exact likelihood</span></div><div class="eq uc-eq" style="font-size:22px">$\displaystyle\prod_i\frac{\Pf_i(x_{0:i}\mid x_{0:i-1})}{\Pb_{i-1}(x_{0:i-1}\mid x_{0:i})}=\prod_i p(x_i\mid x_{\lt i})=p(x)$</div></div>
+  </div>
+  <div class="takeaway violet" data-f="4">The <b>same path weights</b> apply: steer language models to $p^\beta$, $p\,e^{r}$ or $p\,p'$ with SMC and replica exchange.</div>
+  <div class="cite">He, Guo, Hernández-Lobato, <b class="me">Du</b>, Recipes for Steering and Scaling LLMs via Sampling (2026)</div>
+</section>
+
 <section class="slide" data-title="Thank you" data-section="Outlook">
   <div class="wash"><i style="left:-160px;top:-200px;width:760px;height:560px;background:#BFE3DC"></i><i style="left:1240px;top:620px;width:820px;height:640px;background:#DDD7F1"></i></div>
-  <div class="abs" style="left:110px;top:150px;font-size:96px;font-weight:720;letter-spacing:-0.03em;color:var(--navy)">Thank you!</div>
-  <div class="abs lead soft" style="left:116px;top:290px">Questions are very welcome.</div>
-  <canvas class="abs" style="left:1240px;top:40px" width="640" height="640" data-anim="torusTransport" data-opts='{"hero":true,"box":430,"config":"n256_T0.5","seed":21}'></canvas>
-  <div class="abs" style="left:110px;top:430px;width:1150px">
-    <div class="people" style="gap:16px 12px;flex-wrap:nowrap">
-      <div class="person" style="width:128px"><img src="assets/people/mouyang.webp" alt="" style="width:96px;height:96px"><div class="nm" style="font-size:16px">Mouyang Cheng</div></div>
-      <div class="person" style="width:128px"><img src="assets/people/denis.webp" alt="" style="width:96px;height:96px"><div class="nm" style="font-size:16px">Denis Blessing</div></div>
-      <div class="person" style="width:128px"><img src="assets/people/carles.webp" alt="" style="width:96px;height:96px"><div class="nm" style="font-size:16px">Carles Domingo-Enrich</div></div>
-      <div class="person" style="width:128px"><img src="assets/people/botao.webp" alt="" style="width:96px;height:96px"><div class="nm" style="font-size:16px">Botao Yu</div></div>
-      <div class="person" style="width:128px"><img src="assets/people/geri.webp" alt="" style="width:96px;height:96px"><div class="nm" style="font-size:16px">Gerhard Neumann</div></div>
-      <div class="person" style="width:128px"><img src="assets/people/mingda.webp" alt="" style="width:96px;height:96px"><div class="nm" style="font-size:16px">Mingda Li</div></div>
-      <div class="person" style="width:128px"><img src="assets/people/maximilian.webp" alt="" style="width:96px;height:96px"><div class="nm" style="font-size:16px">Maximilian Schebek</div></div>
-      <div class="person" style="width:128px"><img src="assets/people/jutta.webp" alt="" style="width:96px;height:96px"><div class="nm" style="font-size:16px">Jutta Rogal</div></div>
-    </div>
-  </div>
-  <div class="abs small" style="left:110px;top:720px;width:1150px;line-height:1.7;color:var(--ink)">
+  <div class="abs" style="left:110px;top:290px;font-size:96px;font-weight:720;letter-spacing:-0.03em;color:var(--navy)">Thank you!</div>
+  <div class="abs lead soft" style="left:116px;top:430px">Questions are very welcome.</div>
+  <canvas class="abs" style="left:1240px;top:220px" width="640" height="640" data-anim="torusTransport" data-opts='{"hero":true,"box":430,"config":"n256_T0.5","seed":21}'></canvas>
+  <div class="abs small" style="left:110px;top:580px;width:1200px;line-height:1.7;color:var(--ink);font-size:26px">
     <b class="teal">ATLAS</b> · arXiv:2607.19198 &nbsp;&nbsp;·&nbsp;&nbsp; <b class="violet">JANUS</b> · arXiv:2608.19116<br>
-    Related: Bridge Matching Sampler (ICML 2026) · FEAT (NeurIPS 2025) · RNE (ICLR 2026) · discrete fixed-point samplers (arXiv:2610.01739)
+    <span style="font-size:24px;white-space:nowrap">Related: FEAT (NeurIPS 2025) · RNE (ICLR 2026) · DIG-IN (Discrete Neural Sampler, arXiv:2610.01739)</span>
   </div>
-  <div class="abs small" style="left:110px;top:860px;width:1150px;line-height:1.7;color:var(--ink)">
+  <div class="abs small" style="left:110px;top:765px;width:1150px;line-height:1.7;color:var(--ink);font-size:26px">
     yuanqidu@microsoft.com &nbsp;·&nbsp; yuanqidu.github.io &nbsp;·&nbsp; @YuanqiD
   </div>
 </section>

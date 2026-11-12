@@ -14,12 +14,14 @@
   // ------------------------------------------------------------------
   ANIMS.ensembles4 = function (S, o) {
     const ctx = S.ctx, rng = makeRng(8); let clock = 0;
+    let shown = o && o.reveal ? 1 : 4; const born = [0, -1, -1, -1]; // with {"reveal": true}, one more ensemble per click
     const n = 5, box = 270, pw = S.w / 4;
+    // The ensemble names and the fixed variables are typeset by KaTeX (S.tex, a layer over the canvas), as the slides write them: $NVT$, $\Delta\mu NPT$ …
     const panels = [
-      { key: 'NVT', name: 'canonical', fixed: 'N, V, T', fl: 'positions', tag: 'ATLAS', vol: false, swap: false, gc: false },
-      { key: 'NPT', name: 'isothermal–isobaric', fixed: 'N, P, T', fl: '+ volume', tag: 'JANUS', vol: true, swap: false, gc: false },
-      { key: 'ΔμNPT', name: 'semi-grand canonical', fixed: 'Δμ, N, P, T', fl: '+ composition', tag: 'JANUS', vol: true, swap: true, gc: false },
-      { key: 'μVT', name: 'grand canonical', fixed: 'μ, V, T', fl: '+ particle number', tag: 'JANUS', vol: false, swap: false, gc: true }];
+      { key: '$NVT$', name: 'canonical', fixed: 'fixed: $N$, $V$, $T$', fl: 'positions', tag: 'ATLAS', vol: false, swap: false, gc: false },
+      { key: '$NPT$', name: 'isothermal–isobaric', fixed: 'fixed: $N$, $P$, $T$', fl: '+ volume', tag: 'JANUS', vol: true, swap: false, gc: false },
+      { key: '$\\Delta\\mu NPT$', name: 'semi-grand canonical', fixed: 'fixed: $\\Delta\\mu$, $N$, $P$, $T$', fl: '+ composition', tag: 'JANUS', vol: true, swap: true, gc: false },
+      { key: '$\\mu VT$', name: 'grand canonical', fixed: 'fixed: $\\mu$, $V$, $T$', fl: '+ particle number', tag: 'JANUS', vol: false, swap: false, gc: true }];
     panels.forEach((P, pi) => {
       P.sites = []; for (let i = 0; i < n; i++) for (let j = 0; j < n; j++) P.sites.push({ i, j, sp: rng.u() < 0.55 ? 0 : 1, prev: 0, tr: 1, occ: 1, occT: 1, seed: rng.u() * 100 });
       P.sites.forEach(s => s.prev = s.sp); P.next = 0.3;
@@ -27,6 +29,9 @@
     function draw() {
       S.clear();
       panels.forEach((P, pi) => {
+        if (pi >= shown) return;
+        const al = o && o.reveal && born[pi] > 0 ? E.smooth((clock - born[pi]) / 0.45) : 1;   // the panel fades in on its click
+        ctx.save(); ctx.globalAlpha = al;
         const cx = pi * pw + pw / 2, cy = 40 + box / 2 + 10;
         const sc = P.vol ? 1 + 0.06 * Math.sin(clock * 1.25 + pi) + 0.02 * Math.sin(clock * 3.3 + pi * 2) : 1;
         const b = box * sc, a = b / n;
@@ -44,12 +49,13 @@
           if (P.swap && s.tr < 1) { ctx.save(); ctx.strokeStyle = rgba(C.violet, 1 - s.tr); ctx.lineWidth = 3; ctx.beginPath(); ctx.arc(x, y, r + 7, 0, 2 * Math.PI); ctx.stroke(); ctx.restore(); }
         });
         const ty = cy + box / 2 + 62;
-        text(ctx, P.key, cx, ty, { size: 34, weight: 700, color: P.tag === 'ATLAS' ? C.tealDark : C.violet, align: 'center' });
+        S.tex('key' + pi, P.key, cx, ty, { size: 34, weight: 700, color: P.tag === 'ATLAS' ? C.tealDark : C.violet, align: 'center', alpha: al });
         text(ctx, P.name, cx, ty + 32, { size: 21, color: C.ink, align: 'center', weight: 560 });
-        text(ctx, 'fixed: ' + P.fixed, cx, ty + 62, { size: 19, color: C.inkSoft, align: 'center' });
+        S.tex('fixed' + pi, P.fixed, cx, ty + 62, { size: 19, color: C.inkSoft, align: 'center', alpha: al });
         text(ctx, 'samples: ' + P.fl, cx, ty + 88, { size: 19, color: C.inkSoft, align: 'center' });
         roundRect(ctx, cx - 46, ty + 104, 92, 30, 15, P.tag === 'ATLAS' ? rgba(C.teal, 0.14) : rgba(C.violet, 0.14));
         text(ctx, P.tag, cx, ty + 126, { size: 17, color: P.tag === 'ATLAS' ? C.tealDark : C.violet, align: 'center', weight: 700 });
+        ctx.restore();
       });
     }
     return {
@@ -65,7 +71,9 @@
           }
         });
         draw();
-      }, draw
+      },
+      step(k) { if (!(o && o.reveal)) return; const n2 = Math.min(4, k + 1); for (let i = 0; i < 4; i++) { if (i < n2 && i >= shown) born[i] = clock + 1e-6; } shown = n2; },
+      draw
     };
   };
 
@@ -78,6 +86,9 @@
     const T_PRI = 0.9, T_GEN = 5.6, T_HOLD = 2.4, P = T_PRI + T_GEN + T_HOLD;
     let sites = [], last = null, dmu = 0, v0 = 1.06, v1 = 1;
     const dmus = [0.0, 0.9, -0.9];
+    // All notation is typeset by KaTeX (S.tex, a layer over the canvas), in the notation of the slides: species a and positions x in bold,
+    // log-volume v. One constant string per condition, so nothing is typeset again while the animation runs.
+    const COND = dmus.map(d => 'condition: $T=900\\,\\mathrm{K}$,\u00a0 $\\Delta\\mu=' + (d > 0 ? '+' : '') + d.toFixed(1) + '$');
     function newCycle() {
       cyc++; rng = makeRng(100 + cyc); dmu = dmus[cyc % 3];
       sites = []; for (let i = 0; i < n; i++) for (let j = 0; j < n; j++) sites.push({ i, j, tau: rng.u() * 0.92 + 0.04, sp: -1, u0: [rng.normal() * 0.22, rng.normal() * 0.22], u1: [rng.normal() * 0.05, rng.normal() * 0.05], post: null, seed: rng.u() * 100 });
@@ -121,21 +132,21 @@
       text(ctx, 'target ensemble', tx1, ty + 36, { size: 20, color: C.inkSoft, align: 'right' });
       // right panel: channels + posterior
       const RX = LX + B0 + 80;
-      text(ctx, `condition: T = 900 K,  Δμ = ${dmu > 0 ? '+' : ''}${dmu.toFixed(1)}`, RX, 60, { size: 22, color: C.ink, weight: 600 });
+      S.tex('cond' + (cyc % 3), COND[cyc % 3], RX, 60, { size: 22, color: C.ink, weight: 600 });
       const rows = [
-        ['species  a', 'discrete · masked diffusion', nRev / sites.length, C.violet],
-        ['displacements  u', 'continuous · Gaussian prior', t, C.teal],
-        ['log-volume  v', 'continuous · Gaussian prior', t, C.blue]];
+        ['species\u00a0 $\\mathbf a$', 'discrete · masked diffusion', nRev / sites.length, C.violet],
+        ['displacements\u00a0 $\\mathbf u$', 'continuous · Gaussian prior', t, C.teal],
+        ['log-volume\u00a0 $v$', 'continuous · Gaussian prior', t, C.blue]];
       rows.forEach((r, k) => {
         const y = 120 + k * 92;
-        text(ctx, r[0], RX, y, { size: 24, weight: 650, color: r[3] });
+        S.tex('row' + k, r[0], RX, y, { size: 24, weight: 650, color: r[3] });
         text(ctx, r[1], RX, y + 28, { size: 18, color: C.inkSoft });
         ctx.strokeStyle = rgba(r[3], 0.18); ctx.lineWidth = 8; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(RX + 290, y - 8); ctx.lineTo(RX + 450, y - 8); ctx.stroke();
         ctx.strokeStyle = r[3]; ctx.beginPath(); ctx.moveTo(RX + 290, y - 8); ctx.lineTo(RX + 290 + 160 * r[2], y - 8); ctx.stroke();
       });
       // posterior bars of the last revealed site
       const py = 420;
-      richText(ctx, [['denoising posterior  ', 'n'], ['q', 'i'], ['θ,i', 'sub'], ['(', 'n'], ['b', 'i'], [' | ', 'n'], ['a', 'i'], ['t', 'sub'], [', ', 'n'], ['x', 'i'], ['t', 'sub'], [')', 'n']], RX, py, { size: 22, color: C.ink });
+      S.tex('post', 'denoising posterior\u00a0 $q_{\\theta,i}(b\\mid\\mathbf a_t,\\mathbf x_t)$', RX, py, { size: 22, color: C.ink });
       const names = ['A', 'B', 'vac'], cols = [SPA, SPB, C.muted];
       for (let k = 0; k < 3; k++) {
         const v = last && last.post ? last.post[k] : 0; const y = py + 30 + k * 40;
@@ -148,7 +159,13 @@
   };
 
   // ------------------------------------------------------------------
-  // Discrete "force": single-site conditionals from K substitution energies -> soft label
+  // Discrete "score": the one-hot label against the soft label (the single-site conditional of the target).
+  // The discrete training signal, in the order of the slide's clicks:
+  //   0  the one-hot label: a delta on the symbol the sample has at site i (right when the sample is data)
+  //   1  crossed out: once the sample is the model's own, that label carries no signal
+  //   2  the soft label: every other site stays fixed, site i runs through the K species, the K weights are renormalized
+  //      (the bar of the species on trial is the solid one)
+  //   3  the picture stays
   // ------------------------------------------------------------------
   ANIMS.softLabel = function (S, o) {
     const ctx = S.ctx; let clock = 0, step = 0;
@@ -161,46 +178,47 @@
     const dU = [0, 1, 2].map(b => b === 2 ? 1.6 : -J * nbs.filter(v => v === b).length + J * nbs.filter(v => v !== b).length * 0.5);
     const logits = dU.map((u, b) => mu[b] - u); const m = Math.max(...logits); const ex = logits.map(l => Math.exp(l - m)); const Z = ex.reduce((s, v) => s + v, 0); const rho = ex.map(v => v / Z);
     const names = ['A', 'B', 'vacancy'], cols = [SPA, SPB, C.muted];
+    const BW = 260, ROW = 46;   // bar length of probability 1; row pitch
     function draw() {
       S.clear();
       roundRect(ctx, LX, LY, box, box, 6, '#fff', rgba(C.inkSoft, 0.55), 1.8);
-      text(ctx, 'terminal sample from the buffer', LX, LY - 22, { size: 21, color: C.inkSoft });
-      let cand = cur;
-      if (step >= 1) cand = Math.floor(clock * 1.1) % 3;
+      text(ctx, step >= 1 ? "the model's own sample" : 'a sample from data', LX, LY - 22, { size: 21, color: C.inkSoft });
+      const trial = step === 2;   // site i runs through the K species while the soft label is introduced
+      const cand = trial ? Math.floor(clock * 1.1) % 3 : cur;
       for (let j = 0; j < n; j++) for (let i = 0; i < n; i++) {
         const x = LX + (i + 0.5) * a, y = LY + (j + 0.5) * a, v = grid[j][i];
         if (v === -1) {
-          const show = step >= 1 && step < 2 ? cand : cur;
-          if (show === 2) vacancy(ctx, x, y, a * 0.38); else atom(ctx, x, y, a * 0.36, show ? SPB : SPA);
+          if (cand === 2) vacancy(ctx, x, y, a * 0.38); else atom(ctx, x, y, a * 0.36, cand ? SPB : SPA);
           ctx.strokeStyle = C.coral; ctx.lineWidth = 3.5; ctx.beginPath(); ctx.arc(x, y, a * 0.47, 0, 2 * Math.PI); ctx.stroke();
-          text(ctx, 'site i', x, y + a * 0.47 + 26, { size: 18, color: C.coral, align: 'center', weight: 650 });
+          S.tex('site', '$i$', x + a / 2, y - a / 2, { size: 25, weight: 700, color: C.coral, align: 'center', valign: 'middle' });   // in the gap between four atoms, where nothing covers it
         } else atom(ctx, x, y, a * 0.36, v ? SPB : SPA);
       }
-      const RX = LX + box + 70, RW = S.w - RX - 20;
-      if (step >= 1) {
-        richText(ctx, [['substitution energies  ', 'n'], ['U', 'i'], ['(', 'n'], ['a', 'i'], ['i→b', 'sub'], [')', 'n']], RX, LY - 22, { size: 22, color: C.ink });
-        text(ctx, 'one batched energy call', RX, LY + 6, { size: 18, color: C.inkSoft });
-        for (let b = 0; b < 3; b++) {
-          const y = LY + 40 + b * 52, w = 30 + 60 * (dU[b] + 1.5), on = step >= 2 || cand === b || step >= 1 && clock > 3;
-          text(ctx, names[b], RX, y + 22, { size: 20, color: C.inkSoft });
-          roundRect(ctx, RX + 110, y + 4, w, 26, 6, on ? rgba(C.navy, 0.75) : rgba(C.navy, 0.15));
-        }
+      const RX = LX + box + 70, BX = RX + 110;
+      // the one-hot label
+      S.tex('hot', 'one-hot label $\\delta_{b,\\,a_i}$', RX, LY - 22, { size: 22, color: C.ink });
+      for (let b = 0; b < 3; b++) {
+        const y = LY + 4 + b * ROW, w = b === cur ? BW : 3;
+        text(ctx, names[b], RX, y + 22, { size: 20, color: C.inkSoft });
+        roundRect(ctx, BX, y + 4, w, 26, b === cur ? 6 : 1.5, b === cur ? cols[b] : rgba(C.muted, 0.7));
+        text(ctx, b === cur ? '1' : '0', BX + w + 10, y + 24, { size: 18, color: C.inkSoft });
       }
-      if (step >= 2) {
-        const y0 = LY + 230;
-        richText(ctx, [['soft label  ', 'n'], ['ρ', 'i'], ['i', 'sub'], ['(', 'n'], ['b', 'i'], [' | rest)', 'n']], RX, y0, { size: 22, color: C.tealDark });
-        for (let b = 0; b < 3; b++) {
-          const y = y0 + 22 + b * 46; const g = E.out(E.clamp((clock - (this ? 0 : 0)) * 2));
-          text(ctx, names[b], RX, y + 22, { size: 20, color: C.inkSoft });
-          roundRect(ctx, RX + 110, y + 4, 300 * rho[b] * g, 26, 6, cols[b]);
-          text(ctx, rho[b].toFixed(2), RX + 120 + 300 * rho[b] * g, y + 24, { size: 18, color: C.inkSoft });
-        }
+      if (step >= 1) { // crossed out, one stroke after the other
+        const k = step === 1 ? E.clamp(clock / 0.5) : 1, k1 = E.out(E.clamp(k * 2)), k2 = E.out(E.clamp(k * 2 - 1));
+        const x0 = RX + 92, x1 = BX + BW + 34, y0 = LY, y1 = LY + 4 + 2 * ROW + 36;
+        ctx.save(); ctx.strokeStyle = C.red; ctx.lineWidth = 4; ctx.lineCap = 'round'; ctx.beginPath();
+        ctx.moveTo(x0, y0); ctx.lineTo(x0 + (x1 - x0) * k1, y0 + (y1 - y0) * k1);
+        if (k2 > 0) { ctx.moveTo(x0, y1); ctx.lineTo(x0 + (x1 - x0) * k2, y1 - (y1 - y0) * k2); }
+        ctx.stroke(); ctx.restore();
       }
-      if (step >= 3) {
-        const y0 = LY + 420;
-        text(ctx, 'one-hot label from its own sample', RX, y0, { size: 21, color: C.inkSoft });
-        for (let b = 0; b < 3; b++) { const y = y0 + 14 + b * 34; text(ctx, names[b], RX, y + 20, { size: 17, color: C.muted }); roundRect(ctx, RX + 110, y + 4, b === cur ? 300 : 3, 20, 5, rgba(C.muted, 0.6)); }
-        ctx.strokeStyle = C.red; ctx.lineWidth = 4; ctx.beginPath(); ctx.moveTo(RX + 90, y0 + 22); ctx.lineTo(RX + 430, y0 + 112); ctx.moveTo(RX + 90, y0 + 112); ctx.lineTo(RX + 430, y0 + 22); ctx.stroke();
+      if (step >= 2) { // the soft label
+        const y0 = LY + 250, g = trial ? E.out(E.clamp(clock * 2)) : 1;
+        S.tex('soft', 'soft label $\\rho_i(b\\mid\\mathbf a_{-i},\\mathbf x)$', RX, y0, { size: 22, color: C.tealDark });
+        for (let b = 0; b < 3; b++) {
+          const y = y0 + 22 + b * ROW, on = !trial || cand === b, w = Math.max(3, BW * rho[b] * g);
+          text(ctx, names[b], RX, y + 22, { size: 20, color: on && trial ? C.ink : C.inkSoft, weight: on && trial ? 650 : 500 });
+          ctx.save(); ctx.globalAlpha = on ? 1 : 0.35; roundRect(ctx, BX, y + 4, w, 26, w > 12 ? 6 : 1.5, cols[b]); ctx.restore();
+          text(ctx, rho[b].toFixed(2), BX + w + 10, y + 24, { size: 18, color: C.inkSoft });
+        }
       }
     }
     return { frame(dt) { clock += dt; draw(); }, step(k) { step = k; clock = 0; }, draw };
@@ -235,9 +253,12 @@
         text(ctx, 'common tangent', gx(0.5), gy(g1) + 30, { size: 19, color: C.coral, align: 'center', weight: 600 });
         ctx.save(); ctx.setLineDash([3, 4]); ctx.strokeStyle = rgba(C.coral, 0.6); ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(gx(xb), gy(g1)); ctx.lineTo(gx(xb), L.y + L.h); ctx.moveTo(gx(x2), gy(g1)); ctx.lineTo(gx(x2), L.y + L.h); ctx.stroke(); ctx.restore();
       }
-      richText(ctx, [['G', 'i'], ['mix', 'sub'], ['(', 'n'], ['x', 'i'], [')', 'n']], L.x + 12, L.y + 16, { size: 22, color: C.ink });
-      text(ctx, 'composition x', L.x + L.w, L.y + L.h + 32, { size: 19, color: C.inkSoft, align: 'right' });
-      richText(ctx, [['T', 'i'], [` = ${Math.min(1, T).toFixed(2)} `, 'n'], ['T', 'i'], ['c', 'sub']], L.x + L.w - 10, L.y + 22, { size: 22, color: C.navy, align: 'right', weight: 650 });
+      // All notation is typeset by KaTeX (S.tex, a layer over the canvas). The temperature readout has one label per displayed value
+      // (two decimals), each typeset once and only shown or hidden afterwards.
+      S.tex('G', '$G_{\\mathrm{mix}}(x)$', L.x + 12, L.y + 16, { size: 22, color: C.ink });
+      S.tex('xL', 'composition $x$', L.x + L.w, L.y + L.h + 32, { size: 19, color: C.inkSoft, align: 'right' });
+      const Ts = Math.min(1, T).toFixed(2);
+      S.tex('T' + Ts, '$T=' + Ts + '\\,T_c$', L.x + L.w - 10, L.y + 22, { size: 22, color: C.navy, align: 'right', weight: 650 });
       // phase diagram
       if (T < lastT - 0.012 && xb < 0.49) { pts.push([xb, T]); lastT = T; if (pts.length % 6 === 0) { ghosts.push(T); if (ghosts.length > 5) ghosts.shift(); } }
       const px = (x) => R.x + x * R.w, py = (t) => R.y + R.h - (t - 0.45) / (1.05 - 0.45) * R.h;
@@ -248,8 +269,8 @@
       pts.forEach(p => { U.circle(ctx, px(p[0]), py(p[1]), 4.5, C.coral); U.circle(ctx, px(1 - p[0]), py(p[1]), 4.5, C.coral); });
       ctx.save(); ctx.setLineDash([4, 5]); ctx.strokeStyle = rgba(C.navy, 0.6); ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(R.x, py(Math.min(1.04, T))); ctx.lineTo(R.x + R.w, py(Math.min(1.04, T))); ctx.stroke(); ctx.restore();
       if (pts.length > 10) text(ctx, 'two phases', px(0.5), py(0.66), { size: 20, color: C.inkSoft, align: 'center' });
-      text(ctx, 'T', R.x - 14, R.y + 12, { size: 22, color: C.ink, align: 'right', italic: true });
-      text(ctx, 'composition x', R.x + R.w, R.y + R.h + 32, { size: 19, color: C.inkSoft, align: 'right' });
+      S.tex('Tax', '$T$', R.x - 14, R.y + 12, { size: 22, color: C.ink, align: 'right' });
+      S.tex('xR', 'composition $x$', R.x + R.w, R.y + R.h + 32, { size: 19, color: C.inkSoft, align: 'right' });
       text(ctx, 'phase diagram', R.x + R.w / 2, R.y - 14, { size: 21, color: C.ink, align: 'center', weight: 650 });
       text(ctx, 'illustration: regular-solution model', (L.x + R.x + R.w) / 2, S.h - 10, { size: 17, color: C.muted, align: 'center' });
     }

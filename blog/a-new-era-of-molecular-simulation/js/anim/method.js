@@ -52,8 +52,9 @@
       vDensity(ctx, grid, tv.map(v => v / tmax), X1, Y0, Y1, 120, 1, rgba(C.coral, 0.18), C.coral);
       text(ctx, 'Gaussian prior', X0 - 23, Y1 + 34, { size: 20, color: C.inkSoft, align: 'center' });
       text(ctx, 'target', X1 + 60, Y1 + 34, { size: 20, color: C.coral, align: 'center' });
-      text(ctx, 't = 0', X0, Y0 - 18, { size: 20, color: C.muted, align: 'center' });
-      text(ctx, 't = N', X1, Y0 - 18, { size: 20, color: C.muted, align: 'center' });
+      // notation is typeset by KaTeX (S.tex, a layer over the canvas); words stay canvas text
+      S.tex('t0', '$t=0$', X0, Y0 - 18, { size: 20, color: C.muted, align: 'center' });
+      S.tex('tN', '$t=N$', X1, Y0 - 18, { size: 20, color: C.muted, align: 'center' });
       // bridges
       const show = E.clamp(clock / 2.4);
       bridges.forEach((b, bi) => {
@@ -67,19 +68,15 @@
       // forces at the endpoints
       const fa = E.clamp((clock - 2.6) / 0.8);
       if (fa > 0) bridges.forEach(b => { if (!b.hl) return; const s = T.score(b.x1); const len = Math.sign(s) * Math.min(64, 7 * Math.sqrt(Math.abs(s))) * fa; arrow(ctx, tx(1), ty(b.x1), tx(1), ty(b.x1) - len, C.coral, 3.2, 11); });
-      if (fa > 0) richText(ctx, [['β', 'i'], ['F', 'i'], ['(', 'n'], ['X', 'i'], ['N', 'sub'], [')', 'n']], X1 - 14, Y0 + 26, { size: 25, color: C.coral, align: 'right', alpha: fa });
+      if (fa > 0) S.tex('force', '$\\beta\\mathbf F(X_N)$', X1 - 14, Y0 + 26, { size: 25, color: C.coral, align: 'right', alpha: fa });
       // transport labels back to x_t at t*
       const ca = E.clamp((clock - 3.8) / 1.0);
       if (step >= 1 && ca > 0) {
         const xs = tx(1 - (1 - tStar) * E.inOut(ca));
         ctx.save(); ctx.setLineDash([6, 6]); ctx.strokeStyle = rgba(C.navy, 0.5); ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(xs, Y0 - 4); ctx.lineTo(xs, Y1 + 4); ctx.stroke(); ctx.restore();
-        text(ctx, 't', xs, Y1 + 30, { size: 22, color: C.navy, align: 'center', italic: true });
+        S.tex('tm', '$t$', xs, Y1 + 30, { size: 22, color: C.navy, align: 'center' });
         const tt = 1 - (1 - tStar) * E.inOut(ca);
         bridges.forEach(b => { if (!b.hl) return; const y = bpos(b, tt); const s = T.score(b.x1); const len = Math.sign(s) * Math.min(64, 7 * Math.sqrt(Math.abs(s))); U.circle(ctx, xs, ty(y), 6, C.blue); arrow(ctx, xs, ty(y), xs, ty(y) - len, rgba(C.coral, 0.85), 3, 10); });
-      }
-      if (step >= 2) {
-        const a = E.clamp((clock - 5.2) / 0.8);
-        richText(ctx, [['∇log ', 'n'], ['p', 'i'], ['t', 'sub'], ['(', 'n'], ['x', 'i'], [') = (1/', 'n'], ['α', 'i'], ['t', 'sub'], [') 𝔼[ ', 'n'], ['β', 'i'], ['F', 'i'], ['(', 'n'], ['X', 'i'], ['N', 'sub'], [') | ', 'n'], ['X', 'i'], ['t', 'sub'], [' = ', 'n'], ['x', 'i'], [' ]', 'n']], (X0 + X1) / 2 + 20, Y1 + 72, { size: 25, color: C.navy, align: 'center', alpha: a });
       }
     }
     return {
@@ -104,6 +101,17 @@
     const prior = []; for (let i = 0; i < 16; i++) prior.push([rng.u(), rng.u()]);
     const cent = [[0.28, 0.32], [0.7, 0.3], [0.5, 0.72]]; const samp = [];
     for (let i = 0; i < 16; i++) { const c = cent[i % 3]; samp.push([c[0] + 0.09 * rng.normal(), c[1] + 0.09 * rng.normal(), i % 3]); }
+    // Notation is typeset by KaTeX (S.tex, a layer over the canvas); words stay canvas text.
+    // XT: the re-noised point, written as in the formula of the slide (X'_t = α_t X_N + s_t ε); CAP: the caption of each card
+    const XT = "X'_t";
+    const CAP = ['$X_N\\sim p_\\theta$\u00a0\u00a0(forward process $\\Pf$, no gradients)',
+      'forces $\\beta\\mathbf F(X_N)$\u00a0\u00a0— the only oracle calls',
+      'fresh noise $\\varepsilon$, $t$; buffered $X_N$\u00a0\u00a0(free: no oracle)',
+      '$\\min\\,\\big\\|s_\\theta(' + XT + ',t)-\\beta\\mathbf F(X_N)/\\alpha_t\\big\\|^2$'];
+    const XT_TEX = '$' + XT + '$';
+    // As before, these labels keep their full strength on the cards that are not active. The captions are one pixel smaller
+    // than the canvas text was (18 instead of 19), so that the wider KaTeX symbols still fit inside the card.
+    const CAP_O = { size: 18, color: C.inkSoft }, SYM_O = { size: 19, color: C.inkSoft, align: 'center' }, NET_O = { size: 22, color: C.blue, align: 'center' };
     function miniBox(x, y, s, pts, dashed, alpha = 1, arrows = 0) {
       roundRect(ctx, x, y, s, s, 6, '#fff', rgba(C.inkSoft, 0.5), 1.6, dashed ? [6, 5] : null);
       pts.forEach((p, i) => {
@@ -119,7 +127,7 @@
       U.circle(ctx, P.x + 30, P.y + 32, 16, active ? C.teal : C.muted);
       text(ctx, String(P.k), P.x + 30, P.y + 40, { size: 20, weight: 700, color: '#fff', align: 'center' });
       text(ctx, P.name, P.x + 56, P.y + 41, { size: 26, weight: 650, color: C.ink });
-      { // cost of each step: the buffer pays the two expensive ones once, the cheap ones are repeated
+      { // cost of each step: the two expensive ones get repeated use through the buffer, the cheap ones are repeated
         const [lab, col] = P.k <= 2 ? ['expensive', C.coral] : ['cheap, repeated', C.tealDark];
         ctx.font = U.font(16, 700); const w = ctx.measureText(lab).width + 24;
         roundRect(ctx, P.x + pw - 18 - w, P.y + 18, w, 28, 14, rgba(col, 0.12), rgba(col, 0.7), 1.4);
@@ -132,13 +140,13 @@
         for (let i = 0; i <= 60; i++) { const xx = bx + 140 + i * 1.6, yy = by + 70 + 9 * Math.sin(i * 0.55 + (active ? u * 20 : 0)); if (i) ctx.lineTo(xx, yy); else ctx.moveTo(xx, yy); } ctx.stroke();
         arrow(ctx, bx + 230, by + 70, bx + 250, by + 70, C.teal, 3, 12);
         miniBox(bx + 258, by + 10, 120, samp.map(p => [p[0], p[1]]), false);
-        richText(ctx, [['X', 'i'], ['N', 'sub'], [' ~ ', 'n'], ['p', 'i'], ['θ', 'sub'], ['  (forward process P→, no gradients)', 'n']], bx, by + 170, { size: 19, color: C.inkSoft });
+        S.tex('cap1', CAP[0], bx, by + 170, CAP_O);
       } else if (P.k === 2) {
         miniBox(bx, by + 10, 120, samp, false, 1, active ? E.out(u * 1.6) : 1);
         arrow(ctx, bx + 150, by + 70, bx + 210, by + 70, C.muted, 2.5, 10);
         for (let s = 2; s >= 0; s--) roundRect(ctx, bx + 226 + s * 7, by + 40 - s * 7, 140, 64, 10, s ? '#F1F3F5' : '#fff', rgba(C.inkSoft, 0.45), 1.4);
         text(ctx, 'replay buffer', bx + 296, by + 79, { size: 19, color: C.ink, align: 'center', weight: 600 });
-        richText(ctx, [['forces ', 'n'], ['β', 'i'], ['F', 'i'], ['(', 'n'], ['X', 'i'], ['N', 'sub'], [')', 'n'], ['  — the only oracle calls', 'n']], bx, by + 170, { size: 19, color: C.inkSoft });
+        S.tex('cap2', CAP[1], bx, by + 170, CAP_O);
       } else if (P.k === 3) {
         const uu = active ? 0.5 + 0.35 * Math.sin(u * Math.PI * 2) : 0.5;
         miniBox(bx, by + 18, 100, prior.slice(0, 12), true);
@@ -146,17 +154,17 @@
         miniBox(bx + 140, by + 18, 100, mid, false);
         miniBox(bx + 280, by + 18, 100, samp.slice(0, 12), false);
         arrow(ctx, bx + 104, by + 68, bx + 136, by + 68, C.muted, 2, 9); arrow(ctx, bx + 276, by + 68, bx + 244, by + 68, C.muted, 2, 9);
-        richText(ctx, [['ε', 'i']], bx + 50, by + 14, { size: 19, color: C.inkSoft, align: 'center' });
-        richText(ctx, [['X', 'i'], ['t', 'sub']], bx + 190, by + 14, { size: 19, color: C.inkSoft, align: 'center' });
-        richText(ctx, [['X', 'i'], ['N', 'sub']], bx + 330, by + 14, { size: 19, color: C.inkSoft, align: 'center' });
-        richText(ctx, [['fresh noise ', 'n'], ['ε', 'i'], [', ', 'n'], ['t', 'i'], ['; buffered ', 'n'], ['X', 'i'], ['N', 'sub'], ['  (free: no oracle)', 'n']], bx, by + 170, { size: 19, color: C.inkSoft });
+        S.tex('eps', '$\\varepsilon$', bx + 50, by + 14, SYM_O);
+        S.tex('xt', XT_TEX, bx + 190, by + 14, SYM_O);
+        S.tex('xn', '$X_N$', bx + 330, by + 14, SYM_O);
+        S.tex('cap3', CAP[2], bx, by + 170, CAP_O);
       } else {
         const L = [[0, 3], [1, 4], [2, 3]]; const nodes = [];
         L.forEach(([li, n], j) => { for (let i = 0; i < n; i++) nodes.push({ x: bx + 40 + j * 95, y: by + 28 + (i + 0.5) * (110 / n), l: j }); });
         nodes.forEach(p => nodes.forEach(q => { if (q.l === p.l + 1) { ctx.strokeStyle = rgba(C.gold, active ? 0.35 + 0.35 * Math.abs(Math.sin(u * 9 + p.y)) : 0.35); ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke(); } }));
         nodes.forEach(p => U.circle(ctx, p.x, p.y, 8, C.gold, '#fff', 1.5));
-        roundRect(ctx, bx + 255, by + 56, 96, 40, 9, rgba(C.blue, 0.12), C.blue, 1.6); richText(ctx, [['s', 'i'], ['θ', 'sub']], bx + 303, by + 84, { size: 22, color: C.blue, align: 'center' });
-        richText(ctx, [['min ‖', 'n'], ['s', 'i'], ['θ', 'sub'], ['(', 'n'], ['X', 'i'], ['t', 'sub'], [', ', 'n'], ['t', 'i'], [') − ', 'n'], ['β', 'i'], ['F', 'i'], ['(', 'n'], ['X', 'i'], ['N', 'sub'], [')/', 'n'], ['α', 'i'], ['t', 'sub'], ['‖²', 'n']], bx, by + 170, { size: 19, color: C.inkSoft });
+        roundRect(ctx, bx + 255, by + 56, 96, 40, 9, rgba(C.blue, 0.12), C.blue, 1.6); S.tex('net', '$s_\\theta$', bx + 303, by + 84, NET_O);
+        S.tex('cap4', CAP[3], bx, by + 170, CAP_O);
       }
       ctx.restore();
     }
@@ -192,7 +200,7 @@
       text(ctx, `round ${rr}`, gx, gy0 - 22, { size: 30, color: C.navy, weight: 700 });
       text(ctx, rr === 0 ? 'untrained model' : '', gx + 150, gy0 - 22, { size: 20, color: C.muted });
       text(ctx, `force evaluations: ${(rr * 10000).toLocaleString()}`, gx, gy1 + 44, { size: 20, color: C.inkSoft });
-      text(ctx, 'x', gx + gw, gy1 + 44, { size: 19, color: C.muted, align: 'right' });
+      S.tex('ax', '$x$', gx + gw, gy1 + 44, { size: 19, color: C.muted, align: 'right' });
     }
     return { frame(dt) { clock += dt; draw(); }, draw, ff: 3 * ROUND + 1.4 * PH };
   };
@@ -363,6 +371,10 @@
   // ------------------------------------------------------------------
   // Training a diffusion sampler without data: the literature timeline, revealed paper by paper;
   // each build of the slide emphasises one group (path-weight losses, PDDS → iDEM, fixed-point matching, ATLAS · JANUS)
+  // Options, for showing the timeline in two parts with another slide in between:
+  //   {"upto": n}  reveal the first n papers and pause there (the rest of the axis stays empty)
+  //   {"from": n}  come back: the first n papers are already there, the reveal resumes with paper n + 1
+  //   {"emph": [null, [1], [2]]}  the groups that click k emphasises (default: click k → group k)
   // ------------------------------------------------------------------
   ANIMS.litTimeline = function (S, o) {
     const ctx = S.ctx; let clock = 0, step = 0, stepT = 0;
@@ -381,11 +393,16 @@
       [690, 935, GO, ['right idea, high-variance debiasing'], 4, 3, 'notable: LJ-13, LJ-55 (165D) · GMM-40 up to 20D'],
       [1080, 1740, TE, ['fixed-point matching: train like a diffusion model, without data'], 9, 4, 'notable: alanine di- & tetrapeptide (Cartesian) · drug-like conformers (SPICE)']];
     const T0 = 0.4, DT = 0.48;
-    const shownAt = (i) => T0 + i * DT;
+    const N0 = Math.max(0, Math.min(EV.length, (o && o.from) || 0)), N1 = Math.max(N0, Math.min(EV.length, (o && o.upto) || EV.length));   // papers N0 … N1 − 1 are revealed here
+    const EM = (o && o.emph) || [null, [1], [2], [3], [4], [5]];
+    const G1 = 286, G2 = 314, XE = 1722 + OFF;   // axis break between 2018 and 2022; end of the axis
+    const cut = (n) => n <= 0 ? 20 : n >= EV.length ? XE : (EV[n - 1][0] + EV[n][0]) / 2 + OFF;   // how far the axis has got once n papers are shown
+    const XA = cut(N0), XB = cut(N1);
+    const shownAt = (i) => i < N0 ? -9 : T0 + (i - N0) * DT;
     function emph(g) { // dim the other groups while a card is being discussed
-      if (step < 1 || step > 5) return 1;
-      if (g === 0) return 1;   // our benchmark stays highlighted at every build
-      return g === step ? 1 : 0.32;
+      const em = EM[step];
+      if (!em || g === 0) return 1;   // our benchmark stays highlighted at every build
+      return em.indexOf(g) >= 0 ? 1 : 0.32;
     }
     function brace(x1, x2, y, col) {
       const m = (x1 + x2) / 2; ctx.beginPath(); ctx.moveTo(x1, y); ctx.quadraticCurveTo(x1, y + 12, x1 + 12, y + 12); ctx.lineTo(m - 12, y + 12);
@@ -394,15 +411,15 @@
     }
     function draw() {
       S.clear(); ctx.save(); ctx.scale(SC, SC);
-      const nShow = Math.max(0, Math.min(EV.length, Math.floor((clock - T0) / DT) + 1)), prog = E.clamp((clock - T0) / (DT * (EV.length - 0.4)));
+      const nShow = Math.min(N1, N0 + Math.max(0, Math.floor((clock - T0) / DT) + 1)), prog = E.clamp((clock - T0) / (DT * Math.max(0.6, N1 - N0 - 0.4)));
       // axis, filled in as time passes
-      const G1 = 286, G2 = 314, XE = 1722 + OFF;   // axis break between 2018 and 2022
+      const xFill = XA + (XB - XA) * prog;
       const axis = (x2, col, lw) => { ctx.strokeStyle = col; ctx.lineWidth = lw; ctx.beginPath(); ctx.moveTo(20, AX); ctx.lineTo(Math.min(x2, G1), AX);
         if (x2 > G2) { ctx.moveTo(G2, AX); ctx.lineTo(x2, AX); } ctx.stroke(); };
-      axis(XE, '#D5DAE0', 3); axis(20 + (XE - 20) * prog, C.navy, 3.5);
+      axis(XE, '#D5DAE0', 3); axis(xFill, C.navy, 3.5);
       ctx.strokeStyle = '#8A96A3'; ctx.lineWidth = 2.4;
       [G1, G2].forEach((x) => { ctx.beginPath(); ctx.moveTo(x - 6, AX + 12); ctx.lineTo(x + 6, AX - 12); ctx.stroke(); });
-      arrow(ctx, XE - 10, AX, XE + 18, AX, prog >= 1 ? C.navy : '#B8C0C8', 3, 14);
+      arrow(ctx, XE - 10, AX, XE + 18, AX, xFill >= XE ? C.navy : '#B8C0C8', 3, 14);
       ctx.strokeStyle = '#B8C0C8'; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(70, AX - 9); ctx.lineTo(70, AX + 9); ctx.stroke();
       text(ctx, '2018', 70, AX + 36, { size: 19, weight: 700, color: '#8A96A3', align: 'center' });
       ctx.translate(OFF, 0);
@@ -421,7 +438,7 @@
           U.circle(ctx, x, AX, 15, null, rgba(C.navy, 0.5), 2.2);
         }
         ctx.strokeStyle = rgba(col, 0.7); ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(x, AX); ctx.lineTo(x, AX - (AX - top) * a); ctx.stroke();
-        U.circle(ctx, x, AX, 8 * (0.6 + 0.4 * a) + (i === nShow - 1 && prog < 1 ? 2 : 0), col);
+        U.circle(ctx, x, AX, 8 * (0.6 + 0.4 * a) + (i === nShow - 1 && i >= N0 && prog < 1 ? 2 : 0), col);
         text(ctx, t, x, top - 32 + (1 - a) * 10, { size: 22, weight: 700, color: col, align: 'center' });
         text(ctx, sub, x, top - 9 + (1 - a) * 10, { size: 17, color: '#52606D', align: 'center' });
         ctx.restore();
@@ -453,10 +470,12 @@
 
   // ------------------------------------------------------------------
   // APT (accelerated parallel tempering): one replica per level of the same path q_0 = π → q_N ∝ π e^{ηr};
-  // neighbours swap through the (imperfect) transport kernels, accepted with the incremental path weight
+  // neighbours swap through the (imperfect) transport kernels, accepted with the incremental path weight.
+  // Colours: violet = everything tilted (levels q_t, replicas, output at q_N); teal = the learned transport; gold = local MCMC
   // ------------------------------------------------------------------
   ANIMS.aptSwap = function (S, o) {
     const ctx = S.ctx; let rng = makeRng(17);
+    const TCOL = C.violet;
     const X0 = 60, X1 = S.w - 250, Y0 = 50, Y1 = S.h - 60, L = 8, tau = 0.022, goal = 0.8;
     const tx = (t) => X0 + t / L * (X1 - X0), ty = (x) => Y1 - x * (Y1 - Y0);
     // same base and reward as the SMC panel: q_t ∝ π e^{(t/L) η r} is Gaussian at every level
@@ -470,6 +489,8 @@
     const lF = (y, x, t) => lnN(y, f(x, t), tau), lB = (x, y, t) => lnN(x, g(y, t), tau);
     const lG = (a, b, t) => lq(b, t + 1) + lB(a, b, t) - lq(a, t) - lF(b, a, t);
     const HB = 34, hist = new Array(HB).fill(0);
+    // level labels q_0 … q_L, typeset by KaTeX (S.tex, a layer over the canvas); words stay canvas text
+    const QL = []; for (let t = 0; t <= L; t++) QL.push({ key: 'q' + t, src: '$q_{' + t + '}$', col: mix(C.muted, TCOL, t / L) });
     let x, rel, moves, phase, prog, round, acc, tries, nOut;
     function reset() {
       x = []; for (let t = 0; t <= L; t++) x.push(mu(t) + sd(t) * rng.normal());
@@ -495,13 +516,13 @@
     function draw() {
       S.clear();
       ctx.fillStyle = rgba(C.yellow, 0.25); ctx.fillRect(X0, ty(goal + 0.07), X1 - X0, ty(goal - 0.07) - ty(goal + 0.07));
-      text(ctx, 'reward r(x) high', X0 + 8, ty(goal + 0.07) - 10, { size: 19, color: C.gold, weight: 600 });
+      S.tex('rw', 'reward $r(x)$ high', X0 + 8, ty(goal + 0.07) - 10, { size: 19, color: C.gold, weight: 600 });
       for (let t = 0; t <= L; t++) { // level q_t: a vertical density
         const X = tx(t), m = mu(t), s = sd(t), peak = 1 / s;
         ctx.beginPath(); ctx.moveTo(X, Y1); for (let i = 0; i <= 120; i++) { const v = i / 120; ctx.lineTo(X + 34 * Math.exp(lnN(v, m, s)) / peak, ty(v)); } ctx.lineTo(X, Y0); ctx.closePath();
-        ctx.fillStyle = rgba(mix(C.muted, C.teal, t / L), 0.16); ctx.fill();
+        ctx.fillStyle = rgba(mix(C.muted, TCOL, t / L), 0.16 + 0.1 * t / L); ctx.fill();
         ctx.strokeStyle = rgba(C.inkSoft, 0.18); ctx.setLineDash([4, 6]); ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(X, Y0); ctx.lineTo(X, Y1); ctx.stroke(); ctx.setLineDash([]);
-        richText(ctx, [['q', 'i'], [String(t), 'sub']], X, Y1 + 30, { size: 19, color: C.muted, align: 'center' });
+        S.tex(QL[t].key, QL[t].src, X, Y1 + 30, { size: 19, color: QL[t].col, align: 'center' });
       }
       const p = Math.min(prog * 1.25, 1), R = 9, moving = new Set();
       if (phase === 'relax') {
@@ -526,18 +547,19 @@
           }
         }
         for (let t = 0; t <= L; t++) if (!moving.has(t)) U.circle(ctx, tx(t), ty(x[t]), R, C.violet, '#fff', 2);
-        text(ctx, 'step 2: swap through the transport, accept with the work', X0 - 20, Y0 - 16, { size: 19, weight: 650, color: C.tealDark });
+        text(ctx, 'step 2: swap through the transport', X0 - 20, Y0 - 16, { size: 19, weight: 650, color: C.tealDark });
       }
       // output at q_N vs the tilted target
       const DX = X1 + 50, DW = S.w - DX - 20, tot = hist.reduce((a, b) => a + b, 0), q = (v) => Math.exp(lnN(v, mu(L), sd(L)));
       const scl = DW / (q(mu(L)) * 1.1);
-      if (tot) hist.forEach((c, k) => { const w = c / (tot / HB) * scl; if (w > 0.5) roundRect(ctx, DX, ty((k + 1) / HB) + 1, Math.min(w, DW), Math.max(ty(k / HB) - ty((k + 1) / HB) - 2, 1), 2, rgba(C.violet, 0.75)); });
-      ctx.save(); ctx.setLineDash([7, 5]); ctx.strokeStyle = C.tealDark; ctx.lineWidth = 2.2; ctx.beginPath();
+      if (tot) hist.forEach((c, k) => { const w = c / (tot / HB) * scl; if (w > 0.5) roundRect(ctx, DX, ty((k + 1) / HB) + 1, Math.min(w, DW), Math.max(ty(k / HB) - ty((k + 1) / HB) - 2, 1), 2, rgba(C.mask, 0.85)); });
+      ctx.save(); ctx.setLineDash([7, 5]); ctx.strokeStyle = TCOL; ctx.lineWidth = 2.4; ctx.beginPath();
       for (let i = 0; i <= 120; i++) { const v = i / 120, X = DX + q(v) * scl, Y = ty(v); if (i) ctx.lineTo(X, Y); else ctx.moveTo(X, Y); } ctx.stroke(); ctx.restore();
       ctx.strokeStyle = C.faint; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(DX, Y0); ctx.lineTo(DX, Y1); ctx.stroke();
-      richText(ctx, [['output at ', 'n'], ['q', 'i'], ['N', 'sub']], DX + DW / 2, Y0 + 4, { size: 19, color: C.inkSoft, align: 'center' });
-      text(ctx, `${nOut} exact draws`, DX + DW / 2, Y1 + 30, { size: 18, color: C.violet, align: 'center', weight: 600 });
-      text(ctx, `round ${round} · swap acceptance ${tries ? (acc / tries).toFixed(2) : '–'}`, X1 + 10, Y0 - 16, { size: 18, color: C.inkSoft, align: 'right' });
+      S.tex('out', 'output at $q_N$', DX + DW / 2, Y0 + 4, { size: 19, color: TCOL, align: 'center', weight: 600 });
+      text(ctx, `${nOut} exact draws`, DX + DW / 2, Y1 + 30, { size: 18, color: TCOL, align: 'center', weight: 600 });
+      // the readout sits at the right end of the level axis; the step label on the left is short enough never to reach it
+      text(ctx, `round ${round} · accepted ${tries ? (acc / tries).toFixed(2) : '–'}`, X1 + 10, Y0 - 16, { size: 18, color: C.inkSoft, align: 'right' });
     }
     reset();
     return {
@@ -547,8 +569,10 @@
 
   // ------------------------------------------------------------------
   ANIMS.smcSteer = function (S, o) {
-    // two runs on the same axes: first the base sampler (grey, lands on π), then SMC steering (teal, lands on q_N ∝ π e^{ηr})
+    // two runs on the same axes: first the base sampler (grey, lands on π), then SMC steering (violet, lands on q_N ∝ π e^{ηr});
+    // violet marks everything tilted: the steered paths and particles, the tilted density and its labels
     const ctx = S.ctx; let rng = makeRng(9);
+    const TCOL = C.violet;
     const X0 = 60, X1 = S.w - 230, Y0 = 50, Y1 = S.h - 60, K = 48, N = 20;
     const tx = (t) => X0 + t * (X1 - X0), ty = (x) => Y1 - x * (Y1 - Y0);
     const goal = 0.8, TILT = 3.0, MB = 0.42, SB = 0.085, TH = 2.2;   // base π = N(0.42, 0.085²); q_t ∝ π e^{t·TILT·r}
@@ -585,26 +609,27 @@
     function draw() {
       S.clear();
       ctx.fillStyle = rgba(C.yellow, 0.25); ctx.fillRect(X0, ty(goal + 0.07), X1 - X0, ty(goal - 0.07) - ty(goal + 0.07));
-      text(ctx, 'reward r(x) high', X0 + 8, ty(goal + 0.07) - 10, { size: 19, color: C.gold, weight: 600 });
+      S.tex('rw', 'reward $r(x)$ high', X0 + 8, ty(goal + 0.07) - 10, { size: 19, color: C.gold, weight: 600 });
       for (let j = 0; j <= 6; j++) { const x = tx(j / 6); ctx.strokeStyle = rgba(C.inkSoft, 0.18); ctx.setLineDash([4, 6]); ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(x, Y0); ctx.lineTo(x, Y1); ctx.stroke(); ctx.setLineDash([]); }
       // base run (grey): faded once steering starts
       const baseOn = phase === 'base' || phase === 'hold1';
       base.forEach(p => { path(p.hist, rgba(C.steel, baseOn ? 0.75 : 0.28), baseOn ? 2 : 1.4); const x = p.hist[p.hist.length - 1]; U.circle(ctx, tx((p.hist.length - 1) / K), ty(x), baseOn ? 6 : 4.5, rgba(C.steel, baseOn ? 1 : 0.45), '#fff', 1.2); });
-      // steered run (teal)
+      // steered run (violet)
       dead.forEach(d => { ctx.save(); ctx.setLineDash([5, 4]); path(d.hist, rgba(C.muted, 0.55), 1.5); ctx.restore(); const lx = tx((d.hist.length - 1) / K), ly = ty(d.hist[d.hist.length - 1]); ctx.strokeStyle = C.red; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(lx - 7, ly - 7); ctx.lineTo(lx + 7, ly + 7); ctx.moveTo(lx + 7, ly - 7); ctx.lineTo(lx - 7, ly + 7); ctx.stroke(); });
-      parts.forEach(p => { path(p.hist, rgba(C.teal, 0.75), 2); const x = p.hist[p.hist.length - 1]; U.circle(ctx, tx((p.hist.length - 1) / K), ty(x), 6, C.teal, '#fff', 1.5); });
-      text(ctx, 't = 0', X0, Y1 + 32, { size: 19, color: C.muted, align: 'center' });
-      text(ctx, 't = N', X1, Y1 + 32, { size: 19, color: C.muted, align: 'center' });
-      if (baseOn) text(ctx, 'base sampler, no steering: the samples follow π', (X0 + X1) / 2, Y1 + 32, { size: 19, color: C.inkSoft, align: 'center', weight: 600 });
-      else richText(ctx, [['SMC: reweight with the work, ', 'n'], ['e', 'i'], ['−W', 'sup'], ['; resample: drop ✕, copy', 'n']], (X0 + X1) / 2, Y1 + 32, { size: 19, color: C.tealDark, align: 'center' });
-      // terminal densities: base (grey) vs tilted (teal), well separated
+      parts.forEach(p => { path(p.hist, rgba(TCOL, 0.82), 2.1); const x = p.hist[p.hist.length - 1]; U.circle(ctx, tx((p.hist.length - 1) / K), ty(x), 6, TCOL, '#fff', 1.5); });
+      // notation is typeset by KaTeX (S.tex, a layer over the canvas); the work of one step is W_t, as on the slide
+      S.tex('t0', '$t=0$', X0, Y1 + 32, { size: 19, color: C.muted, align: 'center' });
+      S.tex('tN', '$t=N$', X1, Y1 + 32, { size: 19, color: C.muted, align: 'center' });
+      if (baseOn) S.tex('capB', 'base sampler, no steering: the samples follow $\\pi$', (X0 + X1) / 2, Y1 + 32, { size: 19, color: C.inkSoft, align: 'center', weight: 600 });
+      else S.tex('capS', 'SMC: reweight with the work, $e^{-W_t}$; resample: drop ✕, copy', (X0 + X1) / 2, Y1 + 32, { size: 19, color: TCOL, align: 'center', weight: 600 });
+      // terminal densities: base (grey) vs tilted (violet), well separated
       const DX = X1 + 40, base_ = (x) => Math.exp(-0.5 * ((x - MB) / SB) ** 2), tilt = (x) => Math.exp(-0.5 * ((x - mq(1)) / sq(1)) ** 2);
       ctx.beginPath(); ctx.moveTo(DX, Y1); for (let i = 0; i <= 120; i++) ctx.lineTo(DX + base_(i / 120) * 120, ty(i / 120)); ctx.lineTo(DX, Y0); ctx.closePath(); ctx.fillStyle = rgba(C.steel, 0.32); ctx.fill(); ctx.strokeStyle = rgba(C.steel, 0.9); ctx.lineWidth = 2; ctx.stroke();
-      ctx.beginPath(); ctx.moveTo(DX, Y1); for (let i = 0; i <= 120; i++) ctx.lineTo(DX + tilt(i / 120) * 120, ty(i / 120)); ctx.lineTo(DX, Y0); ctx.closePath(); ctx.fillStyle = rgba(C.teal, 0.3); ctx.fill(); ctx.strokeStyle = C.teal; ctx.lineWidth = 2; ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(DX, Y1); for (let i = 0; i <= 120; i++) ctx.lineTo(DX + tilt(i / 120) * 120, ty(i / 120)); ctx.lineTo(DX, Y0); ctx.closePath(); ctx.fillStyle = rgba(TCOL, 0.3); ctx.fill(); ctx.strokeStyle = TCOL; ctx.lineWidth = 2.2; ctx.stroke();
       ctx.strokeStyle = rgba(C.inkSoft, 0.5); ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(DX, Y0); ctx.lineTo(DX, Y1); ctx.stroke();
-      text(ctx, 'base π', DX + 128, ty(MB) + 6, { size: 19, color: C.inkSoft, weight: 600 });
-      text(ctx, 'tilted', DX + 128, ty(mq(1)) + 6, { size: 19, color: C.tealDark, weight: 600 });
-      richText(ctx, [['q', 'i'], ['N', 'sub'], [' ∝ ', 'n'], ['π', 'i'], [' e', 'n'], ['ηr', 'sup']], DX + 64, Y0 + 14, { size: 22, color: C.tealDark, align: 'center' });
+      S.tex('base', 'base $\\pi$', DX + 128, ty(MB) + 6, { size: 19, color: C.inkSoft, weight: 600 });
+      text(ctx, 'tilted', DX + 128, ty(mq(1)) + 6, { size: 19, color: TCOL, weight: 650 });
+      S.tex('qN', '$q_N\\propto\\pi\\,e^{\\eta r}$', DX + 64, Y0 + 14, { size: 22, color: TCOL, align: 'center' });
     }
     return {
       frame(dt) {

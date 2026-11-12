@@ -2,13 +2,19 @@
    Keys: → / Space / PageDown / click = next build · ← / PageUp = previous · Home / End
          S = presenter view (notes, timer, next slide) · O = overview · F = fullscreen · B = black screen
          P = pause animations · G = go to slide number · ? = help
-   URL options: ?short (skip slides marked data-optional) · #/12 deep link · ?export (static capture mode) */
+   URL options: ?short (the 30-minute version: skips slides marked data-optional, shows slides marked data-only="short"; short.html opens it) · ?ml (machine-learning intro instead of the materials intro:
+                slides tagged data-aud="ml" / data-aud="mat") · #/12 deep link · ?export (static capture mode)
+                · ?lowres (canvas at 1x pixel density: lighter while screen sharing) */
 (function () {
   'use strict';
   const W = 1920, H = 1080;
   const params = new URLSearchParams(location.search);
   const MODE = params.has('presenter') ? 'presenter' : params.has('embed') ? 'embed' : 'main';
   const SHORT = params.has('short');
+  const AUD = params.has('ml') ? 'ml' : 'mat'; // audience variant
+  // ?short is the 30-minute version: it skips slides marked data-optional and shows the ones marked data-only="short"
+  const keepSlide = (el) => !(SHORT && el.hasAttribute('data-optional')) && !(el.dataset.only === 'short' && !SHORT) && !(el.dataset.aud && el.dataset.aud !== AUD);
+  const VARIANT_Q = (SHORT ? '&short' : '') + (AUD === 'ml' ? '&ml' : '');
   const EXPORT = params.has('export');
   if (MODE === 'presenter') { document.addEventListener('DOMContentLoaded', buildPresenter); return; }
 
@@ -27,7 +33,7 @@
       let max = 0; frags.forEach(f => { max = Math.max(max, +f.dataset.f, +(f.dataset.fOut || 0)); });
       s._nfrag = max;
     });
-    order = slides.map((s, i) => i).filter(i => !(SHORT && slides[i].hasAttribute('data-optional')));
+    order = slides.map((s, i) => i).filter(i => keepSlide(slides[i]));
     numberSlides();
     progressEl = document.createElement('div'); progressEl.className = 'progress'; stage.appendChild(progressEl);
     buildOverview(); buildHelp();
@@ -36,7 +42,7 @@
     if (EXPORT) document.body.classList.add('export');
 
     if (window.renderMathInElement) {
-      renderMathInElement(stage, { delimiters: [{ left: '\\[', right: '\\]', display: true }, { left: '$', right: '$', display: false }], throwOnError: false, trust: true, strict: false, macros: { '\\Pf': '\\overrightarrow{P}', '\\Pb': '\\overleftarrow{P}', '\\Qf': '\\overrightarrow{Q}', '\\Qb': '\\overleftarrow{Q}', '\\dd': '\\mathrm{d}' } });
+      renderMathInElement(stage, { delimiters: [{ left: '\\[', right: '\\]', display: true }, { left: '$', right: '$', display: false }], throwOnError: false, trust: true, strict: false, macros: Object.assign({}, U.texMacros) });
     }
     window.addEventListener('resize', layout);
     layout();
@@ -132,9 +138,12 @@
   function leaveAnims(s) { animsOf(s).forEach(c => { const r = instances.get(c); if (r) { r.active = false; r.inst.leave && r.inst.leave(); } }); }
   function stepAnims(s) { animsOf(s).forEach(c => { const r = instances.get(c); if (r && r.inst.step) { r.inst.step(frag); r.inst.draw && r.inst.draw(); } }); }
 
+  // Presenter-view previews (embed) animate at ~10 fps so they don't steal CPU from the shared window.
+  const MIN_DT = MODE === 'embed' ? 0.1 : 0;
   let last = performance.now();
   function loop(now) {
-    let dt = Math.min(0.05, (now - last) / 1000); last = now;
+    if (MIN_DT && (now - last) / 1000 < MIN_DT) { requestAnimationFrame(loop); return; }
+    let dt = Math.min(MIN_DT || 0.05, (now - last) / 1000); last = now;
     if (paused || document.hidden) dt = 0;
     if (dt > 0) instances.forEach((r) => { if (r.active && r.inst.frame) { r.t += dt; r.inst.frame(dt, r.t); } });
     requestAnimationFrame(loop);
@@ -195,7 +204,7 @@
       <tr><td>→ Space PgDn click</td><td>next build / slide</td></tr><tr><td>← PgUp</td><td>previous</td></tr>
       <tr><td>S</td><td>presenter view: notes, timer, next slide</td></tr><tr><td>O</td><td>overview (Esc to close)</td></tr>
       <tr><td>F</td><td>fullscreen</td></tr><tr><td>B or .</td><td>black screen</td></tr><tr><td>Shift+P</td><td>pause animations</td></tr>
-      <tr><td>12 Enter</td><td>jump to slide 12</td></tr><tr><td>?short in URL</td><td>skip optional slides (shorter talk)</td></tr></table></div>`;
+      <tr><td>12 Enter</td><td>jump to slide 12</td></tr><tr><td>?short in URL</td><td>skip optional slides (shorter talk)</td></tr><tr><td>?ml in URL</td><td>machine-learning intro instead of the materials intro</td></tr></table></div>`;
     helpEl.addEventListener('click', () => helpEl.classList.remove('open'));
     document.body.appendChild(helpEl);
   }
@@ -203,7 +212,7 @@
   // ---------- presenter link ----------
   function openPresenter() {
     if (presenterWin && !presenterWin.closed) { presenterWin.focus(); broadcast(); return; }
-    const url = location.href.split('#')[0].split('?')[0] + '?presenter' + (SHORT ? '&short' : '');
+    const url = location.href.split('#')[0].split('?')[0] + '?presenter' + VARIANT_Q;
     presenterWin = window.open(url, 'deck-presenter', 'width=1400,height=860');
     setTimeout(broadcast, 800); setTimeout(broadcast, 2000);
   }
@@ -221,14 +230,14 @@
   // ---------- presenter window (same file, ?presenter) ----------
   function buildPresenter() {
     const deckSlides = Array.from(document.querySelectorAll('.stage > section.slide'));
-    const ord = deckSlides.map((s, i) => i).filter(i => !(SHORT && deckSlides[i].hasAttribute('data-optional')));
+    const ord = deckSlides.map((s, i) => i).filter(i => keepSlide(deckSlides[i]));
     const notes = ord.map(i => { const n = deckSlides[i].querySelector('aside.notes'); return n ? n.innerHTML : ''; });
     const titles = ord.map(i => deckSlides[i].dataset.title || '');
     const nfr = ord.map(i => { let m = 0; deckSlides[i].querySelectorAll('[data-f]').forEach(f => { m = Math.max(m, +f.dataset.f, +(f.dataset.fOut || 0)); }); return m; });
     document.body.innerHTML = '';
     document.body.className = 'presenter';
     const base = location.href.split('?')[0];
-    const q = SHORT ? '&short' : '';
+    const q = VARIANT_Q;
     document.body.innerHTML = `
       <div class="pv">
         <div class="pv-main"><div class="pv-label">Current</div><div class="pv-frame"><iframe id="pvCur" src="${base}?embed${q}"></iframe></div></div>
