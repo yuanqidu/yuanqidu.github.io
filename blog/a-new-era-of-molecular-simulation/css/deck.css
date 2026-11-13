@@ -306,3 +306,14 @@ body.export .sde2 > div:not([data-f]), body.export .sde2 > div.f-vis { opacity: 
 .ctex .katex { font-size: 1.12em; }
 /* a fragment that waits for something else to move out of the way before it fades in (the overlay on the estimator slide) */
 [data-f].late.f-vis { transition-delay: .5s; }
+
+/* ===== "what it can do" cards (ATLAS and JANUS slides of the 25-minute version; prefix can-) ===== */
+.can-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.can { display: flex; flex-direction: column; justify-content: center; padding: 18px 24px 20px; border-radius: 16px; background: #fff; border-left: 6px solid var(--teal); box-shadow: 0 1px 2px rgba(31,41,51,.05), 0 6px 24px rgba(31,41,51,.06); }
+.can.wide { grid-column: 1 / span 2; }
+.can .t { font-size: 29px; font-weight: 700; line-height: 1.2; color: var(--navy); }
+.can .d { font-size: 23px; line-height: 1.35; color: var(--ink-soft); margin-top: 6px; }
+.can .n { display: flex; align-items: center; gap: 14px; margin-top: 10px; font-size: 19px; line-height: 1.25; color: var(--ink-soft); white-space: nowrap; }
+.can .n b { font-size: 50px; font-weight: 720; letter-spacing: -0.02em; line-height: 1; color: var(--teal); }
+.can-grid.violet .can { border-left-color: var(--violet); }
+.can-grid.violet .can .n b { color: var(--violet); }

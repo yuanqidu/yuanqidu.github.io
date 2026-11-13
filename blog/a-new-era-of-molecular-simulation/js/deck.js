@@ -2,19 +2,25 @@
    Keys: → / Space / PageDown / click = next build · ← / PageUp = previous · Home / End
          S = presenter view (notes, timer, next slide) · O = overview · F = fullscreen · B = black screen
          P = pause animations · G = go to slide number · ? = help
-   URL options: ?short (the 30-minute version: skips slides marked data-optional, shows slides marked data-only="short"; short.html opens it) · ?ml (machine-learning intro instead of the materials intro:
-                slides tagged data-aud="ml" / data-aud="mat") · #/12 deep link · ?export (static capture mode)
-                · ?lowres (canvas at 1x pixel density: lighter while screen sharing) */
+   URL options: ?short (the 30-minute version; short.html opens it) · ?shorter (the 25-minute version; shorter.html opens it)
+                · ?ml (machine-learning intro instead of the materials intro: slides tagged data-aud="ml" / data-aud="mat")
+                · #/12 deep link · ?export (static capture mode) · ?lowres (canvas at 1x pixel density: lighter while screen sharing)
+   Which slides a version shows (attributes on <section class="slide">):
+                data-optional          not in the two cut versions (short, shorter)
+                data-skip="shorter"    not in the versions listed (space-separated: short, shorter)
+                data-only="shorter"    only in the versions listed (space-separated: short, shorter) */
 (function () {
   'use strict';
   const W = 1920, H = 1080;
   const params = new URLSearchParams(location.search);
   const MODE = params.has('presenter') ? 'presenter' : params.has('embed') ? 'embed' : 'main';
-  const SHORT = params.has('short');
+  // version of the talk: full (default) · short (?short, 30 minutes) · shorter (?shorter, 25 minutes with questions)
+  const VERSION = params.has('shorter') ? 'shorter' : params.has('short') ? 'short' : 'full';
   const AUD = params.has('ml') ? 'ml' : 'mat'; // audience variant
-  // ?short is the 30-minute version: it skips slides marked data-optional and shows the ones marked data-only="short"
-  const keepSlide = (el) => !(SHORT && el.hasAttribute('data-optional')) && !(el.dataset.only === 'short' && !SHORT) && !(el.dataset.aud && el.dataset.aud !== AUD);
-  const VARIANT_Q = (SHORT ? '&short' : '') + (AUD === 'ml' ? '&ml' : '');
+  const listed = (v) => (v || '').split(/\s+/).indexOf(VERSION) >= 0;
+  const keepSlide = (el) => !(VERSION !== 'full' && el.hasAttribute('data-optional')) && !listed(el.dataset.skip)
+    && !(el.dataset.only && !listed(el.dataset.only)) && !(el.dataset.aud && el.dataset.aud !== AUD);
+  const VARIANT_Q = (VERSION !== 'full' ? '&' + VERSION : '') + (AUD === 'ml' ? '&ml' : '');
   const EXPORT = params.has('export');
   if (MODE === 'presenter') { document.addEventListener('DOMContentLoaded', buildPresenter); return; }
 
@@ -204,7 +210,7 @@
       <tr><td>→ Space PgDn click</td><td>next build / slide</td></tr><tr><td>← PgUp</td><td>previous</td></tr>
       <tr><td>S</td><td>presenter view: notes, timer, next slide</td></tr><tr><td>O</td><td>overview (Esc to close)</td></tr>
       <tr><td>F</td><td>fullscreen</td></tr><tr><td>B or .</td><td>black screen</td></tr><tr><td>Shift+P</td><td>pause animations</td></tr>
-      <tr><td>12 Enter</td><td>jump to slide 12</td></tr><tr><td>?short in URL</td><td>skip optional slides (shorter talk)</td></tr><tr><td>?ml in URL</td><td>machine-learning intro instead of the materials intro</td></tr></table></div>`;
+      <tr><td>12 Enter</td><td>jump to slide 12</td></tr><tr><td>?short in URL</td><td>the 30-minute version</td></tr><tr><td>?shorter in URL</td><td>the 25-minute version</td></tr><tr><td>?ml in URL</td><td>machine-learning intro instead of the materials intro</td></tr></table></div>`;
     helpEl.addEventListener('click', () => helpEl.classList.remove('open'));
     document.body.appendChild(helpEl);
   }

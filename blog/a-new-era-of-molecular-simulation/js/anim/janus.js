@@ -166,6 +166,7 @@
   //   2  the soft label: every other site stays fixed, site i runs through the K species, the K weights are renormalized
   //      (the bar of the species on trial is the solid one)
   //   3  the picture stays
+  // {"softStep": 3}: the soft label comes on click 3 instead (one click in between that changes nothing in the picture)
   // ------------------------------------------------------------------
   ANIMS.softLabel = function (S, o) {
     const ctx = S.ctx; let clock = 0, step = 0;
@@ -179,11 +180,12 @@
     const logits = dU.map((u, b) => mu[b] - u); const m = Math.max(...logits); const ex = logits.map(l => Math.exp(l - m)); const Z = ex.reduce((s, v) => s + v, 0); const rho = ex.map(v => v / Z);
     const names = ['A', 'B', 'vacancy'], cols = [SPA, SPB, C.muted];
     const BW = 260, ROW = 46;   // bar length of probability 1; row pitch
+    const SOFT = (o && o.softStep) || 2;   // the click on which the soft label appears
     function draw() {
       S.clear();
       roundRect(ctx, LX, LY, box, box, 6, '#fff', rgba(C.inkSoft, 0.55), 1.8);
       text(ctx, step >= 1 ? "the model's own sample" : 'a sample from data', LX, LY - 22, { size: 21, color: C.inkSoft });
-      const trial = step === 2;   // site i runs through the K species while the soft label is introduced
+      const trial = step === SOFT;   // site i runs through the K species while the soft label is introduced
       const cand = trial ? Math.floor(clock * 1.1) % 3 : cur;
       for (let j = 0; j < n; j++) for (let i = 0; i < n; i++) {
         const x = LX + (i + 0.5) * a, y = LY + (j + 0.5) * a, v = grid[j][i];
@@ -210,7 +212,7 @@
         if (k2 > 0) { ctx.moveTo(x0, y1); ctx.lineTo(x0 + (x1 - x0) * k2, y1 - (y1 - y0) * k2); }
         ctx.stroke(); ctx.restore();
       }
-      if (step >= 2) { // the soft label
+      if (step >= SOFT) { // the soft label
         const y0 = LY + 250, g = trial ? E.out(E.clamp(clock * 2)) : 1;
         S.tex('soft', 'soft label $\\rho_i(b\\mid\\mathbf a_{-i},\\mathbf x)$', RX, y0, { size: 22, color: C.tealDark });
         for (let b = 0; b < 3; b++) {
