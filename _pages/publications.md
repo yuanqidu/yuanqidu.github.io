@@ -27,6 +27,11 @@ googlescholar: https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en
     <p class="subtitle-aux"><b>This page is updated periodically, mainly for selected work. For an exhaustive list, please check my <a href="https://scholar.google.com/citations?user=fAc_zZMAAAAJ&hl=en">Google Scholar</a>.</b></p>
     <div id="pub-card-container" class="activated hide">
       <div class="pub-card" data-topic="control-sampling" data-year="2026" data-selected="true">
+          <strong>Pharos: Learning to Control Rare Events at Scale</strong><br>
+          <em>Jiajun He, Jacky Chen, Weiliang Luo, Heather Kulik, David R. Koes, Carles Domingo-Enrich†, <b>Yuanqi Du†</b></em><br>
+          arXiv preprint arXiv:2611.26765 | <a href="https://arxiv.org/abs/2611.26765">paper</a>
+      </div>
+      <div class="pub-card" data-topic="control-sampling" data-year="2026" data-selected="true">
           <strong>JANUS: A Multi-modal Foundation Neural Sampler for Disordered Materials</strong><br>
           <em>Denis Blessing, Mouyang Cheng, Maximilian Schebek, Jutta Rogal, Mingda Li, Carles Domingo-Enrich†, <b>Yuanqi Du†</b></em><br>
           arXiv preprint arXiv:2608.19116 | <a href="https://arxiv.org/abs/2608.19116">paper</a>
