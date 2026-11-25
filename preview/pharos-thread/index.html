@@ -33,21 +33,21 @@ So Pharos runs a loop: q steers simulations into the transition region, and thos
 <span class="n ">256</span></div><div class="txt">What makes the control practical:
 • capped hitting times: short trajectories bootstrapped from the current q, provably the same solution
 • matching objective: simulate with a shifted drift or a different diffusion coefficient, and reuse the trajectories ✅</div><video src="media/flex.webm?v=3872a887" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 6/ Pharos recipe + proteins</span>
-<span class="n ">275</span></div><div class="txt">Pharos makes this scale: a replay buffer of good trajectories, mixed sampling, and inputs without solvent (the MD keeps it).
+<span class="n ">280</span></div><div class="txt">Pharos makes this scale: a replay buffer of good paths, mixed sampling, and committor inputs on coarse-grained variables only (MD keeps them all).
 
-Proteins in water, up to 11,521 atoms: the committor agrees with self-consistent shooting (r = 0.93), with 8.6–36× less simulation than baselines. 🧬</div><video src="media/biomolecules_row.webm?v=522f3bd9" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 7/ host-guest</span>
+Proteins in water (11,521 atoms): q agrees with self-consistent shooting (r = 0.93), with 8.6-36× less simulation than baselines. 🧬</div><video src="media/biomolecules_row.webm?v=2da1367c" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 7/ host-guest</span>
 <span class="n ">274</span></div><div class="txt">Host-guest unbinding in water (SAMPL): a millisecond-scale event.
 
-Pharos measures its rate on the millisecond scale, matching published estimates. Its committor agrees with self-consistent shooting (r = 0.94) and depends on guest tilt and cavity water, not height alone. 💊</div><video src="media/hostguest_row.webm?v=783889dd" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 8/ ions</span>
+Pharos measures its rate on the millisecond scale, matching published estimates. Its committor agrees with self-consistent shooting (r = 0.94) and depends on guest tilt and cavity water, not height alone. 💊</div><video src="media/hostguest_row.webm?v=40e17a01" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 8/ ions</span>
 <span class="n ">279</span></div><div class="txt">Ion pairs in water: one network for six salts, given charge, LJ parameters and mass.
 
 The committor agrees with self-consistent shooting for all six and depends on bridging water, not just distance. RETIS rates over a 65-fold range: median error within 10%, held-out ions too. 🧂</div><video src="media/ions_row.webm?v=4f45779b" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 9/ HCN</span>
 <span class="n ">280</span></div><div class="txt">HCN dimerization, first step to adenine synthesis, with the UMA machine learning interatomic potential.
 
-q closely agrees with self-consistent shooting. Rate ~10⁸ s⁻¹ in liquid HCN; water solvent barrier 22.2 kcal/mol (exp. 20.4). Transition state: early in HCN, late in water. 🌍</div><video src="media/hcn_row.webm?v=5cd0a422" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 10/ builds on REACT</span>
+q closely agrees with self-consistent shooting. Rate ~10⁸ s⁻¹ in liquid HCN; water solvent barrier 22.2 kcal/mol (exp. 20.4). Transition state: early in HCN, late in water. 🌍</div><video src="media/hcn_row.webm?v=bd8e6b28" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 10/ builds on REACT</span>
 <span class="n ">233</span></div><div class="txt">Pharos builds on REACT. It also handles non-equilibrium, driven and time-periodic systems beyond conventional molecular simulation, and works for finite-time problems and discrete-space problems. 🚀
 
-📄 REACT: <span class="link">https://arxiv.org/abs/2604.13213</span></div><video src="media/react_benchmarks.webm?v=cee92492" autoplay loop muted playsinline></video></div></article></div><script>
+📄 REACT: <span class="link">https://arxiv.org/abs/2604.13213</span></div><video src="media/react_benchmarks.webm?v=c5734dd9" autoplay loop muted playsinline></video></div></article></div><script>
 // browsers without WebM/VP9 (older iOS Safari): show the small GIF instead
 document.querySelectorAll('video').forEach(v => { if (!v.canPlayType('video/webm; codecs="vp9"')) { const i = document.createElement('img'); i.src = v.getAttribute('src').replace('.webm', '.gif'); i.loading = 'lazy'; v.replaceWith(i); } });
 </script>
