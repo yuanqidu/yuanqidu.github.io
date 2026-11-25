@@ -1,59 +1,47 @@
-<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex, nofollow"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Thread preview: ATLAS · JANUS · OMNIA</title>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1"><title>ATLAS · JANUS · OMNIA · neural samplers for atomistic simulation</title>
 <style>
 @font-face { font-family: Inter; src: url(inter.woff2); font-weight: 100 900; }
 body { background:#F1EEE7; font-family: Inter, sans-serif; color:#0f1419; margin:0; }
 .wrap { max-width: 620px; margin: 0 auto; background:#fff; min-height:100vh; border-left:1px solid #e6e6e6; border-right:1px solid #e6e6e6; }
-h1 { font-size:17px; padding:14px 16px; margin:0; border-bottom:1px solid #eee; } h1 small { font-weight:400; color:#536471; }
-article { display:flex; gap:12px; padding:14px 16px 10px; border-bottom:1px solid #eee; }
+article { display:flex; gap:12px; padding:14px 16px 12px; border-bottom:1px solid #eee; }
 .av { width:40px; height:40px; border-radius:50%; flex:none; object-fit:cover; }
-.main { flex:1; min-width:0; } .who span { color:#536471; font-size:14px; } .n { float:right; font-size:12px; color:#2A9D8F; } .n.long { color:#B26A12; }
-.txt { white-space:pre-wrap; font-size:15px; line-height:1.4; margin:4px 0 10px; }
-.link { color:#1d9bf0; } article img:not(.av), video { width:100%; border-radius:16px; border:1px solid #e6e6e6; display:block; }
-.missing { padding:30px; text-align:center; color:#999; border:1px dashed #ccc; border-radius:16px; }
-</style><div class="wrap"><div style="padding:10px 16px;background:#FFF6E5;color:#8a5a00;font-size:13px;border-bottom:1px solid #f0e0c0">Draft preview of an X thread (ATLAS · JANUS · OMNIA). Not posted yet, please do not share further.</div><h1>Thread preview · 13 posts <small>(number = X length; above 280 needs Premium long posts)</small></h1><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 1/ hook</span>
-<span class="n long">290</span></div><div class="txt">How do we sample equilibrium states of matter? 🧵
+.main { flex:1; min-width:0; } .who span { color:#536471; font-size:14px; }
+.txt { white-space:pre-wrap; font-size:15px; line-height:1.4; margin:4px 0 10px; overflow-wrap:anywhere; }
+a { color:#1d9bf0; text-decoration:none; } a:hover { text-decoration:underline; }
+article img:not(.av), video { width:100%; border-radius:16px; border:1px solid #e6e6e6; display:block; }
+</style></head><body><div class="wrap"><article><img class="av" src="yuanqi.jpg" alt=""><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD</span></div><div class="txt">How do we sample equilibrium states of matter? 🧵
 
 Glasses, alloys, surfaces: properties are determined by equilibrium states, which energy barriers make extremely hard to sample, with no available training data.
 
-Neural samplers learn from the energy alone: a new era of simulating matter.</div><video src="media/hero.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 2/ people + papers</span>
-<span class="n ">279</span></div><div class="txt">Led by Mouyang Cheng &amp; Denis Blessing (equal contribution), co-led by <span class="link">@cdomingoenrich</span> &amp; me, with support from Mingda Li, <span class="link">@JiajunHe614</span>, Botao Yu, Gerhard Neumann, Maximilian Schebek &amp; Jutta Rogal 🤝
+Neural samplers learn from the energy alone: a new era of simulating matter.</div><video src="media/hero.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg" alt=""><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD</span></div><div class="txt">Led by Mouyang Cheng &amp; Denis Blessing (equal contribution), co-led by <a href="https://x.com/cdomingoenrich">@cdomingoenrich</a> &amp; me, with support from Mingda Li, <a href="https://x.com/JiajunHe614">@JiajunHe614</a>, Botao Yu, Gerhard Neumann, Maximilian Schebek &amp; Jutta Rogal 🤝
 
-ATLAS: <span class="link">https://arxiv.org/abs/2607.19198</span>
-JANUS: <span class="link">https://arxiv.org/abs/2608.19116</span>
-OMNIA: <span class="link">[OMNIA_URL]</span></div><img src="media/papers.png"></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 3/ why sampling is hard</span>
-<span class="n ">279</span></div><div class="txt">Why is this hard? Configurations follow p(x) ∝ exp(−U/k_BT), explored by local MD or Monte Carlo moves. A barrier ΔU costs ~exp(ΔU/k_BT) steps: in a glass or between phases the chain stays in one basin.
+ATLAS: <a href="https://arxiv.org/abs/2607.19198">https://arxiv.org/abs/2607.19198</a>
+JANUS: <a href="https://arxiv.org/abs/2608.19116">https://arxiv.org/abs/2608.19116</a>
+OMNIA: coming soon</div><img src="media/papers.png" loading="lazy"></div></article><article><img class="av" src="yuanqi.jpg" alt=""><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD</span></div><div class="txt">Why is this hard? Configurations follow p(x) ∝ exp(−U/k_BT), explored by local MD or Monte Carlo moves. A barrier ΔU costs ~exp(ΔU/k_BT) steps: in a glass or between phases the chain stays in one basin.
 
-ML potentials cut the cost per energy evaluation, not the number needed. ⏳</div><video src="media/trap.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 4/ neural samplers</span>
-<span class="n long">281</span></div><div class="txt">Neural samplers learn the sampler instead: a diffusion process from a simple prior to the Boltzmann distribution, trained from interatomic potentials.
+ML potentials cut the cost per energy evaluation, not the number needed. ⏳</div><video src="media/trap.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg" alt=""><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD</span></div><div class="txt">Neural samplers learn the sampler instead: a diffusion process from a simple prior to the Boltzmann distribution, trained from interatomic potentials.
 
-Samples are independent, one model spans many conditions, and path weights give unbiased ensemble observables and free energy. 🧠</div><video src="media/samplers.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 5/ ATLAS</span>
-<span class="n ">271</span></div><div class="txt">ATLAS samples amorphous materials. One temperature-conditioned model generates a 2D glass former from the liquid down to the glass, while classical Monte Carlo struggles.
+Samples are independent, one model spans many conditions, and path weights give unbiased ensemble observables and free energy. 🧠</div><video src="media/samplers.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg" alt=""><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD</span></div><div class="txt">ATLAS samples amorphous materials. One temperature-conditioned model generates a 2D glass former from the liquid down to the glass, while classical Monte Carlo struggles.
 
-Structure matches parallel tempering; the free energy is within 0.2% at &gt;500× fewer evaluations. 🧊</div><video src="media/atlas_glass.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 6/ ATLAS</span>
-<span class="n ">277</span></div><div class="txt">ATLAS is amortized over composition: one 36 GPU-h pretraining instead of ~20 GPU-h per composition, ~300× less compute over 480 compositions.
+Structure matches parallel tempering; the free energy is within 0.2% at &gt;500× fewer evaluations. 🧊</div><video src="media/atlas_glass.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg" alt=""><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD</span></div><div class="txt">ATLAS is amortized over composition: one 36 GPU-h pretraining instead of ~20 GPU-h per composition, ~300× less compute over 480 compositions.
 
-An LLM agent calls it as a tool and finds the stiffness–ductility Pareto front of high-entropy metallic glasses in 480 evaluations. 🤖</div><video src="media/atlas_design.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 7/ JANUS</span>
-<span class="n long">286</span></div><div class="txt">JANUS samples chemically disordered materials: discrete species per site plus continuous displacements and volume, sampled jointly by masked discrete + continuous diffusion, conditioned on T and Δμ.
+An LLM agent calls it as a tool and finds the stiffness–ductility Pareto front of high-entropy metallic glasses in 480 evaluations. 🤖</div><video src="media/atlas_design.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg" alt=""><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD</span></div><div class="txt">JANUS samples chemically disordered materials: discrete species per site plus continuous displacements and volume, sampled jointly by masked discrete + continuous diffusion, conditioned on T and Δμ.
 
-Free energy gives phase diagrams (Cu–Ag, Ni–Cr) at ~10³× fewer evaluations than MC. ⚖️</div><video src="media/janus_phase.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 8/ JANUS</span>
-<span class="n ">278</span></div><div class="txt">JANUS also runs grand-canonically on a lattice: 15 dopant elements and vacancies in Si and diamond.
+Free energy gives phase diagrams (Cu–Ag, Ni–Cr) at ~10³× fewer evaluations than MC. ⚖️</div><video src="media/janus_phase.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg" alt=""><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD</span></div><div class="txt">JANUS also runs grand-canonically on a lattice: 15 dopant elements and vacancies in Si and diamond.
 
-Motifs over-represented in 8,000 samples go to hybrid DFT: the Si E centre is recovered, and S–Ti (Si) and B–<span class="link">[O]</span>–O (diamond) appear as new candidates with deep in-gap states. 💎</div><video src="media/janus_defects.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 9/ OMNIA</span>
-<span class="n ">272</span></div><div class="txt">OMNIA goes off-lattice and opens up simulating surfaces: one model per metal, combined through free energy, gives H coverage on Pt(111) and Pd(111) at every T and μ_H.
+Motifs over-represented in 8,000 samples go to hybrid DFT: the Si E centre is recovered, and S–Ti (Si) and B–[O]–O (diamond) appear as new candidates with deep in-gap states. 💎</div><video src="media/janus_defects.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg" alt=""><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD</span></div><div class="txt">OMNIA goes off-lattice and opens up simulating surfaces: one model per metal, combined through free energy, gives H coverage on Pt(111) and Pd(111) at every T and μ_H.
 
-Pt saturates near a monolayer; Pd takes H below the surface, as in GCMC, at 7–11× fewer evaluations. ⚗️</div><video src="media/omnia_surface.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 10/ OMNIA</span>
-<span class="n ">262</span></div><div class="txt">Sodium in hard carbon, a sodium-ion battery anode. One OMNIA model is conditioned on the carbon framework: trained on 8,000 frameworks (1.0–2.0 g/cm³), tested on held-out ones.
+Pt saturates near a monolayer; Pd takes H below the surface, as in GCMC, at 7–11× fewer evaluations. ⚗️</div><video src="media/omnia_surface.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg" alt=""><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD</span></div><div class="txt">Sodium in hard carbon, a sodium-ion battery anode. One OMNIA model is conditioned on the carbon framework: trained on 8,000 frameworks (1.0–2.0 g/cm³), tested on held-out ones.
 
-Bound Na peaks near 1.6 g/cm³ as in GCMC, at 38× fewer evaluations per framework. 🔋</div><video src="media/omnia_battery.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 11/ method</span>
-<span class="n ">274</span></div><div class="txt">No equilibrium data needed. The model proposes, the physics corrects: generate samples, label each with one force call, re-noise along an interpolant, regress the score on the force.
+Bound Na peaks near 1.6 g/cm³ as in GCMC, at 38× fewer evaluations per framework. 🔋</div><video src="media/omnia_battery.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg" alt=""><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD</span></div><div class="txt">No equilibrium data needed. The model proposes, the physics corrects: generate samples, label each with one force call, re-noise along an interpolant, regress the score on the force.
 
-The Boltzmann distribution is the fixed point; a replay buffer reuses every force call. 🔁</div><video src="media/method_fp.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 12/ method</span>
-<span class="n ">267</span></div><div class="txt">Each generated path carries a work: the log ratio of its forward and backward path densities, as in Jarzynski&#x27;s equality.
+The Boltzmann distribution is the fixed point; a replay buffer reuses every force call. 🔁</div><video src="media/method_fp.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg" alt=""><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD</span></div><div class="txt">Each generated path carries a work: the log ratio of its forward and backward path densities, as in Jarzynski&#x27;s equality.
 
-The resulting path weights fix the mass of each mode, give the free energy, and steer the sampler to a tilted target with SMC, no retraining. 🎯</div><video src="media/method_pw.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 13/ method</span>
-<span class="n long">284</span></div><div class="txt">OMNIA writes every ensemble in one form: canonical samplers at fixed volume, composition or atom number, weighted by their free energy. This covers NVT, NPT, ΔμNPT and μVT, on and off lattice.
+The resulting path weights fix the mass of each mode, give the free energy, and steer the sampler to a tilted target with SMC, no retraining. 🎯</div><video src="media/method_pw.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg" alt=""><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD</span></div><div class="txt">OMNIA writes every ensemble in one form: canonical samplers at fixed volume, composition or atom number, weighted by their free energy. This covers NVT, NPT, ΔμNPT and μVT, on and off lattice.
 
-It pushes universal ML potentials to thermodynamics and autonomous materials discovery. 🚀</div><video src="media/method_omnia.webm" autoplay loop muted playsinline></video></div></article></div><script>
+It pushes universal ML potentials to thermodynamics and autonomous materials discovery. 🚀</div><video src="media/method_omnia.webm" autoplay loop muted playsinline></video></div></article></div>
+<script>
 // browsers without WebM/VP9 (older iOS Safari): show the small GIF instead
 document.querySelectorAll('video').forEach(v => { if (!v.canPlayType('video/webm; codecs="vp9"')) { const i = document.createElement('img'); i.src = v.getAttribute('src').replace('.webm', '.gif'); i.loading = 'lazy'; v.replaceWith(i); } });
-</script>
+</script></body></html>
