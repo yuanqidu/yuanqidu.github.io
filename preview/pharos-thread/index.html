@@ -12,11 +12,12 @@ article { display:flex; gap:12px; padding:14px 16px 10px; border-bottom:1px soli
 .quote { border:1px solid #cfd9de; border-radius:14px; padding:10px 12px; color:#536471; font-size:14px; margin-bottom:8px; }
 .missing { padding:30px; text-align:center; color:#999; border:1px dashed #ccc; border-radius:16px; }
 </style><div class="wrap"><div style="padding:10px 16px;background:#FFF6E5;color:#8a5a00;font-size:13px;border-bottom:1px solid #f0e0c0">Draft preview of an X thread (Pharos). Not posted yet, please do not share further.</div><h1>Thread preview · Pharos · 10 posts <small>(number = X length, max 280)</small></h1><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 1/ hook</span>
-<span class="n bad">608</span></div><div class="txt">How fast do rare events happen, and through which mechanism? 🧵
+<span class="n bad">626</span></div><div class="txt">How fast do rare events happen, and through which mechanism? 🧵
 
 Pharos answers this at scale:
-🧬 realistic systems: 10,000+ atoms in explicit water
-🧂 transferable models, toward foundation models of rare events
+🧬 realistic systems: 10,000+ atoms in water
+⏱️ reaction rates on the millisecond scale
+🧂 transferable models, toward foundation models
 ⚗️ chemical reactions with ML potentials
 
 Folding, binding, reactions are decided by rare transitions that plain MD rarely sees: one crossing can take µs to hours. Pharos learns to steer simulations across the barrier. In stochastic optimal control the best steering is set by the committor, the probability of completing the transition, so Pharos learns both, and with them mechanisms and rates.</div><video src="media/hero.webm?v=7785509c" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 2/ people + paper</span>
@@ -34,11 +35,11 @@ So Pharos runs a loop: q steers simulations into the transition region, and thos
 • matching objective: simulate with a shifted drift or a different diffusion coefficient, and reuse the trajectories ✅</div><video src="media/flex.webm?v=3872a887" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 6/ Pharos recipe + proteins</span>
 <span class="n ">275</span></div><div class="txt">Pharos makes this scale: a replay buffer of good trajectories, mixed sampling, and inputs without solvent (the MD keeps it).
 
-Proteins in water, up to 11,521 atoms: the committor agrees with self-consistent shooting (r = 0.93), with 8.6–36× less simulation than baselines. 🧬</div><video src="media/biomolecules_row.webm?v=522f3bd9" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 7/ host–guest</span>
-<span class="n ">272</span></div><div class="txt">Host–guest unbinding (SAMPL system, explicit water).
+Proteins in water, up to 11,521 atoms: the committor agrees with self-consistent shooting (r = 0.93), with 8.6–36× less simulation than baselines. 🧬</div><video src="media/biomolecules_row.webm?v=522f3bd9" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 7/ host-guest</span>
+<span class="n ">274</span></div><div class="txt">Host-guest unbinding in water (SAMPL): a millisecond-scale event.
 
-The committor agrees with self-consistent shooting (r = 0.94), unbinding rates land on the millisecond scale in line with published estimates, and q depends on the guest&#x27;s tilt and cavity water, not only its height. 💊</div><video src="media/hostguest_row.webm?v=356a475d" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 8/ ions</span>
-<span class="n ">275</span></div><div class="txt">Ion pairs in water: one GNN for six salts, given charge, LJ parameters and mass.
+Pharos measures its rate on the millisecond scale, matching published estimates. Its committor agrees with self-consistent shooting (r = 0.94) and depends on guest tilt and cavity water, not height alone. 💊</div><video src="media/hostguest_row.webm?v=783889dd" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 8/ ions</span>
+<span class="n ">279</span></div><div class="txt">Ion pairs in water: one network for six salts, given charge, LJ parameters and mass.
 
 The committor agrees with self-consistent shooting for all six and depends on bridging water, not just distance. RETIS rates over a 65-fold range: median error within 10%, held-out ions too. 🧂</div><video src="media/ions_row.webm?v=4f45779b" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 9/ HCN</span>
 <span class="n ">279</span></div><div class="txt">HCN dimerization, the first step toward adenine, with the UMA potential.
