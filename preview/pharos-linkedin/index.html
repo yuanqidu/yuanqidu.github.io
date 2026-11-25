@@ -1,0 +1,43 @@
+<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex, nofollow"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Pharos: Learning to Control Rare Events at Scale</title>
+<style>
+@font-face { font-family: Inter; src: url(inter.woff2); font-weight: 100 900; }
+body { background:#F4F2EE; font-family: Inter, -apple-system, 'Segoe UI', sans-serif; color:rgba(0,0,0,.9); margin:0; }
+.card { max-width: 600px; margin: 24px auto; background:#fff; border-radius:10px; box-shadow: 0 0 0 1px rgba(0,0,0,.08); overflow:hidden; }
+.head { display:flex; gap:10px; padding:14px 16px 6px; align-items:center; }
+.av { width:48px; height:48px; border-radius:50%; object-fit:cover; }
+.name { font-weight:600; font-size:15px; } .sub { color:rgba(0,0,0,.6); font-size:12.5px; }
+.txt { white-space:pre-wrap; font-size:14.5px; line-height:1.45; padding:4px 16px 0; margin-bottom:10px; }
+.txt.clamp { display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+.more { color:rgba(0,0,0,.6); font-size:14px; padding:0 16px 12px; cursor:pointer; text-align:right; }
+.men { color:#0a66c2; font-weight:600; } .tag, .txt a { color:#0a66c2; text-decoration:none; font-weight:600; }
+video, .card img.media { width:100%; display:block; background:#FAF8F3; }
+.bar { display:flex; justify-content:space-around; padding:8px 8px 10px; color:rgba(0,0,0,.6); font-size:13.5px; font-weight:600; border-top:1px solid #eee; }
+</style>
+<div class="card">
+  <div class="head"><img class="av" src="yuanqi.jpg"><div><div class="name">Yuanqi Du</div><div class="sub">now · 🌐</div></div></div>
+  <div class="txt clamp" id="t">How fast do rare events happen, and through which mechanism?
+
+Protein folding, molecular unbinding and chemical reactions are decided by rare transitions between metastable states. Plain molecular dynamics rarely sees them: a single crossing can take microseconds to hours of simulated time.
+
+In our new paper, Pharos, we learn to steer simulations across these barriers with stochastic optimal control. The optimal steering is set by the committor, the probability of completing the transition, which is central to the rate, all reaction statistics and the mechanism. Pharos runs a loop: the current committor steers simulations into the transition region, and those paths sharpen the committor. Because the training objective accepts paths from different sampling dynamics, good paths are stored and reused.
+
+What it does at scale:
+🧬 Proteins in water, up to 11,521 atoms: the learned committor agrees with self-consistent shooting, with 8.6-36× less simulation than baselines.
+💊 Host-guest unbinding, a millisecond-scale event: rates on the millisecond scale, in line with published estimates; the guest's tilt and the water in the cavity decide, not its height alone.
+🧂 Ion pairs in water: one network for six salts, unseen ions included; rates within 10% (median) over a 65-fold range; bridging water, not just the distance, decides.
+⚗️ HCN dimerization, the first step to adenine synthesis, with the UMA machine learning interatomic potential: a water solvent barrier of 22.2 kcal/mol (experiment 20.4).
+
+Pharos builds on our REACT framework, which also handles non-equilibrium, driven and time-periodic systems beyond conventional molecular simulation, and finite-time and discrete-space problems.
+
+📄 Pharos: <a href="https://arxiv.org/abs/2611.26765">https://arxiv.org/abs/2611.26765</a>
+📄 REACT: <a href="https://arxiv.org/abs/2604.13213">https://arxiv.org/abs/2604.13213</a>
+
+Joint work with <span class="men">Carles Domingo-Enrich</span> at Microsoft Research New England, led by <span class="men">Jiajun He</span>, <span class="men">Jacky Chen</span> and <span class="men">Weiliang Luo</span>, with <span class="men">Heather Kulik</span> and <span class="men">David Koes</span>.
+
+<span class="tag">#MachineLearning</span> <span class="tag">#MolecularDynamics</span> <span class="tag">#ComputationalChemistry</span> <span class="tag">#AIforScience</span></div>
+  <div class="more" id="m" onclick="document.getElementById('t').classList.remove('clamp'); this.remove();">…see more</div>
+  <video src="media/linkedin.webm?v=06a219a5" autoplay loop muted playsinline></video>
+  <div class="bar"><span>👍 Like</span><span>💬 Comment</span><span>🔁 Repost</span><span>➤ Send</span></div>
+</div><script>
+document.querySelectorAll('video').forEach(v => { if (!v.canPlayType('video/webm; codecs="vp9"')) { const i = document.createElement('img'); i.src = v.getAttribute('src').replace('.webm', '.gif'); i.className = 'media'; v.replaceWith(i); } });
+</script>
