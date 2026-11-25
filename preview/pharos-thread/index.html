@@ -1,0 +1,55 @@
+<!doctype html><meta charset="utf-8"><meta name="robots" content="noindex, nofollow"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Thread preview: Pharos</title>
+<style>
+@font-face { font-family: Inter; src: url(inter.woff2); font-weight: 100 900; }
+body { background:#F1EEE7; font-family: Inter, sans-serif; color:#0f1419; margin:0; }
+.wrap { max-width: 620px; margin: 0 auto; background:#fff; min-height:100vh; border-left:1px solid #e6e6e6; border-right:1px solid #e6e6e6; }
+h1 { font-size:17px; padding:14px 16px; margin:0; border-bottom:1px solid #eee; } h1 small { font-weight:400; color:#536471; }
+article { display:flex; gap:12px; padding:14px 16px 10px; border-bottom:1px solid #eee; position:relative; }
+.av { width:40px; height:40px; border-radius:50%; flex:none; object-fit:cover; }
+.main { flex:1; min-width:0; } .who span { color:#536471; font-size:14px; } .n { float:right; font-size:12px; color:#2A9D8F; } .n.bad { color:#E76F51; font-weight:700; }
+.txt { white-space:pre-wrap; font-size:15px; line-height:1.4; margin:4px 0 10px; }
+.link { color:#1d9bf0; } article img:not(.av), video { width:100%; border-radius:16px; border:1px solid #e6e6e6; display:block; }
+.quote { border:1px solid #cfd9de; border-radius:14px; padding:10px 12px; color:#536471; font-size:14px; margin-bottom:8px; }
+.missing { padding:30px; text-align:center; color:#999; border:1px dashed #ccc; border-radius:16px; }
+</style><div class="wrap"><div style="padding:10px 16px;background:#FFF6E5;color:#8a5a00;font-size:13px;border-bottom:1px solid #f0e0c0">Draft preview of an X thread (Pharos, with a REACT recap). Not posted yet, please do not share further.</div><h1>Thread preview · Pharos · 12 posts <small>(number = X length, max 280)</small></h1><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 1/ hook</span>
+<span class="n ">254</span></div><div class="txt">How fast do rare events happen, and through which mechanism? 🧵
+
+Folding, unbinding, reactions: molecular function is decided by rare transitions between metastable states.
+
+Pharos learns their committor and rates by stochastic optimal control, at scale.</div><video src="media/hero.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 2/ people + paper</span>
+<span class="n ">188</span></div><div class="txt">Joint work 🤝 led by <span class="link">@JiajunHe614</span>, <span class="link">[JACKY]</span> and <span class="link">[WEILIANG]</span>, with <span class="link">[HEATHER]</span>, <span class="link">[DAVID]</span> and <span class="link">@cdomingoenrich</span> at MSR New England.
+
+📄 Pharos: Learning to Control Rare Events at Scale <span class="link">[PHAROS_URL]</span></div></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 3/ why basins, why it is hard</span>
+<span class="n ">270</span></div><div class="txt">Why is this hard? Basins are separated by barriers of many k_BT, so escape times grow like exp(ΔF/k_BT).
+
+MD steps are femtoseconds; the events take µs to hours. Simulations spend almost all their time inside basins and rarely see the crossings that set the kinetics. ⏳</div></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 4/ the committor</span>
+<span class="n ">265</span></div><div class="txt">The object that captures a transition is the committor q(x) = P_x(τ_B &lt; τ_A): the probability of reaching the product before the reactant.
+
+Its q = ½ surface is the transition-state ensemble, and through transition path theory it gives reactive fluxes and rates. 🧭</div></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 5/ REACT recap: stochastic optimal control</span>
+<span class="n ">278</span></div><div class="txt">Recap of REACT 🎛️: add a control u to the Langevin dynamics. The control that sends every trajectory to B before A is u* = σᵀ∇log q (Doob&#x27;s h-transform).
+
+So q is a value function, learning to steer = learning q, and steered paths sample exactly the region q is uncertain about.</div><div class="quote">↳ quotes your REACT post</div><video src="media/steer.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 6/ why the theory makes control practical</span>
+<span class="n ">274</span></div><div class="txt">What makes this usable in practice:
+• capped hitting times with a bootstrapped committor, provably the same fixed point
+• Value Matching: an off-policy loss with first-order guarantees
+
+Trajectories from any earlier control, force or noise level stay valid training data. ✅</div></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 7/ Pharos recipe + proteins</span>
+<span class="n ">267</span></div><div class="txt">Pharos makes it scale: a replay buffer over all controlled trajectories, mixed sampling dynamics, and committor inputs without solvent or hydrogens (the MD keeps them).
+
+Chignolin: 8.6× less simulation than semigroup. Trp-cage (11,521 atoms): 17–36× less than DGA. 🧬</div><video src="media/biomolecules_row.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 8/ host–guest</span>
+<span class="n ">256</span></div><div class="txt">Host–guest unbinding (SAMPL system, explicit water), a process of up to milliseconds.
+
+The learned committor matches brute-force shooting (r = 0.94, 335 configurations) and depends on the guest&#x27;s tilt and the water in the cavity, not only on its height. 💊</div><video src="media/hostguest_row.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 9/ ions</span>
+<span class="n ">279</span></div><div class="txt">Six alkali-halide ion pairs in water: one equivariant GNN on all atoms, conditioned on charge, LJ parameters and mass.
+
+Same separation: 3 bridging waters → q = 0.79, none → 0.02 (predicted 0.81 / 0.08). RETIS rates within 10% (median) over a 65-fold range, held-out ions too. 🧂</div><video src="media/ions_row.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 10/ HCN</span>
+<span class="n ">276</span></div><div class="txt">HCN dimerization, the first step on every route to adenine, with the UMA potential.
+
+Nanoseconds of controlled simulation, ~100× less than path-sampling studies. Free energy along logit q: 22.2 kcal/mol in water (exp. 20.4). In liquid HCN the ion pair reacts ~10¹⁴× faster. 🌍</div><video src="media/hcn_row.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 11/ outlook</span>
+<span class="n ">193</span></div><div class="txt">Efficient sampling, quantitative kinetics, and transfer across chemical systems: a step toward foundation models of rare-event mechanisms and rates.
+
+Builds on REACT: <span class="link">https://arxiv.org/abs/2604.13213</span> 🚀</div><img src="media/numbers_card.png"></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 12/ optional reply</span>
+<span class="n ">242</span></div><div class="txt">For the REACT fans: the benchmark systems animated, each with the exact committor, a plain run that stays in A, and runs steered by the optimal control that all reach B, incl. momentum, non-equilibrium (Maier–Stein) and time-periodic forcing.</div><video src="media/react_benchmarks.webm" autoplay loop muted playsinline></video></div></article></div><script>
+// browsers without WebM/VP9 (older iOS Safari): show the small GIF instead
+document.querySelectorAll('video').forEach(v => { if (!v.canPlayType('video/webm; codecs="vp9"')) { const i = document.createElement('img'); i.src = v.getAttribute('src').replace('.webm', '.gif'); i.loading = 'lazy'; v.replaceWith(i); } });
+</script>
