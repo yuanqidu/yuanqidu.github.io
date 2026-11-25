@@ -48,10 +48,10 @@ Bound Na peaks near 1.6 g/cm³ as in GCMC, at 38× fewer evaluations per framewo
 <span class="n ">274</span></div><div class="txt">No equilibrium data needed. The model proposes, the physics corrects: generate samples, label each with one force call, re-noise along an interpolant, regress the score on the force.
 
 The Boltzmann distribution is the fixed point; a replay buffer reuses every force call. 🔁</div><video src="media/method_fp.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 12/ method</span>
-<span class="n ">262</span></div><div class="txt">Each generated path carries a work W, the log ratio of its forward to backward path densities.
+<span class="n ">265</span></div><div class="txt">Each generated path carries a work: the log ratio of its forward and backward path densities, as in Jarzynski&#x27;s equality.
 
-The weights exp(−W) fix the mass of each mode, give free energies via Z = E[exp(−W)] (Jarzynski), and steer the sampler to a tilted target with SMC, no retraining. 🎯</div><video src="media/method_pw.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 13/ method</span>
-<span class="n ">261</span></div><div class="txt">OMNIA writes every ensemble as p(x,z) = p(x|z) w(z): canonical samplers at fixed volume, composition or atom number, weighted by free energy. NVT, NPT, ΔμNPT, μVT on and off lattice.
+The resulting path weights fix the mass of each mode, give free energies, and steer the sampler to a tilted target with SMC, no retraining. 🎯</div><video src="media/method_pw.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 13/ method</span>
+<span class="n ">273</span></div><div class="txt">OMNIA writes every ensemble in one form: canonical samplers at fixed volume, composition or atom number, weighted by their free energies. This covers NVT, NPT, ΔμNPT and μVT, on and off lattice.
 
 Next to universal ML potentials, a step toward foundation neural samplers. 🚀</div><video src="media/method_omnia.webm" autoplay loop muted playsinline></video></div></article></div><script>
 // browsers without WebM/VP9 (older iOS Safari): show the small GIF instead
