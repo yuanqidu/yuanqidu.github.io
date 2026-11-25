@@ -1,0 +1,48 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1"><title>ATLAS · JANUS · OMNIA · LinkedIn post preview</title>
+<style>
+@font-face { font-family: Inter; src: url(inter.woff2); font-weight: 100 900; }
+body { background:#F4F2EE; font-family: -apple-system, system-ui, "Segoe UI", Roboto, Inter, sans-serif; color:rgba(0,0,0,.9); margin:0; padding:24px 12px; }
+.card { max-width: 555px; margin: 0 auto; background:#fff; border-radius:8px; box-shadow:0 0 0 1px rgba(140,140,140,.2); overflow:hidden; }
+.head { display:flex; gap:8px; padding:12px 16px 0; } .av { width:48px; height:48px; border-radius:50%; object-fit:cover; }
+.name { font-weight:600; font-size:14px; } .sub { font-size:12px; color:rgba(0,0,0,.6); line-height:1.35; }
+.txt { white-space:pre-wrap; font-size:14px; line-height:1.43; padding:8px 16px 4px; overflow-wrap:anywhere; }
+.txt.clamp { display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+.more { padding:0 16px 8px; text-align:right; font-size:14px; color:rgba(0,0,0,.6); cursor:pointer; } .more:hover { color:#0a66c2; text-decoration:underline; }
+a, .tag { color:#0a66c2; text-decoration:none; font-weight:600; }
+video { width:100%; display:block; background:#000; }
+.bar { display:flex; justify-content:space-around; border-top:1px solid #e8e8e8; margin:0 12px; padding:6px 0; font-size:14px; font-weight:600; color:rgba(0,0,0,.6); }
+.note { max-width:555px; margin:10px auto; font-size:12px; color:rgba(0,0,0,.5); text-align:center; }
+</style></head><body>
+<div class="card"><div class="head"><img class="av" src="yuanqi.jpg" alt=""><div><div class="name">Yuanqi Du</div><div class="sub">Microsoft Research<br>now · 🌐</div></div></div>
+<div class="txt clamp" id="t">How do we sample the equilibrium states of matter?
+
+The properties of glasses, alloys and surfaces are determined by their equilibrium states. Energy barriers make these states extremely hard to sample, and there is no available training data. Universal ML potentials made each energy evaluation cheap, but not the number of evaluations needed.
+
+Neural samplers learn the sampler instead: a diffusion process from a simple prior to the Boltzmann distribution, trained from interatomic potentials. Samples are independent, one model spans many conditions, and path weights give unbiased ensemble observables and free energy.
+
+In three papers, we built foundation neural samplers for materials:
+
+🧊 ATLAS, for amorphous materials. One temperature-conditioned model samples a glass former from the liquid down to the glass, while classical Monte Carlo struggles; the free energy is within 0.2% of parallel tempering at &gt;500× fewer energy evaluations. Pretrained once across 480 compositions (~300× less compute), it is also a tool for an LLM agent that finds the stiffness–ductility Pareto front of high-entropy metallic glasses in 480 evaluations.
+
+⚖️ JANUS, for chemically disordered materials. Species, displacements and volume are sampled jointly by masked discrete and continuous diffusion. Free energy gives alloy phase diagrams (Cu–Ag, Ni–Cr) at ~10³× fewer evaluations than Monte Carlo, and grand-canonical sampling of dopants and vacancies in silicon and diamond recovers the Si E centre and proposes new candidates (S–Ti in Si, B–[O]–O in diamond).
+
+⚗️ OMNIA, for every ensemble: NVT, NPT, ΔμNPT and μVT, on and off lattice, in one form. It opens up simulating surfaces (hydrogen on Pt(111) and Pd(111), 7–11× fewer evaluations than grand-canonical Monte Carlo) and battery anodes (sodium in hard carbon, one model for 8,000 carbon frameworks, 38× fewer evaluations per framework).
+
+How they learn without data: the model proposes, the physics corrects. Generated samples are labelled with forces, and every generated path carries a work whose weights fix the mass of each mode, give the free energy and steer the sampler without retraining.
+
+It pushes universal ML potentials to thermodynamics and autonomous materials discovery.
+
+Led by Mouyang Cheng and Denis Blessing (equal contribution), co-led by Carles Domingo-Enrich and me, with support from Mingda Li, Jiajun He, Botao Yu, Gerhard Neumann, Maximilian Schebek and Jutta Rogal.
+
+📄 ATLAS: <a href="https://arxiv.org/abs/2607.19198">https://arxiv.org/abs/2607.19198</a>
+📄 JANUS: <a href="https://arxiv.org/abs/2608.19116">https://arxiv.org/abs/2608.19116</a>
+📄 OMNIA: coming soon
+🎞️ All animations: <a href="https://yuanqidu.github.io/preview/neural-samplers-thread/">https://yuanqidu.github.io/preview/neural-samplers-thread/</a>
+
+<span class="tag">#AIforScience</span> <span class="tag">#MaterialsScience</span> <span class="tag">#MachineLearning</span> <span class="tag">#MolecularSimulation</span> <span class="tag">#StatisticalMechanics</span></div><div class="more" id="m">…see more</div>
+<video src="linkedin.webm" poster="linkedin_thumbnail.png" controls autoplay muted loop playsinline></video>
+<div class="bar"><span>👍 Like</span><span>💬 Comment</span><span>🔁 Repost</span><span>➤ Send</span></div></div>
+<div class="note">2719 / 3,000 characters</div>
+<script>document.getElementById('m').onclick = () => { const t = document.getElementById('t'), c = t.classList.toggle('clamp'); document.getElementById('m').textContent = c ? '…see more' : 'show less'; };</script>
+</body></html>
