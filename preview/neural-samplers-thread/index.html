@@ -33,7 +33,7 @@ Structure matches parallel tempering; the free energy is within 0.2% at &gt;500�
 <span class="n ">277</span></div><div class="txt">ATLAS is amortized over composition: one 36 GPU-h pretraining instead of ~20 GPU-h per composition, ~300× less compute over 480 compositions.
 
 An LLM agent calls it as a tool and finds the stiffness–ductility Pareto front of high-entropy metallic glasses in 480 evaluations. 🤖</div><video src="media/atlas_design.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 7/ JANUS</span>
-<span class="n ">272</span></div><div class="txt">JANUS samples chemical disorder: discrete species per site plus continuous displacements and volume, sampled jointly by masked discrete + continuous diffusion, conditioned on T and Δμ.
+<span class="n long">286</span></div><div class="txt">JANUS samples chemically disordered materials: discrete species per site plus continuous displacements and volume, sampled jointly by masked discrete + continuous diffusion, conditioned on T and Δμ.
 
 Free energy gives phase diagrams (Cu–Ag, Ni–Cr) at ~10³× fewer evaluations than MC. ⚖️</div><video src="media/janus_phase.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 8/ JANUS</span>
 <span class="n ">278</span></div><div class="txt">JANUS also runs grand-canonically on a lattice: 15 dopant elements and vacancies in Si and diamond.
@@ -42,7 +42,7 @@ Motifs over-represented in 8,000 samples go to hybrid DFT: the Si E centre is re
 <span class="n ">272</span></div><div class="txt">OMNIA goes off-lattice and opens up simulating surfaces: one model per metal, combined through free energy, gives H coverage on Pt(111) and Pd(111) at every T and μ_H.
 
 Pt saturates near a monolayer; Pd takes H below the surface, as in GCMC, at 7–11× fewer evaluations. ⚗️</div><video src="media/omnia_surface.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 10/ OMNIA</span>
-<span class="n ">262</span></div><div class="txt">Sodium in hard carbon, a sodium-ion battery anode. One OMNIA model is conditioned on the carbon framework: trained on 8,032 frameworks (1.0–2.0 g/cm³), tested on held-out ones.
+<span class="n ">262</span></div><div class="txt">Sodium in hard carbon, a sodium-ion battery anode. One OMNIA model is conditioned on the carbon framework: trained on 8,000 frameworks (1.0–2.0 g/cm³), tested on held-out ones.
 
 Bound Na peaks near 1.6 g/cm³ as in GCMC, at 38× fewer evaluations per framework. 🔋</div><video src="media/omnia_battery.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 11/ method</span>
 <span class="n ">274</span></div><div class="txt">No equilibrium data needed. The model proposes, the physics corrects: generate samples, label each with one force call, re-noise along an interpolant, regress the score on the force.
