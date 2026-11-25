@@ -24,22 +24,22 @@ OMNIA: <span class="link">[OMNIA_URL]</span></div><img src="media/papers.png"></
 <span class="n ">279</span></div><div class="txt">Why is this hard? Configurations follow p(x) ∝ exp(−U/k_BT), explored by local MD or Monte Carlo moves. A barrier ΔU costs ~exp(ΔU/k_BT) steps: in a glass or between phases the chain stays in one basin.
 
 ML potentials cut the cost per energy evaluation, not the number needed. ⏳</div><video src="media/trap.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 4/ neural samplers</span>
-<span class="n ">271</span></div><div class="txt">Neural samplers learn the sampler instead: a diffusion process from a simple prior to the Boltzmann distribution, trained from interatomic potentials.
+<span class="n ">269</span></div><div class="txt">Neural samplers learn the sampler instead: a diffusion process from a simple prior to the Boltzmann distribution, trained from interatomic potentials.
 
-Samples are independent, one model spans many conditions, and path weights give unbiased averages and free energies. 🧠</div><video src="media/samplers.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 5/ ATLAS</span>
+Samples are independent, one model spans many conditions, and path weights give unbiased averages and free energy. 🧠</div><video src="media/samplers.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 5/ ATLAS</span>
 <span class="n ">275</span></div><div class="txt">ATLAS samples amorphous materials. One temperature-conditioned model generates a 2D glass former from the liquid down to the glass, where Monte Carlo leaves every atom caged.
 
 Structure matches parallel tempering; the free energy is within 0.2% at &gt;500× fewer evaluations. 🧊</div><video src="media/atlas_glass.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 6/ ATLAS</span>
 <span class="n ">277</span></div><div class="txt">ATLAS is amortized over composition: one 36 GPU-h pretraining instead of ~20 GPU-h per composition, ~300× less compute over 480 compositions.
 
 An LLM agent calls it as a tool and finds the stiffness–ductility Pareto front of high-entropy metallic glasses in 480 evaluations. 🤖</div><video src="media/atlas_design.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 7/ JANUS</span>
-<span class="n ">275</span></div><div class="txt">JANUS samples chemical disorder: discrete species per site plus continuous displacements and volume, generated jointly by masked discrete + continuous diffusion, conditioned on T and Δμ.
+<span class="n ">274</span></div><div class="txt">JANUS samples chemical disorder: discrete species per site plus continuous displacements and volume, generated jointly by masked discrete + continuous diffusion, conditioned on T and Δμ.
 
-Free energies give phase diagrams (Cu–Ag, Ni–Cr) at ~10³× fewer evaluations than MC. ⚖️</div><video src="media/janus_phase.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 8/ JANUS</span>
+Free energy gives phase diagrams (Cu–Ag, Ni–Cr) at ~10³× fewer evaluations than MC. ⚖️</div><video src="media/janus_phase.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 8/ JANUS</span>
 <span class="n ">278</span></div><div class="txt">JANUS also runs grand-canonically on a lattice: 15 dopant elements and vacancies in Si and diamond.
 
 Motifs over-represented in 8,000 samples go to hybrid DFT: the Si E centre is recovered, and S–Ti (Si) and B–<span class="link">[O]</span>–O (diamond) appear as new candidates with deep in-gap states. 💎</div><video src="media/janus_defects.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 9/ OMNIA</span>
-<span class="n ">272</span></div><div class="txt">OMNIA goes off-lattice and opens the system to a reservoir: one model per metal, combined by free energies, gives H coverage on Pt(111) and Pd(111) at every T and μ_H.
+<span class="n ">275</span></div><div class="txt">OMNIA goes off-lattice and opens the system to a reservoir: one model per metal, combined through free energy, gives H coverage on Pt(111) and Pd(111) at every T and μ_H.
 
 Pt saturates near a monolayer; Pd takes H below the surface, as in GCMC, at 7–11× fewer evaluations. ⚗️</div><video src="media/omnia_surface.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 10/ OMNIA</span>
 <span class="n ">262</span></div><div class="txt">Sodium in hard carbon, a sodium-ion battery anode. One OMNIA model is conditioned on the carbon framework: trained on 8,032 frameworks (1.0–2.0 g/cm³), tested on held-out ones.
@@ -48,10 +48,10 @@ Bound Na peaks near 1.6 g/cm³ as in GCMC, at 38× fewer evaluations per framewo
 <span class="n ">274</span></div><div class="txt">No equilibrium data needed. The model proposes, the physics corrects: generate samples, label each with one force call, re-noise along an interpolant, regress the score on the force.
 
 The Boltzmann distribution is the fixed point; a replay buffer reuses every force call. 🔁</div><video src="media/method_fp.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 12/ method</span>
-<span class="n ">265</span></div><div class="txt">Each generated path carries a work: the log ratio of its forward and backward path densities, as in Jarzynski&#x27;s equality.
+<span class="n ">267</span></div><div class="txt">Each generated path carries a work: the log ratio of its forward and backward path densities, as in Jarzynski&#x27;s equality.
 
-The resulting path weights fix the mass of each mode, give free energies, and steer the sampler to a tilted target with SMC, no retraining. 🎯</div><video src="media/method_pw.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 13/ method</span>
-<span class="n ">273</span></div><div class="txt">OMNIA writes every ensemble in one form: canonical samplers at fixed volume, composition or atom number, weighted by their free energies. This covers NVT, NPT, ΔμNPT and μVT, on and off lattice.
+The resulting path weights fix the mass of each mode, give the free energy, and steer the sampler to a tilted target with SMC, no retraining. 🎯</div><video src="media/method_pw.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 13/ method</span>
+<span class="n ">271</span></div><div class="txt">OMNIA writes every ensemble in one form: canonical samplers at fixed volume, composition or atom number, weighted by their free energy. This covers NVT, NPT, ΔμNPT and μVT, on and off lattice.
 
 Next to universal ML potentials, a step toward foundation neural samplers. 🚀</div><video src="media/method_omnia.webm" autoplay loop muted playsinline></video></div></article></div><script>
 // browsers without WebM/VP9 (older iOS Safari): show the small GIF instead
