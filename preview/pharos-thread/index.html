@@ -11,41 +11,36 @@ article { display:flex; gap:12px; padding:14px 16px 10px; border-bottom:1px soli
 .link { color:#1d9bf0; } article img:not(.av), video { width:100%; border-radius:16px; border:1px solid #e6e6e6; display:block; }
 .quote { border:1px solid #cfd9de; border-radius:14px; padding:10px 12px; color:#536471; font-size:14px; margin-bottom:8px; }
 .missing { padding:30px; text-align:center; color:#999; border:1px dashed #ccc; border-radius:16px; }
-</style><div class="wrap"><div style="padding:10px 16px;background:#FFF6E5;color:#8a5a00;font-size:13px;border-bottom:1px solid #f0e0c0">Draft preview of an X thread (Pharos, with a REACT recap). Not posted yet, please do not share further.</div><h1>Thread preview · Pharos · 11 posts <small>(number = X length, max 280)</small></h1><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 1/ hook</span>
-<span class="n ">254</span></div><div class="txt">How fast do rare events happen, and through which mechanism? 🧵
+</style><div class="wrap"><div style="padding:10px 16px;background:#FFF6E5;color:#8a5a00;font-size:13px;border-bottom:1px solid #f0e0c0">Draft preview of an X thread (Pharos, with a REACT recap). Not posted yet, please do not share further.</div><h1>Thread preview · Pharos · 10 posts <small>(number = X length, max 280)</small></h1><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 1/ hook</span>
+<span class="n bad">316</span></div><div class="txt">How fast do rare events happen, and through which mechanism? 🧵
 
-Folding, unbinding, reactions: molecular function is decided by rare transitions between metastable states.
+Folding, unbinding, reactions: molecular function is decided by rare transitions between metastable states. Plain MD rarely sees them: one crossing can take µs to hours.
 
 Pharos learns their committor and rates by stochastic optimal control, at scale.</div><video src="media/hero.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 2/ people + paper</span>
 <span class="n ">199</span></div><div class="txt">Joint work 🤝 led by <span class="link">@JiajunHe614</span>, <span class="link">[JACKY]</span> and <span class="link">[WEILIANG]</span>, with <span class="link">[HEATHER]</span>, <span class="link">[DAVID]</span> and <span class="link">@cdomingoenrich</span> at MSR New England.
 
-📄 Pharos: Learning to Control Rare Events at Scale <span class="link">https://arxiv.org/abs/2611.26765</span></div></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 3/ why basins, why it is hard</span>
-<span class="n ">270</span></div><div class="txt">Why is this hard? Basins are separated by barriers of many k_BT, so escape times grow like exp(ΔF/k_BT).
+📄 Pharos: Learning to Control Rare Events at Scale <span class="link">https://arxiv.org/abs/2611.26765</span></div></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 3/ why it is hard + the committor</span>
+<span class="n ">278</span></div><div class="txt">Why is it hard? Barriers of many k_BT make escape times grow like exp(ΔF/k_BT), while MD steps are femtoseconds.
 
-MD steps are femtoseconds; the events take µs to hours. Simulations spend almost all their time inside basins and rarely see the crossings that set the kinetics. ⏳</div></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 4/ the committor</span>
-<span class="n ">265</span></div><div class="txt">The object that captures a transition is the committor q(x) = P_x(τ_B &lt; τ_A): the probability of reaching the product before the reactant.
+What captures a transition is the committor q(x) = P_x(τ_B &lt; τ_A). Its q = ½ surface is the transition-state ensemble; via transition path theory it gives rates. 🧭</div></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 4/ stochastic optimal control</span>
+<span class="n ">270</span></div><div class="txt">Our approach: stochastic optimal control 🎛️. Add a control u to the Langevin dynamics. The control that sends every trajectory to B before A is u* = σᵀ∇log q (Doob&#x27;s h-transform).
 
-Its q = ½ surface is the transition-state ensemble, and through transition path theory it gives reactive fluxes and rates. 🧭</div></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 5/ REACT recap: stochastic optimal control</span>
-<span class="n ">278</span></div><div class="txt">Recap of REACT 🎛️: add a control u to the Langevin dynamics. The control that sends every trajectory to B before A is u* = σᵀ∇log q (Doob&#x27;s h-transform).
+So learning to steer = learning q, and steered paths sample exactly where q is uncertain.</div><video src="media/steer.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 5/ the theory that makes control practical</span>
+<span class="n ">278</span></div><div class="txt">What makes the control practical:
+• capped hitting times: short trajectories bootstrapped from the current q, provably the same solution
+• Value Matching, a new matching objective: simulate with a shifted drift or a different diffusion coefficient, and reuse the trajectories ✅</div></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 6/ Pharos recipe + proteins</span>
+<span class="n ">255</span></div><div class="txt">Pharos makes it scale: a replay buffer of good trajectories, mixed sampling dynamics, and committor inputs without solvent or hydrogens (the MD keeps them).
 
-So q is a value function, learning to steer = learning q, and steered paths sample exactly the region q is uncertain about.</div><div class="quote">↳ quotes your REACT post</div><video src="media/steer.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 6/ why the theory makes control practical</span>
-<span class="n ">274</span></div><div class="txt">What makes this usable in practice:
-• capped hitting times with a bootstrapped committor, provably the same fixed point
-• Value Matching: an off-policy loss with first-order guarantees
+Chignolin: 8.6× less simulation than semigroup. Trp-cage (11,521 atoms): 17–36× less than DGA. 🧬</div><video src="media/biomolecules_row.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 7/ host–guest</span>
+<span class="n ">280</span></div><div class="txt">Host–guest unbinding (SAMPL system, explicit water).
 
-Trajectories from any earlier control, force or noise level stay valid training data. ✅</div></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 7/ Pharos recipe + proteins</span>
-<span class="n ">267</span></div><div class="txt">Pharos makes it scale: a replay buffer over all controlled trajectories, mixed sampling dynamics, and committor inputs without solvent or hydrogens (the MD keeps them).
-
-Chignolin: 8.6× less simulation than semigroup. Trp-cage (11,521 atoms): 17–36× less than DGA. 🧬</div><video src="media/biomolecules_row.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 8/ host–guest</span>
-<span class="n ">256</span></div><div class="txt">Host–guest unbinding (SAMPL system, explicit water), a process of up to milliseconds.
-
-The learned committor matches brute-force shooting (r = 0.94, 335 configurations) and depends on the guest&#x27;s tilt and the water in the cavity, not only on its height. 💊</div><video src="media/hostguest_row.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 9/ ions</span>
+The learned committor agrees with self-consistent shooting (r = 0.94), unbinding rates land on the millisecond scale in line with published estimates, and q depends on the guest&#x27;s tilt and cavity water, not only its height. 💊</div><video src="media/hostguest_row.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 8/ ions</span>
 <span class="n ">279</span></div><div class="txt">Six alkali-halide ion pairs in water: one equivariant GNN on all atoms, conditioned on charge, LJ parameters and mass.
 
-Same separation: 3 bridging waters → q = 0.79, none → 0.02 (predicted 0.81 / 0.08). RETIS rates within 10% (median) over a 65-fold range, held-out ions too. 🧂</div><video src="media/ions_row.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 10/ HCN</span>
+Same separation: 3 bridging waters → q = 0.79, none → 0.02 (predicted 0.81 / 0.08). RETIS rates within 10% (median) over a 65-fold range, held-out ions too. 🧂</div><video src="media/ions_row.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 9/ HCN</span>
 <span class="n ">276</span></div><div class="txt">HCN dimerization, the first step on every route to adenine, with the UMA potential.
 
-Nanoseconds of controlled simulation, ~100× less than path-sampling studies. Free energy along logit q: 22.2 kcal/mol in water (exp. 20.4). In liquid HCN the ion pair reacts ~10¹⁴× faster. 🌍</div><video src="media/hcn_row.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 11/ builds on REACT</span>
+Nanoseconds of controlled simulation, ~100× less than path-sampling studies. Free energy along logit q: 22.2 kcal/mol in water (exp. 20.4). In liquid HCN the ion pair reacts ~10¹⁴× faster. 🌍</div><video src="media/hcn_row.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 10/ builds on REACT</span>
 <span class="n ">265</span></div><div class="txt">Pharos builds on REACT, where we set up the theory and tested it on systems with exact answers: rates within 1%, momentum, non-equilibrium and time-periodic dynamics.
 
 📄 REACT: <span class="link">https://arxiv.org/abs/2604.13213</span>
