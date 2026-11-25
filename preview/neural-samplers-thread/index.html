@@ -11,20 +11,20 @@ article { display:flex; gap:12px; padding:14px 16px 10px; border-bottom:1px soli
 .link { color:#1d9bf0; } article img:not(.av), video { width:100%; border-radius:16px; border:1px solid #e6e6e6; display:block; }
 .missing { padding:30px; text-align:center; color:#999; border:1px dashed #ccc; border-radius:16px; }
 </style><div class="wrap"><div style="padding:10px 16px;background:#FFF6E5;color:#8a5a00;font-size:13px;border-bottom:1px solid #f0e0c0">Draft preview of an X thread (ATLAS · JANUS · OMNIA). Not posted yet, please do not share further.</div><h1>Thread preview · 13 posts <small>(number = X length; above 280 needs Premium long posts)</small></h1><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 1/ hook</span>
-<span class="n ">280</span></div><div class="txt">How do we sample the equilibrium states of matter? 🧵
+<span class="n ">260</span></div><div class="txt">How do we sample the equilibrium states of matter? 🧵
 
-Glasses, alloys, surfaces: their properties are set by equilibrium states, and sampling them is extremely hard, as energy barriers trap simulations.
+Glasses, alloys, surfaces: properties are determined by equilibrium states, which energy barriers make extremely hard to sample.
 
 Neural samplers learn them from the energy: a new era of simulating matter.</div><video src="media/hero.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 2/ people + papers</span>
-<span class="n ">236</span></div><div class="txt">Three papers 🤝 led by Mouyang Cheng and Denis Blessing (equal contribution) and co-led by <span class="link">@cdomingoenrich</span> and me, with support from our co-authors.
+<span class="n ">279</span></div><div class="txt">Led by Mouyang Cheng &amp; Denis Blessing (equal contribution), co-led by <span class="link">@cdomingoenrich</span> &amp; me, with support from Mingda Li, <span class="link">@JiajunHe614</span>, Botao Yu, Gerhard Neumann, Maximilian Schebek &amp; Jutta Rogal 🤝
 
-📄 ATLAS <span class="link">https://arxiv.org/abs/2607.19198</span>
-📄 JANUS <span class="link">https://arxiv.org/abs/2608.19116</span>
-📄 OMNIA <span class="link">[OMNIA_URL]</span></div><img src="media/papers.png"></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 3/ why sampling is hard</span>
+ATLAS: <span class="link">https://arxiv.org/abs/2607.19198</span>
+JANUS: <span class="link">https://arxiv.org/abs/2608.19116</span>
+OMNIA: <span class="link">[OMNIA_URL]</span></div><img src="media/papers.png"></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 3/ why sampling is hard</span>
 <span class="n ">279</span></div><div class="txt">Why is this hard? Configurations follow p(x) ∝ exp(−U/k_BT), explored by local MD or Monte Carlo moves. A barrier ΔU costs ~exp(ΔU/k_BT) steps: in a glass or between phases the chain stays in one basin.
 
 ML potentials cut the cost per energy evaluation, not the number needed. ⏳</div><video src="media/trap.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 4/ neural samplers</span>
-<span class="n ">268</span></div><div class="txt">Neural samplers learn the sampler instead: a diffusion process from a simple prior to the Boltzmann distribution, trained from energies and forces.
+<span class="n ">271</span></div><div class="txt">Neural samplers learn the sampler instead: a diffusion process from a simple prior to the Boltzmann distribution, trained from interatomic potentials.
 
 Samples are independent, one model spans many conditions, and path weights give unbiased averages and free energies. 🧠</div><video src="media/samplers.webm" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 5/ ATLAS</span>
 <span class="n ">275</span></div><div class="txt">ATLAS samples amorphous materials. One temperature-conditioned model generates a 2D glass former from the liquid down to the glass, where Monte Carlo leaves every atom caged.
