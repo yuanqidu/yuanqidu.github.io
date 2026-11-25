@@ -12,23 +12,26 @@ article { display:flex; gap:12px; padding:14px 16px 10px; border-bottom:1px soli
 .quote { border:1px solid #cfd9de; border-radius:14px; padding:10px 12px; color:#536471; font-size:14px; margin-bottom:8px; }
 .missing { padding:30px; text-align:center; color:#999; border:1px dashed #ccc; border-radius:16px; }
 </style><div class="wrap"><div style="padding:10px 16px;background:#FFF6E5;color:#8a5a00;font-size:13px;border-bottom:1px solid #f0e0c0">Draft preview of an X thread (Pharos). Not posted yet, please do not share further.</div><h1>Thread preview · Pharos · 10 posts <small>(number = X length, max 280)</small></h1><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 1/ hook</span>
-<span class="n bad">316</span></div><div class="txt">How fast do rare events happen, and through which mechanism? 🧵
+<span class="n bad">608</span></div><div class="txt">How fast do rare events happen, and through which mechanism? 🧵
 
-Folding, unbinding, reactions: molecular function is decided by rare transitions between metastable states. Plain MD rarely sees them: one crossing can take µs to hours.
+Pharos answers this at scale:
+🧬 realistic systems: 10,000+ atoms in explicit water
+🧂 transferable models, toward foundation models of rare events
+⚗️ chemical reactions with ML potentials
 
-Pharos learns their committor and rates by stochastic optimal control, at scale.</div><video src="media/hero.webm?v=7785509c" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 2/ people + paper</span>
-<span class="n ">199</span></div><div class="txt">Joint work 🤝 led by <span class="link">@JiajunHe614</span>, <span class="link">[JACKY]</span> and <span class="link">[WEILIANG]</span>, with <span class="link">[HEATHER]</span>, <span class="link">[DAVID]</span> and <span class="link">@cdomingoenrich</span> at MSR New England.
+Folding, binding, reactions are decided by rare transitions that plain MD rarely sees: one crossing can take µs to hours. Pharos learns to steer simulations across the barrier. In stochastic optimal control the best steering is set by the committor, the probability of completing the transition, so Pharos learns both, and with them mechanisms and rates.</div><video src="media/hero.webm?v=7785509c" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 2/ people + paper</span>
+<span class="n ">231</span></div><div class="txt">Joint work 🤝 with <span class="link">@cdomingoenrich</span> at MSR New England, led by <span class="link">@JiajunHe614</span>, Jacky Chen and Weiliang Luo, with Heather Kulik (<span class="link">@KulikGroup</span>) and <span class="link">@david_koes</span>.
 
 📄 Pharos: Learning to Control Rare Events at Scale <span class="link">https://arxiv.org/abs/2611.26765</span></div></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 3/ why it is hard + the committor</span>
-<span class="n ">278</span></div><div class="txt">Why is it hard? Barriers of many k_BT make escape times grow like exp(ΔF/k_BT), while MD steps are femtoseconds.
+<span class="n ">273</span></div><div class="txt">Why is it hard? Barriers many times the thermal energy make escape exponentially slow; MD steps are femtoseconds.
 
-What captures a transition is the committor q(x) = P_x(τ_B &lt; τ_A). Its q = ½ surface is the transition-state ensemble; via transition path theory it gives rates. 🧭</div></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 4/ stochastic optimal control</span>
-<span class="n ">270</span></div><div class="txt">Our approach: stochastic optimal control 🎛️. Add a control u to the Langevin dynamics. The control that sends every trajectory to B before A is u* = σᵀ∇log q (Doob&#x27;s h-transform).
+The committor q captures a transition: the probability of reaching the product first. It is central to the rate, all reaction statistics and the mechanism. 🧭</div></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 4/ stochastic optimal control</span>
+<span class="n ">271</span></div><div class="txt">Our approach: stochastic optimal control 🎛️. Add a learned steering force; the optimal one, carrying every trajectory across, is set by the committor.
 
-So learning to steer = learning q, and steered paths sample exactly where q is uncertain.</div><video src="media/steer.webm?v=06a9d5ac" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 5/ the theory that makes control practical</span>
-<span class="n ">278</span></div><div class="txt">What makes the control practical:
+So Pharos runs a loop: q steers simulations into the transition region, and those paths sharpen q, which steers better.</div><video src="media/steer.webm?v=df18e16e" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 5/ the theory that makes control practical</span>
+<span class="n ">256</span></div><div class="txt">What makes the control practical:
 • capped hitting times: short trajectories bootstrapped from the current q, provably the same solution
-• Value Matching, a new matching objective: simulate with a shifted drift or a different diffusion coefficient, and reuse the trajectories ✅</div></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 6/ Pharos recipe + proteins</span>
+• matching objective: simulate with a shifted drift or a different diffusion coefficient, and reuse the trajectories ✅</div><video src="media/flex.webm?v=3872a887" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 6/ Pharos recipe + proteins</span>
 <span class="n ">275</span></div><div class="txt">Pharos makes this scale: a replay buffer of good trajectories, mixed sampling, and inputs without solvent (the MD keeps it).
 
 Proteins in water, up to 11,521 atoms: the committor agrees with self-consistent shooting (r = 0.93), with 8.6–36× less simulation than baselines. 🧬</div><video src="media/biomolecules_row.webm?v=522f3bd9" autoplay loop muted playsinline></video></div></article><article><img class="av" src="yuanqi.jpg"><div class="main"><div class="who"><b>Yuanqi Du</b> <span>@YuanqiD · 7/ host–guest</span>
